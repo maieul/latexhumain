@@ -1,0 +1,46 @@
+\chapter{Introduction : but, visée et public de ce livre}
+\section{Un manque important}
+
+Ce livre est le fruit de deux ans de travail et d'utilisation quotidienne de \logiciel{(Xe)LaTex} pour la rédaction de mon mémoire de Master. Il vient je pense combler un vide. En effet, si les ouvrages sur \logiciel{LaTex} sont nombreux, rares sont ceux destinés plus spécifiquement aux sciences humaines. A vrai dire, à part quelques articles ici ou là, je n'ai rien trouvé.
+
+
+Si le mot \logiciel{LaTex} a déjà été entendue par des oreilles humanistes, il évoque -- sauf rares exceptions --, au mieux, un outils pour les sciences dites dures, au pire, la sève d'un arbre ou un plastique aux nombreuses applications. 
+
+De nombreuses raisons pourraient expliquer ce quasi-vide.
+\begin{itemize}
+\item La tendance générale des chercheurs en sciences humaines à mal ou méconnaitre l'outils informatique.
+\item Le fait que LaTex paraît \emph{au premier abord} peu convivial.
+\item Le fait que pendant longtemps LaTex ne disposait pas d'outils pour gérer convenablement et simplement une bibliographie selon les normes propres aux sciences humaines : note de bas de pages, distinction entre sources primaires et secondaires etc.
+\item Le fait que pendant longtemps la gestion des caractères non latins n'était pas des plus simple en \logiciel{LaTex}.
+\item Le fait que les éditeurs de sciences humaines prennent rarement des textes sources formatés en \logiciel{LaTex}, parceque les auteurs les rédigent rarement en \logiciel{LaTex}, parceque les éditeurs les prennent rarement en \logiciel{LaTex}
+\end{itemize}
+
+Alors que les chercheurs en sciences humaines sont des spécialistes de l'écrit, pendant longtemps seul des logiciels de types \concept{WYSIWYG} ont été utilisés pour la rédaction des travaux universitaires. Et c'est là un paradoxe : en effet, comme nous le verrons les logiciels de type \concept{WYSIWYG} souffre de deux défauts majeurs qui devraient inciter les écrivains à changer :
+\begin{itemize}
+\item Ils produisent une typographie de médiocre qualité. Certes, un chercheur ne publie pas lui-même ses travaux, mais passe en général par un éditeur. Pour autant, l'apprentissage de la recherche commence par un mémoire de master, puis une thèse, que l'étudiant édite lui-même pour le soumettre à son directeur. Or de même qu'un travail manuscrit écrit lisiblement gagne la sympathie de son correcteur\footnote{Combien de fois n'ai-je pas perdu de points pour \enquote{graphie illible} ?},  une typographie correcte rend la lecture plus agréable.
+\item Leur module de gestion bibliographique manque de souplesse. Je ne connais personne qui m'ai dit qu'il utilise ceux livré en standard avec leur \concept{traitement de texte}.
+\end{itemize}
+
+\section{Pourquoi utiliser \logiciel{(Xe)LaTex} en sciences humaines}
+
+Un des grand argument avancé en faveur de \concept{LaTex} est qu'il incite à penser \enquote{\concept{structure} d'abord, \concept{forme} ensuite}. Pour notre part, nous pensons que les logiciels de type \concept{WYSIWYG} permettent tout à fait de faire cela, pour peu qu'on s'en serve correctement. Il est vrai cependant qu'ils incitent à la confusion. Toutefois, nous pensons que ce genre de confusion ne devrait pas exister dans le domaine des sciences humaines, dans la mesure où une part essentielle du programme de licence consiste à apprendre à faire des plan. Tout chercheur en sciences humaines devrait penser spontanément \concept{structure}.\revision{Mettre un lien vers le débat sur mon site}.
+
+En revanche, en ce qu'il permet de séparer \concept{forme} et \concept{sémantique}, il présente un avantage indéniable. Bien qu'encore une fois cela soit tout à fait possible avec un logiciel de type \concept{WYSIWYG} de faire cela, en utilisant les \concept{styles}, malheureusement il s'avèrent que peu de gens les utilisent.
+
+Pour notre part, nous estimons que la raison majeure d'utiliser \logiciel{(Xe)LaTex} est la possibilité d'avoir une gestion très souple de la bibliographie et de son rendue, grâce au \concept{package} \package{BibLaTex}. 
+
+Une autre raison est qu'un \concept{traitement de texte} est en général bien plus long à lancer qu'un \concept{éditeur de texte}, qu'il plante moins souvent lors de la phase de rédaction, et qu'il est plus rapide à régair. Qui n'a jamais râler contre son \logiciel{Word} ou son \logiciel{Openoffice.org} pris de lenteur ?
+
+Enfin, la dernière raison est le rendu de \logiciel{LaTex} \concept[typographie]{typographique} final, bien meilleur qu'avec un logiciel de \concept{traitement de texte}.
+
+
+\section{Public visés par cette ouvrage}
+
+Cette ouvrage vise donc trois publics distincts.
+
+Tout d'abord, les étudiants et chercheurs en sciences humaines qui ne sont pas rebutés par l'idée d'apprendre un nouvel outil informatique, qui, s'il leur semblera faire perdre du temps au début, lors fera gagner, je pense, un précieux temps à l'usage.
+
+Ensuite, les éditeurs de revues et de livres de sciences humaines, pour les inciter à prendre en compte le format \concept{LaTex} dans leur choix de format de fichier. J'espère montrer que LaTex permet de résoudre nombre de problème d'édition, notamment en ce qui concerne les normes bibliographiques, puisqu'il distingue aisément le \concept{sens} et la \concept{forme}.
+
+Enfin les utilisateurs de \logiciel{LaTex} venant des sciences dites \enquote{dures} pour lui montrer les spécificités éditoriales des sciences humaines et la nécessité de \concept[package]{packages} adaptés.
+
