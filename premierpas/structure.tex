@@ -22,18 +22,20 @@ Regardez le \concept{PDF} obtenu, nous allons lire le code que vous avez copié 
 \section{Structure d'un document \logiciel{LaTex}}
 
 \subsection{La classe du document}
-La première ligne \verb|\documentclass[12pt]{book}| déclare la \notion{classe} du document, ici \classe{book}. Une \notion{classe} de document est un \enquote{modèle}, un \enquote{style}, un \enquote{type} prédéfini de document. Le choix de la \notion{classe} influencera entre autre :
+La première ligne \verb|\documentclass[12pt]{book}| déclare la \notion{classe} du document, ici \classe{book}. Une \notion{classe} une classe de document correspond à un choix éditoral (mise en page et organisation générale du document). Le choix de la \notion{classe} influencera entre autre :
 \begin{itemize}
 \item Le nombre de niveau de titre disponible.
 \item Les marges appliquées.
-\item Les pieds et entêtes de page.
+\item Les en-têtes et pieds de page.
 \end{itemize}
 
 Il existe en standard plusieurs \notion[classe]{classes} de documents : citons \classe{book}, pour rédiger un livre ; \classe{article} pour un article (si, si !), \classe{beamer} pour un présentation sous forme de diapositive à projeter. Dans ce manuel, nous aborderons essentiellement les deux premières.
 
-Nous aborderons également, dans un chapitre spécifique\renvoi{bredele}, la \notion{classe} \classe{Bredele}, qui n'est pas livré en standard avec \logiciel{LaTex}. Elle est con\c cue spécifiquement pour des travaux de type mémoire de master ou thèse de doctorat, suivant les normes universitaires fran\c caises les plus courantes.
+Nous aborderons également, dans un chapitre spécifique\renvoi{bredele}, la \notion{classe} \classe{Bredele}, qui n'est pas livrée en standard avec \logiciel{LaTex}. Elle est con\c cue spécifiquement pour des travaux de type mémoire de master ou thèse de doctorat, suivant les normes universitaires fran\c caises les plus courantes.
 
-Tout document \logiciel{(Xe)LaTex} doit commencer par une déclaration de \concept{classe}, avant toutes autres lignes. La syntaxe est la suivante : \verb|\documentclass[options]{classe}|
+Tout document \logiciel{(Xe)LaTex} doit commencer par une déclaration de \concept{classe}, avant toutes autres lignes. La syntaxe est la suivante :
+
+\verb|\documentclass[options]{classe}|
 
  Les options viennent spécifier certaines propriétés de la classe. Dans notre exemple, nous précisions que la taille de la police du texte courant doit être de 12~pt. Vous pouvez préciser plusieurs options, en les séparant par des virgules. 
  
@@ -81,7 +83,7 @@ Vous entendrez peut-être parler du \concept{package} \package{babel}. Ce packag
 
 \subsubsection{Le corps du document}
 
-Tout ce que nous avons vu jusqu'à maintenant faisaient parti de ce qu'on appel \concept[entête]{l'entête}\footnote{En anglais \concept{header}.} du document. Ce sont des informations qui n'apparaîtront pas dans le document final, mais qui sont utiles à sa composition, autrement dit des méta-données. Tout les \concept{packages} que vous voudrez utiliser seront à appeler dans \concept[entête]{l'entête}.
+Tout ce que nous avons vu jusqu'à maintenant faisaient parti de ce qu'on appel \concept[en-tête]{l'en-tête}\footnote{En anglais \concept{header}.} du document. Ce sont des informations qui n'apparaîtront pas dans le document final, mais qui sont utiles à sa composition, autrement dit des méta-données. Tout les \concept{packages} que vous voudrez utiliser seront à appeler dans \concept[en-tête]{l'en-tête}.
 
 Tout ce qui se trouve entre la ligne \verb|\begin{document}| et \verb|\end{document}| constitue le corps du document, le contenu proprement dit de votre travail.
 
@@ -175,8 +177,8 @@ En ce qui concerne les guillemets, une partie sera consacré plus tard à l'art 
 
 Signalons enfin trois types de tirets :
 \begin{itemize}
-\item \verb|-| qui produit un tiret simple (-), utilisé pour les mots composés.
-\item \verb|--| qui produit un tiret demi-cadratin (--), en théorie à utiliser pour séparer une plage de nombre.
+\item \verb|-| qui produit un tiret simple (-), utilisé pour les mots composés ;
+\item \verb|--| qui produit un tiret demi-cadratin (--), en théorie à utiliser pour séparer une plage de nombre ;
 \item \verb|---| qui produit un tiret cadratin (---), pour des incises.
 \end{itemize}
  
@@ -242,7 +244,7 @@ En revanche, nous vous déconseillons de l'utiliser pour des notes personnelles 
 
 \subsection{La notion d'environnement \notion{environnement}}
 
-Nous avons vu jusqu'à maintenant les notions de  \notion{package}, \notion{entête}, \notion{commande}. 
+Nous avons vu jusqu'à maintenant les notions de  \notion{package}, \notion{en-tête}, \notion{commande}. 
 
 Il nous reste à définir une dernière notion de base. Il s'agit de celle d'\notion{environnement}.
 
