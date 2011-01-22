@@ -3,10 +3,26 @@
 \begin{prealable}
 Nous supposons que vous avez installé LaTex et un \concept{éditeur de texte} spécialisé en \logiciel{LaTex}. Voyez en annexe\renvoi{editeurlatex}.
 
-La première chose à faire est de vérifier que ce logiciel de traitement de texte enregistre bien en \concept{utf-8}. \footnote{Cela se trouve en général dans les préférences du logiciels, dans une rubrique \emph{enregistrement} \emph{encodage} : consultez le manuel de votre logiciel le cas échéant.} Nous reviendrons plus loin\renvoi{unicode} sur l'intérêt d'un tel encodage, sachez simplement que cela permet d'utiliser des signes non latins (cyrilliques, grecs, sanskrits, hébraïques etc. Et même extra-terrestres.).
+La première chose à faire est de vérifier que ce logiciel de traitement de texte enregistre bien en \concept{utf-8}\footnote{Cela se trouve en général dans les préférences du logiciels, dans une rubrique \emph{enregistrement} \emph{encodage} : consultez le manuel de votre logiciel le cas échéant.}. Nous reviendrons plus loin\renvoi{unicode} sur l'intérêt d'un tel encodage, sachez simplement que cela permet d'utiliser des signes non latins (cyrilliques, grecs, sanskrits, hébraïques etc. Et même extra-terrestres.).
 
 \end{prealable}
 
 \section{Un premier document}
 
+Dans votre \notion{éditeur de texte}, tapez le code ci-dessous\footnote{Comme nous l'avons expliqué en introduction, la coloration que vous voyiez ici à un sens syntaxique : ne vous préoccupez pas de savoir comment cela apparaîtra dans votre éditeur, et ne pensez pas que cela apparaîtra comme cela une fois compilé.} puis cliquez sur le bouton de composition avec XeLaTex\footnote{Cela encore une fois dépend de votre \notion{éditeur de texte}. Pour le moment vous pouvez vous contenter de ce bouton, mais un jour vous devrez apprendre à faire quelques lignes de commandes : ne vous inquiétez pas, tout sera expliqué.}
 
+\begin{listing}
+\inputminted{latex}{exemples/premierpas/structure/1.tex}
+
+
+\caption{Un code pour découvrir \logiciel{(Xe)LaTex}}
+\end{listing}
+
+
+
+\section{Structure d'un document \logiciel{LaTex} et notions de base}
+
+Analysons maintenant le code que vous avez copié.
+
+\subsection{La classe d'un document}
+%La première ligne \code{
