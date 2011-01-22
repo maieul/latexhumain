@@ -27,13 +27,19 @@
 
 \newcommand{\logiciel}[1]{%
 	%\index{#1}%
+	\ifthenelse{\equal{#1}{LaTex}}{%
+	\latex%
+	}%
 	\emph{#1}%
 }
 
 \newcommand{\notion}[2][]{%Synonyme de concept
-	\concept[#1]{#2}
+	\concept[#1]{#2}%
 }
 
+\newcommand{\revision}[1]{%
+	\marginpar{Rev : #1}%
+}
 \newcommand{\package}[1]{%
 	\emph{#1}%
 }
