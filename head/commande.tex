@@ -1,20 +1,22 @@
+\newcommand{\vide}[0]{}
+
 \newcommand{\classe}[1]{%
 	%\index{#1}%
-	\emph{#1}%
+	\textbf{#1}%
 }
 \newcommand{\commande}[1]{%
 	%\index{#1}%
-	\emph{#1}%
+	\textbf{#1}%
 }
 
 \newcommand{\concept}[2][]{%
-	\ifthenelse{\equal{#1}{}}%
+	\ifthenelse{\equal{#1}{\vide}}%
 	{%\index{#1}%
 	\emph{#2}%
 	}%
 	{%
 	%\index{#1}%
-	\emph{#1}%
+	\emph{#2}%
 	}%
 }
 
@@ -30,8 +32,8 @@
 
 \newcommand{\notion}[2][]{%Synonyme de concept
 	\ifthenelse{\equal{#1}{}}%
-	{\concept[#1]{#2}}%
 	{\concept{#1}}%
+	{\concept[#1]{#2}}
 }
 
 \newcommand{\package}[1]{%
