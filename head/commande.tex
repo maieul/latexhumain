@@ -1,6 +1,16 @@
-\newcommand{\concept}[1]{%
+\newcommand{\classe}[1]{%
 	\index{#1}%
 	\emph{#1}%
+}
+\newcommand{\concept}[2][]{%
+	\ifthenelse{\equal{#1}{}}%
+	{\index{#1}%
+	\emph{#2}%
+	}%
+	{%
+	\index{#1}%
+	\emph{#1}%
+	}%
 }
 
 \newcommand{\logiciel}[1]{%
@@ -8,9 +18,21 @@
 	\emph{#1}%
 }
 
-\newcommand{\notion}[1]{%Synonyme de concept
-	\concept{#1}%
+\newcommand{\notion}[2][]{%Synonyme de concept
+	\ifthenelse{\equal{#1}{}}%
+	{\concept[#1]{#2}}%
+	{\concept{#1}}%
 }
-\newcommand{\renvoi}[1]{%
-	\marginpar{#1}%
+\newcommand{\renvoi}[1]{\marginpar{Renvoi : #1}}
+
+% Redefinir les commandes de minted
+\let\oldinputminted\inputminted
+\renewcommand{\inputminted}[1]{%
+\oldinputminted[linenos]{latex}{#1}%
+}
+
+
+\let\oldmint\mint
+\renewcommand{\mint}[1]{%
+\oldmint{latex}{#1}%
 }
