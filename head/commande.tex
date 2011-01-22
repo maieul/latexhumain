@@ -31,9 +31,7 @@
 }
 
 \newcommand{\notion}[2][]{%Synonyme de concept
-	\ifthenelse{\equal{#1}{}}%
-	{\concept{#1}}%
-	{\concept[#1]{#2}}
+	\concept[#1]{#2}
 }
 
 \newcommand{\package}[1]{%
