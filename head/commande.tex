@@ -1,26 +1,30 @@
 \newcommand{\classe}[1]{%
-	\index{#1}%
-	%\emph{#1}%
+	%\index{#1}%
+	\emph{#1}%
 }
 \newcommand{\commande}[1]{%
-	\index{#1}%
-	%\emph{#1}%
+	%\index{#1}%
+	\emph{#1}%
 }
 
 \newcommand{\concept}[2][]{%
 	\ifthenelse{\equal{#1}{}}%
-	{\index{#1}%
+	{%\index{#1}%
 	\emph{#2}%
 	}%
 	{%
-	\index{#1}%
+	%\index{#1}%
 	\emph{#1}%
 	}%
 }
 
+\newcommand{\enviro}[1]{%
+	%\index{#1}%
+	\emph{#1}%
+}
 
 \newcommand{\logiciel}[1]{%
-	\index{#1}%
+	%\index{#1}%
 	\emph{#1}%
 }
 
@@ -34,6 +38,7 @@
 	\emph{#1}%
 }
 \newcommand{\renvoi}[1]{\marginpar{Renvoi : #1}}
+
 
 % Redefinir les commandes de minted
 \let\oldinputminted\inputminted
