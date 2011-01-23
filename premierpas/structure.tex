@@ -55,17 +55,22 @@ Nous en préciserons d'autre au fur et à mesure du manuel, lorsque les notions 
 
 \subsection{L'appel aux packages}
 
-Voyons les deux lignes suivantes : 
+Voyons les trois lignes suivantes : 
 \begin{minted}[linenos]{\LaTeX}
+\usepackage{fontspec}
 \usepackage{xunicode}
 \usepackage{polyglossia}
 \end{minted}
 
 Il s'agit, comme vous auriez pu le deviner, d'appel à des \concept[package]{packages}. Un \concept{package} est un ensemble de fichiers qui ajoutent des fonctionnalités à \logiciel{\LaTeX}, c'est l'équivalent d'un \concept{plugin} sous \logiciel{Firefox}. 
 
-Le premier \concept{package} utilisé est \package{xunicode}. Il permet de gérer \concept[unicode]{l'unicode}, autrement appelé \concept{utf-8}\footnote{En réalité \concept{utf-8} n'est pas tout à fait \concept{unicode}, mais simplement une variante de ce dernier. Toutefois, pour simplifier, nous assimilerons les deux.} ; c'est cela qui nous permettra d'avoir des caractères non-latin\renvoi{utf-8}.
+Le premier \concept{package} est \package{fontspec}. Le second \concept{package} est \package{xunicode}. Il permet de gérer \concept[unicode]{l'unicode}, autrement appelé \concept{utf-8}\footnote{En réalité \concept{utf-8} n'est pas tout à fait \concept{unicode}, mais une implémentation de ce dernier. Toutefois, pour simplifier, nous assimilerons les deux.}. Ces deux packages nous permettront d'avoir des caractères non-latin\renvoi{utf-8}.
 
-Le second permet de gérer facilement un document multilingue\renvoi{i18n} et les changements typographiques que cela implique.
+\begin{attention}
+Attention : ces deux \concept{packages} doivent être appelés dans cet ordre, et non en sens inverse.
+\end{attention}
+
+Le troisième permet de gérer facilement un document multilingue\renvoi{i18n} et les changements typographiques que cela implique.
 
 C'est deux \notion{packages} sont propres à \logiciel{XeLaTex} : ils ne fonctionneront pas avec un \notion{compilateur} \logicile{\LaTeX}.
 
