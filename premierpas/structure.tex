@@ -64,7 +64,9 @@ Voyons les trois lignes suivantes :
 
 Il s'agit, comme vous auriez pu le deviner, d'appel à des \concept[package]{packages}. Un \concept{package} est un ensemble de fichiers qui ajoutent des fonctionnalités à \logiciel{\LaTeX}, c'est l'équivalent d'un \concept{plugin} sous \logiciel{Firefox}. 
 
-Le premier \concept{package} est \package{fontspec}. Le second \concept{package} est \package{xunicode}. Il permet de gérer \concept[unicode]{l'unicode}, autrement appelé \concept{utf-8}\footnote{En réalité \concept{utf-8} n'est pas tout à fait \concept{unicode}, mais une implémentation de ce dernier. Toutefois, pour simplifier, nous assimilerons les deux.}. Ces deux packages nous permettront d'avoir des caractères non-latin\renvoi{utf-8}.
+Le premier \concept{package} est \package{fontspec}. Il est utile à XeLaTex pour une typographie avancée, notamment pour les langues autres que l'anglais\footnote{Pour être précis, il détermine des commandes utilisées par le \concept{package} \package{polyglossia} lorsque définis le fran\c cais comme langue principale du document.}. 
+
+Le second \concept{package} est \package{xunicode}. Il permet de gérer \concept[unicode]{l'unicode}, autrement appelé \concept{utf-8}\footnote{En réalité \concept{utf-8} n'est pas tout à fait \concept{unicode}, mais une implémentation de ce dernier. Toutefois, pour simplifier, nous assimilerons les deux.}. Il nous permettra d'avoir des caractères non-latin\renvoi{utf-8}.
 
 \begin{attention}
 Attention : ces deux \concept{packages} doivent être appelés dans cet ordre, et non en sens inverse.
