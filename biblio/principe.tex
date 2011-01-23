@@ -1,0 +1,57 @@
+\chapter*{Introduction}
+\section{Principe général}
+
+Nous abordons maintenant un des atouts majeurs de \logiciel{\LaTeX} pour les sciences humaines : la possibilité de gérer très simplement une bibliographie complexe, tout en la gérant de manière très souple.
+
+Il existe certes un module de gestion de la bibliographie dans la plupart des logiciels \concept{WYSIWYG}, mais ceux-ci manquent de souplesse.
+
+Conséquences : la grande partie des utilisateurs de ces logiciels gèrent leur bibliographie \enquote{à la main} : les références bibliographique sont écrites textuellement, directement dans le fichier. 
+
+Ce qui implique beaucoup de contraintes  :
+\begin{itemize}
+\item Si on veut changer l'ordre des informations, ou en supprimer, il faut reprendre soit même l'ensemble des références.
+\item La gestion des versions abrégées des références est rendue compliqué :  il faut s'assurer soit même que la référence a déjà été citée, mais pas trop loin etc. 
+\item Il faut copier-coller soit même à la fin l'ensemble des références bibliographiques. 
+\end{itemize}
+
+La logique de la gestion bibliographique en LaTex est relativement simple.
+
+Un fichier\footnote{Éventuellement plusieurs}, dans un format spécifique, contiendra l'ensemble des références bibliographique. Pour chaque référence, appelée \concept{entrée} seront indiqués les éléments utiles :  type de référence (livre, article, actes de colloques etc.), titre, auteur, pagination, sous-titre, éditeur etc.\footnote{Par ailleurs ce fichier pourra contenir des commentaires utiles pour la préparation du travail : résumé, notes de lecture, cotation dans une bibliothèque.
+}. Chaque référence possédera une \concept{clef} unique permettant de la distinguer d'une autre.
+
+Dans le document \logiciel{\LaTex}, on précisera dans l'\concept{en-tête} le nom du fichier externe. À chaque fois que l'on souhaitera citer une référence, οon utilisera une \concept{commande} en lui passant la \concept{clef} en argument. Le \concept{package} \package{biblatex} se chargera alors d'afficher la référence selon un \concept{style de citation}\footnote{C’est-à-dire une présentation} déterminé. Ainsi, si on veut changer l'ordre de présentation, par exemple intervertir l'éditeur et la ville de publication, il suffit de modifier le style, ce qui se fait aisément, puisque les styles sont une série de commandes \logiciel{\latex}. Par ailleurs \package{BibLaTex} gérera automatiquement les références déjà citées, et introduira tout seul, en fonction du \concept{style} choisi, les abréviations. 
+
+\begin{anedocte}
+\package{BibLaTex} n'est pas forcément nécessaire pour gérer une bibliographie avec \logiciel{\LaTeX}. Cependant, les fonctionnalités standards de \logiciel{LaTeX} pour la gestion bibliographiques sont très limitées, et inadaptées aux sciences humaines. 
+
+Vous trouverez peut-être sur internet des fichiers \ext{.sty}. Ces fichiers sont des styles bibliographiques, mais pour les fonctionnalités standards de \logiciel{\LaTex}. Ils ne peuvent servir pour \package{BibLaTex}. Cependant, il est relativement aisé d'avoir ses propres \concept[style BibLaTex]{styles BibLaTex}, tandis que la syntaxe des fichiers \ext{.sty} est relativement complexe, puisqu'elle en \concept{notation polonaise inversée}.
+\end{anedocte}
+
+Enfin, à la fin du document, ou a tout autre endroit jugé utile, une (ou plusieurs) \concept{commande} permettra d'afficher la bibliographie, qui reprendra les références citées\footnote{Il est aussi possible, si on le souhaite, d'ajouter une ou plusieurs références non citées.} dans le document, en les classant et en les affichant selon un \concept{style de bibliographie}, lui aussi personalisable.
+
+\section{Une triple compilation}.
+
+Jusqu'à maintenant, vous aviez \notion[compilation]{compilé} votre fichier \ext{.tex} une seule fois, avec \logiciel{XeLaTex}. La gestion bibliographique étant quelque chose de relativement complexe, il va falloir procéder à une triple \notion{compilation} :
+\begin{enumerate}
+\item le fichier \ext{.tex} avec \logiciel{XeLaTex}. Outre le fichier \ext{.pdf}, cette \notion{compilation} produira un fichier auxiliaire \ext{.aux} ;
+\item ce fichier devra être lui même \notion[compilation]{compilé} avec \logiciel{BibTex} ;
+\item puis il faudra \notion[compilation]{re-compiler} le fichier \ext{.sty} avec \logiciel{XeLaTex}
+\end{enumerate}
+
+En général, les \concept[éditeur de texte]{éditeurs de texte} spécialisée en \logiciel{\LaTeX} prévoient un bouton pour compiler le fichier \ext{.aux} avec \logiciel{BibTex}, voire même pour faire ces trois compilations à la suite. Consulter le manuel du logiciel le cas échéant.
+
+\begin{attention}
+Il ne faut pas confondre \logiciel{BibTex} et \package{BibLaTex}. Le premier est un logiciel, le second est une package de \logiciel{\LaTex}.
+
+On \notion[compilation]{compile} avec \logiciel{BibTex} mais on fait appel au \notion{package} \package{BibLaTex}.
+
+\end{attention}
+
+
+
+ 
+
+
+
+
+
