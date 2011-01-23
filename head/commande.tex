@@ -27,9 +27,6 @@
 
 \newcommand{\logiciel}[1]{%
 	%\index{#1}%
-	\ifthenelse{\equal{#1}{LaTex}}{%
-	\latex%
-	}%
 	{\emph{#1}}%
 }
 
@@ -57,3 +54,6 @@
 \renewcommand{\mint}[1]{%
 \oldmint{latex}{#1}%
 }
+%pour ecrire latex
+\let\latex\LaTeX
+\let\LaTex\LaTeX
