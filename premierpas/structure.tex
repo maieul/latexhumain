@@ -56,7 +56,7 @@ Nous en préciserons d'autre au fur et à mesure du manuel, lorsque les notions 
 \subsection{L'appel aux packages}
 
 Voyons les trois lignes suivantes : 
-\begin{minted}[linenos]{\LaTeX}
+\begin{minted}[linenos]{LaTex}
 \usepackage{fontspec}
 \usepackage{xunicode}
 \usepackage{polyglossia}
@@ -74,7 +74,7 @@ Attention : ces deux \concept{packages} doivent être appelés dans cet ordre, e
 
 Le troisième permet de gérer facilement un document multilingue\renvoi{i18n} et les changements typographiques que cela implique.
 
-C'est deux \notion{packages} sont propres à \logiciel{XeLaTex} : ils ne fonctionneront pas avec un \notion{compilateur} \logicile{\LaTeX}.
+C'est deux \notion{packages} sont propres à \logiciel{XeLaTex} : ils ne fonctionneront pas avec un \notion{compilateur} \logiciel{\LaTeX}.
 
 Certains \concept[package]{packages} peuvent recevoir des \concept{option}{options} qui modifieront leur comportement standard. La syntaxe est alors : \verb|\usepackage[options]{package}|
 
@@ -100,7 +100,7 @@ Enfin, rien de ce qui se trouve après \verb|\end{document}| ne sera analysé pa
 
 \subsubsection{Titre, auteur et date : la notion de commande}
 
-\begin{minted}{\LaTeX}
+\begin{minted}{latex}
 \title{Un titre d'ouvrage}
 \author{Le nom de son auteur}
 \date{}
@@ -126,7 +126,7 @@ La syntaxe d'une commande est :
 
 \begin{listing}[ht]
 
-\begin{minted}{\LaTeX}
+\begin{minted}{latex}
 \nom[opt1][…][optn]{obl1}{…}{obln}
 \end{minted}
 \caption{Syntaxe de base d'une commande}
@@ -149,7 +149,7 @@ La grande force de \logiciel{\LaTeX} est de permettre justement d'utiliser des c
 Regardez maintenant les lignes suivantes et leurs résultats à la \notion{compilation}.
 
 \begin{listing}[ht]
-\begin{minted}[linenos]{\LaTeX}
+\begin{minted}[linenos]{latex}
 Lorem ipsum dolor sit amet, consectetuer adipiscing elit ?
 Morbi commodo ; ipsum sed pharetra gravida !
 Nullam sit amet enim. Suspendisse id : velit vitae ligula.
@@ -262,12 +262,12 @@ Un \notion{environnement} est une portion de document ayant une signification sp
 
 On marque le début d'un \notion{environnement} \verb|nom| par la \notion{commande} :
 
-\begin{minted}{\LaTeX}
+\begin{minted}{latex}
 \begin{nom}
 \end{minted}
 
 et on le termine par 
-\begin{minted}{\LaTeX}
+\begin{minted}{latex}
 \end{nom}
 \end{minted}
 
@@ -276,7 +276,7 @@ Tout ceci n'est  pour l'instant sans doute pas très parlant, mais nous préfér
 
 Il est possible d'imbriquer des environnements :
 \begin{listing}[ht]
-\begin{minted}{\LaTeX}
+\begin{minted}{latex}
 \begin{1}
 blabla blab
 \begin{2}
@@ -291,7 +291,7 @@ blabl
 En revanche il n'est pas possible de superposer des environnements : ainsi le code suivant ne fonctionnera pas.
 
 \begin{listing}[ht]
-\begin{minted}{\LaTeX}
+\begin{minted}{latex}
 \begin{1}
 blabla blab
 \begin{2}
