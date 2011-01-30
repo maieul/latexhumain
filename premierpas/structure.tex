@@ -1,0 +1,122 @@
+\chapter{Structurer son travail}
+\begin{prealable}
+Après avoir découvert les bases de \logiciel{\LaTeX}, apprenons la manière de structurer son travail.
+\end{prealable}
+
+\section{Différents niveaux de titres}
+
+\logiciel{\LaTex} propose par défaut six ou sept niveaux de titre, selon la \notion{classe} choisie.
+Pour introduire un titre dans \logiciel{\LaTex} --- en dehors du titre du travail ---, il suffit d'utiliser une \notion{commande} de titre, qui possède la syntaxe suivante:
+\begin{minted}{latex}
+\titre[titre court]{titre long}
+\end{minted}
+
+Le titre court est facultatif, comme l'indique le fait qu'il soit entre crochets\renvoi{syntaxecommande}. Il servira pour la table de matière et, éventuellement, pour les entêtes des pages\renvoi{toc}\renvoi{page:entete}.
+
+Évidemment \verb|\titre| doit être remplacé par le type de titre. Voici les niveaux de titre disponibles, du plus général au plus détaillé. Plus un titre se trouve haut dans la hiérachie, plus son numéro de niveau est faible.
+
+ 	\begin{tabular}{|l||l|l|}
+	\hline 	
+ 	Commande 				& Sens 						& Numéro de niveau 	\\
+ 	\hline
+ 	\hline
+ 	\verb|\part| 			& Titre de partie 			& -1 / 0	 \\
+ 	\verb|\chapter| 		& Titre de chapitre 		& 0 	 	 \\
+	\verb|\section|			& Titre de section  		& 1			\\
+	\verb|\subsection|		& Titre de sous-section 	& 2			\\
+	\verb|\subsubsection|	& Titre de sous-sous-section& 3			\\
+	\verb|\paragraph|		& Titre de paragraphe 		&4			\\
+	\verb|\paragraph|		& Titre de sous-paragraphe 	&5			\\
+	\hline
+	\end{tabular}
+
+
+Quelques remarques importantes :
+\begin{itemize}
+\item Le niveau \verb|\chapter| n'existe pas dans la \notion{classe} \classe{article}.
+\item Raison pour laquelle le niveau de \verb|\part| varie entre -1 et 0.
+\item Les niveaux dont les numéros sont inférieurs à 1 provoquent, par défaut, un changement de pages.
+\item Les niveaux dont les numéros sont supérieurs à 3 ne provoquent pas de changement de paragraphe. Ils sont positionés en \enquote{lettrine}.
+\end{itemize}
+
+\subsection{Des titres non numérotés}
+Par défaut, tout les titres sont numérotés automatiquement\footnote{Nous verrons plus loins comment changer la numérotation.}. Il est possible d'avoir un titre non numéroté, en faisant suivre le nom de la \notion{commande} d'un astérique :
+\begin{minted}{latex}
+\chapter*{Un chapitre non numéroté}
+\end{minted}
+
+Toutefois un titre non numéroté ne sera pas ajouté à la table des matières\renvoi{toc}. Pour contourner ce problème, il faut utiliser la commande \\
+\verb|\addcontentsline{toc}{1}{2}| où :
+\begin{description}
+	\item[1] est le type de titre ;
+	\item[2] est le texte du titre ;
+\end{description}
+
+Un exemple sera plus parlant :
+
+\begin{listing}[ht]
+\begin{minted}[linenos]{latex}
+\chapter*{Introduction}
+\addcontentsline{toc}{chapter}{Introduction}
+\end{minted}
+\caption{Un titre non numéroté dans la table des matières}
+\end{listing}
+
+\begin{anedocte}
+Le lecture alerte se demandera sans doute pourquoi il est nécéssaire de mettre \verb|toc| comme premier argument. Cela correspond à l'extension du fichier qui contiendra la table des matières : nous renvoyons vers le chapitre dédiée à ce sujet.\renvoi{toc}
+\end{anedocte}
+
+\section{Structurer ses fichiers}
+
+Jusqu'à maintenant, vous aviez tout mis dans un seul fichier. Une fonctionalité intéressante de \logiciel{\LaTeX} est la possibilité d'\notion[inclusion]{inclure} des fichiers dans un fichier, pour ainsi séparer son travail en plusieurs fichiers, chaque fichier contenant une partie seulement du document final.
+
+Par exemple, il est possible de faire un fichier par chapitre d'un mémoire. Ou encore de faire un fichier par texte cité dans un exemplier. Seul un document \enquote{père} sera compilé, ce document appelera des documents \enquote{fils}.
+
+Pourquoi procéder ainsi ?
+\begin{itemize}
+\item Pour pouvoir changer plus aisément l'ordre des parties. 
+\item Pour pouvoir \enquote{recycler} plus facilement certaines parties.
+\item Pour pouvoir compiler seulement certaines parties.
+\end{itemize}
+
+Concrètement comment fait-on ?
+\begin{enumerate}
+\item Le fichier \enquote{père} devra systématiquement commencé par un appel de classe.
+\item Les fichiers \enquote{fils} ne devront contenir aucun appel de classe.
+\item Ils seront inclus dans le document fils par l'une des commandes suivantes :
+\begin{itemize}
+	\item \verb|\include{chemin_du_fichier}|, qui entraînera systématiquement un saut de page.
+	\item \verb|\input{chemin_du_fichier}|, qui n'entraînera pas de saut de page.
+\end{itemize}
+\item La commande \commande{input}, contrairement à \commande{include} peut être aussi appelée dans un fichier \enquote{fichier}, voire dans un fichier \enquote{petit-fils} etc.
+
+\end{enumerate}
+
+Nous conseillons de mettre l'ensemble des appels à des packages dans un fichier à part. Ainsi, vous pourrez disposer d'un jeu de package pour tout vos documents : il suffira d'appeler à chaque fois ce fichier.
+
+A titre d'exemple, vous trouverez le schéma d'organisation de nos fichiers pour notre mémoire\revision{L'insérer à la fin}.
+
+\subsection{Comment indiquer le chemin du fichier}
+
+La notion de \notion{chemin de fichier} en informatique renvoie à l'arborescence des dossiers sur un ordinateur.
+
+En \logiciel{\LaTeX}, le chemin du fichier se compte à partir du fichier \enquote{père}, celui qui est compilé. \emph{Y compris lorsqu'on procède à une inclusion dans un fichier \enquote{fils}}.
+
+On indique le chemin du fichier en séparant chaque dossiers par \verb|\|. \revision{Est-ce le cas sous Windows ?} Par exemple, je souhaite inclure le fichier nommé \verb|c.tex| situé dans le dossier \verb|b|, lui même situé dans le dossier \verb|a|, qui se trouve à côoté du fichier \enquote{père}.
+
+Il faut que je mette dans mon fichier \enquote{père} :
+
+\verb|\input{a/b/c}|
+
+ou bien
+
+\verb|\include{a/b/c}|
+
+\begin{attention}
+
+Il ne faut pas mettre l'\notion{extension} \ext{.tex} dans le nom du fichier.
+
+Il est déconseillé d'avoir des caractères spéciaux dans le nom des dossiers et des fichiers.
+\end{attention}
+
+Nous conseillons de mettre les fichiers \enquote{fils} dans un ou plusieurs sous-dossier.
