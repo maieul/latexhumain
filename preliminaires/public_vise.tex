@@ -4,32 +4,32 @@
 Ce livre est le fruit de deux ans de travail et d'utilisation quotidienne de \logiciel{\LaTeX} pour la rédaction de mon mémoire de master. Il vient combler un vide, du moins je pense. En effet, si les ouvrages sur \logiciel{\LaTeX} sont nombreux, rares sont ceux destinés plus spécifiquement aux sciences humaines. À vrai dire, à part quelques articles ici ou là, je n'ai rien trouvé.
 
 
-Si le mot \logiciel{\LaTeX} a déjà été entendue par des oreilles humanistes, il évoque --- sauf rares exceptions --- au mieux un outil pour les sciences dites dures, au pire la sève d'un arbre ou un plastique aux nombreuses applications. 
+Si le mot \logiciel{\LaTeX} a déjà été entendu par des oreilles humanistes, il évoque --- sauf rares exceptions --- au mieux un outil pour les sciences dites dures, au pire la sève d'un arbre ou un plastique aux nombreuses applications. 
 
 De nombreuses raisons pourraient expliquer ce quasi-vide.
 \begin{itemize}
 \item la tendance générale des chercheurs en sciences humaines à malconnaître ou méconnaître l'outil informatique ;
 \item le fait que \logiciel{\LaTeX} paraît \emph{au premier abord} peu convivial ;
-\item le fait que pendant longtemps \logiciel{\LaTeX} ne disposait pas d'outils pour gérer convenablement et simplement une bibliographie selon les normes propres aux sciences humaines : note de bas de pages, distinction entre sources primaires et secondaires etc ;
+\item le fait que pendant longtemps \logiciel{\LaTeX} ne disposait pas d'outils pour gérer convenablement et simplement une bibliographie selon les normes propres aux sciences humaines : note de bas de page, distinction entre sources primaires et secondaires etc ;
 \item le fait que pendant longtemps la gestion des caractères non latins n'était pas des plus simple en \logiciel{\LaTeX} ;
 \item le fait que les éditeurs de sciences humaines prennent rarement des textes sources formatés en \logiciel{\LaTeX}, parceque les auteurs les rédigent rarement en \logiciel{\LaTeX}, parce que les éditeurs les prennent rarement en \logiciel{\LaTeX} \ldots
 \end{itemize}
 
-Alors que les chercheurs en sciences humaines sont des spécialistes de l'écrit, pendant longtemps seul des logiciels de types \concept{WYSIWYG}\footnote{Voir glossaire.}, comme \logiciel{OpenOffice.org} ou \logiciel{Microsoft Word} ont été utilisés pour la rédaction des travaux universitaires.
+Alors que les chercheurs en sciences humaines sont des spécialistes de l'écrit, pendant longtemps seuls des logiciels de types \concept{WYSIWYG}\footnote{Voir glossaire.}, comme \logiciel{OpenOffice.org} ou \logiciel{Microsoft Word} ont été utilisés pour la rédaction des travaux universitaires.
 
-Et c'est là un paradoxe : en effet, comme nous le verrons les logiciels de type \concept{WYSIWYG} souffre de deux défauts majeurs qui devraient inciter les écrivains à changer :
+Et c'est là un paradoxe : en effet, comme nous le verrons, les logiciels de type \concept{WYSIWYG}, souffrent de deux défauts majeurs qui devraient inciter les écrivains à changer :
 \begin{itemize}
-\item Ils produisent une typographie de médiocre qualité. Certes un chercheur ne publie pas lui-même ses travaux mais passe en général par un éditeur. Pour autant, l'apprentissage de la recherche commence par un mémoire de master, puis par une thèse, que l'étudiant édite lui-même pour les soumettre à son directeur. Or de même qu'un travail manuscrit écrit lisiblement gagne la sympathie de son correcteur\footnote{Combien de fois n'ai-je pas perdu de points pour \enquote{graphie illible} ?},  une typographie correcte rend la lecture plus agréable.
-\item Leur module de gestion bibliographique manque de souplesse. Je ne connais personne qui m'ait dit utiliser ceux livrés en standard avec leur \concept{traitement de texte}.
+\item Ils produisent une typographie de médiocre qualité. Certes un chercheur ne publie pas lui-même ses travaux mais passe en général par un éditeur. Pour autant, l'apprentissage de la recherche commence par un mémoire de master, puis par une thèse, que l'étudiant édite lui-même pour les soumettre à son directeur. Or, de même qu'un travail manuscrit écrit lisiblement gagne la sympathie de son correcteur\footnote{Combien de fois n'ai-je pas perdu de points pour \enquote{graphie illible} ?},  une typographie correcte rend la lecture plus agréable.
+\item Leur module de gestion bibliographique manque de souplesse. Je ne connais personne qui m'ait déclarer utiliser ceux livrés en standard avec leur \concept{traitement de texte}.
 \end{itemize}
 
 \section{Pourquoi utiliser \logiciel{(Xe)\LaTeX} en sciences humaines}
 
-Un des grand argument avancé en faveur de \concept{\LaTeX} est qu'il incite à penser \enquote{\concept{structure} d'abord, \concept{forme} ensuite}. Pour ma part, je que les logiciels de type \concept{WYSIWYG} permettent tout à fait de faire cela, pour peu qu'on s'en serve correctement. 
+Un des grands arguments avancés en faveur de \concept{\LaTeX} est qu'il incite à penser \enquote{\concept{structure} d'abord, \concept{forme} ensuite}. Pour ma part, j'estime que les logiciels de type \concept{WYSIWYG} permettent tout à fait de faire cela, pour peu qu'on s'en serve correctement. 
 
-Il est vrai cependant qu'ils incitent à la confusion. Toutefois, je que ce genre de confusion ne devrait pas exister dans le domaine des sciences humaines, dans la mesure où une part essentielle du programme de licence consiste à apprendre à faire des plan. Tout chercheur en sciences humaines devrait penser spontanément \concept{structure}.\revision{Mettre un lien vers le débat sur mon site}
+Il est vrai cependant qu'ils incitent à la confusion. Toutefois, je considère que ce genre de confusion ne devrait pas exister dans le domaine des sciences humaines, dans la mesure où une part essentielle du programme de licence consiste à apprendre à faire des plans. Tout chercheur en sciences humaines devrait penser spontanément \concept{structure}.\revision{Mettre un lien vers le débat sur mon site}
 
-En revanche, en ce qu'il permet de séparer \concept{forme} et \concept{sens}, il présente un avantage indéniable. Bien qu'encore une fois cela soit tout à fait possible avec un logiciel de type \concept{WYSIWYG} en utilisant les \concept{styles},  il s'avère malheureusement que peu de gens les utilisent. Par ailleurs, \logiciel{\LaTeX} permet de faire beaucoup plus que les simples \concept[style]{styles}, pour peu qu'on veuille prendre la peine d'un apprentissage.
+En revanche, en ce qu'il permet de séparer \concept{forme} et \concept{sens}, il présente un avantage indéniable. Bien qu'encore une fois cela soit tout à fait possible avec un logiciel de type \concept{WYSIWYG} en utilisant les \concept{styles},  il s'avère malheureusement que peu de gens les utilisent. Par ailleurs, \logiciel{\LaTeX} permet de faire beaucoup plus que les simples \concept[style]{styles}, si tant ait qu'on veuille prendre la peine d'un apprentissage.
 
 Pour ma part, j'estime que la raison majeure d'utiliser \logiciel{\LaTeX} est la possibilité d'avoir une gestion très souple de la bibliographie et de son rendu, grâce au \concept{package} \package{Bib\LaTeX}. 
 
@@ -42,7 +42,7 @@ Enfin, la dernière raison est le rendu \concept[typographie]{typographique} fin
 
 Cet ouvrage vise donc trois publics distincts.
 
-Tout d'abord, les étudiants et chercheurs en sciences humaines qui ne sont pas rebutés par l'idée d'apprendre un nouvel outil informatique, qui, s'il leur semblera faire perdre du temps au début, lors fera gagner un précieux temps à l'usage.
+Tout d'abord, les étudiants et chercheurs en sciences humaines qui ne sont pas rebutés par l'idée d'apprendre un nouvel outil informatique, qui, s'il leur semblera faire perdre du temps au début, leurs fera gagner un précieux temps à l'usage.
 
 Ensuite, les éditeurs de revues et de livres de sciences humaines, pour les inciter à prendre en compte le format \concept{\LaTeX} dans leur choix de format de fichier, et pour leur montrer l'avantage de ce format par rapport aux autres formats. J'espère montrer que \logiciel{\LaTeX} permet de résoudre nombre de problèmes d'édition, notamment en ce qui concerne les normes bibliographiques, puisqu'il distingue aisément le \concept{sens} et la \concept{forme}.
 
