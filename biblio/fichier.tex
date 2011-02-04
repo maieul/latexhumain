@@ -1,0 +1,72 @@
+\chapter{Remplir sa base de donnée bibliographique}
+
+\begin{prealable}
+La première étape pour gérer une bibliographique avec \logiciel{\LaTeX} est d'entrée l'ensemble des références dans une base de donnée bibliographique.
+
+À vrai dire, cela se fait en général bien avant la rédaction du travail.
+
+La base de donnée bibliographique est un fichier au format \logiciel{BibTeX} qui porte une extension \ext{.bib}.
+\end{prelable}
+
+\section{Strucure de base d'un fichier \ext{.bib}}
+
+Chaque élèment d'une bibliographie sera appelé entrée. Une entrée bibliographique se caractérise par :
+\begin{itemize}
+\item Un type d'entrée : s'agit-il d'un article, d'un livre, d'actes de colloques ?
+\item Une clef unique. Cette clef permet de distinguer une entrée bibliographique d'une autre. C'est elle qui sera mentionnée dans vos fichiers \extension{.tex}
+\item Des champs contenant des indications sur l'ouvrage, tel que : auteur, titre, éditeur etc. 
+\end{itemize}
+
+L'avantage de ce système est compréhensible. En effet, une correction dans la base de donnée bibliographique sera automatiquement reportée dans le travail\footnote{Moyennant une nouvelle compilation.} à chaque fois que l'entrée est mentionnée.
+
+Un fichier \ext{.bib} est un fichier texte contenant une suite d'instruction, de la forme suivante.
+
+\begin{listing}
+\begin{minted}{latex}
+@type{clef,
+	Champ1 = {Valeur 1},
+	Champ… = {Valeur …},
+	Champn = {Valeur n}
+}
+\end{minted}
+\caption{Déclaration d'une entrée bibliographique}
+\end{listing}
+
+Par exemple
+
+@book{Urner1952,
+	Address = {Gottingen},
+	Author = {Urner, Hans},
+	Title = {Die ausserbiblische Lesung in Christlichen Gottesdienst},
+	Year = {1952}
+}
+\end{minted}
+\caption{Exemple d'une déclaration d'entrée bibliographique}
+\end{listing}
+
+
+Signifie que je déclare un livre (\verb|@book|) auquel j'attribue la clef \verb|Urner1952|. Ce livre est une oeuvre de Urner, Hans de son prénom, il s'intitule (mettre le nom proprement) a été publié en … à …
+
+Un fichier .bib n'est rien d'autre qu'une \renvoi{logiciel:biblio} série d'entrées de ce type. Cependant, comme il est assez aisé de s'embrouiller, notamment dans les ouvertures et fermetures des accolades, il vaut la peine d'utiliser un logiciel de gestion de bibliographies, capable de gérér  des fichiers au formats \ext{.bib}. Un certain nombre sont présentés en annexe.
+
+La documentation de \package{BibLaTeX} contient l'ensemble des champs et des types possibles. Pour éviter de répéter ce manuel, nous vous présenterons les champs en les classant par catégorie. Mais auparavent, nous dirons deux mots sur le choix de la clef et sur les différents types de catégories.
+
+\section{Le choix de la clef}
+
+Une entrée bibliographique doit avoir une clef \emph{unique}. Cette clef doit comporter uniquement des caractères alphanumériques non accentués. Pas d'espace, pas de points, pas de tirets.
+
+Voici le conseil que nous donnons pour le choix de la clef :
+\begin{description}
+\item[Pour les oeuvres contemporaines, notamment les sources secondaire], prendre le nom de l'auteur suivi de la date. Par exemple \verb|Urner1952|.
+\item[Pour les oeuvres anciennes], prendre le nom de l'oeuvre  éventuellement abregée : par exemple \verb|ContraFaustum| pour parler du … Si plusieur oeuvres d'auteurs différents portent le même nom, faire préceder du nom de l'auteur.
+\item[Pour les oeuvres anonymes ou pseudépigraphiques], prendre soit le numéro d'entrée dans un index de référence, soit le numéro de placement dans une collection. Par exemple : \verb|PsAugustin1288| renvoi au texte Pseudo Augustinien qui se trouve à l'entrée … dans le …
+\end{description}
+
+
+Éventuellement, tout ceci ne sont que des conseils et des exemples, pas des règles absolues. A vraie dire la meilleur règle est celle qu'on se fixe, et tout dépend de la matière.
+
+\section{Les différentes types d'entrées}
+Voici les différents types d'entrées disponibles\footnote{A vrai dire il est possible de rajouter les siennes, mais nous vous le déconseillons}.
+
+
+ 
