@@ -1,0 +1,145 @@
+\chapter{Citer des références}
+
+\begin{prealable}
+Nous avons vu plus haut les différentes manières de citer un texte dans \renvoi{citertexte} dans le corps du travail. Nous avons également vu comment remplir une base de données bibliographique.
+
+Il ne nous reste plus qu'à mettre en relation les textes cités avec la base de données constituée pour avoir un travail correct.
+
+C'est l'objet de ce chapitre.
+
+\end{prealable}
+
+
+\section[Appel du package]{Appel du package \package{BibLaTeX}}
+
+La gestion bibliographique s'effectue avec le package \package{BibLaTeX}.
+
+Dans le préambule, un appel simple au package sera :
+
+\begin{minted}{latex}
+\usepackage{biblatex}
+\end{minted}
+
+Cependant, le \notion{package} dispose de nombreuses options. Celle qui qui nous intéresse pour le moment est \option{citestyle}, qui permet de définir comment les références bibliographique seront affichées, notamment pour ce qui concerne les références cités à plusieurs reprises.
+
+Il existe un nombre important de styles de citations livrés en standard. Nous mentionnons ici les principales\footcite[Se reporter à][\nopp 57-61 pour plus de détails.]{biblatex}:
+\begin{description}
+\item[numeric] : chaque entrée se voit attribué un numéro, qui sera appelé lorsqu'on renverra à cette entrée. La bibliographie finale indiquera les correspondances.
+\item[authortitle] : seront indiqués l'auteur et le titre de l'oeuvre.
+\item[verbose]    : la description complète de l'entrée sera donnée.
+\item[verbose-ibid] : la description complète de l'entrée sera donnée, mais si un passage est citée plusieurs fois de suite, l'abréviation \emph{ibidem} sera utilisée.
+\item[verbose-note] : la description complète de l'entrée sera donnée à sa première mention, puis une version abrégée sera utilisée.
+\item[verbose-trad1 ; verbose-trad2 ; verbose-trad3] la description complète de l'entrée sera utilisée, puis les abréviations universitaires de type \emph{op. cit.}, {ibidem.} etc. seront utilisées. \package{BibLaTeX} calculera automatiquement l'opportunité d'utiliser une abréviation universitaire, selon l'endroit où l'ouvrage aura été cité précédement. Voir le manuel pour la description complète des différences entre ces trois styles.
+\end{description}
+
+On comprend ici un des grands intérêts de \logiciel{\LaTeX} : plus de prise de tête à se dire \enquote{Faut-il que j'utilise ici une version abrégée de la référence ?}, \package{BibLaTeX} le fera pour vous.
+
+Pour notre part, nous avons choisis dans notre travail de master d'utiliser le \notion{style de citation} \verb|verbose-trad2|.
+
+Nous avons donc appelé le \notion{package} de la manière suivante : 
+\begin{minted}{latex}
+\usepackage[citestyle=verbose]{biblatex}
+\end{minted}
+
+Il est dommage qu'on ne puisse pas, à l'heure où j'écris ces lignes, changer le style de citations pour une portions du travail. Gageons que cela ne saurait tarder.
+
+\subsection{Appel à la base de donnée bibliographique}
+
+Il faut signaler à \logiciel{LaTeX} quel est le fichier \ext{.bib} à utiliser. Pour cela, la commande est simple :
+
+\begin{minted}{latex}
+\bibliography{nom du fichier sans l'extension}
+\end{minted}
+
+\begin{attention}
+Il est possible d'appeler plusieurs fichiers bibliographiques. Nous le déconseillons, dans la mesure où cela contraint à vérifier qu'il n'y ait pas d'entrées ayant la même clef.
+\end{attention}
+
+\subsection{Citation d'un élèment bibliographique}
+
+L'ensemble des \notion{commandes} de citation ont la syntaxe suivante : 
+
+\begin{listing}[ht]
+\begin{minted}{latex}
+\PREFIXcite[prenote][postnote]{clef}
+\end{minted}
+\caption{Syntaxe de base d'une commande de citation}
+\end{listing}
+
+Par exemple, je souhaite citer le sermon 299 d'Augustin, auquel j'ai attribué la \notion{clef} \verb|AugustinSermo299|.
+
+Je fais \verb|\cite{AugustinSermo299}|. Après la troisième \notion{compilation}\renvoi{3compil}, ma référence apparaîtra selon le \notion{style} que j'ai choisi lors de l'appel à  \package{BibLaTeX}.
+
+Toutefois, l'usage en sciences humaines est de citer en note de bas de page. C'est pourquoi, je préférerais utiliser : \verb|\footcite{AugustinSermo299}|. Je peux également décider d'utiliser la \notion{commande} \commande{parencite}, pour citer entre parenthèses.
+
+\subsubsection{Les options prenote et postenote}
+
+Supposons que je souhaite afficher, avant ma référence, un texte. Par exemple : \enquote{Voir également}. J'utiliserai l'argument optionnel \argument{prenote}.
+
+\begin{minted}{latex}
+Blabla \footcite[Voir également][]{AugustinSermo299} blablabla.
+\end{minted}
+
+\enquote{Voir également} sera affiché dans la note de bas de page, avant la référence.
+
+Je peux également souhaiter afficher quelque chose après la référence. J'utiliser dans ce cas l'\notion{argument} \argument{postnote}.
+
+\begin{minted}{latex}
+\footcite[Voir également][qui porte sur un sujet similaire]{AugustinSermo299}
+\end{minted}
+
+\subsubsection{L'\notion{argument} \argument{postnote} et la numérotation des pages}
+
+L'\notion{argument} \argument{postnote} peut servir à indiquer les pages précise de notre ouvrage\footcite[On consultera pour plus de détails : ][105-106]{BibLaTeX}. Il suffit pour cela qu'il contienne une valeur de type numérique, en chiffres arabes ou romains, ou bien une séquence de valeurs numériques.
+
+Par exemple : 
+\begin{minted}{latex}
+\footcite[1]{AugustinSermo299}
+\end{minted}
+
+Signifie que je cite le paragraphe 1 du Sermon. \package{BibLaTeX} indique automatiquement comme préfixe de page une valeur correspondant au \notion{champ} \champ{pagination} de l'entrée. Si je n'avais pas précisé que mon sermon était paginé sous forme de paragraphes, \package{BibLaTeX} aurait mis le préfixe \verb|p.|.
+
+Je peux citer les paragraphes 1 à 2 :
+
+\begin{minted}{latex}
+\footcite[1-2]{AugustinSermo299}
+\end{minted}
+
+Ou encore les paragraphes 1 et 3 :
+
+\begin{minted}{latex}
+\footcite[1 \& 3]{AugustinSermo299}
+\end{minted}
+
+Toutefois, je peux vouloir citer la page précise et mettre autre chose dans le \notion{champ} \champ{post} : pour ce faire, j'utilise la \notion{commande} \commande{pno} :
+
+\begin{minted}{latex}
+\footcite[\pno1 qui nous montre qu'Augustin pensait que Paul et Pierre ne sont pas morts la même année.]{AugustinSermo299}
+\end{minted}
+
+On pourra également utiliser les \notion{commandes} \commande{nopp} pour ne pas afficher de préfixe de pagination,  \commande{psq} pour indiquer qu'il également faut prendre la page suivante et \commande{psqq} pour indiquer qu'il faut prendre les pages suivantes.
+
+\begin{anedocte}
+On voudra sans doute avoir un comportement qui affiche les numéro de pages de la base de donnée uniquement si aucun numéro de page n'est indiqué lors de la citation, et non pas systématiquement. Cela nécessite de maîtriser certains outils de \package{BibLaTeX}, c'est pourquoi nous n'en parlerons que plus loin.\renvoi{doublepag}
+\end{anedocte}
+
+\subsection{Citation de plusieurs oeuvres}
+
+Il est possible de citer plusieurs oeuvres d'un coup : pour cela, il faut utiliser une \notion{commande} dont la syntaxe de base est :
+
+\begin{listing}[ht]
+\begin{minted}{latex}
+\PREFIXcites[prenote][postnote]{clef}
+\end{minted}
+\caption{Syntaxe de base d'une commande de citation multiple}
+\end{listing}
+Les \notion{arguments} optionnels entres parenthèses seront affichés au début et à la fin de la citation multiple. Il est possible de citer autant d'oeuvres que souhaitées. Chaque élément cités à droit a son \notion{argument} \argument{prenote} et \argument{postnote}, qui s'utilisent de la même manière que pour les citations simples.
+
+\begin{anedocte}
+Pour modifier le séparateur des citations, voir plus loin.\renvoi{sepmult}
+\end{anedocte}
+
+Voici un exemple d'utilisation : 
+
+\revision{Inserer exemple}.
+

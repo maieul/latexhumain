@@ -1,6 +1,13 @@
 \newcommand{\vide}[0]{}
 
+\newcommand{\argument}[1]{%
+	\textbf{#1}%
+}
 \newcommand{\classe}[1]{%
+	%\index{#1}%
+	\textbf{#1}%
+}
+\newcommand{\champ}[1]{%
 	%\index{#1}%
 	\textbf{#1}%
 }
@@ -38,6 +45,10 @@
 \newcommand{\notion}[2][]{%Synonyme de concept
 	\concept[#1]{#2}%
 }
+\newcommand{\option}[1]{%
+	\textbf{#1}%
+}
+
 
 \newcommand{\revision}[1]{%
 	\marginpar{Rev : #1}%
@@ -45,6 +56,7 @@
 \newcommand{\package}[1]{%
 	\emph{#1}%
 }
+
 \newcommand{\renvoi}[1]{\marginpar{Renvoi : #1}}
 
 
