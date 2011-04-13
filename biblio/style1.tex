@@ -29,7 +29,7 @@ Prenons un problème courant. Vous aurez constaté que, par défaut, les différ
 	
 A l'intérieur d'une référence bibliographique, BibLaTex distingue des unités de sens\footnote{A vrai dire il existe des unités plus vastes, appelés blocs. Mais concrètement nous n'avons jamais réussi à nous en servir.} Ici : l'auteur, le titre, l'adresse, l'éditeur, l'année. 
 
-	Ces unités sont séparés par des signes de ponctuations. Ces séparateurs sont définis par la commande \command{newunitpunct}.
+	Ces unités sont séparés par des signes de ponctuations. Ces séparateurs sont définis par la commande \commande{newunitpunct}.
 	
 	Il suffit donc de redéfinir la commande :
 	
@@ -117,7 +117,7 @@ A l'intérieur d'une référence bibliographique, BibLaTex distingue des unités
 	\end{anedocte}
 	Il nous faut donc repérer la clef correspondante à notre chaîne \enquote{dans}. Très rapidement nous trouvons qu'il s'agit de la chaine \verb|in|.
 	
-	Une fois  notre clef repérée, il est facile de lui attribuer une nouvelle valeur\footnote{Cette valeur sera utilisée que l'on choisisse le mode abrégé ou non.}, grâce à la commande \commande{\DefineBibliographyStrings{lang}{chaînes}}
+	Une fois  notre clef repérée, il est facile de lui attribuer une nouvelle valeur\footnote{Cette valeur sera utilisée que l'on choisisse le mode abrégé ou non.}, grâce à la commande \commande{DefineBibliographyStrings{lang}{chaînes}}
 	
 	\begin{minted}{latex}
 		\DefineBibliographyStrings{french}{%
