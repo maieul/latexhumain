@@ -1,40 +1,40 @@
-\chapter{Commencer avec \logiciel{Xe\LaTeX}}
+\chapter{Commencer avec Xe\LaTeX}
 
 \begin{prealable}
-Nous supposons que vous avez installé \logiciel{\LaTeX} et un \concept{éditeur de texte} spécialisé en \logiciel{\LaTeX}. Voyez en annexe\renvoi{editeurLaTex}.
+Nous supposons que vous avez installé \LaTeX et un éditeur de texte spécialisé en \LaTeX. Voyez en annexe\renvoi{editeurLaTeX}.
 
-La première chose à faire est de vérifier que ce logiciel de traitement de texte enregistre bien en \concept{Utf-8}\footnote{Cela se trouve en général dans les préférences du logiciel, dans une rubrique \emph{enregistrement} ou \emph{encodage} : consultez le manuel de votre logiciel le cas échéant.}. Nous reviendrons plus loin\renvoi{unicode} sur l'intérêt d'un tel encodage, sachez simplement que il permet d'utiliser des signes non latins\footnote{Cyrilliques, grecs, sanskrits, hébraïques etc. Et même extra-terrestres.}.
+La première chose à faire est de vérifier que ce logiciel de traitement de texte enregistre bien en UTF-8\footnote{Cela se trouve en général dans les préférences du logiciel, dans une rubrique \emph{enregistrement} ou \emph{encodage} : consultez le manuel de votre logiciel le cas échéant.}. Nous reviendrons plus loin\renvoi{unicode} sur l'intérêt d'un tel encodage, sachez simplement que il permet d'utiliser des signes non latins\footnote{Cyrilliques, grecs, sanskrits, hébraïques etc. Et même extra-terrestres.}.
 
 \end{prealable}
 
 \section{Un premier document}
 
-Dans votre \notion{éditeur de texte}, tapez le code \ref{code:1}\footnote{Comme nous l'avons expliqué en introduction, la coloration que vous voyiez ici à un sens syntaxique : ne vous préoccupez pas de savoir comment cela apparaîtra dans votre éditeur, et ne pensez pas que cela apparaîtra ainsi une fois compilé.} puis cliquez sur le bouton de compilation avec \logiciel{Xe\LaTeX}\footnote{Cela encore une fois dépend de votre \notion{éditeur de texte}. Pour le moment vous pouvez vous contenter de ce bouton, mais un jour vous devrez apprendre à faire quelques lignes de commandes : ne vous inquiétez pas, tout sera expliqué.}.
+Dans votre éditeur de texte, tapez le code \ref{code:1}\footnote{Comme nous l'avons expliqué en introduction, la coloration que vous voyiez ici à un sens syntaxique : ne vous préoccupez pas de savoir comment cela apparaîtra dans votre éditeur, et ne pensez pas que cela apparaîtra ainsi une fois compilé.} puis cliquez sur le bouton de compilation avec Xe\LaTeX \footnote{Cela encore une fois dépend de votre éditeur de texte. Pour le moment vous pouvez vous contenter de ce bouton, mais un jour vous devrez apprendre à faire quelques lignes de commandes : ne vous inquiétez pas, tout sera expliqué.}.
 
 \begin{listing}
 \inputminted{exemples/premierpas/structure/1.tex}
 \label{code:1}
-\caption{Un code pour découvrir \logiciel{\LaTeX}}
+\caption{Un code pour découvrir \LaTeX}
 \end{listing}
 
-Regardez le \concept{PDF} obtenu, nous allons lire le code que vous avez copié et le commenter ligne par ligne, afin de comprendre les principes de base de \logiciel{\LaTeX}.
+Regardez le \concept{PDF} obtenu, nous allons lire le code que vous avez copié et le commenter ligne par ligne, afin de comprendre les principes de base de \LaTeX.
 \FloatBarrier
 
-\section{Structure d'un document \logiciel{\LaTeX}}
+\section{Structure d'un document \LaTeX}
 
 \subsection{La classe du document}
-La première ligne \verb|\documentclass[12pt]{book}| déclare la \notion{classe} du documene, ici \classe{book}. Une \notion{classe} correspond à un choix éditoral    ---mise en page et organisation générale du document ---. Le choix de la \notion{classe} influencera entre autre :
+La première ligne \verb|\documentclass[12pt]{book}| déclare la classe du document, ici \classe{book}. Une classe correspond à un choix éditoral    ---mise en page et organisation générale du document ---. Le choix de la classe influencera entre autre :
 \begin{itemize}
 \item Le nombre de niveaux de titre disponibles.
 \item Les marges appliquées.
 \item Les en-têtes et pieds de page.
 \end{itemize}
 
-Il existe en standard plusieurs \notion[classe]{classes} de documents : citons \classe{book}, pour rédiger un livre ; \classe{article} pour un article (si, si !) ; \classe{beamer} pour un présentation sous forme de diapositive à projeter. Dans cet ouvrage, nous aborderons essentiellement les deux premières, nous ferons également une bréve présentation de \classe{beamer}\renvoi{Beamer}.
+Il existe en standard plusieurs classes de documents : citons \classe{book}, pour rédiger un livre ; \classe{article} pour un article (si, si !) ; \classe{beamer} pour un présentation sous forme de diapositive à projeter. Dans cet ouvrage, nous aborderons essentiellement les deux premières, nous ferons également une bréve présentation de \classe{beamer}\renvoi{Beamer}.
 
-Nous aborderons également, dans un chapitre spécifique\renvoi{Bredele}, la \notion{classe} \classe{Bredele}, qui n'est pas livrée en standard avec \logiciel{\LaTeX}. Elle est con\c cue spécifiquement pour des travaux de type mémoire de master ou thèse de doctorat, suivant les normes universitaires fran\c caises les plus courantes.
+Nous aborderons également, dans un chapitre spécifique\renvoi{Bredele}, la classe \classe{Bredele}, qui n'est pas livrée en standard avec \LaTeX. Elle est con\c cue spécifiquement pour des travaux de type mémoire de master ou thèse de doctorat, suivant les normes universitaires fran\c caises les plus courantes.
 
-Tout document \logiciel{\LaTeX} doit commencer par une déclaration de \concept{classe}, avant toutes autres lignes. La syntaxe est la suivante :
+Tout document \LaTeX doit commencer par une déclaration de classe , avant toutes autres lignes. La syntaxe est la suivante :
 
 \verb|\documentclass[options]{classe}|
 
@@ -49,7 +49,7 @@ Tout document \logiciel{\LaTeX} doit commencer par une déclaration de \concept{
 \item[onecolumn] pour un texte sur une seule colonne. C'est le cas par défaut sur les classes citées.
 \item[twocolumn] pour un texte sur deux colonne.
 \item[oneside] pour une impression en recto seulement.
-\item[twoside] pour une impression en recto-verso\footnote{Cet argument et le précédent servent essentiellement pour la \notion{classe} \classe{book}. En effet, si le document est prévu pour une impression recto-verso, cette classe produira des marges gauches et droites de tailles différentes. La taille des marges sera prévu selon que la page est recto ou verso.}.
+\item[twoside] pour une impression en recto-verso\footnote{Cet argument et le précédent servent essentiellement pour la classe \classe{book}. En effet, si le document est prévu pour une impression recto-verso, cette classe produira des marges gauches et droites de tailles différentes. La taille des marges sera prévu selon que la page est recto ou verso.}.
 \end{description}
 
 Nous en préciserons d'autres au fur et à mesure de l'ouvrage, lorsque les notions requises auront été abordées.
@@ -63,21 +63,21 @@ Voyons les trois lignes suivantes :
 \usepackage{polyglossia}
 \end{minted}
 
-Il s'agit, comme vous auriez pu le deviner, d'appel à des \concept[package]{packages}. Un \concept{package} est un ensemble de fichiers qui ajoutent des fonctionnalités à \logiciel{\LaTeX}, c'est l'équivalent d'un \concept{plugin} sous \logiciel{Firefox}. 
+Il s'agit, comme vous auriez pu le deviner, d'appel à des \concept[package]{packages}. Un \concept{package} est un ensemble de fichiers qui ajoutent des fonctionnalités à \LaTeX, c'est l'équivalent d'un \concept{plugin} sous \logiciel{Firefox}. 
 
-Le premier \concept{package} est \package{fontspec}. Il est utile à \logiciel{Xe\LaTex} pour une typographie avancée, notamment pour les langues autres que l'anglais\footnote{Pour être précis, il détermine des commandes utilisées par le \concept{package} \package{polyglossia} lorsque définis le fran\c cais comme langue principale du document.}. 
+Le premier \concept{package} est \package{fontspec}. Il est utile à Xe\LaTeX  pour une typographie avancée, notamment pour les langues autres que l'anglais\footnote{Pour être précis, il détermine des commandes utilisées par le \concept{package} \package{polyglossia} lorsque définis le fran\c cais comme langue principale du document.}. 
 
-Le second \concept{package} est \package{xunicode}. Il permet de gérer \concept[unicode]{l'unicode}, autrement appelé \concept{Utf-8}\footnote{En réalité \concept{Utf-8} n'est pas tout à fait \concept{unicode}, mais une implémentation de ce dernier. Toutefois, pour simplifier, nous assimilerons les deux.}. Il nous permettra d'utiliser des caractères non-latin\renvoi{utf-8}.
+Le second package est \package{xunicode}. Il permet de gérer \concept[unicode]{l'unicode}, autrement appelé \concept{Utf-8}\footnote{En réalité Utf-8 n'est pas tout à fait Unicode, mais une implémentation de ce dernier. Toutefois, pour simplifier, nous assimilerons les deux.}. Il nous permettra d'utiliser des caractères non-latin\renvoi{utf-8}.
 
 \begin{attention}
-Ces deux \concept{packages} doivent être appelés dans cet ordre, et non en sens inverse.
+Ces deux packages doivent être appelés dans cet ordre, et non en sens inverse.
 \end{attention}
 
 Le troisième permet de gérer facilement un document multilingue\renvoi{i18n} et les changements typographiques que cela implique.
 
-C'est trois \notion[]{packages} sont propres à \logiciel{Xe\LaTex} : ils ne fonctionneront pas avec un \notion{compilateur} \logiciel{\LaTeX}.
+C'est trois packages sont propres à Xe\LaTeX  : ils ne fonctionneront pas avec un compilateur \LaTeX.
 
-Certains \concept[package]{packages} peuvent recevoir des \concept[option]{options} qui modifieront leur comportement standard. La syntaxe est alors :
+Certains packages peuvent recevoir des options qui modifieront leur comportement standard. La syntaxe est alors :
 
 \verb|\usepackage[options]{package}|
 
@@ -85,10 +85,10 @@ Tout au long de cet ouvrage, nous aborderons divers packages.
 
 \subsection{Le fran\c cais, langue par défaut}
 
-Tout de suite après, la ligne \verb|\setmainlanguage{french}| indique que nous utilisons comme langue principale du document le fran\c cais\renvoi{i18n}, et donc que le compositeur de texte devra prendre en compte la \notion{typographie} fran\c caise. Cette ligne n'est compréhensible par le \concept{compilateur} que parce que nous avons chargé au préalable \package{polyglossia}.
+Tout de suite après, la ligne \verb|\setmainlanguage{french}| indique que nous utilisons comme langue principale du document le fran\c cais\renvoi{i18n}, et donc que le compositeur de texte devra prendre en compte la typographie fran\c caise. Cette ligne n'est compréhensible par le compilateur que parce que nous avons chargé au préalable \package{polyglossia}.
 
 \begin{anedocte}
-Vous entendrez peut-être parler du \concept{package} \package{babel}. Ce package est très souvent utilisé à la place de \package{polyglossia}, notamment parce qu'il est plus ancien. Toutefois, nous avons choisis pour notre part de nous limiter à \package{polyglossia}, puisque c'est lui que nous avons utilisé pour nos travaux.
+Vous entendrez peut-être parler du package \package{babel}. Ce package est très souvent utilisé à la place de \package{polyglossia}, notamment parce qu'il est plus ancien. Toutefois, nous avons choisis pour notre part de nous limiter à \package{polyglossia}, puisque c'est lui que nous avons utilisé pour nos travaux.
 
 Vous trouverez aiséement des informations sur \package{babel} sur Internet.
 
@@ -96,7 +96,7 @@ Vous trouverez aiséement des informations sur \package{babel} sur Internet.
 
 \subsection{Le corps du document}
 
-Tout ce que nous avons vu jusqu'à maintenant faisaient parti de ce qu'on appel \concept[en-tête]{l'en-tête}\footnote{En anglais \concept{header}.}, parfois appelé \concept{préambule}, du document. Ce sont des informations qui n'apparaîtront pas dans le document final, mais qui sont utiles à sa composition, autrement dit des méta-données. Tout les \concept{packages} que vous voudrez utiliser seront à appeler dans \concept[en-tête]{l'en-tête}.
+Tout ce que nous avons vu jusqu'à maintenant faisaient parti de ce qu'on appel l'en-tête\footnote{En anglais header.}, parfois appelé préambule, du document. Ce sont des informations qui n'apparaîtront pas dans le document final, mais qui sont utiles à sa composition, autrement dit des méta-données. Tout les packages que vous voudrez utiliser seront à appeler dans l'en-tête.
 
 Tout ce qui se trouve entre la ligne \verb|\begin{document}| et \verb|\end{document}| constitue le corps du document, le contenu proprement dit de votre travail.
 
@@ -112,18 +112,18 @@ Enfin, rien de ce qui se trouve après \verb|\end{document}| ne sera analysé pa
 \end{minted}
 
 Les trois premières lignes définissent respectivement le titre, l'auteur et la date du travail.  
-La dernière ligne affiche ces informations. Si votre document est de \concept{classe} \classe{book}, alors le compilateur les affichera sur une page à part. S'il est de \concept{classe} \classe{article}, il l'affichera sans provoquer de saut de page.\footnote{Si la \concept{classe} est \classe{Bredele}, il fera cela de manière similaire à article, mais affichera également des informations supplémentaires, indiqués auparavant. Voir le chapitre sur \classe{Bredele}}.
+La dernière ligne affiche ces informations. Si votre document est de classe  \classe{book}, alors le compilateur les affichera sur une page à part. S'il est de classe  \classe{article}, il l'affichera sans provoquer de saut de page.\footnote{Si la classe  est \classe{Bredele}, il fera cela de manière similaire à article, mais affichera également des informations supplémentaires, indiqués auparavant. Voir le chapitre sur \classe{Bredele}}.
 
-On peut déroger à cette règle en passant une \concept{option} à l'appel de \concept{classe}\renvoi{optionsclasse}.
+On peut déroger à cette règle en passant une option à l'appel de classe \renvoi{optionsclasse}.
 \begin{description}
 \item[notitlepage] pour ne pas avoir de page de titre spécifique.
 \item[titlepage] pour avoir une page de titre spécifique.
 \end{description}
 
-Nous pouvons maintenant définir la notion de \notion{commande}. Une \notion{commande} est un bout de code qui sera interprété par le \notion{compilateur} pour effectuer une suite d'opérations, c'est un raccourci d'écritures. 
+Nous pouvons maintenant définir la notion de commande . Une commande  est un bout de code qui sera interprété par le compilateur pour effectuer une suite d'opérations, c'est un raccourci d'écritures. 
 Ici la commande \commande{maketitle} affiche les informations tel que le titre, la date et l'auteur du travail, informations que le compilateur aura retenu grâce aux commandes utilisés au préalables.
 
-Une commande peut prendre des \notion{arguments}, certains facultatifs, d'autres obligatoires. Ces \notion{arguments} modifieront alors son comportement.
+Une commande peut prendre des arguments , certains facultatifs, d'autres obligatoires. Ces arguments  modifieront alors son comportement.
 
 La syntaxe d'une commande est :
 
@@ -139,16 +139,16 @@ La syntaxe d'une commande est :
 Entre crochet sont indiqués les arguments optionnels, entre accolades les arguments obligatoires.
 
 
-L'ordre des arguments dépend de chaque commande, et les arguments optionnels ne sont pas systématiquement avant les arguments obligatoires. Ils peuvent être après, ou s'intercaler entre. Notez que certaines commandes peuvent ne pas prendre d'argument : c'est le cas ici de \commande{maketitle}\footnote{Si l'argument de la \notion{commande} \commande{date} est vide, alors la date affichée  sera la date de la \notion{compilation}, sinon celle passée en argument.}.
+L'ordre des arguments dépend de chaque commande, et les arguments optionnels ne sont pas systématiquement avant les arguments obligatoires. Ils peuvent être après, ou s'intercaler entre. Notez que certaines commandes peuvent ne pas prendre d'argument : c'est le cas ici de \commande{maketitle}\footnote{Si l'argument de la commande  \commande{date} est vide, alors la date affichée  sera la date de la compilation , sinon celle passée en argument.}.
 
-La grande force de \logiciel{\LaTeX} est justement de permettre d'utiliser des commandes afin d'éviter de répéter des tâches fréquentes. C'est pourquoi nous apprendrons à définir nos propres commandes.
+La grande force de \LaTeX est justement de permettre d'utiliser des commandes afin d'éviter de répéter des tâches fréquentes. C'est pourquoi nous apprendrons à définir nos propres commandes.
 
 
 
 \subsection{Le corps du texte : la manière de rédiger}
 
 \subsubsection{Analyse de notre exemple}
-Regardez maintenant les lignes suivantes et leurs résultats à la \notion{compilation}.
+Regardez maintenant les lignes suivantes et leurs résultats à la compilation .
 
 \begin{listing}[ht]
 \begin{minted}[linenos]{latex}
@@ -173,18 +173,18 @@ Nous pouvons constater plusieurs choses.
 \item Plusieurs espaces à la suite produisent un seul espace. 
 \end{itemize}
 
-Vous connaissez donc les règles de bases de la rédaction d'un texte en \logiciel{\LaTeX}.
+Vous connaissez donc les règles de bases de la rédaction d'un texte en \LaTeX.
 
 \subsubsection{Allons plus loin}
 
 
-Nous l'avons dit \logiciel{\LaTeX} produit une mise en page et une typographie plus correcte qu'un logiciel de type \concept{WYSIWYG}. Pour autant, il est nécessaire de lui fournir un code correct, afin qu'il puisse déterminer comment typographier.
+Nous l'avons dit \LaTeX produit une mise en page et une typographie plus correcte qu'un logiciel de type \concept{WYSIWYG}. Pour autant, il est nécessaire de lui fournir un code correct, afin qu'il puisse déterminer comment typographier.
 
-Il faut donc mettre une espace avant les signes de ponctuation double (; : ? ! principalement)\footnote{Sauf si on se trouve dans un texte dans une langue qui n'a pas d'espace avant ces signes.}. \logiciel{\LaTeX} produira alors une espace fine, comme il se doit en bonne typographie fran\c caise\footnote{\emph{Une} espace fine est une espace plus petit qu'une espace normale.}.
+Il faut donc mettre une espace avant les signes de ponctuation double (; : ? ! principalement)\footnote{Sauf si on se trouve dans un texte dans une langue qui n'a pas d'espace avant ces signes.}. \LaTeX produira alors une espace fine, comme il se doit en bonne typographie fran\c caise\footnote{\emph{Une} espace fine est une espace plus petit qu'une espace normale.}.
 
 Il faut également mettre une espace après chaque signe de ponctuation. Pour ce qui est des points de suspensions, il est mieux de ne pas frapper trois points à la suite, mais d'utiliser la commande \verb|\ldots| qui espacera correctement les points\footnote{Il est tout à fait possible de configurer l'\concept{éditeur de texte} pour qu'il remplace automatiquement trois points à la suite par cette commande}.
 
-En ce qui concerne les guillemets, une partie sera consacré plus tard à l'art et la manière de faire des citations en \logiciel{\LaTeX}.\renvoi{guillemets} Nous n'en parlons donc pas maintenant.
+En ce qui concerne les guillemets, une partie sera consacré plus tard à l'art et la manière de faire des citations en \LaTeX.\renvoi{guillemets} Nous n'en parlons donc pas maintenant.
 
 Signalons enfin trois types de tirets :
 \begin{itemize}
@@ -193,7 +193,7 @@ Signalons enfin trois types de tirets :
 \item \verb|---| qui produit un tiret cadratin (---), pour des incises\footnote{Certains éditeurs préférent utiliser des tirets demi-cadratins.}.
 \end{itemize}
  
-Enfin, il est parfois utile d'insérer une \notion{espace insécable}, pour éviter que deux mots se retrouvent séparés par un retour à la ligne, par exemple entre un nom de souverain sa numérotation de règne : \enquote{Jean~XXIII}.  L'\notion{espace insécable} s'introduit par le caractère \verb|~|.
+Enfin, il est parfois utile d'insérer une espace insécable, pour éviter que deux mots se retrouvent séparés par un retour à la ligne, par exemple entre un nom de souverain sa numérotation de règne : \enquote{Jean~XXIII}.  L'espace insécable s'introduit par le caractère \verb|~|.
 
 %Par exemple si je parle d'Augustin~d'Hippone, je souhaiterait que \enquote{Augustin} soit systématiquement à côté de \enquote{d'Hippone}, y compris en fin de ligne. 
 %Pour insérer une espace insécable, il suffit de taper le caractère \~.
@@ -230,7 +230,7 @@ Enfin, il est parfois utile d'insérer une \notion{espace insécable}, pour évi
 
 
 
-Par ailleurs, comme vous avez pu le constater, \logiciel{\LaTeX} interprète de manière spécifique un certain nombre de caractères : \verb|\{}|, à quoi nous ajoutons \verb|%_&$#~| \footnote{Nous ne verrons pas l'utilité \logiciel{\LaTeX}  de tout ces caractères, certains servant essentiellement pour rédiger des formules mathématiques.}.
+Par ailleurs, comme vous avez pu le constater, \LaTeX interprète de manière spécifique un certain nombre de caractères : \verb|\{}|, à quoi nous ajoutons \verb|%_&$#~| \footnote{Nous ne verrons pas l'utilité \LaTeX  de tout ces caractères, certains servant essentiellement pour rédiger des formules mathématiques.}.
 
 Comment faire si nous voulons afficher un de ces caractères ? La solution est simple : il faut le faire précéder du caractère \verb|\|. Ainsi \verb|\%| affichera \%.   
 
@@ -241,28 +241,28 @@ Comment faire si nous voulons afficher un de ces caractères ? La solution est s
 
 La ligne suivante est : \verb|%La fin du document|
 
-Il existe en \logiciel{\LaTeX} une règle simple : tout ce qui se trouve à droite d'un signe \verb|%| est un \notion{commentaire}.
+Il existe en \LaTeX une règle simple : tout ce qui se trouve à droite d'un signe \verb|%| est un commentaire.
 
-C'est à dire qu'il ne sera pas interprété par le \notion{compilateur} et n'apparaîtra donc pas dans le document final. 
+C'est à dire qu'il ne sera pas interprété par le compilateur et n'apparaîtra donc pas dans le document final. 
 
-Nous conseillons d'utiliser les \notion[commentaire]{commentaires} pour indiquer les grandes structure du documents, pour commenter les commandes que vous créerez vous mêmes. 
+Nous conseillons d'utiliser les commentaires pour indiquer les grandes structure du documents, pour commenter les commandes que vous créerez vous mêmes. 
 
 Vous pouvez aussi vous en servir, par exemple, pour faire un commentaire à usage personnel ligne à ligne d'un texte que vous traduisez.
 
-En revanche, nous vous déconseillons de l'utiliser pour des notes personnelles lors de la rédaction. Nous vous indiquerons plus loin \renvoi{commentaireredac} comment définir une \notion{commande} personnalisée afin de générer un fichier qui les affiche, pour un relecture, et une autre qui les masque, pour le document final.
+En revanche, nous vous déconseillons de l'utiliser pour des notes personnelles lors de la rédaction. Nous vous indiquerons plus loin \renvoi{commentaireredac} comment définir une commande  personnalisée afin de générer un fichier qui les affiche, pour un relecture, et une autre qui les masque, pour le document final.
 
 
 
-\subsection{La notion d'environnement \notion{environnement}}
+\subsection{La notion d'environnement environnement }
 
-Nous avons vu jusqu'à maintenant les notions de  \notion{package}, \notion{en-tête}, \notion{commande}. 
+Nous avons vu jusqu'à maintenant les notions de  package, en-tête, commande . 
 
-Il nous reste à définir une dernière notion de base. Il s'agit de celle d'\notion{environnement}.
+Il nous reste à définir une dernière notion de base. Il s'agit de celle d'environnement .
 
-Un \notion{environnement} est une portion de document ayant une signification spécifique et qui par conséquent subira un traitement spécifique. Par exemple, pour indiquer une citation, une liste etc. Nous découvrirons au fur et à mesure  des \notion[environnement]{environnements}. 
+Un environnement  est une portion de document ayant une signification spécifique et qui par conséquent subira un traitement spécifique. Par exemple, pour indiquer une citation, une liste etc. Nous découvrirons au fur et à mesure  des environnements. 
 
 
-On marque le début d'un \notion{environnement} \verb|nom| par la \notion{commande} :
+On marque le début d'un environnement  \verb|nom| par la commande  :
 
 \begin{minted}{latex}
 \begin{nom}
@@ -273,7 +273,7 @@ et on le termine par
 \end{nom}
 \end{minted}
 
-Tout ceci n'est  pour l'instant sans doute pas très parlant, mais nous préférons définir maintenant les termes. Vous constaterez cependant que vous avez déjà utilisé  un \notion{environnement} : \enviro{document}.
+Tout ceci n'est  pour l'instant sans doute pas très parlant, mais nous préférons définir maintenant les termes. Vous constaterez cependant que vous avez déjà utilisé  un environnement  : \enviro{document}.
 
 
 Il est possible d'imbriquer des environnements :
@@ -307,6 +307,6 @@ blabl
 \FloatBarrier
 \subsection{Conclusion}
 
-Vous avez appris ici les principales notions de \logiciel{\LaTeX}. Pour l'instant, cela doit sans doute paraître très floue : mais au fur et à mesure de votre lecture, vous comprendrez mieux\footnote{Enfin, nous espérons !}\ldots
+Vous avez appris ici les principales notions de \LaTeX. Pour l'instant, cela doit sans doute paraître très floue : mais au fur et à mesure de votre lecture, vous comprendrez mieux\footnote{Enfin, nous espérons !}\ldots
 
 
