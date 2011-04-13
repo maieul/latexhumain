@@ -1,5 +1,6 @@
 \newcommand{\vide}[0]{}
 
+\newcommand{\forme}[1]{\enquote{#1}}
 \newcommand{\argument}[1]{%
 	\textbf{#1}%
 }
@@ -15,13 +16,15 @@
 	%\index{#1}%
 	$\backslash$\textbf{#1}%
 }
-
+\newcommand{\fichier}[1]{%
+	#1
+}
 \newcommand{\enviro}[1]{%
 	%\index{#1}%
 	\textbf{#1}%
 }
 
-\newcommand{\concept}[2][]{%
+\newcommand{\concept}[2]{%
 	\ifthenelse{\equal{#1}{\vide}}%
 	{%\index{#1}%
 	\emph{#2}%
@@ -60,6 +63,18 @@
 }
 
 \newcommand{\renvoi}[1]{\marginpar{Renvoi : #1}}
+
+\newcommand{\exemple}[1]{%
+	\vspace*{0.2cm}%
+	\fbox{%
+	\begin{minipage}{0.9 \textwidth}%
+	\vspace*{0.2cm}%
+	\hspace*{0.2cm}#1\hspace*{0.2cm}%
+	\vspace*{0.2cm}%
+	\end{minipage}%
+	}%
+	\vspace*{0.2cm}%
+	}
 
 \newcommand{\rev}[1]{\marginpar{#1}}
 % Redefinir les commandes de minted
