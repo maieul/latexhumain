@@ -17,7 +17,7 @@ Dans votre éditeur de texte, tapez le code \ref{code:1}\footnote{Comme nous l'a
 \caption{Un code pour découvrir \LaTeX}
 \end{listing}
 
-Regardez le \concept{PDF} obtenu, nous allons lire le code que vous avez copié et le commenter ligne par ligne, afin de comprendre les principes de base de \LaTeX.
+Regardez le PDF obtenu, nous allons lire le code que vous avez copié et le commenter ligne par ligne, afin de comprendre les principes de base de \LaTeX.
 \FloatBarrier
 
 \section{Structure d'un document \LaTeX}
@@ -63,11 +63,11 @@ Voyons les trois lignes suivantes :
 \usepackage{polyglossia}
 \end{minted}
 
-Il s'agit, comme vous auriez pu le deviner, d'appel à des \concept[package]{packages}. Un \concept{package} est un ensemble de fichiers qui ajoutent des fonctionnalités à \LaTeX, c'est l'équivalent d'un \concept{plugin} sous \logiciel{Firefox}. 
+Il s'agit, comme vous auriez pu le deviner, d'appel à des packages. Un package est un ensemble de fichiers qui ajoutent des fonctionnalités à \LaTeX, c'est l'équivalent d'un plugin sous \logiciel{Firefox}. 
 
-Le premier \concept{package} est \package{fontspec}. Il est utile à Xe\LaTeX  pour une typographie avancée, notamment pour les langues autres que l'anglais\footnote{Pour être précis, il détermine des commandes utilisées par le \concept{package} \package{polyglossia} lorsque définis le fran\c cais comme langue principale du document.}. 
+Le premier package est \package{fontspec}. Il est utile à Xe\LaTeX  pour une typographie avancée, notamment pour les langues autres que l'anglais\footnote{Pour être précis, il détermine des commandes utilisées par le package \package{polyglossia} lorsque définis le fran\c cais comme langue principale du document.}. 
 
-Le second package est \package{xunicode}. Il permet de gérer \concept[unicode]{l'unicode}, autrement appelé \concept{Utf-8}\footnote{En réalité Utf-8 n'est pas tout à fait Unicode, mais une implémentation de ce dernier. Toutefois, pour simplifier, nous assimilerons les deux.}. Il nous permettra d'utiliser des caractères non-latin\renvoi{utf-8}.
+Le second package est \package{xunicode}. Il permet de gérer l'unicode, autrement appelé Utf-8\footnote{En réalité Utf-8 n'est pas tout à fait Unicode, mais une implémentation de ce dernier. Toutefois, pour simplifier, nous assimilerons les deux.}. Il nous permettra d'utiliser des caractères non-latin\renvoi{utf-8}.
 
 \begin{attention}
 Ces deux packages doivent être appelés dans cet ordre, et non en sens inverse.
@@ -100,7 +100,7 @@ Tout ce que nous avons vu jusqu'à maintenant faisaient parti de ce qu'on appel 
 
 Tout ce qui se trouve entre la ligne \verb|\begin{document}| et \verb|\end{document}| constitue le corps du document, le contenu proprement dit de votre travail.
 
-Enfin, rien de ce qui se trouve après \verb|\end{document}| ne sera analysé par le \concept{compilateur}. Vous pouvez donc y mettre ce que vous voudrez, cependant nous ne vous le conseillons pas.
+Enfin, rien de ce qui se trouve après \verb|\end{document}| ne sera analysé par le compilateur. Vous pouvez donc y mettre ce que vous voudrez, cependant nous ne vous le conseillons pas.
 
 \subsection{Titre, auteur et date : la notion de commande}
 
@@ -169,7 +169,7 @@ erat      elit consectetuer erat, id egestas pede nibh eget odio.
 Nous pouvons constater plusieurs choses.
 \begin{itemize}
 \item Une ligne vide produit un changement de paragraphe. De fait, plusieurs lignes vide produisent aussi un changement de paragraphe.
-\item Un retour à la ligne en revanche se comporte comme une espace. C'est une grande différence avec les logiciels \concept{WYSIWYG}, qui produisent automatiquement un saut de paragraphe par un retour à la ligne.
+\item Un retour à la ligne en revanche se comporte comme une espace. C'est une grande différence avec les logiciels WYSIWYG, qui produisent automatiquement un saut de paragraphe par un retour à la ligne.
 \item Plusieurs espaces à la suite produisent un seul espace. 
 \end{itemize}
 
@@ -178,11 +178,11 @@ Vous connaissez donc les règles de bases de la rédaction d'un texte en \LaTeX.
 \subsubsection{Allons plus loin}
 
 
-Nous l'avons dit \LaTeX produit une mise en page et une typographie plus correcte qu'un logiciel de type \concept{WYSIWYG}. Pour autant, il est nécessaire de lui fournir un code correct, afin qu'il puisse déterminer comment typographier.
+Nous l'avons dit \LaTeX produit une mise en page et une typographie plus correcte qu'un logiciel de type WYSIWYG. Pour autant, il est nécessaire de lui fournir un code correct, afin qu'il puisse déterminer comment typographier.
 
 Il faut donc mettre une espace avant les signes de ponctuation double (; : ? ! principalement)\footnote{Sauf si on se trouve dans un texte dans une langue qui n'a pas d'espace avant ces signes.}. \LaTeX produira alors une espace fine, comme il se doit en bonne typographie fran\c caise\footnote{\emph{Une} espace fine est une espace plus petit qu'une espace normale.}.
 
-Il faut également mettre une espace après chaque signe de ponctuation. Pour ce qui est des points de suspensions, il est mieux de ne pas frapper trois points à la suite, mais d'utiliser la commande \verb|\ldots| qui espacera correctement les points\footnote{Il est tout à fait possible de configurer l'\concept{éditeur de texte} pour qu'il remplace automatiquement trois points à la suite par cette commande}.
+Il faut également mettre une espace après chaque signe de ponctuation. Pour ce qui est des points de suspensions, il est mieux de ne pas frapper trois points à la suite, mais d'utiliser la commande \verb|\ldots| qui espacera correctement les points\footnote{Il est tout à fait possible de configurer l'éditeur de texte pour qu'il remplace automatiquement trois points à la suite par cette commande}.
 
 En ce qui concerne les guillemets, une partie sera consacré plus tard à l'art et la manière de faire des citations en \LaTeX.\renvoi{guillemets} Nous n'en parlons donc pas maintenant.
 
