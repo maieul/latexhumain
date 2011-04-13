@@ -1,0 +1,199 @@
+\chapter{Mettre en sens (3) : créer ses propres commandes}
+
+\begin{prealable}
+Nous avons parlé longuement de l'intérêt de séparer mise en sens et mise en forme.\renvoi{mef}.
+Nous avons indiquer que la meilleur manière pour ce faire était de créer des commandes de mise en sens, qui elle-même appelleront des commandes de mise en forme.
+
+Voyons maintenant comment créer ces commandes personalisées.
+\end{prealable}
+
+\section{Création d'une commande personnalisée}
+
+Reprenons notre exemple : nous voulons créer une commande personnalisée servant à indiquer que nous parlons d'un auteur : \verb|\auteur{nom}|.
+
+Notre commande se décompose en plusieurs parties : son nom (ici \forme{auteur}) et ses arguments (ici, un seul \forme{nom}).
+
+Une commande LaTeX peut prendre jusqu'à 9 arguments, ce qui est en général bien suffisant. Si nous notons N le nombre d'arguments, la syntaxe de la déclaration d'une nouvelle commande est là suivante :
+
+\begin{minted}{latex}
+\newcommand{\nomcommande}[N]{code}
+\end{minted}
+
+\begin{attention}
+	Les noms de commandes ne doivent contenir que des caractères alpha-numériques\footnote{Les 26 lettres et les dix chiffres.} non accentués. 
+	
+	Les noms sont sensibles à la casse : \verb|\a| est différent de \verb|\A|.
+\end{attention}
+À l'intérieur de la partie \forme{code}, on pourra  :
+\begin{itemize}
+	\item Mettre du texte.
+	\item Utiliser des commandes de mise en forme ou de mise en sens.
+	\item Appeler les arguments passés en utilisant la syntaxe \#x, où x représente le rang de l'argument.
+\end{itemize}
+
+Prenons toujours notre cas d'une commande pour indiquer les noms. Pour le début, nous souhaitons simplement que les noms d'auteur soient suivis d'un astérix (*).
+
+\begin{minted}{latex}
+\newcommand{\auteur}[1]{#1*}
+Il est bien connu que \auteur{Tertullien} n'était pas montaniste
+mais tertullianiste.
+\end{minted}
+
+\newcommand{\auteur}[1]{#1*}
+
+\exemple{
+Il est bien connu que \auteur{Tertullien} n'était pas montaniste mais tertullianiste.
+}
+
+
+\forme{Tertullien} a été passé en premier argument. Il apparaîtra donc à la place du \#1 de la déclaration de commande.
+
+On pourrait souhaiter passer en second argument des informations complémentaire, comme les dates de vie.
+
+\begin{minted}{latex}
+\newcommand{\auteur}[2]{#1* (#2)}
+Il est bien connu que \auteur{Tertullien}{150 ? - 220 ?}
+n'était pas montaniste
+mais tertullianiste.
+\end{minted}
+
+\renewcommand{\auteur}[2]{#1* (#2)}
+
+\exemple{
+Il est bien connu que \auteur{Tertullien}{150 ? - 220 ?}
+n'était pas montaniste mais tertullianiste.
+}
+
+\begin{anedocte}
+Le lecteur attentif se rappellera \renvoi{syntaxebasecommande} qu'il est possible d'avoir des commandes avec des arguments optionnels. Il souhaitera sans doute en créer lui même.
+
+Si \LaTeX prévoit bien en standard un mécanisme pour permettre cela, le mécanisme est relativement peu souple. 
+
+Nous conseillons donc de ce tourner vers le package \package{xargs} et \package{ifthenelse} afin de pouvoir faire des tests à l'intérieur d'une déclaration de commande.
+
+Mais tout ceci dépasserait le cadre de cette ouvrage.
+\end{anedocte}
+
+Fort bien, mais comment faire pour mettre en forme ? Il faut pour cela utiliser une commande de mise en forme à l'intérieur de la déclaration de commande de mise en sens. Par exemple, pour mettre en petites capitales la commande est \commande{textsc}
+
+\begin{minted}{latex}
+\newcommand{\auteur}[2]{\textsc{#1}* (#2)}
+\end{minted}
+
+\renewcommand{\auteur}[2]{\textsc{#1}* (#2)}
+
+\exemple{
+Il est bien connu que \auteur{Tertullien}{150 ? - 220 ?}
+n'était pas montaniste mais tertullianiste.
+}
+
+Nous décrirons plus loins dans ce chapitre un ensemble de commande de mise en forme\renvoi{mef}.
+
+\begin{attention}
+	Si la possibilité de créer ses propres commandes est une grande force de \LaTeX, cela ne fait pas toujours la joie des éditeurs. 
+	
+	Il est donc recommandée de discuter au préalable avec son éditeur, et surtout de lui indiquer qu'un balisage sous forme de commande doit, normalement, lui faciliter la tâche.
+	
+	Gageons qu'avec le développement  de \LaTeX dans le monde des sciences humaines les éditeurs rechignent de moins en moins à accepter ce format.
+	
+	Nous recommandons par ailleurs de regrouper toutes ses déclarations de commandes dans un fichier unique, appelés via une commande \commande{include}.
+	
+	Il est également possible de créer son propre package, pour des commandes utilisées fréquemment dans plusieurs projets. On pourra se référer au tutoriel de l'École Normale Supérieure pour savoir comment procéder\footcite{ENSsty}.
+\end{attention}
+
+
+\subsection{Code d'une commande sur plusieurs lignes}
+
+Jusqu'ici nos commandes étaient relativement simples. Mais il peut arriver que leur code se complexifie. Nous souhaiterons alors l'avoir sur plusieurs lignes.
+
+C'est tout à fait possible, mais il faut simplement mettre  un signe pourcentage (\%) à la fin de chaque ligne, sous peine d'avoir  des espaces intempestifs.
+
+Exemple sans  \% :
+
+\begin{minted}{latex}
+\newcommand{\auteur}[2]{
+	\textsc{#1}*(#2)
+	}
+\end{minted}
+
+\renewcommand{\auteur}[2]{\underline{ }%
+	\textsc{#1}*(#2)\underline{ }%
+}
+
+\exemple{
+Il est bien connu que \auteur{Tertullien}{150 ? - 220 ?}
+n'était pas montaniste mais tertullianiste.
+}
+
+On constate un espace en trop avant et après la mention de l'auteur\footnote{Pour les besoins de l'explication, nous avons souligné cet espace.}.
+
+En revanche, si on met des \% 
+
+\begin{minted}{latex}
+\newcommand{\auteur}[2]{%
+	\textsc{#1}*(#2)%
+	}
+\end{minted}
+
+\renewcommand{\auteur}[2]{%
+	\textsc{#1}*(#2)%
+}\exemple{
+
+Il est bien connu que \auteur{Tertullien}{150 ? - 220 ?}
+n'était pas montaniste mais tertullianiste.
+}
+
+On ne constate pas d'espace intempestifs.
+
+
+\subsection{Étoiler \commande{newcommand}}
+
+La création des commandes sous \LaTeX est une fonctionnalité très puissante, mais potentiellement dangereuse.
+
+Supposons la commande suivante :
+
+\begin{minted}{latex}
+\newcommand{\auteur}[1]{\textsc{#1}*}
+\end{minted}
+
+Imaginons que je l'appelle en oubliant de fermer mon accolade :
+
+\begin{minted}{latex}
+Il est bien connu que \auteur{Tertullien
+n'était pas montaniste mais tertullianiste.
+\end{minted}
+
+Que va-t-il se passer ? \LaTeX va comprendre que l'ensemble de la fin du texte est un argument de la commande, ce qui empêchera le compilateur de bien fonctionner, et vous n'obtiendrez rien.
+
+Pour limiter ces soucis, \LaTeX propose de définir des commandes courtes, dont les arguments ne dépasseront pas la longueur d'un paragraphe. En cas d'oublis de fermeture de parenthèses, \LaTeX arrêtera automatiquement l'argument à la fin d'un paragraphe.
+
+Pour définir ces commandes courtes, il suffit d'utiliser la commande{newcommand*}.
+
+\begin{minted}{latex}
+\newcommand*{\auteur}[1]{\textsc{#1}*}
+\end{minted}
+
+\section{Commandes de mise en forme\label{mef}}
+
+Nous listons ici les principales commandes de mise en forme. Pour des besoins avancées, on trouvera aisément de la documentation sur internet.
+
+\subsection{Taille des polices}
+
+Il est possible de définir de manière absolue la taille des polices en indiquant le nombre de point. Toutefois la meilleur méthode est de le définir d'après la taille de base, et d'utiliser les commandes si-dessous. La taille obtenue dépendra de la taille de base définie lors de l'appel au préambule\renvoi{preambule}.
+
+\begin{longtable}{l|l}
+	 Commande 				&	Effet \\
+ 	 \hline
+	 \endhead
+	
+	 \commande{tiny} 			& 	\tiny{abcdefghijklmnopqrstuvwxyz} 			\\
+	 \commande{scriptsize} 		& 	\scriptsize{abcdefghijklmnopqrstuvwxyz} 		\\
+	 \commande{footnotesize} 	& 	\footnotesize{abcdefghijklmnopqrstuvwxyz}		\\
+	 \commande{small}			&			\small{abcdefghijklmnopqrstuvwxyz}	\\
+	 \commande{normalsize}		& 	\normalsize{abcdefghijklmnopqrstuvwxyz}		\\
+	 \commande{large}			&	\large{abcdefghijklmnopqrstuvwxyz}			\\
+	 \commande{Large}			& 	\Large{abcdefghijklmnopqrstuvwxyz}			\\
+	 \commande{LARGE}		& 	\LARGE{abcdefghijklmnopqrstuvwxyz}			\\
+	 \commande{huge}			& 	\huge{abcdefghijklmnopqrstuvwxyz}			\\
+	 \commande{Huge}			&	\Huge{abcdefghijklmnopqrstuvwxyz}			\\
+\end{longtable}
