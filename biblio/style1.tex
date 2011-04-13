@@ -2,7 +2,7 @@
 
 	\begin{prealable}
 	
-	Vous savez désormais utiliser les commandes de citations. Toutefois, vous pourriez souhaiter modifier la manière dont les citations s'affichent :  changer l'ordre des champs, changer les séparateurs, changer les textes du type \forme{dans}.
+	Vous savez désormais utiliser les commandes de citations. Toutefois, vous pourriez souhaiter modifier la manière dont les citations s'affichent :  changer l'ordre des champs, les séparateurs, les textes du type \forme{dans}.
 	
 	Ces deux chapitres vous indiquerez les principes généraux pour le faire. Étant donné l'ampleur du sujet, deux chapitres ne sont pas de trop. Par ailleurs, ces deux chapitres n'ont pas pour vocation de tout présenter sur le sujet, mais simplement les principes de bases. On se reportera au manuel de \package{BibLaTeX} pour aller plus loin.
 	
@@ -62,7 +62,7 @@ A l'intérieur d'une référence bibliographique, BibLaTex distingue des unités
 	
 	La virgule entre les deux points et \emph{Concilia Africae} s'explique parce qu'une unité a été créée, unité qui doit contenir normalement la valeur du champ \champ{Bookauthor}.
 	
-	Pour contourner ce problème, il ne faut pas mettre directement dans la définition de la commande \commande{newunitpunct} les signes de ponctuation. Il faut utiliser les commandes de ponctuation\footcite[Listées dans][160-161]{biblatex}. En effet, ces commandes afficheront la ponctuation uniquement si l'unité qui précède a bien un contenu\footnote{Par ailleurs, elle suppriment les espaces multiples qui précédent.}.
+	Pour contourner ce problème, il ne faut pas mettre directement dans la définition de la commande \commande{newunitpunct} les signes de ponctuation. Il faut utiliser les commandes de ponctuation\footcite[Listées dans]{biblatexponctuation}. En effet, ces commandes afficheront la ponctuation uniquement si l'unité qui précède a bien un contenu\footnote{Par ailleurs, elle suppriment les espaces multiples qui précédent.}.
 	
 	Il faut donc mettre dans notre cas :
 	
@@ -95,4 +95,49 @@ A l'intérieur d'une référence bibliographique, BibLaTex distingue des unités
 	
 	La chaîne \forme{dans} sépare le titre de l'article et le nom de la revue. Si nous rédigions en anglais, nous aurions \forme{in} à la place. 
 	
-	Il peut justement nous arriver de vouloir changer ces chaînes de langues. Une chaîne de langues associe à une clef invariable
+	Il peut justement nous arriver de vouloir changer ces chaînes de langues. Une chaîne de langues associe à une clef invariable une valeur qui change selon la langue.
+	
+	Les styles bibliographiques possèdent des chaînes de langues par défaut, qu'il est possible de remplacer au cas par cas. Pour ce faire, ils nous faut toutefois connaître les clefs. Il nous faut donc ouvrir le fichier de langue \fichier{french.lbx}. Pour repérer ce fichier, voir notre explication en annexe.\renvoi{fichierdefaut}.
+	
+	Une fois ce fichier ouvert, repérons la ligne qui commence par
+	
+	\verb|\DeclareBibliographyStrings{|
+	
+	Cette ligne est suivie d'autres lignes sous la forme :
+	
+	\verb|clef	= {{chaîne longue}{chaîne courte}}|
+	
+	\begin{anedocte}
+	Chaque chaîne de langue est disponible en version longue ou courte. On peut passer une option lors de l'appel du package \package{biblatex} pour décider d'utiliser les versions longues.
+	
+	\begin{minted}{latex}
+	\usepackage[abbreviate=false]{biblatex}
+	\end{minted}
+		
+	\end{anedocte}
+	Il nous faut donc repérer la clef correspondante à notre chaîne \enquote{dans}. Très rapidement nous trouvons qu'il s'agit de la chaine \verb|in|.
+	
+	Une fois  notre clef repérée, il est facile de lui attribuer une nouvelle valeur\footnote{Cette valeur sera utilisée que l'on choisisse le mode abrégé ou non.}, grâce à la commande \commande{\DefineBibliographyStrings{lang}{chaînes}}
+	
+	\begin{minted}{latex}
+		\DefineBibliographyStrings{french}{%
+      		  	in 	= {\emph{in}}%
+		}
+	\end{minted}
+	
+	On constatera qu'on peut utiliser dans une chaîne de langue des commandes LaTeX. Si notre chaîne contient des signes de ponctuations, il faut utiliser les commandes de ponctuation mentionnées plus haut.
+	
+	On constatera les \% à la fin de chaque ligne, ceci afin d'éviter les espaces intempestifs.
+	
+	Si nous souhaitons redéfinir plusieurs chaînes de langue, il faut séparer chaque définition par une virgule :
+	
+	\begin{minted}{latex}
+		\DefineBibliographyStrings{french}{%
+      		  	clef1 	= {valeur1},%
+			clef2	= {valeur2},%
+			clefN	= {valeurN}%
+		}
+	\end{minted}
+	
+	
+	
