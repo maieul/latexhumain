@@ -13,6 +13,11 @@
 }
 \newcommand{\commande}[1]{%
 	%\index{#1}%
+	$\backslash$\textbf{#1}%
+}
+
+\newcommand{\enviro}[1]{%
+	%\index{#1}%
 	\textbf{#1}%
 }
 
@@ -27,10 +32,7 @@
 	}%
 }
 
-\newcommand{\enviro}[1]{%
-	%\index{#1}%
-	\emph{#1}%
-}
+
 
 \newcommand{\ext}[1]{%
 	%\index{#1}%
@@ -59,7 +61,7 @@
 
 \newcommand{\renvoi}[1]{\marginpar{Renvoi : #1}}
 
-
+\newcommand{\rev}[1]{\marginpar{#1}}
 % Redefinir les commandes de minted
 \let\oldinputminted\inputminted
 \renewcommand{\inputminted}[1]{%
