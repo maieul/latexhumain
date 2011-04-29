@@ -179,21 +179,39 @@ Nous listons ici les principales commandes de mise en forme. Pour des besoins av
 
 \subsection{Taille des polices}
 
-Il est possible de définir de manière absolue la taille des polices en indiquant le nombre de point. Toutefois la meilleur méthode est de le définir d'après la taille de base, et d'utiliser les commandes si-dessous. La taille obtenue dépendra de la taille de base définie lors de l'appel au préambule\renvoi{preambule}.
+Il est possible de définir de manière absolue la taille des caractères en indiquant le nombre de points. Toutefois la meilleur méthode est de le définir d'après la taille de base, et d'utiliser les commandes si-dessous. La taille obtenue dépendra de la taille de base définie lors de l'appel au préambule\renvoi{preambule}.
 
 \begin{longtable}{l|l}
-	 Commande 				&	Effet \\
+	 Commande 				&	Effet 								\\
  	 \hline
 	 \endhead
 	
 	 \commande{tiny} 			& 	\tiny{abcdefghijklmnopqrstuvwxyz} 			\\
 	 \commande{scriptsize} 		& 	\scriptsize{abcdefghijklmnopqrstuvwxyz} 		\\
 	 \commande{footnotesize} 	& 	\footnotesize{abcdefghijklmnopqrstuvwxyz}		\\
-	 \commande{small}			&			\small{abcdefghijklmnopqrstuvwxyz}	\\
+	 \commande{small}			&	\small{abcdefghijklmnopqrstuvwxyz}			\\
 	 \commande{normalsize}		& 	\normalsize{abcdefghijklmnopqrstuvwxyz}		\\
 	 \commande{large}			&	\large{abcdefghijklmnopqrstuvwxyz}			\\
 	 \commande{Large}			& 	\Large{abcdefghijklmnopqrstuvwxyz}			\\
 	 \commande{LARGE}		& 	\LARGE{abcdefghijklmnopqrstuvwxyz}			\\
 	 \commande{huge}			& 	\huge{abcdefghijklmnopqrstuvwxyz}			\\
 	 \commande{Huge}			&	\Huge{abcdefghijklmnopqrstuvwxyz}			\\
+\end{longtable}
+
+\subsection{Style de caractères}
+
+Voici une liste non exhaustive de commandes utiles pour personnaliser les styles de caractères\footcite[Sur les usages des différents styles de caractères, on peut notamment se reporter à][]{stylecaractère}.
+
+
+\begin{longtable}{l|l}
+	Commande				& Effet 								\\
+	\hline
+	\commande{textit}			& \textit{Italique}							\\
+	\commande{emph}			& \emph{Texte en emphase}					\\
+	\commande{textbf}			&  \textbf{Gras}							\\
+	\commande{textsc}			& \textsc{Petites capitales}					\\
+	\commande{underline}		& \textsc{Souligné (à éviter)}					\\
+	\commande{textsuperscript}	&  \textsuperscript{Exposant}					\\
+	\endhead
+	
 \end{longtable}
