@@ -146,7 +146,7 @@ n'était pas montaniste mais tertullianiste.
 On ne constate pas d'espace intempestifs.
 
 
-\subsection{Étoiler \commande{newcommand}}
+\subsection[Étoiler newcommand]{Étoiler \commande{newcommand}}
 
 La création des commandes sous \LaTeX est une fonctionnalité très puissante, mais potentiellement dangereuse.
 
@@ -179,7 +179,7 @@ Nous listons ici les principales commandes de mise en forme. Pour des besoins av
 
 \subsection{Taille des caractères}
 
-Il est possible de définir de manière absolue la taille des caractères en indiquant le nombre de points. Toutefois la meilleur méthode est de le définir d'après la taille de base, et d'utiliser les commandes si-dessous. La taille obtenue dépendra de la taille de base définie lors de l'appel au préambule\renvoi{preambule}.
+Il est possible de définir de manière absolue la taille des caractères en indiquant le nombre de points. Toutefois la meilleur méthode est de le définir d'après la taille de base, et d'utiliser les commandes ci-dessous. La taille obtenue dépendra de la taille de base définie lors de l'appel au préambule\renvoi{preambule}.
 
 \begin{longtable}{l|l}
 	 Commande 				&	Effet 								\\
@@ -210,8 +210,107 @@ Voici une liste non exhaustive de commandes utiles pour personnaliser les styles
 	\commande{emph}			& \emph{Texte en emphase}					\\
 	\commande{textbf}			&  \textbf{Gras}							\\
 	\commande{textsc}			& \textsc{Petites capitales}					\\
-	\commande{underline}		& \textsc{Souligné (à éviter)}					\\
+	\commande{underline}		& \textsc{Souligné}	 (à éviter)				\\
 	\commande{textsuperscript}	&  \textsuperscript{Exposant}					\\
 	\endhead
 	
 \end{longtable}
+
+\subsection{Couleur}
+
+Les couleurs ne sont pas gérées nativement dans \LaTeX. Il faut passer par le package \package{color} ou le package \package{xcolor}. Ils proposent tout les deux une commande \commande{textcolor}
+
+\begin{minted}{latex}
+
+\textcolor{nom de la couleur}{texte à mettre en couleur}}.
+\end{minted}
+
+
+La différence tient principalement au nombre de color disponible par défauts et à la facilité à en définir des nouvelles, mais aussi à la facilité d'appliquer des couleurs à d'autres éléments que le texte\footnote{Par exemple les lignes de tableaux.}. Nous ne présenterons ici que le package \package{xcolor}, de manière succincte. Nous renvoyons vers la documentation pour des usages avancées.
+
+\subsubsection{Couleurs standards}
+Celui-ci présente les couleurs de bases suivantes : 
+
+% Définition de la fonction de modélisation des couleurs
+\newcommand{\exemplecouleur}[1]{#1 & \fcolorbox{black}{#1}{~} \\}
+% Fin de la définition
+
+\begin{longtable}{l|l}
+	Nom de la couleur 		& Couleur 								\\
+	\hline
+	\endhead
+	\exemplecouleur{black}
+	\exemplecouleur{blue}
+	\exemplecouleur{brown}
+	\exemplecouleur{cyan}
+	\exemplecouleur{darkgray}
+	\exemplecouleur{gray}
+	\exemplecouleur{green}
+	\exemplecouleur{lightgray}
+	\exemplecouleur{lime}
+	\exemplecouleur{magenta}
+	\exemplecouleur{olive}
+	\exemplecouleur{orange}
+	\exemplecouleur{pink}
+	\exemplecouleur{purple}
+	\exemplecouleur{red}
+	\exemplecouleur{teal}
+	\exemplecouleur{violet}
+	\exemplecouleur{white}
+	\exemplecouleur{yellow}
+	
+\end{longtable}
+
+\subsubsection{Couleurs supplémentaires}
+
+On peut passage les arguments \argument{dvipsnames}, \argument{svgnames} ou \package{x11names} lors de l'appel au package \package{xcolor}, chacune de ces arguments fournissant un jeu de couleur. Ne pouvant lister toutes ces couleurs dans cette ouvrage, nous renvoyons à la documentation de \package{xcolor}\footcite{doccouleurjeu}.
+
+\subsubsection{Définir ses propres couleurs}
+
+Il est possible de définir ses propres couleurs. Il faut pour se faire utiliser \commande{definecolor}, selon la syntaxe suivante :
+
+\begin{minted}{latex}
+\definecolor{nom}{methode}{definition}
+\end{minted}
+
+Les couleurs peuvent être définies principalement de plusieurs manières\footnote{On consultera n'importe quelle livre scientifique sur les couleurs pour plus de détails. On peut également consulter la documentation du package{xcolor}.}
+\begin{itemize}
+\item Par méthode additive en additionnant du rouge, du vert et du bleu (comme sur un écran d'ordinateur).
+\item Par méthode soustractive en superposant du cyan, du magenta, du jaune et du noir (comme sur une imprimante couleur).
+\end{itemize}
+Nous ne présenterons que les deux premières méthodes\footcite[Il existe aussi la méthode de définition par la longueur d'onde pour les couleurs de l'arc en ciel, par pourcentage de gris pour les différents niveaux de gris, ainsi que par teinte, saturation et luminosité, mais ceci nécessiterait un cours de physique lumineuse. Pour  les personnes intéressés par les détails, consulter]{doccouleurmethode}.
+
+Les deux méthodes nécessitent de donner une valeur comprise entre 0 (inclus) et 1 (inclus) à chacun des composants\footcite[On pourra trouver une série de code couleur sur le site]{codecouleur}.
+
+\definecolor{rougebourgogne}{HTML}{6B0D0D}
+
+
+Prenons par exemple la définition de la couleur \textcolor{rougebourgogne}{rouge bourgogne}\footnote{Avec Anne Sylvestre les auteurs proclament fièrement \enquote{Que Bordeaux me pardonne, j’appartiens au Bourgogne} \parencite{romaneconti}.}.
+
+On peut la définir de la manière suivante en méthode additive :
+\begin{minted}{latex}
+\definecolor{rougebourgogne}{rgb}{0.41,0.05,0.05}
+\end{minted}
+
+Ou bien en méthode soustractive\footnote{Idéalement le choix de  la méthode devrait relever du support de destination. Mais le package \package{xcolors} propose des système de conversion d'une méthode à l'autre.}de la manière suivante :
+\begin{minted}{latex}
+\definecolor{rougebourgogne}{cmyk}{0,0.88,0.88,0.58}
+\end{minted}
+
+Enfin signalons la méthode HTML qui offre l'avantage d'avoir de nombreux site internet qui donnent les codes couleurs HTML\footnote{En réalité la méthode HTML est une méthode additive avec des valeurs comprises entre 0 et 255, notées en hexadécimal.}.
+
+La même couleur se définirait ainsi :
+
+\begin{minted}{latex}
+\definecolor{rougebourgogne}{HTML}{6B0D0D}
+\end{minted}
+
+
+
+\begin{attention}
+	Nous l'avons déjà dit : les problèmes de couleurs sont en général extrêmement complexe. Nous ne présentons ici qu'un aperçu. D'une manière générale, on évitera d'utiliser des couleurs dans un texte. Toutefois notre présentation servira plus tard, lorsqu'on nous aborderons la manière de faire des schémas en LaTeX.
+	
+\end{attention}
+
+
+
