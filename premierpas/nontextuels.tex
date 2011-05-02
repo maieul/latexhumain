@@ -4,10 +4,110 @@
 	Dans ce chapitre nous allons examiner comment insérer des éléments qui ne font pas parties du flux du texte : images, graphismes, tableaux de données.
 \end{prealable}
 
-\section[La notion de flottants]{Où insérer les éléments non textuels ? : la notion de flottants}
+\section{Insérer des images}
 
+Les images insérables avec Xe\LaTeX doivent être au format JPEG (extension \ext{jpg}) ou PNG (extension \ext{png}) ou PDF (extension \ext{jpg}).
+
+L'insertion d'une image se fait de la manière suivante :
+\begin{minted}{latex}
+\includegraphics[param. opti.]{chemin de l'image}
+\end{minted}
+
+Le chemin de l'image s'indique de la même manière que le chemin des fichiers inclus, vu plus haut.\renvoi{chemin}
+
+Les paramètres optionnels peuvent être les suivants :
+
+\begin{longtable}{l||l|l}
+	Paramètres & Signification & Exemple	\\
+	\hline
+	\endhead
+	width		& Largeur 	& \verb|width=10cm| 	\\
+	height		& Hauteur	& \verb|height=10cm|	 \\
+	scale		& Redimension proportionelle & \verb|scale=0.5|\\
+	
+\end{longtable}
+
+\begin{anedocte}
+Le centimètre n'est pas la seule  unité de mesure disponible en \LaTeX. Nous en parlons en annexe de ce livre.
+\end{anedocte}
+
+\begin{attention}
+	Évidemment, il est plus correct d'insérer une légende sous une image. Nous expliquons comment faire plus loin.\renvoi{legende}
+\end{attention}
+
+
+\section[La notion de flottants]{Où insérer les éléments non textuels ? : la notion de flottants}
+\label{legende}
 Nous avons vu comment insérer des éléments non textuels. Mais vous constaterez rapidement que la mise en forme n'est pas toujours des meilleurs, l'élément s'insérant dans le texte à l'endroit précis où il a été appelé, ce qui peut entraîner des espaces blancs disgracieux.
 
-En outre, ces éléments non textuels disposent habituellement d'une légende et on aimerait que cette légende serve ensuite pour construire une table des figures.
+En outre, ces éléments non textuels disposent habituellement d'une légende.
 
 Pour résoudre ces deux problèmes --- positionnement esthétique et légende --- \LaTeX utilise la notion de flottant. \emph{Un flottant est donc un élément non textuel que LaTeX essaie d'insérer au meilleur endroit du point de vue de l'esthétique et qui dispose (éventuellement) d'une légende.}
+
+Il existe deux types principaux de flottant :
+\begin{itemize}
+	\item Les figures.
+	\item Les tableaux.
+\end{itemize}
+
+La syntaxe pour insérer le premier est la suivante :
+
+\begin{minted}{latex}
+\begin{figure}[paramètre de placement]
+	Insertion de la figure ou de l'image suivant les codes montrés plus haut.
+	\caption{Légende}
+\end{figure} 
+\end{minted}
+
+Celle pour insérer le second est la suivante :
+\begin{minted}{latex}
+\begin{table}[paramètre de placement]
+	Insertion d'un tableau suivant le codes montrés plus haut.
+	\caption{Légende}
+\end{table} 
+\end{minted}
+
+Si la commande \commande{caption} est insérée au dessus de la figure, de l'image ou du table, la légende sera située au dessus de l'élément et non en dessous. Il est possible, mais déconseillée, de ne pas mettre de légende.
+
+\begin{attention}
+	On pourrait vouloir changer les intitulés comme \emph{figure} et \emph{tableau}. Tout ceci est possible, nous en parlerons plus loins dans le chapitre consacrée aux chaînes de langue.\renvoi{chainedelangue}.
+	
+	De même on pourrait souhaiter renvoyer automatiquement vers le numéro et la page d'une figure : nous en parlons dans le chapitre consacré à la navigation à l'intérieur d'un document.\renvoi{label}
+\end{attention}
+
+\subsection{Choix de l'emplacement du flottant}
+
+Le paramètre de placement indique à \LaTeX comment placer idéalement les flottants. Ce sont des paramètres indicatifs que le compilateur essaiera autant que possible de suivre, sans pour autant être contraint. Ces valeurs sont les suivantes :
+
+\begin{longtable}{l|l}
+	Valeur & Signification	\\
+	\hline
+	\endhead
+	h 	& À l'emplacement de l'appel au flottant 	\\
+	t 	& En haut d'une page				\\
+	b 	& En bas d'une page				\\
+	p 	& Sur une page dédiée aux flottants		\\
+\end{longtable}
+
+
+Si le système des flottants généralement de conserver une mise en page correcte tout en n'éloignant pas trop l'élément de son emplacement \enquote{logique}, il peut arriver parfois que l'élément soit trop éloigné de son emplacement logique.
+
+Pour remédier à ce problème, on pourra utiliser la commande \commande{FloatBarrier} du paquet \package{placeins}. 
+Tout les flottants appelés précédemment seront systématiquement placés avant cette commande.
+
+\subsection{Sous-figure}
+
+Il est possible d'insérer au sein d'une figure des sous-figures, chacune d'entre elles disposant d'une légende, en plus de la légende principal.
+Pour ce faire il faut utiliser le paquet \package{subfig}.
+
+La syntaxe est la suivante :  
+\begin{minted}{latex}
+\begin{figure}[paramètre de placement]
+	\subfloat[Légende 1]{Code de la figure 1}
+	\subfloat[Légende 2]{Code de la figure 2}
+	…
+	\subfloat[Légende N]{Code de la figure N}
+	\caption{Légende principale}
+\end{figure} 
+\end{minted}
+	
