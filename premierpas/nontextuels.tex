@@ -35,6 +35,54 @@ Le centimètre n'est pas la seule  unité de mesure disponible en \LaTeX. Nous e
 	Évidemment, il est plus correct d'insérer une légende sous une image. Nous expliquons comment faire plus loin.\renvoi{legende}
 \end{attention}
 
+\section{Insertion de graphisme et de schémas}
+
+On peut vouloir insérer divers type de graphisme ou de schémas : graphismes statistiques, arbres généalogiques, arbres de familles de manuscrits etc.
+
+Deux solutions s'offrent à nous :
+\begin{enumerate}
+\item Utiliser un logiciel externe qui exporterait le graphisme dans une image, qu'on insérerait comme n'importe quelle image.
+\item Utiliser les possibilités de \LaTeX et du paquet \package{TikZ}.
+\end{enumerate}
+
+La première solution paraît de prime abord plus simple, puisqu'elle ne nécessite pas d'apprendre des nouveaux éléments en \LaTeX. Toutefois elle nécessite de gérer plus de fichiers\footnote{Prenons un graphisme généré par un tableur : il faudra conserver la feuille du tableur plus l'image du graphisme généré par celui-ci.}. En outre, les images exportés par ces logiciels étant bien souvent de type bitmap et non pas vectorielle%
+\footnote{Il existe deux manières en informatiques de coder une image : en codant point par point (image bitmap) ou bien en codant simplement les formes, par exemple des cercles ou des segments (images vectorielle). La première méthode est adaptée à des images complexes, comme par exemple une photos,  le seconde méthode est conseillée pour les images \enquote{simple} tel que les graphisme. La méthode vectorielle possède l'avantage d'être plus facilement redimensionnable  sans perte de qualité et de permettre aisément la sélection de texte.},
+on perd la possibilité de sélectionner dans le PDF généré par LaTeX les textes, et on risque d'avoir des problèmes de redimensionnement.
+
+Nous allons donc ici vous présenter sommairement les possibilités du package \package{TikZ}. Nous renvoyons toutefois à d'autres ouvrages pour un approfondissement et des exemples plus détaillées\footcites[Outre le manuel on pourra lire][]{tikzimpatient}[on pourra également consulter le site ][]{tikzexample}.
+Ce package possède une syntaxe spécifique. 
+
+\begin{attention}
+	Bien que le package s'appelle \package{TikZ}, il faut dans le préambule l'appeler \emph{sans majuscules}.
+	\begin{minted}{latex}
+	\usepackage{tikz}
+	\end{minted} 
+\end{attention}
+
+\subsection{Premier exemple : arbre représentant des familles de manuscrits}
+
+Notre exemple est volontairement simple. Nous disposons de six familles de manuscrits d'un même texte. La  famille A a engendré les familles B, C, D. Les familles E et F pour leurs parts sont issus de la famille D. 
+
+Le code est le suivant 
+\inputminted{exemples/premierpas/nontextuels/genealogie.tex}[linenos=true]
+
+Ce qui donne le résultat de la figure\ref{figure:genealogie}\renvoi{figure:genealogie}.
+
+Analysons le code :
+\begin{itemize}
+\item Ligne 1 : l'environnement \enviro{tikzpicture} est l'environnement utilisé pour insérer une figure TikZ. Il peut recevoir de nombreux arguments pour modifier certains aspects, tels que épaisseurs par défaut des lignes, tailles du texte, orientation du schéma. Nous renvoyons à la documentation.
+\item
+\end{itemize}
+
+Analysons ce qu'il en est
+
+\begin{figure}[hp]
+\centering
+\input{exemples/premierpas/nontextuels/genealogie}
+\caption{Exemple de généalogie}
+\label{figure:genealogie}	
+\end{figure}
+
 
 \section[La notion de flottants]{Où insérer les éléments non textuels ? : la notion de flottants}
 \label{legende}
@@ -69,6 +117,7 @@ Celle pour insérer le second est la suivante :
 
 Si la commande \commande{caption} est insérée au dessus de la figure, de l'image ou du table, la légende sera située au dessus de l'élément et non en dessous. Il est possible, mais déconseillée, de ne pas mettre de légende.
 
+Un exemple de flottant se situe  dans ce chapitre : la figure \ref{figure:genealogie}\renvoi{figure:genealogie}.
 \begin{attention}
 	On pourrait vouloir changer les intitulés comme \emph{figure} et \emph{tableau}. Tout ceci est possible, nous en parlerons plus loins dans le chapitre consacrée aux chaînes de langue.\renvoi{chainedelangue}.
 	
@@ -90,7 +139,7 @@ Le paramètre de placement indique à \LaTeX comment placer idéalement les flot
 \end{longtable}
 
 
-Si le système des flottants généralement de conserver une mise en page correcte tout en n'éloignant pas trop l'élément de son emplacement \enquote{logique}, il peut arriver parfois que l'élément soit trop éloigné de son emplacement logique.
+Si le système des flottants permet généralement de conserver une mise en page correcte tout en n'éloignant pas trop l'élément de son emplacement, il arrive parfois qu'il l'éloignement soit trop important.
 
 Pour remédier à ce problème, on pourra utiliser la commande \commande{FloatBarrier} du paquet \package{placeins}. 
 Tout les flottants appelés précédemment seront systématiquement placés avant cette commande.
