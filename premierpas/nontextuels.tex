@@ -49,7 +49,9 @@ La première solution paraît de prime abord plus simple, puisqu'elle ne nécess
 \footnote{Il existe deux manières en informatiques de coder une image : en codant point par point (image bitmap) ou bien en codant simplement les formes, par exemple des cercles ou des segments (images vectorielle). La première méthode est adaptée à des images complexes, comme par exemple une photos,  le seconde méthode est conseillée pour les images \enquote{simple} tel que les graphisme. La méthode vectorielle possède l'avantage d'être plus facilement redimensionnable  sans perte de qualité et de permettre aisément la sélection de texte.},
 on perd la possibilité de sélectionner dans le PDF généré par LaTeX les textes, et on risque d'avoir des problèmes de redimensionnement.
 
-Nous allons donc ici vous présenter sommairement les possibilités du package \package{TikZ}. Nous renvoyons toutefois à d'autres ouvrages pour un approfondissement et des exemples plus détaillées\footcites[Outre le manuel on pourra lire][]{tikzimpatient}[on pourra également consulter le site ][]{tikzexample}.
+Nous allons donc ici vous présenter une possibilité du \package{TikZ} : la représentation d'une famille de manuscrits. 
+
+Nous avons choisi cette exemple car il est relativement simple. Mais \package{TikZ} permet de faire bien plus, comme par exemple de produire des diagrammes statistiques : nous renvoyons à d'autres ouvrages pour en savoir plus\footcites[Outre le manuel on pourra lire][]{tikzimpatient}[on pourra également consulter le site ][]{tikzexample}.
 Ce package possède une syntaxe spécifique. 
 
 \begin{attention}
@@ -59,29 +61,36 @@ Ce package possède une syntaxe spécifique.
 	\end{minted} 
 \end{attention}
 
-\subsection{Premier exemple : arbre représentant des familles de manuscrits}
+\subsection{Arbre représentant des familles de manuscrits}
 
 Notre exemple est volontairement simple. Nous disposons de six familles de manuscrits d'un même texte. La  famille A a engendré les familles B, C, D. Les familles E et F pour leurs parts sont issus de la famille D. 
 
 Le code est le suivant 
 \inputminted{exemples/premierpas/nontextuels/genealogie.tex}[linenos=true]
 
-Ce qui donne le résultat de la figure\ref{figure:genealogie}\renvoi{figure:genealogie}.
-
-Analysons le code :
-\begin{itemize}
-\item Ligne 1 : l'environnement \enviro{tikzpicture} est l'environnement utilisé pour insérer une figure TikZ. Il peut recevoir de nombreux arguments pour modifier certains aspects, tels que épaisseurs par défaut des lignes, tailles du texte, orientation du schéma. Nous renvoyons à la documentation.
-\item
-\end{itemize}
-
-Analysons ce qu'il en est
-
-\begin{figure}[hp]
+Ce qui donne le résultat de la figure\ref{figure:genealogie}\renvoi{figure:genealogie}. \begin{figure}[hp]
 \centering
 \input{exemples/premierpas/nontextuels/genealogie}
 \caption{Exemple de généalogie}
 \label{figure:genealogie}	
 \end{figure}
+Analysons le code :
+
+\begin{description}
+\item[Ligne 1]l'environnement \enviro{tikzpicture} est l'environnement utilisé pour insérer une figure TikZ. Il peut recevoir de nombreux arguments pour modifier certains aspects, tels que épaisseurs par défaut des lignes, tailles du texte, orientation du schéma. Nous renvoyons à la documentation.
+\item[Ligne 2] un nœud TikZ, matérialisé ici par le commande \commande{node} est un bloc de texte. On pourrait passer des options à cette commande, afin de modifier certains aspects (par exemple afficher un contour au texte).
+\item[Lignes 3 et 4] \verb|child| désigne ici une opération : associer un fils au nœud précédent. Ce fils est lui même un nœud (\verb|node|)
+\item[Lignes 5 à 12]même chose que précédemment, sauf que le nœud D se voit attribuer des fils (E et F). Notez le nombre d'accolade et leurs imbrications : c'est ce qui permet à \package{TikZ} de construire correctement la généalogie.
+\item[Ligne 13] le point-virgule est important.Il est obligatoire après chaque commande \package{TikZ} (ici \commande{node}).
+\item[Ligne 14] fin de graphisme \package{TikZ}
+\end{itemize}
+
+Évidemment un tel code est relativement complexe. C'est pourquoi nous conseillons de commenter attentivement le code\footnote{Pour des raisons de place nous ne l'avons pas fait ici} et de prêter extrêmement attention  aux accolades. Par ailleurs nous recommandons de mettre chaque graphisme \package{TikZ} dans un fichier séparé.
+
+Pour faciliter la création de graphisme TikZ il est possible d'utiliser des logiciels WYSIWYG\renvoi{logiciels:tikz}.
+
+Notre arbre généalogique est relativement simple : il n'y a pas de consanguinité. Si cela avait été le cas la construction aurait été plus complexe : on n'aurait pas pu utiliser les opérations de types \verb|child| et il aurait fallu positionner précisément les éléments en utilisant un système de coordonnée.
+
 
 
 \section[La notion de flottants]{Où insérer les éléments non textuels ? : la notion de flottants}
