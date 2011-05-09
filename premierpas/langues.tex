@@ -1,4 +1,4 @@
-\chapter{Gérer les langues avec Xunicode et Polyglossia}\label{i18n}
+\e{Gérer les langues avec Xunicode et Polyglossia}\label{i18n}
 
 \begin{prealable}
 	Dans ce chapitre nous verrons manière de signaler à LaTeX les changements de langues, ainsi que les méthodes pour écrire en caractères non latins.
@@ -98,3 +98,63 @@ Pour ce faire, il devra redéfinir l'environnement \enviro{latin} par le code su
 \begin{anedocte}
 La commande \commande{renewenvironnement} redéfinit un environnement, ici \enviro{latin}. Le deuxième argument de la commande indique ce qui se passe lors que l'on ouvre l'environnement, le troisième argument ce qui se passe lorsqu'on l'on ferme l'environnement. L'environnement \enviro{hyphenrules} indique un changement de règle de césures.
 \end{anedocte}
+
+
+\section{Taper des textes en caractères non latins}\label{utf8}
+
+Ce que nous allons expliquer maintenant n'a en réalité pas grand chose à voir avec \LaTeX. Il s'agit en réalité d'un problème plus général à l'informatique : comment écrire dans des caractères non latins ? Nous allons ici expliquer la mauvaise méthode, puis la bonne méthode.
+
+Nous commencerons par un peu d'explications techniques extrêmement simplifiées, que les puristes nous pardonnent.
+
+\subsection{Les jeu de caractères : où comment se servir de nombre pour autre chose}.
+
+Au départ, un ordinateur ne manipule que des nombres. Mais les ordinateurs servant aux humains, ceux-ci leurs ont appris à \enquote{stocker} des caractères, en associant des lettres à des nombres.
+
+Seulement voilà : les premiers ordinateurs ayant été développés par des anglo-saxon, on a  attribué des nombres qu'à  127 caractères, ce qui suffisait largement pour écrire en anglais et ajouter des caractères spécifiques, comme les accolades informatiques\footnote{Celles dont vous vous servez pour les commandes \LaTeX}. Cela à donner le jeu de caractères connu sous le doux nom d'ASCII\footnote{\textenglish{American Standard Code for Information Interchange}}.
+
+Mais un jour d'autres peuples que les anglo-saxons ont voulu écrire avec un ordinateur et ont souhaité écrire leur propres caractères. Par exemple les européens occidentaux ont voulu taper des accents, des cédilles, des trémas et autres joyeuseté. On a donc créé un nouveau système de codage pour représenter les caractères latin occidentaux, en attribuant des nombres à d'autres caractères. On a ainsi formé le jeu de caractère  ISO-8859-1. 
+
+Seulement voilà : d'autres peuples ont voulu écrire leurs caractères et c'est ainsi que furent inventés des jeux de caractères comme ISO-8859-5 pour les caractères cyrilliques. En outre certaines sociétés inventent leurs propres manières de stocker des caractères :  ainsi Apple invente MacRoman et Microsoft Windows-1252\footnote{D'où le fait que pendant longtemps les accents « sautaient » régulièrement lorsqu'on envoyait un email d'un ordinateur Apple vers un Windows}. 
+
+Mais certaines personnes souhaitaient mélanger des caractères de divers alphabets : par exemple écrire tantôt en grec, tantôt en cyrillique, tantôt en caractères latins. Comment faire ? Pendant longtemps une technique utilisée\footnote{Qui malheureusement est encore utilisée, voir apprise, par des personnes peu au courant des évolutions informatiques} consistait à écrire dans un jeu de caractères donné, typiquement ISO-8859-1 mais à dire d'afficher dans une police qui affichait alors dans un autre alphabet. 
+
+Par exemple, pour écrire le caractère grec \enquote{α} ont écrivait le caractère latin \enquote{a} et disait qu'on l'affichait dans la police SPIonic. Cette méthode posait (et pose encore) de nombreux problèmes :
+\begin{itemize}
+\begin Elle nécessitait que la police soit présente sur toutes les machines de travail.
+\begin Ne stockant pas l'information exacte sur le caractère (puisqu'elle utilise un code pour désigner autre chose que ce qu'il devait désigné), elle ne permettait pas aisément de faire une recherche.
+\begin Avec \LaTeX, étant donné que nous ne sommes pas dans un système WYSIWIG, elle rendait la rédaction et la relecture extrêmement pénible.
+\begin Elle était un non sens informatique et logique. 
+\end{itemize}
+
+Une métaphore simple explique le problème : supposons que vous vouliez une maison en brique rouge. Que diriez vous si votre entreprise de maçonnerie vous posait du parpaing, puis le peignait en rouge pour faire croire que c'est de la brique ? Voilà le problème fondamentale de cette méthode : elle fait prendre du parpaing (la lettre \enquote{a}) pour de la brique (la lettre \enquote{α}) en se servant d'une peinture (la police de caractères).
+
+Heureusement petit à petit une solution a émergé : elle a consisté à inventer un jeu de caractère qui puisse stocker tout les caractères présents sur la terre y compris dans le passé, tout en laissant de la place pour les caractères des civilisations extra-terrestres qu'un jour, éventuellement, nous rencontrerions. Ce jeu de caractère s'appelle unicode.
+
+Avec ce jeu de caractère, il est donc possible de mélanger allègrement de l'arabe, du vietnamien, de l'hébreu et du cyrillique dans un même fichier. Toutefois, histoire de compliquer les choses, plusieurs \emph{implémentation} de ces jeux de caractères ont été inventée, chacune présentant des avantages et des inconvénient divers (par exemple sur le volume des fichiers et les temps de recherches). La plus courante de ces implémentations est UTF-8.
+
+C'est celle que vous utilisez depuis que vous lisez ce livre, si du moins vous avez lu le chapitre \ref{commencer} \renvoi{commencer}.
+
+En un mot : Unicode dans sa variante UTF-8 est aujourd'hui la meilleur méthode pour écrire des fichiers mêlants plusieurs familles de caractères\footnote{L'auteur pense même que, étant donné la baisse des coûts de stockages et de transferts, on ne devrait plus utilisé que ce jeu de caractères. Malheureusement son expérience personnelle lui prouve que cela n'est pas encore toujours le cas, y compris chez des gens qui \enquote{font de l'informatique à longueur de journée}.}
+
+\begin{anedocte}Le lecteur narquois fera remarquer que le même problème qu'avec la méthode de la police se pose : à savoir que chaque ordinateur de travail devrait implanter Unicode et UTF-8 chez lui. 
+
+L'auteur fera remarquer qu'aujourd'hui tout les ordinateurs possèdent en natif ces possibilités, et qu'il est possible très facilement de l'installer sur des ordinateurs un peu anciens. En outre, avec Unicode ont stocke du sens, et non pas de la forme, ce qui permet une plus grande souplesse. 
+
+\end{anedocte}
+
+\subsection{Concrètement}
+
+Fort bien, fort bien, stockons en UTF-8. Mais comment on écrit en UTF-8 ? Après tout les claviers des ordinateurs vendus en Europe Occidentale\footcite{Le lecteur militant voudra bien pardonner cet ethnocentrisme.} nous n'avons pas les caractères grecs à portée.
+
+C'est tout à fait vrai : il faut ici distinguer le support physique (le clavier avec ces touches concrètes) du support logique : le fait que telle touche appuyée donne tel ou tel caractère. 
+
+Pour reprendre notre cas, il suffit de dire à notre ordinateur que la touche A correspond au caractère α. Les ordinateurs récents proposent plusieurs pilotes de clavier en standard\footnote{Sous Macintosh, cela se règle dans les Préférences Systèmes, Panneau \enquote{International}, sous Windows cela se règle dans les panneaux de configuration, panneau \enquote{options régionales et linguistiques}, sous Linux, cela dépend de votre distribution}. Toutefois ces pilotes de clavier sont généralement destinées aux langues contemporaine, et rarement adapté aux langues anciennes (par exemple pour les accents sur le grec). Heureusement on trouve aisément sur Internet des pilotes de clavier pour d'autres langues\footcite[Pour ce qui concerne le grec ancien, le syriaque, l'hébreu ancien, on pourra utiliser les claviers proposés par Michel Langlois][]{clavierLanglois}.
+
+
+\subsection{Et les changements de sens d'écriture ?}
+
+Certaines langues s'écrivent de droite à gauche, d'autres de gauche à droite. On souhaiterais que les alignements de paragraphes, les positions des titres etc. correspondent au sens de langue. 
+Comment signaler cela à LaTeX ? Le signalement des changements de langues suffit.
+
+Pour ce qui concerne l'écriture en boustrophédon, on utilisera le package \package{bidi}. Celui-ci possède des  commandes qui permette d'indiquer des changements de sens.
+
