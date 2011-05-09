@@ -1,0 +1,100 @@
+\chapter{Gérer les langues avec Xunicode et Polyglossia}\label{i18n}
+
+\begin{prealable}
+	Dans ce chapitre nous verrons manière de signaler à LaTeX les changements de langues, ainsi que les méthodes pour écrire en caractères non latins.
+\end{prealable}
+
+\section{Indiquer les changements de langues}
+
+\subsection{Pourquoi indiquer les changements de langues ?}
+
+Il existe plusieurs raisons qui incitent à indiquer les changements de langues. En voici les principales :
+\begin{enumerate}
+\item Chaque langue  a ses propres règles typographiques (espacement avant et/ou après les signes de ponctutations, par exemple). Indiquer la langue courante permet donc à \LaTeX d'adapter sa typographie.
+\item Chaque langue a ses propres règles de césure des mots : indiquer la langue permet d'avoir une césure correcte.
+\item \LaTeX indique dans le fichier généré les changements de  langues, ce qui permet aux synthétiseur vocaux \revision{Vérifier ce point} de changer la prononciation.
+\end{enumerate}
+
+
+\subsection{Commandes et environnements de changement de langue}
+
+\subsubsection{Langue principale et langues secondaires}
+
+Nous avons vu qu'on indiquait dans le préambule que le français était langue principale par la commande : \renvoi{french}
+
+\begin{minted}{latex}
+\setmainlanguage{french}
+\end{minted}
+
+Évidemment on pourrait indiquer une autre langue :  par exemple si vous écriviez votre travail en grec :
+
+\begin{minted}{latex}
+\setmainlanguage{greek}
+\end{minted}
+
+On pourrait même préciser qu'il s'agit du grec ancien\footnote{L'auteur de ces lignes aime retarder de quelques mondialisations, c'est pourquoi il préfère le grec ancien à l'anglais.}.
+
+\begin{minted}{latex}
+\setmainlanguage[variant=ancient]{greek}
+\end{minted}
+
+
+On trouvera une liste des langues disponibles et de leurs variantes dans la documentation de \package{polyglossia}\footcite{polyglossia}. Dans le cas où votre langue n'est pas disponible, trois solutions s'offrent à vous :
+\begin{itemize}
+\item Regardez si le package babel ne peut rien faire pour vous. 
+\item Écrivez à l'auteur\footnote{Du package, pas de ces lignes.} en lui présentant le nom de la langue et ses règles typographiques et de césures et demandez lui gentiment d'ajouter une langue \package{polyglossia}.
+\item Ne respecter pas les bonnes raisons d'indiquer les changements de langues.
+\end{itemize}
+
+Pour pouvoir indiquer des changements de langues, il faut déclarer dans le préambule des langues secondaires, par la commande :
+
+\begin{minted}{latex}
+\setotherlanguage[options]{codelang}
+\end{minted}
+
+où \verb|codelang| est remplacé par le code de la langue (par exemple \verb|greek|)
+
+Ici les options sont principalement les variantes, mais il peut également s'agir d'option d'affichage des nombres ou des dates : voir le manuel de \package{biblatex}.
+
+\subsection{Indiquer un changement de langue}
+
+Il existe deux manières d'indiquer un changement de langue.
+
+\subsubsection{Par une commande}
+
+On peut le faire par une commande 
+\begin{minted}{latex}
+\textcodelang[options]{texte dans une
+autre langue}
+\end{minted}
+
+ par exemple : 
+
+\begin{minted}{latex}
+\textgreek[variant=ancient]{Ἐν ἀρχῇ ἦν ὁ λόγος}
+\end{minted}
+
+\subsection{Par un environnement}
+
+Pour des textes plus longs, il peut être intéressant d'utiliser plutôt un environnement \enviro{codelang}:
+
+\begin{minted}{latex}
+\begin[options]{codelang}
+texte dans une autre langue
+\end{codelang}
+\end{minted}
+
+\subsection{Le problème du latin}
+
+L'auteur du package \package{polyglossia} étant anglophone, il l'a créé de telle sorte que le latin respecte la typographie latine. Ainsi le francophone aura quelque soucis s'il met des espaces avant les signes typographiques doubles dans un environnement \enviro{latin} ou dans une commande \commande{textlatin}.
+Pourtant il pourrait vouloir utiliser cet environnement ou cette commande, afin d'avoir un respect des césures latines.
+
+Pour ce faire, il devra redéfinir l'environnement \enviro{latin} par le code suivant :
+
+\begin{minted}{latex}
+\renewenvironment{latin}{\begin{hyphenrules}{latin}}{\end{hyphenrules}}
+\end{minted}
+
+\begin{anedocte}
+La commande \commande{renewenvironnement} redéfinit un environnement, ici \enviro{latin}. Le deuxième argument de la commande indique ce qui se passe lors que l'on ouvre l'environnement, le troisième argument ce qui se passe lorsqu'on l'on ferme l'environnement. L'environnement \enviro{hyphenrules} indique un changement de règle de césures.
+\end{anedocte}
