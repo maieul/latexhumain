@@ -1,4 +1,4 @@
-\e{Gérer les langues avec Xunicode et Polyglossia}\label{i18n}
+\chapter{Gérer les langues avec Xunicode et Polyglossia}\label{i18n}
 
 \begin{prealable}
 	Dans ce chapitre nous verrons manière de signaler à LaTeX les changements de langues, ainsi que les méthodes pour écrire en caractères non latins.
@@ -120,10 +120,10 @@ Mais certaines personnes souhaitaient mélanger des caractères de divers alphab
 
 Par exemple, pour écrire le caractère grec \enquote{α} ont écrivait le caractère latin \enquote{a} et disait qu'on l'affichait dans la police SPIonic. Cette méthode posait (et pose encore) de nombreux problèmes :
 \begin{itemize}
-\begin Elle nécessitait que la police soit présente sur toutes les machines de travail.
-\begin Ne stockant pas l'information exacte sur le caractère (puisqu'elle utilise un code pour désigner autre chose que ce qu'il devait désigné), elle ne permettait pas aisément de faire une recherche.
-\begin Avec \LaTeX, étant donné que nous ne sommes pas dans un système WYSIWIG, elle rendait la rédaction et la relecture extrêmement pénible.
-\begin Elle était un non sens informatique et logique. 
+\item Elle nécessitait que la police soit présente sur toutes les machines de travail.
+\item Ne stockant pas l'information exacte sur le caractère (puisqu'elle utilise un code pour désigner autre chose que ce qu'il devait désigné), elle ne permettait pas aisément de faire une recherche.
+\item Avec \LaTeX, étant donné que nous ne sommes pas dans un système WYSIWIG, elle rendait la rédaction et la relecture extrêmement pénible.
+\item Elle était un non sens informatique et logique. 
 \end{itemize}
 
 Une métaphore simple explique le problème : supposons que vous vouliez une maison en brique rouge. Que diriez vous si votre entreprise de maçonnerie vous posait du parpaing, puis le peignait en rouge pour faire croire que c'est de la brique ? Voilà le problème fondamentale de cette méthode : elle fait prendre du parpaing (la lettre \enquote{a}) pour de la brique (la lettre \enquote{α}) en se servant d'une peinture (la police de caractères).
