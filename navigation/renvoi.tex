@@ -1,0 +1,98 @@
+\chapter{Renvois internes}\label{label}
+
+\begin{prealable}
+Dans ce court chapitre nous allons nous intéresser à la manière des renvois à l'intérieur d'un document.
+Il s'agit de permettre d'afficher des textes du type : \enquote{Nous renvoyons au chapitre N. page P.}
+\end{prealable}
+
+\section{Étiqueter des  emplacements : la commande \commande{label}}
+
+Pour permettre de faire des renvois internes, il est nécessaire de placer des \enquote{étiquettes} aux endroits vers lesquels on souhaite renvoyer.
+Cet étiquetage  se fait avec la commande \commande{label{etiquette}}.
+
+
+
+\section{Se servir des étiquettes}
+
+Après avoir avoir placé des étiquettes, on peut y renvoyer. Il suffit de placer des commandes de renvois aux endroits souhaités. \emph{Toutefois il est nécessaire de compiler deux fois avec \XeLaTeX}. À la première compilation, \XeLaTeX note les emplacements des étiquettes dans un fichier. À la seconde compilation, ils lit ce fichier afin de procéder aux renvois. 
+
+\begin{attention}
+	Si vous modifier votre texte, il faudra de nouveau compiler deux fois. En effet, les numéros de pages, de titres, de légendes etc. peuvent avoir changer. Il faut donc  que \XeLaTeX les apprennent à nouveau. En résumé, pour avoir un document correcte il faut :
+	\begin{enumerate}
+		\item Compiler avec \XeLaTeX.
+		\item Compiler avec BibTeX afin d'interprété le fichier \ext{bib}.
+		\item Compiler avec \XeLaTeX.
+		\item Compiler avec \XeLaTeX (car l'ajout des références bibliographiques a pu modifié le positionnement des étiquettes).
+	\end{enumerate}
+	
+	Tout ceci peut paraître bien compliqué et risque d'entraîner des oublis. C'est pourquoi les journaux de compilations, ces lignes de textes qui apparaissent lors de la compilation avec \XeLaTeX, disent dans les dernières lignes s'il est nécessaire de compiler, et avec quel logiciel.
+\end{attention}
+
+\subsection{Renvoyer à une page}
+
+Pour renvoyer au numéro de page correspondant à l'étiquette \forme{etiquette} il suffit d'utiliser la commande \commande{pageref}
+
+\begin{minted}{latex}
+blabla \label{etiquette}
+…
+
+Nous renvoyons à la page  \pageref{etiquette}.
+\end{minted}
+
+\subsection{Renvoyer à un numéro de section}
+
+Pour renvoyer à un numéro de section, il suffit d'utiliser la commande \commande{ref}.
+
+\begin{minted}{latex}
+\section{Section} \label{etiquette}
+…
+Nous renvoyons à la section  \ref{etiquette}.
+\end{minted}
+ 
+\subsection{Renvoyer à un titre de section}
+
+Pour renvoyer à un titre de section, il suffit d'utiliser la commande \commande{nameref}.
+
+\begin{minted}{latex}
+\section{Section} \label{etiquette}
+…
+Nous renvoyons à la section  \enquote{\nameref{etiquette}}.
+\end{minted}
+
+Toutefois cette commande n'est pas disponible en standard : elle est proposée par le package \package{hyperref}. Il faut donc charger ce package dans le préambule. Nous documentons plus loin quelques fonctionnalité de ce package\renvoi{hyperref}.
+
+\begin{anedocte}
+ Grâce au package \package{hyperref} 
+\end{anedocte}
+\section{Où placer la commande \commande{label} ?}
+
+Pour le moment, nous avons vu des renvois vers des sections, mais le système de renvois est beaucoup plus souple.
+
+Une étiquette permet de renvoyer à tout élément numéroté, comme un titre, une note de base de page, une légende de flottant. Elle peut aussi renvoyer à un endroit précis, uniquement pour la page..
+
+\begin{itemize}
+\item Si l'étiquette \commande{label} est placée \emph{dans}  une commande  d'élément numéroté, elle renvoie à cette élément. Par exemple, pour renvoyer à une figure \renvoi{legende} :
+\begin{minted}{latex}
+\begin{figure}[paramètre de placement]
+	Insertion de la figure
+	\caption{Légende\label{figure}}
+\end{figure} 
+…
+
+Nous renvoyons à la figure \ref{figure} situé page \pageref{figure}.
+\end{minted}
+\item Si la commande est placée ailleurs, elle renvoie à la page courante \emph{et à la section courante}\footnote{En réalité il est possible de placer \emph{immédiatement} après un élément numéroté pour y renvoyer, mais cela ne s'applique pas aux notes de bas de pages.}.
+\end{itemize}
+
+\section{Comment nommer ses étiquettes ?}
+
+Vous êtes bien sûr libre de trouver votre propre système de nommage d'étiquette. Toutefois il est d'avoir quelque chose de la forme : \forme{type:nom}, où \forme{forme} désigne le type d'élément vers lequel on renvoie.
+
+Exemples :
+
+\begin{minted}{latex}
+\footnote{Blabla \label{note:nom}}
+\section{Titre \label{section:nom}}
+\end{minted}
+
+
