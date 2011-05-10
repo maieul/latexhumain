@@ -87,12 +87,55 @@ On peut alors passer l'argument \argument{keyword} à la commande \commande{prin
 \printbibliography[keyword=xxx]
 \end{minted}
 
-À contrario, on peut afficher toutes les entrées n'ayant pas la valeur \forme{xxx} dans leurs champs \champ{keywords}
+À contrario, on peut afficher toutes les entrées n'ayant pas la valeur \forme{xxx} dans leurs champs \champ{keywords}.
 
 \begin{minted}{latex}
 \printbibliography[notkeyword=xxx]
 \end{minted}
 
+
 \section{Trier une bibliographie par section du document}
 
-On peut aussi vouloir afficher une bibliographie correspondant à une section de document, par exemple un chapitre.
+On peut aussi vouloir afficher une bibliographie correspondant à une partie du document, par exemple un chapitre. BibLaTeX propose cela grâce à la définition de \concept{segment bibliographique} : un segment bibliographique étant une partie de document ayant sa bibliographie propre\footnote{En réalité \package{BibLaTeX} propose deux choses différentes : \enquote{segment} et \enquote{section} bibliographique. Seul les sections bibliographiques ont \enquote{réellement} une bibliographie propre, dans la mesure où, si on utilise un style \enquote{numeroté} de bibliographie, la numérotation recommence à chaque changement de section, mais pas à chaque changement de segment. Toutefois il est rare en science humaine d'utiliser un style bibliographique numéroté. C'est pourquoi nous ne parlons ici que des segments bibliographiques et non pas des sections bibliographiques. Voir le manuel pour plus de détails.} 
+
+La méthode la plus simple est de passer un argument \argument{refsegment} lors de l'appel au package \package{biblatex}. La valeur de cet argument peut-être \forme{part},\forme{chapter}, \forme{section}, \forme{subsection}, qui indique à quelle niveau de titre commencer une nouvelle section bibliographique\footcite[Il est toutefois possible de créer des sections bibliographiques autrement que suivante les niveaux de titre : voir]{exemplebibsegment}.
+
+Chaque segment bibliographique possède un nombre, compris entre 0 et N. On peut connaître la valeur du segment courant grâce à la commande \commande{therefsegment}.
+
+On peut ainsi afficher à la fin de chaque chapitre un bibliographie du chapitre :
+
+\begin{minted}{latex}
+\documentclass{…}
+…
+\usepackage[segment=chapter]{biblatex}
+\defbibheading{bibliography}[\bibname]{\section{#1}}
+…
+\begin{document}
+\chapter{…}
+…
+\printbibliography[segment=\therefsegment]
+\chapter{…}
+…
+\printbibliography[segment=\therefsegment]
+\end{document}
+\end{minted}
+
+\section{Autre manière de diviser une bibliographie}
+
+\package{BibLaTeX} propose de nombreuses autres manières de diviser une bibliographie : ainsi il est possible de définir des filtres personnalisés pour ne sélectionner que les entrées répondant à certains critères, d'assigner des \enquote{catégories} à certaines entrées, etc. Nous n'avons présenté ici qu'un aperçu des usages les plus courants : nous renvoyons à la documentation de BibLaTeX pour plus de détails\footcite{biblatexdivisionbiblio}.
+
+\section{Ajout de références non citées}
+
+On peut vouloir ajouter dans une bibliographie des références qui n'ont pas été explicitement citées. Il faut pour ce faire utiliser la commande \commande{nocite}.
+
+\begin{minted}{latex}
+\nocite{clef1,clef2,…}
+\end{minted}
+
+
+Pour ajouter l'ensemble des références d'un fichier \ext{bib} il suffit d'écrire :
+\begin{minted}{latex}
+\nocite{*}
+\end{minted}
+
+\section{Tri à l'intérieur d'une bibliographie}
