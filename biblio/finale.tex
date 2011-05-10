@@ -1,0 +1,98 @@
+\chapter{Afficher la bibliographie}
+
+\begin{prealable}
+
+Dans ce chapitre nous allons voir comment afficher et trier une bibliographie.
+\end{prealable}
+
+
+\section{Affichage de la bibliographie}
+
+La commande \commande{printbibliography} est la commande de base pour imprimer une bibliographie. Si vous l'essayez dans votre projet, vous obtiendrez une bibliographie reprenant l'ensemble des œuvres que vous avez cité au cours de votre travail. Ainsi, vous êtes certains de ne rien oublier.
+
+Toutefois une telle bibliographie est peu utile : elle mélange allègrement sources primaires et études secondaires, ne distingue pas selon les chapitres etc. Nous allons donc voir maintenant comment sectionner une bibliographie en plusieurs morceaux.
+
+\section{Trier une bibliographie par catégorie de document}
+
+Une première manière de trier une bibliographie peut être selon le type de document. Les entrées bibliographiques peuvent avoir un champ \champ{entrysubtype} qui permet de préciser le type d'entrée (par exemple, préciser si une entrée est une lettre, un traité, une prédication etc.). On peut passer à la commande \commande{printbibliography} un argument afin de n'afficher que certains types de documents. Supposons que nous ne souhaitons afficher que les entrées dont le champ \champ{entrysubtype} a pour valeur \enquote{lettre}. Il suffit d'écrire :
+
+\begin{minted}{latex}
+\printbibliography[subtype=lettre]
+\end{latex}
+
+On peut passer un argument \argument{title} afin de préciser le titre de notre bibliographie :
+
+\begin{minted}{latex}
+\printbibliography[subtype=lettre,title=Lettres]
+\end{latex}
+
+Une telle méthode permet aisément de séparer une bibliographie en plusieurs parties selon les catégories de documents.
+
+\begin{minted}{latex}
+\printbibliography[subtype=concile,title=Actes de conciles]
+\printbibliography[subtype=traite,title=Traités]
+\printbibliography[subtype=lettre,title=Lettres]
+…
+
+\end{minted}
+
+\section{Changer le niveau de titre d'une bibliographie}
+
+Par défaut, les titres de bibliographie sont de niveaux \commande{chapter*}\renvoi{niveautitre}. Mais il est possible de redéfinir ces titres, grâce à la commande \commande{defbibheading}.
+
+Imaginons que je souhaite que le titre de la bibliographie soit de niveau \commande{subsection}
+
+\begin{minted}{latex}
+\defbibheading{bibliography}[\bibname]{\subsection{#1}}
+\end{minted}
+
+Analysons ce code :
+\begin{enumerate}
+\item Le premier argument correspond au nom de l'entête de bibliographie (du titre de bibliographie). L'entête nommé \forme{bibliography} est celui utilisé par défaut. Mais on pourrait très bien définir un entête \forme{toto}, il suffirait alors de passer un argument \argument{heading} à la commande \commande{printbibliography}.
+
+\begin{minted}{latex}
+\defbibheading{toto}[\bibname]{\subsection{#1}}
+\printbibliography[heading=toto]
+\end{minted}
+
+\item Le second argument, ici \commande{bibname} correspond au titre par défaut. Dans notre cas, la commande \commande{bibname} renvoie simplement la valeur \forme{bibliography}.
+\item Le troisième argument contient le code qui sera appelé pour créer l'entête d'une bibliographie. Ici on déclare qu'on passe le titre (le \verb|#1| à une commande \commande{subsection}
+\end{enumerate}
+
+
+Avec une telle méthode, il est aisée de trier une bibliographie en sources primaires et sources secondaires. Il suffit d'attribuer une valeur au champ \champ{entrysubtype} des entrées bibliographiques, en donnant une valeur différente selon qu'il s'agit d'une source primaire ou d'une source secondaire.
+
+Par exemple
+\begin{minted}{latex}
+\defbibheading{bibliography}[\bibname]{\subsection{#1}}
+\chapter{Bibliographie}
+\printbibliography[subtype=traite,title=Traités]
+\printbibliography[subtype=lettre,title=Lettres]
+\section{Sources}
+
+
+\section{Littérature secondaire}
+\printbibliography[subtype=outil,title=Outils]
+\printbibliography[check=memoire,subtype=etude,title=Études]
+
+\end{minted}
+
+\section{Trier une bibliographie par sujet}
+
+Une autre manière de trier sectionner une bibliographie est de faire des parties thématiques. Pour cela, une solution indiquer des mots-clefs dans le champ \champ{keywords} des entrées bibliographiques. Les mots clefs doivent être séparés par des virgules.
+
+On peut alors passer l'argument \argument{keyword} à la commande \commande{printbibliography}. On peut ainsi sélectionner toutes les entrées ayant la valeur \forme{xxx} dans leurs champs \champ{keywords} :
+
+\begin{minted}{latex}
+\printbibliography[keyword=xxx]
+\end{minted}
+
+À contrario, on peut afficher toutes les entrées n'ayant pas la valeur \forme{xxx} dans leurs champs \champ{keywords}
+
+\begin{minted}{latex}
+\printbibliography[notkeyword=xxx]
+\end{minted}
+
+\section{Trier une bibliographie par section du document}
+
+On peut aussi vouloir afficher une bibliographie correspondant à une section de document, par exemple un chapitre.
