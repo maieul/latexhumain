@@ -139,3 +139,47 @@ Pour ajouter l'ensemble des références d'un fichier \ext{bib} il suffit d'écr
 \end{minted}
 
 \section{Tri à l'intérieur d'une bibliographie}
+
+Vous aurez constaté que la bibliographie est triée par nom d'auteur, puis par titre, puis par année. Il est possible de passer un argument \argument{sorting} lors de l'appel au package \package{biblatex}. Cet argument prend pour valoir l'un des schémas de tri proposés par BibLaTeX ou bien définis par vos soins\footcites[Pour les schémas de tri standards voir][]{biblatextri}[pour les schémas personnalisés][]{biblatextriperso}.
+
+Par exemple pour trier par nom d'auteur, année, titre :
+
+\begin{minted}{latex}
+\usepackage[sorting=nyt]{biblatex}
+\end{minted}
+
+Toutefois, on peut parfois vouloir que  la valeur utilisé pour le tri ne soit pas la valeur affichée. Prenons deux entrées, dont les titres sont \enquote{Lettre 237} et \enquote{Lettre 64}. \LaTeX va afficher dans la bibliographie finale
+\enquote{Lettre 64} \emph{après} \enquote{lettre 237}. 
+
+En effet, \package{BibLaTeX} ne reconnait pas le nombre \forme{237} mais seulement le caractère {2}, puis le caractère \forme{3} etc. C'est pourquoi il place la lettre 237 avant la lettre 64, 2 se situe avant 6.
+
+Pour contourner ce problème, on peut utiliser le champ \champ{sorttitle}. Celui-ci ne sera pas affiché mais prend la priorité sur le le champ \champ{title} pour ce qui concerne le tri dans la bibliographie finale.  Voici ce que donne nos deux entrées :
+\begin{minted}{latex}
+@book{AugustinEpi64,
+	Author = {Augustin},
+	Sorttitle = {Lettre 064},
+	Title = {Lettre 64}}
+	
+@book{AugustinEpi237,
+	Author = {Augustin},
+	Sorttitle = {Lettre 237},
+	Title = {Lettre 237},
+\end{minted}
+
+Comme \forme{0} se situe avant \forme{2}, la lettre 64 sera bien située avant la lettre 237. Pour autant il y aura bien écrit \enquote{Lettre 64} et non pas \enquote{Lettre 064}.
+
+Un problème semblable peut se poser pour les œuvres anonymes : en l'absence d'auteur, BibLaTeX se sert du titre comme premier critère de tri, ce qui a pour conséquent de disperser toutes les œuvres anonymes au sein de la bibliographie, plutôt que de les mettre à un seul endroit, par exemple tout au début.
+
+Pour résoudre ce problème, il suffit d'utiliser le champ \champ{sortname}, et lui attribuant la valeur \forme{0}.
+
+Par exemple :
+
+\begin{minted}{latex}
+@book{clef,
+	Sortname = {0},
+	Title = {Œuvre anonyme}
+\end{minted}
+
+Notre entrée \forme{clef} apparaîtra dans la bibliographie en tout début, avant même Augustin.
+
+Il existe également un champ \champ{sortyear} pour préciser une autre année de tri. 
