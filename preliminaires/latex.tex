@@ -1,10 +1,10 @@
-\chapter{\LaTeX : définition et intérêts}
+\chapter{\LaTeX{} : définition et intérêts}
 
 \begin{prealable}
- Dans ce chapitre nous allons vous présentez brièvement \LaTeX et les raisons pour lesquelles nous pensons que son apprentissage est utile pour la rédaction de travaux de sciences humaines.
+ Dans ce chapitre nous allons vous présentez brièvement \LaTeX{} et les raisons pour lesquelles nous pensons que son apprentissage est utile pour la rédaction de travaux de sciences humaines.
 \end{prealable}
 
-\section{Pourquoi \LaTeX ?}
+\section{Pourquoi \LaTeX{} ?}
 
 \subsection{Inconvénient des traitements de textes}
 
@@ -15,7 +15,7 @@ Quand vous rédigez un texte dans votre traitement de texte, comme par exemple M
 \item D'autre part il vous affiche à l'écran le rendu \enquote{physique} de votre texte (justifications, gras, italiques etc), tel qu'un lecteur en disposera.
 \end{itemize}
 
-Pour cette raison on appelle ce type de logiciel WYSIWYG, ce qui en anglais signifie \textenglish{What You See Is What You Get}\footnote{\enquote{Ce que vous voyez est ce que vous faite}.}. 
+Pour cette raison on appelle ce type de logiciel WYSIWYG, ce qui en anglais signifie \TeX{}tenglish{What You See Is What You Get}\footnote{\enquote{Ce que vous voyez est ce que vous faite}.}. 
 
 Cette combinaison de deux fonctions différentes des traitement de texte à trois conséquences :
 
@@ -36,26 +36,26 @@ Cette combinaison de deux fonctions différentes des traitement de texte à troi
 
 En outre, si les traitements de textes récents disposent d'outils de gestions de bibliographies, ceux-ci manquent en général de souplesse, ce qui fait qu'ils sont rarement utilisés. Ainsi nombreux sont les auteurs à écrire directement leurs bibliographie \enquote{à la main} en tapant directement : Nom de l'Auteur, \emph{Titre}, etc. En cas d'erreur ils faut donc corriger l'ensemble des endroits où l'œuvre est citée.
 
-\subsection{Avantage de \LaTeX}
+\subsection{Avantage de \LaTeX{}}
 
-Caricaturalement, \LaTeX permet de résoudre l'ensemble des problèmes des traitement de texte. En effet, \LaTeX sépare deux étapes : 
+Caricaturalement, \LaTeX{} permet de résoudre l'ensemble des problèmes des traitement de texte. En effet, \LaTeX{} sépare deux étapes : 
 
 \begin{itemize}
 \item L'étape de rédaction, qui se passe dans un éditeur de texte. L'auteur frappe son texte et indique par un certain nombre de commande sa structure (titres, paragraphes, notes de bas de pages).
-\item L'étape de calcul de l'affichage se fait ensuite : l'auteur fait passer son fichier par un \notion{compositeur} (parfois aussi appelé \notion{compilateur}) \footnote{Qu'on peut sommairement décrire comme un ensemble de scripts informatiques}. Celui va lire l'ensemble des commandes du fichiers et va produire un nouveau fichier au format \ext{.pdf}\footnote{Historiquement \LaTeX produisait un autre format de fichier : \ext{dvi}. Mais pour notre propos, cela n'a pas d'importance : dans ce livre nous n'utiliserons que la production de \ext{pdf}.}
+\item L'étape de calcul de l'affichage se fait ensuite : l'auteur fait passer son fichier par un \notion{compositeur} (parfois aussi appelé \notion{compilateur}) \footnote{Qu'on peut sommairement décrire comme un ensemble de scripts informatiques}. Celui va lire l'ensemble des commandes du fichiers et va produire un nouveau fichier au format \ext{.pdf}\footnote{Historiquement \LaTeX{} produisait un autre format de fichier : \ext{dvi}. Mais pour notre propos, cela n'a pas d'importance : dans ce livre nous n'utiliserons que la production de \ext{pdf}.}
 \end{itemize}
 
 Cette séparation permet :
 \begin{itemize}
-\item Une qualité typographique supérieure :  le compositeur n'étant pas contraint par la nécessité d'un affichage en temps réels, il peut faire des calculs plus lourds : ainsi par exemple \LaTeX produit des césures typographiques et non pas des blancs à géométrie variables.
+\item Une qualité typographique supérieure :  le compositeur n'étant pas contraint par la nécessité d'un affichage en temps réels, il peut faire des calculs plus lourds : ainsi par exemple \LaTeX{} produit des césures typographiques et non pas des blancs à géométrie variables.
 \item Une meilleur séparation du sens et de la forme\footnote{Qui répétons le est toutefois possible avec les logiciels WYSIWYG.} puisque l'auteur donne uniquement des indications de sens.
 \end{itemize}
 
-En outre \LaTeX possède un système de gestion de la bibliographie extrêmement puissant. Cela permet à l'auteur de séparer le contenu de sa bibliographie (titres, auteurs etc.) de son affichage (faut-il mettre des \emph{op. cit.}, et si oui où, faut-il mettre uniquement les initiales des prénoms ou les prénoms en entier etc.).
+En outre \LaTeX{} possède un système de gestion de la bibliographie extrêmement puissant. Cela permet à l'auteur de séparer le contenu de sa bibliographie (titres, auteurs etc.) de son affichage (faut-il mettre des \emph{op. cit.}, et si oui où, faut-il mettre uniquement les initiales des prénoms ou les prénoms en entier etc.).
 
-Cette séparation entre contenu de la bibliographie et affichage est utile non seulement aux auteurs mais aussi aux éditeurs. En effet, si l'auteur structure correctement sa base de donnée bibliographique\renvoi{bddbiblio} l'éditeur peut adapter l'affichage de la bibliographie à ses propres règles : quelques scripts informatiques, voir l'utilisation de \LaTeX lui permettra d'afficher les éléments des entrée bibliographiques dans l'ordre désirée.
+Cette séparation entre contenu de la bibliographie et affichage est utile non seulement aux auteurs mais aussi aux éditeurs. En effet, si l'auteur structure correctement sa base de donnée bibliographique\renvoi{bddbiblio} l'éditeur peut adapter l'affichage de la bibliographie à ses propres règles : quelques scripts informatiques, voir l'utilisation de \LaTeX{} lui permettra d'afficher les éléments des entrée bibliographiques dans l'ordre désirée.
 
-La gestion d'une bibliographie est à la fois l'un des travaux les plus importants en sciences humaines \emph{et} l'un des plus pénibles, avec des nombreuses sources d'erreurs possibles. Cette simple raison suffit aux yeux des auteurs à préférer \LaTeX à un logiciel de traitement de texte\footnote{Les deux auteurs se sont décidés à utiliser \LaTeX dans le cadre de leurs travaux universitaires, et l'élément déclencheur du choix a été la facilité et la souplesse de la gestion bibliographique.}.
+La gestion d'une bibliographie est à la fois l'un des travaux les plus importants en sciences humaines \emph{et} l'un des plus pénibles, avec des nombreuses sources d'erreurs possibles. Cette simple raison suffit aux yeux des auteurs à préférer \LaTeX{} à un logiciel de traitement de texte\footnote{Les deux auteurs se sont décidés à utiliser \LaTeX{} dans le cadre de leurs travaux universitaires, et l'élément déclencheur du choix a été la facilité et la souplesse de la gestion bibliographique.}.
 
 \subsection{Qu'est qu'un éditeur de texte ?}
 
@@ -74,29 +74,38 @@ Toutefois les bon éditeurs de textes font plus que permettre d'écrire dans un 
 \item Ils proposent parfois un affichage du plan du travail.
 \end{itemize}
 
-Certains de ces traitements de textes sont généralistes et adaptés à plusieurs langages informatiques\footnote{Par exemple le \LaTeX et le HTML, ce dernier étant utilisé pour les sites internet}. D'autres sont spécialisés dans tel ou tel langage : ils proposent en général des outils supplémentaires propres au langage de spécialisation. 
+Certains de ces traitements de textes sont généralistes et adaptés à plusieurs langages informatiques\footnote{Par exemple le \LaTeX{} et le HTML, ce dernier étant utilisé pour les sites internet}. D'autres sont spécialisés dans tel ou tel langage : ils proposent en général des outils supplémentaires propres au langage de spécialisation. 
 
-Par exemple les éditeurs spécialisés en \LaTeX proposent des boutons spécifiques afin de lancer le compositeur \LaTeX.
+Par exemple les éditeurs spécialisés en \LaTeX{} proposent des boutons spécifiques afin de lancer le compositeur \LaTeX{}.
 
-Pour commencer en \LaTeX il vous faudra donc abandonner votre ancien traitement de texte et choisir un éditeur de texte spécialisé en \LaTeX : nous en listons plusieurs en annexes.\renvoi{annexe:editeurs}.
+Pour commencer en \LaTeX{} il vous faudra donc abandonner votre ancien traitement de texte et choisir un éditeur de texte spécialisé en \LaTeX{} : nous en listons plusieurs en annexes.\renvoi{annexe:editeurs}.
 
-\section[TeX, LaTeX, XeTeX, XeLaTeX : points communs et différences]{\TeX, \LaTeX, \XeTeX et \XeLaTeX : points communs et différences}
+\section[TeX, LaTeX, XeTeX, XeLaTeX : points communs et différences]{\TeX{}, \LaTeX{}, \XeTeX{} et \XeLaTeX{} : points communs et différences}
 
-Dans ce chapitre nous avons parlé de \LaTeX. Le titre de ce livre parle pourtant  de \XeLaTeX. Quels est la différence ? Voici un brève explication historique, très simplifiée\footnote{Le lecteurs curieux trouvera aisément de la documentation plus détaillée sur le sujet.}.
+Dans ce chapitre nous avons parlé de \LaTeX{}. Le titre de ce livre parle pourtant  de \XeLaTeX{}. Quels est la différence ? Voici un brève explication historique, très simplifiée\footnote{Le lecteurs curieux trouvera aisément de la documentation plus détaillée sur le sujet.}.
 
 \begin{enumerate}
-\item En 1977 Donal Knuth \TeX qui était un simple compositeur de texte, capable de transformer un texte structuré par des commandes en un texte mise en forme. Avec \TeX on pouvait également inventé ses propres commandes.
-\item L'utilisation de \TeX était relativement complexe. Pour simplifier cela Leslie Lamport a créé un ensemble de commandes \TeX. Cette ensemble de commande a permis de former le langage \LaTeX et le compositeur associé.
-\item Par la suite un compositeur dérivé de \TeX a été créé : \XeTeX. Ce compositeur permet deux choses :
+\item En 1977 Donal Knuth \TeX{} qui était un simple compositeur de texte, capable de transformer un texte structuré par des commandes en un texte mise en forme. Avec \TeX{} on pouvait également inventé ses propres commandes.
+\item L'utilisation de \TeX{} était relativement complexe. Pour simplifier cela Leslie Lamport a créé un ensemble de commandes \TeX{}. Cette ensemble de commande a permis de former le langage \LaTeX{} et le compositeur associé.
+\item Par la suite un compositeur dérivé de \TeX{} a été créé : \XeTeX{}. Ce compositeur permet deux choses :
 \begin{itemize}
 	\item Une gestion native de l'ensemble des écritures mondiales, par le biais du jeu de caractère Unicode\renvoi{utf8}.
 	\item Une gestion native des nouvelles polices de caractères au format OpenType\footnote{Le lecture curieux trouvera aisément de la documentation techniques sur le sujet.}, apparus au début des années 2000.
 
 \end{itemize} 
-\item Pour permettre d'utiliser les commandes de \LaTeX avec \TeX on a créé \XeLaTeX.
+\item Pour permettre d'utiliser les commandes de \LaTeX{} avec \TeX{} on a créé \XeLaTeX{}.
 \end{enumerate}
 
-Dans  ce livre nous parlerons de \XeLaTeX. Toutefois comme la plupart de nos propos peuvent s'appliquer indifféremment  à \LaTeX et à \XeLaTeX, nous parlerons de \LaTeX, sauf lorsque nous signalerons une spécificité de \XeLaTeX.
+On peut résumer les liens entre \TeX{}, \LaTeX{}, \XeTeX{} et \XeLaTeX{} par le schéma \ref{sch:tex} (p. \pageref{sch:tex}).
+
+\begin{figure}[ht]
+\centering
+\input{schemas/tex}
+\caption{Les relations entre \TeX{}, \LaTeX{}, \XeTeX{} et \XeLaTeX{}}\label{sch:tex}
+\end{figure} 
+
+Dans  ce livre nous parlerons de \XeLaTeX{}. Toutefois comme la plupart de nos propos peuvent s'appliquer indifféremment  à \LaTeX{} et à \XeLaTeX{}, nous parlerons de \LaTeX{}, sauf lorsque nous signalerons une spécificité de \XeLaTeX{}.
+
 \begin{anedocte}
-Bien que le sujet soit controversé, il semblerait qu'on prononcerait le  \forme{X} de \TeX comme un \forme{χ} grec\footnote{\forme{Latek}}, car le nom \TeX viendrait du mot grec \forme{\textgreek{τέχνη}} : \forme{art, sciences}
+Bien que le sujet soit controversé, il semblerait qu'on prononcerait le  \forme{X} de \TeX{} comme un \forme{χ} grec\footnote{\forme{Latek}}, car le nom \TeX{} viendrait du mot grec \forme{\TeX{}tgreek{τέχνη}} : \forme{art, sciences}
 \end{anedocte}
