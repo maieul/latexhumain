@@ -1,6 +1,114 @@
 \section{Création de tableau}
 
-La création de tableau en \LaTeX bien que de prime abord simple nécessite pour autant une extrême rigueur.
+\begin{attention}
+La création de tableau en \LaTeX nécessite  une extrême rigueur. 
+
+C'est à nos yeux l'un des éléments les plus complexe de \LaTeX. C'est pourquoi nous ne ferons ici qu'un bref aperçu : on trouvera aisément des exemples plus détaillés dans d'autres ouvrages ou sur internet.
+
+\end{attention}
+
+\subsection{Syntaxe de base}
+
+La création d'un tableau simple se fait grâce à l'environnement \enviro{table}, d'après la syntaxe suivante :
+
+\begin{minted}{latex}
+\begin{tabular}{type de colonnes}
+	Cellule & Cellule & Cellule \\
+	Cellule & Cellule & Cellulle \\
+\end{tabular}
+\end{minted}
+
+Le caractère \verb|&| marquent un changement de cellule. Les \verb|\\| marquent un changement de ligne.
+
+L'argument \argument{type de colonnes} de l'environnement \enviro{tabular} sert à préciser :
+\begin{enumerate}
+	\item Le nombre de cellules.
+	\item Le formatage du texte à l'intérieur des cellules.
+	\item Éventuellement les séparateurs verticaux de cellules.
+	
+\end{enumerate}
+
+Il existe trois types possibles de colonnes,  qui précisent l'alignement des textes :
+
+\begin{itemize}
+	\item \verb|l| Alignement à gauche.
+	\item \verb|c| Centré.
+	\item \verb|r| Alignement à droite.
+\end{itemize}
+
+Supposons que nous ayons un tableau à 3 colonnes. Nous souhaitons que les cellules de la première colonnes soient alignées à gauche, celles de la seconde centrées et celle de la dernière alignées à droite\footnote{Il s'agit ici d'une dérogation au principe de séparation de fond et de forme. Toutefois le lecteur l'ayant assimulé pourra aisément contourner cette dérogation et revenir dans le droit chemin}.  
+
+Il nous faudra alors écrire :
+
+\inputminted{exemples/premierpas/nontextuels/tableau3colonnes.tex}
+
+
+\input{exemples/premierpas/nontextuels/tableau3colonnes}
+
+
+Par défaut, le tableau va prendre la largeur minimale nécessaire à son affichage. Toutefois il peut être pratique d'indiquer des tailles de colonnes : en particulier lorsque nos cellules contiennent des paragraphes.
+
+Pour ce faire trois types supplémentaires de colonnes nous sont proposés par le package \package{array}\footnote{En réalité le premier argument ne nécessite pas le package}. Ces alignements, à la différences des précédents, déterminent une largeur de colonne. Ils nécessitent pour être utilisés de connaître les unités de mesure de LaTeX\renvoi{unite}. 
+
+Ces trois types de colonnes sont :
+\begin{itemize}
+	\item\verb|p{largeur}| : texte justifié et verticalement aligné en haut des cellules.
+	\item\verb|m{largeur}| texte justifié et verticalement aligné au centre des cellules.
+	\item \verb|b{largeur}| texte justifié et verticalement aligné au pied des cellules.
+\end{itemize}
+
+Exemple 
+
+\inputminted{exemples/premierpas/nontextuels/tableau3colonnesarray.tex}
+\input{exemples/premierpas/nontextuels/tableau3colonnesarray}
+
+\revision{Ca va pas là : les alignements ne sont pas bon : à revoir}
+
+\begin{anedocte}
+
+Il est possible de créer ses propres types de colonnes. Afin par exemple d'avoir des types de colonnes avec une typographie particulière. Nous en parlons dans la section avancée de ce livre.
+\end{anedocte}
+\subsubsection{Séparation des cellules}
+
+On peut tracer des filets de séparations des cellules : pour tracer un filet de séparation horizontal, il suffit d'utiliser la commande \commande{hline}. Pour un filet de séparation vertical, il faut utiliser mettre le caractère \verb|l|\footnote{Ce caractère, appelé \forme{pipe} ne doit pas être confondu avec un l.} entre les types de cellules.
+
+\inputminted{exemples/premierpas/nontextuels/tableauseparateur.tex}
+\input{exemples/premierpas/nontextuels/tableauseparateur}
+
+\subsubsection{Fusion de cellules}
+
+Il est possible de fusionner des cellules. Pour une fusion de colonnes, il faut utiliser la syntaxe suivante :
+
+
+
+
+
+\begin{minted}{latex} 
+\multicolumn{nombcol}{type}{contenu}
+\end{minted}
+
+\begin{itemize}
+
+\item \argument{nombcol} est le nombre de colonne à fusionner.
+\item \argument{type} est le type de colonne qui en résulte, selon la syntaxe vu plus haut.
+\item \argument{contenu} est le contenu de la ligne fusionné.
+\end{itemize}
+
+Pour une fusion de lignes, il faut charger le package \package{multirow}. Celui-ci propose une commande \commande{multirow} dont voici la syntaxe simplifiée\footnote{Simplifiée car nous ne présentons pas les arguments optionnels : nous renvoyons à la documentation.}.
+
+
+\begin{minted}{latex}
+\multirow{lignes}{largeur}{contenu}
+\end{minted}
+
+\begin{itemize}
+\item \argument{lignes} est le nombre de lignes concernées par la fusion.
+\item \argument{largeur} est la largeur du texte. On peut mettre \verb|*| pour laisser \LaTeX{} s'en charger.
+\item \argument{contenu} est le contenu de la cellule issue de la fusion.
+\end{itemize}
+
+\inputminted{exemples/premierpas/nontextuels/tableaufusion.tex}
+\input{exemples/premierpas/nontextuels/tableaufusion}
 
 \subsection{Création depuis un fichier \ext{cvs}}
 
@@ -18,18 +126,18 @@ Toutefois pour des données simples, comme par exemple un tableau statistiques, 
 Le premier se crée  avec la commande
 
 \begin{minted}{latex}
-\CSVtotabular{fichier}{alignement}{premiere}{milieu}{dernier}
+\CSVtotabular{fichier}{type de colonnes}{premiere}{milieu}{dernier}
 \end{minted}
 
 le second avec la commande
 
 \begin{minted}{latex}
-\CSVtolongtable{fichier}{alignement}{premiere}{milieu}{dernier}
+\CSVtolongtable{fichier}{type de colonnes}{premiere}{milieu}{dernier}
 \end{minted}
 
 \begin{description}
 \item[fichier]est le nom du fichier \ext{.cvs}. La méthode pour indiquer le chemin du fichier est la même que habituelle.\renvoi{chemin}
-\item[alignement] indique les alignements de colonnes, comme vu précédemment\renvoi{alignement}.
+\item[alignement] indique les alignements de colonnes, comme vu précédemment\renvoi{type de colonnes}.
 \item[premiere] indique le contenu de la première ligne (dans le tableau que vous allez généré).
 \item[milieu] indique le contenu des lignes du milieu.
 \item[dernier] indique le contenu de la dernière ligne.
