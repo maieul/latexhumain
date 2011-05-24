@@ -1,13 +1,89 @@
-\documentclass[12pt, a4paper, oneside]{article}
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage[frenchb]{babel}
-\usepackage{csquotes} %les guillemets
-\MakeAutoQuote{«}{»} 
- \usepackage{lmodern} %une police
-\usepackage{microtype}
-\title{Faire un index}
+
+\chapter{Faire un index}
 
 
-\begin{document}
-\end{document}
+\section{Faire un index simple avec \package{MakeIndex}}
+
+
+\subsection{Principe de base}
+\begin{prealable}
+Le package se charge avec \verb|\usepackage{makeidx}|. Il faut ensuite placer dans le préambule la commande \verb|\makeindex | pour que \latex  puisse créer un index.
+\end{prealable}
+
+
+
+\subsubsection{Indexer son document}
+
+
+On indexe son document avec  la commande \verb+\index{+\emph{nom}\verb+}+. L'entrée apparaîtra dans l'index sous la forme indiquée par l'argument \emph{nom}, suivit du numéro de la page où cette commande est placée dans le texte. 
+
+Dans l'exemple qui suit, l'index comportera ainsi trois entrées: \enquote{Charlemagne}, \enquote{Hadrien} et \enquote{Autres}:
+
+\begin{listing}[ht]
+\begin{minted}[linenos]{latex}
+
+Tunc domnus rex Carolus\index{Charlemagne} supradictos itiner 
+ita peragens Romam venit et valde hornorifice a domno apostolico
+Adriano\index{Hadrien} receptus est; et aliquod dies ibi moratus
+est cum domno apostolico. Et Arighis\index{Autres} dux
+Beneventanus misit Romaldum\index{Autres} filium suum cum magnis
+muneribus, postolare de adventu iamdicti domni regis\index{Charlemagne},
+ut in Benevento non introisset, et omnes voluntates credebat neque 
+obtimates Francorum, et consilium fecerunt cum supra nominato 
+domno Carolo\index{Charlemagne} rege, ut partibus Beneventanis
+causas firmando advenisset; quod ita factum est. 
+
+
+\end{minted}
+\caption{Indexer son texte}
+\end{listing}
+
+ Lorsqu'une entrée est référencée deux fois dans la même page, cette page n'est indiquée qu'une seule fois. 
+
+\begin{attention}
+Il vaut mieux accoler la commande \verb+\index{nom}+ directement au  mot à indexer, sans laisser d'espace, pour éviter toute ambiguité en cas de changement de page.
+
+\end{attention}
+
+%% Ne faudrait-il pas créer un environnement mettre "Remarque"? qui irait mieux que anecdote par ex pour certains endroits plutôt que "Anecdote" ou attention? Ici, par exemple( ou ds le chapitre notion de base, sur babel)
+L'indexation d'un texte n'est pas automatique: il faut placer \verb+\index+ à chaque endroit  que l'on veut référencer. Pour éviter d'oublier, dans cette démarche fastidieuse, de référencer certaines occurences, on  peut bien sûr créer une commande  spécifique.
+
+Ainsi, pour indexer automatiquement tous les noms propres d'un texte, déclarons la commande suivante:\\
+ \verb+\newcommand\nom[2]{#1~\textsc{#2}\index{\textsc{#2}, #1}}+\\
+Il suffira ensuite, au cours de la rédaction de son texte, de taper par exemple \verb|\nom{Victor}{Hugo}| pour obtenir \enquote{Victor \textsc{Hugo}} dans le cours de son texte, indexé sous l'entrée \enquote{\textsc{Hugo}, Victor}.
+
+
+\subsubsection{Générer l'index}
+
+
+ Lors de la première compilation, la commande \verb|\makeindex | indique à \latex de créer un fichier de type \fichier{exemple.idx}, contenant la liste de toutes les entrées que l'on a placé. Chaque entrée se présente de la manière suivante:\\
+\verb+\indexentry{nom de l'entrée}{numéro de la page}+.
+
+On compile ensuite le document en tapant dans le terminal \\ \verb+\makeindex exemple.idx + \\
+-il est possible de ne pas indiquer l'extension .idx. \latex génère alors un fichier \fichier{exemple.ilg} qui contient les message de compilation de l'index, et un fichier \fichier{exemple.ind} qui contient l'index formaté et se présente ainsi:
+\begin{verbatim}
+\begin{theindex}
+
+  \item entrée,4
+  \item autre entrée, 5--7
+  \item troisième entrée, 3, 8	
+
+\end{theindex} 
+
+\end{verbatim}
+
+Il suffit alors de compiler à nouveau son document pour y intégrer son index, qui apparaîtra à l'emplacement que l'on aura indiqué par la commande  \verb|\printindex |.
+
+
+\subsection{Aller plus loin}
+\subsubsection{Créer des subdivisions}
+\subsubsection{Faire des références croisées}
+
++ protéger un index fragile, "customiser" son index
+
+\section{\package{SplitIndex}, ou comment faire plusieurs index}
+
+\begin{prealable}
+Nous supposons que vous avez appris à vous servir de \package{MakeIndex} avant d'apprendre à utiliser \package{SplitIndex}, car les principes de base sont les mêmes.
+\end{prealable}
+
