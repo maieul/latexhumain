@@ -48,21 +48,23 @@ Il nous faudra alors écrire :
 
 Par défaut, le tableau va prendre la largeur minimale nécessaire à son affichage. Toutefois il peut être pratique d'indiquer des tailles de colonnes : en particulier lorsque nos cellules contiennent des paragraphes.
 
-Pour ce faire trois types supplémentaires de colonnes nous sont proposés par le package \package{array}\footnote{En réalité le premier argument ne nécessite pas le package}. Ces alignements, à la différences des précédents, déterminent une largeur de colonne. Ils nécessitent pour être utilisés de connaître les unités de mesure de LaTeX\renvoi{unite}. 
+Pour ce faire trois types supplémentaires de colonnes nous sont proposés par le package \package{array}\footnote{En réalité le premier argument ne nécessite pas le package}. Ces types, à la différences des précédents, déterminent une largeur de colonne. Ils nécessitent pour être utilisés de connaître les unités de mesure de LaTeX\renvoi{unite}. 
 
 Ces trois types de colonnes sont :
 \begin{itemize}
-	\item\verb|p{largeur}| : texte justifié et verticalement aligné en haut des cellules.
-	\item\verb|m{largeur}| texte justifié et verticalement aligné au centre des cellules.
-	\item \verb|b{largeur}| texte justifié et verticalement aligné au pied des cellules.
+	\item\verb|p{largeur}| : texte justifié. La plus haute ligne du texte se trouve sur la ligne de base.
+	\item\verb|m{largeur}| texte justifié. La ligne du milieu du texte se trouve sur la ligne de base.
+	\item \verb|b{largeur}| texte justifié. La plus basse ligne du texte se trouve sur la ligne de base.
 \end{itemize}
+
+La \enquote{ligne de base} est une ligne spécifique, correspond, \emph{grosso-modo} au milieu d'une cellule.
 
 Exemple 
 
 \inputminted{exemples/premierpas/nontextuels/tableau3colonnesarray.tex}
 \input{exemples/premierpas/nontextuels/tableau3colonnesarray}
 
-\revision{Ca va pas là : les alignements ne sont pas bon : à revoir}
+
 
 \begin{anedocte}
 
@@ -70,7 +72,15 @@ Il est possible de créer ses propres types de colonnes. Afin par exemple d'avoi
 \end{anedocte}
 \subsubsection{Séparation des cellules}
 
-On peut tracer des filets de séparations des cellules : pour tracer un filet de séparation horizontal, il suffit d'utiliser la commande \commande{hline}. Pour un filet de séparation vertical, il faut utiliser mettre le caractère \verb|l|\footnote{Ce caractère, appelé \forme{pipe} ne doit pas être confondu avec un l.} entre les types de cellules.
+On peut tracer des filets de séparations des cellules : pour tracer un filet de séparation horizontal, il suffit d'utiliser la commande \commande{hline}. Pour un filet de séparation vertical, il faut mettre le caractère \verb|l|\footnote{Ce caractère, appelé \forme{pipe} ne doit pas être confondu avec un l.} entre les types de cellules.
+
+On peut tracer des filets horizontaux plus petits en utilisant la commande \commande{cline}:
+
+\begin{minted}{latex}
+\cline{col1-col2}
+\end{minted}
+
+où \argument{col1} et \argument{col2} doivent être remplacés par les numéros de colonnes.
 
 \inputminted{exemples/premierpas/nontextuels/tableauseparateur.tex}
 \input{exemples/premierpas/nontextuels/tableauseparateur}
@@ -110,9 +120,12 @@ Pour une fusion de lignes, il faut charger le package \package{multirow}. Celui-
 \inputminted{exemples/premierpas/nontextuels/tableaufusion.tex}
 \input{exemples/premierpas/nontextuels/tableaufusion}
 
+On remarquera que les lignes dont une colonne a été fusionnée doivent contenir des cellules vides. La commande \commande{multirow} ne modifie pas la structure du tableau : elle indique simplement que le texte est sur plusieurs lignes.
+
+
 \subsection{Création depuis un fichier \ext{cvs}}
 
-Évidemment une telle syntaxe est bien compliquée et risque d'entraîner des erreurs. Il est toutefois possible d'utiliser un fichier au format \ext{cvs}, que n'importe quel tableur est capable de produire.
+Évidemment la syntaxe des tableaux est assez compliquée et risque d'entraîner des erreurs. Il est toutefois possible d'utiliser un fichier au format \ext{cvs}, que n'importe quel tableur est capable de produire.
 
 Le format \ext{cvs} est un format standard de données tabulaires. Malheureusement il ne dispose ni de mise en forme ni de possibilité de fusion de cellule.
 
