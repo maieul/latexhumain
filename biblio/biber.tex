@@ -1,0 +1,107 @@
+\chapter{Utilisation de BiBer}
+
+\begin{prealable}
+Jusqu'à maintenant, nous nous sommes servi de BibTeX pour interpréter les fichiers \ext{bib}. Dans ce chapitre nous allons vous proposer d'utiliser BiBer à la place de BibTeX. Celui-ci est le successeur de BibTeX et permet une utilisation avancée des fichiers \ext{bib} \emph{via} la possibilité de créer des sous entrées bibliographique.
+\end{prealable}
+
+\section{Qu'est-ce que Biber ?}
+
+Jusqu'à maintenant, pour intégrer une bibliographie, vous procédiez ainsi :
+
+Si vous utiliser Biber, il vous faudra procéder ainsi.
+
+Biber est donc un logiciel qui remplace BibTeX. Quels sont les avantages : ?
+
+\begin{itemize}
+\item Biber gère nativement le tri alphabétique des caractères Unicode.\renvoi{utf8}. Ainsi \forme{Évode d'Uzal} sera classé à \forme{E} et non pas à la fin de l'alphabet\footnote{Il était bien sûr possible de contourner ce problème en utilisant les champs de tri des fichiers \ext{bib}. Mais pourquoi ce compliquer à dupliquer de l'information quand on en a  pas besoin ?}.
+\item Biber propose un système de sous-entrées bibliographiques beaucoup plus puissant que BibTeX. C'est ce point qui va nous intéresser tout particulièrement.
+\end{itemize}
+
+\subsection[Principe des sous-entrées]{Les sous entrées bibliographiques : le principe}
+
+Supposons que vous citiez plusieurs contributions d'un même colloque. Classiquement vous créerez plusieurs entrées bibliographiques sous la forme\footnote{Toute ressemblance avec un colloque s'étant déjà connu ne saurait-être que pure coïncidence}.
+
+\inputminted{exemples/biblio/premierpas/reproduction.bib}
+
+Vous dupliquez ainsi les données sur le colloque (titre, éditeur etc.). Si par hasard vous vous êtes trompés dans une information vous devriez la modifier partout. Pour éviter cela BibTeX prévoit la possibilité de créer des filiations d'entrée : des entrées secondaires \enquote{héritant} d'entrées principales. L'héritage étant pris en charge lors de l'interprétation du fichier. Pour ce faire, il suffit d'indiquer dans le champ \champ{crossref} des entrées secondaires la clef de l'entrée principale.
+
+
+\inputminted{exemples/biblio/premierpas/crossref.bib}
+
+En toute logique la compilation avec BibTeX devrait attribuer la valeur du champ \champ{title} de l'entrée \verb|title} aux champs \champ{booktitle} des entrées \verb{clef1} et \verb{clef2}, puisqu'il s'agit d'entrée de type \verb|@inproceedings| héritant d'entrée \verb|@proceedings|. 
+
+Il n'en est rien : BibTeX procède à des héritages simples : il attribut les valeurs \enquote{mères} \champ{title} aux champs \champ{title} des fils. Ceci oblige donc à dupliquer les valeurs\footnote{Certain logiciel de gestion bibliographique le font pour vous. Toutefois, cela alourdit le fichier. En outre il s'agit de contourner un limitation technique de BibTeX, plutôt que de remédier à cette limitation.}.
+
+Biber quant à lui attribue correctement les valeurs des champs. Si nous reprenons notre exemple et que nous utilisons Biber, nous obtenons les résultats souhaités :
+
+
+\begin{quote}
+\cite{clef1}\\
+\cite{clef2}
+\end{quote}
+
+\printbibliography
+\section{Se servir de Biber}
+
+\subsection{Indiquer à BibLaTeX d'utiliser Biber}
+
+Pour la compilation avec Biber fonctionne, il faut indiquer lors du chargement du package qu'on utiliser Biber, via l'option \argument{backend}.
+
+\begin{minted}{latex}
+\usepackage[backend=biber,...]{biblatex}
+\end{minted}
+
+Par ailleurs, lorsqu'une entrée fille est citée, Biber rajoute systématiquement l'entrée mère dans la bibliographie finale. On peut toutefois régler un nombre minimal de citations d'entrées filles nécessaires à l'ajout de l'entrée mère dans la bibliographie. Si nous souhaitons qu'une entrée mère ne soit ajoutée à la bibliographie que si les entrées filles sont cités au moins 10 fois (toutes entrées confondues) :
+
+
+\begin{minted}{latex}
+\usepackage[backend=biber,mincrossrefs=10,…]{biblatex}
+\end{minted}
+
+\subsection{Compilation avec Biber}
+
+Pour compiler avec Biber, il faut bien sûr l'avoir installé\renvoi{installbiber}. Toutefois la plupart des éditeurs \LaTeX ne prévoient pas encore de compiler avec Biber. Il faut passer par la ligne de commande : nous expliquons tout ceci en annexe.
+
+\subsection{Préciser les héritages de champs}
+
+Biber possède un certains nombres de réglages d'héritages de champs. Toutefois on peut vouloir modifier ces héritages, ou en ajouter d'autre. Par exemple les champs \champ{entrysubtype} ne sont, par défauts, pas hérités. 
+
+Il suffit d'utiliser dans le préambule la commande ;
+
+\begin{minted}{latex}
+\DeclareDataInheritance{entrée mère}{entrée fille}{règles}
+\end{minted}
+
+\begin{description}
+	\item[entrée mère]désigne le type d'entrée mère : \verb|@book|, \verb|@proceedings| etc. Le symbole * désigne n'importe quel type d'entrée
+	\item[entrée fille]désigne le type d'entrée fille. Là aussi le symbole * désigne n'importe quel type d'entrée
+	\item[règles] désigne un certain nombre de règles d'héritages, sous forme de commandes.
+\end{description}
+
+La première commande d'héritage est la suivante :
+
+\begin{minted}{latex}
+\noinherit{champ}
+\end{minted}
+
+Cette commande empêche l'héritage d'un champ par une entrée fille.
+
+La seconde commande est la suivante :
+
+\begin{minted}{latex}
+\inherit[option]{champ source}{champ cible}
+\end{minted}
+
+Il n'y qu'une seul option possible : \verb|override=true|. Si cette option est passée, alors les valeurs des champs de l'entrée fille serait écrasée par celle de l'entrée mère. Sinon, les valeurs de l'entrée filles auront priorité.
+
+Ainsi, pour permettre l'héritage des valeurs du champ \champ{entrysubtype} il suffit d'écrire :
+
+\begin{minted}{latex}
+\DeclareDataInheritance{*}{*}{
+	\inherit{entrysubtype}{entrysubtype}
+}
+\end{latex}
+
+\section[Division des sources antiques]{Utilisation de Biber pour la gestion des division de sources}
+
+

@@ -6,7 +6,7 @@
 \setotherlanguage{english}
 \setotherlanguage[variant=ancient]{greek}
 \usepackage{minted}
-\usepackage[citestyle=verbose-trad2,bibstyle=verbose]{biblatex}
+\usepackage[citestyle=verbose-trad2,bibstyle=verbose,backend=biber]{biblatex}
 %\listingscaption{Code}
 \usepackage{fontspec}
 \setmainfont[Mapping=tex-text,Ligatures=Common]{Linux Libertine O}
@@ -22,5 +22,11 @@
 %\usepackage[landscape,a4paper]{geometry}
 \usepackage[strict]{changepage}
 \usepackage{tikz}
+\usepackage{array}
+\usepackage{multirow}
 \usepackage{bidi} % nécessaire pour la command \XeLaTeX
 \usepackage{csvtools}
+
+%Appel des fichiers .bib
+
+\bibliography{exemples/biblio/premierpas/crossref} % Pour expliquer crossref
