@@ -40,7 +40,6 @@ Biber quant à lui attribue correctement les valeurs des champs. Si nous repreno
 \cite{clef2}
 \end{quote}
 
-\printbibliography
 \section{Se servir de Biber}
 
 \subsection{Indiquer à BibLaTeX d'utiliser Biber}
@@ -100,8 +99,41 @@ Ainsi, pour permettre l'héritage des valeurs du champ \champ{entrysubtype} il s
 \DeclareDataInheritance{*}{*}{
 	\inherit{entrysubtype}{entrysubtype}
 }
-\end{latex}
+\end{minted}
 
 \section[Division des sources antiques]{Utilisation de Biber pour la gestion des division de sources}
 
+Les sous-entrées peuvent être utilisées pour contourner une des limites de gestion bibliographique de \LaTeX{} : l'impossibilité de gérer à la fois  la division d'une source et la pagination. Les textes anciens disposent en générale d'une division propre, qui permet --- en théorie ---  de repérer un passage dans n'importe quelle édition. Par exemple : 
 
+\begin{quote}
+\cite{DoctrineChretienneDivision}
+\end{quote}
+
+Signifie que nous renvoyons au \emph{De Doctrina Christiana} d'Augustin, livre II, chapitre \textsc{viii}, paragraphes 12-13. En théorie on peut retrouver le passage concerné dans n'importe quelle édition du traité. Ceci est appelé généralement \enquote{division de source}.
+En revanche, supposons que nous renvoyons à une édition particulière, par exemple celle de la Bibliothèque Augustinienne : on aimerait indiquer les pages précises.
+
+\begin{quote}
+\cite{DeDoctChrIIviii18-20}
+\end{quote}
+
+S'il est aisé lorsqu'on utilise une commande de citation d'indiquer une page précise\renvoi{pages}, il n'est pas possible en revanche d'indiquer une division de source précise. La solution est relativement simple : il suffit de créer une entrée principale correspondante à l'ensemble de l'œuvre, et des entrées secondaires correspondantes à des parties de l'œuvre. Ces entrées secondaires hériteront des valeurs de l'entrée principal, sauf pour le champ \champ{pages} et le champ \champ{titleaddon} dans lequel on précisera la division de source.
+
+\begin{anedocte}
+Il n'existe pas de champ spécifiquement prévu pour indiquer la division de source. Pourquoi choisir ce champ \champ{titleaddon} ? Deux raisons poussent l'auteur de ces lignes à cette solution :
+\begin{enumerate}
+\item D'un point de vue sémantique, la division de source peut être considéré comme un ajout au titre. Il précise plus précisément de quelle partie de l'œuvre d'un auteur on parle.
+\item D'un point de vue pratique, ce champ à pour avantage d'être, par défaut, situé par BibLaTeX entre le titre et les informations d'éditions, tout en étant pas en italique.
+\end{enumerate}
+
+Évidemment le choix de ce champ devrait, idéalement, être discuté en accord avec l'éditeur. De toute façon, il est relativement facile si le choix ne convient pas de changer en série les entrées.
+\end{anedocte}
+
+Ainsi pour notre cas, il suffit de créer les deux entrées suivantes :
+
+\inputminted{exemples/biblio/premierpas/augustin.bib}
+
+Pour citer notre passage précis, il faut écrire :
+
+\begin{minted}{latex}
+\footcite{DeDoctChrIIviii18-20}
+\end{minted}
