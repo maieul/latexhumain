@@ -10,7 +10,7 @@ La base de donnée bibliographique est un fichier au format \logiciel{BibTeX} qu
 
 \section{Strucure de base d'un fichier \ext{.bib}}
 
-Chaque élèment d'une bibliographie sera appelé entrée. Une entrée bibliographique se caractérise par :
+Chaque élément d'une bibliographie sera appelé entrée. Une entrée bibliographique se caractérise par :
 \begin{itemize}
 \item Un type d'entrée : s'agit-il d'un article, d'un livre, d'actes de colloques ?
 \item Une clef unique. Cette clef permet de distinguer une entrée bibliographique d'une autre. C'est elle qui sera mentionnée dans vos fichiers \ext{.tex}
@@ -21,7 +21,7 @@ L'avantage de ce système est compréhensible. En effet, une correction dans la 
 
 Un fichier \ext{.bib} est un fichier texte contenant une suite d'instruction, de la forme suivante.
 
-\begin{listing}
+
 \begin{minted}{latex}
 @type{clef,
 	Champ1 = {Valeur 1},
@@ -29,37 +29,36 @@ Un fichier \ext{.bib} est un fichier texte contenant une suite d'instruction, de
 	Champn = {Valeur n}
 }
 \end{minted}
-\caption{Déclaration d'une entrée bibliographique}
-\end{listing}
-\begin{listing}
+
+
+
 Par exemple
-\begin{minted}{latex}
-@book{Urner1952,
-	Address = {Gottingen},
-	Author = {Urner, Hans},
-	Title = {Die ausserbiblische Lesung in Christlichen Gottesdienst},
-	Year = {1952}
-}
-\end{minted}
-\caption{Exemple d'une déclaration d'entrée bibliographique}
-\end{listing}
+
+\inputminted{exemples/biblio/premierpas/urner.bib}
+
+
+Qui pourra être affiché plus tard sous la forme :
+
+\begin{quote}
+\cite{urner}
+\end{quote}
 
 
 Signifie que je déclare un livre (\verb|@book|) auquel j'attribue la clef \verb|Urner1952|. Ce livre est une oeuvre de Urner, Hans de son prénom, il s'intitule (mettre le nom proprement) a été publié en … à …
 
 Un fichier .bib n'est rien d'autre qu'une \renvoi{logiciel:biblio} série d'entrées de ce type. Cependant, comme il est assez aisé de s'embrouiller, notamment dans les ouvertures et fermetures des accolades, il vaut la peine d'utiliser un logiciel de gestion de bibliographies, capable de gérér  des fichiers au formats \ext{.bib}. Un certain nombre sont présentés en annexe.
 
-La documentation de \package{BibLaTeX} contient l'ensemble des champs et des types possibles. Pour éviter de répéter ce manuel, nous vous présenterons les champs en les classant par catégorie. Mais auparavent, nous dirons deux mots sur le choix de la clef et sur les différents types de catégories.
+La documentation de \package{BibLaTeX} contient l'ensemble des champs et des types possibles. Pour éviter de répéter ce manuel, nous vous présenterons les champs en les classant par catégorie. Mais auparavant, nous dirons donnerons quelques conseils sur le choix de la clef et sur les différents types de catégories.
 
 \section{Le choix de la clef}
 
-Une entrée bibliographique doit avoir une clef \emph{unique}. Cette clef doit comporter uniquement des caractères alphanumériques non accentués. Pas d'espace, pas de points, pas de tirets.
+Une entrée bibliographique doit avoir une clef \emph{unique}. Cette clef doit comporter uniquement des caractères alphanumériques non accentués, éventuellement avec des tirets. 
 
 Voici le conseil que nous donnons pour le choix de la clef :
 \begin{description}
-\item[Pour les oeuvres contemporaines, notamment les sources secondaire], prendre le nom de l'auteur suivi de la date. Par exemple \verb|Urner1952|.
-\item[Pour les oeuvres anciennes], prendre le nom de l'oeuvre  éventuellement abregée : par exemple \verb|ContraFaustum| pour parler du … Si plusieur oeuvres d'auteurs différents portent le même nom, faire préceder du nom de l'auteur.
-\item[Pour les oeuvres anonymes ou pseudépigraphiques], prendre soit le numéro d'entrée dans un index de référence, soit le numéro de placement dans une collection. Par exemple : \verb|PsAugustin1288| renvoi au texte Pseudo Augustinien qui se trouve à l'entrée … dans le …
+\item[Pour les oeuvres contemporaines, notamment les sources secondaire] prendre le nom de l'auteur suivi de la date. Par exemple \verb|Urner1952|.
+\item[Pour les oeuvres anciennes] prendre le nom de l'oeuvre  éventuellement abregée : par exemple \verb|ContraFaustum| pour parler du … Si plusieurs oeuvres d'auteurs différents portent le même nom, faire précéder du nom de l'auteur.
+\item[Pour les oeuvres anonymes ou pseudépigraphiques] prendre soit le numéro d'entrée dans un index de référence, soit le numéro de placement dans une collection. Par exemple : \verb|PsAugustin1288| renvoie au texte Pseudo Augustinien qui se trouve à l'entrée … dans le …
 \end{description}
 
 
@@ -70,10 +69,12 @@ Voici les différents types d'entrées disponibles\footnote{A vrai dire il est p
 
 \rev{Mettre des informations}
 \begin{longtable}{lll}
+	Type BibTeX 				& Signification			& Explication et commentaire
+	\endhead
 	@article				& Article d'un périodique		& Pour les communications de colloques, voir plus bas. \\
 	@book					& Livre							& Pour les actes de colloques, voir plus bas \\
 	@bookinbook				& Livre dans un livre			& Par exemple lorsque un auteur ancien voit ses livres rassemblés en un seul volume. \\		
-	@collection				& Ouvrage collectif mais avec des parties distinctes par auteurs.				& Exemple : \\
+	@collection				& Ouvrage collectif mais avec des parties distinctes par auteurs.				& \\
 	@manuel					& Manuel						& Pas nécessairement sous forme imprimé.\\
 	@misc					& Entrée générique				& Pour tout type d'entrée non catégorisable. Exemple : tableau, manuscrit, ostrakon. \\
 	@online					& Ressource internet			& Si une ressource se trouve sous forme papier et sous forme éléctronique, utiliser la champ correspondant à la forme papier. \\
@@ -89,4 +90,59 @@ Voici les différents types d'entrées disponibles\footnote{A vrai dire il est p
 \end{longtable}
 
 Il existe des entrées de type @inbook ; @inproceedings ; @incollection ; @inreference pour désigner des parties précise d'une entrée de type @book ; @proceedings ; @reference. Ainsi un communication d'un colloque est-il une entrée de type @inproceedings.
+
+\section{Les différents champs possibles}
+
+Il n'est pas question ici de lister l'ensemble des champs disponibles : on consultera le manuel de \package{BibLaTeX} pour avoir une liste exhaustive. Nous précisons ici les champs utiles pour une première approche.
+
+\subsection{Les champs de personnes}
+
+Ces champs servent à désigner des personnes qui ont participé au processus de production de l'œuvre : auteur, annotateur, éditeur (scientifique) etc. Tous ces champs ne sont évidemment pas à remplir. Voici la liste  :
+
+
+\begin{longtable}{ll}
+	champ 		& Explication \\
+	\endhead
+	afterword		& Auteur(s) de la postface \\
+	annotator		& Auteur(s) des annotations \\
+	author		& Auteur(s) de l'œuvre    \\
+	bookauthor		& Auteur(s) du livre dans lequel l'œuvre est insérée. \\
+	commentator	& Auteur(s) des commentaires \\
+	editor			& Éditeur(s) scientifique(s). On peut préciser son rôle grâce au champ \champ{editortype}	\\
+	editora		& Éditeur(s) scientifiques ayant un autre rôle. On peut préciser son rôle grâce au champ \champ{editoratype}  \\
+	editorb		& Éditeur(s) scientifiques ayant un autre rôle. On peut préciser son rôle grâce au champ \champ{editorbtype}  \\
+	editorc		& Éditeur(s) scientifiques ayant un autre rôle. On peut préciser son rôle grâce au champ \champ{editorctype}  \\
+	foreword		& Auteur(s) de la préface\\
+	holder			& Titulaire d'un brevet industriel \\
+	introduction		& Auteur(s) de l'introduction \\
+	translator 		& Traducteur(s) 		\\
+\end{longtable}
+
+Lorsque des champs possèdent des valeurs identiques (par exemples les champs \champ{publisher} et \champ{translator}, \package{BibLaTeX} va  fusionner ces champs lors de l'affichage. Prenons ainsi l'entrée suivante : 
+
+\inputminted{exemples/biblio/premierpas/augustin_editeur.bib}.
+
+Elle sera affichée ainsi
+
+\begin{quote}
+\cite{DoctrineChretienne}
+\end{quote}
+
+\subsection{Comment entrer un nom de personne}
+
+Ces différents champs prennent comme valeur un ou plusieurs noms de personnes. S'il y a plusieurs noms, il suffit de les séparer par le mot-clef \forme{and}. Par exemple pour les auteurs de l'ouvrage que vous avez entre les mains : 
+
+\begin{minted}{latex}
+author = {Maïeul Rouquette and Enimie Rouquette}
+\end{minted}
+
+Un nom se caractérise en LaTeX par :
+\begin{itemize}
+\item Un ou plusieurs prénoms. L'initiale doit être en majuscule, le reste en minuscule. Exemple : \forme{Albert}. Il vaut mieux mettre le prénom complet : on peut confier le travail de limitation à une minuscule  à \package{BibLaTex}.
+\item Un nom. L'initiale doit être en majuscule, le reste en minuscule. Exemple : \forme{Londres} et non pas \forme{LONDRES}. \package{BibLaTex} se chargera le cas échéant de mettre en majuscule.
+\item Éventuellement une particule. Elle doit être entièrement en minuscule. Par exemple : \forme{de}, \forme{von}.
+\item Éventuellement un suffixe, avec l'initial en majuscule. Ce type de donnée est plutôt anglo-saxonne. Exemple : \forme{Junior}.
+\end{itemize}
+
+
 
