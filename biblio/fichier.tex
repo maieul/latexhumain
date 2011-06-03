@@ -334,10 +334,32 @@ Voici quelques exemples afin de comprendre comment se servir de ces champs.
 
 \subsection{Les champs d'identifications formels}
 
-Il peut être utile d'indiquer des informations comme l'ISBN etc. Voici les champs possibles\footcite[BibLaTeX imprimera ces champs par défaut, il est toutefois possible de ne pas les afficher en passant une option au chargement du package]{explicationisbn}.
+Il peut être utile d'indiquer des informations comme l'ISBN etc. Voici les champs possibles\footcite[BibLaTeX imprimera ces champs par défaut, il est toutefois possible de ne pas les afficher en passant une option au chargement du package]{explicationisbn}. Nous signalons ici la liste de ces champs. Le lecteur curieux trouvera aisément des informations sur leurs significations.
 
 \begin{longtable}{p{0.2\linewidth}p{0.75\linewidth}}
+	champ 		& Explication \\
+	\endhead
+	eid			& Identifiant électronique d'une entrée de type @article. \\
+	isan			& \textenglish{International Standard Audiovisual Number}, pour les entrées de type audiovisuel.\\
+	isbn			& \textenglish{International Standard Book Number}, pour les livres. \\
+	ismn			& \textenglish{International Standard Music Numbe}, pour les musiques imprimées, comme par exemple les partitions. \\
+	isrn			& \textenglish{International Standard Technical Report Number}, pour les rapports techniques. \\
+	issn			& \textenglish{International Standard Serial Number}, pour les numéros de revue. \\
+	iswc			& \textenglish{International Standard Work Code} pour les œuvres musicales.
+\end{longtable}
 
+\subsection{Champs d'annotations}
 
-\end{lontable}
+Ces champs ne sont pas imprimés par défaut. 
 
+\begin{longtable}{p{0.2\linewidth}p{0.75\linewidth}}
+	champ 		& Explication \\
+	\endhead
+	abstract			& Résumé de l'œuvre. \\
+	annotation			& Annotation sur l'œuvre.\\
+	file			& Adresse d'une version informatique du travail. \\
+	library			& Annotation sur la disponibilité en bibliothèque, par exemple mettre le nom de la bibliothèque et la cotation.
+	
+\end{longtable}
+
+Il existe d'autres champs : nous les présenterons en temps utile. Si le cœur vous en dit, vous pouvez toujours consulter le manuel de \package{BibLateX}.
