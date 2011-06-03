@@ -100,7 +100,7 @@ Il n'est pas question ici de lister l'ensemble des champs disponibles : on consu
 Ces champs servent à désigner des personnes qui ont participé au processus de production de l'œuvre : auteur, annotateur, éditeur (scientifique) etc. Tous ces champs ne sont évidemment pas à remplir. Voici la liste  :
 
 
-\begin{longtable}{ll}
+\begin{longtable}{p{0.2\linewidth}p{0.75\linewidth}}
 	champ 		& Explication \\
 	\endhead
 	afterword		& Auteur(s) de la postface \\
@@ -213,15 +213,15 @@ Pour résumer, voici un exemples de quelques entrées correctes\footnote{Le lect
 
 \subsection{Les champs de titre}
 
-Nous regroupons ici tout les champs apportant une information sur le titre d'une œuvre ou de son contenant.
 
-\begin{longtable}{ll}
+\begin{longtable}{p{0.2\linewidth}p{0.75\linewidth}}
 	champ 		& Explication \\
 	\endhead
 	booksubtitle 	& Sous-titre du livre dans lequel l'entrée se situe. \\
 	booktitle	 	& Titre du livre dans lequel l'entrée se situe. 		\\
 	booktitleaddon	& Ajout au titre du livre dans lequel l'entrée se situe \\
 	chapter			& Chapitre d'un livre. Pour les entrées de type @inbook	\\
+	eventitle		& Titre du colloque, pour les entrées de type @proceedings et @inproceedings \\
 	issuesubtitle	& Sous-titre d'un numéro spécifique d'un périodique. 	\\
 	issuetitle		& Titre d'un numéro spécifique d'un périodique.			\\
 	journalsubtitle	& Sous-titre d'un périodique.							\\
@@ -261,4 +261,83 @@ Voici quelques exemples afin de comprendre comment se servir de ces champs.
 \begin{quote}
 \cite{Junod1992}
 \end{quote}
+
+\subsection{Les champs d'informations sur la publication}
+
+\begin{longtable}{p{0.2\linewidth}p{0.75\linewidth}}
+	champ 		& Explication \\
+	\endhead
+	adress			& Lieu de publication (alias du champ \champ{location}).	\\
+	date			& Date de publication, sous la forme \verb|AAAA-MM-JJ/AAAA-MM-JJ|. La première date indiqué correspondant à la date de début, la seconde à la date de fin. Pour n'indiquer qu'une date de début, mettre \verb|AAAA-MM-JJ/|. On peut ne pas indiquer le mois ou le jour. On peut également utiliser les champs \champ{year} et {month} à la place. \\
+	edition		& Numéro d'édition, si plusieurs éditions successives. Doit être un entier ou bien un chaîne de caractères.				\\
+	eventdate		& Date du colloque pour les entrées du type @proceedings et @inproceedings. \\
+	institution		& Institution dans laquelle l'œuvre a été produite. Typiquement pour les entrées de type @thesis. \\
+	issue			& Spécification d'un numéro spécifique d'un périodique (par exemple \enquote{numéro d'été}). On préférera les champs \champ{year}, \champ{month}.	\\
+	language		& Langue de l'œuvre. Le nom de la langue doit, idéalement, être comme indiqué dans la documentation de \package{polyglossia}.					\\
+	location		& Lieu d'impression.  					\\
+	month			& Mois de publication. Doit être un entier compris entre 1 et 12. \\
+	number		& Numéro d'un périodique ou numéro au sein d'une collection. 	\\
+	organization		& Organisation à l'origine d'un manuel ou d'une page internet.	\\
+	origdate		& Date de l'édition originale.						\\
+	origlanguage	& Langue originelle. Le nom de la langue doit, idéalement, être comme indiqué dans la documentation de \package{polyglossia}. \\
+	origlocation		& Lieu d'impression de l'édition	originelle.		\\
+	origpublisher	& Éditeur (commercial) de l'édition originelle.		\\
+	part			& Pour les livres en plusieurs volumes, indique le numéro du volume physique. \\
+	publisher		& Éditeur commercial.					\\
+	pubstate		& Pour les œuvres non encore imprimées, indique le statut :
+					\begin{description}
+						\item[inpress]œuvre sous presse.
+						\item[inpreparation]œuvre en préparation.
+						\item[submitted]œuvre soumise à évaluation.
+					\end{description}
+					
+					\\
+	type			& Pour les entrées de type  @manual, @patent et @report, précise le type de travail.
+	
+	 Pour les entrées de type @manual, deux valeurs possibles :
+					\begin{description}
+						\item[mathesis]mémoire de master.
+						\item[phdthesis]thèse de doctorat.
+					\end{description}
+					
+					 Pour les entrées de type @patent, plusieurs  valeurs possibles : 
+					 
+					 
+					 \begin{description}
+						\item[patentde] Brevet allemand.
+						\item[patenteu] Brevet européen.
+						\item[patentfr] Brevet français.
+						\item[patentuk] Brevet grand-breton.
+						\item[patentus] Brevet États-Unien.
+						\item[etc.]
+					 \end{description}
+					
+					Pour les entrées de type @report : 
+					\begin{description}
+						\item[techreport]rapport technique.
+						\item[resreport]rapport de recherche.
+					\end{description}
+					
+					\\	
+	url 			& Url (adresse électronique) d'une publication en-ligne.
+	urldate		& Date à laquelle une publication électronique a été consultée.
+	venue			& Lieu du colloque pour les entrées du type @proceedings et @inproceedings. \\
+	version		& Numéro de révision d'un manuel, d'un logiciel. \\
+	volume		& Volume dans une œuvre en plusieurs volumes. \\
+	volumes		& Nombre de volume dans une œuvres en plusieurs volumes. \\
+	year			& Année de publication 				\\
+	
+\end{longtable}
+
+
+Évidemment tout ces champs ne sont pas à systématiquement remplir : le lecture sera mieux que nous lesquels remplir.
+
+\subsection{Les champs d'identifications formels}
+
+Il peut être utile d'indiquer des informations comme l'ISBN etc. Voici les champs possibles\footcite[BibLaTeX imprimera ces champs par défaut, il est toutefois possible de ne pas les afficher en passant une option au chargement du package]{explicationisbn}.
+
+\begin{longtable}{p{0.2\linewidth}p{0.75\linewidth}}
+
+
+\end{lontable}
 
