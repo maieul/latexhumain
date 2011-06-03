@@ -113,7 +113,7 @@ Ces champs servent à désigner des personnes qui ont participé au processus de
 	editorb		& Éditeur(s) scientifiques ayant un autre rôle. On peut préciser son rôle grâce au champ \champ{editorbtype}  \\
 	editorc		& Éditeur(s) scientifiques ayant un autre rôle. On peut préciser son rôle grâce au champ \champ{editorctype}  \\
 	foreword		& Auteur(s) de la préface\\
-	holder			& Titulaire d'un brevet industriel \\
+	holder			& Titulaire d'un brevet industriel \\
 	introduction		& Auteur(s) de l'introduction \\
 	translator 		& Traducteur(s) 		\\
 \end{longtable}
@@ -128,7 +128,7 @@ Elle sera affichée ainsi :
 \cite{DoctrineChretienne}
 \end{quote}
 
-\subsection{Comment entrer un nom de personne}
+\subsubsection{Comment entrer un nom de personne}
 
 Ces différents champs prennent comme valeur un ou plusieurs noms de personnes. S'il y a plusieurs noms, il suffit de les séparer par le mot-clef \forme{and}. Par exemple pour les auteurs de l'ouvrage que vous avez entre les mains : 
 
@@ -209,5 +209,56 @@ Pour résumer, voici un exemples de quelques entrées correctes\footnote{Le lect
 \cite{BeauvoirMemoires} \\
 \cite{Dumas} \\
 \cite{Gregoire} \\ 
+\end{quote}
+
+\subsection{Les champs de titre}
+
+Nous regroupons ici tout les champs apportant une information sur le titre d'une œuvre ou de son contenant.
+
+\begin{longtable}{ll}
+	champ 		& Explication \\
+	\endhead
+	booksubtitle 	& Sous-titre du livre dans lequel l'entrée se situe. \\
+	booktitle	 	& Titre du livre dans lequel l'entrée se situe. 		\\
+	booktitleaddon	& Ajout au titre du livre dans lequel l'entrée se situe \\
+	chapter			& Chapitre d'un livre. Pour les entrées de type @inbook	\\
+	issuesubtitle	& Sous-titre d'un numéro spécifique d'un périodique. 	\\
+	issuetitle		& Titre d'un numéro spécifique d'un périodique.			\\
+	journalsubtitle	& Sous-titre d'un périodique.							\\
+	journaltitle	& Titre d'un périodique. Le champs \champ{journal} est un alias de ce champs.							\\
+	mainsubtitle	& Sous-titre d'une œuvre en plusieurs volumes.			\\
+	maintitle		& Titre d'une œuvre en plusieurs volumes. Le titre du volume spécifique à notre entrée correspond au champs \champ{title}.						\\
+	maintitleaddon & Ajout au titre d'une œuvre en plusieurs volumes.		\\
+	origtitle		& Titre originale de l'œuvre, si traduction. N'est pas affiché en standard. \\
+	reprinttitle	& Titre d'un reprint. N'est pas affiché en standard.	\\
+	subtitle		& Sous-titre de l'œuvre.									\\
+	title			& Titre de l'œuvre.									\\
+	titleaddon		& Ajout au titre de l'œuvre. Dans ce manuel, nous conseillons de l'utiliser pour les divisions de source. \\	
+\end{longtable}
+
+Voici quelques exemples afin de comprendre comment se servir de ces champs.
+
+\subsubsection{Un livre avec un sous-titre}
+
+\inputminted{exemples/biblio/premierpas/saxer.bib}
+
+\begin{quote}
+\cite{Saxer1980}
+\end{quote}
+
+\subsubsection{Un livre situé dans un recueil}
+
+\inputminted{exemples/biblio/premierpas/felix.bib}
+
+\begin{quote}
+\cite{ContraFelix}
+\end{quote}
+
+\subsubsection{Un article dans une revue}
+
+\inputminted{exemples/biblio/premierpas/junod.bib}
+
+\begin{quote}
+\cite{Junod1992}
 \end{quote}
 
