@@ -36,17 +36,18 @@ Par exemple
 
 \inputminted{exemples/biblio/premierpas/urner.bib}
 
+Signifie que je déclare un livre (\verb|@book|) auquel j'attribue la clef \verb|Urner1952|. Ce livre est une oeuvre de Urner, Hans de son prénom, il s'intitule \emph{Die ausserbiblische Lesung in Christlichen Gottesdienst} a été publié en 1952 à Gottigen.
 
-Qui pourra être affiché plus tard sous la forme :
+
+Il pourra être affiché plus tard sous la forme :
 
 \begin{quote}
 \cite{Urner1952}
 \end{quote}
 
 
-Signifie que je déclare un livre (\verb|@book|) auquel j'attribue la clef \verb|Urner1952|. Ce livre est une oeuvre de Urner, Hans de son prénom, il s'intitule (mettre le nom proprement) a été publié en … à …
 
-Un fichier .bib n'est rien d'autre qu'une \renvoi{logiciel:biblio} série d'entrées de ce type. Cependant, comme il est assez aisé de s'embrouiller, notamment dans les ouvertures et fermetures des accolades, il vaut la peine d'utiliser un logiciel de gestion de bibliographies, capable de gérér  des fichiers au formats \ext{.bib}. Un certain nombre sont présentés en annexe.
+Un fichier .bib n'est rien d'autre qu'une \renvoi{logiciel:biblio} série d'entrées de ce type. Cependant, comme il est assez aisé de s'embrouiller, notamment dans les ouvertures et fermetures des accolades, il vaut la peine d'utiliser un logiciel de gestion de bibliographies, capable de gérer  des fichiers au formats \ext{.bib}. Un certain nombre sont présentés en annexe.
 
 La documentation de \package{BibLaTeX} contient l'ensemble des champs et des types possibles. Pour éviter de répéter ce manuel, nous vous présenterons les champs en les classant par catégorie. Mais auparavant, nous dirons donnerons quelques conseils sur le choix de la clef et sur les différents types de catégories.
 
@@ -211,7 +212,7 @@ Pour résumer, voici un exemples de quelques entrées correctes\footnote{Le lect
 \cite{Gregoire} \\ 
 \end{quote}
 
-\subsection{Les champs de titre}
+\subsection{Champs de titre}
 
 
 \begin{longtable}{p{0.2\linewidth}p{0.75\linewidth}}
@@ -262,7 +263,7 @@ Voici quelques exemples afin de comprendre comment se servir de ces champs.
 \cite{Junod1992}
 \end{quote}
 
-\subsection{Les champs d'informations sur la publication}
+\subsection{Champs d'informations sur la publication}
 
 \begin{longtable}{p{0.2\linewidth}p{0.75\linewidth}}
 	champ 		& Explication \\
@@ -319,8 +320,8 @@ Voici quelques exemples afin de comprendre comment se servir de ces champs.
 					\end{description}
 					
 					\\	
-	url 			& Url (adresse électronique) d'une publication en-ligne.
-	urldate		& Date à laquelle une publication électronique a été consultée.
+	url 			& Url (adresse électronique) d'une publication en-ligne. \\
+	urldate		& Date à laquelle une publication électronique a été consultée. \\
 	venue			& Lieu du colloque pour les entrées du type @proceedings et @inproceedings. \\
 	version		& Numéro de révision d'un manuel, d'un logiciel. \\
 	volume		& Volume dans une œuvre en plusieurs volumes. \\
