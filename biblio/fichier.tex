@@ -8,6 +8,7 @@ La première étape pour gérer une bibliographique avec \logiciel{\LaTeX} est d
 La base de donnée bibliographique est un fichier au format \logiciel{BibTeX} qui porte une extension \ext{.bib}.
 \end{prealable}
 
+
 \section{Strucure de base d'un fichier \ext{.bib}}
 
 Chaque élément d'une bibliographie sera appelé entrée. Une entrée bibliographique se caractérise par :
@@ -70,23 +71,23 @@ Voici les différents types d'entrées disponibles\footnote{A vrai dire il est p
 
 \rev{Mettre des informations}
 \begin{longtable}{lll}
-	Type BibTeX 				& Signification			& Explication et commentaire
+	Type BibTeX 	& Signification& Explication et commentaire
 	\endhead
-	@article				& Article d'un périodique		& Pour les communications de colloques, voir plus bas. \\
-	@book					& Livre							& Pour les actes de colloques, voir plus bas \\
-	@bookinbook				& Livre dans un livre			& Par exemple lorsque un auteur ancien voit ses livres rassemblés en un seul volume. \\		
-	@collection				& Ouvrage collectif mais avec des parties distinctes par auteurs.				& \\
-	@manuel					& Manuel						& Pas nécessairement sous forme imprimé.\\
-	@misc					& Entrée générique				& Pour tout type d'entrée non catégorisable. Exemple : tableau, manuscrit, ostrakon. \\
-	@online					& Ressource internet			& Si une ressource se trouve sous forme papier et sous forme éléctronique, utiliser la champ correspondant à la forme papier. \\
-	@patent					& Brevet industriel		 (?)	& \\
-	@periodical				& Numéro précis d'un périodique & \\
-	@proceedings			& Actes de colloques			& \\
-	@reference				& Dictionnaire, Encyclopédie ou apparenté. & \\ 
-	@report					& Rapport						& \\
-	@masterthesis			& Mémoire de maîtrise ou de master& \\	
-	@phdthesis				& Thèse de doctorat				& \\
-	@unpublished			& Ouvrage non publié			& Par exemple un projet\\
+	@article	& Article d'un périodique& Pour les communications de colloques, voir plus bas. \\
+	@book		& Livre				& Pour les actes de colloques, voir plus bas \\
+	@bookinbook	& Livre dans un livre& Par exemple lorsque un auteur ancien voit ses livres rassemblés en un seul volume. \\		
+	@collection	& Ouvrage collectif mais avec des parties distinctes par auteurs.	& \\
+	@manuel		& Manuel			& Pas nécessairement sous forme imprimé.\\
+	@misc		& Entrée générique	& Pour tout type d'entrée non catégorisable. Exemple : tableau, manuscrit, ostrakon. \\
+	@online		& Ressource internet& Si une ressource se trouve sous forme papier et sous forme éléctronique, utiliser la champ correspondant à la forme papier. \\
+	@patent		& Brevet industriel		 (?)& \\
+	@periodical	& Numéro précis d'un périodique & \\
+	@proceedings& Actes de colloques& \\
+	@reference	& Dictionnaire, Encyclopédie ou apparenté. & \\ 
+	@report		& Rapport			& \\
+	@masterthesis& Mémoire de maîtrise ou de master& \\	
+	@phdthesis	& Thèse de doctorat	& \\
+	@unpublished& Ouvrage non publié& Par exemple un projet\\
 	
 \end{longtable}
 
@@ -101,23 +102,21 @@ Il n'est pas question ici de lister l'ensemble des champs disponibles : on consu
 Ces champs servent à désigner des personnes qui ont participé au processus de production de l'œuvre : auteur, annotateur, éditeur (scientifique) etc. Tous ces champs ne sont évidemment pas à remplir. Voici la liste  :
 
 
-\begin{longtable}{p{0.2\linewidth}p{0.75\linewidth}}
-	champ 		& Explication \\
-	\endhead
-	afterword		& Auteur(s) de la postface \\
-	annotator		& Auteur(s) des annotations \\
-	author		& Auteur(s) de l'œuvre    \\
-	bookauthor		& Auteur(s) du livre dans lequel l'œuvre est insérée. \\
-	commentator	& Auteur(s) des commentaires \\
-	editor			& Éditeur(s) scientifique(s). On peut préciser son rôle grâce au champ \champ{editortype}	\\
-	editora		& Éditeur(s) scientifiques ayant un autre rôle. On peut préciser son rôle grâce au champ \champ{editoratype}  \\
-	editorb		& Éditeur(s) scientifiques ayant un autre rôle. On peut préciser son rôle grâce au champ \champ{editorbtype}  \\
-	editorc		& Éditeur(s) scientifiques ayant un autre rôle. On peut préciser son rôle grâce au champ \champ{editorctype}  \\
-	foreword		& Auteur(s) de la préface\\
-	holder			& Titulaire d'un brevet industriel \\
-	introduction		& Auteur(s) de l'introduction \\
-	translator 		& Traducteur(s) 		\\
-\end{longtable}
+\begin{fieldlist}
+	\fielditem{afterword} Auteur(s) de la postface 
+   	\fielditem{annotator} Auteur(s) des annotations 
+   	\fielditem{author} Auteur(s) de l'œuvre    
+   	\fielditem{bookauthor} Auteur(s) du livre dans lequel l'œuvre est insérée. 
+   	\fielditem{commentator} Auteur(s) des commentaires 
+   	\fielditem{editor} Éditeur(s) scientifique(s). On peut préciser son rôle grâce au champ \champ{editortype}	
+   	\fielditem{editora} Éditeur(s) scientifiques ayant un autre rôle. On peut préciser son rôle grâce au champ \champ{editoratype}  
+   	\fielditem{editorb} Éditeur(s) scientifiques ayant un autre rôle. On peut préciser son rôle grâce au champ \champ{editorbtype}  
+   	\fielditem{editorc} Éditeur(s) scientifiques ayant un autre rôle. On peut préciser son rôle grâce au champ \champ{editorctype}  
+	\fielditem{foreword} Auteur(s) de la préface
+   	\fielditem{holder} Titulaire d'un brevet industriel 
+   	\fielditem{introduction} Auteur(s) de l'introduction 
+   	\fielditem{translator} Traducteur(s) 		
+\end{fieldlist}
 
 Lorsque des champs possèdent des valeurs identiques (par exemples les champs \champ{publisher} et \champ{translator}, \package{BibLaTeX} va  fusionner ces champs lors de l'affichage. Prenons ainsi l'entrée suivante : 
 
@@ -139,10 +138,10 @@ author = {Maïeul Rouquette and Enimie Rouquette}
 
 Un nom se caractérise en LaTeX par :
 \begin{description}
-\item[Un ou plusieurs prénoms.]L'initiale doit être en majuscule, le reste en minuscule. Exemple : \forme{Albert}. Il vaut mieux mettre le prénom complet : on peut confier le travail de limitation à une minuscule  à \package{BibLaTex}.
-\item[Un nom.]L'initiale doit être en majuscule, le reste en minuscule. Exemple : \forme{Londres} et non pas \forme{LONDRES}. \package{BibLaTex} se chargera le cas échéant de mettre en majuscule.
-\item[Éventuellement une particule.] Elle doit être entièrement en minuscule. Par exemple : \forme{de}, \forme{von}.
-\item[Éventuellement un suffixe] avec l'initiale en majuscule. Ce type de donnée est plutôt anglo-saxonne. Exemple : \forme{Junior}.
+	\item[Un ou plusieurs prénoms.]L'initiale doit être en majuscule, le reste en minuscule. Exemple : \forme{Albert}. Il vaut mieux mettre le prénom complet : on peut confier le travail de limitation à une minuscule  à \package{BibLaTex}.
+	\item[Un nom.]L'initiale doit être en majuscule, le reste en minuscule. Exemple : \forme{Londres} et non pas \forme{LONDRES}. \package{BibLaTex} se chargera le cas échéant de mettre en majuscule.
+	\item[Éventuellement une particule.] Elle doit être entièrement en minuscule. Par exemple : \forme{de}, \forme{von}.
+	\item[Éventuellement un suffixe] avec l'initiale en majuscule. Ce type de donnée est plutôt anglo-saxonne. Exemple : \forme{Junior}.
 \end{description}
 
 En ce qui concerne la syntaxe, elle peut être :
@@ -203,39 +202,37 @@ Pour résumer, voici un exemples de quelques entrées correctes\footnote{Le lect
 \inputminted{exemples/biblio/premierpas/noms.bib}
 
 \begin{quote}
-\cite{HugoMiserable} \\
-\cite{HugoLegende} \\
-\cite{DeGaulle}	\\
-\cite{BeauvoirSexe} \\
-\cite{BeauvoirMemoires} \\
-\cite{Dumas} \\
-\cite{Gregoire} \\ 
+	\cite{HugoMiserable} 	\\
+   \cite{HugoLegende}		\\ 
+   \cite{DeGaulle}			\\	
+   \cite{BeauvoirSexe}		\\ 
+   \cite{BeauvoirMemoires}	\\ 
+   \cite{Dumas}				\\
+   \cite{Gregoire}			\\
 \end{quote}
 
 \subsection{Champs de titre}
 
 
-\begin{longtable}{p{0.2\linewidth}p{0.75\linewidth}}
-	champ 		& Explication \\
-	\endhead
-	booksubtitle 	& Sous-titre du livre dans lequel l'entrée se situe. \\
-	booktitle	 	& Titre du livre dans lequel l'entrée se situe. 		\\
-	booktitleaddon	& Ajout au titre du livre dans lequel l'entrée se situe \\
-	chapter			& Chapitre d'un livre. Pour les entrées de type @inbook	\\
-	eventitle		& Titre du colloque, pour les entrées de type @proceedings et @inproceedings \\
-	issuesubtitle	& Sous-titre d'un numéro spécifique d'un périodique. 	\\
-	issuetitle		& Titre d'un numéro spécifique d'un périodique.			\\
-	journalsubtitle	& Sous-titre d'un périodique.							\\
-	journaltitle	& Titre d'un périodique. Le champs \champ{journal} est un alias de ce champs.							\\
-	mainsubtitle	& Sous-titre d'une œuvre en plusieurs volumes.			\\
-	maintitle		& Titre d'une œuvre en plusieurs volumes. Le titre du volume spécifique à notre entrée correspond au champs \champ{title}.						\\
-	maintitleaddon & Ajout au titre d'une œuvre en plusieurs volumes.		\\
-	origtitle		& Titre originale de l'œuvre, si traduction. N'est pas affiché en standard. \\
-	reprinttitle	& Titre d'un reprint. N'est pas affiché en standard.	\\
-	subtitle		& Sous-titre de l'œuvre.									\\
-	title			& Titre de l'œuvre.									\\
-	titleaddon		& Ajout au titre de l'œuvre. Dans ce manuel, nous conseillons de l'utiliser pour les divisions de source. \\	
-\end{longtable}
+\begin{fieldlist}
+	\fielditem{booksubtitle} Sous-titre du livre dans lequel l'entrée se situe. 
+   	\fielditem{booktitle} Titre du livre dans lequel l'entrée se situe. 		
+   	\fielditem{booktitleaddon} Ajout au titre du livre dans lequel l'entrée se situe 
+   	\fielditem{chapter} Chapitre d'un livre. Pour les entrées de type @inbook	
+   	\fielditem{eventitle} Titre du colloque, pour les entrées de type @proceedings et @inproceedings 
+   	\fielditem{issuesubtitle} Sous-titre d'un numéro spécifique d'un périodique. 	
+   	\fielditem{issuetitle} Titre d'un numéro spécifique d'un périodique.			
+   	\fielditem{journalsubtitle} Sous-titre d'un périodique.							
+   	\fielditem{journaltitle} Titre d'un périodique. Le champs \champ{journal} est un alias de ce champs.							
+   	\fielditem{mainsubtitle} Sous-titre d'une œuvre en plusieurs volumes.			
+   	\fielditem{maintitle} Titre d'une œuvre en plusieurs volumes. Le titre du volume spécifique à notre entrée correspond au champs \champ{title}.						
+   	\fielditem{maintitleaddon} & Ajout au titre d'une œuvre en plusieurs volumes.		
+   	\fielditem{origtitle} Titre originale de l'œuvre, si traduction. N'est pas affiché en standard. 
+   	\fielditem{reprinttitle} Titre d'un reprint. N'est pas affiché en standard.	
+   	\fielditem{subtitle} Sous-titre de l'œuvre.									
+   	\fielditem{title} Titre de l'œuvre.									
+   	\fielditem{titleaddon} Ajout au titre de l'œuvre. Dans ce manuel, nous conseillons de l'utiliser pour les divisions de source. 
+\end{fieldlist}
 
 Voici quelques exemples afin de comprendre comment se servir de ces champs.
 
@@ -265,35 +262,33 @@ Voici quelques exemples afin de comprendre comment se servir de ces champs.
 
 \subsection{Champs d'informations sur la publication}
 
-\begin{longtable}{p{0.2\linewidth}p{0.75\linewidth}}
-	champ 		& Explication \\
-	\endhead
-	adress			& Lieu de publication (alias du champ \champ{location}).	\\
-	date			& Date de publication, sous la forme \verb|AAAA-MM-JJ/AAAA-MM-JJ|. La première date indiqué correspondant à la date de début, la seconde à la date de fin. Pour n'indiquer qu'une date de début, mettre \verb|AAAA-MM-JJ/|. On peut ne pas indiquer le mois ou le jour. On peut également utiliser les champs \champ{year} et {month} à la place. \\
-	edition		& Numéro d'édition, si plusieurs éditions successives. Doit être un entier ou bien un chaîne de caractères.				\\
-	eventdate		& Date du colloque pour les entrées du type @proceedings et @inproceedings. \\
-	institution		& Institution dans laquelle l'œuvre a été produite. Typiquement pour les entrées de type @thesis. \\
-	issue			& Spécification d'un numéro spécifique d'un périodique (par exemple \enquote{numéro d'été}). On préférera les champs \champ{year}, \champ{month}.	\\
-	language		& Langue de l'œuvre. Le nom de la langue doit, idéalement, être comme indiqué dans la documentation de \package{polyglossia}.					\\
-	location		& Lieu d'impression.  					\\
-	month			& Mois de publication. Doit être un entier compris entre 1 et 12. \\
-	number		& Numéro d'un périodique ou numéro au sein d'une collection. 	\\
-	organization		& Organisation à l'origine d'un manuel ou d'une page internet.	\\
-	origdate		& Date de l'édition originale.						\\
-	origlanguage	& Langue originelle. Le nom de la langue doit, idéalement, être comme indiqué dans la documentation de \package{polyglossia}. \\
-	origlocation		& Lieu d'impression de l'édition	originelle.		\\
-	origpublisher	& Éditeur (commercial) de l'édition originelle.		\\
-	part			& Pour les livres en plusieurs volumes, indique le numéro du volume physique. \\
-	publisher		& Éditeur commercial.					\\
-	pubstate		& Pour les œuvres non encore imprimées, indique le statut :
+\begin{fieldlist}
+	\fielditem{adress} Lieu de publication (alias du champ \champ{location}).	
+   	\fielditem{date} Date de publication, sous la forme \verb|AAAA-MM-JJ/AAAA-MM-JJ|. La première date indiqué correspondant à la date de début, la seconde à la date de fin. Pour n'indiquer qu'une date de début, mettre \verb|AAAA-MM-JJ/|. On peut ne pas indiquer le mois ou le jour. On peut également utiliser les champs \champ{year} et {month} à la place. 
+   	\fielditem{edition} Numéro d'édition, si plusieurs éditions successives. Doit être un entier ou bien un chaîne de caractères.				
+   	\fielditem{eventdate} Date du colloque pour les entrées du type @proceedings et @inproceedings. 
+   	\fielditem{institution} Institution dans laquelle l'œuvre a été produite. Typiquement pour les entrées de type @thesis. 
+   	\fielditem{issue} Spécification d'un numéro spécifique d'un périodique (par exemple \enquote{numéro d'été}). On préférera les champs \champ{year}, \champ{month}.	
+   	\fielditem{language} Langue de l'œuvre. Le nom de la langue doit, idéalement, être comme indiqué dans la documentation de \package{polyglossia}.					
+   	\fielditem{location} Lieu d'impression.  					
+   	\fielditem{month} Mois de publication. Doit être un entier compris entre 1 et 12. 
+   	\fielditem{number} Numéro d'un périodique ou numéro au sein d'une collection. 	
+   	\fielditem{organization} Organisation à l'origine d'un manuel ou d'une page internet.	
+   	\fielditem{origdate} Date de l'édition originale.						
+   	\fielditem{origlanguage} Langue originelle. Le nom de la langue doit, idéalement, être comme indiqué dans la documentation de \package{polyglossia}. 
+   	\fielditem{origlocation} Lieu d'impression de l'édition	originelle.		
+   	\fielditem{origpublisher} Éditeur (commercial) de l'édition originelle.		
+   	\fielditem{part} Pour les livres en plusieurs volumes, indique le numéro du volume physique. 
+   	\fielditem{publisher} Éditeur commercial.					
+   	\fielditem{pubstate} Pour les œuvres non encore imprimées, indique le statut :
 					\begin{description}
 						\item[inpress]œuvre sous presse.
 						\item[inpreparation]œuvre en préparation.
 						\item[submitted]œuvre soumise à évaluation.
 					\end{description}
 					
-					\\
-	type			& Pour les entrées de type  @manual, @patent et @report, précise le type de travail.
+					
+   	\fielditem{type} Pour les entrées de type  @manual, @patent et @report, précise le type de travail.
 	
 	 Pour les entrées de type @manual, deux valeurs possibles :
 					\begin{description}
@@ -319,16 +314,14 @@ Voici quelques exemples afin de comprendre comment se servir de ces champs.
 						\item[resreport]rapport de recherche.
 					\end{description}
 					
-					\\	
-	url 			& Url (adresse électronique) d'une publication en-ligne. \\
-	urldate		& Date à laquelle une publication électronique a été consultée. \\
-	venue			& Lieu du colloque pour les entrées du type @proceedings et @inproceedings. \\
-	version		& Numéro de révision d'un manuel, d'un logiciel. \\
-	volume		& Volume dans une œuvre en plusieurs volumes. \\
-	volumes		& Nombre de volume dans une œuvres en plusieurs volumes. \\
-	year			& Année de publication 				\\
-	
-\end{longtable}
+	\fielditem{url} Url (adresse électronique) d'une publication en-ligne. 
+   	\fielditem{urldate} Date à laquelle une publication électronique a été consultée. 
+   	\fielditem{venue} Lieu du colloque pour les entrées du type @proceedings et @inproceedings. 
+   	\fielditem{version} Numéro de révision d'un manuel, d'un logiciel. 
+   	\fielditem{volume} Volume dans une œuvre en plusieurs volumes. 
+   	\fielditem{volumes} Nombre de volume dans une œuvres en plusieurs volumes. 
+   	\fielditem{year} Année de publication 				
+\end{fieldlist}
 
 
 Évidemment tout ces champs ne sont pas à systématiquement remplir : le lecture sera mieux que nous lesquels remplir.
@@ -337,30 +330,26 @@ Voici quelques exemples afin de comprendre comment se servir de ces champs.
 
 Il peut être utile d'indiquer des informations comme l'ISBN etc. Voici les champs possibles\footcite[BibLaTeX imprimera ces champs par défaut, il est toutefois possible de ne pas les afficher en passant une option au chargement du package]{explicationisbn}. Nous signalons ici la liste de ces champs. Le lecteur curieux trouvera aisément des informations sur leurs significations.
 
-\begin{longtable}{p{0.2\linewidth}p{0.75\linewidth}}
-	champ 		& Explication \\
-	\endhead
-	eid			& Identifiant électronique d'une entrée de type @article. \\
-	isan			& \textenglish{International Standard Audiovisual Number}, pour les entrées de type audiovisuel.\\
-	isbn			& \textenglish{International Standard Book Number}, pour les livres. \\
-	ismn			& \textenglish{International Standard Music Numbe}, pour les musiques imprimées, comme par exemple les partitions. \\
-	isrn			& \textenglish{International Standard Technical Report Number}, pour les rapports techniques. \\
-	issn			& \textenglish{International Standard Serial Number}, pour les numéros de revue. \\
-	iswc			& \textenglish{International Standard Work Code} pour les œuvres musicales.
-\end{longtable}
+\begin{fieldlist}
+	\fielditem{eid} Identifiant électronique d'une entrée de type @article. 
+   	\fielditem{isan} \textenglish{International Standard Audiovisual Number}, pour les entrées de type audiovisuel.
+   	\fielditem{isbn} \textenglish{International Standard Book Number}, pour les livres. 
+   	\fielditem{ismn} \textenglish{International Standard Music Numbe}, pour les musiques imprimées, comme par exemple les partitions. 
+   	\fielditem{isrn} \textenglish{International Standard Technical Report Number}, pour les rapports techniques. 
+   	\fielditem{issn} \textenglish{International Standard Serial Number}, pour les numéros de revue. 
+   	\fielditem{iswc} \textenglish{International Standard Work Code} pour les œuvres musicales.
+\end{fieldlist}
 
 \subsection{Champs d'annotations}
 
 Ces champs ne sont pas imprimés par défaut. 
 
-\begin{longtable}{p{0.2\linewidth}p{0.75\linewidth}}
-	champ 		& Explication \\
-	\endhead
-	abstract			& Résumé de l'œuvre. \\
-	annotation			& Annotation sur l'œuvre.\\
-	file			& Adresse d'une version informatique du travail. \\
-	library			& Annotation sur la disponibilité en bibliothèque, par exemple mettre le nom de la bibliothèque et la cotation.
+\begin{fieldlist}
+	\fielditem{abstract} Résumé de l'œuvre. 
+   	\fielditem{annotation} Annotation sur l'œuvre.
+   	\fielditem{file} Adresse d'une version informatique du travail. 
+   	\fielditem{library} Annotation sur la disponibilité en bibliothèque, par exemple mettre le nom de la bibliothèque et la cotation.
 	
-\end{longtable}
+\end{fieldlist}
 
 Il existe d'autres champs : nous les présenterons en temps utile. Si le cœur vous en dit, vous pouvez toujours consulter le manuel de \package{BibLateX}.
