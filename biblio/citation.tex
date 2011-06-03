@@ -20,7 +20,7 @@ Dans le préambule, un appel simple au package sera :
 \usepackage{biblatex}
 \end{minted}
 
-Cependant, le \notion{package} dispose de nombreuses options. Celle qui qui nous intéresse pour le moment est \option{citestyle}, qui permet de définir comment les références bibliographique seront affichées, notamment pour ce qui concerne les références cités à plusieurs reprises.
+Cependant, le package dispose de nombreuses options. Celle qui qui nous intéresse pour le moment est \option{citestyle}, qui permet de définir comment les références bibliographique seront affichées, notamment pour ce qui concerne les références cités à plusieurs reprises.
 
 Il existe un nombre important de styles de citations livrés en standard. Nous mentionnons ici les principales\footcite[Se reporter à][\nopp 57-61 pour plus de détails.]{biblatex}:
 \begin{description}
@@ -34,9 +34,9 @@ Il existe un nombre important de styles de citations livrés en standard. Nous m
 
 On comprend ici un des grands intérêts de \logiciel{\LaTeX} : plus de prise de tête à se dire \enquote{Faut-il que j'utilise ici une version abrégée de la référence ?}, \package{BibLaTeX} le fera pour vous.
 
-Pour notre part, nous avons choisis dans notre travail de master d'utiliser le \notion{style de citation} \verb|verbose-trad2|.
+Pour notre part, nous avons choisis dans notre travail de master d'utiliser le style de citation \verb|verbose-trad2|.
 
-Nous avons donc appelé le \notion{package} de la manière suivante : 
+Nous avons donc appelé le package de la manière suivante : 
 \begin{minted}{latex}
 \usepackage[citestyle=verbose]{biblatex}
 \end{minted}
@@ -55,9 +55,9 @@ Il faut signaler à \logiciel{LaTeX} quel est le fichier \ext{.bib} à utiliser.
 Il est possible d'appeler plusieurs fichiers bibliographiques. Nous le déconseillons, dans la mesure où cela contraint à vérifier qu'il n'y ait pas d'entrées ayant la même clef.
 \end{attention}
 
-\subsection{Citation d'un élèment bibliographique}
+\subsection{Citation d'un élément bibliographique}
 
-L'ensemble des \notion{commandes} de citation ont la syntaxe suivante : 
+L'ensemble des commandes de citation ont la syntaxe suivante : 
 
 \begin{listing}[ht]
 \begin{minted}{latex}
@@ -66,11 +66,11 @@ L'ensemble des \notion{commandes} de citation ont la syntaxe suivante :
 \caption{Syntaxe de base d'une commande de citation}
 \end{listing}
 
-Par exemple, je souhaite citer le sermon 299 d'Augustin, auquel j'ai attribué la \notion{clef} \verb|AugustinSermo299|.
+Par exemple, je souhaite citer le sermon 299 d'Augustin, auquel j'ai attribué la clef \verb|AugustinSermo299|.
 
-Je fais \verb|\cite{AugustinSermo299}|. Après la troisième \notion{compilation}\renvoi{3compil}, ma référence apparaîtra selon le \notion{style} que j'ai choisi lors de l'appel à  \package{BibLaTeX}.
+Je fais \verb|\cite{AugustinSermo299}|. Après la troisième compilation\renvoi{3compil}, ma référence apparaîtra selon le style que j'ai choisi lors de l'appel à  \package{BibLaTeX}.
 
-Toutefois, l'usage en sciences humaines est de citer en note de bas de page. C'est pourquoi, je préférerais utiliser : \verb|\footcite{AugustinSermo299}|. Je peux également décider d'utiliser la \notion{commande} \commande{parencite}, pour citer entre parenthèses.
+Toutefois, l'usage en sciences humaines est de citer en note de bas de page. C'est pourquoi, je préférerais utiliser : \verb|\footcite{AugustinSermo299}|. Je peux également décider d'utiliser la commande \commande{parencite}, pour citer entre parenthèses.
 
 \subsubsection{Les options prenote et postenote}
 
@@ -82,22 +82,22 @@ Blabla \footcite[Voir également][]{AugustinSermo299} blablabla.
 
 \enquote{Voir également} sera affiché dans la note de bas de page, avant la référence.
 
-Je peux également souhaiter afficher quelque chose après la référence. J'utiliser dans ce cas l'\notion{argument} \argument{postnote}.
+Je peux également souhaiter afficher quelque chose après la référence. J'utiliser dans ce cas l'argument \argument{postnote}.
 
 \begin{minted}{latex}
 \footcite[Voir également][qui porte sur un sujet similaire]{AugustinSermo299}
 \end{minted}
 
-\subsubsection{L'\notion{argument} \argument{postnote} et la numérotation des pages}
+\subsubsection{L'argument \argument{postnote} et la numérotation des pages}
 
-L'\notion{argument} \argument{postnote} peut servir à indiquer les pages précise de notre ouvrage\footcite[On consultera pour plus de détails : ][105-106]{BibLaTeX}. Il suffit pour cela qu'il contienne une valeur de type numérique, en chiffres arabes ou romains, ou bien une séquence de valeurs numériques.
+L'argument \argument{postnote} peut servir à indiquer les pages précise de notre ouvrage\footcite[On consultera pour plus de détails : ][105-106]{BibLaTeX}. Il suffit pour cela qu'il contienne une valeur de type numérique, en chiffres arabes ou romains, ou bien une séquence de valeurs numériques.
 
 Par exemple : 
 \begin{minted}{latex}
 \footcite[1]{AugustinSermo299}
 \end{minted}
 
-Signifie que je cite le paragraphe 1 du Sermon. \package{BibLaTeX} indique automatiquement comme préfixe de page une valeur correspondant au \notion{champ} \champ{pagination} de l'entrée. Si je n'avais pas précisé que mon sermon était paginé sous forme de paragraphes, \package{BibLaTeX} aurait mis le préfixe \verb|p.|.
+Signifie que je cite le paragraphe 1 du Sermon. \package{BibLaTeX} indique automatiquement comme préfixe de page une valeur correspondant au champ \champ{pagination} de l'entrée. Si je n'avais pas précisé que mon sermon était paginé sous forme de paragraphes, \package{BibLaTeX} aurait mis le préfixe \verb|p.|.
 
 Je peux citer les paragraphes 1 à 2 :
 
@@ -111,13 +111,13 @@ Ou encore les paragraphes 1 et 3 :
 \footcite[1 \& 3]{AugustinSermo299}
 \end{minted}
 
-Toutefois, je peux vouloir citer la page précise et mettre autre chose dans le \notion{champ} \champ{post} : pour ce faire, j'utilise la \notion{commande} \commande{pno} :
+Toutefois, je peux vouloir citer la page précise et mettre autre chose dans le champ \champ{post} : pour ce faire, j'utilise la commande \commande{pno} :
 
 \begin{minted}{latex}
 \footcite[\pno1 qui nous montre qu'Augustin pensait que Paul et Pierre ne sont pas morts la même année.]{AugustinSermo299}
 \end{minted}
 
-On pourra également utiliser les \notion{commandes} \commande{nopp} pour ne pas afficher de préfixe de pagination,  \commande{psq} pour indiquer qu'il également faut prendre la page suivante et \commande{psqq} pour indiquer qu'il faut prendre les pages suivantes.
+On pourra également utiliser les commandes \commande{nopp} pour ne pas afficher de préfixe de pagination,  \commande{psq} pour indiquer qu'il également faut prendre la page suivante et \commande{psqq} pour indiquer qu'il faut prendre les pages suivantes.
 
 \begin{anedocte}
 On voudra sans doute avoir un comportement qui affiche les numéro de pages de la base de donnée uniquement si aucun numéro de page n'est indiqué lors de la citation, et non pas systématiquement. Cela nécessite de maîtriser certains outils de \package{BibLaTeX}, c'est pourquoi nous n'en parlerons que plus loin.\renvoi{doublepag}
@@ -125,7 +125,7 @@ On voudra sans doute avoir un comportement qui affiche les numéro de pages de l
 
 \subsection{Citation de plusieurs oeuvres}
 
-Il est possible de citer plusieurs oeuvres d'un coup : pour cela, il faut utiliser une \notion{commande} dont la syntaxe de base est :
+Il est possible de citer plusieurs oeuvres d'un coup : pour cela, il faut utiliser une commande dont la syntaxe de base est :
 
 \begin{listing}[ht]
 \begin{minted}{latex}
@@ -133,7 +133,7 @@ Il est possible de citer plusieurs oeuvres d'un coup : pour cela, il faut utilis
 \end{minted}
 \caption{Syntaxe de base d'une commande de citation multiple}
 \end{listing}
-Les \notion{arguments} optionnels entres parenthèses seront affichés au début et à la fin de la citation multiple. Il est possible de citer autant d'oeuvres que souhaitées. Chaque élément cités à droit a son \notion{argument} \argument{prenote} et \argument{postnote}, qui s'utilisent de la même manière que pour les citations simples.
+Les arguments optionnels entres parenthèses seront affichés au début et à la fin de la citation multiple. Il est possible de citer autant d'oeuvres que souhaitées. Chaque élément cités à droit a son argument \argument{prenote} et \argument{postnote}, qui s'utilisent de la même manière que pour les citations simples.
 
 \begin{anedocte}
 Pour modifier le séparateur des citations, voir plus loin.\renvoi{sepmult}

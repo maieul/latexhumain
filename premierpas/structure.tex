@@ -5,8 +5,8 @@ Après avoir découvert les bases de \logiciel{\LaTeX}, apprenons la manière de
 
 \section{Différents niveaux de titres}\label{niveautitre}
 
-\logiciel{\LaTex} propose par défaut six ou sept niveaux de titre, selon la \notion{classe} choisie.
-Pour introduire un titre dans \logiciel{\LaTex} --- en dehors du titre du travail ---, il suffit d'utiliser une \notion{commande} de titre, qui possède la syntaxe suivante:
+\logiciel{\LaTex} propose par défaut six ou sept niveaux de titre, selon la classe choisie.
+Pour introduire un titre dans \logiciel{\LaTex} --- en dehors du titre du travail ---, il suffit d'utiliser une commande de titre, qui possède la syntaxe suivante:
 \begin{minted}{latex}
 \titre[titre court]{titre long}
 \end{minted}
@@ -33,14 +33,14 @@ Le titre court est facultatif, comme l'indique le fait qu'il soit entre crochets
 
 Quelques remarques importantes :
 \begin{itemize}
-\item Le niveau \verb|\chapter| n'existe pas dans la \notion{classe} \classe{article}.
+\item Le niveau \verb|\chapter| n'existe pas dans la classe \classe{article}.
 \item Raison pour laquelle le niveau de \verb|\part| varie entre -1 et 0.
 \item Les niveaux dont les numéros sont inférieurs à 1 provoquent, par défaut, un changement de pages.
 \item Les niveaux dont les numéros sont supérieurs à 3 ne provoquent pas de changement de paragraphe. Ils sont positionés en \enquote{lettrine}.
 \end{itemize}
 
 \subsection{Des titres non numérotés}
-Par défaut, tout les titres sont numérotés automatiquement\footnote{Nous verrons plus loins comment changer la numérotation.}. Il est possible d'avoir un titre non numéroté, en faisant suivre le nom de la \notion{commande} d'un astérique :
+Par défaut, tout les titres sont numérotés automatiquement\footnote{Nous verrons plus loins comment changer la numérotation.}. Il est possible d'avoir un titre non numéroté, en faisant suivre le nom de la commande d'un astérique :
 \begin{minted}{latex}
 \chapter*{Un chapitre non numéroté}
 \end{minted}
@@ -68,7 +68,7 @@ Le lecteur alerte se demandera sans doute pourquoi il est nécessaire de mettre 
 
 \section{Structurer ses fichiers}
 
-Jusqu'à maintenant, vous aviez tout mis dans un seul fichier. Une fonctionalité intéressante de \logiciel{\LaTeX} est la possibilité d'\notion[inclusion]{inclure} des fichiers dans un fichier, pour ainsi séparer son travail en plusieurs fichiers, chaque fichier contenant une partie seulement du document final.
+Jusqu'à maintenant, vous aviez tout mis dans un seul fichier. Une fonctionalité intéressante de \logiciel{\LaTeX} est la possibilité d'inclusion des fichiers dans un fichier, pour ainsi séparer son travail en plusieurs fichiers, chaque fichier contenant une partie seulement du document final.
 
 Par exemple, il est possible de faire un fichier par chapitre d'un mémoire. Ou encore de faire un fichier par texte cité dans un exemplier. Seul un document \enquote{père} sera compilé, ce document appelera des documents \enquote{fils}.
 
@@ -98,7 +98,7 @@ A titre d'exemple, vous trouverez le schéma d'organisation de nos fichiers pour
 
 \subsection{Comment indiquer le chemin du fichier}\label{chemin}
 
-La notion de \notion{chemin de fichier} en informatique renvoie à l'arborescence des dossiers sur un ordinateur.
+La notion de chemin de fichier en informatique renvoie à l'arborescence des dossiers sur un ordinateur.
 
 En \logiciel{\LaTeX}, le chemin du fichier se compte à partir du fichier \enquote{père}, celui qui est compilé. \emph{Y compris lorsqu'on procède à une inclusion dans un fichier \enquote{fils}}.
 
@@ -114,7 +114,7 @@ ou bien
 
 \begin{attention}
 
-Il ne faut pas mettre l'\notion{extension} \ext{.tex} dans le nom du fichier.
+Il ne faut pas mettre l'extension \ext{tex} dans le nom du fichier.
 
 Il est déconseillé d'avoir des caractères spéciaux dans le nom des dossiers et des fichiers.
 \end{attention}
