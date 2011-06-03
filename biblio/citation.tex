@@ -171,13 +171,22 @@ Un problème se pose lorsqu'il y a déjà un champ \champ{pages} remplit : on se
 
 Pour éviter cela, si on utilise un style de type verbose, il faut passer un option lors de l'appel au package \option{citepages=omit}
 
+\begin{minted}{latex}
+\usepackage[citestyle=verbose,citepages=omit]{biblatex}
+\end{minted}
+
+Désormais faire
+\begin{minted}{latex}
 \cite[24]{Junod1992}
+\end{minted}
+
+affichera correctement :
+
+\begin{quotation}
+\cite[24]{Junod1992}
+\end{quotation}
 
 
-\cite[toto]{Junod1992}
-
-
-\cite{Junod1992}
 
 \subsection{Citation de plusieurs oeuvres}
 
@@ -221,3 +230,17 @@ Donne :
 \end{quotation}
 
 \cite[24]{Junod1992}
+
+
+\section{Choix de la forme abrégée}
+
+Si vous utilisez le style verbose, vous pouvez vouloir choisir la forme abrégée des références. Il existe plusieurs champs, que nous n'avons pas encore mentionnés, qui permettent de faire cela.
+
+\begin{fieldlist}
+	\fielditem{shortauthor} Nom abrégé de l'auteur.
+	\fielditem{shorteditor} Nom abrégé de l'éditeur.
+	\fielditem{shorthand} Forme abrégée de la référence.
+	\fielditem{shorthandintro} Lorsqu'une entrée est citée pour la première fois, et si le champ \champ{shorthand} est utilisé, le champ \champ{shorthandintro} servira à introduire la forme abrégée. Par exemple \enquote{cité plus tard :}.
+	\fielditem{shorttitle} Forme abrégée du titre.
+\end{fieldlist}
+
