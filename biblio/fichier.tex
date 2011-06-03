@@ -40,7 +40,7 @@ Par exemple
 Qui pourra être affiché plus tard sous la forme :
 
 \begin{quote}
-\cite{urner}
+\cite{Urner1952}
 \end{quote}
 
 
@@ -120,9 +120,9 @@ Ces champs servent à désigner des personnes qui ont participé au processus de
 
 Lorsque des champs possèdent des valeurs identiques (par exemples les champs \champ{publisher} et \champ{translator}, \package{BibLaTeX} va  fusionner ces champs lors de l'affichage. Prenons ainsi l'entrée suivante : 
 
-\inputminted{exemples/biblio/premierpas/augustin_editeur.bib}.
+\inputminted{exemples/biblio/premierpas/augustin_editeur.bib}
 
-Elle sera affichée ainsi
+Elle sera affichée ainsi : 
 
 \begin{quote}
 \cite{DoctrineChretienne}
@@ -137,12 +137,77 @@ author = {Maïeul Rouquette and Enimie Rouquette}
 \end{minted}
 
 Un nom se caractérise en LaTeX par :
+\begin{description}
+\item[Un ou plusieurs prénoms.]L'initiale doit être en majuscule, le reste en minuscule. Exemple : \forme{Albert}. Il vaut mieux mettre le prénom complet : on peut confier le travail de limitation à une minuscule  à \package{BibLaTex}.
+\item[Un nom.]L'initiale doit être en majuscule, le reste en minuscule. Exemple : \forme{Londres} et non pas \forme{LONDRES}. \package{BibLaTex} se chargera le cas échéant de mettre en majuscule.
+\item[Éventuellement une particule.] Elle doit être entièrement en minuscule. Par exemple : \forme{de}, \forme{von}.
+\item[Éventuellement un suffixe] avec l'initiale en majuscule. Ce type de donnée est plutôt anglo-saxonne. Exemple : \forme{Junior}.
+\end{description}
+
+En ce qui concerne la syntaxe, elle peut être :
 \begin{itemize}
-\item Un ou plusieurs prénoms. L'initiale doit être en majuscule, le reste en minuscule. Exemple : \forme{Albert}. Il vaut mieux mettre le prénom complet : on peut confier le travail de limitation à une minuscule  à \package{BibLaTex}.
-\item Un nom. L'initiale doit être en majuscule, le reste en minuscule. Exemple : \forme{Londres} et non pas \forme{LONDRES}. \package{BibLaTex} se chargera le cas échéant de mettre en majuscule.
-\item Éventuellement une particule. Elle doit être entièrement en minuscule. Par exemple : \forme{de}, \forme{von}.
-\item Éventuellement un suffixe, avec l'initial en majuscule. Ce type de donnée est plutôt anglo-saxonne. Exemple : \forme{Junior}.
+\item\enquote{Prénoms + (particule) + Nom}
+\item\enquote{particule + Nom, (suffixe), Prénoms} 
 \end{itemize}
 
+Ainsi les entrées suivantes sont équivalentes :
 
+\begin{minted}{latex}
+Victor Marie Hugo
+\end{minted}
+
+\begin{minted}{latex}
+Hugo, Victor Marie
+\end{minted}
+
+Dans le premier cas, BibTeX considère que le dernier mot commençant par une majuscule est le nom de famille. Dans le second cas, il considère l'ensemble situé avant la virgule comme le nom de famille. Ce qui est utile pour les noms composés. Ainsi pour parler de Charles De Gaulle :
+
+\begin{minted}{latex}
+De Gaulle, Charles
+\end{minted}
+
+Si je parle de Simone de Beauvoir, le \forme{de} étant une particule je peux utiliser la première syntaxe : dans ce cas BibLaTeX considère tout ce qui suit la particule comme constituant le nom :
+
+\begin{minted}{latex}
+Simone de Beauvoir
+\end{minted}
+
+Mais la seconde syntaxe fonctionne également :
+
+\begin{minted}{latex}
+de Beauvoir, Simone
+\end{minted}
+
+Pour distinguer Alexandre Dumas père d'Alexandre Dumas fils, on peut utiliser le suffixe :
+
+\begin{minted}{latex}
+Dumas, Fils, Alexandre
+\end{minted}
+
+Un cas problématique est celui des auteurs anciens, où l'on écrit souvent le prénom suivi de la ville d'exercice ou de naissance, comme par exemple pour Grégoire de Tours.
+
+Si j'écris : 
+
+\begin{minted}{latex}
+Grégoire de Tour
+\end{minted}
+
+BibLaTeX va comprendre qu'il s'agit d'une personne prénommée Grégoire, dont le nom est Tours et la particule de. Par conséquent il va l'afficher sous la forme \forme{Tours, Grégoire, de.}. Pour éviter ce problème, il suffit d'utiliser des accolades :
+\begin{minted}{latex}
+{Grégoire de Tour}
+\end{minted}
+
+Pour résumer, voici un exemples de quelques entrées correctes\footnote{Le lecteur exigeant pardonnera aux auteurs de ne mettre ici que les noms d'auteurs et titres d'œuvres}.
+
+\inputminted{exemples/biblio/premierpas/noms.bib}
+
+\begin{quote}
+\cite{HugoMiserable} \\
+\cite{HugoLegende} \\
+\cite{DeGaulle}	\\
+\cite{BeauvoirSexe} \\
+\cite{BeauvoirMemoires} \\
+\cite{Dumas} \\
+\cite{Gregoire} \\ 
+\end{quote}
 
