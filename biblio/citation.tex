@@ -26,7 +26,7 @@ Il existe un nombre important de styles de citations livrés en standard. Nous m
 \begin{description}
 \item[numeric] : chaque entrée se voit attribué un numéro, qui sera appelé lorsqu'on renverra à cette entrée. La bibliographie finale indiquera les correspondances.
 \item[authortitle] : seront indiqués l'auteur et le titre de l'oeuvre.
-\item[verbose]    : la description complète de l'entrée sera donnée.
+\item[verbose]    : la description complète de l'entrée sera donnée la première fois, une version abrégée sera affichée ensuite.
 \item[verbose-ibid] : la description complète de l'entrée sera donnée, mais si un passage est citée plusieurs fois de suite, l'abréviation \emph{ibidem} sera utilisée.
 \item[verbose-note] : la description complète de l'entrée sera donnée à sa première mention, puis une version abrégée sera utilisée.
 \item[verbose-trad1 ; verbose-trad2 ; verbose-trad3] la description complète de l'entrée sera utilisée, puis les abréviations universitaires de type \emph{op. cit.}, {ibidem.} etc. seront utilisées. \package{BibLaTeX} calculera automatiquement l'opportunité d'utiliser une abréviation universitaire, selon l'endroit où l'ouvrage aura été cité précédement. Voir le manuel pour la description complète des différences entre ces trois styles.
@@ -80,85 +80,144 @@ Par exemple :
 \inputminted{exemples/biblio/premierpas/saxer.bib}
 \end{quote}
 
-Toutefois, l'usage en sciences humaines est de citer en note de bas de page. C'est pourquoi, on préférera utiliser : \verb|\footcite{Saxer1980}|. On peut également décider d'utiliser la commande \commande{parencite}, pour citer entre parenthèses.
+Toutefois, l'usage en sciences humaines est de citer en note de bas de page. C'est pourquoi, on préférera utiliser : \verb|\footcite{Saxer1980}|. On peut également décider d'utiliser la commande \commande{parencite}, pour citer entre parenthèses. 
+
+Enfin on peut choisir la commande \commande{autocite}. Le mode de citation (notes de bas page, citation directe, citation entre parenthèse etc.) dépendra du style de citation choisi : pour les styles de la famille verbose, ce sera les notes de bas de pages.
 
 \subsubsection{Les options prenote et postenote}
 
 Supposons que nous souhaitons afficher, avant notre référence, un texte. Par exemple : \enquote{Voir également}. On utilise l'argument optionnel \argument{prenote}.
 
 \begin{minted}{latex}
-\footnote[Voir également][]{Saxer1980} blablabla.
+\autocite[Voir également][]{Saxer1980} blablabla.
 \end{minted}
 
 \begin{quotation}
-Blabla \footcite[Voir également][]{Saxer1980} blablabla.
+Blabla \parencite[Voir également][]{Saxer1980} blablabla.
 \end{quotation}
 
 
 
-Je peux également souhaiter afficher quelque chose après la référence. J'utiliser dans ce cas l'argument \argument{postnote}.
+On peut également souhaiter afficher quelque chose après la référence. On utilise dans ce cas l'argument \argument{postnote}.
 
 \begin{minted}{latex}
-	Blabla \footcite[Voir également][qui porte sur un sujet similaire]{Saxer1980} blabla
+	Blabla \autocite[Voir également][qui porte sur un sujet similaire]{Saxer1980} blabla
 \end{minted}
 
 \begin{quotation}
 
-	Blabla \footcite[Voir également][qui porte sur un sujet similaire]{Saxer1980} blabla
+	Blabla \parencite[Voir également][qui porte sur un sujet similaire]{Saxer1980} blabla
 \end{quotation}
 
 \subsubsection{L'argument \argument{postnote} et la numérotation des pages}
 
-L'argument \argument{postnote} peut servir à indiquer les pages précise de notre ouvrage\footcite[On consultera pour plus de détails : ]{BibLaTeX}. Il suffit pour cela qu'il contienne une valeur de type numérique, en chiffres arabes ou romains, ou bien une séquence de valeurs numériques.
+L'argument \argument{postnote} peut servir à indiquer les pages précise de notre ouvrage\footcite[On consultera pour plus de détails : ][]{biblatex_pages}. Il suffit pour cela qu'il contienne une valeur de type numérique, en chiffres arabes ou romains, ou bien une séquence de valeurs numériques.
 
 Par exemple : 
 \begin{minted}{latex}
-\footcite[1]{AugustinSermo299}
+\footcite[25]{Saxer1980}
 \end{minted}
 
-Signifie que je cite le paragraphe 1 du sermon. \package{BibLaTeX} indique automatiquement comme préfixe de page une valeur correspondant au champ \champ{pagination} de l'entrée. Si je n'avais pas précisé que mon sermon était paginé sous forme de paragraphes, \package{BibLaTeX} aurait mis le préfixe \verb|p.|.
+Signifie que je cite la page 25
 
-Je peux citer les paragraphes 1 à 2 :
+Je peux citer les pages 25 à 36.
 
 \begin{minted}{latex}
-\footcite[1-2]{AugustinSermo299}
+\autocite[1-2]{Saxer1980}
 \end{minted}
 
-Ou encore les paragraphes 1 et 3 :
+Ou encore les pages 25 et 35:
 
 \begin{minted}{latex}
-\footcite[1 \& 3]{AugustinSermo299}
+\autocite[35 \& 25]{Saxer1980}
 \end{minted}
 
-Toutefois, je peux vouloir citer la page précise et mettre autre chose dans le champ \champ{post} : pour ce faire, j'utilise la commande \commande{pno} :
+Toutefois, je peux vouloir citer la page précise et mettre autre chose dans le champ \champ{post} : pour ce faire, j'utilise la commande \commande{pno~} :
 
 \begin{minted}{latex}
-\footcite[\pno1 qui nous montre qu'Augustin pensait que Paul et Pierre ne sont pas morts la même année.]{AugustinSermo299}
+\autocite[\pno~22 avec lequel nous sommes en désaccord]{Saxer1980}
 \end{minted}
 
+\begin{quotation}
+	\parencite[\pno~22 avec lequel nous sommes en désaccord]{Saxer1980}
+\end{quotation}
 On pourra également utiliser les commandes \commande{nopp} pour ne pas afficher de préfixe de pagination,  \commande{psq} pour indiquer qu'il également faut prendre la page suivante et \commande{psqq} pour indiquer qu'il faut prendre les pages suivantes.
 
+On peut préciser le type de pagination possible : pagine-t-on en pages, en colonnes etc ? Pour cela, il faut préciser le champ \champ{pagination}, en donnant l'une des valeurs suivantes : 
+
+\begin{enumerate}
+\item[page]la pagination est sous forme de pages. C'est la valeur standard.
+\item[column]la pagination est sous forme de colonnes.
+\item[line]la pagination est sous forme de lignes.
+\item[verse]la pagination est sous forme de verset / de vers. 
+\item[section]la pagination est sous forme de sections.
+\item[paragraph]la pagination est sous forme de paragraphes.
+\item[none]la pagination est libre.
+\end{enumerate}
+
 \begin{anedocte}
-On voudra sans doute avoir un comportement qui affiche les numéro de pages de la base de donnée uniquement si aucun numéro de page n'est indiqué lors de la citation, et non pas systématiquement. Cela nécessite de maîtriser certains outils de \package{BibLaTeX}, c'est pourquoi nous n'en parlerons que plus loin.\renvoi{doublepag}
+Il est possible de définir une autre valeur, mais cela sort de ce chapitre : nous renvoyons plus loins. \renvoi{paginationperso}
+
 \end{anedocte}
+
+Un problème se pose lorsqu'il y a déjà un champ \champ{pages} remplit : on se retrouve avec deux numérotation de pages : celle indiquée dans le champ \champ{pages} et celle indiquée par l'option \argument{postnote}.
+
+
+\begin{quotation}
+\cite[p. 24]{Junod1992}
+\end{quotation}
+
+
+
+Pour éviter cela, si on utilise un style de type verbose, il faut passer un option lors de l'appel au package \option{citepages=omit}
+
+\cite[24]{Junod1992}
+
+
+\cite[toto]{Junod1992}
+
+
+\cite{Junod1992}
 
 \subsection{Citation de plusieurs oeuvres}
 
 Il est possible de citer plusieurs oeuvres d'un coup : pour cela, il faut utiliser une commande dont la syntaxe de base est :
 
-\begin{listing}[ht]
+
 \begin{minted}{latex}
-\PREFIXcites[prenote][postnote]{clef}
+\PREFIXcites[prenote][postnote]{clef}[prenote][postenote]{clef}…
 \end{minted}
-\caption{Syntaxe de base d'une commande de citation multiple}
-\end{listing}
+
 Les arguments optionnels entres parenthèses seront affichés au début et à la fin de la citation multiple. Il est possible de citer autant d'oeuvres que souhaitées. Chaque élément cités à droit a son argument \argument{prenote} et \argument{postnote}, qui s'utilisent de la même manière que pour les citations simples.
 
-\begin{anedocte}
-Pour modifier le séparateur des citations, voir plus loin.\renvoi{sepmult}
-\end{anedocte}
 
 Voici un exemple d'utilisation : 
 
-\revision{Inserer exemple}.
+\begin{minted}{latex}
+\autocites{Saxer1980}{Junod1992}
+\end{minted}
 
+\begin{quotation}
+\cites{Saxer1980}{Junod1992}
+\end{quotation}
+Il est possible de préciser un texte à afficher avant la liste des des références, ainsi qu'un texte à afficher après.
+
+\begin{minted}{latex}
+\autocites(Texte avant)(Texte après){Saxer1980}{Junod1992}
+\end{minted}
+
+Les séparateurs de citations sont par défaut des points-virgule. Il est possible de les modifier globalement, nous en parlerons plus loins.
+
+Toutefois, si un argument \argument{poste} d'un élément de la commande de citation multiple finis par un signe de ponctuation, alors le point-virgule n'apparaîtra pas entre cet élément et le suivant :
+
+\begin{minted}{latex}
+\autocites[on consultera également :]{Saxer1980}{Junod1992}
+\end{minted}
+
+Donne :
+
+\begin{quotation}
+\cites[on consultera également :]{Saxer1980}{Junod1992}
+\end{quotation}
+
+\cite[24]{Junod1992}
