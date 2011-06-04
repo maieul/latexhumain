@@ -16,25 +16,30 @@
 	
 Prenons un problème courant. Vous aurez constaté que, par défaut, les différents champs d'une référence bibliographique sont séparés par des points.
 
-	Ont obtient par exemple :
+	On obtient par exemple :
+	
+	\renewcommand{\newunitpunct}[0]{\adddot\addspace} 
+	
 	\begin{quotation}
-	\cite{Marrou}
+	\cite{Urner1952}
 	\end{quotation}
 	
 	alors que le règles françaises voudraient que l'on ait :
 	
+	\renewcommand{\newunitpunct}[0]{\addcomma\addspace}
+	
 	\begin{quotation}
-	\cite{Marrou}
+	\cite{Urner1952}
 	\end{quotation}
 	
-A l'intérieur d'une référence bibliographique, BibLaTex distingue des unités de sens\footnote{A vrai dire il existe des unités plus vastes, appelés blocs. Mais concrètement nous n'avons jamais réussi à nous en servir.} Ici : l'auteur, le titre, l'adresse, l'éditeur, l'année. 
+À l'intérieur d'une référence bibliographique, BibLaTex distingue des unités de sens\footnote{A vrai dire il existe des unités plus vastes, appelés blocs. Mais concrètement nous n'avons jamais réussi à nous en servir.}. Ici : l'auteur, le titre, l'adresse, l'éditeur, l'année. 
 
 	Ces unités sont séparés par des signes de ponctuations. Ces séparateurs sont définis par la commande \commande{newunitpunct}.
 	
 	Il suffit donc de redéfinir la commande :
 	
 	\begin{minted}{latex}
-	\renewcommand{\newunitpunct}[0]{, }
+	\renewcommand{\newunitpunct}[0]{,}
 	\end{minted}
 	
 	Cette solution semble fonctionner. Mais elle pose un problème : les styles définissent des unités de sens sans se poser la question de savoir si ces unités sont vides ou pas.
@@ -42,27 +47,17 @@ A l'intérieur d'une référence bibliographique, BibLaTex distingue des unités
 	Prenons l'entrée suivante :
 	
 		
-	\begin{minted}{latex}
-	@bookinbook{BreveHippone,
-        		Booktitle = {Concilia Africae},
-        		Entrysubtype = {concile},
-        		Number = {149},
-        		Pages = {36},
-        		Pagination = {paragraph},
-        		Series = {Corpus Christianorum Series Latina},
-        		Shortseries = {CCSL},
-       		Title = {Breviarum Hipponenses}}	
-	\end{minted}
+	\inputminted{exemples/biblio/style1/afrique.bib}
 	
 	On obtiendra le résultat suivant :
 	
 	\begin{quotation}
-		\cite{BreveHippone}
+		\cite{BrefHippone}
 	\end{quotation}
 	
 	La virgule entre les deux points et \emph{Concilia Africae} s'explique parce qu'une unité a été créée, unité qui doit contenir normalement la valeur du champ \champ{Bookauthor}.
 	
-	Pour contourner ce problème, il ne faut pas mettre directement dans la définition de la commande \commande{newunitpunct} les signes de ponctuation. Il faut utiliser les commandes de ponctuation\footcite[Listées dans]{biblatexponctuation}. En effet, ces commandes afficheront la ponctuation uniquement si l'unité qui précède a bien un contenu\footnote{Par ailleurs, elle suppriment les espaces multiples qui précédent.}.
+	Pour contourner ce problème, il ne faut pas mettre directement dans la définition de la commande \commande{newunitpunct} les signes de ponctuation. Il faut utiliser les commandes de ponctuation\footcite[Listées dans]{biblatex_ponctuation}. En effet, ces commandes afficheront la ponctuation uniquement si l'unité qui précède a bien un contenu\footnote{Par ailleurs, elle suppriment les espaces multiples qui précédent.}.
 	
 	Il faut donc mettre dans notre cas :
 	
@@ -77,7 +72,7 @@ A l'intérieur d'une référence bibliographique, BibLaTex distingue des unités
 	
 	Deux cas existent :
 		\begin{enumerate}
-			\item \package{BibLaTeX} a prévu une commande spécifique pour notre type d'unité. C'est le cas pour le séparateur avant le sous titre\footcite[Ces commandes sont peu nombreuse : on les trouvera dans][89-91]{biblatex}. Il suffit dans ce cas de redéfinir la commande. Par exemple nous souhaitons avoir des deux-points entre le titre et le sous titre. Il nous suffit de faire :
+			\item \package{BibLaTeX} a prévu une commande spécifique pour notre type d'unité. C'est le cas pour le séparateur avant le sous titre\footcite[Ces commandes sont peu nombreuse : on les trouvera dans][89-91]{biblatex_separateur_unites}. Il suffit dans ce cas de redéfinir la commande. Par exemple nous souhaitons avoir des deux-points entre le titre et le sous titre. Il nous suffit de faire :
 			\begin{minted}{latex}
 				\renewcommand{\subtitlepunct}[0]{\addspace\addcolon\addspace}
 			\end{minted}
@@ -90,10 +85,10 @@ A l'intérieur d'une référence bibliographique, BibLaTex distingue des unités
 	Les chaînes de langues sont ces morceaux de textes figés mais qui dépendent de la langue. Prenons une entrée de type article, lorsque nous la citons, nous obtenons.
 	
 	\begin{quotation}
-		\cite{Amsler1997}
+		\cite{Junod1992}
 	\end{quotation}
 	
-	La chaîne \forme{dans} sépare le titre de l'article et le nom de la revue. Si nous rédigions en anglais, nous aurions \forme{in} à la place. 
+	La chaîne \forme{dans} sépare le titre de l'article et le nom de la revue. Si nous rédigions en anglais, nous aurions \forme{in} à la place. Toutefois en français, on peut souhaiter avoir la forme latine \forme{in}. 
 	
 	Il peut justement nous arriver de vouloir changer ces chaînes de langues. Une chaîne de langues associe à une clef invariable une valeur qui change selon la langue.
 	
@@ -101,11 +96,15 @@ A l'intérieur d'une référence bibliographique, BibLaTex distingue des unités
 	
 	Une fois ce fichier ouvert, repérons la ligne qui commence par
 	
-	\verb|\DeclareBibliographyStrings{|
+	\begin{minted}{latex}
+	\DeclareBibliographyStrings{
+	\end{minted}
 	
 	Cette ligne est suivie d'autres lignes sous la forme :
 	
+	\begin{minted}{latex}
 	\verb|clef	= {{chaîne longue}{chaîne courte}}|
+	\end{minted}
 	
 	\begin{anedocte}
 	Chaque chaîne de langue est disponible en version longue ou courte. On peut passer une option lors de l'appel du package \package{biblatex} pour décider d'utiliser les versions longues.
@@ -113,7 +112,11 @@ A l'intérieur d'une référence bibliographique, BibLaTex distingue des unités
 	\begin{minted}{latex}
 	\usepackage[abbreviate=false]{biblatex}
 	\end{minted}
+	
+	 Toutefois quand on redéfini une chaîne de langue, on ne lui accorde qu'une seule version.
+	
 		
+
 	\end{anedocte}
 	Il nous faut donc repérer la clef correspondante à notre chaîne \enquote{dans}. Très rapidement nous trouvons qu'il s'agit de la chaine \verb|in|.
 	
@@ -125,7 +128,7 @@ A l'intérieur d'une référence bibliographique, BibLaTex distingue des unités
 		}
 	\end{minted}
 	
-	On constatera qu'on peut utiliser dans une chaîne de langue des commandes LaTeX. Si notre chaîne contient des signes de ponctuations, il faut utiliser les commandes de ponctuation mentionnées plus haut.
+	On constatera qu'on peut utiliser dans une chaîne de langue des commandes \LaTeX. Si notre chaîne contient des signes de ponctuations, il faut utiliser les commandes de ponctuation mentionnées plus haut.
 	
 	On constatera les \% à la fin de chaque ligne, ceci afin d'éviter les espaces intempestifs.
 	
