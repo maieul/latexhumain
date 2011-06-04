@@ -21,12 +21,12 @@ Biber est donc un logiciel qui remplace BibTeX. Quels sont les avantages : ?
 
 Supposons que vous citiez plusieurs contributions d'un même colloque. Classiquement vous créerez plusieurs entrées bibliographiques sous la forme\footnote{Toute ressemblance avec un colloque s'étant déjà connu ne saurait-être que pure coïncidence}.
 
-\inputminted{exemples/biblio/premierpas/reproduction.bib}
+\inputminted{exemples/biblio/biber/reproduction.bib}
 
 Vous dupliquez ainsi les données sur le colloque (titre, éditeur etc.). Si par hasard vous vous êtes trompés dans une information vous devriez la modifier partout. Pour éviter cela BibTeX prévoit la possibilité de créer des filiations d'entrée : des entrées secondaires \enquote{héritant} d'entrées principales. L'héritage étant pris en charge lors de l'interprétation du fichier. Pour ce faire, il suffit d'indiquer dans le champ \champ{crossref} des entrées secondaires la clef de l'entrée principale.
 
 
-\inputminted{exemples/biblio/premierpas/crossref.bib}
+\inputminted{exemples/biblio/biber/crossref.bib}
 
 En toute logique la compilation avec BibTeX devrait attribuer la valeur du champ \champ{title} de l'entrée \verb|title} aux champs \champ{booktitle} des entrées \verb{clef1} et \verb{clef2}, puisqu'il s'agit d'entrée de type \verb|@inproceedings| héritant d'entrée \verb|@proceedings|. 
 
@@ -132,7 +132,7 @@ Le choix d'une entrée de type \verb|@book| pour la clef \verb|DeDoctChrIIviii18
 
 Ainsi pour notre cas, il suffit de créer les deux entrées suivantes :
 
-\inputminted{exemples/biblio/premierpas/augustin.bib}
+\inputminted{exemples/biblio/biber/augustin.bib}
 
 Pour citer notre passage précis, il faut écrire :
 

@@ -5,11 +5,11 @@ La première étape pour gérer une bibliographique avec \logiciel{\LaTeX} est d
 
 À vrai dire, cela se fait en général bien avant la rédaction du travail.
 
-La base de donnée bibliographique est un fichier au format \logiciel{BibTeX} qui porte une extension \ext{.bib}.
+La base de donnée bibliographique est un fichier au format \logiciel{BibTeX} qui porte une extension \ext{bib}.
 \end{prealable}
 
 
-\section{Strucure de base d'un fichier \ext{.bib}}
+\section{Strucure de base d'un fichier \ext{bib}}
 
 Chaque élément d'une bibliographie sera appelé entrée. Une entrée bibliographique se caractérise par :
 \begin{itemize}
@@ -20,7 +20,7 @@ Chaque élément d'une bibliographie sera appelé entrée. Une entrée bibliogra
 
 L'avantage de ce système est compréhensible. En effet, une correction dans la base de donnée bibliographique sera automatiquement reportée dans le travail\footnote{Moyennant une nouvelle compilation.} à chaque fois que l'entrée est mentionnée.
 
-Un fichier \ext{.bib} est un fichier texte contenant une suite d'instruction, de la forme suivante.
+Un fichier \ext{bib} est un fichier texte contenant une suite d'instruction, de la forme suivante.
 
 
 \begin{minted}{latex}
@@ -35,7 +35,7 @@ Un fichier \ext{.bib} est un fichier texte contenant une suite d'instruction, de
 
 Par exemple
 
-\inputminted{exemples/biblio/premierpas/urner.bib}
+\inputminted{exemples/biblio/fichier/urner.bib}
 
 Signifie que je déclare un livre (\verb|@book|) auquel j'attribue la clef \verb|Urner1952|. Ce livre est une oeuvre de Urner, Hans de son prénom, il s'intitule \emph{Die ausserbiblische Lesung in Christlichen Gottesdienst} a été publié en 1952 à Gottigen.
 
@@ -48,7 +48,7 @@ Il pourra être affiché plus tard sous la forme :
 
 
 
-Un fichier .bib n'est rien d'autre qu'une \renvoi{logiciel:biblio} série d'entrées de ce type. Cependant, comme il est assez aisé de s'embrouiller, notamment dans les ouvertures et fermetures des accolades, il vaut la peine d'utiliser un logiciel de gestion de bibliographies, capable de gérer  des fichiers au formats \ext{.bib}. Un certain nombre sont présentés en annexe.
+Un fichier \ext{bib} n'est rien d'autre qu'une \renvoi{logiciel:biblio} série d'entrées de ce type. Cependant, comme il est assez aisé de s'embrouiller, notamment dans les ouvertures et fermetures des accolades, il vaut la peine d'utiliser un logiciel de gestion de bibliographies, capable de gérer  des fichiers au formats \ext{bib}. Un certain nombre sont présentés en annexe.
 
 La documentation de \package{BibLaTeX} contient l'ensemble des champs et des types possibles. Pour éviter de répéter ce manuel, nous vous présenterons les champs en les classant par catégorie. Mais auparavant, nous dirons donnerons quelques conseils sur le choix de la clef et sur les différents types de catégories.
 
@@ -120,7 +120,7 @@ Ces champs servent à désigner des personnes qui ont participé au processus de
 
 Lorsque des champs possèdent des valeurs identiques (par exemples les champs \champ{publisher} et \champ{translator}, \package{BibLaTeX} va  fusionner ces champs lors de l'affichage. Prenons ainsi l'entrée suivante : 
 
-\inputminted{exemples/biblio/premierpas/augustin_editeur.bib}
+\inputminted{exemples/biblio/fichier/augustin_editeur.bib}
 
 Elle sera affichée ainsi : 
 
@@ -199,7 +199,7 @@ BibLaTeX va comprendre qu'il s'agit d'une personne prénommée Grégoire, dont l
 
 Pour résumer, voici un exemples de quelques entrées correctes\footnote{Le lecteur exigeant pardonnera aux auteurs de ne mettre ici que les noms d'auteurs et titres d'œuvres}.
 
-\inputminted{exemples/biblio/premierpas/noms.bib}
+\inputminted{exemples/biblio/fichier/noms.bib}
 
 \begin{quote}
 	\cite{HugoMiserable} 	\\
@@ -238,7 +238,7 @@ Voici quelques exemples afin de comprendre comment se servir de ces champs.
 
 \subsubsection{Un livre avec un sous-titre}
 
-\inputminted{exemples/biblio/premierpas/saxer.bib}
+\inputminted{exemples/biblio/fichier/saxer.bib}
 
 \begin{quote}
 \cite{Saxer1980}
@@ -246,7 +246,7 @@ Voici quelques exemples afin de comprendre comment se servir de ces champs.
 
 \subsubsection{Un livre situé dans un recueil}
 
-\inputminted{exemples/biblio/premierpas/felix.bib}
+\inputminted{exemples/biblio/fichier/felix.bib}
 
 \begin{quote}
 \cite{ContraFelix}
@@ -254,7 +254,7 @@ Voici quelques exemples afin de comprendre comment se servir de ces champs.
 
 \subsubsection{Un article dans une revue}
 
-\inputminted{exemples/biblio/premierpas/junod.bib}
+\inputminted{exemples/biblio/fichier/junod.bib}
 
 \begin{quote}
 \cite{Junod1992}
