@@ -12,7 +12,7 @@
 	\end{prealable}
 	
 	
-	\section{Séparateurs d'unité de sens}
+\section{Séparateurs d'unité de sens}
 	
 Prenons un problème courant. Vous aurez constaté que, par défaut, les différents champs d'une référence bibliographique sont séparés par des points.
 
@@ -57,7 +57,7 @@ Prenons un problème courant. Vous aurez constaté que, par défaut, les différ
 	
 	La virgule entre les deux points et \emph{Concilia Africae} s'explique parce qu'une unité a été créée, unité qui doit contenir normalement la valeur du champ \champ{Bookauthor}.
 	
-	Pour contourner ce problème, il ne faut pas mettre directement dans la définition de la commande \commande{newunitpunct} les signes de ponctuation. Il faut utiliser les commandes de ponctuation\footcite[Listées dans]{biblatex_ponctuation}. En effet, ces commandes afficheront la ponctuation uniquement si l'unité qui précède a bien un contenu\footnote{Par ailleurs, elle suppriment les espaces multiples qui précédent.}.
+	Pour contourner ce problème, il ne faut pas mettre directement dans la définition de la commande \commande{newunitpunct} les signes de ponctuation. Il faut utiliser les commandes de ponctuation\footcite[Listées dans]{biblatex_ponctuation}. En effet, ces commandes afficheront la ponctuation uniquement si l'unité qui précède a bien un contenu\footnote{Par ailleurs, elle suppriment les espaces multiples qui précédent.}. \renvoi{commandesponctuation}
 	
 	Il faut donc mettre dans notre cas :
 	
@@ -66,7 +66,7 @@ Prenons un problème courant. Vous aurez constaté que, par défaut, les différ
 	\end{minted}
 	
 	
-	\subsection{Une séparateur spécifique à deux unités}
+\subsection{Une séparateur spécifique à deux unités}
 	
 	On pourrait vouloir qu'entre deux unités spécifiques, par exemple entre le titre et le sous titre, le séparateur ne soit pas le même qu'entre les autres unités.	Vous aurez sans doute constaté que c'est d'ailleurs le cas pour le style verbose : l'adresse et l'édition sont séparés par des deux-points.
 	
@@ -80,7 +80,7 @@ Prenons un problème courant. Vous aurez constaté que, par défaut, les différ
 			\item \package{BibLaTeX} n'a pas prévu de commande spécifique pour notre type d'unité. Dans ce cas, le problème est plus complexe et nécessite des notions que nous n'avons pas encore abordées. C'est pourquoi nous renvoyons au prochain chapitre.\renvoi{unitepersonalisee}
 		\end{enumerate}
 		
-	\section{Chaînes de langues}
+\section{Chaînes de langues}
 	
 	Les chaînes de langues sont ces morceaux de textes figés mais qui dépendent de la langue. Prenons une entrée de type article, lorsque nous la citons, nous obtenons.
 	
@@ -142,5 +142,34 @@ Prenons un problème courant. Vous aurez constaté que, par défaut, les différ
 		}
 	\end{minted}
 	
-	
+\subsection{Introduction au tests conditionnels}
+
+Nous allons maintenant prendre un peu d'anticipation sur le prochaine chapitre.
+Vous avez certainement constaté que les styles de la famille \forme{verbose-trad} utilisent des abréviations latines comme \emph{op. cit.}.
+Ces abréviations sont les abréviations universitaires courantes. Toutefois en ce qui concerne l'abréviation \forme{op. cit.} l'utilise indistinctement pour tout les types d'entrées, y compris pour les entrées de type @article, alors même qu'on pourrait s'attendre à une abréviation de type \emph{art. cit.}.
+
+Pour résoudre ce problème, il suffit de redéfinir la chaîne de langue qui définit \forme{op. cit.}, en lui attribuant une valeur différente selon le type d'entrée.  On va donc utiliser l'un des nombreux tests conditionnels disponibles dans BibLaTeX. Il s'agit de la commande :
+
+\begin{minted}{latex}
+\iffieldequalstr{champ}{texte}{sioui}{sinon}
+\end{minted}
+
+Cette commande ne peut s'utiliser que dans certaines parties d'un fichier \LaTeX : dans les commandes de définitions de styles bibliographiques, y compris dans celles de définition d'un chaîne de langue. 
+Elle vérifie que le champ \argument{champ}	de l'entrée bibliographique citée correspond à l'argument \argument{texte} : si c'est le cas, elle retourne l'argument \argument{sioui}, et sinon elle retourne l'argument \argument{sinon}.
+
+Ici nous allons tester le pseudo-champ\footnote{\forme{Pseudo} car il ne se situe pas réellement comme un champ dans l'entrée bibliographique.} \champ{entrytype }, qui correspond au type d'entrée sans le @. Nous allons donc vérifier s'il s'agit d'une entrée de type article : si c'est le cas nous donnerons à la chaîne de langue la valeur  \forme{art. cit.},  dans le cas contraire nous donnerons la valeur \forme{op. cit.}.
+
+Ce qui donne : 
+
+\begin{minted}{latex}
+\DefineBibliographyStrings{french}{%
+	opcit = \iffieldequalstr{entrytype}{article}%
+	{art\adddotspacecit\adddot}%
+	{op\adddotspacecit\adddot}%
+}
+\end{minted}
+
+On remarquera l'utilisation des commandes de ponctuations, comme signalé plus haut.\renvoi{commandeponctuation}
+
+
 	
