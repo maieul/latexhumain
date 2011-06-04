@@ -1,0 +1,23 @@
+
+\begin{tikzpicture}[
+	level/.style={sibling distance=25em/#1,level distance=4cm},
+	every node/.style={text width=3.5cm,align=center}
+	]
+	\node {Commande de citation} 
+		child { node {Macros bibliographiques}}
+		child { node {Driver bibliographiques}
+			child { node {Macros bibliographiques}
+			 	child {
+					node{Impression de champs}
+					}
+			 	child {
+					node{Appel à d'autre macros}
+					}
+				child {
+					node{Appel à des chaînes de langues}
+					}
+				}
+			child { node {Séparateur d'unité bibliographique}}
+			}	
+	;		
+\end{tikzpicture}
