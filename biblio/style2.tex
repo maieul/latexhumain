@@ -1,7 +1,151 @@
 \chapter{Modifier les styles bibliographiques (2)}
 
 \begin{prealable}
-
+	Nous avons vu que BibLaTeX propose un certain nombres de commandes pour personnaliser rapidement les styles bibliographiques. Toutefois toutes ces commandes ne suffisent pas nécessairement pour des personnalisation avancées. 
+	Ainsi la possibilité de choisir l'ordre d'affichage des champs, par exemple, nécessite d'aller plus loin dans la compréhension des styles bibliographiques de de \package{BibLaTeX}.
 \end{prealable}
 
 
+
+\section{Que se passe-t-il lorsqu'on utilise une commande \commande{cite} ?}
+
+Pour comprendre comment personnaliser l'affichage bibliographique, il est nécessaire de comprendre sommaire ce qui passe lorsqu'on utilise une commande de citation. 
+
+\begin{itemize}
+\item Lorsqu'on appelle une commande de citation, du type \verb|PREFXIcite|, cette commande va appeler :
+	\begin{itemize}
+		\item Des macros bibliographiques, chargés d'afficher l'argument \argument{prenote} ou \argument{postnote}. Les macros bibliographiques sont des types particuliers de commandes, propres au package \package{biblatex}. Dans ces macros on peut utiliser un certain nombres de commandes propres au package \package{biblatex}. 
+		\item Un driver\footnote{Bien que le terme \enquote{driver} ne soit pas français, nous l'utilisons car il est utilisé dans les commandes internes de BibLaTeX} bibliographique. Un driver correspond à un type d'entrée (@article, @book etc.), et se charge d'afficher les champs de l'entrée dans le bon ordre. Pour ce faire, un driver appelle :
+		\begin{itemize}
+			\item Des commandes de séparations d'unités bibliographiques, que nous avons vu plus haut.
+			\item Des macros bibliographiques. Ces macros bibliographiques appellent elles-même :
+			\begin{itemize}
+				\item Des commandes d'impression de champs bibliographiques.
+				\item Éventuellement d'autres macros bibliographiques.
+				\item Des chaînes de langues
+			\end{itemize}
+		\end{itemize}
+		
+	\end{itemize}
+\end{itemize}
+
+Ceci peut se résumer par le schéma \ref{schema_styles_biblios} (p. \pageref{schema_styles_biblios}). 
+
+\begin{figure}[ht]
+\include{schemas/stylesbiblio}
+\caption{Le fonctionnement des styles bibliographiques}\label{schema_styles_biblios}
+\end{figure}
+
+
+
+\section{Redéfinir une macro bibliographique : l'exemple du champ auteur et éditeur}
+
+
+L'ensemble de ces éléments sont entièrement redéfinissables. Nous allons prendre un exemple concret de problématique existante.
+
+Prenons l'entrée suivante :
+
+\inputminted{exemples/biblio/fichier/saxer.bib}
+
+Elle s'affiche ainsi, avec l'éditeur commercial avant l'adresse :
+
+\begin{quotation}
+\cite{Saxer1980}
+\end{quotation}
+
+On pourrait souhaiter avoir l'éditeur après l'adresse, comme ceci : 
+
+\newbibmacro*{publisher+location+date}{%
+  \printlist{publisher}%
+  \iflistundef{publisher}
+    {\setunit*{\addcomma\space}}
+    {\setunit*{\addcolon\space}}%
+  \printlist{location}%
+  \setunit*{\addcomma\space}%
+  \usebibmacro{date}%
+  \newunit}
+
+\begin{quotation}
+\cite{Saxer1980}
+\end{quotation}
+
+
+
+La première chose à faire va donc être de repérer quel macro bibliographique modifier. Pour cela, il faut repérer les fichiers de définition des styles bibliographiques. Il en existe plusieurs :
+
+\begin{itemize}
+\item Fichier \ext{def} qui définit les styles invariants, quelque soit le style de bibliographie ou de citation choisi.
+\item Fichiers \ext{cbx} qui définissent les styles utilisés lors de l'utilisation des commandes \verb|PREFIXcite|.
+\item Fichiers \ext{bbx} qui définissent les styles utilisés lors de l'appel à la commande \verb|printbibliography|.
+\end{itemize}
+
+Certains fichiers s'appellent mutuellement : ainsi les fichiers \ext{bbx} contiennent les drivers bibliographiques. Ils sont donc appelés par les fichiers \ext{cbx}. Ces appels mutuels entre fichiers permettent de garantir une uniformité entre les styles bibliographiques lors de l'utilisation de \verb|PREFIXcite| et lors de l'utilisation de \verb|printbibliography|.
+
+Nous supposons que nous vous utilisez les styles de la famille \forme{verbose}. En consultant les journaux de compilation et en ouvrant les fichiers standards, vous pouvez aisément remonter au fichier \fichier{standard.bbx}, qui contient les drivers bibliographiques de cette famille.
+
+
+Dedans vous pourrez aisément repérer les lignes suivantes :
+\inputminted{exemples/biblio/styles2/driverbook.tex}
+
+Il s'agit d'un driver bibliographique expliquant comment afficher les entrées de type @book. Vous constaterez que ce driver fait appel à des macros bibliographiques (les commandes \commande{usebibmacro}). Ces macros sont communes à plusieurs drivers, ce qui permet d'avoir une certaine uniformité de style (par exemple, afin que les noms d'auteurs s'affichent systématiquement de la même façon).
+
+Dans le lot des macros appelés, vous constaterez l'appel à la macro \forme{publisher+location+date}, via la commande
+
+\begin{minted}{latex}
+\usebibmacro{publisher+location+date}
+\end{minted}
+
+En fouillant un peu le même fichier, vous repérerez l'endroit où la macro est définie :
+
+\inputminted{exemples/biblio/styles2/publisher+location+date.tex}[linenos]
+
+Nous allons commenter succinctement ces lignes, avant d'expliquer comment faire pour inverser l'ordre des deux champs (mais normalement, en lisant nos commentaires, vous devriez comprendre tout de suite). 
+
+\begin{description}
+\item[Ligne 1]La commande \commande{newbibmacro*} indique qu'on déclare une nouvelle macro bibliographique, ici \forme{publisher+location+date}. Pour indiquer qu'on redéfinit une macro déjà existant, il faut utiliser la commande \commande{renewbibmacro*}. La définition de la macro se trouve dans les accolades qui suivent.
+\item[Ligne2]La commande \commande{printlist} indique qu'on affiche un champ qui pourrait se présenter sous forme de liste, c'est à dire où le mot clef \forme{and} à un sens. Ici il s'agit du champ \champ{location}. \item[Ligne 3]La commande \commande{iflistundef} test la valeur d'un champ qui pourrait être une liste, ici le champ \champ{publisher}. Si ce champ est vide, il exécute le contenu de la première accolade (ligne 4), sinon celui de la seconde (ligne 5).
+\item[Ligne 4]Si donc le champ \champ{publisher} est vide, on créé une nouvelle unité bibliographique (\commande{setunit*} séparée de la précédente par une virgule suivie d'une espace (\commande{addcomma}\commande{space}).
+\item[Ligne 5]Si le champ \champ{publisher} n'est pas vide, alors on crée une nouvelle unité bibliographique, séparée de la suivante par deux-points suivi d'une espace (\commande{addcolon}\commande{space}).
+\item[Ligne 6]On imprime le champ \champ{publisher}.
+\item[Ligne 7]On crée une nouvelle unité bibliographique, séparée de la précédente par une virgule suivie d'un espace. À noter que le champ \champ{publisher} est vide, on n'aura qu'une seule virgule : nous renvoyons à nos explication antérieure sur les commandes de ponctuation.
+\item[Ligne 8]On appelle une macro qui se chargera de l'affichage de la date.
+\item[Ligne 9]On crée une nouvelle unité bibliographique. Le signe séparateur sera celui définie par la commande \commande{newunitpunct}, vue plus haut.
+\end{description}
+
+Pour inverser l'ordre de nos champs, il suffit donc de redéfinir une macro en inversant l'ordre d'impression des champs. Au passage, on ne veut plus des deux points comme séparateurs, ce qui nous permet de supprimer un test conditionnel.
+
+
+\begin{minted}{latex}
+\newbibmacro*{publisher+location+date}{%
+  \printlist{publisher}%
+    \setunit*{\addcomma\space}%
+  \printlist{location}%
+  \setunit*{\addcomma\space}%
+  \usebibmacro{date}%
+  \newunit}
+\end{minted}
+
+\input{exemples/biblio/styles2/publisher+location+date}	% Remettre les champs dans le bon ordre.
+
+
+Prêtez bien attention aux \% de fin de lignes : les oublier signifie risquer d'avoir des espaces indésirables dans ses références bibliographiques.
+
+
+\begin{anedocte}
+
+Il  existe d'autres commandes que \commande{printfield} pour imprimer des champs : \commande{printname} pour imprimer un champ contenant des noms de personne, et \commande{printfield} pour imprime un champ ne nécessitant pas de mise en forme particulière.
+
+Pour mieux comprendre quand utiliser l'une ou l'autre de ces commandes, le mieux est de regarder les fichiers standards.
+
+\end{anedocte}
+\begin{anedocte}
+Si vous utilisez le champ \champ{address} à la place du champ \champ{location}, sachez que le premier est considéré comme un alias du second : autrement dit utiliser \champ{address} revient à utiliser \champ{location}.
+
+On peut déclarer des nouveaux alias de champ via la commande 
+
+\begin{minted}{latex}
+\DeclareFieldAlias{alias}{original}
+\end{minted}
+
+Mais normalement vous ne devriez pas avoir à utiliser cette commande.
+\end{anedocte}
