@@ -86,13 +86,13 @@ Analysons le code :
 \item[Ligne 2] un nœud TikZ, matérialisé ici par le commande \commande{node} est un bloc de texte. On pourrait passer des options à cette commande, afin de modifier certains aspects (par exemple afficher un contour au texte).
 \item[Lignes 3 et 4] \verb|child| désigne ici une opération : associer un fils au nœud précédent. Ce fils est lui même un nœud (\verb|node|)
 \item[Lignes 5 à 12]même chose que précédemment, sauf que le nœud D se voit attribuer des fils (E et F). Notez le nombre d'accolade et leurs imbrications : c'est ce qui permet à \package{TikZ} de construire correctement la généalogie.
-\item[Ligne 13] le point-virgule est important.Il est obligatoire après chaque commande \package{TikZ} (ici \commande{node}).
+\item[Ligne 13] le point-virgule est important.
+Il est obligatoire après chaque commande \package{TikZ} (ici \commande{node}).
 \item[Ligne 14] fin de graphisme \package{TikZ}
 \end{description}
 
 Évidemment un tel code est relativement complexe. C'est pourquoi nous conseillons de commenter attentivement le code\footnote{Pour des raisons de place nous ne l'avons pas fait ici} et de prêter extrêmement attention  aux accolades. Par ailleurs nous recommandons de mettre chaque graphisme \package{TikZ} dans un fichier séparé.
 
-Pour faciliter la création de graphisme TikZ il est possible d'utiliser des logiciels WYSIWYG\renvoi{logiciels:tikz}.
 
 Notre arbre généalogique est relativement simple : il n'y a pas de consanguinité. Si cela avait été le cas la construction aurait été plus complexe : on n'aurait pas pu utiliser les opérations de types \verb|child| et il aurait fallu positionner précisément les éléments en utilisant un système de coordonnée.
 
