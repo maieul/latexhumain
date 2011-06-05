@@ -36,6 +36,16 @@ Une telle méthode permet aisément de séparer une bibliographie en plusieurs p
 
 \end{minted}
 
+\section{Choix du style de bibliographie}
+
+De même qu'il est possible de choisir, lors de l'appel à \package{biblatex} les styles de références bibliographiques, il est possible de choisir un style bibliographique grâce à l'argument \argument{bibstyle}. Pour les sciences humaines, il vaut mieux choisir \forme{verbose} qui nous assure d'avoir une référence complète, sans pour autant attribuer un numéro à chaque entrée.
+
+Ainsi, lors de l'appel au package \package{biblatex}, il suffit d'écrire :
+
+\begin{minted}{latex}
+\usepackage[bibstyle=verbose,...]{biblatex}
+
+\end{minted}
 \section{Changer le niveau de titre d'une bibliographie}
 
 Par défaut, les titres de bibliographie sont de niveaux \commande{chapter*}\renvoi{niveautitre}. Mais il est possible de redéfinir ces titres, grâce à la commande \commande{defbibheading}.
