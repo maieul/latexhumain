@@ -43,10 +43,6 @@
 	\textbf{#1}%
 }
 
-\newcommand{\logiciel}[1]{%
-	%\index{#1}%
-	{\emph{#1}}%
-}
 
 \newcommand{\notion}[2]{%Synonyme de concept
 	\concept[#1]{#2}%
@@ -92,3 +88,16 @@
 %pour ecrire latex
 \let\latex\LaTeX
 \let\LaTex\LaTeX
+
+%pour la liste de logiciels
+
+\newcommand{\logiciel}[3]{%
+	% #1 => nom du logiciel
+	% #2 => Plateforme
+	% #3 => Commentaires
+	\subsection{#1 (#2)}
+	
+	#3
+	
+	
+}
