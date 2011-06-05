@@ -55,7 +55,7 @@ on perd la possibilité de sélectionner dans le PDF généré par LaTeX les tex
 
 Nous allons donc ici vous présenter une possibilité du \package{TikZ} : la représentation d'une famille de manuscrits. 
 
-Nous avons choisi cette exemple car il est relativement simple. Mais \package{TikZ} permet de faire bien plus, comme par exemple de produire des diagrammes statistiques : nous renvoyons à d'autres ouvrages pour en savoir plus\footcites[Outre le manuel on pourra lire][]{tikzimpatient}[on pourra également consulter le site ][]{tikzexample}.
+Nous avons choisi cette exemple car il est relativement simple, tout en étant fréquent en sciences humaines. Mais \package{TikZ} permet de faire bien plus, comme par exemple de produire des diagrammes statistiques : nous renvoyons à d'autres ouvrages pour en savoir plus\footcites[Outre le manuel on pourra lire][]{tikzimpatient}[on pourra également consulter le site ][]{tikzexample}.
 Ce package possède une syntaxe spécifique. 
 
 \begin{attention}
@@ -95,6 +95,8 @@ Il est obligatoire après chaque commande \package{TikZ} (ici \commande{node}).
 
 
 Notre arbre généalogique est relativement simple : il n'y a pas de consanguinité. Si cela avait été le cas la construction aurait été plus complexe : on n'aurait pas pu utiliser les opérations de types \verb|child| et il aurait fallu positionner précisément les éléments en utilisant un système de coordonnée.
+
+
 
 \input{premierpas/tableau}
 
@@ -137,6 +139,16 @@ Un exemple de flottant se situe  dans ce chapitre : la figure \ref{figure:geneal
 	
 	De même on pourrait souhaiter renvoyer automatiquement vers le numéro et la page d'une figure : nous en parlons dans le chapitre consacré à la navigation à l'intérieur d'un document.\renvoi{label}
 \end{attention}
+
+Il peut-être utile de centrer le contenu du flottant. Il s'agit ici d'une exception au principe de séparation du fond de la forme. Pour procéder à ce centrage, il faut utiliser la commande \commande{centering}.
+
+\begin{minted}{latex}
+\begin{figure}[paramètre de placement]
+	\centering
+	Insertion de la figure ou de l'image suivant les codes montrés plus haut.
+	\caption{Légende}
+\end{figure} 
+\end{minted}
 
 \subsection{Choix de l'emplacement du flottant}
 
