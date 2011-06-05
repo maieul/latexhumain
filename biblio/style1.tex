@@ -24,9 +24,9 @@ Prenons un problème courant. Vous aurez constaté que, par défaut, les différ
 	\cite{Urner1952}
 	\end{quotation}
 	
-	alors que le règles françaises voudraient que l'on ait :
+alors que le règles françaises voudraient que l'on ait :
 	
-	\renewcommand{\newunitpunct}[0]{\addcomma\addspace}
+\renewcommand{\newunitpunct}[0]{\addcomma\addspace}
 	
 	\begin{quotation}
 	\cite{Urner1952}
@@ -36,10 +36,10 @@ Prenons un problème courant. Vous aurez constaté que, par défaut, les différ
 
 	Ces unités sont séparés par des signes de ponctuations. Ces séparateurs sont définis par la commande \commande{newunitpunct}.
 	
-	Il suffit donc de redéfinir la commande :
-	
+	Il suffit donc de redéfinir la commande. Pour cela il suffit de mettre dans le préambule\footnote{Nous conseillons de mettre toutes les commandes de personnalisation des styles bibliographiques dans un seul fichier.} : 
+		
 	\begin{minted}{latex}
-	\renewcommand{\newunitpunct}[0]{,}
+\renewcommand{\newunitpunct}[0]{,}
 	\end{minted}
 	
 	Cette solution semble fonctionner. Mais elle pose un problème : les styles définissent des unités de sens sans se poser la question de savoir si ces unités sont vides ou pas.
@@ -62,8 +62,12 @@ Prenons un problème courant. Vous aurez constaté que, par défaut, les différ
 	Il faut donc mettre dans notre cas :
 	
 	\begin{minted}{latex}
-		\renewcommand{\newunitpunct}[0]{\addcomma\addspace}
+\renewcommand{\newunitpunct}[0]{\addcomma\addspace}
 	\end{minted}
+	
+	\begin{anedocte}
+		Nous n'avons par parlé jusqu'à présent de la commande \commande{renewcommand}. Celle-ci est identique à la commande \commande{newcommand} à la différence qu'elle permet de redéfinir une commande déjà existante.
+	\end{anedocte}
 	
 	
 \subsection{Une séparateur spécifique à deux unités}
@@ -72,18 +76,48 @@ Prenons un problème courant. Vous aurez constaté que, par défaut, les différ
 	
 	Deux cas existent :
 		\begin{enumerate}
-			\item \package{BibLaTeX} a prévu une commande spécifique pour notre type d'unité. C'est le cas pour le séparateur avant le sous titre\footcite[Ces commandes sont peu nombreuse : on les trouvera dans][89-91]{biblatex_separateur_unites}. Il suffit dans ce cas de redéfinir la commande. Par exemple nous souhaitons avoir des deux-points entre le titre et le sous titre. Il nous suffit de faire :
+			\item \package{BibLaTeX} a prévu une commande spécifique pour notre type d'unité. C'est le cas pour le séparateur avant le sous titre\footcite[Ces commandes sont peu nombreuse : on les trouvera dans]{biblatex_hooks}. Il suffit dans ce cas de redéfinir la commande. Par exemple nous souhaitons avoir des deux-points entre le titre et le sous titre. Il nous suffit de faire :
 			\begin{minted}{latex}
-				\renewcommand{\subtitlepunct}[0]{\addspace\addcolon\addspace}
+\renewcommand{\subtitlepunct}[0]{\addspace\addcolon\addspace}
 			\end{minted}
 			
 			\item \package{BibLaTeX} n'a pas prévu de commande spécifique pour notre type d'unité. Dans ce cas, le problème est plus complexe et nécessite des notions que nous n'avons pas encore abordées. C'est pourquoi nous renvoyons au prochain chapitre.\renvoi{unitepersonalisee}
 		\end{enumerate}
-		
+
+\section{Styles de certains blocs}
+
+La ponctuation n'est pas le seul point où \package{BibLaTeX} propose des points d'entrés pour des modifications spécifiques. Certaines parties des références bibliographiques disposent également de la possibilité d'avoir des réglages grâce à des commande spécifiques\footcite{biblatex_hooks}. Prenons par exemple la particule d'un auteur.
+	
+	\begin{quotation}
+	\cite{BeauvoirSexe}
+	\end{quotation}
+	
+	\renewcommand{\mkbibnameprefix}[1]{\parentext{#1}}
+	
+Il est parfois d'usage de mettre la particule entre parenthèse. Pour ce faire, il suffit de redéfinir la commande \commande{mkbibnameprefix}. Cette commande prend un argument, qui est la particule. Ainsi pour la mettre automatiquement entre parenthèse, il suffit d'écrire.
+	
+	\begin{minted}{latex}
+\renewcommand{\mkbibnameprefix}[1]{(#1)}
+	\end{minted}
+	
+Voire pour être encore plus correct :
+	
+	\begin{minted}{latex}
+\renewcommand{\mkbibnameprefix}[1]{\parentext{#1}}
+	\end{minted}
+
+La commande \commande{parentext} mettant entre parenthèse un texte passé en argument. On obtient le résultat souhaité : 
+
+	\begin{quotation}
+	\cite{BeauvoirSexe}
+	\end{quotation}
+
 \section{Chaînes de langues}
 	
 	Les chaînes de langues sont ces morceaux de textes figés mais qui dépendent de la langue. Prenons une entrée de type article, lorsque nous la citons, nous obtenons.
 	
+	 
+	 
 	\begin{quotation}
 		\cite{Junod1992}
 	\end{quotation}
@@ -97,20 +131,20 @@ Prenons un problème courant. Vous aurez constaté que, par défaut, les différ
 	Une fois ce fichier ouvert, repérons la ligne qui commence par
 	
 	\begin{minted}{latex}
-	\DeclareBibliographyStrings{
+\DeclareBibliographyStrings{
 	\end{minted}
 	
 	Cette ligne est suivie d'autres lignes sous la forme :
 	
 	\begin{minted}{latex}
-	\verb|clef	= {{chaîne longue}{chaîne courte}}|
+clef	= {{chaîne longue}{chaîne courte}}|
 	\end{minted}
 	
 	\begin{anedocte}
 	Chaque chaîne de langue est disponible en version longue ou courte. On peut passer une option lors de l'appel du package \package{biblatex} pour décider d'utiliser les versions longues.
 	
 	\begin{minted}{latex}
-	\usepackage[abbreviate=false]{biblatex}
+\usepackage[abbreviate=false]{biblatex}
 	\end{minted}
 	
 	 Toutefois quand on redéfini une chaîne de langue, on ne lui accorde qu'une seule version.
@@ -123,9 +157,9 @@ Prenons un problème courant. Vous aurez constaté que, par défaut, les différ
 	Une fois  notre clef repérée, il est facile de lui attribuer une nouvelle valeur\footnote{Cette valeur sera utilisée que l'on choisisse le mode abrégé ou non.}, grâce à la commande \commande{DefineBibliographyStrings{lang}{chaînes}}
 	
 	\begin{minted}{latex}
-		\DefineBibliographyStrings{french}{%
-      		  	in 	= {\emph{in}}%
-		}
+\DefineBibliographyStrings{french}{%
+	in = {\emph{in}}%
+}
 	\end{minted}
 	
 	On constatera qu'on peut utiliser dans une chaîne de langue des commandes \LaTeX. Si notre chaîne contient des signes de ponctuations, il faut utiliser les commandes de ponctuation mentionnées plus haut.
@@ -135,11 +169,11 @@ Prenons un problème courant. Vous aurez constaté que, par défaut, les différ
 	Si nous souhaitons redéfinir plusieurs chaînes de langue, il faut séparer chaque définition par une virgule :
 	
 	\begin{minted}{latex}
-		\DefineBibliographyStrings{french}{%
-      		  	clef1 	= {valeur1},%
-			clef2	= {valeur2},%
-			clefN	= {valeurN}%
-		}
+\DefineBibliographyStrings{french}{%
+      	clef1 	= {valeur1},%
+	clef2	= {valeur2},%
+	clefN	= {valeurN}%
+}
 	\end{minted}
 	
 \subsection{Introduction au tests conditionnels}
