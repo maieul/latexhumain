@@ -144,7 +144,7 @@ On pourra également utiliser les commandes \commande{nopp} pour ne pas afficher
 
 On peut préciser le type de pagination possible : pagine-t-on en pages, en colonnes etc ? Pour cela, il faut préciser le champ \champ{pagination}, en donnant l'une des valeurs suivantes : 
 
-\begin{enumerate}
+\begin{description}
 \item[page]la pagination est sous forme de pages. C'est la valeur standard.
 \item[column]la pagination est sous forme de colonnes.
 \item[line]la pagination est sous forme de lignes.
@@ -152,21 +152,19 @@ On peut préciser le type de pagination possible : pagine-t-on en pages, en colo
 \item[section]la pagination est sous forme de sections.
 \item[paragraph]la pagination est sous forme de paragraphes.
 \item[none]la pagination est libre.
-\end{enumerate}
+\end{description}
 
 
 
-Un problème se pose lorsqu'il y a déjà un champ \champ{pages} remplit : on se retrouve avec deux numérotation de pages : celle indiquée dans le champ \champ{pages} et celle indiquée par l'option \argument{postnote}.
+Un problème se pose lorsqu'il y a déjà un champ \champ{pages} remplit : on se retrouve avec deux numérotation de pages : celle indiquée dans le champ \champ{pages} et celle indiquée par l'option \argument{postnote}. Prenons l'entrée suivante :
 
-Prenons l'entrée suivante :
-
-\inputminted{exemples/biblio/fichierjunod.bib}
+\inputminted{exemples/biblio/fichier/junod.bib}
 
 Et appelons là avec le code suivant :
 
 \begin{minted}{latex}
 \cite[p. 24]{Junod1992}
-\end{latex}
+\end{minted}
 
 on obtient ce résultat :
 
