@@ -1,0 +1,5 @@
+\renewbibmacro*{cite:title}{%
+  \printtext[bibhyperlink]{%
+   \ifsingletitle{}{\printfield[citetitle]{labeltitle}}%
+    \setunit{\nametitledelim}%
+    \bibstring[\mkibid]{opcit}}}
