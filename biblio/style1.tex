@@ -4,7 +4,7 @@
 	
 	Vous savez désormais utiliser les commandes de citations. Toutefois, vous pourriez souhaiter modifier la manière dont les citations s'affichent :  changer l'ordre des champs, les séparateurs, les textes du type \forme{dans}.
 	
-	Ces deux chapitres vous indiquerez les principes généraux pour le faire. Étant donné l'ampleur du sujet, deux chapitres ne sont pas de trop. Par ailleurs, ces deux chapitres n'ont pas pour vocation de tout présenter sur le sujet, mais simplement les principes de bases. On se reportera au manuel de \package{BibLaTeX} pour aller plus loin.
+	Ces deux chapitres vous indiquerez les principes généraux pour le faire. Étant donné l'ampleur du sujet, deux chapitres ne sont pas de trop. Par ailleurs, ils n'ont pas pour vocation de tout présenter sur le sujet, mais simplement les principes de base. On se reportera au manuel de \package{BibLaTeX} pour aller plus loin.
 	
 	Le premier de ce chapitre vous présentera les techniques les plus simples, celle qui ne nécessite pas de fouiller le styles bibliographiques standards. 
 	
@@ -32,11 +32,11 @@ alors que le règles françaises voudraient que l'on ait :
 	\cite{Urner1952}
 	\end{quotation}
 	
-À l'intérieur d'une référence bibliographique, BibLaTex distingue des unités de sens\footnote{A vrai dire il existe des unités plus vastes, appelés blocs. Mais concrètement nous n'avons jamais réussi à nous en servir.}. Ici : l'auteur, le titre, l'adresse, l'éditeur, l'année. 
+À l'intérieur d'une référence bibliographique, BibLaTex distingue des unités de sens\footnote{À vrai dire il existe des unités plus vastes, appelés blocs. Mais ces unités servent pour des réglages avancés de l'affichage de la bibliographie finale.}. Ici : l'auteur, le titre, l'adresse, l'éditeur, l'année. 
 
 	Ces unités sont séparés par des signes de ponctuations. Ces séparateurs sont définis par la commande \commande{newunitpunct}.
 	
-	Il suffit donc de redéfinir la commande. Pour cela il suffit de mettre dans le préambule\footnote{Nous conseillons de mettre toutes les commandes de personnalisation des styles bibliographiques dans un seul fichier.} : 
+	Il suffit donc de redéfinir la commande. Pour cela il suffit de mettre dans le préambule\footnote{Cela n'est pas obligé, mais c'est une bonne méthodologie de mettre l'ensemble des commandes de personnalisations de styles dans le préambule. Nous conseillons de mettre toutes les commandes de personnalisation des styles bibliographiques dans un seul fichier, appelé dans le préambule.} : 
 		
 	\begin{minted}{latex}
 \renewcommand{\newunitpunct}[0]{,}
@@ -86,7 +86,7 @@ alors que le règles françaises voudraient que l'on ait :
 		
 \section{Séparateur de références multiples}\label{multicitedelim}
 
-Lorsque nous utilisons une commande de citation multiple \renvoi{citemultiple}, les séparateurs par défaut sont des points virgules :
+Lorsque nous utilisons une commande de citation multiple\renvoi{citemultiple}, les séparateurs par défaut sont des points-virgules :
 
 \begin{minted}{latex}
 \autocites{Saxer1980}{Junod1992}
@@ -140,9 +140,9 @@ La commande \commande{parentext} mettant entre parenthèse un texte passé en ar
 		\cite{Junod1992}
 	\end{quotation}
 	
-	La chaîne \forme{dans} sépare le titre de l'article et le nom de la revue. Si nous rédigions en anglais, nous aurions \forme{in} à la place. Toutefois en français, on peut souhaiter avoir la forme latine \forme{in}. 
+	La chaîne \forme{dans} sépare le titre de l'article et le nom de la revue. Si nous rédigions en anglais, nous aurions \forme{in} à la place.  
 	
-	Il peut justement nous arriver de vouloir changer ces chaînes de langues. Une chaîne de langues associe à une clef invariable une valeur qui change selon la langue.
+	Il peut justement nous arriver de vouloir changer ces chaînes de langues, par exemple pour avoir la forme \forme{in}, qui est un terme latin souvent utilisé dans les bibliographies. Une chaîne de langues associe à une clef invariable une valeur qui change selon la langue.
 	
 	Les styles bibliographiques possèdent des chaînes de langues par défaut, qu'il est possible de remplacer au cas par cas. Pour ce faire, ils nous faut toutefois connaître les clefs. Il nous faut donc ouvrir le fichier de langue \fichier{french.lbx}. Pour repérer ce fichier, voir notre explication en annexe.\renvoi{fichierdefaut}.
 	
@@ -180,17 +180,15 @@ clef	= {{chaîne longue}{chaîne courte}}|
 }
 	\end{minted}
 	
-	On constatera qu'on peut utiliser dans une chaîne de langue des commandes \LaTeX. Si notre chaîne contient des signes de ponctuations, il faut utiliser les commandes de ponctuation mentionnées plus haut.
-	
-	On constatera les \% à la fin de chaque ligne, ceci afin d'éviter les espaces intempestifs.
+	Constatons qu'on peut utiliser dans une chaîne de langue des commandes \LaTeX. Si notre chaîne contient des signes de ponctuations, il faut utiliser les commandes de ponctuation mentionnées plus haut.Less \% à la fin de chaque ligne, sont ici pour éviter les espacement intempestifs.\renvoi{commandepourcent}
 	
 	Si nous souhaitons redéfinir plusieurs chaînes de langue, il faut séparer chaque définition par une virgule :
 	
 	\begin{minted}{latex}
 \DefineBibliographyStrings{french}{%
-      	clef1 	= {valeur1},%
-	clef2	= {valeur2},%
-	clefN	= {valeurN}%
+clef1 = {valeur1},%
+clef2 = {valeur2},%
+clefN = {valeurN}%
 }
 	\end{minted}
 	
@@ -198,9 +196,9 @@ clef	= {{chaîne longue}{chaîne courte}}|
 
 Nous allons maintenant prendre un peu d'anticipation sur le prochaine chapitre.
 Vous avez certainement constaté que les styles de la famille \forme{verbose-trad} utilisent des abréviations latines comme \emph{op. cit.}.
-Ces abréviations sont les abréviations universitaires courantes. Toutefois en ce qui concerne l'abréviation \forme{op. cit.} l'utilise indistinctement pour tout les types d'entrées, y compris pour les entrées de type @article, alors même qu'on pourrait s'attendre à une abréviation de type \emph{art. cit.}.
+Ces abréviations sont les abréviations universitaires courantes. Toutefois en ce qui concerne l'abréviation \emph{op. cit.} cit.} l'utilise indistinctement pour tout les types d'entrées, y compris pour les entrées de type @article, alors même qu'on pourrait s'attendre à une abréviation de type \emph{art. cit.}.
 
-Pour résoudre ce problème, il suffit de redéfinir la chaîne de langue qui définit \forme{op. cit.}, en lui attribuant une valeur différente selon le type d'entrée.  On va donc utiliser l'un des nombreux tests conditionnels disponibles dans BibLaTeX. Il s'agit de la commande :
+Pour résoudre ce problème, il suffit de redéfinir la chaîne de langue qui définit \emph{op. cit.} cit.}, en lui attribuant une valeur différente selon le type d'entrée.  On va donc utiliser l'un des nombreux tests conditionnels disponibles dans \empg{BibLaTeX}. Il s'agit de la commande :
 
 \begin{minted}{latex}
 \iffieldequalstr{champ}{texte}{sioui}{sinon}
@@ -209,7 +207,7 @@ Pour résoudre ce problème, il suffit de redéfinir la chaîne de langue qui d�
 Cette commande ne peut s'utiliser que dans certaines parties d'un fichier \LaTeX : dans les commandes de définitions de styles bibliographiques, y compris dans celles de définition d'un chaîne de langue. 
 Elle vérifie que le champ \argument{champ}	de l'entrée bibliographique citée correspond à l'argument \argument{texte} : si c'est le cas, elle retourne l'argument \argument{sioui}, et sinon elle retourne l'argument \argument{sinon}.
 
-Ici nous allons tester le pseudo-champ\footnote{\forme{Pseudo} car il ne se situe pas réellement comme un champ dans l'entrée bibliographique.} \champ{entrytype }, qui correspond au type d'entrée sans le @. Nous allons donc vérifier s'il s'agit d'une entrée de type article : si c'est le cas nous donnerons à la chaîne de langue la valeur  \forme{art. cit.},  dans le cas contraire nous donnerons la valeur \forme{op. cit.}.
+Ici nous allons tester le pseudo-champ\footnote{\forme{Pseudo} car il ne se situe pas réellement comme un champ dans l'entrée bibliographique.} \champ{entrytype}, qui correspond au type d'entrée sans le @. Nous allons donc vérifier s'il s'agit d'une entrée de type article : si c'est le cas nous donnerons à la chaîne de langue la valeur  \forme{art. cit.},  dans le cas contraire nous donnerons la valeur \emph{op. cit.} cit.}.
 
 Ce qui donne : 
 
