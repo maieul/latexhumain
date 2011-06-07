@@ -83,6 +83,24 @@ alors que le règles françaises voudraient que l'on ait :
 			
 			\item \package{BibLaTeX} n'a pas prévu de commande spécifique pour notre type d'unité. Dans ce cas, le problème est plus complexe et nécessite des notions que nous n'avons pas encore abordées. C'est pourquoi nous renvoyons au prochain chapitre.\renvoi{unitepersonalisee}
 		\end{enumerate}
+		
+\section{Séparateur de références multiples}\label{multicitedelim}
+
+Lorsque nous utilisons une commande de citation multiple \renvoi{citemultiple}, les séparateurs par défaut sont des points virgules :
+
+\begin{minted}{latex}
+\autocites{Saxer1980}{Junod1992}
+\end{minted}
+
+\begin{quotation}
+\cites{Saxer1980}{Junod1992}
+\end{quotation}
+
+On peut là aussi modifier le séparateur en rédefinissant la commande \commande{multicitedelim}. Par exemple pour avoir une virgule :
+
+\begin{minted}{latex}
+\renewcommand{\multicitedelim}[0]{\addcomma\addspace}
+\end{minted}
 
 \section{Styles de certains blocs}
 

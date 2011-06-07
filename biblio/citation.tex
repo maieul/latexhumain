@@ -1,7 +1,7 @@
 \chapter{Citer des références}
 
 \begin{prealable}
-Nous avons vu plus haut les différentes manières de citer un texte dans \renvoi{citertexte} dans le corps du travail. Nous avons également vu comment remplir une base de données bibliographique.
+Nous avons vu plus haut les différentes manières de citer un texte dans \renvoi{citertexte} dans le corps du travail. Nous avons également vu comment remplir une base de données bibliographique\renvoi{bibliofichier}.
 
 Il ne nous reste plus qu'à mettre en relation les textes cités avec la base de données constituée pour avoir un travail correct, en indiquant les références des citations. C'est l'objet de ce chapitre.
 
@@ -10,44 +10,48 @@ Il ne nous reste plus qu'à mettre en relation les textes cités avec la base de
 
 \section[Appel du package]{Appel du package \package{BibLaTeX}}
 
-La gestion bibliographique s'effectue avec le package \package{BibLaTeX}. Dans le préambule, un appel simple au package sera :
+La gestion bibliographique s'effectue avec le package \package{BibLaTeX}. Dans le préambule, un appel simple au package est :
 
 \begin{minted}{latex}
 \usepackage{biblatex}
 \end{minted}
 
-Cependant, le package dispose de nombreuses options. Celle qui qui nous intéresse pour le moment est \option{citestyle}, qui permet de définir comment les références bibliographique seront affichées, notamment pour ce qui concerne les références citées à plusieurs reprises.
+Cependant, le package dispose de nombreuses options\footcite{biblatex_options}. Celle qui nous intéresse pour le moment est \option{citestyle}, qui permet de définir comment les références bibliographique seront affichées, notamment pour ce qui concerne les références citées à plusieurs reprises.
 
-Il existe un nombre important de styles de citations livrés en standard. Nous mentionnons ici les principaux\footcite[Se reporter à][pour plus de détails.]{biblatex_style}:
+Il existe un nombre important de styles de citations livrés en standard. Nous mentionnons ici les principaux\footcite[Se reporter pour plus de détails à][]{biblatex_style}:
 \begin{description}
-\item[numeric]chaque entrée se voit attribué un numéro, qui sera appelé lorsqu'on renverra à cette entrée. La bibliographie finale indiquera les correspondances.
-\item[authortitle]seront indiqués l'auteur et le titre de l'oeuvre.
-\item[verbose]la description complète de l'entrée sera donnée la première fois, une version abrégée sera affichée ensuite.
-\item[verbose-ibid]la description complète de l'entrée sera donnée, mais si un passage est citée plusieurs fois de suite, l'abréviation \emph{ibidem} sera utilisée.
-\item[verbose-note]la description complète de l'entrée sera donnée à sa première mention, puis une version abrégée sera utilisée.
-\item[verbose-trad1 ; verbose-trad2 ; verbose-trad3]la description complète de l'entrée sera utilisée, puis les abréviations universitaires de type \emph{op. cit.}, {ibidem.} etc. seront utilisées. \package{BibLaTeX} calculera automatiquement l'opportunité d'utiliser une abréviation universitaire, selon l'endroit où l'ouvrage aura été cité précédement. Voir le manuel pour la description complète des différences entre ces trois styles.
+\item[numeric]chaque entrée se voit attribué un numéro, qui est appelé lorsqu'on renvoit à cette entrée. La bibliographie finale indique les correspondances.
+\item[authortitle]sont indiqués l'auteur et le titre de l'oeuvre.
+\item[verbose]la description complète de l'entrée est donnée la première fois, une version abrégée est affichée ensuite.
+\item[verbose-ibid]la description complète de l'entrée est donnée, mais si un passage est citée plusieurs fois de suite, l'abréviation \emph{ibidem} est utilisée.
+\item[verbose-note]la description complète de l'entrée est donnée à sa première mention, puis une version abrégée est utilisée.
+\item[verbose-trad1 ; verbose-trad2 ; verbose-trad3]la description complète de l'entrée est utilisée, puis les abréviations universitaires de type \emph{op. cit.}, {ibidem.} etc. sont utilisées. \package{BibLaTeX} calcul automatiquement l'opportunité d'utiliser une abréviation universitaire, selon l'endroit où l'ouvrage aura été cité précédemment. Voir le manuel pour la description complète des différences entre ces trois styles.
 \end{description}
 
-On comprend ici un des grands intérêts de \logiciel{\LaTeX} : plus de prise de tête à se dire \enquote{Faut-il que j'utilise ici une version abrégée de la référence ?}, \package{BibLaTeX} le fera pour vous.
+On comprend ici un des grands intérêts de \LaTeX : plus de perte de temps à se demander \enquote{Faut-il que j'utilise ici une version abrégée de la référence ?}, \package{BibLaTeX} le fait pour vous.
 
-Voici donc comment doit se faire l'appel au package, si nous choisissons le style de citation \verb|verbose-trad-2|
+Voici donc comment doit se faire l'appel au package, si nous choisissons le style de citation \verb|verbose-trad-2|.
+
 \begin{minted}{latex}
 \usepackage[citestyle=verbose-trad2]{biblatex}
 \end{minted}
 
-Il est dommage qu'on ne puisse pas, à l'heure où nous écrivons ces lignes, changer le style de citations pour une portions du travail. Gageons que cela ne saurait tarder.
+Pour les sciences humaines, nous recommandons les styles de la famille \verb|verbose|.
+Il est dommage qu'on ne puisse pas, à l'heure où nous écrivons ces lignes, changer le style de citations pour une portions du travail. Gageons que cela ne saurait tarder. \revision{Vérifier s'il n'y a pas de moyen toutefois.}
 
 \section{Appel de la base de donnée bibliographique}
 
 
-Pour que \LaTeX{} sache où chercher les références bibliographiques, il faut signaler  quel est le fichier \ext{bib} à utiliser. Pour cela il faut utiliser la commande suivante dans le préambule :
+Pour que \LaTeX{} sache où chercher les références bibliographiques, il faut signaler  quel est le fichier \ext{bib} à utiliser, pour cela il suffit d'utiliser la commande suivante dans le préambule :
 
 \begin{minted}{latex}
-\bibliography{nom du fichier sans l'extension}
+\bibliography{chemin du fichier sans l'extension}
 \end{minted}
 
+Le chemin du fichier s'indique de la même manière que n'importe quel chemin de fichier\renvoi{chemin du fichier}.
+
 \begin{attention}
-Il est possible d'appeler plusieurs fichiers bibliographiques. Nous le déconseillons, dans la mesure où cela contraint à vérifier qu'il n'y ait pas d'entrées ayant la même clef.
+Il est possible d'appeler plusieurs fichiers bibliographiques. Nous le déconseillons, dans la mesure où cela contraint à vérifier qu'il n'y ait pas plusieurs entrées avec la même clef.
 \end{attention}
 
 \section{Citation d'un élément bibliographique}
@@ -58,7 +62,7 @@ L'ensemble des commandes de citation ont la syntaxe suivante :
 \PREFIXcite[prenote][postnote]{clef}
 \end{minted}
 
-PREFIX indiquera où devra apparaître la référence : directement dans le texte, entre parenthèses, en note de bas page etc.
+PREFIX indique où doit apparaître la référence : directement dans le texte, entre parenthèses, en note de bas page etc.
 
 Par exemple, nous souhaitons citer  un livre de Victor Saxer que nous avons entrée de cette manière dans le base de donnée :
 
@@ -71,13 +75,13 @@ Après la troisième compilation\renvoi{3compil}, la référence apparaîtra sel
 
 Par exemple :
 
-\begin{quote}
+\begin{quotation}
 \cite{Saxer1980}
-\end{quote}
+\end{quotation}
 
-L'usage en sciences humaines est de citer en note de bas de page. C'est pourquoi, on préférera utiliser : \verb|\footcite{Saxer1980}|, qui indiquera la référence en note de bas de page, en ajoutant automatiquement le point de fin de note. On peut également décider d'utiliser la commande \commande{parencite}, pour citer entre parenthèses. 
+L'usage en sciences humaines est de citer en note de bas de page. C'est pourquoi, il vaut mieux utiliser : \verb|\footcite{Saxer1980}|, qui indiquera la référence en note de bas de page, en ajoutant automatiquement le point de fin de note. On peut également décider d'utiliser la commande \commande{parencite}, pour citer entre parenthèses. 
 
-Enfin on peut choisir la commande \commande{autocite}. Le mode de citation (notes de bas page, citation directe, citation entre parenthèse etc.) dépendra du style de citation choisi : pour les styles de la famille \verb|verbose|, ce sera les notes de bas de pages. 
+Mais on peut aussi choisir la commande \commande{autocite}. Le mode de citation (notes de bas page, citation directe, citation entre parenthèse etc.) dépendra du style de citation choisi : pour les styles de la famille \verb|verbose|, ce sera les notes de bas de pages. 
 
 \subsection{Les options prenote et postenote}
 
@@ -96,7 +100,8 @@ Blabla \parencite[Voir également][]{Saxer1980} blablabla.
 On peut également souhaiter afficher quelque chose après la référence. On utilise dans ce cas l'argument \argument{postnote}.
 
 \begin{minted}{latex}
-	Blabla \autocite[Voir également][qui porte sur un sujet similaire.]{Saxer1980} blabla
+Blabla \autocite[Voir également][qui porte sur un
+sujet similaire.]{Saxer1980} blabla
 \end{minted}
 
 \begin{quotation}
@@ -125,7 +130,7 @@ Ou encore les pages 25 et 35:
 \autocite[35 \& 25]{Saxer1980}
 \end{minted}
 
-Toutefois, je peux vouloir citer la page précise et mettre autre chose dans le champ \champ{post} : pour ce faire, j'utilise la commande \commande{pno~}, pour que \package{BibLaTeX} insère lui même le \forme{p.} :
+Toutefois, je peux vouloir citer la page précise et mettre autre chose dans le champ \champ{post} : pour ce faire, j'utilise la commande \commande{pno}, pour que \package{BibLaTeX} insère lui même le \forme{p.} :
 
 \begin{minted}{latex}
 \autocite[\pno~22 avec lequel nous sommes en désaccord.]{Saxer1980}
@@ -149,13 +154,21 @@ On peut préciser le type de pagination possible : pagine-t-on en pages, en colo
 \item[none]la pagination est libre.
 \end{enumerate}
 
-\begin{anedocte}
-Il est possible de définir une autre valeur, mais cela sort de ce chapitre : nous renvoyons plus loin. \renvoi{paginationperso}
 
-\end{anedocte}
 
 Un problème se pose lorsqu'il y a déjà un champ \champ{pages} remplit : on se retrouve avec deux numérotation de pages : celle indiquée dans le champ \champ{pages} et celle indiquée par l'option \argument{postnote}.
 
+Prenons l'entrée suivante :
+
+\inputminted{exemples/biblio/fichierjunod.bib}
+
+Et appelons là avec le code suivant :
+
+\begin{minted}{latex}
+\cite[p. 24]{Junod1992}
+\end{latex}
+
+on obtient ce résultat :
 
 \begin{quotation}
 \cite[p. 24]{Junod1992}
@@ -180,15 +193,24 @@ affichera correctement :
 \cite[24]{Junod1992}
 \end{quotation}
 
-Si on souhaite faire suivre le numéro de page d'un texte, il est nécessaire d'intercaler une virgule ou un espace insécable (~), sinon \package{BibLaTeX} ne reconnaît pas qu'on à indiquer un numéro de page, et par conséquence affiche le numéro de page.
+Si on souhaite faire suivre le numéro de page d'un texte, il est nécessaire d'intercaler une virgule ou un espace insécable (~), sinon \package{BibLaTeX} ne reconnaît pas qu'on a indiqué un numéro de page, et par conséquence affiche le numéro de page.
+
+\begin{minted}{latex}
+\cite[24, passage au demeurant fort intéressant.]{Junod1992}
+\end{minted}
 
 \begin{quotation}
 \cite[24, passage au demeurant fort intéressant.]{Junod1992}
 \end{quotation}
 
+à comparer avec 
+
+\begin{minted}{latex}
+\cite[24 passage au demeurant fort intéressant.]{Junod1992}
+\end{minted}
 
 \begin{quotation}
-\cite[24, passage au demeurant fort intéressant.]{Junod1992}
+\cite[24 passage au demeurant fort intéressant.]{Junod1992}
 \end{quotation}
 
 \begin{attention}
@@ -197,7 +219,7 @@ Pour les sources anciennes, on aimerait pouvoir indiquer non seulement la pagina
 On peut contourner ce problème par la solution des sous-entrée bibliographique, dont nous parlerons dans un autre chapitre. \renvoi{divisionsource}
 \end{attention}
 
-\section{Citation de plusieurs oeuvres}
+\section{Citation de plusieurs oeuvres}\label{citemultiple}
 
 Il est possible de citer plusieurs oeuvres d'un coup : pour cela, il faut utiliser une commande dont la syntaxe de base est :
 
@@ -206,7 +228,7 @@ Il est possible de citer plusieurs oeuvres d'un coup : pour cela, il faut utilis
 \PREFIXcites[prenote][postnote]{clef}[prenote][postenote]{clef}…
 \end{minted}
 
-Les arguments optionnels entres parenthèses seront affichés au début et à la fin de la citation multiple. Il est possible de citer autant d'oeuvres que souhaitées. Chaque élément cités à droit a son argument \argument{prenote} et \argument{postnote}, qui s'utilisent de la même manière que pour les citations simples.
+Il est possible de citer autant d'œuvres que souhaitées. Chaque élément cité a droit à son argument \argument{prenote} et \argument{postnote}, qui s'utilisent de la même manière que pour les citations simples.
 
 
 Voici un exemple d'utilisation : 
@@ -218,13 +240,14 @@ Voici un exemple d'utilisation :
 \begin{quotation}
 \cites{Saxer1980}{Junod1992}
 \end{quotation}
+
 Il est possible de préciser un texte à afficher avant la liste des des références, ainsi qu'un texte à afficher après.
 
 \begin{minted}{latex}
 \autocites(Texte avant)(Texte après){Saxer1980}{Junod1992}
 \end{minted}
 
-Les séparateurs de citations sont par défaut des points-virgule. Il est possible de les modifier globalement, nous en parlerons plus loin.
+Les séparateurs de citations sont par défaut des points-virgule. Il est possible de les modifier globalement, nous en parlerons plus loin.\renvoi{multicitedelim}
 
 Toutefois, si un argument \argument{postnote} d'un élément de la commande de citation multiple finit par un signe de ponctuation, alors le point-virgule n'apparaîtra pas entre cet élément et le suivant :
 
