@@ -108,7 +108,7 @@ On peut alors passer l'argument \argument{keyword} à la commande \commande{prin
 
 On peut aussi vouloir afficher une bibliographie correspondant à une partie du document, par exemple un chapitre. BibLaTeX propose cela grâce à la définition de \concept{segment bibliographique} : un segment bibliographique étant une partie de document ayant sa bibliographie propre\footnote{En réalité \package{BibLaTeX} propose deux choses différentes : \enquote{segment} et \enquote{section} bibliographique. Seul les sections bibliographiques ont \enquote{réellement} une bibliographie propre, dans la mesure où, si on utilise un style \enquote{numeroté} de bibliographie, la numérotation recommence à chaque changement de section, mais pas à chaque changement de segment. Toutefois il est rare en science humaine d'utiliser un style bibliographique numéroté. C'est pourquoi nous ne parlons ici que des segments bibliographiques et non pas des sections bibliographiques. Voir le manuel pour plus de détails.} 
 
-La méthode la plus simple est de passer un argument \argument{refsegment} lors de l'appel au package \package{biblatex}. La valeur de cet argument peut-être \forme{part},\forme{chapter}, \forme{section}, \forme{subsection}, qui indique à quelle niveau de titre commencer une nouvelle section bibliographique\footcite[Il est toutefois possible de créer des sections bibliographiques autrement que suivante les niveaux de titre : voir]{exemplebibsegment}.
+La méthode la plus simple est de passer un argument \argument{refsegment} lors de l'appel au package \package{biblatex}. La valeur de cet argument peut-être \forme{part},\forme{chapter}, \forme{section}, \forme{subsection}, qui indique à quelle niveau de titre commencer une nouvelle section bibliographique\footcite[Il est toutefois possible de créer des sections bibliographiques autrement que suivant les niveaux de titre : voir]{biblatex_bibsegment}.
 
 Chaque segment bibliographique possède un nombre, compris entre 0 et N. On peut connaître la valeur du segment courant grâce à la commande \commande{therefsegment}.
 
@@ -132,7 +132,7 @@ On peut ainsi afficher à la fin de chaque chapitre un bibliographie du chapitre
 
 \section{Autre manière de diviser une bibliographie}
 
-\package{BibLaTeX} propose de nombreuses autres manières de diviser une bibliographie : ainsi il est possible de définir des filtres personnalisés pour ne sélectionner que les entrées répondant à certains critères, d'assigner des \enquote{catégories} à certaines entrées, etc. Nous n'avons présenté ici qu'un aperçu des usages les plus courants : nous renvoyons à la documentation de BibLaTeX pour plus de détails\footcite{biblatexdivisionbiblio}.
+\package{BibLaTeX} propose de nombreuses autres manières de diviser une bibliographie : ainsi il est possible de définir des filtres personnalisés pour ne sélectionner que les entrées répondant à certains critères, d'assigner des \enquote{catégories} à certaines entrées, etc. Nous n'avons présenté ici qu'un aperçu des usages les plus courants : nous renvoyons à la documentation de BibLaTeX pour plus de détails\footcite{biblatex_bibliographycommands}.
 
 \section{Ajout de références non citées}
 
@@ -150,7 +150,7 @@ Pour ajouter l'ensemble des références d'un fichier \ext{bib} il suffit d'écr
 
 \section{Tri à l'intérieur d'une bibliographie}
 
-Vous aurez constaté que la bibliographie est triée par nom d'auteur, puis par titre, puis par année. Il est possible de passer un argument \argument{sorting} lors de l'appel au package \package{biblatex}. Cet argument prend pour valoir l'un des schémas de tri proposés par BibLaTeX ou bien définis par vos soins\footcites[Pour les schémas de tri standards voir][]{biblatextri}[pour les schémas personnalisés][]{biblatextriperso}.
+Vous aurez constaté que la bibliographie est triée par nom d'auteur, puis par titre, puis par année. Il est possible de passer un argument \argument{sorting} lors de l'appel au package \package{biblatex}. Cet argument prend pour valoir l'un des schémas de tri proposés par BibLaTeX ou bien définis par vos soins\footcites[Pour les schémas de tri standards voir][]{biblatex_tri}[pour les schémas personnalisés voir][qui nécéssite l'utilisation de Biber (\cf{} \pageref{biber}]{biblatex_triperso}.
 
 Par exemple pour trier par nom d'auteur, année, titre :
 

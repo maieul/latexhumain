@@ -55,7 +55,7 @@ Elle s'affiche ainsi, avec l'éditeur commercial avant l'adresse :
 
 On pourrait souhaiter avoir l'éditeur après l'adresse, comme ceci : 
 
-\newbibmacro*{publisher+location+date}{%
+\renewbibmacro*{publisher+location+date}{%
   \printlist{publisher}%
   \iflistundef{publisher}
     {\setunit*{\addcomma\space}}
