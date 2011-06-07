@@ -10,7 +10,18 @@ Dans ce chapitre nous allons voir comment afficher et trier une bibliographie.
 
 La commande \commande{printbibliography} est la commande de base pour imprimer une bibliographie. Si vous l'essayez dans votre projet, vous obtiendrez une bibliographie reprenant l'ensemble des œuvres que vous avez cité au cours de votre travail. Ainsi, vous êtes certains de ne rien oublier.
 
-Toutefois une telle bibliographie est peu utile : elle mélange allègrement sources primaires et études secondaires, ne distingue pas selon les chapitres etc. Nous allons donc voir maintenant comment sectionner une bibliographie en plusieurs morceaux.
+Toutefois une telle bibliographie est peu utile : elle mélange allègrement sources primaires et études secondaires, ne distingue pas selon les chapitres etc. Nous allons donc voir maintenant comment sectionner une bibliographie en plusieurs morceaux. Mais auparavent il nous faut mentionner une spécificité pour les sciences humaines.
+
+\section{Choix du style de bibliographie}
+
+De même qu'il est possible de choisir, lors de l'appel à \package{biblatex} les styles de références bibliographiques, il est possible de choisir un style bibliographique grâce à l'argument \argument{bibstyle}. Pour les sciences humaines, il vaut mieux choisir \verb|verbose| qui nous assure d'avoir une référence complète, sans pour autant attribuer un numéro à chaque entrée.
+
+Ainsi, lors de l'appel au package \package{biblatex}, il suffit d'écrire :
+
+\begin{minted}{latex}
+\usepackage[bibstyle=verbose,...]{biblatex}
+
+\end{minted}
 
 \section{Trier une bibliographie par catégorie de document}
 
@@ -18,13 +29,13 @@ Une première manière de trier une bibliographie peut être selon le type de do
 
 \begin{minted}{latex}
 \printbibliography[subtype=lettre]
-\end{latex}
+\end{minted}
 
 On peut passer un argument \argument{title} afin de préciser le titre de notre bibliographie :
 
 \begin{minted}{latex}
 \printbibliography[subtype=lettre,title=Lettres]
-\end{latex}
+\end{minted}
 
 Une telle méthode permet aisément de séparer une bibliographie en plusieurs parties selon les catégories de documents.
 
@@ -36,16 +47,7 @@ Une telle méthode permet aisément de séparer une bibliographie en plusieurs p
 
 \end{minted}
 
-\section{Choix du style de bibliographie}
 
-De même qu'il est possible de choisir, lors de l'appel à \package{biblatex} les styles de références bibliographiques, il est possible de choisir un style bibliographique grâce à l'argument \argument{bibstyle}. Pour les sciences humaines, il vaut mieux choisir \forme{verbose} qui nous assure d'avoir une référence complète, sans pour autant attribuer un numéro à chaque entrée.
-
-Ainsi, lors de l'appel au package \package{biblatex}, il suffit d'écrire :
-
-\begin{minted}{latex}
-\usepackage[bibstyle=verbose,...]{biblatex}
-
-\end{minted}
 \section{Changer le niveau de titre d'une bibliographie}
 
 Par défaut, les titres de bibliographie sont de niveaux \commande{chapter*}\renvoi{niveautitre}. Mais il est possible de redéfinir ces titres, grâce à la commande \commande{defbibheading}.
@@ -65,8 +67,8 @@ Analysons ce code :
 \printbibliography[heading=toto]
 \end{minted}
 
-\item Le second argument, ici \commande{bibname} correspond au titre par défaut. Dans notre cas, la commande \commande{bibname} renvoie simplement la valeur \forme{bibliography}.
-\item Le troisième argument contient le code qui sera appelé pour créer l'entête d'une bibliographie. Ici on déclare qu'on passe le titre (le \verb|#1| à une commande \commande{subsection}
+\item Le second argument, ici \commande{bibname} correspond au titre par défaut. Dans notre cas, la commande \commande{bibname} renvoie simplement la valeur \forme{Bibliographie}.
+\item Le troisième argument contient le code qui sera appelé pour créer l'entête d'une bibliographie. Ici on déclare qu'on passe le titre (le \verb|#1|) à une commande \commande{subsection}.
 \end{enumerate}
 
 
@@ -87,9 +89,10 @@ Par exemple
 
 \end{minted}
 
+
 \section{Trier une bibliographie par sujet}
 
-Une autre manière de trier sectionner une bibliographie est de faire des parties thématiques. Pour cela, une solution indiquer des mots-clefs dans le champ \champ{keywords} des entrées bibliographiques. Les mots clefs doivent être séparés par des virgules.
+Une autre manière de  sectionner une bibliographie est de faire des parties thématiques. Pour cela, une solution est d'indiquer des mots-clefs dans le champ \champ{keywords} des entrées bibliographiques. Les mots clefs doivent être séparés par des virgules.
 
 On peut alors passer l'argument \argument{keyword} à la commande \commande{printbibliography}. On peut ainsi sélectionner toutes les entrées ayant la valeur \forme{xxx} dans leurs champs \champ{keywords} :
 
@@ -103,12 +106,15 @@ On peut alors passer l'argument \argument{keyword} à la commande \commande{prin
 \printbibliography[notkeyword=xxx]
 \end{minted}
 
+\begin{anedocte}
+	Un certain nombre de personne conseillent d'utiliser champ pour séparer sources primaires et sources secondaires. L'auteur de ces lignes considère qu'il s'agit là d'une déformation du sens de ce champ, qui ne porte pas sur le \emph{statut} épistémologique d'une référence mais sur son \emph{sujet}. 
+\end{anedocte}
 
 \section{Trier une bibliographie par section du document}
 
-On peut aussi vouloir afficher une bibliographie correspondant à une partie du document, par exemple un chapitre. BibLaTeX propose cela grâce à la définition de \concept{segment bibliographique} : un segment bibliographique étant une partie de document ayant sa bibliographie propre\footnote{En réalité \package{BibLaTeX} propose deux choses différentes : \enquote{segment} et \enquote{section} bibliographique. Seul les sections bibliographiques ont \enquote{réellement} une bibliographie propre, dans la mesure où, si on utilise un style \enquote{numeroté} de bibliographie, la numérotation recommence à chaque changement de section, mais pas à chaque changement de segment. Toutefois il est rare en science humaine d'utiliser un style bibliographique numéroté. C'est pourquoi nous ne parlons ici que des segments bibliographiques et non pas des sections bibliographiques. Voir le manuel pour plus de détails.} 
+On peut aussi vouloir afficher une bibliographie correspondant à une partie du document, par exemple un chapitre. BibLaTeX propose cela grâce à la définition de segment bibliographique : un segment bibliographique étant une partie de document ayant sa bibliographie propre\footcites[En réalité \package{BibLaTeX} propose deux choses différentes : \enquote{segment} et \enquote{section} bibliographique. Seules les sections bibliographiques ont \enquote{réellement} une bibliographie propre, dans la mesure où, si on utilise un style \enquote{numeroté} de bibliographie, la numérotation recommence à chaque changement de section, mais pas à chaque changement de segment. Toutefois il est rare en science humaine d'utiliser un style bibliographique numéroté. C'est pourquoi nous ne parlons ici que des segments bibliographiques et non pas des sections bibliographiques.][]{biblatex_section}{biblatex_segment}
 
-La méthode la plus simple est de passer un argument \argument{refsegment} lors de l'appel au package \package{biblatex}. La valeur de cet argument peut-être \forme{part},\forme{chapter}, \forme{section}, \forme{subsection}, qui indique à quelle niveau de titre commencer une nouvelle section bibliographique\footcite[Il est toutefois possible de créer des sections bibliographiques autrement que suivant les niveaux de titre : voir]{biblatex_bibsegment}.
+La méthode la plus simple est de passer un argument \argument{refsegment} lors de l'appel au package \package{biblatex}. La valeur de cet argument peut-être \argument{part}, \argument{chapter}, \argument{section}, \argument{subsection}, qui indique à quelle niveau de titre commencer une nouvelle section bibliographique\footcite[Il est toutefois possible de créer des sections bibliographiques autrement que suivant les niveaux de titre, voir :]{biblatex_bibsegment}.
 
 Chaque segment bibliographique possède un nombre, compris entre 0 et N. On peut connaître la valeur du segment courant grâce à la commande \commande{therefsegment}.
 
@@ -150,7 +156,7 @@ Pour ajouter l'ensemble des références d'un fichier \ext{bib} il suffit d'écr
 
 \section{Tri à l'intérieur d'une bibliographie}
 
-Vous aurez constaté que la bibliographie est triée par nom d'auteur, puis par titre, puis par année. Il est possible de passer un argument \argument{sorting} lors de l'appel au package \package{biblatex}. Cet argument prend pour valoir l'un des schémas de tri proposés par BibLaTeX ou bien définis par vos soins\footcites[Pour les schémas de tri standards voir][]{biblatex_tri}[pour les schémas personnalisés voir][qui nécéssite l'utilisation de Biber (\cf{} \pageref{biber}]{biblatex_triperso}.
+Vous aurez constaté que la bibliographie est triée par nom d'auteur, puis par titre, puis par année. Il est possible de passer un argument \argument{sorting} lors de l'appel au package \package{biblatex}. Cet argument prend pour valoir l'un des schémas de tri proposés par BibLaTeX ou bien définis par vos soins\footcites[Pour les schémas de tri standards voir][]{biblatex_tri}[pour les schémas personnalisés voir][qui nécéssite l'utilisation de Biber (\cf{} \pageref{biber})]{biblatex_triperso}.
 
 Par exemple pour trier par nom d'auteur, année, titre :
 
@@ -161,7 +167,7 @@ Par exemple pour trier par nom d'auteur, année, titre :
 Toutefois, on peut parfois vouloir que  la valeur utilisé pour le tri ne soit pas la valeur affichée. Prenons deux entrées, dont les titres sont \enquote{Lettre 237} et \enquote{Lettre 64}. \LaTeX va afficher dans la bibliographie finale
 \enquote{Lettre 64} \emph{après} \enquote{lettre 237}. 
 
-En effet, \package{BibLaTeX} ne reconnait pas le nombre \forme{237} mais seulement le caractère {2}, puis le caractère \forme{3} etc. C'est pourquoi il place la lettre 237 avant la lettre 64, 2 se situe avant 6.
+En effet, \package{BibLaTeX} ne reconnait pas le nombre \forme{237} mais seulement le caractère {2}, puis le caractère \forme{3} etc. C'est pourquoi il place la lettre 237 avant la lettre 64, 2 se situant avant 6.
 
 Pour contourner ce problème, on peut utiliser le champ \champ{sorttitle}. Celui-ci ne sera pas affiché mais prend la priorité sur le le champ \champ{title} pour ce qui concerne le tri dans la bibliographie finale.  Voici ce que donne nos deux entrées :
 \begin{minted}{latex}
