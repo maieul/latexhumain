@@ -7,14 +7,26 @@ Jusqu'à maintenant, nous nous sommes servi de BibTeX pour interpréter les fich
 \section{Qu'est-ce que Biber ?}
 
 Jusqu'à maintenant, pour intégrer une bibliographie, vous procédiez ainsi :
+\begin{enumerate}
+\item Compilation avec \XeLaTeX
+\item Compilation avec BibTeX
+\item Compilation avec \XeLaTeX
+\end{enumerate}
 
-Si vous utiliser Biber, il vous faudra procéder ainsi.
+Si vous utiliser Biber, il vous faudra procéder ainsi :
 
-Biber est donc un logiciel qui remplace BibTeX. Quels sont les avantages : ?
+\begin{enumerate}
+\item Compilation avec \XeLaTeX
+\item Compilation avec Biber
+\item Compilation avec \XeLaTeX
+\end{enumerate}
+
+Biber est donc un logiciel qui remplace BibTeX. Quels sont les avantages ?
 
 \begin{itemize}
 \item Biber gère nativement le tri alphabétique des caractères Unicode.\renvoi{utf8}. Ainsi \forme{Évode d'Uzal} sera classé à \forme{E} et non pas à la fin de l'alphabet\footnote{Il était bien sûr possible de contourner ce problème en utilisant les champs de tri des fichiers \ext{bib}. Mais pourquoi ce compliquer à dupliquer de l'information quand on en a  pas besoin ?}.
 \item Biber propose un système de sous-entrées bibliographiques beaucoup plus puissant que BibTeX. C'est ce point qui va nous intéresser tout particulièrement.
+\item Certaines fonctionnalités avancées de \package{BibLaTeX} ne fonctionne qu'avec Biber.
 \end{itemize}
 
 \subsection[Principe des sous-entrées]{Les sous entrées bibliographiques : le principe}
@@ -28,23 +40,23 @@ Vous dupliquez ainsi les données sur le colloque (titre, éditeur etc.). Si par
 
 \inputminted{exemples/biblio/biber/crossref.bib}
 
-En toute logique la compilation avec BibTeX devrait attribuer la valeur du champ \champ{title} de l'entrée \verb|title} aux champs \champ{booktitle} des entrées \verb{clef1} et \verb{clef2}, puisqu'il s'agit d'entrée de type \verb|@inproceedings| héritant d'entrée \verb|@proceedings|. 
+En toute logique la compilation avec BibTeX devrait attribuer la valeur du champ \champ{title} de l'entrée \verb|principale| aux champs \champ{booktitle} des entrées \verb|clef1| et \verb|clef2|, puisqu'il s'agit d'entrée de type \verb|@inproceedings| héritant d'entrée \verb|@proceedings|. 
 
-Il n'en est rien : BibTeX procède à des héritages simples : il attribut les valeurs \enquote{mères} \champ{title} aux champs \champ{title} des fils. Ceci oblige donc à dupliquer les valeurs\footnote{Certain logiciel de gestion bibliographique le font pour vous. Toutefois, cela alourdit le fichier. En outre il s'agit de contourner un limitation technique de BibTeX, plutôt que de remédier à cette limitation.}.
+Il n'en est rien : \package{BibTeX} procède à des héritages simples : il attribut les valeurs \enquote{mères} \champ{title} aux champs \champ{title} des fils. Ceci oblige donc à dupliquer les valeurs\footnote{Certain logiciel de gestion bibliographique le font pour vous. Toutefois, cela alourdit le fichier. En outre il s'agit de contourner un limitation technique de BibTeX, plutôt que de remédier à cette limitation.}.
 
 Biber quant à lui attribue correctement les valeurs des champs. Si nous reprenons notre exemple et que nous utilisons Biber, nous obtenons les résultats souhaités :
 
 
-\begin{quote}
+\begin{quotation}
 \cite{clef1}\\
 \cite{clef2}
-\end{quote}
+\end{quotation}
 
 \section{Se servir de Biber}
 
 \subsection{Indiquer à BibLaTeX d'utiliser Biber}
 
-Pour la compilation avec Biber fonctionne, il faut indiquer lors du chargement du package qu'on utiliser Biber, via l'option \argument{backend}.
+Pour que la compilation avec Biber fonctionne, il faut indiquer lors du chargement du package qu'on utiliser Biber, via l'option \argument{backend}.
 
 \begin{minted}{latex}
 \usepackage[backend=biber,...]{biblatex}
@@ -59,11 +71,10 @@ Par ailleurs, lorsqu'une entrée fille est citée, Biber rajoute systématiqueme
 
 \subsection{Compilation avec Biber}
 
-Pour compiler avec Biber, il faut bien sûr l'avoir installé\renvoi{installbiber}. Toutefois la plupart des éditeurs \LaTeX ne prévoient pas encore de compiler avec Biber. Il faut passer par la ligne de commande : nous expliquons tout ceci en annexe.
-
+Pour compiler avec Biber, il faut bien sûr l'avoir installé\renvoi{installbiber}. Toutefois la plupart des éditeurs \LaTeX{} ne prévoient pas encore de compiler avec Biber : il faut soit passer par la ligne de commande, que nous expliquons en annexe, soit modifier les règlages du logiciels\footcite[On peut trouver comment faire pour quelques logiciels à cette adresse]{biber_logiciels}.
 \subsection{Préciser les héritages de champs}
 
-Biber possède un certains nombres de réglages d'héritages de champs. Toutefois on peut vouloir modifier ces héritages, ou en ajouter d'autre. Par exemple les champs \champ{entrysubtype} ne sont, par défauts, pas hérités. 
+Biber possède un certain nombre de réglages d'héritages de champs\footcite{biblatex_crossrefsetup}. Toutefois on peut vouloir modifier ces héritages, ou en ajouter d'autres. Par exemple les champs \champ{entrysubtype} ne sont, par défauts, pas hérités. 
 
 Il suffit d'utiliser dans le préambule la commande ;
 
@@ -72,9 +83,9 @@ Il suffit d'utiliser dans le préambule la commande ;
 \end{minted}
 
 \begin{description}
-	\item[entrée mère]désigne le type d'entrée mère : \verb|@book|, \verb|@proceedings| etc. Le symbole * désigne n'importe quel type d'entrée
-	\item[entrée fille]désigne le type d'entrée fille. Là aussi le symbole * désigne n'importe quel type d'entrée
-	\item[règles] désigne un certain nombre de règles d'héritages, sous forme de commandes.
+\item[entrée mère]désigne le type d'entrée mère : \verb|@book|, \verb|@proceedings| etc. Le symbole * désigne n'importe quel type d'entrée
+\item[entrée fille]désigne le type d'entrée fille. Là aussi le symbole * désigne n'importe quel type d'entrée
+\item[règles] désigne un certain nombre de règles d'héritages, sous forme de commandes.
 \end{description}
 
 La première commande d'héritage est la suivante :
@@ -105,27 +116,29 @@ Ainsi, pour permettre l'héritage des valeurs du champ \champ{entrysubtype} il s
 
 Les sous-entrées peuvent être utilisées pour contourner une des limites de gestion bibliographique de \LaTeX{} : l'impossibilité de gérer à la fois  la division d'une source et la pagination. Les textes anciens disposent en générale d'une division propre, qui permet --- en théorie ---  de repérer un passage dans n'importe quelle édition. Par exemple : 
 
-\begin{quote}
+\begin{quotation}
 \cite{DoctrineChretienneDivision}
-\end{quote}
+\end{quotation}
 
 Signifie que nous renvoyons au \emph{De Doctrina Christiana} d'Augustin, livre II, chapitre \textsc{viii}, paragraphes 12-13. En théorie on peut retrouver le passage concerné dans n'importe quelle édition du traité. Ceci est appelé généralement \enquote{division de source}.
 En revanche, supposons que nous renvoyons à une édition particulière, par exemple celle de la Bibliothèque Augustinienne : on aimerait indiquer les pages précises.
 
-\begin{quote}
+\begin{quotation}
 \cite{DeDoctChrIIviii18-20}
-\end{quote}
+\end{quotation}
 
-S'il est aisé lorsqu'on utilise une commande de citation d'indiquer une page précise\renvoi{pages}, il n'est pas possible en revanche d'indiquer une division de source précise. La solution est relativement simple : il suffit de créer une entrée principale correspondante à l'ensemble de l'œuvre, et des entrées secondaires correspondantes à des parties de l'œuvre. Ces entrées secondaires hériteront des valeurs de l'entrée principal, sauf pour le champ \champ{pages} et le champ \champ{titleaddon} dans lequel on précisera la division de source.
+S'il est aisé lorsqu'on utilise une commande de citation d'indiquer une page précise\renvoi{pages}, il n'est pas possible en revanche d'indiquer une division de source précise. La solution est relativement simple : il suffit de créer une entrée principale correspondante à l'ensemble de l'œuvre, et des entrées secondaires correspondantes à des parties de l'œuvre. Ces entrées secondaires hériteront des valeurs de l'entrée principale, sauf pour le champ \champ{pages} et le champ \champ{titleaddon} dans lequel on précise la division de source.
 
 \begin{anedocte}
 Il n'existe pas de champ spécifiquement prévu pour indiquer la division de source. Pourquoi choisir ce champ \champ{titleaddon} ? Deux raisons poussent l'auteur de ces lignes à cette solution :
 \begin{enumerate}
-\item D'un point de vue sémantique, la division de source peut être considéré comme un ajout au titre. Il précise plus précisément de quelle partie de l'œuvre d'un auteur on parle.
-\item D'un point de vue pratique, ce champ à pour avantage d'être, par défaut, situé par BibLaTeX entre le titre et les informations d'éditions, tout en étant pas en italique.
+\item D'un point de vue sémantique, la division de source peut être considérée comme un ajout au titre. Il précise plus précisément de quelle partie de l'œuvre d'un auteur on parle.
+\item D'un point de vue pratique, ce champ à pour avantage d'être, par défaut, situé par BibLaTeX entre le titre et les informations d'éditions, tout en n'étant pas en italique.
+
+
+\end{enumerate}
 
 Le choix d'une entrée de type \verb|@book| pour la clef \verb|DeDoctChrIIviii18-20| à la place d'une entrée @inbook se justifie dans la mesure où notre entrée ne possède pas de titre propre.
-\end{enumerate}
 
 Évidemment le choix de ce champ devrait, idéalement, être discuté en accord avec l'éditeur. De toute façon, il est relativement facile si le choix ne convient pas de changer en série les entrées.
 \end{anedocte}
