@@ -1,50 +1,59 @@
-\newenvironment{prealable}[0]{%
+\newenvironment{prealable}[0]{
 	\paragraph{Pré-requis}
-	\itshape\footnotesize%
-	}{%
-	\upshape\normalsize%
+	
+	\itshape\footnotesize
+	
+	}{
+	
+	\upshape\normalsize
 	}
 
-\newenvironment{anedocte}[0]{%avant
-	\vspace*{0.5cm}%
-	\paragraph{Anedocte}%
-	\begin{adjustwidth}{4em}{}%
-	%
-	\footnotesize%
-	%\paragraph{Anedocte}
+\newenvironment{anedocte}[0]{
+	\vspace*{0.5cm}
+	
+	\paragraph{Anedocte}
+	
+	\list{}{\listparindent 1.5em%
+                        \itemindent    \listparindent
+                        \rightmargin   \leftmargin
+                        \parsep        \z@ \@plus\p@}%
+                \item\relax
+	
+	\footnotesize
+	
 	}
-	{%apres
-	\normalsize%
-	\end{adjustwidth}%
-	\vspace*{0.5cm}%
+	{
+	
+	\normalsize
+	
+	\endlist
+	
+	\vspace*{0.5cm}
 	}
-\newenvironment{attention}[0]{%avant
-	\vspace*{0.5cm}%
-	\paragraph{attention}%
-	\begin{adjustwidth}{4em}{}%
-	%
-	\footnotesize%
-	%\paragraph{Anedocte}
+\newenvironment{attention}[0]{
+	\vspace*{0.5cm}
+	
+	\paragraph{attention}
+	
+	\list{}{\listparindent 1.5em%
+                        \itemindent    \listparindent
+                        \rightmargin   \leftmargin
+                        \parsep        \z@ \@plus\p@}%
+                \item\relax
+	
+	\footnotesize
+	
 	}
-	{%apres
-	\normalsize%
-	\end{adjustwidth}%
-	\vspace*{0.5cm}%
+	{
+	
+	\normalsize
+	
+	\endlist
+	
+	\vspace*{0.5cm}
 	}
 
 
-\newenvironment{nomarge}[0]{%avant
-\begin{changetext}{}{}{0cm}{0cm}{}sss%
-	}%
-{%fin
-	\end{changetext}}
-%\newenvironment{code}[0]{%avant
-%	\begin{minted}[linenos]{latex}%
-%	}%
-%	{%après
-%	\end{minted}%
-%	}%
-% Repris du package btdxdocx
 
 \makeatletter
 

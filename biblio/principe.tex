@@ -1,7 +1,12 @@
-\chapter[Introduction]{Introduction à la gestion bibliographique en \LaTex}
+\chapter[Introduction]{Introduction à la gestion bibliographique en \LaTeX{}}
+\begin{prealable}
+Nous abordons maintenant un des atouts majeurs de \LaTeX{} pour les sciences humaines : la possibilité de gérer très simplement une bibliographie complexe, tout en conservant une certaine souplesse dans son affichage.
+
+Faisons encore un test
+\end{prealable}
 \section{Principe général}
 
-Nous abordons maintenant un des atouts majeurs de \LaTeX pour les sciences humaines : la possibilité de gérer très simplement une bibliographie complexe, tout en la gérant de manière très souple.
+
 
 Il existe certes un module de gestion de la bibliographie dans la plupart des logiciels WYSIWYG, mais ceux-ci manquent de souplesse.
 
@@ -10,38 +15,38 @@ Conséquences : la grande partie des utilisateurs de ces logiciels gèrent leur 
 Ce qui implique beaucoup de contraintes  :
 \begin{itemize}
 \item Si on veut changer l'ordre des informations, ou en supprimer, il faut reprendre soit même l'ensemble des références.
-\item La gestion des versions abrégées des références est rendue compliqué :  il faut s'assurer soit même que la référence a déjà été citée, mais pas trop loin etc. 
+\item La gestion des versions abrégées des références est rendue compliquée (avec les \emph{op. cit.}, \emph{idem.} etc. :  il faut s'assurer soit même que la référence a déjà été citée, mais pas trop loin etc. 
 \item Il faut copier-coller soit même à la fin l'ensemble des références bibliographiques. 
 \end{itemize}
 
-La logique de la gestion bibliographique en LaTex est relativement simple.
+La logique de la gestion bibliographique en \LaTeX{} est relativement simple. Un fichier\footnote{Éventuellement plusieurs.}, dans un format spécifique, contient l'ensemble des références bibliographique. Pour chaque référence, appelées entrées, sont indiqués les éléments utiles :  type de référence (livre, article, actes de colloques etc.), titre, auteur, pagination, sous-titre, éditeur etc\footnote{Par ailleurs ce fichier pourra contenir des commentaires utiles pour la préparation du travail : résumé, notes de lecture, cotation dans une bibliothèque.}. Chaque référence possède une clef unique permettant de la distinguer d'une autre.
 
-Un fichier\footnote{Éventuellement plusieurs}, dans un format spécifique, contiendra l'ensemble des références bibliographique. Pour chaque référence, appelée entrée seront indiqués les éléments utiles :  type de référence (livre, article, actes de colloques etc.), titre, auteur, pagination, sous-titre, éditeur etc.\footnote{Par ailleurs ce fichier pourra contenir des commentaires utiles pour la préparation du travail : résumé, notes de lecture, cotation dans une bibliothèque.
-}. Chaque référence possédera une clef unique permettant de la distinguer d'une autre.
-
-Dans le document \LaTex, on précisera dans l'en-tête le nom du fichier externe. À chaque fois que l'on souhaitera citer une référence, οn utilisera une commande en lui passant la clef en argument. Le package \package{biblatex} se chargera alors d'afficher la référence selon un style de citation\footnote{C’est-à-dire une présentation} déterminé. Ainsi, si on veut changer l'ordre de présentation, par exemple intervertir l'éditeur et la ville de publication, il suffit de modifier le style, ce qui se fait aisément, puisque les styles sont une série de commandes \latex. Par ailleurs \package{BibLaTex} gérera automatiquement les références déjà citées, et introduira tout seul, en fonction du style choisi, les abréviations. 
+Dans le document \LaTeX{}, on précise dans l'en-tête le nom du fichier externe. À chaque fois que l'on souhaite citer une référence, οn utilise une commande en lui passant la clef en argument. Le package \package{biblatex} se charge alors d'afficher la référence selon un style de citation\footnote{C’est-à-dire une présentation.} déterminé. Ainsi, si on veut changer l'ordre de présentation, par exemple intervertir l'éditeur et la ville de publication, il suffit de modifier le style, ce qui se fait aisément, puisque les styles sont une série de commandes \LaTeX{}. Par ailleurs \package{BibLaTex} gérera automatiquement les références déjà citées et introduira tout seul en fonction du style choisi les abréviations universitaires. 
 
 \begin{anedocte}
-\package{BibLaTex} n'est pas forcément nécessaire pour gérer une bibliographie avec \LaTeX. Cependant, les fonctionnalités standards de LaTeX pour la gestion bibliographiques sont très limitées, et inadaptées aux sciences humaines. 
 
-Vous trouverez peut-être sur internet des fichiers \ext{.sty}. Ces fichiers sont des styles bibliographiques, mais pour les fonctionnalités standards de \LaTex. Ils ne peuvent servir pour \package{BibLaTex}. Cependant, il est relativement aisé d'avoir ses propres styles BibLaTex, tandis que la syntaxe des fichiers \ext{.sty} est relativement complexe, puisqu'elle en notation polonaise inversée.
+\package{BibLaTex} n'est pas forcément nécessaire pour gérer une bibliographie avec \LaTeX{}. Cependant, les fonctionnalités standards de LaTeX pour la gestion bibliographiques sont très limitées, et inadaptées aux sciences humaines. 
+
+Vous trouverez peut-être sur internet des fichiers \ext{bst}. Ces fichiers sont des styles bibliographiques, mais pour les fonctionnalités standards de \LaTeX{}. Ils ne peuvent servir pour \package{BibLaTex}. Cependant il est aisé d'avoir ses propres styles BibLaTex tandis que la syntaxe des fichiers \ext{} est complexe\footnote{Elle est écrite en notation polonaise inversée.}.
+
 \end{anedocte}
 
 Enfin, à la fin du document, ou a tout autre endroit jugé utile, une (ou plusieurs) commande permettra d'afficher la bibliographie, qui reprendra les références citées\footnote{Il est aussi possible, si on le souhaite, d'ajouter une ou plusieurs références non citées.} dans le document, en les classant et en les affichant selon un style de bibliographie, lui aussi personalisable.
 
 \section{Une triple compilation}
 
-Jusqu'à maintenant, vous aviez compilé votre fichier \ext{.tex} une seule fois, avec XeLaTex. La gestion bibliographique étant quelque chose de relativement complexe, il va falloir procéder à une triple compilation :
+Jusqu'à maintenant, vous aviez compilé votre fichier \ext{tex} une seule fois, avec XeLaTex. La gestion bibliographique étant quelque chose de relativement complexe, il va falloir procéder à une triple compilation :
 \begin{enumerate}
-\item le fichier \ext{.tex} avec XeLaTex. Outre le fichier \ext{.pdf}, cette compilation produira un fichier auxiliaire \ext{.aux} ;
+\item le fichier \ext{tex} avec XeLaTex. Outre le fichier \ext{pdf}, cette compilation produira un fichier auxiliaire \ext{aux} ;
 \item ce fichier devra être lui même compilé avec BibTex ;
-\item puis il faudra re-compiler le fichier \ext{.sty} avec Xe\LaTex
+\item puis il faudra re-compiler le fichier \ext{sty} avec \XeLaTeX.
 \end{enumerate}
 
-En général, les éditeurs de texte spécialisée en \LaTeX prévoient un bouton pour compiler le fichier \ext{.aux} avec BibTex, voire même pour faire ces trois compilations à la suite. Consulter le manuel du logiciel le cas échéant.
+En général, les éditeurs de texte spécialisée en \LaTeX{} prévoient un bouton pour compiler le fichier \ext{aux} avec BibTex, voire même pour faire ces trois compilations à la suite. Consulter le manuel du logiciel le cas échéant.
 
 \begin{attention}
-Il ne faut pas confondre BibTex et \package{BibLaTex}. Le premier est un logiciel, le second est une package de \LaTex.
+
+Il ne faut pas confondre BibTex et \package{BibLaTex}. Le premier est un logiciel, le second est une package de \LaTeX{}.
 
 On compile avec BibTex mais on fait appel au package \package{BibLaTex}.
 
@@ -49,8 +54,15 @@ On compile avec BibTex mais on fait appel au package \package{BibLaTex}.
 
 
 
+ \paragraph{toto}
  
+ \begin{adjustwidth}{4em}{}
+ 
+Nous abordons maintenant un des atouts majeurs de \LaTeX{} pour les sciences humaines : la possibilité de gérer très simplement une bibliographie complexe, tout en conservant une certaine souplesse dans son affichage.
 
+sss
+
+\end{adjustwidth}
 
 
 
