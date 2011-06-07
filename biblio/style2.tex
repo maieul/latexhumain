@@ -196,8 +196,9 @@ Une fois ceci fait, il est nécessaire de savoir où appliquer cette commande. C
 
 On repère rapidement qu'elle se trouve dans une macro \macro{cite:title}.
 
+\begin{english}%en attendant que ce bug soit résolu
 \inputminted{exemples/biblio/styles2/citetitle.tex}
-
+\end{english}
 Procédons à l'analyse :
 
 \begin{description}
@@ -210,7 +211,8 @@ Procédons à l'analyse :
 
 La ligne qui nous intéresse est donc la ligne 3 : il faudrait conditionner l'affichage du champ titre : si il n'y a qu'une seule œuvre pour l'auteur courant, on peut ne pas l'afficher. Il suffit de redéclarer la macro, en insérant le test conditionnel :
 
+\begin{english}%en attendant que ce bug soit résolu
 \inputminted{exemples/biblio/styles2/singletitle.tex}
-
+\end{english}
 
 

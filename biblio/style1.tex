@@ -196,9 +196,9 @@ clefN = {valeurN}%
 
 Nous allons maintenant prendre un peu d'anticipation sur le prochaine chapitre.
 Vous avez certainement constaté que les styles de la famille \forme{verbose-trad} utilisent des abréviations latines comme \emph{op. cit.}.
-Ces abréviations sont les abréviations universitaires courantes. Toutefois en ce qui concerne l'abréviation \emph{op. cit.} cit.} l'utilise indistinctement pour tout les types d'entrées, y compris pour les entrées de type @article, alors même qu'on pourrait s'attendre à une abréviation de type \emph{art. cit.}.
+Ces abréviations sont les abréviations universitaires courantes. Toutefois en ce qui concerne l'abréviation \emph{op. cit.} \package{BibLaTeX} l'utilise indistinctement pour tout les types d'entrées, y compris pour les entrées de type @article, alors même qu'on pourrait s'attendre à une abréviation de type \emph{art. cit.}.
 
-Pour résoudre ce problème, il suffit de redéfinir la chaîne de langue qui définit \emph{op. cit.} cit.}, en lui attribuant une valeur différente selon le type d'entrée.  On va donc utiliser l'un des nombreux tests conditionnels disponibles dans \empg{BibLaTeX}. Il s'agit de la commande :
+Pour résoudre ce problème, il suffit de redéfinir la chaîne de langue qui définit \emph{op. cit.}, en lui attribuant une valeur différente selon le type d'entrée.  On va donc utiliser l'un des nombreux tests conditionnels disponibles dans \package{BibLaTeX}. Il s'agit de la commande :
 
 \begin{minted}{latex}
 \iffieldequalstr{champ}{texte}{sioui}{sinon}
@@ -207,7 +207,7 @@ Pour résoudre ce problème, il suffit de redéfinir la chaîne de langue qui d�
 Cette commande ne peut s'utiliser que dans certaines parties d'un fichier \LaTeX : dans les commandes de définitions de styles bibliographiques, y compris dans celles de définition d'un chaîne de langue. 
 Elle vérifie que le champ \argument{champ}	de l'entrée bibliographique citée correspond à l'argument \argument{texte} : si c'est le cas, elle retourne l'argument \argument{sioui}, et sinon elle retourne l'argument \argument{sinon}.
 
-Ici nous allons tester le pseudo-champ\footnote{\forme{Pseudo} car il ne se situe pas réellement comme un champ dans l'entrée bibliographique.} \champ{entrytype}, qui correspond au type d'entrée sans le @. Nous allons donc vérifier s'il s'agit d'une entrée de type article : si c'est le cas nous donnerons à la chaîne de langue la valeur  \forme{art. cit.},  dans le cas contraire nous donnerons la valeur \emph{op. cit.} cit.}.
+Ici nous allons tester le pseudo-champ\footnote{\forme{Pseudo} car il ne se situe pas réellement comme un champ dans l'entrée bibliographique.} \champ{entrytype}, qui correspond au type d'entrée sans le @. Nous allons donc vérifier s'il s'agit d'une entrée de type article : si c'est le cas nous donnerons à la chaîne de langue la valeur  \forme{art. cit.},  dans le cas contraire nous donnerons la valeur \emph{op. cit.}.
 
 Ce qui donne : 
 
