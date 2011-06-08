@@ -57,7 +57,7 @@ alors que le règles françaises voudraient que l'on ait :
 	
 	La virgule entre les deux points et \emph{Concilia Africae} s'explique parce qu'une unité a été créée, unité qui doit contenir normalement la valeur du champ \champ{Bookauthor}.
 	
-	Pour contourner ce problème, il ne faut pas mettre directement dans la définition de la commande \commande{newunitpunct} les signes de ponctuation. Il faut utiliser les commandes de ponctuation\footcite[Listées dans]{biblatex_ponctuation}. En effet, ces commandes afficheront la ponctuation uniquement si l'unité qui précède a bien un contenu\footnote{Par ailleurs, elle suppriment les espaces multiples qui précédent.}. \renvoi{commandesponctuation}
+	Pour éviter ce problème, il ne faut pas mettre directement dans la définition de la commande \commande{newunitpunct} les signes de ponctuation. Il faut utiliser les commandes de ponctuation\footcite[Listées dans][]{biblatex_ponctuation}. En effet, ces commandes afficheront la ponctuation uniquement si l'unité qui précède a bien un contenu\footnote{Par ailleurs, elle suppriment les espaces multiples qui précédent.}. \renvoi{commandesponctuation}
 	
 	Il faut donc mettre dans notre cas :
 	
@@ -167,12 +167,10 @@ clef	= {{chaîne longue}{chaîne courte}}|
 	
 	 Toutefois quand on redéfinit une chaîne de langue, on ne lui accorde qu'une seule version.
 	
-		
-
 	\end{anedocte}
 	Il nous faut donc repérer la clef correspondante à notre chaîne \enquote{dans}. Très rapidement nous trouvons qu'il s'agit de la chaine \verb|in|.
 	
-	Une fois  notre clef repérée, il est facile de lui attribuer une nouvelle valeur\footnote{Cette valeur sera utilisée que l'on choisisse le mode abrégé ou non.}, grâce à la commande \commande{DefineBibliographyStrings{lang}{chaînes}}
+	Une fois  notre clef repérée, il est facile de lui attribuer une nouvelle valeur\footnote{Cette valeur sera utilisée que l'on choisisse le mode abrégé ou non.}, grâce à la commande \commande{DefineBibliographyStrings{lang}{chaînes}}, qu'il faut placer dans le préambule du fichier\footnote{Il ne faut surtout pas modifier les fichiers standards : on perdrait les modifications à chaque mise à jour.}.
 	
 	\begin{minted}{latex}
 \DefineBibliographyStrings{french}{%
