@@ -123,18 +123,26 @@ Pour une fusion de lignes, il faut charger le package \package{multirow}. Celui-
 On remarquera que les lignes dont une colonne a été fusionnée doivent contenir des cellules vides. La commande \commande{multirow} ne modifie pas la structure du tableau : elle indique simplement que le texte est sur plusieurs lignes.
 
 
-\subsection{Création depuis un fichier \ext{cvs}}
+\subsection{Création depuis un fichier \ext{csv}}
 
-Évidemment la syntaxe des tableaux est assez compliquée et risque d'entraîner des erreurs. Il est toutefois possible d'utiliser un fichier au format \ext{cvs}, que n'importe quel tableur est capable de produire.
+Évidemment la syntaxe des tableaux est assez compliquée et risque d'entraîner des erreurs. Il est toutefois possible d'utiliser un fichier au format \ext{csv}, que n'importe quel tableur est capable de produire. Il faut pour cela utiliser le package \package{csvtools}
 
-Le format \ext{cvs} est un format standard de données tabulaires. Malheureusement il ne dispose ni de mise en forme ni de possibilité de fusion de cellule.
+Le format \ext{csv} est un format standard de données tabulaires. Malheureusement il ne dispose ni de mise en forme ni de possibilité de fusion de cellule.
 
 \begin{anedocte}Une solution peut être alors d'utiliser la macro Calc2LaTeX pour le logiciel OpenOffice.org, mais nous n'avons pas testé cette macro.
 \end{anedocte}
 
-Il vous donc exporter votre tableau au format cvs. La première ligne correspondant à l'entête.
 
-Toutefois pour des données simples, comme par exemple un tableau statistiques, il suffit amplement. Il est possible de créer à partir d'un fichier \ext{cvs} un environnement \enviro{tabular} ou\enviro{longtable}.
+
+Toutefois pour des données simples, comme par exemple un tableau statistiques, il suffit amplement. 
+Il vous faut donc exporter votre tableau au format csv. La première ligne correspondant à l'entête. Certains logiciels d'export au format svn ne laisse pas le choix quant aux séparateurs de champs. Dans ce cas, il faut utiliser la commande \commande{setcsvseparator} pour définir les champs. Par exemple, si le séparateur est un point-virgule :
+
+\begin{minted}{latex}
+\setcsvseparator{;}
+\end{minted}
+Il est possible de créer à partir d'un fichier \ext{csv} un environnement \enviro{tabular} ou\enviro{longtable}.
+
+
 
 Le premier se crée  avec la commande
 
@@ -149,7 +157,7 @@ le second avec la commande
 \end{minted}
 
 \begin{description}
-\item[fichier]est le nom du fichier \ext{.cvs}. La méthode pour indiquer le chemin du fichier est la même que habituelle.\renvoi{chemin}
+\item[fichier]est le nom du fichier \ext{.csv}. La méthode pour indiquer le chemin du fichier est la même que habituelle.\renvoi{chemin}
 \item[alignement] indique les alignements de colonnes, comme vu précédemment\renvoi{type de colonnes}.
 \item[premiere] indique le contenu de la première ligne (dans le tableau que vous allez généré).
 \item[milieu] indique le contenu des lignes du milieu.
@@ -160,19 +168,21 @@ Pour les arguments
 
 Exemple avec le fichier \fichier{csv.csv} :
 
+\inputminted{exemples/premierpas/nontextuels/csv.csv}
 
-\inputminted{exemples/premierpas/nontextuels/cvstolongtable.tex}
+\inputminted{exemples/premierpas/nontextuels/csvtolongtable.tex}
 
 
-Le résultat est le tableau \ref{cvstolongtable}\renvoi{cvstolongtable}.
+Le résultat est le tableau \ref{csvtolongtable}\renvoi{csvtolongtable}.
 
 \begin{table}[p]
-\input{exemples/premierpas/nontextuels/cvstolongtable}
-\caption{Exemple d'utilisation de la commande \commande{cvstolongtable}}
-\label{cvstolongtable}
+\setcsvseparator{;}
+\input{exemples/premierpas/nontextuels/csvtolongtable}
+\caption{Exemple d'utilisation de la commande \commande{csvtolongtable}}
+\label{csvtolongtable}
 \end{table}
 
 
-\begin{anedocte}Pour afficher un graphique statistique, nous recommandons d'utiliser le package \package{TikZ}\renvoi{TikZ} et les nombreux packages dérivés. Toutefois le \package{cvstools} possède une fonction pour tracer un diagramme circulaire à partir d'un fichier \ext{cvs}. Nous renvoyons à sa documentation.
+\begin{anedocte}Pour afficher un graphique statistique, nous recommandons d'utiliser le package \package{TikZ}\renvoi{TikZ} et les nombreux packages dérivés. Toutefois le \package{csvtools} possède une fonction pour tracer un diagramme circulaire à partir d'un fichier \ext{csv}. Nous renvoyons à sa documentation.
 
 \end{anedocte}
