@@ -46,7 +46,7 @@ Il pourra être affiché dans le fichier .pdf sous la forme :
 
 Un fichier \ext{bib} n'est rien d'autre qu'une \renvoi{logiciel:biblio} série d'entrées de ce type. Cependant, comme il est assez aisé de \enquote{s'emmêler les pinceaux}, notamment dans les ouvertures et fermetures des accolades, il vaut la peine d'utiliser un logiciel de gestion de bibliographies, capable de gérer  des fichiers au formats \ext{bib}. Un certain nombre sont présentés en annexe. En outre ces logiciels permettent en générale des recherches croisés dans la base de donnée.
 
-La documentation de \package{BibLaTeX} contient l'ensemble des champs et des types possibles. Pour éviter de répéter ce manuel, nous vous présenterons les champs en les classant par catégorie. Mais auparavant, nous dirons donnerons quelques conseils sur le choix de la clef et sur les différents types de catégories.
+La documentation de \package{BibLaTeX} contient l'ensemble des champs et des types possibles. Pour éviter de répéter ce manuel, nous vous présenterons les champs en les classant par catégorie. Mais auparavant, nous donnerons quelques conseils sur le choix de la clef et sur les différents types de catégories.
 
 \section{Le choix de la clef}
 
@@ -57,7 +57,7 @@ Une entrée bibliographique doit avoir une clef unique. Cette clef doit comporte
 
 Voici les conseils que nous donnons pour le choix de la clef :
 \subsection{Pour les œuvres contemporaines}
-Notamment les sources secondaire, prendre le nom de l'auteur suivi de la date. Par exemple \verb|Urner1952|.
+Notamment les sources secondaires, il faut prendre le nom de l'auteur suivi de la date. Par exemple \verb|Urner1952|.
 
 \subsection{Pour les œuvres anciennes}
 
@@ -110,7 +110,7 @@ Livre. Pour les actes de colloques, voir plus bas @proceedings.
 
 	\fielditem{manuel}
 	
-	 Manuel, pas nécessairement sous forme imprimé.
+	 Manuel, pas nécessairement sous forme imprimée.
 	 
 	 \fielditem{mvbook}
 	 Livre en plusieurs volumes.
@@ -310,7 +310,7 @@ Pour résumer, voici un exemples de quelques entrées correctes\footnote{Le lect
    	\fielditem{mainsubtitle} Sous-titre d'une œuvre en plusieurs volumes.			
    	\fielditem{maintitle} Titre d'une œuvre en plusieurs volumes. Le titre du volume spécifique à une entrée correspond au champs \champ{title}.						
    	\fielditem{maintitleaddon}  Ajout au titre d'une œuvre en plusieurs volumes.		
-   	\fielditem{origtitle} Titre originale de l'œuvre, si traduction. N'est pas affiché en standard. 
+   	\fielditem{origtitle} Titre original de l'œuvre, si traduction. N'est pas affiché en standard. 
    	\fielditem{reprinttitle} Titre d'un reprint. N'est pas affiché en standard.	
    	\fielditem{subtitle} Sous-titre de l'œuvre.									
    	\fielditem{title} Titre de l'œuvre.									
@@ -357,7 +357,7 @@ Voici quelques exemples afin de comprendre comment se servir de ces champs.
 	On peut ne pas indiquer le mois ou le jour. On peut également utiliser les champs \champ{year} et {month} à la place. 
    	\fielditem{edition} 
 	
-	Numéro d'édition, si plusieurs éditions existent. Doit être un entier ou bien un chaîne de caractères.				
+	Numéro d'édition, si plusieurs éditions existent. Doit être un entier ou bien une chaîne de caractères.				
    	\fielditem{eventdate} Date du colloque pour les entrées du type @proceedings et @inproceedings. 
 	\fielditem{howpublished} Pour les entrées de type @misc, précise le mode de publication.
    	\fielditem{institution} Institution dans laquelle l'œuvre a été produite. Typiquement pour les entrées de type @thesis. 

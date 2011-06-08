@@ -25,10 +25,10 @@ Il existe un nombre important de styles de citations livrés en standard. Nous m
 \item[verbose]la description complète de l'entrée est donnée la première fois, une version abrégée est affichée ensuite.
 \item[verbose-ibid]la description complète de l'entrée est donnée, mais si un passage est citée plusieurs fois de suite, l'abréviation \emph{ibidem} est utilisée.
 \item[verbose-note]la description complète de l'entrée est donnée à sa première mention, puis une version abrégée est utilisée.
-\item[verbose-trad1 ; verbose-trad2 ; verbose-trad3]la description complète de l'entrée est utilisée, puis les abréviations universitaires de type \emph{op. cit.}, {ibidem.} etc. sont utilisées. \package{BibLaTeX} calcul automatiquement l'opportunité d'utiliser une abréviation universitaire, selon l'endroit où l'ouvrage aura été cité précédemment. Voir le manuel pour la description complète des différences entre ces trois styles.
+\item[verbose-trad1 ; verbose-trad2 ; verbose-trad3]la description complète de l'entrée est utilisée, puis les abréviations universitaires de type \emph{op. cit.}, {ibidem.} etc. sont utilisées. \package{BibLaTeX} calcule automatiquement l'opportunité d'utiliser une abréviation universitaire, selon l'endroit où l'ouvrage aura été cité précédemment. Voir le manuel pour la description complète des différences entre ces trois styles.
 \end{description}
 
-On comprend ici un des grands intérêts de \LaTeX : plus de perte de temps à se demander \enquote{Faut-il que j'utilise ici une version abrégée de la référence ?}, \package{BibLaTeX} le fait pour vous.
+On comprend ici l'un des grands intérêts de \LaTeX : plus de perte de temps à se demander \enquote{Faut-il que j'utilise ici une version abrégée de la référence ?}, \package{BibLaTeX} le fait pour vous.
 
 Voici donc comment doit se faire l'appel au package, si nous choisissons le style de citation \verb|verbose-trad-2|.
 
@@ -64,7 +64,7 @@ L'ensemble des commandes de citation ont la syntaxe suivante :
 
 PREFIX indique où doit apparaître la référence : directement dans le texte, entre parenthèses, en note de bas page etc.
 
-Par exemple, nous souhaitons citer  un livre de Victor Saxer que nous avons entrée de cette manière dans le base de donnée :
+Par exemple, nous souhaitons citer  un livre de Victor Saxer que nous avons entré de cette manière dans la base de donnée :
 
 
 \inputminted{exemples/biblio/fichier/saxer.bib}
@@ -156,7 +156,7 @@ On peut préciser le type de pagination possible : pagine-t-on en pages, en colo
 
 
 
-Un problème se pose lorsqu'il y a déjà un champ \champ{pages} remplit : on se retrouve avec deux numérotation de pages : celle indiquée dans le champ \champ{pages} et celle indiquée par l'option \argument{postnote}. Prenons l'entrée suivante :
+Un problème se pose lorsqu'il y a déjà un champ \champ{pages} de rempli : on se retrouve avec deux numérotation de pages : celle indiquée dans le champ \champ{pages} et celle indiquée par l'option \argument{postnote}. Prenons l'entrée suivante :
 
 \inputminted{exemples/biblio/fichier/junod.bib}
 
@@ -174,7 +174,7 @@ on obtient ce résultat :
 
 
 
-Pour éviter cela, si on utilise un style de type verbose, il faut passer un option lors de l'appel au package \option{citepages=omit}
+Pour éviter cela, si on utilise un style de type verbose, il faut passer une option lors de l'appel au package \option{citepages=omit}
 
 \begin{minted}{latex}
 \usepackage[citestyle=verbose,citepages=omit]{biblatex}
@@ -217,16 +217,16 @@ Pour les sources anciennes, on aimerait pouvoir indiquer non seulement la pagina
 On peut contourner ce problème par la solution des sous-entrée bibliographique, dont nous parlerons dans un autre chapitre. \renvoi{divisionsource}
 \end{attention}
 
-\section{Citation de plusieurs oeuvres}\label{citemultiple}
+\section{Citation de plusieurs œuvres}\label{citemultiple}
 
-Il est possible de citer plusieurs oeuvres d'un coup : pour cela, il faut utiliser une commande dont la syntaxe de base est :
+Il est possible de citer plusieurs œuvres d'un coup : pour cela, il faut utiliser une commande dont la syntaxe de base est :
 
 
 \begin{minted}{latex}
 \PREFIXcites[prenote][postnote]{clef}[prenote][postenote]{clef}…
 \end{minted}
 
-Il est possible de citer autant d'œuvres que souhaitées. Chaque élément cité a droit à son argument \argument{prenote} et \argument{postnote}, qui s'utilisent de la même manière que pour les citations simples.
+Il est possible de citer autant d'œuvres que souhaité. Chaque élément cité a droit à son argument \argument{prenote} et \argument{postnote}, qui s'utilisent de la même manière que pour les citations simples.
 
 
 Voici un exemple d'utilisation : 

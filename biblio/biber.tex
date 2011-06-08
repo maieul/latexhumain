@@ -24,25 +24,25 @@ Si vous utiliser Biber, il vous faudra procéder ainsi :
 Biber est donc un logiciel qui remplace BibTeX. Quels sont les avantages ?
 
 \begin{itemize}
-\item Biber gère nativement le tri alphabétique des caractères Unicode.\renvoi{utf8}. Ainsi \forme{Évode d'Uzal} sera classé à \forme{E} et non pas à la fin de l'alphabet\footnote{Il était bien sûr possible de contourner ce problème en utilisant les champs de tri des fichiers \ext{bib}. Mais pourquoi ce compliquer à dupliquer de l'information quand on en a  pas besoin ?}.
+\item Biber gère nativement le tri alphabétique des caractères Unicode.\renvoi{utf8}. Ainsi \forme{Évode d'Uzal} sera classé à \forme{E} et non pas à la fin de l'alphabet\footnote{Il était bien sûr possible de contourner ce problème en utilisant les champs de tri des fichiers \ext{bib}. Mais pourquoi se compliquer la tâche à dupliquer l'information lorsque le besoin ne s'en fait pas sentir ?}.
 \item Biber propose un système de sous-entrées bibliographiques beaucoup plus puissant que BibTeX. C'est ce point qui va nous intéresser tout particulièrement.
-\item Certaines fonctionnalités avancées de \package{BibLaTeX} ne fonctionne qu'avec Biber.
+\item Certaines fonctionnalités avancées de \package{BibLaTeX} ne fonctionnent qu'avec Biber.
 \end{itemize}
 
 \subsection[Principe des sous-entrées]{Les sous entrées bibliographiques : le principe}
 
-Supposons que vous citiez plusieurs contributions d'un même colloque. Classiquement vous créerez plusieurs entrées bibliographiques sous la forme\footnote{Toute ressemblance avec un colloque s'étant déjà connu ne saurait-être que pure coïncidence}.
+Supposons que vous citiez plusieurs contributions d'un même colloque. Classiquement vous créerez plusieurs entrées bibliographiques sous la forme\footnote{Toute ressemblance avec un colloque s'étant déjà tenu ne saurait être que pure coïncidence.}.
 
 \inputminted{exemples/biblio/biber/reproduction.bib}
 
-Vous dupliquez ainsi les données sur le colloque (titre, éditeur etc.). Si par hasard vous vous êtes trompés dans une information vous devriez la modifier partout. Pour éviter cela BibTeX prévoit la possibilité de créer des filiations d'entrée : des entrées secondaires \enquote{héritant} d'entrées principales. L'héritage étant pris en charge lors de l'interprétation du fichier. Pour ce faire, il suffit d'indiquer dans le champ \champ{crossref} des entrées secondaires la clef de l'entrée principale.
+Vous dupliquez ainsi les données sur le colloque (titre, éditeur etc.). Si par hasard vous vous êtes trompés dans une information, vous devriez la modifier partout. Pour éviter cela BibTeX prévoit la possibilité de créer des filiations d'entrée : des entrées secondaires \enquote{héritant} d'entrées principales. L'héritage étant pris en charge lors de l'interprétation du fichier. Pour ce faire, il suffit d'indiquer dans le champ \champ{crossref} des entrées secondaires la clef de l'entrée principale.
 
 
 \inputminted{exemples/biblio/biber/crossref.bib}
 
 En toute logique la compilation avec BibTeX devrait attribuer la valeur du champ \champ{title} de l'entrée \verb|principale| aux champs \champ{booktitle} des entrées \verb|clef1| et \verb|clef2|, puisqu'il s'agit d'entrée de type \verb|@inproceedings| héritant d'entrée \verb|@proceedings|. 
 
-Il n'en est rien : \package{BibTeX} procède à des héritages simples : il attribut les valeurs \enquote{mères} \champ{title} aux champs \champ{title} des fils. Ceci oblige donc à dupliquer les valeurs\footnote{Certain logiciel de gestion bibliographique le font pour vous. Toutefois, cela alourdit le fichier. En outre il s'agit de contourner un limitation technique de BibTeX, plutôt que de remédier à cette limitation.}.
+Il n'en est rien : \package{BibTeX} procède à des héritages simples : il attribue les valeurs \enquote{mères} \champ{title} aux champs \champ{title} des fils. Ceci oblige donc à dupliquer les valeurs\footnote{Certain logiciel de gestion bibliographique le font pour vous. Toutefois, cela alourdit le fichier. En outre il s'agit de contourner un limitation technique de BibTeX, plutôt que de remédier à cette limitation.}.
 
 Biber quant à lui attribue correctement les valeurs des champs. Si nous reprenons notre exemple et que nous utilisons Biber, nous obtenons les résultats souhaités :
 
@@ -74,7 +74,7 @@ Par ailleurs, lorsqu'une entrée fille est citée, Biber rajoute systématiqueme
 Pour compiler avec Biber, il faut bien sûr l'avoir installé\renvoi{installbiber}. Toutefois la plupart des éditeurs \LaTeX{} ne prévoient pas encore de compiler avec Biber : il faut soit passer par la ligne de commande, que nous expliquons en annexe, soit modifier les règlages du logiciels\footcite[On peut trouver comment faire pour quelques logiciels à cette adresse]{biber_logiciels}.
 \subsection{Préciser les héritages de champs}
 
-Biber possède un certain nombre de réglages d'héritages de champs\footcite{biblatex_crossrefsetup}. Toutefois on peut vouloir modifier ces héritages, ou en ajouter d'autres. Par exemple les champs \champ{entrysubtype} ne sont, par défauts, pas hérités. 
+Biber possède un certain nombre de réglages d'héritages de champs\footcite{biblatex_crossrefsetup}. Toutefois on peut vouloir modifier ces héritages, ou en ajouter d'autres. Par exemple les champs \champ{entrysubtype} ne sont, par défaut, pas hérités. 
 
 Il suffit d'utiliser dans le préambule la commande ;
 
@@ -132,7 +132,7 @@ S'il est aisé lorsqu'on utilise une commande de citation d'indiquer une page pr
 \begin{anedocte}
 Il n'existe pas de champ spécifiquement prévu pour indiquer la division de source. Pourquoi choisir ce champ \champ{titleaddon} ? Deux raisons poussent l'auteur de ces lignes à cette solution :
 \begin{enumerate}
-\item D'un point de vue sémantique, la division de source peut être considérée comme un ajout au titre. Il précise plus précisément de quelle partie de l'œuvre d'un auteur on parle.
+\item D'un point de vue sémantique, la division de source peut être considérée comme un ajout au titre. Il précise de quelle partie de l'œuvre d'un auteur on parle.
 \item D'un point de vue pratique, ce champ à pour avantage d'être, par défaut, situé par BibLaTeX entre le titre et les informations d'éditions, tout en n'étant pas en italique.
 
 

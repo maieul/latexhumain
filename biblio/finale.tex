@@ -8,7 +8,7 @@ Dans ce chapitre nous allons voir comment afficher et trier une bibliographie.
 
 \section{Affichage de la bibliographie}
 
-La commande \commande{printbibliography} est la commande de base pour imprimer une bibliographie. Si vous l'essayez dans votre projet, vous obtiendrez une bibliographie reprenant l'ensemble des œuvres que vous avez cité au cours de votre travail. Ainsi, vous êtes certains de ne rien oublier.
+La commande \commande{printbibliography} est la commande de base pour imprimer une bibliographie. Si vous l'essayez dans votre projet, vous obtiendrez une bibliographie reprenant l'ensemble des œuvres que vous avez citées au cours de votre travail. Ainsi, vous êtes certains de ne rien oublier.
 
 Toutefois une telle bibliographie est peu utile : elle mélange allègrement sources primaires et études secondaires, ne distingue pas selon les chapitres etc. Nous allons donc voir maintenant comment sectionner une bibliographie en plusieurs morceaux. Mais auparavent il nous faut mentionner une spécificité pour les sciences humaines.
 
@@ -72,7 +72,7 @@ Analysons ce code :
 \end{enumerate}
 
 
-Avec une telle méthode, il est aisée de trier une bibliographie en sources primaires et sources secondaires. Il suffit d'attribuer une valeur au champ \champ{entrysubtype} des entrées bibliographiques, en donnant une valeur différente selon qu'il s'agit d'une source primaire ou d'une source secondaire.
+Avec une telle méthode, il est aisé de trier une bibliographie en sources primaires et sources secondaires. Il suffit d'attribuer une valeur au champ \champ{entrysubtype} des entrées bibliographiques, en donnant une valeur différente selon qu'il s'agit d'une source primaire ou d'une source secondaire.
 
 Par exemple
 \begin{minted}{latex}
@@ -92,7 +92,7 @@ Par exemple
 
 \section{Trier une bibliographie par sujet}
 
-Une autre manière de  sectionner une bibliographie est de faire des parties thématiques. Pour cela, une solution est d'indiquer des mots-clefs dans le champ \champ{keywords} des entrées bibliographiques. Les mots clefs doivent être séparés par des virgules.
+Une autre manière de  sectionner une bibliographie est de faire des parties thématiques. Pour cela, une solution est d'indiquer des mots clés dans le champ \champ{keywords} des entrées bibliographiques. Les mots clés doivent être séparés par des virgules.
 
 On peut alors passer l'argument \argument{keyword} à la commande \commande{printbibliography}. On peut ainsi sélectionner toutes les entrées ayant la valeur \forme{xxx} dans leurs champs \champ{keywords} :
 
@@ -104,6 +104,12 @@ On peut alors passer l'argument \argument{keyword} à la commande \commande{prin
 
 \begin{minted}{latex}
 \printbibliography[notkeyword=xxx]
+\end{minted}
+
+Il est enfin possible de combiner plusieurs mots clés. Dans ce cas, les entrées correspondant à chacun de ces mots clés apparaîtront:
+
+\begin{minted}{latex}
+\printbibliography[keyword=positivistes, keyword=naturalistes]
 \end{minted}
 
 \begin{anedocte}
@@ -184,7 +190,7 @@ Pour contourner ce problème, on peut utiliser le champ \champ{sorttitle}. Celui
 
 Comme \forme{0} se situe avant \forme{2}, la lettre 64 sera bien située avant la lettre 237. Pour autant il y aura bien écrit \enquote{Lettre 64} et non pas \enquote{Lettre 064}.
 
-Un problème semblable peut se poser pour les œuvres anonymes : en l'absence d'auteur, BibLaTeX se sert du titre comme premier critère de tri, ce qui a pour conséquent de disperser toutes les œuvres anonymes au sein de la bibliographie, plutôt que de les mettre à un seul endroit, par exemple tout au début.
+Un problème semblable peut se poser pour les œuvres anonymes : en l'absence d'auteur, BibLaTeX se sert du titre comme premier critère de tri, ce qui a pour conséquence de disperser toutes les œuvres anonymes au sein de la bibliographie, plutôt que de les mettre à un seul endroit, par exemple tout au début.
 
 Pour résoudre ce problème, il suffit d'utiliser le champ \champ{sortname}, et lui attribuant la valeur \forme{0}.
 

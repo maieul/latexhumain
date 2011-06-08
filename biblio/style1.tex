@@ -36,7 +36,7 @@ alors que le règles françaises voudraient que l'on ait :
 
 	Ces unités sont séparés par des signes de ponctuations. Ces séparateurs sont définis par la commande \commande{newunitpunct}.
 	
-	Il suffit donc de redéfinir la commande. Pour cela il suffit de mettre dans le préambule\footnote{Cela n'est pas obligé, mais c'est une bonne méthodologie de mettre l'ensemble des commandes de personnalisations de styles dans le préambule. Nous conseillons de mettre toutes les commandes de personnalisation des styles bibliographiques dans un seul fichier, appelé dans le préambule.} : 
+	Il suffit donc de redéfinir la commande. Pour cela il suffit de mettre dans le préambule\footnote{Cela n'est pas strictement nécessaire, mais c'est une bonne méthode que de mettre l'ensemble des commandes de personnalisations de styles dans le préambule. Nous conseillons de mettre toutes les commandes de personnalisation des styles bibliographiques dans un seul fichier, appelé dans le préambule.} : 
 		
 	\begin{minted}{latex}
 \renewcommand{\newunitpunct}[0]{,}
@@ -165,7 +165,7 @@ clef	= {{chaîne longue}{chaîne courte}}|
 \usepackage[abbreviate=false]{biblatex}
 	\end{minted}
 	
-	 Toutefois quand on redéfini une chaîne de langue, on ne lui accorde qu'une seule version.
+	 Toutefois quand on redéfinit une chaîne de langue, on ne lui accorde qu'une seule version.
 	
 		
 
@@ -214,7 +214,7 @@ Ce qui donne :
 \begin{minted}{latex}
 \DefineBibliographyStrings{french}{%
 	opcit = \iffieldequalstr{entrytype}{article}%
-	{art\adddotspacecit\adddot}%
+	{\emph{art\adddotspacecit}\adddot}%
 	{op\adddotspacecit\adddot}%
 }
 \end{minted}
