@@ -1,4 +1,4 @@
-\chapter{Installer \LaTeX et \XeLaTeX}
+\chapter{Installer \LaTeX et \XeLaTeX}\label{install}
 
 \begin{prealable}
 	Avant de pouvoir se servir de \LaTeX{} (\XeLaTeX) il faut l'installer. Voici comment faire pour les systèmes d'exploitations courants.
@@ -6,5 +6,15 @@
 
 \section{La notion de distribution}
 
-\input{annexes/install/windows}
+En général, on n'installe pas \LaTeX{} tout seul, on installe une distribution \LaTeX{}. Une distribution est un ensemble de fichiers comprenant :
+\begin{itemize}
+\item Les logiciels \TeX, \LaTeX, et généralement \XeLaTeX, mais aussi d'autres logiciels qui appartiennent à la  \forme{famille \TeX}\footnote{L'expression est de nous. Pour prendre une analogie avec les logiciels connus, quand vous installez Microsoft Office, vous installez non seulement Word, Excel et Powerpoint, mais aussi des logiciels utiles à ces derniers, par exemples pour tracer des organigrammes.}, que nous verrons en temps voulu.
+\item Des fichiers permettant d'étendre les possibilités de \LaTeX, appelées packages et classes.
+\item De la documentation sur ces fichiers.
+\end{itemize}
+
+Il existe deux distributions courantes : TeXLive, pour MacOs X et Linux, et MikTeX pour Windows. L'objet de ce chapitre est donc d'expliquer comment installer ces distributions.
+
+\input{annexes/install/mac}
 \input{annexes/install/linux}
+\input{annexes/install/windows}
