@@ -1,0 +1,31 @@
+\section{MiKTeX sous Windows}
+
+
+Les systèmes Windows diffèrent considérablement des systèmes GNU/Linux et Mac OS X. Par conséquent, s'il est possible de faire une installation manuelle de la distribution TeX Live sous Windows, la procédure est fastidieuse et complexe.
+
+C'est pourquoi nous nous tournerons vers une distribution consacrée exclusivement à Windows, qui automatise les tâches d'installation de la distribution \LaTeX et permet de gérer son installation en se conformant aux pratiques qui ont cours sur ce système. Cette distribution a pour nom MiKTeX. Son installateur est très complet: en plus d'une distribution \LaTeX{}, il installera aussi un logiciel graphique de mise à jour des paquets et un éditeur de texte.
+
+\subsection{Installation}
+
+Il faut se rendre sur la page de téléchargement de la distribution : \href{http://miktex.org/2.9/setup}. Choisissez le fichier \emph{Net Installer}, et non le \emph{Basic Installer}.
+
+\begin{attention}
+Vous remarquerez de les installateurs sont fournis pour les versions dites respectivement 32 bits et 64 bits de Windows. Si vous ne connaissez pas ces termes, veillez à choisir la version \emph{32 bits}. Cette dernière peut en effet s'exécuter sur les deux types de plate-formes, tandis que la réciproque n'est pas vraie. Si vous savez que vous disposez d'un système en 64 bits, vous pouvez choisir l'installateur qui y correspond sans crainte.
+\end{attention}
+
+Une fois l'installateur téléchargé sur votre ordinateur, un double clic la procédure. Il faut d'abord accepter la licence du logiciel. Puis choisissez «Download MiKTeX», et à l'écran suivant, «Basic MiKTeX».
+
+Il vous sera demandé de choisir une source de téléchargement. Préférez une source proche de votre domicile, donc pour un utilisateur habitant dans le Nord de la France, les serveurs français, anglais ou allemands feront amplement l'affaire.
+
+À l'étape suivante il vous sera demandé de choisir un répertoire de téléchargement. Choisissez de préférence un dossier qui se trouve dans «Mes Documents», comme par exemple \verbe|C:\Documents and Settings\Votreutilisateur\Mes documents\miktex|. Lorsque vous aurez achevé cette étape, l'installateur téléchargera tout les composants dont il a besoin, vous avertira qu'il a terminé son travail, puis s'arrêtera.
+
+Lancez-le alors une seconde fois. Mais au lieu de choisir «Download MiKTeX», choisissez à présent «Install MiKTeX», puis de nouveau «Basic MiKTeX». Préférez alors une installation en tant qu'administrateur, pour tous les utilisateurs de l'ordinateur. Puis sélectionnez le dossier qui contient les composants ; dans notre exemple précédent, il s'agissait de \verbe|C:\Documents and Settings\Votreutilisateur\Mes documents\miktex|.
+
+Conservez les choix par défaut sur les deux écrans suivants: ils sont corrects. Vous pouvez achever le processus.
+
+
+\subsection{Utilisation et maintenance}
+
+Dans le menu Démarrer, vous trouverez une section nommée fort justement MiKTeX, suivie d'un numéro de version. Dans cette section, vous trouverez notamment un bon éditeur de texte  pour \LaTeX nommé \emph{TeXworks}, et une sous-section consacrée à la «Maintenance» – Répondant au doux nom de Maintenance (Admin) –, dans laquelle vous aurez accès à deux outils utiles: le gestionnaire de mises à jour de \emph{packages} (Updates), et le gestionnaire d'installation de nouveaux \emph{packages} (Package Manager).
+
+Remarquez que la plupart du temps, vous n'aurez pas besoin d'installer explicitement un nouveau \emph{package}. En effet, au moment de la compilation, MiKTeX détectera que vous sollicitez un composant qui n'est pas présent sur votre système et vous proposera de l'installer.
