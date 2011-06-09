@@ -1,0 +1,34 @@
+\documentclass[12pt]{book}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[frenchb]{babel}
+
+\begin{document}
+
+\section{Installer TeX Live sous GNU/Linux}
+
+Il y a plusieurs manières de procéder pour installer TexLive sur une distribution GNU/Linux. Il est possible de télécharger l'installateur pour GNU/Linux depuis le site de TeX Live, mais la procédure d'installation de TeX Live est alors complexe, tout comme la mise à jour. Nous ne détaillerons donc pas cette procédure d'installation.
+
+La meilleure façon de procéder est en effet de recourir au gestionnaire de paquets de votre distribution. C'est l'approche que nous allons documenter pour les distributions GNU/Linux grand public les plus usitées, car la mise à jour de tous les paquets de TeX Live en est facilitée : ils sont mis à jour en même temps que les logiciels de votre distribution GNU/Linux.
+
+Pour l'installation complète telle que présentée ci-dessous, il faut prévoir environ trois gigaoctets d'espace libre en comptant la taille des paquets téléchargés et leur place installée.
+
+\subsection{Debian et ses dérivés}
+
+Il est très facile d'installer la distribution TeX Live avec Debian, Ubuntu et ses dérivés, ou bien Linux Mint. Il vous suffit d'ouvrir le gestionnaire de paquet \emph{Synaptic}, de chercher le paquet  \verb|texlive-full|, et de l'installer en acceptant toutes ses dépendances.
+
+\subsection{Les distributions basées sur les paquets RPM}
+
+\subsubsection{Mageia et Mandriva}
+
+Ces deux systèmes sont très proches, par conséquent les instructions pour l'une valent pour l'autre. Il faut dans un premier temps ouvrir le \emph{centre de contrôle}. Il suffit alors de cliquer sur le bouton \emph{Installer et désinstaller des logiciels}, puis de chercher le paquet \verb|texlive| et appliquer les changements. 
+
+\subsubsection{OpenSUSE}
+
+Le processus est similaire. Ouvrez l'application \emph{Installer des logiciels}, puis cherchez les paquets \verb|texlive|, \verb|texlive-xetex|, et \verb|texlive-fonts-extra|. Appliquez alors les changements.
+
+\subsubsection{Fedora}
+
+Sous Fedora, ouvrez l'application \emph{Ajouter/supprimer des logiciels}. Cliquez dans la colonne de gauche sur la catégorie \og{}Éditeurs\fg{}, puis sélectionnez les paquets \verb|texlive| et \verb|texlive-texmf-latex|. Appliquez les changements et acceptez les dépendances.
+
+\end{document}
