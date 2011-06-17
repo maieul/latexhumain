@@ -1,9 +1,9 @@
 \chapter{Travail collaboratif : les logiciels de suivi des révisions}	% Voir s'il ne faut pas mettre à un autre niveau
 
 \begin{prealable}
-	La plupart des traitements de textes proposent des systèmes pour travailler à plusieurs sur un même fichier et garder une historique des révisions, indiquant les modifications, leurs dates et leurs auteurs. 
+	La plupart des traitements de texte proposent des systèmes pour travailler à plusieurs sur un même fichier et garder une historique des révisions, indiquant les modifications, leurs dates et leurs auteurs. 
 	
-	Comment faire en \LaTeX{} ? La solution la plus simple est d'utiliser un logiciel de suivi des révisions, qui est utilisé par les programmeurs qui travaillent à plusieurs sur un projet.
+	Comment faire en \LaTeX{} ? La solution la plus simple est d'utiliser un logiciel de suivi des révisions, utilisé par les programmeurs qui travaillent à plusieurs sur un projet.
 \end{prealable}
 
 Imaginons que Bob et Alice travaillent ensemble sur un projet\footnote{Le nombre de collaborateurs avec de tels système est illimités : ici nous n'en prenons que deux pour simplifier.}. Ils souhaitent pouvoir échanger facilement leurs modifications.
@@ -11,6 +11,8 @@ Imaginons que Bob et Alice travaillent ensemble sur un projet\footnote{Le nombre
 Pour ce faire ils vont déposer les fichiers initiaux sur un serveur (un ordinateur distant). Puis chacun récupère les fichiers sur son propre ordinateur, à l'aide de commandes spécifiques au logiciel utilisé.
 
 Bob fait des modifications (1) : il envoie ces modifications sur le serveur, en les accompagnant d'un petit message les résumant. Alice peut alors récupérer ces modifications en local (2). Si Bob n'a modifié qu'un seul fichier, seul ce fichier sera récupéré par Alice : cela permet à Alice de modifier d'autres fichiers pendant ce temps. Une fois ses modifications faites, Alice les envoie sur le serveur, en les accompagnant d'un petit message les résumant (3), et Bob peut ainsi les récupérer. Ces étapes sont représentés dans le schéma \ref{svn}.
+
+Il est aussi possible de faire d'autres opérations : renommer, déplacer, dupliquer les fichiers sur les serveurs distants. En outre, ces logiciels permettent, si deux personnes ont fait des modifications en même temps sur le même fichier, de proposer de garder que certaines de ces modifications.
 
 \begin{figure}[ht]
 \centering
@@ -20,12 +22,12 @@ Bob fait des modifications (1) : il envoie ces modifications sur le serveur, en 
 
 L'intérêt d'un tel système est multiple :
 \begin{itemize}
-\item Il est aisé de s'assurer qu'on possède bien la dernière version du projet, contrairements aux échanges classiques par courriels qui peuvent aisément semer la confusion.
-\item On possède un historique des versions permettant de revenir en arrière, le cas échéant\footnote{C'est pourquoi il est possible d'utiliser un tel système avec une seule personne, pour se garantir un suivi du travail}.
-\item Pour autant, contrairement aux système des logiciels de traitement de textes, l'historique des versions ne se situe pas à l'intérieur du fichier de travail, ce qui évite un certain nombres de problème (notamment ralentissement).
+\item Il est aisé de s'assurer qu'on possède bien la dernière version du projet, contrairement aux échanges classiques par courriels qui peuvent aisément semer la confusion.
+\item On possède un historique des versions permettant de revenir en arrière, le cas échéant\footnote{C'est pourquoi il est possible d'utiliser un tel système avec une seule personne, pour se garantir un suivi du travail.}.
+\item Pour autant, contrairement aux système des logiciels de traitement de texte, l'historique des versions ne se situe pas à l'intérieur du fichier de travail, ce qui évite une prise de poids et un certain nombres de problème (notamment ralentissement).
 \end{itemize}
 
-Il est aussi possible de faire d'autres opérations : renommer, déplacer, dupliquer les fichiers sur les serveurs distants.
+
 
 Les logiciels de suivi des révisions sont multiples : citons SVN, Git et Mercurial. Le premier est sans doute plus simple en première approche, mais les deux autres possèdent des fonctionnalité plus souples, notamment dans le fait qu'il n'y a pas un serveur unique, comme sur notre schéma, mais plusieurs serveurs qui peuvent être synchronisés.
 
