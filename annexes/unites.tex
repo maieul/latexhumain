@@ -1,10 +1,48 @@
 \chapter{Unités de mesure en \LaTeX{}}
 
 \begin{prealable}
-	Nous expliquerons ici les principales unités de mesures en \LaTeX{}, mais aussi les manières d'indiquer des tailles de manières relatives à d'autres tailles : par exemple indiquer que nous voulons avoir une demi fois la longueur de la ligne.
+	Nous expliquerons ici les principales unités de mesure en \LaTeX{}, mais aussi les manières d'indiquer des tailles de façons relative à une autre taille : par exemple indiquer que nous voulons avoir une demi fois la longueur de la ligne.
 \end{prealable}
 
-\section{Unité de mesure}
+\section{Unités de mesure}
 
-\LaTeX{} étant d'origine anglophone, le séparateur des décimales doit un point et non pas une virgule. Ainsi pour préciser une taille de 1,5 cm, il faut écrire : \verb|1.5cm| et non pas \verb|1,5cm|.
+\LaTeX{} étant d'origine anglophone, le séparateur des décimales doit être un point et non pas une virgule. Ainsi pour préciser une taille de 1,5 cm, il faut écrire : \verb|1.5cm| et non pas \verb|1,5cm|.
+Les unités de mesures peuvent être divisées en deux catégories : unités absolues et unités relatives à la taille  de la police courante. Nous ne présentons ici que les unités les plus courantes.
 
+
+
+\begin{longtable}{llp{15em}}
+	Unité & Nom & Explication \\
+	\endhead
+	\multicolumn{3}{c}{\emph{Unités absolues}} \\
+	pt & Point typographique pica & Unité de base des mesures typographiques dans les système anglo-saxons. C'est celle qui est utilisé dans quasiment tout les logiciels. Correspond approximativement à 0,35 mm. \\
+	mm & millimètre &  \\
+	cm  & centimètre & \\
+	in    & Pouce anglo-saxon & Correspond approximativement à 2,54 cm. \\
+	\multicolumn{3}{c}{\emph{Unités relatives}} \\
+	em & Cadratin & Correspond à la largeur d'un \verb|m| dans la police courante. \\
+	ex  & Œil & Correspond à la hauteur d'un \verb|x| dans la police courante. \\
+\end{longtable}
+
+\section{Longueurs relatives}
+
+Il est également possible d'indiquer des longueurs relatives à certaines éléments. Pour ce faire, il suffit d'indiquer un nombre décimal devant une commande de longueur.
+
+Ainsi pour un tableau avec deux colonnes correspondante à la moitié de la largeur de la ligne :
+
+\inputminted{exemples/annexes/unites/tableaulongueur.tex}
+\input{exemples/annexes/unites/tableaulongueur}
+
+Voici les principales commandes de longueur :
+
+\begin{longtable}{lp{15em}}
+	Commande & Explication \\
+	\endhead
+	\commande{baselineskip} & Distance entre le bas d'une ligne et celui de la ligne suivante. \\
+	\commande{linewidth} & Largeur d'une ligne. Dans certains environnement (par exemple \enviro{quotation}) les lignes sont plus courtes (ou plus longues) que dans le texte principal. \\
+	\commande{textheight}& Hauteur maximale du texte dans une page. Correspond \emph{grosso-modo} à la longueur entre la marge haute et la marge basse. \\
+	\commande{textwith} & Largeur maximale de texte dans une page. Correspond \emph{grosso-modo} à la longueur entre la marge gauche et la marge droite.  \\
+	 \commande{parindent} & Longueur de l'indentation du paragraphe. \\
+	 \commande{parskip}	& Distance verticale entre deux paragraphes. \\
+	 
+\end{longtable}
