@@ -12,20 +12,24 @@ Cet étiquetage  se fait avec la commande \commande{label{etiquette}}.
 
 
 
-\section{Se servir des étiquettes}
+%\section{Se servir des étiquettes}
 
-Après avoir avoir placé des étiquettes, on peut y renvoyer. Il suffit de placer des commandes de renvois aux endroits souhaités. \emph{Toutefois il est nécessaire de compiler deux fois avec \XeLaTeX}. À la première compilation, \XeLaTeX note les emplacements des étiquettes dans un fichier. À la seconde compilation, ils lit ce fichier afin de procéder aux renvois. 
+Après avoir avoir placé des étiquettes, on peut y renvoyer. 
+Il suffit de placer des commandes de renvois aux endroits souhaités. 
+Toutefois il est nécessaire de compiler deux fois avec \XeLaTeX{}.
+À la première compilation,   \XeLaTeX{}%
+note les emplacements des étiquettes dans un fichier. À la seconde compilation, il lit ce fichier afin de procéder aux renvois. 
 
 \begin{attention}
-	Si vous modifier votre texte, il faudra de nouveau compiler deux fois. En effet, les numéros de pages, de titres, de légendes etc. peuvent avoir changer. Il faut donc  que \XeLaTeX les apprennent à nouveau. En résumé, pour avoir un document correcte il faut :
+	Si vous modifier votre texte, il faudra de nouveau compiler deux fois. En effet, les numéros de pages, de titres, de légendes etc. peuvent avoir changer. Il faut donc  que \XeLaTeX{} les apprennent à nouveau. En résumé, pour avoir un document correcte il faut :
 	\begin{enumerate}
-		\item Compiler avec \XeLaTeX.
+		\item Compiler avec \XeLaTeX{}.
 		\item Compiler avec BibTeX afin d'interprété le fichier \ext{bib}.
-		\item Compiler avec \XeLaTeX.
-		\item Compiler avec \XeLaTeX (car l'ajout des références bibliographiques a pu modifié le positionnement des étiquettes).
+		\item Compiler avec \XeLaTeX{}.
+		\item Compiler avec \XeLaTeX{} (car l'ajout des références bibliographiques a pu modifié le positionnement des étiquettes).
 	\end{enumerate}
 	
-	Tout ceci peut paraître bien compliqué et risque d'entraîner des oublis. C'est pourquoi les journaux de compilations, ces lignes de textes qui apparaissent lors de la compilation avec \XeLaTeX, disent dans les dernières lignes s'il est nécessaire de compiler, et avec quel logiciel.
+	Tout ceci peut paraître bien compliqué et risque d'entraîner des oublis. C'est pourquoi les journaux de compilations, ces lignes de textes qui apparaissent lors de la compilation avec \XeLaTeX{}, disent dans les dernières lignes s'il est nécessaire de compiler, et avec quel logiciel.
 \end{attention}
 
 \subsection{Renvoyer à une page}

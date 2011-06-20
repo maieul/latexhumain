@@ -7,7 +7,7 @@
 
 \subsection{Principe de base}
 \begin{prealable}
-Le package se charge avec \verb|\usepackage{makeidx}|. Il faut ensuite placer dans le préambule la commande \verb|\makeindex | pour que \latex  puisse créer un index.
+Le package se charge avec \verb|\usepackage{makeidx}|. Il faut ensuite placer dans le préambule la commande \verb|\makeindex | pour que \LaTeX{}  puisse créer un index.
 \end{prealable}
 
 
@@ -56,11 +56,11 @@ Il suffira ensuite, au cours de la rédaction de son texte, de taper par exemple
 \subsubsection{Générer l'index}
 
 
- Lors de la première compilation, la commande \verb|\makeindex | indique à \latex de créer un fichier de type \fichier{exemple.idx}, contenant la liste de toutes les entrées que l'on a placé. Chaque entrée se présente de la manière suivante:\\
+ Lors de la première compilation, la commande \verb|\makeindex | indique à \LaTeX{} de créer un fichier de type \fichier{exemple.idx}, contenant la liste de toutes les entrées que l'on a placé. Chaque entrée se présente de la manière suivante:\\
 \verb+\indexentry{nom de l'entrée}{numéro de la page}+.
 
 On compile ensuite le document en tapant dans le terminal \\ \verb+\makeindex exemple.idx + \\
--il est possible de ne pas indiquer l'extension .idx. \latex génère alors un fichier \fichier{exemple.ilg} qui contient les message de compilation de l'index, et un fichier \fichier{exemple.ind} qui contient l'index formaté et se présente ainsi:
+-il est possible de ne pas indiquer l'extension .idx. \LaTeX{} génère alors un fichier \fichier{exemple.ilg} qui contient les message de compilation de l'index, et un fichier \fichier{exemple.ind} qui contient l'index formaté et se présente ainsi:
 \begin{verbatim}
 \begin{theindex}
 

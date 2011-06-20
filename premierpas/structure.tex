@@ -1,12 +1,12 @@
 \chapter{Structurer son travail}
 \begin{prealable}
-Après avoir découvert les bases de \logiciel{\LaTeX}, apprenons la manière de structurer son travail.
+Après avoir découvert les bases de \LaTeX{}, apprenons la manière de structurer son travail.
 \end{prealable}
 
 \section{Différents niveaux de titres}\label{niveautitre}
 
-\logiciel{\LaTex} propose par défaut six ou sept niveaux de titre, selon la classe choisie.
-Pour introduire un titre dans \logiciel{\LaTex} --- en dehors du titre du travail ---, il suffit d'utiliser une commande de titre, qui possède la syntaxe suivante:
+\LaTeX{} propose par défaut six ou sept niveaux de titre, selon la classe choisie.
+Pour introduire un titre dans \LaTeX{} --- en dehors du titre du travail ---, il suffit d'utiliser une commande de titre, qui possède la syntaxe suivante:
 \begin{minted}{latex}
 \titre[titre court]{titre long}
 \end{minted}
@@ -68,7 +68,7 @@ Le lecteur alerte se demandera sans doute pourquoi il est nécessaire de mettre 
 
 \section{Structurer ses fichiers}\label{inclusion}
 
-Jusqu'à maintenant, vous aviez tout mis dans un seul fichier. Une fonctionalité intéressante de \logiciel{\LaTeX} est la possibilité d'inclusion des fichiers dans un fichier, pour ainsi séparer son travail en plusieurs fichiers, chaque fichier contenant une partie seulement du document final.
+Jusqu'à maintenant, vous aviez tout mis dans un seul fichier. Une fonctionalité intéressante de \LaTeX{} est la possibilité d'inclusion des fichiers dans un fichier, pour ainsi séparer son travail en plusieurs fichiers, chaque fichier contenant une partie seulement du document final.
 
 Par exemple, il est possible de faire un fichier par chapitre d'un mémoire. Ou encore de faire un fichier par texte cité dans un exemplier. Seul un document \enquote{père} sera compilé, ce document appelera des documents \enquote{fils}.
 
@@ -100,7 +100,7 @@ A titre d'exemple, vous trouverez le schéma d'organisation de nos fichiers pour
 
 La notion de chemin de fichier en informatique renvoie à l'arborescence des dossiers sur un ordinateur.
 
-En \logiciel{\LaTeX}, le chemin du fichier se compte à partir du fichier \enquote{père}, celui qui est compilé. \emph{Y compris lorsqu'on procède à une inclusion dans un fichier \enquote{fils}}.
+En \LaTeX{}, le chemin du fichier se compte à partir du fichier \enquote{père}, celui qui est compilé. \emph{Y compris lorsqu'on procède à une inclusion dans un fichier \enquote{fils}}.
 
 On indique le chemin du fichier en séparant chaque dossiers par \verb|\|. \revision{Est-ce le cas sous Windows ?} Par exemple, nous souhaitons inclure le fichier nommé \verb|c.tex| situé dans le dossier \verb|b|, lui même situé dans le dossier \verb|a|, qui se trouve à côté du fichier \enquote{père}.
 
