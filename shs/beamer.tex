@@ -3,7 +3,7 @@
 \begin{prealable}
 Si \LaTeX{} permet d'écrire du texte, il offre également la possibilité de créer facilement des diapositives de présentation pour un exposé ou une conférence\footnote{Pour remplacer Powerpoint ou OpenOffice Impress}. Ceci se fait à l'aide d'une classe spécifique : \classe{Beamer}.
 
-Nous présenterons ici les bases de Beamer afin de bien préparer des supports de présentations. Nous renvoyons à d'autres ouvrages pour plus de détails\footcites[On consultera pour une introduction plus approfondie][]{intro_beamer}[pour les usages avancées on se servira du manuel : ][]{beamer}.
+Nous présenterons ici les bases de Beamer afin de bien préparer des supports de présentations. Nous renvoyons à d'autres ouvrages pour plus de détails\footcite[On consultera pour une introduction plus approfondie][]{intro_beamer}[pour les usages avancées on se servira du manuel : ][]{beamer}.
 
 Le PDF résultant de la compilation d'un fichier Beamer pourra être affiché sous forme de diaporama contrôlable à l'aide des logiciels classiques de lecture de PDF.
 \end{prealable}
@@ -41,7 +41,7 @@ Par exemple :
 \end{frame}
 \end{minted}
 
-À noter que l'environnement  \enviro{frame} peut être remplacer par la commande éponyme :
+À noter que l'environnement  \enviro{frame} peut être remplacé par la commande éponyme :
 
 \begin{minted}{latex}
 \frame{
@@ -58,7 +58,7 @@ Par exemple :
 
 Il est possible de structurer le document Beamer grâce aux commandes \commande{section} et \commande{subsection}\renvoi{niveautitre}\footcite[Le manuel de \classe{Beamer} déconseille d'utiliser  \commande{subsubsection} parce que \enquote{c'est le diable}.][]{beamer_diable} et d'utiliser dans le préambule les commandes de descriptions : \commande{title}, \commande{author} et \commande{date}\renvoi{notioncommande}.
 
-Toutefois ces informations servent uniquement à structurer le document, afin de permettre d'afficher le plan. C'est pourquoi il faut les entrée \emph{en-dehors} des diapositives\footnote{Un  autre intérêt est aussi de permettre d'avoir un seul document pour une version \forme{article} et une version \forme{diapositive} d'un même sujet.}.
+Toutefois ces informations servent uniquement à structurer le document, afin de permettre d'afficher le plan. C'est pourquoi il faut les entrées \emph{en-dehors} des diapositives\footnote{Un  autre intérêt est aussi de permettre d'avoir un seul document pour une version \forme{article} et une version \forme{diapositive} d'un même sujet.}.
 
 En revanche, pour les afficher dans une diapositive, il faut utiliser les commandes \commande{sectionpage} et \commande{subsectionpage} pour les niveaux de titres et \commande{titlepage} pour les informations sur la date, l'auteur et le titre de la conférence.
 
@@ -66,9 +66,9 @@ En revanche, pour les afficher dans une diapositive, il faut utiliser les comman
 
 \section{Affichage différé : les couches Beamer}
 
-Afficher tout les éléments d'une diapositive en une seule fois présente peu d'intérêt : il est plus intéressant de les afficher petit à petit afin de les commenter au fur et à mesure. \classe{Beamer} utilise pour cela la notion de \forme{\textenglish{slides}}, que nous traduisons par celle de \emph{couches}. Il s'agit de dire à une commande de ne s'exécuter que sur une ou plusieurs couches spécifiques.
+Afficher tous les éléments d'une diapositive en une seule fois présente peu d'intérêt : il est plus intéressant de les afficher petit à petit afin de les commenter au fur et à mesure. \classe{Beamer} utilise pour cela la notion de \forme{\textenglish{slides}}, que nous traduisons par celle de \emph{couches}. Il s'agit de dire à une commande de ne s'exécuter que sur une ou plusieurs couches spécifiques.
 
-La syntaxe de l'affichage couche par couche (en anglais \textenglish{overlay specification} est relativement simple : \verb|<a-b>| où \verb|a| désigne la couche de départ et \verb|b| désigne la couche d'arrivée. On peut également séparé des numéros de couches spécifiques par des virgules. Voici des exemples pour mieux comprendre :
+La syntaxe de l'affichage couche par couche (en anglais \textenglish{overlay specification} est relativement simple : \verb|<a-b>| où \verb|a| désigne la couche de départ et \verb|b| désigne la couche d'arrivée. On peut également séparer des numéros de couches spécifiques par des virgules. Voici des exemples pour mieux comprendre :
 
 \begin{minted}{latex}
 \begin{frame}
@@ -84,15 +84,15 @@ La syntaxe de l'affichage couche par couche (en anglais \textenglish{overlay spe
 
 Toutes les commandes \LaTeX{} ne réagissent pas nécessairement aux spécifications de couche : par exemple la commande \commande{emph} ne réagit pas : si vous utilisez une spécification de couche avec cette commande, la spécification apparaîtra sur la diapositive.
 
-On peut vouloir obtenir un PDF où toutes les couches d'une diapositive apparaissent d'un seul coup, afin par exemple d'avoir une version papier\footcite[À noter qu'il est possible de fabriquer un PDF destiné à l'impression sur transparents --- en cas de défaillance du vidéo-projecteur --- en précisant quelles couches doivent être séparées sur les transparents. Voir :][]{beamer_trans}. Pour ce faire, il su classiqueffit d'utiliser l'option de package \option{handout}.
+On peut vouloir obtenir un PDF où toutes les couches d'une diapositive apparaissent d'un seul coup, afin par exemple d'avoir une version papier\footcite[À noter qu'il est possible de fabriquer un PDF destiné à l'impression sur transparents -- en cas de défaillance du vidéo-projecteur -- en précisant quelles couches doivent être séparées sur les transparents. Voir :][]{beamer_trans}. Pour ce faire, il suffit d'utiliser l'option de package \option{handout}.
 
 \begin{minted}{latex}
 \documentclass[handout]{beamer}
 \end{minted}
 
-À noter que \package{Beamer} propose des commandes et des environnements pour des usages avancés des spécifications de couches, notamment pour remplacer des éléments par d'autres éléments, tout en accordant à chacun la même place sur la diapositive (pour éviter d'avoir des \enquote{effets de déplacement} des éléments d'une couche à l'autre. 
+À noter que \package{Beamer} propose des commandes et des environnements pour des usages avancés des spécifications de couches, notamment pour remplacer des éléments par d'autres éléments, tout en accordant à chacun la même place sur la diapositive (pour éviter d'avoir des \enquote{effets de déplacement} d'un élément d'une couche à l'autre. 
 Ceci dépassant cette introduction, nous renvoyons au manuel\footcite{beamer_overlays}.
-\section{Mise en valeurs}
+\section{Mise en valeur}
 
 \subsection{Blocs}
 
@@ -110,7 +110,7 @@ Il est possible de mettre en valeur certains éléments de plusieurs manières. 
 \end{exampleblock}
 \end{minted}
 
-Évidemment, il est possible de spécifier des niveaux de couches : pour ce faire la spécification doit se trouver après le titre du bloc :
+Évidemment, il est possible de spécifier des niveaux de couches; pour ce faire la spécification doit se trouver après le titre du bloc :
 
 \begin{minted}{latex}
 \begin{alertblock}{Attention}<2>
@@ -122,7 +122,7 @@ L'apparence des blocs dépend du thème choisi.
 
 \subsection{La commande \commande{alert}}
 
-La commande \commande{alert} sert à mettre en valeur une partie d'un texte. Elle peut recevoir une spécification de couches. Cela est très utiles pour indiquer à l'auditoire le sujet dont on parle. 
+La commande \commande{alert} sert à mettre en valeur une partie d'un texte. Elle peut recevoir une spécification de couches. Cela est très utile pour indiquer à l'auditoire le sujet dont on parle. 
 
 \begin{minted}{latex}
 \begin{frame}
@@ -136,7 +136,7 @@ La commande \commande{alert} sert à mettre en valeur une partie d'un texte. Ell
 
 \section{Notes de conférence}
 
-Il peut être utile pour le conférencier d'avoir, en plus des diapositives, des notes pour lui servir d'aide)mémoire lors d'une conférence.
+Il peut être utile pour le conférencier d'avoir, en plus des diapositives, des notes pour lui servir d'aide-mémoire lors d'une conférence.
 
 Pour ce faire il suffit d'utiliser la commande \commande{note} dans une diapositive.
 
@@ -178,7 +178,7 @@ Il est également possible de produire un fichier contenant les diapositives et 
 
 \section{Écrire son article dans le même fichier que la présentation}
 
-Il peut être judicieux d'écrire l'article correspondant à la présentation dans le même fichier que celui-ci. Pour ce faire, la solution est relativement simple : il suffit d'écrire le contenu de l'article entre les environnements (ou les commandes) \commande{frame}\footcite[À noter qu'on peut aussi introduire des miniatures des diapositives  dans l'article, voir :][]{beamer_diapo_article}.
+Il peut être judicieux d'écrire l'article correspondant à la présentation dans le même fichier que celui-ci. Pour ce faire, la solution est relativement simple : il suffit d'écrire le contenu de l'article entre les environnements (ou les commandes) \commande{frame}\footcites[À noter qu'on peut aussi introduire des miniatures des diapositives  dans l'article, voir :][]{beamer_diapo_article}.
 
 \begin{minted}{latex}
 \section{Introduction}
@@ -215,7 +215,7 @@ Pour obtenir uniquement la version article, il suffit de changer la classe du do
 
 \subsection{Faire cela de manière plus intelligente}\renvoi{inclusion}
 
-Plutôt que de changer systématiquement les premières lignes du document, autant utiliser les possibilités d'inclusion de fichier offerte par \LaTeX{}. 
+Plutôt que de changer systématiquement les premières lignes du document, autant utiliser les possibilités d'inclusion de fichier offertes par \LaTeX{}. 
 
 Pour ce faire, créer trois fichiers :  \fichier{article.tex}, \fichier{presentation.tex} et \fichier{contenu.tex}.
 
@@ -234,7 +234,7 @@ Dans \fichier{presentation.tex} mettre :
 \input{contenu}
 \end{minted}
 
-Dans \fichier{contenu.tex} mettre les appels aux packages communs aux deux versions ainsi que le contenu de la présentation / l'article.
+Dans \fichier{contenu.tex} mettre les appels aux packages communs aux deux versions ainsi que le contenu de la présentation /de l'article.
 
 
 

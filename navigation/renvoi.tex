@@ -1,7 +1,7 @@
 \chapter{Renvois internes}\label{label}
 
 \begin{prealable}
-Dans ce court chapitre nous allons nous intéresser à la manière des renvois à l'intérieur d'un document.
+Dans ce court chapitre nous allons nous intéresser à la manière d'opérer des renvois à l'intérieur d'un document.
 Il s'agit de permettre d'afficher des textes du type : \enquote{Nous renvoyons au chapitre N. page P.}
 \end{prealable}
 
@@ -21,11 +21,11 @@ Toutefois il est nécessaire de compiler deux fois avec \XeLaTeX{}.
 note les emplacements des étiquettes dans un fichier. À la seconde compilation, il lit ce fichier afin de procéder aux renvois. 
 
 \begin{attention}
-	Si vous modifier votre texte, il faudra de nouveau compiler deux fois. En effet, les numéros de pages, de titres, de légendes etc. peuvent avoir changer. Il faut donc  que \XeLaTeX{} les apprennent à nouveau. En résumé, pour avoir un document correcte il faut :
+	Si vous modifiez votre texte, il faudra de nouveau compiler deux fois. En effet, les numéros de pages, de titres, de légendes etc. peuvent avoir changé. Il faut donc  que \XeLaTeX{} les apprenne à nouveau. En résumé, pour avoir un document correct il faut :
 	\begin{enumerate}
-		\item Compiler avec \XeLaTeX{}.
-		\item Compiler avec BibTeX afin d'interprété le fichier \ext{bib}.
-		\item Compiler avec \XeLaTeX{}.
+		\item Compiler avec \XeLaTeX{};
+		\item Compiler avec BibTeX afin d'interpréter le fichier \ext{bib};
+		\item Compiler avec \XeLaTeX{};
 		\item Compiler avec \XeLaTeX{} (car l'ajout des références bibliographiques a pu modifié le positionnement des étiquettes).
 	\end{enumerate}
 	
@@ -34,7 +34,7 @@ note les emplacements des étiquettes dans un fichier. À la seconde compilation
 
 \subsection{Renvoyer à une page}
 
-Pour renvoyer au numéro de page correspondant à l'étiquette \forme{etiquette} il suffit d'utiliser la commande \commande{pageref}
+Pour renvoyer au numéro de page correspondant à l'étiquette \forme{etiquette} il suffit d'utiliser la commande \commande{pageref}.
 
 \begin{minted}{latex}
 blabla \label{etiquette}
@@ -72,7 +72,7 @@ Toutefois cette commande n'est pas disponible en standard : elle est proposée p
 
 Pour le moment, nous avons vu des renvois vers des sections, mais le système de renvois est beaucoup plus souple.
 
-Une étiquette permet de renvoyer à tout élément numéroté, comme un titre, une note de base de page, une légende de flottant. Elle peut aussi renvoyer à un endroit précis, uniquement pour la page..
+Une étiquette permet de renvoyer à tout élément numéroté, comme un titre, une note de base de page, une légende de flottant. Elle peut aussi renvoyer à un endroit précis, uniquement pour la page.
 
 \begin{itemize}
 \item Si l'étiquette \commande{label} est placée \emph{dans}  une commande  d'élément numéroté, elle renvoie à cette élément. Par exemple, pour renvoyer à une figure \renvoi{legende} :
