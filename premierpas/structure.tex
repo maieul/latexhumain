@@ -6,7 +6,7 @@ Après avoir découvert les bases de \LaTeX{}, apprenons la manière de structur
 \section{Différents niveaux de titres}\label{niveautitre}
 
 \LaTeX{} propose par défaut six ou sept niveaux de titre, selon la classe choisie.
-Pour introduire un titre dans \LaTeX{} --- en dehors du titre du travail ---, il suffit d'utiliser une commande de titre, qui possède la syntaxe suivante:
+Pour introduire un titre dans \LaTeX{} -- en dehors du titre du travail --, il suffit d'utiliser une commande de titre, qui possède la syntaxe suivante:
 \begin{minted}{latex}
 \titre[titre court]{titre long}
 \end{minted}
@@ -33,7 +33,7 @@ Le titre court est facultatif, comme l'indique le fait qu'il soit entre crochets
 
 Quelques remarques importantes :
 \begin{itemize}
-\item Le niveau \verb|\chapter| n'existe pas dans la classe \classe{article}.
+\item Le niveau \verb|\chapter| n'existe pas dans la classe \classe{article};
 \item Raison pour laquelle le niveau de \verb|\part| varie entre -1 et 0.
 \item Les niveaux dont les numéros sont inférieurs à 1 provoquent, par défaut, un changement de pages.
 \item Les niveaux dont les numéros sont supérieurs à 3 ne provoquent pas de changement de paragraphe. Ils sont positionés en \enquote{lettrine}.
@@ -81,7 +81,7 @@ Pourquoi procéder ainsi ?
 
 Concrètement comment fait-on ?
 \begin{enumerate}
-\item Le fichier \enquote{père} devra systématiquement commencé par un appel de classe.
+\item Le fichier \enquote{père} devra systématiquement commencer par un appel de classe.
 \item Les fichiers \enquote{fils} ne devront contenir aucun appel de classe.
 \item Ils seront inclus dans le document fils par l'une des commandes suivantes :
 \begin{itemize}
@@ -102,15 +102,11 @@ La notion de chemin de fichier en informatique renvoie à l'arborescence des dos
 
 En \LaTeX{}, le chemin du fichier se compte à partir du fichier \enquote{père}, celui qui est compilé. \emph{Y compris lorsqu'on procède à une inclusion dans un fichier \enquote{fils}}.
 
-On indique le chemin du fichier en séparant chaque dossiers par \verb|\|. \revision{Est-ce le cas sous Windows ?} Par exemple, nous souhaitons inclure le fichier nommé \verb|c.tex| situé dans le dossier \verb|b|, lui même situé dans le dossier \verb|a|, qui se trouve à côté du fichier \enquote{père}.
+On indique le chemin du fichier en séparant chaque dossiers par \verb|/|.\footnote{Cette norme s'applique même sous Winodows, qui sépare traditionnellement les répertoires par des \verb|\| dans les chemins.} Par exemple, nous souhaitons inclure le fichier nommé \verb|c.tex| situé dans le dossier \verb|b|, lui même situé dans le dossier \verb|a|, qui se trouve à côté du fichier \enquote{père}.
 
 Il faut que nous mettions dans notre fichier \enquote{père} :
 
-\verb|\input{a/b/c}|
-
-ou bien
-
-\verb|\include{a/b/c}|
+\verb|\input{a/b/c}| ou bien \verb|\include{a/b/c}|.
 
 \begin{attention}
 

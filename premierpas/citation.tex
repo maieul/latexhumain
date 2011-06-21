@@ -3,9 +3,9 @@
 
 Nous évoquerons dans ce chapitre les citations \emph{explicites et textuelles}, c'est à dire celles où l'auteur du travail ne se contente pas de renvoyer à une source ou à une étude, mais cite des extraits de cette source.
 
-Ces citations peuvent se faire de deux manières : dans le corps du propos, elle est alors normalement entourée de guillemets\footnote{Il existe cependant deux exceptions courantes à cette règle : les citations dans des alphabets non romains, qui se voit privée de guillemets, et celle d'un texte en latin, qu'on \enquote{prive} de guillemets mais à qui on accordes des italiques. Cette coutume, notamment en ce qui concerne le latin, nous semble bien étrange --- quoique parfaitement explicable d'un point de vue historique --- puisqu'elle accorde à des langues un statut particulier qui leur ferait échappée au règle typographique commune.}, ou bien dans un paragraphe spécifique : elle est alors généralement présentée avec des marqueurs typographiques particuliers : changement de la taille de police, de la marge etc.
+Ces citations peuvent se faire de deux manières : dans le corps du propos, elle est alors normalement entourée de guillemets\footnote{Il existe cependant deux exceptions courantes à cette règle : les citations dans des alphabets non latins, qui se voient privées de guillemets, et celles d'un texte en latin, qu'on \enquote{prive} de guillemets mais à qui on accordes des italiques. Cette coutume, notamment en ce qui concerne le latin, nous semble bien étrange -- quoique parfaitement explicable d'un point de vue historique -- puisqu'elle accorde à des langues un statut particulier qui leur ferait échapper aux règles typographiques communes.}, ou bien dans un paragraphe spécifique : elle est alors généralement présentée avec des marqueurs typographiques particuliers : changement de la taille de police, de la marge etc.
 
-Nous avions vu plus haut qu'il fallait à ce sujet séparé sens et forme. Nous allons donc présenter ici les commandes servant à marquer des citations.
+Nous avions vu plus haut qu'il fallait à ce sujet séparer sens et forme. Nous allons donc présenter ici les commandes servant à marquer des citations.
 
 \begin{attention}
 Toute citation se doit d'être accompagnée d'une référence, généralement en note de bas de page. Toutefois toute référence n'accompagne pas nécessairement une citation textuelle. C'est pourquoi nous renvoyons pour la gestion des références bibliographiques à la partie qui lui est consacré.\renvoi{bibliographie}
@@ -14,14 +14,14 @@ Toute citation se doit d'être accompagnée d'une référence, généralement en
 
 \section{Citation dans le corps du texte}
 
-Les citations dans le corps d'un texte sont normalement entourées de guillemets français : \verb|« »|. Lorsque qu'on cite un texte qui cite un texte, la citation dans la citation s'entoure de guillemets courbes \verb|“”|. 
+Les citations dans le corps d'un texte sont normalement entourées de guillemets français : \verb|« |\ldots \verb| »|. Lorsque qu'on cite un texte qui cite un texte, la citation dans la citation s'entoure de guillemets courbes \verb|“”|. 
 
 \begin{quotation}
 	Comme le dit très justement xxx : \enquote{Lorsque yyy déclare \enquote{zzz} il ne déclare rien du tout}.
 \end{quotation}
 
-Les claviers disponibles sur nos ordinateurs ne disposent généralement que des guillemets anglais\footnote{Une exception notable est le clavier Bépo.} : \verb|" "|. 
-La plupart des logiciels WYSIWYG convertissent automatiquement les guillemets vers des guillemets français. Rares sont les éditeurs de texte qui le proposent\footnote{C'est d'ailleurs à nos yeux une des raisons qui fait qu'un site internet d'un quotidien national dit \enquote{de référence} n'utilise pas de guillemet français sur sa page d'accueil (à la date du 10 avril 2011), les rédacteurs ne prenant pas le temps de taper les combinaisons complexes de touches nécessaires à la frappe de guillemet français}. 
+Les claviers disponibles sur nos ordinateurs ne disposent généralement que des guillemets anglais\footnote{Deux exceptions notables sont la disposition de clavier Bépo, et la gestion des claviers sous GNU/Linux (essayez la combinaison de touche \verb|AltGr + w| et \verb|AltGr + x|.} : \verb|" "|. 
+La plupart des logiciels WYSIWYG convertissent automatiquement les guillemets vers des guillemets français. Rares sont les éditeurs de texte qui le proposent\footnote{C'est d'ailleurs à nos yeux une des raisons qui fait qu'un site internet d'un quotidien national dit \enquote{de référence} n'utilise pas de guillemet français sur sa page d'accueil (à la date du 10 avril 2011), les rédacteurs ne prenant pas le temps de taper les combinaisons complexes de touches nécessaires à la frappe de guillemets français}. 
 
 En outre, en vertu du principe de séparation du sens et de la forme, évoqué plus haut\renvoi{sensform}, il est plus pertinent d'utiliser une commande spécifique pour indiquer une citation dans le corps du texte.
 
@@ -43,13 +43,13 @@ Le package propose une première commande utile : \commande{\enquote{citation}},
 \end{quotation}
 
 
-Nous constatons que le package s'occupe automatiquement de choisir les bon guillemets. Par défaut on ne peut imbriquer que deux niveaux de citation. Toutefois une option du package permet d'avoir plus de niveaux de citation. Par exemple pour en avoir 3 : 
+Nous constatons que le package s'occupe automatiquement de choisir les bons guillemets. Par défaut on ne peut imbriquer que deux niveaux de citation. Toutefois une option du package permet d'avoir plus de niveaux de citation. Par exemple pour en avoir 3 : 
 
 \begin{minted}{latex}
 	\usepackage[maxlevel=3]{csquotes}
 \end{minted}
 
-Le package propose d'autres options : consulter le manuel.
+Le package propose d'autres options : consultez le manuel.
 
 \section{Citation dans un bloc séparé}
 
@@ -104,7 +104,7 @@ De plus, qu'il soit permis de lire les passions des martyrs, lorsqu'on célèbre
 
 \subsection{L'environnement \enviro{verse}}
 
-Il est prévu pour des citations de poèmes. Sa particularité est de gérer spécifiquement les fins de lignes, afin de continuer à distinguer les versets les uns des autres.
+Il est prévu pour des citations de poèmes. Sa particularité est de gérer spécifiquement les fins de lignes, afin de continuer à distinguer les strophes les unes des autres.
 
 \begin{minted}{latex}
 \begin{verse}
@@ -176,7 +176,7 @@ De plus, qu'il soit permis de lire les passions des martyrs, lorsqu'on célèbre
 	\end{quotation}
 
 \begin{anedocte}
-On peut décider de la manière dont la troncature et l'ajout sont signalé : consulter le manuel.
+On peut décider de la manière dont la troncature et l'ajout sont signalés : consulter le manuel.
 \end{anedocte}
 
 \subsection{Citation modifiée}
@@ -192,4 +192,4 @@ Pour signaler une modification dans une citation, on utilise  \commande{textins{
 	Comme le disait très justement xxx : \enquote{Lorsque yyy \textins{a déclaré} \enquote{zzz} il \textins{n'a rien déclaré} du tout}.
 \end{quotation}
 
-La commande \commande{textins*{}} est une variante, servant pour déclarer les changements mineurs nécéssaire au nouveau contexte d'énonciation : mise en majuscules, changement de personne etc.
+La commande \commande{textins*{}} est une variante, servant pour déclarer les changements mineurs nécessaires au nouveau contexte d'énonciation : mise en majuscules, changement de personne etc.

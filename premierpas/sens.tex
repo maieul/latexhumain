@@ -6,26 +6,26 @@
 
 \section{Mettre en forme n'est pas mettre en sens}
 
-Lorsque nous lisons un livre, tout les éléments ne sont pas présentés de la même manière : certains sont en gras, d'autres en italiques, en souligné, en couleurs etc. 
+Lorsque nous lisons un livre, tout les éléments ne sont pas présentés de la même manière : certains sont en gras, d'autres en italiques, en souligné, en couleurs, etc. 
 
-Tout ceci constitue la \emph{mise en forme} du texte. Si notre livre est bien conçus, ces changements de forme renvoient à des changements de significations : l'italique peut indiquer un titre d'ouvrage ou bien une citation ou une simple insistance, le gras peut indiquer une notion ou une définition ou tout autre signification.
+Tout ceci constitue la \emph{mise en forme} du texte. Si notre livre est bien conçu, ces changements de forme renvoient à des changements de signification : l'italique peut indiquer un titre d'ouvrage ou bien une citation ou une simple insistance, le gras peut indiquer une notion ou une définition ou toute autre signification.
 
-On le voit la \emph{mise en forme} diffère de la \emph{mise en sens}. Cette dernière est idéalement faite par l'auteur du travail, tandis que l'éditeur s'occupe normalement de la mise en forme et de la mise en page.
+On le voit, la \emph{mise en forme} diffère de la \emph{mise en sens}. Cette dernière est idéalement faite par l'auteur du travail, tandis que l'éditeur s'occupe normalement de la mise en forme et de la mise en page.
 
-C'est d'ailleurs ce qui se passait auparavant quand les auteurs proposer encore des textes manuscrits à leurs éditeurs : ils indiquait les éléments à mettre en sens par des signes, mise en sens que l'éditeur transformait en mise en forme.
+C'est d'ailleurs ce qui se passait auparavant quand les auteurs proposaient encore des textes manuscrits à leurs éditeurs : ils indiquait les éléments à mettre en sens par des signes, mise en sens que l'éditeur transformait en mise en forme.
 
-Dans \LaTeX, le principe est le même : il existe des commandes de mises en sens qui sont ensuite transformées en commande en mise en forme. Mieux : on peut définir ses propres commandes de mises en sens. L'intérêt est relativement évident : pouvoir changer rapidement de mise en forme pour un ensemble de données mise en sens.
+Dans \LaTeX, le principe est le même : il existe des commandes de mise en sens qui sont ensuite transformées en commande en mise en forme. Mieux : on peut définir ses propres commandes de mise en sens. L'intérêt est relativement évident : pouvoir changer rapidement de mise en forme pour un ensemble de données mise en sens.
 
 Un exemple sera plus parlant. Supposons que j'écrive un livre d'introduction à l'histoire du christianisme antique. Ce livre cite divers auteurs. Je souhaite mettre en valeur ces auteurs, et pour ce faire décide de les mettre en petites capitales.
 Donc, à chaque fois que je cite un auteur, j'indique que je souhaite avoir son nom en petite capitale.
 \footnote{Dans un traitement de texte de type WYSIWYG, cette distinction se fait normalement à l'aide des styles. Bien souvent malheureusement les utilisateurs ne savent pas s'en servir.}
 Vient le moment où j'imprime mon livre, et je me rend compte que le choix des petites capitales n'est pas le plus pertinent, mais qu'il vaudrait mieux mettre des gras. Il me reste alors à repérer toutes les petites capitales dans mon texte, à vérifier qu'il s'agit bien de petites capitales indiquant un nom d'auteur et à les remplacer par du gras.
 
-En revanche, si à la place de signaler une mise en petite capitale, j'avais simplement signalé qu'il s'agit simplement d'un nom d'auteur --- par exemple en écrivant : \verb|\auteur{Tertullien}| --- je n'aurais qu'une seule ligne à changer pour indiquer que je souhaite avoir mes noms d'auteur en gras. Mieux : je pourrais créer très simplement un index de mes auteurs\renvoi{index}.
+En revanche, si à la place de signaler une mise en petite capitale, j'avais simplement signalé qu'il s'agit d'un nom d'auteur -- par exemple en écrivant : \verb|\auteur{Tertullien}| -- je n'aurais qu'une seule ligne à changer pour indiquer que je souhaite avoir mes noms d'auteur en gras. Mieux : je pourrais créer très simplement un index de mes auteurs\renvoi{index}.
 
 LaTeX propose quelques commandes simples de mise en sens  : par exemple celle que nous avons vu plus haut pour indiquer les nouveaux de titres\renvoi{titre}.
 
-Nous allons ici présenter quelques autres commandes et environnements de mise en sens. Dans le chapitre suivant, nous citerons les commandes et environnement de mise en sens spécifique aux citations. Dans un troisième chapitre, nous présenterons la manière de créer ses propres commandes et environnements, et nous présenterons alors la manière de mettre en forme.
+Nous allons ici présenter quelques autres commandes et environnements de mise en sens. Dans le chapitre suivant, nous citerons les commandes et environnements de mise en sens spécifique aux citations. Dans un troisième chapitre, nous présenterons la manière de créer ses propres commandes et environnements, et nous présenterons alors la manière de mettre en forme.
 
 \section{Commandes de mise en sens}
 
@@ -49,19 +49,19 @@ Toutefois, à la différence d'une commande qui indiquerait directement de mettr
 
 Une autre propriété intéressante est la gestion des imbrications : par défaut une commande \commande{emph} à l'intérieur d'une autre commande \commande{emph} donnera un texte en caractères droits.
 
-\subsection{Le paratexte : notes de bas de page et de magres}
+\subsection{Le paratexte : notes de bas de page et de marges}
 
 \LaTeX propose deux commandes pour indiquer des paratextes\footnote{La question des apparats critiques mise à part, question que nous traiterons plus loin} : pour des notes de bas de page et de marge. Ces commandes sont respectivement \commande{footnote} et \commande{marginpar}.
 
 \begin{minted}{latex}
 	Lorem\footnote{Une note de bas de page.} ipsum dolor amat. Aliquam lectus orci, adipiscing et, sodales ac, feugiat non, lacus. Ut dictum velit nec est. 
 	
-	Quisque posuere, purus sit amet malesuada blandit, sapien sapien auctor arcu, sed pulvinar felis mi sollicitudin tortor. Maecenas volutpat, nisl et dignissim pharetra, urna lectus ultrices est, vel pretium pede turpis id velit. Aliquam sagittis\marginpar{Annotation marginal} magna in felis egestas rutrum. Proin wisi libero, vestibulum eget, pulvinar nec, suscipit ut, mi.
+	Quisque posuere, purus sit amet malesuada blandit, sapien sapien auctor arcu, sed pulvinar felis mi sollicitudin tortor. Maecenas volutpat, nisl et dignissim pharetra, urna lectus ultrices est, vel pretium pede turpis id velit. Aliquam sagittis\marginpar{Annotation marginale} magna in felis egestas rutrum. Proin wisi libero, vestibulum eget, pulvinar nec, suscipit ut, mi.
 	
 \end{minted}
 
 \begin{attention}
-	On serait tenter d'utiliser cette commande pour citer en note de bas de page une référence bibliographique. Il existe en fait une commande spécifique, que nous étudierons en tant voulu.\renvoi{footcite}
+	On serait tenté d'utiliser cette commande pour citer en note de bas de page une référence bibliographique. Il existe en fait une commande spécifique, que nous étudierons en tant voulu.\renvoi{footcite}
 \end{attention}
 \begin{attention}
 	Certaines mauvaises langues diront qu'il s'agit ici d'une mise en forme et non pas d'une mise en sens. Ils ont partiellement raison, dans la mesure où parfois distinguer la mise en forme de la mise en sens n'est pas évident.
@@ -70,7 +70,7 @@ Une autre propriété intéressante est la gestion des imbrications : par défau
 \end{attention}
 
 \begin{anedocte}
-	Certains préfèrent mettre des notes de fin de texte. Bien que nous n'aimons guère ce choix, nous signalons qu'il est possible de produire des notes de fin de texte à l'aide du package \package{endnotes}.
+	Certains préfèrent mettre des notes de fin de texte. Bien que nous n'aimions guère ce choix, nous signalons qu'il est possible de produire des notes de fin de texte à l'aide du package \package{endnotes}.
 \end{anedocte}
 
 \subsection{Listes}
@@ -100,7 +100,7 @@ Chaque élément de la liste est marqué par la commande \commande{item}.
 
 \subsubsection{Les listes non numérotées}
 
-Une liste nom numérotée est un environnement \enviro{itemize}.
+Une liste non-numérotée est un environnement \enviro{itemize}.
 Chaque élément de la liste est marqué par la commande \commande{item}.
 
 \begin{minted}{latex}
@@ -119,7 +119,7 @@ Chaque élément de la liste est marqué par la commande \commande{item}.
 
 \subsubsection{Les listes de descriptions}
 
-Une liste de descriptions assigne des valeurs une à une. Une telle liste peut être utile pour des lexiques, des glossaires, des chronologies etc. Pour chaque couple, la première valeur est passé comme argument à la commande \commande{item}. Les listes de définitions sont des environnements \enviro{description}.
+Une liste de descriptions assigne des valeurs une à une. Une telle liste peut être utile pour des lexiques, des glossaires, des chronologies etc. Pour chaque couple, la première valeur est passée comme argument à la commande \commande{item}. Les listes de définitions sont des environnements \enviro{description}.
 
 
 \begin{minted}{latex}
