@@ -3,7 +3,7 @@
 \begin{attention}
 La création de tableau en \LaTeX nécessite  une extrême rigueur. 
 
-C'est à nos yeux l'un des éléments les plus complexe de \LaTeX. C'est pourquoi nous ne ferons ici qu'un bref aperçu : on trouvera aisément des exemples plus détaillés dans d'autres ouvrages ou sur internet.
+C'est à nos yeux l'un des éléments les plus complexe de \LaTeX. C'est pourquoi nous ne ferons ici qu'un bref aperçu : on trouvera aisément des exemples plus détaillés dans d'autres ouvrages ou sur internet\footcite[On pourra consulter pour des fichiers assez didactiques :][]{bebert_tableaux}.
 
 \end{attention}
 
@@ -122,6 +122,41 @@ Pour une fusion de lignes, il faut charger le package \package{multirow}. Celui-
 
 On remarquera que les lignes dont une colonne a été fusionnée doivent contenir des cellules vides. La commande \commande{multirow} ne modifie pas la structure du tableau : elle indique simplement que le texte est sur plusieurs lignes.
 
+\subsection{Long tableau}
+
+Si vous fabriquez ainsi un long tableau, vous constaterez que les cellules dépasse dans la marge inférieure, jusqu'à \enquote{sortir} de la page, au lieu, comme il semblerait logique, de continuer sur les pages suivantes.
+
+Pour éviter cela, il faut donc utiliser l'environnement \enviro{longtable} du package éponyme.
+
+\begin{minted}{latex}
+…
+\usepackage{longtable}
+…
+\begin{longtable}{types colonnes}
+…
+\end{longtable}
+
+La syntaxe d'un environnement \enviro{longtable} est identique à celle d'un environnement \enviro{tabular}. Toutefois le package propose deux  commandes supplémentaires pour préciser les en-têtes et pieds de tableau, qui seront répétés sur chaque pages. Ces commandes sont, respectivement, \commande{endhead} et \commande{endfoot}. Il existe aussi aussi une commande \commande{endfirsthead} pour préciser l'en-tête sur spécifique à la première page du tableau et une commande \commande{endlastfoot} pour préciser le pied de tableau spécifique à la dernière page du tableau.
+
+Ces quatre commandes sont optionnelles, elles  doivent s'utiliser en début de tableau : il faut placer les éléments correspondants \emph{avant} chacune des commandes, de la manière suivante :
+
+\begin{minted}{latex}
+\begin{longtable}{types colonnes}
+Cellules d'en-tête.
+\endhead
+Cellules d'en-tête pour la première page.
+\endfirsthead
+Cellules de pied.
+\endfoot
+Cellules de pied pour la dernière page.
+\endlastfoot
+Cellules de corps de tableau.
+\end{longtable}
+\end{minted}
+
+Un élément important avec \enviro{longtable} est \emph{la nécessité de compiler deux fois le fichier \ext{tex}}. 
+
+En effet, \XeLaTeX{}\footnote{Comme d'ailleurs \LaTeX{}.} n'arrive pas à déterminer la taille des colonnes à la première compilation : il procède à un calcul page par page. Cependant il stocke la taille maximale des colonnes dans un fichier temporaire\footnote{Un fichier portant l'extension \ext{aux}.}. Lors de la seconde compilation, il se sert de ce fichier temporaire pour indiquer la taille des colonnes sur chacune des pages.
 
 \subsection{Création depuis un fichier \ext{csv}}
 
