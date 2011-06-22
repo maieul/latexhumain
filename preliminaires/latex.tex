@@ -23,7 +23,7 @@ Cette combinaison de deux fonctions différentes dans les  traitements de texte 
 \item La nécessité d'afficher en temps réel le rendu physique du texte tout en conservant une vitesse relativement élevée du logiciel entraîne une baisse de la qualité typographique. Par exemple :
 	\begin{itemize}
 		\item Pour avoir un texte justifié à gauche et à droite, les traitements de texte font varier la taille des espaces entre les mots. Les variations peuvent parfois être considérables ce qui peut diminuer le confort de lecture. Pour éviter ce type d'ennui, les livres \enquote{classiques} coupent les mots en fin de ligne, ce qu'on appelle une césure\footnote{La césure ne se fait toutefois pas n'importe où : elle doit respecter des règles propres à chaque langue.}.
-		\item Les blancs situés avant certains signes de ponctuations, comme par exemple les points d'exclamation font la même taille que les blancs séparants les mots, alors que les règles typographiques \enquote{classiques} prévoient des blancs plus petits.
+		\item Les blancs situés avant certains signes de ponctuations, comme par exemple les points d'exclamation font la même taille que les blancs séparant les mots, alors que les règles typographiques \enquote{classiques} prévoient des blancs plus petits.
 	\end{itemize}
 \item Le fait qu'un même logiciel s'occupe \emph{à la fois} de l'affichage et de la structure du texte incite à confondre les deux. Ce qui peut avoir deux effets négatifs, qui ne sont pas systématiques toutefois\footcite[Les auteurs de ces lignes sont moins sévères envers les traitements de texte que d'autres LaTeXiens : \cf][]{stupide}:
 	\begin{itemize}
@@ -38,7 +38,7 @@ En outre, si les traitements de textes récents disposent d'outils de gestions d
 
 \subsection{Avantage de \LaTeX{}}
 
-Caricaturalement, \LaTeX{} permet de résoudre l'ensemble des problèmes des traitement de texte. En effet, \LaTeX{} sépare deux étapes : 
+\LaTeX{} permet de résoudre l'ensemble des problèmes des traitements de texte. En effet, \LaTeX{} sépare deux étapes : 
 
 \begin{itemize}
 \item L'étape de rédaction, qui se passe dans un éditeur de texte. L'auteur frappe son texte et indique par un certain nombre de commandes sa structure (titres, paragraphes, notes de bas de pages).
@@ -48,7 +48,7 @@ Caricaturalement, \LaTeX{} permet de résoudre l'ensemble des problèmes des tra
 Cette séparation permet :
 \begin{itemize}
 \item Une qualité typographique supérieure :  le compositeur n'étant pas contraint par la nécessité d'un affichage en temps réels, il peut faire des calculs plus lourds : ainsi par exemple \LaTeX{} produit des césures typographiques et non pas des blancs à géométrie variable, et équilibre bien mieux la composition du texte.
-\item Une meilleur séparation du sens et de la forme\footnote{Qui répétons-le est toutefois possible avec les logiciels WYSIWYG.} puisque l'auteur donne uniquement des indications de sens.
+\item Une meilleure séparation du sens et de la forme\footnote{Qui répétons-le est toutefois possible avec les logiciels WYSIWYG.} puisque l'auteur donne uniquement des indications de sens.
 \end{itemize}
 
 En outre \LaTeX{} possède un système de gestion de la bibliographie extrêmement puissant. Il permet à l'auteur de séparer le contenu de sa bibliographie\footnote{Titres, auteurs etc.} de son affichage\footnote{Faut-il mettre des \emph{op. cit.}, et si oui où ; faut-il mettre uniquement les initiales des prénoms ou les prénoms en entier etc.}.
@@ -86,10 +86,10 @@ Dans ce chapitre nous avons parlé de \LaTeX{}. Le titre de ce livre parle pourt
 
 \begin{enumerate}
 \item En 1977 Donal Knuth invente  \TeX{} qui était un simple compositeur de texte, capable de transformer un texte structuré par des commandes en un texte mis en forme. Avec \TeX{} on pouvait également inventer ses propres commandes.
-\item L'utilisation de \TeX{} était relativement complexe. Pour simplifier cela Leslie Lamport a créé un ensemble de commandes \TeX{}. Cette ensemble de commande a permis de former le langage \LaTeX{} et le compositeur associé.
+\item L'utilisation de \TeX{} était relativement complexe. Pour simplifier cela Leslie Lamport a créé un ensemble de commandes \TeX{}. Cet ensemble de commande a permis de former le langage \LaTeX{} et le compositeur associé.
 \item Par la suite un compositeur dérivé de \TeX{} a été créé : \XeTeX{}. Ce compositeur permet deux choses :
 \begin{itemize}
-	\item Une gestion native de l'ensemble des écritures mondiales, par le biais du jeu de caractère Unicode\renvoi{utf8}.
+	\item Une gestion native de l'ensemble des écritures mondiales, par le biais du jeu de caractères Unicode\renvoi{utf8}.
 	\item Une gestion native des nouvelles polices de caractères au format OpenType\footnote{Ce type de fonte permet une gestion poussée des ligatures entre les caractères, par exemple. Le lecteur curieux trouvera aisément de la documentation techniques sur le sujet.}, apparus au début des années 2000.
 
 \end{itemize} 
@@ -107,5 +107,5 @@ On peut résumer les liens entre \TeX{}, \LaTeX{}, \XeTeX{} et \XeLaTeX{} par le
 Dans  ce livre nous travaillerons sur \XeLaTeX{}. Toutefois comme la plupart de nos propos peuvent s'appliquer indifféremment  à \LaTeX{} et à \XeLaTeX{}, nous parlerons de \LaTeX{}, sauf lorsque nous signalerons une spécificité de \XeLaTeX{}.
 
 \begin{anedocte}
-Bien que le sujet soit controversé, il semblerait qu'on prononcerait le  \forme{X} de \TeX{} comme un \forme{χ} grec\footnote{\forme{Latek}}, car le nom \TeX{} viendrait du mot grec \forme{\textgreek{τέχνη}} : \forme{art, sciences}.
+Bien que le sujet soit controversé, il semblerait qu'il faille prononcer le  \forme{X} de \TeX{} comme un \forme{χ} grec\footnote{\forme{Latek}}, car le nom \TeX{} viendrait du mot grec \forme{\textgreek{τέχνη}} : \forme{art, sciences}.
 \end{anedocte}
