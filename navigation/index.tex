@@ -7,7 +7,11 @@
 
 \subsection{Principe de base}
 \begin{prealable}
+<<<<<<< .mine
+Le package se charge avec \verb|\usepackage{makeidx}|. Il faut ensuite placer dans le préambule la commande \verb|\makeindex | pour que \LaTex  puisse créer un index.
+=======
 Le package se charge avec \verb|\usepackage{makeidx}|. Il faut ensuite placer dans le préambule la commande \verb|\makeindex | pour que \LaTeX{}  puisse créer un index.
+>>>>>>> .r192
 \end{prealable}
 
 
@@ -15,33 +19,29 @@ Le package se charge avec \verb|\usepackage{makeidx}|. Il faut ensuite placer da
 \subsubsection{Indexer son document}
 
 
-On indexe son document avec  la commande \verb+\index{+\emph{nom}\verb+}+. L'entrée apparaîtra dans l'index sous la forme indiquée par l'argument \emph{nom}, suivit du numéro de la page où cette commande est placée dans le texte. 
+On indexe son document avec  la commande \verb+\index{+\emph{entrée}\verb+}+. L'entrée apparaîtra dans l'index sous la forme indiquée par l'argument \emph{entrée}, suivit du numéro de la page où cette commande est placée dans le texte. 
 
-Dans l'exemple qui suit, l'index comportera ainsi trois entrées: \enquote{Charlemagne}, \enquote{Hadrien} et \enquote{Autres}:
-
+Dans l'exemple qui suit, l'index comportera ainsi cinq entrées: \enquote{Charlemagne}, \enquote{Adrien}, \enquote{Tassilon}, \enquote{Formose} et \enquote{Damase}:
+%Changer l'exemple.
 \begin{listing}[ht]
 \begin{minted}[linenos]{latex}
 
-Tunc domnus rex Carolus\index{Charlemagne} supradictos itiner 
-ita peragens Romam venit et valde hornorifice a domno apostolico
-Adriano\index{Hadrien} receptus est; et aliquod dies ibi moratus
-est cum domno apostolico. Et Arighis\index{Autres} dux
-Beneventanus misit Romaldum\index{Autres} filium suum cum magnis
-muneribus, postolare de adventu iamdicti domni regis\index{Charlemagne},
-ut in Benevento non introisset, et omnes voluntates credebat neque 
-obtimates Francorum, et consilium fecerunt cum supra nominato 
-domno Carolo\index{Charlemagne} rege, ut partibus Beneventanis
-causas firmando advenisset; quod ita factum est. 
-
+Tandis que Charle\index{Charlemagne} était à Rome, il convint
+avec le pape Adrien\index{Adrien} qu’ils enverraient de concert
+des ambassadeurs à Tassilon, duc de Bavière\index{Tassilon}(...)
+Les hommes choisis et envoyés dans cette ambassade furent, de 
+la part du pape, les évêques Formose\index{Formose} et 
+Damase\index{Damase}(…).
 
 \end{minted}
 \caption{Indexer son texte}
 \end{listing}
+%Eginahrd, Annales
 
  Lorsqu'une entrée est référencée deux fois dans la même page, cette page n'est indiquée qu'une seule fois. 
 
 \begin{attention}
-Il vaut mieux accoler la commande \verb+\index{nom}+ directement au  mot à indexer, sans laisser d'espace, pour éviter toute ambiguité en cas de changement de page.
+Il vaut mieux accoler la commande \verb+\index{entrée}+ directement au  mot à indexer, sans laisser d'espace, pour éviter toute ambiguité en cas de changement de page.
 
 \end{attention}
 
@@ -49,8 +49,8 @@ Il vaut mieux accoler la commande \verb+\index{nom}+ directement au  mot à inde
 L'indexation d'un texte n'est pas automatique: il faut placer \verb+\index+ à chaque endroit  que l'on veut référencer. Pour éviter d'oublier, dans cette démarche fastidieuse, de référencer certaines occurences, on  peut bien sûr créer une commande  spécifique.
 
 Ainsi, pour indexer automatiquement tous les noms propres d'un texte, déclarons la commande suivante:\\
- \verb+\newcommand\nom[2]{#1~\textsc{#2}\index{\textsc{#2}, #1}}+\\
-Il suffira ensuite, au cours de la rédaction de son texte, de taper par exemple \verb|\nom{Victor}{Hugo}| pour obtenir \enquote{Victor \textsc{Hugo}} dans le cours de son texte, indexé sous l'entrée \enquote{\textsc{Hugo}, Victor}.
+ \verb+\newcommand\nom[2]{#1~\textsc{#2}\index{#2, #1\xspace}}+\\
+Il suffira ensuite, au cours de la rédaction de son texte, de taper par exemple \verb|\nom{Victor}{Hugo}| pour obtenir \enquote{Victor \textsc{Hugo}} dans le cours de son texte, indexé sous l'entrée \enquote{Hugo, Victor}.
 
 
 \subsubsection{Générer l'index}
@@ -59,8 +59,13 @@ Il suffira ensuite, au cours de la rédaction de son texte, de taper par exemple
  Lors de la première compilation, la commande \verb|\makeindex | indique à \LaTeX{} de créer un fichier de type \fichier{exemple.idx}, contenant la liste de toutes les entrées que l'on a placé. Chaque entrée se présente de la manière suivante:\\
 \verb+\indexentry{nom de l'entrée}{numéro de la page}+.
 
+<<<<<<< .mine
+On compile ensuite le document en tapant dans le terminal \\ \verb+ makeindex exemple.idx + \\
+Il est possible de ne pas indiquer l'extension .idx. \latex génère alors un fichier \fichier{exemple.ilg} qui contient les message de compilation de l'index, et un fichier \fichier{exemple.ind} qui contient l'index formaté et se présente ainsi:
+=======
 On compile ensuite le document en tapant dans le terminal \\ \verb+\makeindex exemple.idx + \\
 -il est possible de ne pas indiquer l'extension .idx. \LaTeX{} génère alors un fichier \fichier{exemple.ilg} qui contient les message de compilation de l'index, et un fichier \fichier{exemple.ind} qui contient l'index formaté et se présente ainsi:
+>>>>>>> .r192
 \begin{verbatim}
 \begin{theindex}
 
@@ -75,11 +80,110 @@ On compile ensuite le document en tapant dans le terminal \\ \verb+\makeindex ex
 Il suffit alors de compiler à nouveau son document pour y intégrer son index, qui apparaîtra à l'emplacement que l'on aura indiqué par la commande  \verb|\printindex |.
 
 
+%essayer de faire marcher showidx
+
 \subsection{Aller plus loin}
 \subsubsection{Créer des subdivisions}
+
+Il est possible, avec \package{MakeIndex},  de créer des subdivisions et des subsubdivisons  pour chaque entrée de l'index. La subdivision se crée de la manière suivante: \verb+\index{entrée!sous-entrée}+. La sous-sous-entrée, logiquement, se crée ainsi: \verb+\index{entrée!sous-entrée!sous-sous-entrée}+. \package{MakeIndex} ne permet cependant que ces trois niveaux d'indexation.
+
+On peut ainsi référencer autrement notre premier exemple, en créant les entrées \enquote{Evêques} et \enquote{Ducs} que l'on subdivise:
+
+\begin{minted}[linenos]{latex}
+
+Tandis que Charle\index{Charlemagne} était à Rome, il convint 
+avec le pape Adrien\index{Adrien} qu’ils enverraient de concert 
+des ambassadeurs à Tassilon, duc de Bavière\index{Ducs!Tassilon}.
+Les hommes choisis et envoyés dans cette ambassade furent, de la 
+part du pape, les évêques Formose\index{Evêques!Formose}
+et Damase\index{Evêques!Damase}(…).
+
+\end{minted}
+
+Supposons que ce texte soit à la page 5; on obtiendra ainsi dans l'index:
+\begin{tabbing}
+\hspace{0,5cm}  \= \kill
+Adrien, 5 \\
+\\
+Charlemagne, 5 \\
+\\
+Ducs \\
+\> Tassilon, 5\\
+\\
+Evêques \\
+\> Damase, 5\\
+\> Formose, 5\\
+
+\end{tabbing}
+
+
+
+
+Bien entendu, on pourrait encore rajouter une subdivision, en distinguant par exemple \enquote{Clercs} et \enquote{Laïcs}, et dans la première catégorie en distinguant \enquote{Evêques} et \enquote{Papes}. 
+%Montrer le résultat?
+
+ 
 \subsubsection{Faire des références croisées}
 
-+ protéger un index fragile, "customiser" son index
+Pour qu'une entrée dans l'index renvoie à une autre entrée, on utilise la commande  \verb+\index{entrée|see{entrée à laquelle on renvoie}}+. Ainsi, la commande \verb+\index{Tassilon|see{Ducs}+ donnera dans l'index:
+
+Tassilon, voir Ducs\\
+La traduction de \emph{see} change selon la langue indiquée comme \verb+ \setmainlanguage+
+
+
+%Si on met  \index{nom propre|see{nom générique}} dans le corps du texte, marche sans problème. En revanche si on veut semi automatiser l'indexation pour certains nom  en définissant une nouvelle commandande  type \newcommand\Nom{\index{nom propre|see{nom générique}}Nom\xspace}, on va avoir dans l'index: nom propre, voir nom générique, voir nom générique, voir nom générique,.. (répété autant de fois que \Nom apparaît ds le document. 
+% Bidouillage qui marche: définir la commande \newcommande\Nom{\index{nom générique}Nom\xspace} puis ailleurs une seule fois indiquer \index{nom propre|see{nom générique}.
+%Pas sûre que ce soit utile de l'indiquer: si on emploi la commande |see c'est pour des cas particuliers: on ne va pas en faire une commande automatique.
+
+  
+
+\subsubsection{Créer des entrées sur plusieurs pages}
+
+Si l'on veut référencer dans l'index non pas un mot mais un passage, il faut placer la commande \index{entrée|(} au début du passage à indexer et la commande  \index{entrée|)} à la fin. Si le passage commence à la page x et se termine à la page y, on aura ainsi indiqué dans l'index: \\
+entrée x-y
+
+
+\subsubsection{Entrées formatées}
+
+Makeindex ne gère pas correctement les accents indiquées dans la commande \verb+\index{...}+ : il classe les mots commançant par un accent à la fin de l'index. La commande \verb+\index{entrée@entrée formatée}+ permet de résoudre ce problème. Ainsi, si l'on veut créer une entrée \enquote{écrivains}, qui soit triée à \enquote{e}, il faut taper \verb+\index{ecrivains@écrivains}+
+
+La commande \verb+ \index{entrée@entrée formatée}+ permet donc de classer une entrée là où l'on veut dans l'index. Pour faire apparaître dans l'index, par exemple, les empereurs romains dans l'ordre chronologique et non dans l'ordre alphabétique, on peut créer les commandes suivantes:\\
+\verb+\index{Empereurs!empereur1@Auguste}+,\\ \verb+\index{Empereurs!empereur2@Tibère}+\\
+\verb+\index{Empereurs!empereur3@Claude}+\\
+et ainsi de suite. On obtiendra alors
+\begin{tabbing}
+\hspace{0,5cm} \= \kill
+Empereurs\\
+\> Auguste, x\\
+\> Tibère, z\\
+\> Claude, y \\
+
+\end{tabbing}
+
+Cette commande est aussi utile pour mettre en évidence une entrée dans l'index en modifiant son aspect. En mettant \verb+\index{entrée@\textbf{entrée formatée}+, l'entrée apparaît en gras dans l'index. Ceci est valable pour toutes les commandes modifiant la fonte. Modifions ainsi comme suit la commande \verb+\nom+ que l'on a crée:\\
+\verb+\newcommand\nom[2]{#1~\textsc{#2}\index{#2 #1@\textsc{#2}, #1\xspace}}+\\
+Désormais, taper \verb|\nom{Victor}{Hugo}| permettra d'obtenir \textsc{Hugo},~Victor dans l'index.
+ 
+ 
+%To put a !, @, or | character in an index entry, quote it by preceding the character with a ". More precisely, any a character is said to be quoted if it follows an unquoted " that is not part of a \" command. A quoted !, @, or | character is treated like an ordinary character rather than having its usual meaning. The " preceding a quoted character is deleted before the entries are alphabetized. 
+ 
+\subsubsection{Formater le numéro des pages}
+
+Il peut arriver; lorsqu'une entrée est très souvent représentée dans un texte indexé, que l'on veuille mettre en valeur une de ses occurences, en faisant apparaître dans l'index le numéro de la page où se trouve cette occurence en gras, en italique..
+
+\subsection{Formater son index}
+
+
+%+ protéger un index fragile, "customiser" son index
+%Recall that special characters like \ may appear in the argument of an \index command only if that command is not itself contained in the argument of another command. This is most likely to be a problem when indexing items in a footnote. Even in this case, robust commands can be placed in the “@” part of an entry, as in \index{gnu@{\it gnu}}, and fragile commands can be used if protected with the \protect command.3
+
+
+
+%créer un dossier ist
+%makeindex -s perso.ist exemple.idx
+%penser à mettre le dossier.ist un endroit où latex peut le trouver (dossier texmf par ex; ou définir ds le bath profil un chemin,...)
+%man makeindex: indique les différentes obtions. En détailler quelques unes? ex: aligner les numéros des pages au bout de la ligne (avec ou sans points dans l'espace blanc); Ajouter les lettres , etc
+
 
 \section{\package{SplitIndex}, ou comment faire plusieurs index}
 
