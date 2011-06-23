@@ -1,5 +1,42 @@
-\chapter{Sommaires et tables des matières}
+\chapter{Sommaires et tables des matières}\label{toc}
 
 \begin{prealable}
-Dans ce chapitre nous verrons comment générer un sommaire et des tables des matières. Nous en profiterons pour étudier la manière de modifier les chaînes de langues de (quoi d'ailleurs ? à voir). Nous indiquerons également les bases de la configuration du package \package{hyperref}, qui permet, entre autre, de proposer des signets dans le PDF généré.
+Dans ce chapitre nous verrons comment générer un sommaire et des tables des matières. Nous en profiterons pour étudier la manière de modifier les chaînes de langues de (quoi d'ailleurs ? à voir) ainsi que la notion de compteur en \LaTeX{}. Nous indiquerons également les bases de la configuration du package \package{hyperref}, qui permet, entre autre, de proposer des signets dans le PDF généré.
 \end{prealable}
+
+\section{Une table simple}
+
+La manière la plus simple de faire une table des matières est d'utiliser la commande :
+
+\begin{minted}{latex}
+\tableofcontents
+\end{minted}
+
+Pour que \LaTeX{} puisse afficher cette table des matières, il est nécessaire de compiler deux fois : lors de la première compilation, \LaTeX{} stockera le contenu de la table des matières dans un fichier \ext{toc}, lors de la seconde compilation, il se servira de ce fichier pour créer la table des matières. En règle générale, cette double compilation n'est guère gênante, puisqu'elle déjà nécessaire lors de l'utilisation d'une bibliographie.\renvoi{3compil}
+
+\begin{attention}
+La table des matières prend elle même un certain volume. Par conséquent si votre table des matière se trouve en début d'ouvrage --- il serait alors plus juste de l'appeler \forme{sommaire} ---, elle va décaler la pagination. C'est pourquoi il faut parfois compiler trois fois :
+
+\begin{enumerate}
+\item La première fois, \LaTeX{} va stocker les informations dans le fichier \ext{toc}.
+\item La seconde fois, la table des matières va s'afficher, décalant la numérotation des pages. \LaTeX{} va stocker les nouveaux numéros de pages  dans le fichier \ext{toc}.
+\item La troisième fois, la table des matières avec les bon numéros de page  va s'afficher. Comme sa taille n'est pas différente de la précédente, il n'y aura pas de décalage des numéros.
+\end{enumerate}
+
+\end{attention}
+
+\section[Choix de la profondeur]{Choisir la profondeur de la table des matières : la notion de compteur}\label{tocdepth}
+
+Par défaut la commande \commande{tableofcontents} affiche tout les niveaux de titres, depuis \commande{part} jusqu'au \commande{subparagraph}.\renvoi{niveautitre}. Il est possible de restreindre la profondeur, ou au contraire de l'étendre. Pour ce faire, il suffit de redéfinir un compteur \LaTeX{} : \compteur{tocdepth}.
+
+Un compteur, en \LaTeX{}, est un nombre entier stocké dans la mémoire vive de l'ordinateur. Un compteur peut être appelé à certains endroits par \LaTeX{}. Il peut également être modifié par \LaTeX{}. Typiquement, un compteur est associé à un élément numéroté. Il existe par exemple un compteur \compteur{page} correspondant au numéro de la page, incrémenté par \LaTeX{} à chaque changement de page et utilisé pour afficher le numéro de page. \revision{Un peut technique non ?}
+
+Dans notre cas, le compteur \compteur{tocdepth} n'est pas modifié par \LaTeX{}. En revanche il sert lors de l'affichage de la table des matières. Chaque niveau de titre possède un numéro. \renvoi{numeroniveau}. La commande \commande{tableofcontents} affiche les niveaux de titres dont le numéro est inférieur ou égale à la valeur du compteur \compteur{tocdepth}.
+
+Le niveau \commande{subsubsection} a comme numéro 3. Pour afficher dans la table des matières tous les niveaux de titres jusqu'au niveau \commande{subsubsection} inclus, il faut donc affecter la valeur 3 à  \compteur{tocdepth}. Pour ce faire il faut utiliser la commande \commande{setcounter} :
+
+\begin{minted}{latex}
+\setcounter{tocdepth}{3}
+\tableofcontents
+\end{minted}
+
