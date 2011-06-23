@@ -40,3 +40,36 @@ Le niveau \commande{subsubsection} a comme numéro 3. Pour afficher dans la tabl
 \tableofcontents
 \end{minted}
 
+\section[Table des matières ou sommaire ?]{Table des matières ou sommaire ? les chaînes de langues de polyglossia}
+
+\revision{peut être à mettre dans un chapitre à part ?}
+En France, une table des matière se situe en fin d'ouvrage, tandis qu'un sommaire se situe en début d'ouvrage. Par défaut la commande \commande{tableofcontents} indique que nous avons affaire à une  \enquote{table des matières} et non pas à un \commande{sommaire}. Comment faire ? Il suffit de redéfinir les chaînes de langues. 
+
+Nous avons déjà vu la notion de chaîne de langues pour la bibliographie.\renvoi{i18n} Il s'agit ici  d'une idée similaire, mais pour le package \package{polyglossia}. La syntaxe est toutefois différentes. Comme pour les toutes les chaînes de langues, il faut commencer par découvrir quelle est la chaîne à modifier. Cela se passe dans le fichier \fichier{french.ldf}. Vous pouvez repérer une ligne contenant \verb|\def\captionsfrench{%|. 
+Cette ligne est suivie d'autres lignes sous la forme : \verb|\def\chaine{Valeur}%|. Et ce jusqu'à une accolade fermante.
+
+Pour notre cas, on peut aisément repérer la ligne contenant \verb|\def\contentsname{Table des matières}%|.
+Notre chaîne de langue est donc \forme|contentsname|.
+
+Pour  redéfinir une chaîne de langue, il suffit d'écrire, de préférence dans le préambule :
+
+\begin{minted}{latex}
+\gappto\captionsfrench{\renewcommand{\chaine}{Valeur}}
+\end{minted}
+
+Dans le cas présent, cela donne :
+
+\begin{minted}{latex}
+\gappto\captionsfrench{\renewcommand{\contentsname}{Sommaire}}
+\end{minted}
+
+
+
+\begin{anedocte}
+La commande \commande{def} permet de créer des nouvelles commandes. Toutefois à la différence de la commande \commande{newcommand}, les commandes ainsi créées appartiennent à \TeX{} et non pas à \LaTeX{}.\renvoi{TeXLaTeX}
+
+Définir des commandes en \TeX{} par rapport à les définir en \LaTeX{} permet plus de souplesse. Toutefois définir les commandes en \TeX{} demande plus de maîtrise technique pour éviter divers problèmes (comme des erreurs de compilation.). C'est pourquoi nous n'en parlons pas dans ce livre, sauf précisément ici.
+
+Les commandes \TeX{} peuvent contenir des \emph{sous commandes}. Ici par exemple, la commande \commande{captionfrench} contient la sous commande \commande{contentsname}. Nous utilisons la commande \TeX{} \commande{gappto} pour \enquote{injecter} une sous-commande dans une commande déjà définir.
+\end{anedocte}
+
