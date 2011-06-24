@@ -54,7 +54,7 @@ Il suffira ensuite, au cours de la rédaction de son texte, de taper par exemple
 \subsubsection{Générer l'index}
 
 
- Lors de la première compilation, la commande \commande{\makeindex} indique à \LaTeX{} de créer un fichier de type \fichier{exemple.idx}, contenant la liste de toutes les entrées que l'on a placées. Chaque entrée se présente de la manière suivante:\\
+ Lors de la première compilation, la commande \commande{makeindex} indique à \LaTeX{} de créer un fichier de type \fichier{exemple.idx}, contenant la liste de toutes les entrées que l'on a placées. Chaque entrée se présente de la manière suivante:\\
 \verb+\indexentry{nom de l'entrée}{numéro de la page}+.
 
 
@@ -63,7 +63,7 @@ On compile ensuite le document en tapant dans le terminal \\ \verb+\makeindex ex
 -il est possible de ne pas indiquer l'extension .idx. \LaTeX{} génère alors un fichier \fichier{exemple.ilg} qui contient les message de compilation de l'index, et un fichier \fichier{exemple.ind} qui contient l'index formaté et se présente ainsi:
 
 
-\begin{verbatim}
+\begin{minted}{latex}
 \begin{theindex}
 
   \item entrée,4
@@ -72,9 +72,9 @@ On compile ensuite le document en tapant dans le terminal \\ \verb+\makeindex ex
 
 \end{theindex} 
 
-\end{verbatim}
+\end{minted}
 
-Il suffit alors de compiler à nouveau son document pour y intégrer son index, qui apparaîtra à l'emplacement que l'on aura indiqué par la commande  \verb|\printindex |.
+Il suffit alors de compiler à nouveau son document pour y intégrer son index, qui apparaîtra à l'emplacement que l'on aura indiqué par la commande \commande{printindex}.
 
 
 %essayer de faire marcher showidx
@@ -136,7 +136,7 @@ La traduction de \emph{see} change selon la langue indiquée comme \verb+ \setma
 
 \subsubsection{Créer des entrées sur plusieurs pages}
 
-Si l'on veut référencer dans l'index non pas un mot mais un passage, il faut placer la commande \index{entrée|(} au début du passage à indexer et la commande  \index{entrée|)} à la fin. Si le passage commence à la page x et se termine à la page y, on aura ainsi indiqué dans l'index: \\
+Si l'on veut référencer dans l'index non pas un mot mais un passage, il faut placer la commande \verb+\index{entrée|(}+ au début du passage à indexer et la commande  \verb+\index{entrée|)}+ à la fin. Si le passage commence à la page x et se termine à la page y, on aura ainsi indiqué dans l'index: \\
 entrée x-y
 
 
@@ -157,7 +157,7 @@ Empereurs\\
 
 \end{tabbing}
 
-Cette commande est aussi utile pour mettre en évidence une entrée dans l'index en modifiant son aspect. En mettant \verb+\index{entrée@\textbf{entrée formatée}+, l'entrée apparaît en gras dans l'index. Ceci est valable pour toutes les commandes modifiant la fonte. Modifions ainsi comme suit la commande \verb+\auteur+ que l'on a crée:\\
+Cette commande est aussi utile pour mettre en évidence une entrée dans l'index en modifiant son aspect. En mettant \verb+\index{entrée@\textbf{entrée formatée}+, l'entrée apparaît en gras dans l'index. Ceci est valable pour toutes les commandes modifiant la fonte. Modifions ainsi comme suit la commande \commande{auteur} que l'on a crée:\\
 \verb+\newcommand\auteur[2]{#1~\textsc{#2}\index{#2 #1@\textsc{#2}, #1\xspace}}+\\
 Désormais, taper \verb|\auteur{Victor}{Hugo}| permettra d'obtenir \textsc{Hugo},~Victor dans l'index.
  
@@ -166,7 +166,7 @@ Désormais, taper \verb|\auteur{Victor}{Hugo}| permettra d'obtenir \textsc{Hugo}
  
 \subsubsection{Formater le numéro des pages}
 
-Il peut arriver, lorsqu'une entrée est très souvent représentée dans un texte indexé, que l'on veuille mettre en valeur une de ses occurences, en faisant apparaître dans l'index le numéro de la page où se trouve cette occurence en gras: on utilise alors la commande \verb+\index{entrée|textbf}+. De même, pour faire apparître le numéro de la page en italique va-t-on utiliser la commande \verb|\index{entrée|textit}|…
+Il peut arriver, lorsqu'une entrée est très souvent représentée dans un texte indexé, que l'on veuille mettre en valeur une de ses occurences, en faisant apparaître dans l'index le numéro de la page où se trouve cette occurence en gras: on utilise alors la commande \verb+\index{entrée|textbf}+. De même, pour faire apparître le numéro de la page en italique va-t-on utiliser la commande \verb+\index{entrée|textit}+…
 
 \begin{attention}
 il s'agit bien de \verb+ |textbf +, non de \verb+ |\textbf +
@@ -204,15 +204,31 @@ Je vais donner ici quelques exemples de commandes que l'on peut mettre dans son 
 Dans le fichier de style\ext{ist}, on n'écrit pas en \LaTeX{} mais en \TeX .Les commandes sont ainsi encadrées par des guillemets " . La barre contre-oblique, quant à elle, n'est prise en compte que si elle est précédée d'une autre contre-oblique.
 \end{attention}
 
-Le manuel de \package{makeindex} que l'on peut lire en tapant dans le terminal \verb+ man makeindex + nous indique que, pour modifier ce qui est inséré entre le premier niveau d'item (l'entrée) - ou niveau 0 -  et le ou les numéros de pages, on utilise l'option\verb| delim_0 +; de même, pour définir ce qui est inséré entre le deuxième niveau d'item (la sous-entrée) - ou niveau 1, on utilise l'option\verb+ delim_1 +, et l'obtion \verb+ delim_2 + pour les sous-sous-entrées - ou niveau 2 d'itemisation. Le choix par défaut est une virgule suivit d'un blanc : \verb+ ", " +
+Le manuel de \package{makeindex} que l'on peut lire en tapant dans le terminal \verb+ man makeindex + nous indique que, pour modifier ce qui est inséré entre le premier niveau d'item (l'entrée) - ou niveau 0 -  et le ou les numéros de pages, on utilise l'option\verb| delim_0 |; de même, pour définir ce qui est inséré entre le deuxième niveau d'item (la sous-entrée) - ou niveau 1, on utilise l'option\verb+ delim_1 +, et l'obtion \verb| delim_2 | pour les sous-sous-entrées - ou niveau 2 d'itemisation. Le choix par défaut est une virgule suivit d'un blanc : \verb| ", " |
 
 Ainsi, si je veux que le numéro de la page soit justifié à droite, et non simplement séparé de l'entrée par une virgule et un blanc, je dois indiquer dans mon fichier de style les lignes suivantes:
 
-\begin{verbatim}
+\begin{minted}{latex}
 delim_0 "\\hfill"
 delim_1 "\\hfill"
 delim_2 "\\hfill"
-\end{verbatim}
+\end{minted}
+
+J'obtiens donc: 
+\begin{tabbing}
+\hspace{0,5cm}  \=  \hspace{3cm} \= \kill
+Adrien\>\> 5 \\
+\\
+Charlemagne \>\>5 \\
+\\
+Ducs \\
+\> Tassilon\> 5\\
+\\
+Evêques \\
+\> Damase \> 5\\
+\> Formose\>  5\\
+
+\end{tabbing}
 
 Si je préfère une ligne de points, il faudra logiquement remplacer \verb|"\\hfill"| par \verb+ "\\dotfill" +
 
@@ -229,7 +245,7 @@ Définissons ensuite la manière dont vont apparaître ces lettres. On utilise l
 Je peux de même changer la taille des lettres-séparatices en ajoutant \verb| \\large | ou \verb| \\Large|, et ainsi de suite. 
 
 Mais j'ai ouvert une accolade… il me faut la refermer:\\
-\verb| heading_suffix "}\\nopagebreak\n" |
+\verb| heading_suffix "}\\nopagebreak\n" | 
 
 \verb| \\nopagebreak| évite qu'une lettre-séparatrice se retrouve seule en fin de page. 
 
@@ -237,12 +253,37 @@ Mais j'ai ouvert une accolade… il me faut la refermer:\\
 
 Ce n'est pas fini. Mes lettres sont actuellement justifiées à gauche, comme les entrées de l'index. Je voudrais qu'elles soient centrées: \\
 
-\begin{verbatim}
+\begin{minted}{latex}
 headings_flag 1
 heading_prefix "\\bf\\large\\hfill" 
 heading_suffix "hfill}\\nopagebreak\n" 
-\end{verbatim}
+\end{minted}
+
 Les deux \verb| \\hfill | étirent, pour le premier, l'espace avant la lettre vers la droite, et pour le second l'expace suivant la lettre vers la gauche -- voilà mes lettres centrées.
+
+\begin{tabbing}
+\hspace{0,5cm}  \= \hspace{1cm} \= \hspace{1,5cm} \= \kill
+\>\> \large{\textbf{A}}\\
+\\
+Adrien\>\>\> 5 \\
+\\
+\>\> \large{\textbf{C}}\\
+\\
+Charlemagne \>\>\>5 \\
+\\
+\>\> \large{\textbf{D}}\\
+\\
+Ducs \\
+\> Tassilon\>\> 5\\
+\\
+\>\> \large{\textbf{E}}\\
+\\
+Evêques \\
+\> Damase \>\> 5\\
+\> Formose\>\>  5\\
+
+\end{tabbing}
+
 
 %faire un envoi sur la différence entre \hfill et \hfil? Sur les longueur ebsolues et relatives?
 Si je préfère qu'elles soient simplement légèrement décalées vers la droite, je peux utiliser, à la place de \verb| \\hfill |, \verb| \\hspace*{-1ex} |  qui rajoute à gauche un espace de la taille d'un -x. 
