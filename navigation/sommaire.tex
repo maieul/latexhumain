@@ -1,7 +1,7 @@
 \chapter{Sommaires et tables des matières}\label{toc}
 
 \begin{prealable}
-Dans ce chapitre nous verrons comment générer un sommaire et des tables des matières. Nous en profiterons pour étudier la manière de modifier les chaînes de langues de (quoi d'ailleurs ? à voir) ainsi que la notion de compteur en \LaTeX{}. Nous indiquerons également les bases de la configuration du package \package{hyperref}, qui permet, entre autre, de proposer des signets dans le PDF généré.
+Dans ce chapitre nous verrons comment générer un sommaire ou table des matière. Nous en profiterons pour étudier la manière de modifier les chaînes de langues de (quoi d'ailleurs ? à voir) ainsi que la notion de compteur en \LaTeX{}. Nous indiquerons également les bases de la configuration du package \package{hyperref}, qui permet, entre autre, de proposer des signets dans le PDF généré.
 \end{prealable}
 
 \section{Une table simple}
@@ -77,4 +77,14 @@ Les commandes \TeX{} peuvent contenir des \enquote{sous commandes}. Ici par exem
 
 En plus de la table des matières, \LaTeX{} permet d'afficher une table des tableaux et une table des figures. Il est nécessaire pour que ces tables soit constituées que les tableaux et figures soient des flottants avec une légende. \renvoi{legende}
 
-Pour la table des tableaux, il faut utiliser la commande \commande{listoftables} et pour la table des figures la commande \command{listoffigures}.
+Pour la table des tableaux, il faut utiliser la commande \commande{listoftables} et pour la table des figures la commande \commande{listoffigures}.
+
+
+%
+%\section{Plusieurs tables des matières}
+%
+%La commande \commande{tableofcontents} ne fonctionne qu'une seule fois dans un document \LaTeX{}. Comment faire si on souhaite avoir un sommaire et une table des matières, ou bien des tables des matières par partie ?
+%
+%La méthode la plus simple consiste à  utiliser le package \package{minitoc}.
+%
+% En suspend, en attendant que je comprennent toutes les subtilités.
