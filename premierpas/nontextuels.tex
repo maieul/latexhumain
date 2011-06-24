@@ -135,10 +135,16 @@ Si la commande \commande{caption} est insérée au dessus de la figure, de l'ima
 
 Un exemple de flottant se situe  dans ce chapitre : la figure \ref{figure:genealogie}\renvoi{figure:genealogie}.
 \begin{attention}
-	On pourrait vouloir changer les intitulés comme \emph{figure} et \emph{tableau}. Tout ceci est possible, nous en parlerons plus loins dans le chapitre consacrée aux chaînes de langue.\renvoi{chainedelangue}.
+	On pourrait vouloir changer les intitulés comme \emph{figure} et \emph{tableau}. Tout ceci est possible, nous en parlerons plus loin dans le chapitre consacrée aux chaînes de langue.\renvoi{i18n}.
 	
 	De même on pourrait souhaiter renvoyer automatiquement vers le numéro et la page d'une figure : nous en parlons dans le chapitre consacré à la navigation à l'intérieur d'un document.\renvoi{label}
 \end{attention}
+
+À noter que, comme les titres, la commande \commande{caption} peut recevoir un argument optionnel qui comptera pour titre dans la table des figures ou la table des tableaux :\renvoi{tablefigure}
+
+\begin{minted}{latex}
+\caption[Légende pour la table]{Légende}
+\end{minted}
 
 Il peut-être utile de centrer le contenu du flottant. Il s'agit ici d'une exception au principe de séparation du fond de la forme. Pour procéder à ce centrage, il faut utiliser la commande \commande{centering}.
 
@@ -149,6 +155,8 @@ Il peut-être utile de centrer le contenu du flottant. Il s'agit ici d'une excep
 	\caption{Légende}
 \end{figure} 
 \end{minted}
+
+
 
 \subsection{Choix de l'emplacement du flottant}
 
