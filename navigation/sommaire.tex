@@ -88,3 +88,41 @@ Pour la table des tableaux, il faut utiliser la commande \commande{listoftables}
 %La méthode la plus simple consiste à  utiliser le package \package{minitoc}.
 %
 % En suspend, en attendant que je comprennent toutes les subtilités.
+
+\section{Des signets dans le PDF : le package \package{hyperref}}\label{hyperref}
+\rev{mettre ailleurs / supprimer ??}
+
+Certains PDFs proposent des signets qui permettent d'accéder rapidement à un endroit précis du PDF\footnote{L'utilisation concrète de ces signets dépend du lecteur PDF.}. Il est possible avec \LaTeX{} d'obtenir un PDF contenant des signets correspondant aux différents niveaux de titre. Pour ce faire il faut utiliser le package \package{hyperref}.
+
+Ce package à des nombreuses fonctionnalités : par exemples nous avons vu qu'il proposait des renvois vers les titres des sections.\renvoi{envoititre}
+Mais il introduit aussi des liens cliquables en interne, par exemples entre un appel de note de bas de page et la note correspondante. Ou encore il permet de configurer un certain nombres de méta-données du document PDF.
+
+La fonctionnalité qui nous intéresse ici est la génération des signets. Il suffit simplement d'appeler le package et de compiler deux fois --- ce qui est de toute façon nécessaire pour la table des matières --- pour que les signets soient générés :
+
+\begin{minted}{latex}
+\usepackage{hyperref}
+\end{minted}
+
+Par défaut, \package{hyperref} entoure en rouge les liens hypertextes. Ces cadres rouges n'apparaîtront pas, normalement, à l'impression.
+
+Mais on peut cependant vouloir les faire disparaître à l'écran aussi. Pour ce faire, il faut indiquer :
+\begin{enumerate}
+\item Que nous voulons que les liens soient colorés et non pas entourés.
+\item Que nous voulons que cette couleur soit le noir. En effet la couleur des liens est conservée à l'impression, contrairement à la couleur des cadres.
+\end{enumerate}
+
+Pour ce faire, nous allons utiliser la commande \commande{hypersetup} dans le préambule. La commande prend comme argument des paramètres du package, séparées par une virgule.
+
+Pour notre cas ceci suffit
+\begin{minted}{latex}
+\hypersetup{colorlinks=true,
+citecolor=black,
+filecolor=black,
+linkcolor=black,
+urlcolor=black,
+\end{minted}
+
+\verb|colorlinks=true| indique nous colorons les liens au lieu de les entourer. Pour \package{hyperref} il existe plusieurs types de liens dont la couleur est configurable. Ici nous indiquons de mettre en noir les types de liens suivants (dans l'ordre) : la couleur des liens de renvois d'une référence bibliographique abrégée à la référence complète, la couleur des liens appelant des fichiers externe au PDF, la couleur des liens internes (notes de bas de pages, renvois), la couleur des liens externes.
+
+
+\printbibliography

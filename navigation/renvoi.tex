@@ -53,7 +53,7 @@ Pour renvoyer à un numéro de section, il suffit d'utiliser la commande \comman
 Nous renvoyons à la section  \ref{etiquette}.
 \end{minted}
  
-\subsection{Renvoyer à un titre de section}
+\subsection{Renvoyer à un titre de section}\label{renvoititre}
 
 Pour renvoyer à un titre de section, il suffit d'utiliser la commande \commande{nameref}.
 
@@ -65,9 +65,7 @@ Nous renvoyons à la section  \enquote{\nameref{etiquette}}.
 
 Toutefois cette commande n'est pas disponible en standard : elle est proposée par le package \package{hyperref}. Il faut donc charger ce package dans le préambule. Nous documentons plus loin quelques fonctionnalité de ce package\renvoi{hyperref}.
 
-\begin{anedocte}
- Grâce au package \package{hyperref} 
-\end{anedocte}
+
 \section{Où placer la commande \commande{label} ?}
 
 Pour le moment, nous avons vu des renvois vers des sections, mais le système de renvois est beaucoup plus souple.
