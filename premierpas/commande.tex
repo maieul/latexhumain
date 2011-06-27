@@ -41,9 +41,9 @@ mais tertullianiste.
 
 \newcommand{\auteur}[1]{#1*}
 
-\exemple{
+\begin{quotation}
 Il est bien connu que \auteur{Tertullien} n'était pas montaniste mais tertullianiste.
-}
+\end{quotation}
 
 
 \forme{Tertullien} a été passé en premier argument. Il apparaîtra donc à la place du \#1 de la déclaration de commande.
@@ -59,10 +59,10 @@ mais tertullianiste.
 
 \renewcommand{\auteur}[2]{#1* (#2)}
 
-\exemple{
+\begin{quotation}
 Il est bien connu que \auteur{Tertullien}{150 ? - 220 ?}
 n'était pas montaniste mais tertullianiste.
-}
+\end{quotation}
 
 \begin{anedocte}
 Le lecteur attentif se rappellera \renvoi{syntaxebasecommande} qu'il est possible d'avoir des commandes avec des arguments optionnels. Il souhaitera sans doute en créer lui même.
@@ -74,7 +74,7 @@ Nous conseillons donc de ce tourner vers le package \package{xargs} et \package{
 Mais tout ceci dépasserait le cadre de cette ouvrage.
 \end{anedocte}
 
-Fort bien, mais comment faire pour mettre en forme ? Il faut pour cela utiliser une commande de mise en forme à l'intérieur de la déclaration de commande de mise en sens. Par exemple, pour mettre en petites capitales la commande est \commande{textsc}
+Fort bien, mais comment faire pour mettre en forme ? Il faut pour cela utiliser une commande de mise en forme à l'intérieur de la déclaration de commande de mise en sens. Par exemple, pour mettre en petites capitales la commande est \commande{textsc}.
 
 \begin{minted}{latex}
 \newcommand{\auteur}[2]{\textsc{#1}* (#2)}
@@ -82,12 +82,12 @@ Fort bien, mais comment faire pour mettre en forme ? Il faut pour cela utiliser 
 
 \renewcommand{\auteur}[2]{\textsc{#1}* (#2)}
 
-\exemple{
+\begin{quotation}
 Il est bien connu que \auteur{Tertullien}{150 ? - 220 ?}
 n'était pas montaniste mais tertullianiste.
-}
+\end{quotation}
 
-Nous décrirons plus loins dans ce chapitre un ensemble de commande de mise en forme\renvoi{mef}.
+Nous décrirons plus loin dans ce chapitre un ensemble de commande de mise en forme\renvoi{mef}.
 
 \begin{attention}
 	Si la possibilité de créer ses propres commandes est une grande force de \LaTeX, cela ne fait pas toujours la joie des éditeurs. 
@@ -120,10 +120,10 @@ Exemple sans  \% :
 	\textsc{#1}*(#2)\underline{ }%
 }
 
-\exemple{
+\begin{quotation}
 Il est bien connu que \auteur{Tertullien}{150 ? - 220 ?}
 n'était pas montaniste mais tertullianiste.
-}
+\end{quotation}
 
 On constate un espace en trop avant et après la mention de l'auteur\footnote{Pour les besoins de l'explication, nous avons souligné cet espace.}.
 
@@ -131,17 +131,18 @@ En revanche, si on met des \%
 
 \begin{minted}{latex}
 \newcommand{\auteur}[2]{%
-	\textsc{#1}*(#2)%
+	\textsc{#1} *(#2)%
 	}
 \end{minted}
 
 \renewcommand{\auteur}[2]{%
-	\textsc{#1}*(#2)%
-}\exemple{
+	\textsc{#1}* (#2)%
+}
 
+\begin{quotation}
 Il est bien connu que \auteur{Tertullien}{150 ? - 220 ?}
 n'était pas montaniste mais tertullianiste.
-}
+\end{quotation}
 
 On ne constate pas d'espace intempestifs.
 
@@ -159,8 +160,7 @@ Supposons la commande suivante :
 Imaginons que je l'appelle en oubliant de fermer mon accolade :
 
 \begin{minted}{latex}
-Il est bien connu que \auteur{Tertullien
-n'était pas montaniste mais tertullianiste.
+Il est bien connu que \auteur{Tertullien n'était pas montaniste mais tertullianiste.
 \end{minted}
 
 Que va-t-il se passer ? \LaTeX va comprendre que l'ensemble de la fin du texte est un argument de la commande, ce qui empêchera le compilateur de bien fonctionner, et vous n'obtiendrez rien.
@@ -172,6 +172,41 @@ Pour définir ces commandes courtes, il suffit d'utiliser la commande{newcommand
 \begin{minted}{latex}
 \newcommand*{\auteur}[1]{\textsc{#1}*}
 \end{minted}
+
+\subsection{Espace après les commandes sans argument}
+
+
+Il est possible de définir des commandes sans aucun argument. Prenons la commande suivante, qui permet d'obtenir rapidement la forme \forme{\cf}
+
+\begin{minted}{latex}
+\newcommand{\cf}[0]{\emph{cf.}}
+\end{minted}
+
+Comme notre commande n'a pas d'argument, il est nécessaire, lorsque nous l'appelons, de la séparer du texte qui suit par un espace, afin que \LaTeX sache où s'arrête la commande : 
+
+\begin{minted}{latex}
+Ceci est très intéressant \cf cela.
+\end{minted}
+
+Mais dans ce cas, l'espace disparaît lors de la compilation :
+
+\begin{quotation}
+Ceci est très intéressant \cf cela.
+\end{quotation}
+
+La solution consiste à utiliser dans la définition de commande la commande \commange{xspace} du package éponyme. Cette commande permet de gérer automatiquement les espaces qui suivent l'appel à une commande, en tenant compte de la typographie.
+
+\begin{minted}{latex}
+\newcommand{\cf}[0]{\emph{cf.}\xspace}
+\end{minted}
+
+\renewcommand{\cf}[0]{\emph{cf.}\xspace}
+\begin{quotation}
+Ceci est très intéressant \cf cela.
+\end{quotation}
+
+
+
 
 \section{Commandes de mise en forme\label{mef}}
 
