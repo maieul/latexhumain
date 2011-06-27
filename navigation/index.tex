@@ -1,27 +1,35 @@
 
 \chapter{Faire un index}
 
+\begin{prealable}
+
+Dans ce chapitre nous verrons comment faire des index\footnote{Je remercie ma sœur Enimie pour l'avoir rédigé en grande partie.}.
+
+\end{prealable}
+
 
 \section{Faire un index simple avec \package{MakeIndex}}
 
 
 \subsection{Principe de base}
-\begin{prealable}
-
-Le package se charge avec \verb|\usepackage{makeidx}|. Il faut ensuite placer dans le préambule la commande \commande{makeindex} pour que \LaTeX{}  puisse créer un index.
-
-\end{prealable}
 
 
+Pour indexer un document, il faut utiliser le package \package{makeidx}. Dans le préambule il faut placer la commande \commande{makeindex} pour que \LaTeX{} puisse créer un index.
+
+\begin{minted}{latex}
+\usepackage{makeidx}
+\makeindex
+\end{minted}
 
 \subsubsection{Indexer son document}
+
 
 
 On indexe son document avec  la commande \verb+\index{+\emph{entrée}\verb+}+. L'entrée apparaîtra dans l'index sous la forme indiquée par l'argument \emph{entrée}, suivit du numéro de la page où cette commande est placée dans le texte. 
 
 Dans l'exemple qui suit, l'index comportera ainsi cinq entrées: \enquote{Charlemagne}, \enquote{Adrien}, \enquote{Tassilon}, \enquote{Formose} et \enquote{Damase}:
 %Changer l'exemple.
-\begin{listing}[ht]
+
 \begin{minted}[linenos]{latex}
 
 Tandis que Charle\index{Charlemagne} était à Rome, il convint
@@ -32,8 +40,7 @@ la part du pape, les évêques Formose\index{Formose} et
 Damase\index{Damase}(…).
 
 \end{minted}
-\caption{Indexer son texte}
-\end{listing}
+
 %Eginahrd, Annales
 
  Lorsqu'une entrée est référencée deux fois dans la même page, cette page n'est indiquée qu'une seule fois. 
@@ -44,37 +51,48 @@ Il vaut mieux accoler la commande \verb+\index{entrée}+ directement au  mot à 
 \end{attention}
 
 %% Ne faudrait-il pas créer un environnement mettre "Remarque"? qui irait mieux que anecdote par ex pour certains endroits plutôt que "Anecdote" ou attention? Ici, par exemple( ou ds le chapitre notion de base, sur babel)
-L'indexation d'un texte n'est pas automatique: il faut placer \verb+\index+ à chaque endroit  que l'on veut référencer. Pour éviter d'oublier, dans cette démarche fastidieuse, de référencer certaines occurences, on  peut bien sûr créer une commande  spécifique.
+L'indexation d'un texte n'est pas automatique: il faut placer \verb+\index+ à chaque endroit  que l'on veut référencer. Pour éviter d'oublier, dans cette démarche fastidieuse, de référencer certaines occurrences, on  peut bien sûr créer une commande  spécifique.
 
-Ainsi, pour indexer automatiquement tous les noms propres d'un texte, déclarons la commande suivante:\\
- \verb+\newcommand\auteur[2]{#1~\textsc{#2}\index{#2, #1\xspace}}+\\
-Il suffira ensuite, au cours de la rédaction de son texte, de taper par exemple \verb|\auteur{Victor}{Hugo}| pour obtenir \enquote{Victor \textsc{Hugo}} dans le cours de son texte, indexé sous l'entrée \enquote{Hugo, Victor}.
+Ainsi, pour indexer automatiquement tous les noms propres d'un texte, déclarons la commande suivante:
+\begin{minted}{latex}
+\newcommand\auteur[2]{#1~\textsc{#2}\index{#2, #1}\xspace}
+\end{minted}
+\newcommand\auteur[2]{#1~\textsc{#2}\index{#2, #1}\xspace}
+
+Il suffira ensuite, au cours de la rédaction de son texte, de taper par exemple \verb|\auteur{Victor}{Hugo}| pour obtenir \enquote{\auteur{Victor}{Hugo}} dans le cours de son texte, indexé sous l'entrée \enquote{Hugo, Victor}.
 
 
 \subsubsection{Générer l'index}
 
-
- Lors de la première compilation, la commande \commande{makeindex} indique à \LaTeX{} de créer un fichier de type \fichier{exemple.idx}, contenant la liste de toutes les entrées que l'on a placées. Chaque entrée se présente de la manière suivante:\\
-\verb+\indexentry{nom de l'entrée}{numéro de la page}+.
-
-
-
-On compile ensuite le document en tapant dans le terminal \\ \verb+\makeindex exemple.idx + \\
--il est possible de ne pas indiquer l'extension .idx. \LaTeX{} génère alors un fichier \fichier{exemple.ilg} qui contient les message de compilation de l'index, et un fichier \fichier{exemple.ind} qui contient l'index formaté et se présente ainsi:
+Si notre fichier principal s'appel \fichier{exemple.tex}, lors de la première compilation, la commande \commande{makeindex} indique à \LaTeX{} de créer un fichier de type \fichier{exemple.idx}, contenant la liste de toutes les entrées que l'on a placées. 
+ 
+ %Chaque entrée se présente de la manière suivante:\\
+%\verb+\indexentry{nom de l'entrée}{numéro de la page}+.
 
 
-\begin{minted}{latex}
-\begin{theindex}
 
-  \item entrée,4
-  \item autre entrée, 5--7
-  \item troisième entrée, 3, 8	
+On compile ensuite le document en ligne de commande 
 
-\end{theindex} 
-
+\begin{minted}{bash}
+makeindex exemple.idx
 \end{minted}
 
-Il suffit alors de compiler à nouveau son document pour y intégrer son index, qui apparaîtra à l'emplacement que l'on aura indiqué par la commande \commande{printindex}.
+Il est possible de ne pas indiquer l'extension \ext{idx}.
+\LaTeX{} génère alors un fichier \fichier{exemple.ilg} qui contient les message de compilation de l'index, et un fichier \fichier{exemple.ind} qui contient l'index formaté% et se présente ainsi:
+
+
+%\begin{minted}{latex}
+%\begin{theindex}
+%
+%  \item entrée,4
+%  \item autre entrée, 5--7
+%  \item troisième entrée, 3, 8	
+
+%\end{theindex} 
+%
+%\end{minted}
+
+Il suffit alors de compiler à nouveau le document principal pour y intégrer son index, qui apparaîtra à l'emplacement que l'on aura indiqué par la commande \commande{printindex}.
 
 
 %essayer de faire marcher showidx
@@ -82,7 +100,7 @@ Il suffit alors de compiler à nouveau son document pour y intégrer son index, 
 \subsection{Aller plus loin}
 \subsubsection{Créer des subdivisions}
 
-Il est possible, avec \package{MakeIndex},  de créer des subdivisions et des subsubdivisons  pour chaque entrée de l'index. La subdivision se crée de la manière suivante: \verb+\index{entrée!sous-entrée}+. La sous-sous-entrée, logiquement, se crée ainsi: \verb+\index{entrée!sous-entrée!sous-sous-entrée}+. \package{MakeIndex} ne permet cependant que ces trois niveaux d'indexation.
+Il est possible, avec \package{MakeIndex},  de créer des subdivisions et des subsubdivisons  pour chaque entrée de l'index. La subdivision se crée de la manière suivante : \verb+\index{entrée!sous-entrée}+. La sous-sous-entrée, logiquement, se crée ainsi: \verb+\index{entrée!sous-entrée!sous-sous-entrée}+. \package{MakeIndex} ne permet cependant que ces trois niveaux d'indexation.
 
 On peut ainsi référencer autrement notre premier exemple, en créant les entrées \enquote{Evêques} et \enquote{Ducs} que l'on subdivise:
 
@@ -98,6 +116,7 @@ et Damase\index{Evêques!Damase}(…).
 \end{minted}
 
 Supposons que ce texte soit à la page 5; on obtiendra ainsi dans l'index:
+\begin{quotation}
 \begin{tabbing}
 \hspace{0,5cm}  \= \kill
 Adrien, 5 \\
@@ -112,7 +131,7 @@ Evêques \\
 \> Formose, 5\\
 
 \end{tabbing}
-
+\end{quotation}
 
 
 
@@ -124,8 +143,10 @@ Bien entendu, on pourrait encore rajouter une subdivision, en distinguant par ex
 
 Pour qu'une entrée dans l'index renvoie à une autre entrée, on utilise la commande  \verb+\index{entrée|see{entrée à laquelle on renvoie}}+. Ainsi, la commande \verb+\index{Tassilon|see{Ducs}+ donnera dans l'index:
 
-Tassilon, voir Ducs\\
-La traduction de \emph{see} change selon la langue indiquée comme \verb+ \setmainlanguage+
+\begin{quotation}
+Tassilon, voir Ducs
+\end{quotation}
+La traduction de \emph{see} change selon la langue indiquée comme \verb+ \setmainlanguage+. \renvoi{french}
 
 
 %Si on met  \index{nom propre|see{nom générique}} dans le corps du texte, marche sans problème. En revanche si on veut semi automatiser l'indexation pour certains nom  en définissant une nouvelle commandande  type \newcommand\Nom{\index{nom propre|see{nom générique}}Nom\xspace}, on va avoir dans l'index: nom propre, voir nom générique, voir nom générique, voir nom générique,.. (répété autant de fois que \Nom apparaît ds le document. 
@@ -136,18 +157,28 @@ La traduction de \emph{see} change selon la langue indiquée comme \verb+ \setma
 
 \subsubsection{Créer des entrées sur plusieurs pages}
 
-Si l'on veut référencer dans l'index non pas un mot mais un passage, il faut placer la commande \verb+\index{entrée|(}+ au début du passage à indexer et la commande  \verb+\index{entrée|)}+ à la fin. Si le passage commence à la page x et se termine à la page y, on aura ainsi indiqué dans l'index: \\
+Si l'on veut référencer dans l'index non pas un mot mais un passage, il faut placer la commande \verb+\index{entrée|(}+ au début du passage à indexer et la commande  \verb+\index{entrée|)}+ à la fin. Si le passage commence à la page x et se termine à la page y, on aura ainsi indiqué dans l'index: 
+
+\begin{quotation}
 entrée x-y
+\end{quotation}
 
 
 \subsubsection{Entrées formatées}
 
-Makeindex ne gère pas correctement les accents indiquées dans la commande \verb+\index{...}+ : il classe les mots commançant par un accent à la fin de l'index. La commande \verb+\index{entrée@entrée formatée}+ permet de résoudre ce problème. Ainsi, si l'on veut créer une entrée \enquote{écrivains}, qui soit triée à \enquote{e}, il faut taper \verb+\index{ecrivains@écrivains}+
+Makeindex ne gère pas correctement les accents indiquées dans la commande \verb+\index{...}+ : il classe les mots commençant par un accent à la fin de l'index. La commande \verb+\index{entrée@entrée formatée}+ permet de résoudre ce problème. Ainsi, si l'on veut créer une entrée \enquote{écrivains}, qui soit triée à \enquote{e}, il faut taper \verb+\index{ecrivains@écrivains}+
 
-La commande \verb+ \index{entrée@entrée formatée}+ permet donc de classer une entrée là où l'on veut dans l'index. Pour faire apparaître dans l'index, par exemple, les empereurs romains dans l'ordre chronologique et non dans l'ordre alphabétique, on peut créer les commandes suivantes:\\
-\verb+\index{Empereurs!empereur1@Auguste}+,\\ \verb+\index{Empereurs!empereur2@Tibère}+\\
-\verb+\index{Empereurs!empereur3@Claude}+\\
-et ainsi de suite. On obtiendra alors
+La commande \verb+ \index{entrée@entrée formatée}+ permet donc de classer une entrée là où l'on veut dans l'index. Pour faire apparaître dans l'index, par exemple, les empereurs romains dans l'ordre chronologique et non dans l'ordre alphabétique, on peut utiliser les commandes suivantes:
+
+\begin{minted}{latex}
+\index{Empereurs!empereur1@Auguste}
+\index{Empereurs!empereur2@Tibère}
+\index{Empereurs!empereur3@Claude}
+et ainsi de suite. 
+\end{minted}
+
+On obtiendra alors
+\begin{quotation}
 \begin{tabbing}
 \hspace{0,5cm} \= \kill
 Empereurs\\
@@ -156,9 +187,14 @@ Empereurs\\
 \> Claude, y \\
 
 \end{tabbing}
+\end{quotation}
 
-Cette commande est aussi utile pour mettre en évidence une entrée dans l'index en modifiant son aspect. En mettant \verb+\index{entrée@\textbf{entrée formatée}+, l'entrée apparaît en gras dans l'index. Ceci est valable pour toutes les commandes modifiant la fonte. Modifions ainsi comme suit la commande \commande{auteur} que l'on a crée:\\
-\verb+\newcommand\auteur[2]{#1~\textsc{#2}\index{#2 #1@\textsc{#2}, #1\xspace}}+\\
+Cette commande est aussi utile pour mettre en évidence une entrée dans l'index en modifiant son aspect. En mettant \verb+\index{entrée@\textbf{entrée formatée}+, l'entrée apparaît en gras dans l'index. Ceci est valable pour toutes les commandes modifiant la fonte. Modifions ainsi comme suit la commande \commande{auteur} que l'on a crée:
+
+\begin{minted}{latex}
+\newcommand\auteur[2]{#1~\textsc{#2}\index{#2 #1@\textsc{#2}, #1}\xspace}
+\end{minted}
+
 Désormais, taper \verb|\auteur{Victor}{Hugo}| permettra d'obtenir \textsc{Hugo},~Victor dans l'index.
  
  
@@ -166,10 +202,12 @@ Désormais, taper \verb|\auteur{Victor}{Hugo}| permettra d'obtenir \textsc{Hugo}
  
 \subsubsection{Formater le numéro des pages}
 
-Il peut arriver, lorsqu'une entrée est très souvent représentée dans un texte indexé, que l'on veuille mettre en valeur une de ses occurences, en faisant apparaître dans l'index le numéro de la page où se trouve cette occurence en gras: on utilise alors la commande \verb+\index{entrée|textbf}+. De même, pour faire apparître le numéro de la page en italique va-t-on utiliser la commande \verb+\index{entrée|textit}+…
+Il peut arriver, lorsqu'une entrée est très souvent représentée dans un texte indexé, que l'on veuille mettre en valeur une de ses occurrences, en faisant apparaître dans l'index le numéro de la page où elle se situe en gras: on utilise alors la commande \verb+\index{entrée|textbf}+. 
+
+De même, pour faire apparaître le numéro de la page en italique va-t-on utiliser la commande \verb+\index{entrée|textit}+…
 
 \begin{attention}
-il s'agit bien de \verb+ |textbf +, non de \verb+ |\textbf +
+il s'agit bien de \verb+|textbf+, non de \verb+|\textbf+
 
 \end{attention}
 
@@ -187,24 +225,27 @@ La mise en forme par défaut de l'index n'est pas très satisfaisante. On peut h
 Les commandes pour formater l'index sont à placer dans un fichier \fichier{monstyle.ist} que vous devez créer vous-même.
 
 \begin{attention}
-Pensez à placer ce fichier à un endroit où \LaTeX peut le trouver, par exemple dans le dossier courant 
+Pensez à placer ce fichier à un endroit où \LaTeX peut le trouver, par exemple dans le dossier courant.
 
 (est-ce qu'on explique qq part comment indiquer un chemin ds le terminal? ds le chap sur les packages?)
 \end{attention}
 
-Il faut ensuite taper dans le terminal :\\
-\verb+ makeindex -s monformatage.ist monfichier.idx +\\
-La commande -s indique à \package{makeindex}  qu'il doit utiliser le fichier de style \fichier{monstyle.ist} .
+Il faut ensuite taper dans le terminal :
+\begin{minted}{bash}
+makeindex -s monstyle.ist monfichier.idx
+\end{minted}
+
+L'option -s indique à \package{makeindex}  qu'il doit utiliser le fichier de style \fichier{monstyle.ist} .
 
 \subsubsection{Quelques commandes}
 
 Je vais donner ici quelques exemples de commandes que l'on peut mettre dans son fichier \fichier{monstyle.ist}. 
 
 \begin{attention}
-Dans le fichier de style\ext{ist}, on n'écrit pas en \LaTeX{} mais en \TeX .Les commandes sont ainsi encadrées par des guillemets " . La barre contre-oblique, quant à elle, n'est prise en compte que si elle est précédée d'une autre contre-oblique.
+Dans le fichier de style\ext{ist}, on n'écrit pas en \LaTeX{} mais en \TeX . Les commandes sont ainsi encadrées par des guillemets anglais \verb|"| . La barre contre-oblique, quant à elle, n'est prise en compte que si elle est précédée d'une autre contre-oblique.
 \end{attention}
 
-Le manuel de \package{makeindex} que l'on peut lire en tapant dans le terminal \verb+ man makeindex + nous indique que, pour modifier ce qui est inséré entre le premier niveau d'item (l'entrée) - ou niveau 0 -  et le ou les numéros de pages, on utilise l'option\verb| delim_0 |; de même, pour définir ce qui est inséré entre le deuxième niveau d'item (la sous-entrée) - ou niveau 1, on utilise l'option\verb+ delim_1 +, et l'obtion \verb| delim_2 | pour les sous-sous-entrées - ou niveau 2 d'itemisation. Le choix par défaut est une virgule suivit d'un blanc : \verb| ", " |
+Le manuel de \package{makeindex} que l'on peut lire en tapant dans le terminal \verb+man makeindex+ nous indique que, pour modifier ce qui est inséré entre le premier niveau d'item (l'entrée) - ou niveau 0 -  et le ou les numéros de pages, on utilise l'option \verb|delim_0| ; de même, pour définir ce qui est inséré entre le deuxième niveau d'item (la sous-entrée) - ou niveau 1, on utilise l'option \verb+delim_1+, et l'option \verb| delim_2| pour les sous-sous-entrées - ou niveau 2 d'itemisation. Le choix par défaut est une virgule suivit d'un blanc : \verb|", "|
 
 Ainsi, si je veux que le numéro de la page soit justifié à droite, et non simplement séparé de l'entrée par une virgule et un blanc, je dois indiquer dans mon fichier de style les lignes suivantes:
 
@@ -214,7 +255,9 @@ delim_1 "\\hfill"
 delim_2 "\\hfill"
 \end{minted}
 
-J'obtiens donc: 
+J'obtiens donc : 
+
+\begin{quotation}
 \begin{tabbing}
 \hspace{0,5cm}  \=  \hspace{3cm} \= \kill
 Adrien\>\> 5 \\
@@ -227,31 +270,39 @@ Ducs \\
 Evêques \\
 \> Damase \> 5\\
 \> Formose\>  5\\
-
 \end{tabbing}
+\end{quotation}
 
-Si je préfère une ligne de points, il faudra logiquement remplacer \verb|"\\hfill"| par \verb+ "\\dotfill" +
+Si je préfère une ligne de points, il faudra logiquement remplacer \verb|"\\hfill"| par \verb+"\\dotfill"+
 
 
-Si l'on continue la lecture du manuel, on apprend aussi comment faire apparaître \enquote{ff.} (ou ce que l'on voudra) quand une même entrée est indexée dans trois pages ou plus à la suite. Il suffit d'indiquer \verb+ suffix_3p "~ff." +
-\\
+Si l'on continue la lecture du manuel, on apprend aussi comment faire apparaître \enquote{sq.} (ou ce que l'on voudra) quand une même entrée est indexée dans trois pages ou plus à la suite. Il suffit d'indiquer \verb+suffix_3p "~sq."+
 
-Voyons maintenant comment l'on peut insérer les lettres de l'alaphabet entre les groupes d'entrées. Cette manipulation permet de rendre plus lisible un index un peu long. 
+Voyons maintenant comment l'on peut insérer les lettres de l'alphabet entre les groupes d'entrées. Cette manipulation permet de rendre plus lisible un index un peu long. 
 
-Le manuel indique que l'option par défaut \verb+ headings_flag 0 + ne met pas de séparateurs entre les groupes, que l'option \verb+ headings_flag 1 + permet d'obtenir des lettres majuscules comme séparateur, et l'obtion  \verb+ headings_flag -1 + des lettres minuscules.
+Le manuel indique que l'option par défaut \verb+headings_flag 0+ ne met pas de séparateurs entre les groupes, que l'option \verb+headings_flag 1+ permet d'obtenir des lettres majuscules comme séparateur, et l'obtion  \verb+headings_flag -1+ des lettres minuscules.
 
-Définissons ensuite la manière dont vont apparaître ces lettres. On utilise la commande \verb| heading_prefix  |. Supposons que je veuille faire apparaître ces lettres-séparatrices en gras. Je n'oublie pas que l'on code en \TeX … J'écris donc:\\
-\verb| heading_prefix "\\bf" | . Si je veux qu'elles apparaissent en italique, j'écris \verb| "\\it" |… (on utilise \verb+ \bf + et \verb+ \it + , qui sont des commandes \TeX, et non \verb+ \textbf + et \verb+ \textit +).
+Définissons ensuite la manière dont vont apparaître ces lettres. On utilise la commande \verb| heading_prefix  |. Supposons que je veuille faire apparaître ces lettres-séparatrices en gras. Je n'oublie pas que l'on code en \TeX … J'écris donc :
+
+\begin{minted}{tex}
+heading_prefix "\\bf"
+\end{minted} 
+
+Si je veux qu'elles apparaissent en italique, j'écris \verb| "\\it" |… (on utilise \verb+ \bf + et \verb+ \it + , qui sont des commandes \TeX, et non \verb+ \textbf + et \verb+ \textit +).
+
 Je peux de même changer la taille des lettres-séparatices en ajoutant \verb| \\large | ou \verb| \\Large|, et ainsi de suite. 
 
-Mais j'ai ouvert une accolade… il me faut la refermer:\\
-\verb| heading_suffix "}\\nopagebreak\n" | 
+Mais j'ai ouvert une accolade… il me faut la refermer:
 
-\verb| \\nopagebreak| évite qu'une lettre-séparatrice se retrouve seule en fin de page. 
+\begin{minted}{latex}
+\verb| heading_suffix "}\\nopagebreak\n" | 
+\end{minted}
+
+\verb|\\nopagebreak| évite qu'une lettre-séparatrice se retrouve seule en fin de page. 
 
 %Est-ce que le \n est nécessaire? Pas trop sûre... vérifier, essayer de l'expliquer.
 
-Ce n'est pas fini. Mes lettres sont actuellement justifiées à gauche, comme les entrées de l'index. Je voudrais qu'elles soient centrées: \\
+Ce n'est pas fini. Mes lettres sont actuellement justifiées à gauche, comme les entrées de l'index. Je voudrais qu'elles soient centrées: 
 
 \begin{minted}{latex}
 headings_flag 1
@@ -259,8 +310,9 @@ heading_prefix "\\bf\\large\\hfill"
 heading_suffix "hfill}\\nopagebreak\n" 
 \end{minted}
 
-Les deux \verb| \\hfill | étirent, pour le premier, l'espace avant la lettre vers la droite, et pour le second l'expace suivant la lettre vers la gauche -- voilà mes lettres centrées.
+Les deux \verb|\\hfill| étirent, pour le premier, l'espace avant la lettre vers la droite, et pour le second l'expace suivant la lettre vers la gauche -- voilà mes lettres centrées.
 
+\begin{quotation}
 \begin{tabbing}
 \hspace{0,5cm}  \= \hspace{1cm} \= \hspace{1,5cm} \= \kill
 \>\> \large{\textbf{A}}\\
@@ -283,7 +335,7 @@ Evêques \\
 \> Formose\>\>  5\\
 
 \end{tabbing}
-
+\end{quotation}
 
 %faire un envoi sur la différence entre \hfill et \hfil? Sur les longueur ebsolues et relatives?
 Si je préfère qu'elles soient simplement légèrement décalées vers la droite, je peux utiliser, à la place de \verb| \\hfill |, \verb| \\hspace*{-1ex} |  qui rajoute à gauche un espace de la taille d'un -x. 
