@@ -1,4 +1,4 @@
-\chapter{Commencer avec Xe\LaTeX}\label{commencer}
+\chapter{Commencer avec \XeLaTeX}\label{commencer}
 
 \begin{prealable}
 Nous supposons que vous avez installé \LaTeX et un éditeur de texte spécialisé en \LaTeX. Voyez en annexe. \renvoi{install}.
@@ -9,7 +9,7 @@ La première chose à faire est de vérifier que ce logiciel de traitement de te
 
 \section{Un premier document}
 
-Dans votre éditeur de texte, tapez le code \ref{code:1}\footnote{Comme nous l'avons expliqué en introduction, la coloration que vous voyiez ici à un sens syntaxique : ne vous préoccupez pas de savoir comment cela apparaîtra dans votre éditeur, et ne pensez pas que cela apparaîtra ainsi une fois compilé.} puis cliquez sur le bouton de compilation avec Xe\LaTeX \footnote{Cela encore une fois dépend de votre éditeur de texte. Pour le moment vous pouvez vous contenter de ce bouton, mais un jour vous devrez apprendre à faire quelques lignes de commandes : ne vous inquiétez pas, tout sera expliqué.}.
+Dans votre éditeur de texte, tapez le code \ref{code:1}\footnote{Comme nous l'avons expliqué en introduction, la coloration que vous voyiez ici à un sens syntaxique : ne vous préoccupez pas de savoir comment cela apparaîtra dans votre éditeur, et ne pensez pas que cela apparaîtra ainsi une fois compilé.} puis cliquez sur le bouton de compilation avec \XeLaTeX \footnote{Cela encore une fois dépend de votre éditeur de texte. Pour le moment vous pouvez vous contenter de ce bouton, mais un jour vous devrez apprendre à faire quelques lignes de commandes : ne vous inquiétez pas, tout sera expliqué.}.
 
 \begin{listing}
 \inputminted{exemples/premierpas/structure/1.tex}
@@ -65,7 +65,7 @@ Voyons les trois lignes suivantes :
 
 Il s'agit, comme vous auriez pu le deviner, d'appel à des packages. Un package est un ensemble de fichiers qui ajoutent des fonctionnalités à \LaTeX, c'est l'équivalent d'un plugin sous Firefox. 
 
-Le premier package est \package{fontspec}. Il est utile à Xe\LaTeX  pour une typographie avancée, notamment pour les langues autres que l'anglais\footnote{Pour être précis, il détermine des commandes utilisées par le package \package{polyglossia} lorsque définis le fran\c cais comme langue principale du document.}. 
+Le premier package est \package{fontspec}. Il est utile à \XeLaTeX  pour une typographie avancée, notamment pour les langues autres que l'anglais\footnote{Pour être précis, il détermine des commandes utilisées par le package \package{polyglossia} lorsque définis le fran\c cais comme langue principale du document.}. 
 
 Le second package est \package{xunicode}. Il permet de gérer l'unicode, autrement appelé Utf-8\footnote{En réalité Utf-8 n'est pas tout à fait Unicode, mais une implémentation de ce dernier. Toutefois, pour simplifier, nous assimilerons les deux.}. Il nous permettra d'utiliser des caractères non-latin\renvoi{utf-8}.
 
@@ -75,7 +75,7 @@ Ces deux packages doivent être appelés dans cet ordre, et non en sens inverse.
 
 Le troisième permet de gérer facilement un document multilingue\renvoi{i18n} et les changements typographiques que cela implique.
 
-C'est trois packages sont propres à Xe\LaTeX  : ils ne fonctionneront pas avec un compilateur \LaTeX.
+C'est trois packages sont propres à \XeLaTeX  : ils ne fonctionneront pas avec un compilateur \LaTeX.
 
 Certains packages peuvent recevoir des options qui modifieront leur comportement standard. La syntaxe est alors :
 
