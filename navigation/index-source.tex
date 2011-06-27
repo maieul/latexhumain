@@ -1,0 +1,97 @@
+\section{Indexer ses sources}
+
+
+Nous allons maintenant voir comment utiliser les possibilités de \package{biblatex} et de \package{splitindex} pour établir un index des sources primaires.
+
+Pour comprendre cette section, vous devez vous êtes familiarisé avec les indications sur les macros bibliographiques.
+
+
+\subsection{Premier essai}
+
+La documentation de \package{biblatex}\footcite{biblatex_options} nous informe qu'il existe  au chargement du package une option \option{indexing} qui permet d'indexer automatiquement les références bibliographiques. Comme nous nous souhaitons indexer que lors des appels aux commandes \commande{PREFIXcite}  ---  non pas lors de l'appel à la commande \commande{printbibliography} --- nous donnons la valeur \forme{cite} à cette option. 
+
+\begin{minted}{latex}
+\usepackage[indexing=cite]{biblatex}
+\end{minted}
+
+Étant donné qu'il faut à la fois interprété le fichier \ext{bib} et faire un index, nous devons procéder aux compilations dans l'ordre suivant :
+
+\begin{enumerate}
+\item Compilation avec \XeLaTeX.
+\item Compilation avec Biber (ou BibTeX).
+\item Compilation avec \XeLaTeX pour que les données bibliographiques soit intégrées dans l'index.
+\item Compilation avec Makeindex pour transformer le fichier \forme{idx} en \forme{ind}.
+\item Compilation avec \XelaTeX pour finir d'intégrer l'index dans le fichier \ext{pdf}
+\end{enumerate}
+
+On constate cependant deux problèmes : 
+\begin{enumerate}
+\item La bibliographie se trouve mêlées aux autres entrées de l'index.
+\item Plus grave : aux lieux d'avoir des entrées sous la forme : \verb|Auteur!Titre|, nous avons des entrées pour les auteurs et des entrées pour les sources.
+\end{enumerate}
+
+En outre nous aimerions :
+\begin{enumerate}
+\item Limiter l'indexation aux sources primaires.
+\item Indexer aussi, comme troisième niveau d'index, le champ \champ{titleaddon} qui nous sert pour les division de source. \renvoi{divisionsource}
+\end{enumerate}
+
+\subsection{Création d'un index spécifique}
+
+Pour créer un index spécifique aux sources, rien de particulier : il suffit d'utiliser \package{splitindex} et la commande suivante :
+\begin{minted}{latex}
+\newindex[Index des sources]{sources}
+\end{minted}{latex}
+
+\subsection{Modifications des macros de \package{BibLaTeX}}
+
+Nous avons donc notre index spécifique. Mais encore faut-il que nous disions  à \package{biblatex} d'y écrire son index. Pour ce faire nous allons d'abord redéfinir la macro \macro{citeindex} qui est appelée à chaque commande \commande{PREFIXcite}.
+
+\inputminted{exemples/navigation/index-source/citeindex.tex}
+
+\begin{description}
+\item[ligne 2]la commande \commande{ifciteindex} vérifier que l'option \option{indexing} de \package{biblatex} est bien égale à \verb|true| ou bien à \verb|cite|. Ce qui suit entre accolades est exécuté dans ce cas.
+\item[ligne 3]nous indexons le champ \champ{author}.  Nous utilisons le format d'indexation \verb|sources|.
+\item[ligne4]nous indexons le champ \champ{indextitle}. Si ce champ est vide \package{BibLaTeX} utilise à la place le champ \champ{title}. Nous utilisons le format d'indexation \verb|sources|.
+\item[ligne 5]nous indexons le champ \champ{titleaddon}. Nous utilisons le format d'indexation \verb|sources|.
+\item[ligne 6]nous indexons la valeur \verb|---| dans le fichier \fichier{xxx-source.idx}. Cette valeur servira plus tard lors de l'exécution d'un script python.\renvoi{python}. En effet, une des limitations de biblatex est qu'il ne peut indexer qu'un seul champ à la fois, et n'est pas capable, pour le moment, de produire des entrées d'index du type \verb|\index{Champ1!Champ2!Champ3}|. Pour contourner cela, nous avons conçu un script qui concaténe dans le fichier \ext{idx} trois indexations en une seule indexation. Pour que ce script ne concaténe pas ensemble des indexations qui ne doivent pas être concaténée, nous écrivons des fausses indexations sous la forme \verb|---|, qui serviront de point de repère au script.
+\end{description}
+
+\subsection{Fomat d'indexation \package{BibLaTeX}}
+
+Nous avons dit que nous utilisions les formats d'indextation \forme{source}. Un format d'indexation \package{BibLaTeX}  est simplement une description de l'opération que \package{BibLaTeX} effectue lorsqu'il doit indexer un champ. 
+
+Il nous faut donc définir ce format. 
+
+\subsubsection{Indexation des noms}
+
+\begin{minted}{latex}
+\DeclareIndexNameFormat{sources}{%
+  \usebibmacro{index:name}{\sindex[sources]}{#1}{#3}{#5}{#7}
+  }
+\end{minted}
+
+Nous disions en première ligne que nous déclarions un format d'indexation \verb|sources| pour les noms propres. Dans la ligne suivante, nous déclarons ce que nous faisons : nous appelons une macro \macro{index:name}. Cette macro est déjà définie par \package{biblatex}. Elle reçoit plusieurs argument. Le première argument est la commande à exécuter : ici \verb|\sindex[sources]|, qui permet d'indexer dans l'index \verb|source| définis plus haut. Les autres arguments sont repris des codes de \package{biblatex} est désigne les différentes parties du nom à index\footcite[Nous renvoyons le lecteur à la documentation de \package{BibLaTeX} : ][]{biblelatex_formats}.
+
+
+\subsubsection{Indexation des autres champs}
+
+\begin{minted}{latex}
+\DeclareIndexFieldFormat{sources}{%
+  \ifcurrentfield{indextitle}{\sindex[sources]{#1@\emph{#1}}}%
+  {\sindex[sources]{#1}}%
+  }
+\end{minted}
+
+La commande \commande{DeclareIndexFiledFormat} sert à déclarer la manière d'indexer le champs qui ne sont ni des listes ni des noms. La valeur \verb|#1| correspond à la valeur du champ à indexer. En deuxième ligne, nous vérifions que le champ à indexer à est \champ{indextitle} : si c'est le cas, nous l'indexons dans l'index \forme{source} en mettant l'emphase sur le titre pour l'affichage final. Sinon, nous l'indexons simplement dans l'index \forme{source}.
+
+\subsection{Compilation et concaténation des index}
+
+Comme pour tout les index fait avec \package{splitidx}, nous devons compiler en ligne de commande :
+\begin{minted}{bash}
+splitindex xxx
+\end{minted}
+
+Où xxx représentant le fichier à compiler avec splitindex.
+À uivre …
+\subsection{Raffinement}
