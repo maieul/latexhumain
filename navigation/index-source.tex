@@ -6,6 +6,7 @@ Nous allons maintenant voir comment utiliser les possibilités de \package{bibla
 Pour comprendre cette section, vous devez vous êtes familiarisé avec les indications sur les macros bibliographiques.
 
 
+
 \subsection{Premier essai}
 
 La documentation de \package{biblatex}\footcite{biblatex_options} nous informe qu'il existe  au chargement du package une option \option{indexing} qui permet d'indexer automatiquement les références bibliographiques. Comme nous nous souhaitons indexer que lors des appels aux commandes \commande{PREFIXcite}  ---  non pas lors de l'appel à la commande \commande{printbibliography} --- nous donnons la valeur \forme{cite} à cette option. 
@@ -21,7 +22,7 @@ La documentation de \package{biblatex}\footcite{biblatex_options} nous informe q
 \item Compilation avec Biber (ou BibTeX).
 \item Compilation avec \XeLaTeX pour que les données bibliographiques soit intégrées dans l'index.
 \item Compilation avec Makeindex pour transformer le fichier \forme{idx} en \forme{ind}.
-\item Compilation avec \XelaTeX pour finir d'intégrer l'index dans le fichier \ext{pdf}
+\item Compilation avec \XeLaTeX pour finir d'intégrer l'index dans le fichier \ext{pdf}
 \end{enumerate}
 
 On constate cependant deux problèmes : 
@@ -41,7 +42,7 @@ En outre nous aimerions :
 Pour créer un index spécifique aux sources, rien de particulier : il suffit d'utiliser \package{splitindex} et la commande suivante :
 \begin{minted}{latex}
 \newindex[Index des sources]{sources}
-\end{minted}{latex}
+\end{minted}
 
 \subsection{Modifications des macros de \package{BibLaTeX}}
 
@@ -92,6 +93,61 @@ Comme pour tout les index fait avec \package{splitidx}, nous devons compiler en 
 splitindex xxx
 \end{minted}
 
-Où xxx représentant le fichier à compiler avec splitindex.
-À uivre …
+Où xxx représentant le fichier à compiler avec splitindex. Après cette compilation, nous obtenons un fichier \fichier{xxx-sources.idx}. Si vous l'ouvrez vous constatez que nous avons des entrées sous la forme : 
+
+\begin{minted}{latex}
+\indexentry{Author}{page}
+\indexentry{Titleindex@\emph  {Titleindex}}{page}
+\indexentry{Titleaddon}{page}
+\indexentry{---}{page}
+\end{minted}
+
+Nous souhaitons remplacé ces entrées par des entrées sous la forme 
+
+\begin{minted}{latex}
+\indexentry{Author@Author!Titleindex@\emph  {Titleindex}!Titleaddon@Titleaddon}{page}
+\end{minted}
+
+L'auteur de ces lignes a développé un script permettant d'automatiser cette transformation. Par ailleurs ce script modifie également l'ordre des tri pour ne pas tenir compte des accents.
+
+Pour utiliser ce script, il vous faut :
+\begin{itemize}
+\item Avoir le logiciel Python installé sur votre ordinateur. Ce logiciel est installé en standard sous Mac Os X et sur la plupart des distributions Linux, mais pas sous Windows\footcite{python_windows}.
+\item Télécharger le script sur le site de l'auteur à la l'adresse suivante : \url{python}.
+\item Mettre ce dossier dans le répertoire de notre fichier \ext{idx}. 
+\item L'ouvrir et modifier la ligne 8 en remplaçant \verb|xxx-sources.idx| par le nom du fichier à concaténer.
+\item En ligne de commande se rendre dans le  répertoire, puis taper l'entrée : \verb|python index.py|.
+\end{itemize}
+
+
+Après la concaténation, il nous nous suffit alors d'entrée en ligne de commande :
+\begin{minted}{bash}
+makeindex xxx-sources
+\end{minted}
+
+Pour transformer notre nouveau fichier \ext{idx} en fichier \ext{ind}.
 \subsection{Raffinement}
+
+Nous souhaitons n'indexer que les sources primaires. La solution la plus simple est d'utiliser dans le fichier \ext{bib} un champ personnalisé \champ{usera}. BibLaTeX permet en effet à l'utilisateur d'utiliser librement un certain nombre de champ\footcite[La liste de ces champs est fourni dans][]{biblate_custom_fields}.  Dans ce champ, mettre 1 si l'entrée est une source primaire, 2 si l'entrée est une source secondaire.
+
+Il nous suffit de modifier la macro \macro{citeindex}, en introduisant un test (ligne 2) sur la valeur du champ \champ{usera}.
+\inputminted{exemples/navigation/index-source/citeindex-usera.tex}
+
+\subsection{Résumé des diverses compilations}
+
+Pour obtenir un index des sources primaires, une fois tout les fichiers mis en place, il nous faut donc procéder dans le terminal aux opérations suivantes :
+\begin{itemize}
+\item \verb|xelatex xxx.tex|
+\item \verb|biber xxx|
+\item \verb|xelatex xxx.tex|\footnote{Si un sommaire se situe en début d'ouvrage, il peut être nécéssaire de compiler plusieurs fois.}
+\item \verb|splitindex xxx|
+\item \verb|python index.py|
+\item \verb|makeindex xxx-sources|
+\item \verb|xelatex xxx|
+\end{itemize}
+
+\begin{anedocte}
+Évidemment, l'ensemble de ces opérations peut être fastidieuse à se souvenir, à refaire etc. C'est pourquoi il est conseillé, pour les personnes travaillant sous Linux et Mac Os X d'utiliser un programme nommé make\footnote{Pour les utilisateurs de Windows, il est possible, moyennant certaines techniques, d'installer ce programme.}. 
+
+L'idée du programme make est de décrire dans un fichier les opérations nécessaires au passage d'un ensemble de fichier a vers un fichier b. Le programme make exécute ces opérations uniquement si les fichiers a ont été modifiés. En outre make permet de faire des tests pour éviter de compiler deux fois si cela n'est pas utile. Notre livre n'est pas assez long pour expliquer comment se servir de make. Nous renvoyons à d'autres travaux\footcite[On pourra consulter, par exemple :][]{makefile}.
+\end{anedocte}
