@@ -105,3 +105,11 @@
 \newcommand{\compteur}[1]{%
 	\textbf{#1}%
 }
+
+\let\oldlatex\LaTeX
+\renewcommand{\LaTeX}[0]{%
+	\oldlatex\xspace}
+
+\let\oldxelatex\XeLaTeX
+\renewcommand{\LaTeX}[0]{%
+	\oldxelatex\xspace}
