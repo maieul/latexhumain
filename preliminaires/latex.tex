@@ -1,8 +1,27 @@
-\chapter{\LaTeX{} : définition et intérêts}
+\chapter{Introduction : interêt de \LaTeX en sciences humaines et sociales}
 
-\begin{prealable}
- Dans ce chapitre nous allons vous présenter brièvement \LaTeX{} et les raisons pour lesquelles nous pensons que son apprentissage est utile pour la rédaction de travaux en sciences humaines.
-\end{prealable}
+\section{Un manque important}
+
+Ce livre est le fruit d'un an de travail et d'utilisation quotidienne de \LaTeX pour la rédaction de mon mémoire de master. Il vient à mes yeux combler un vide. En effet, si les ouvrages sur \LaTeX sont nombreux, rares sont ceux destinés plus spécifiquement aux sciences humaines et sociales. 
+
+Si le mot \LaTeX a déjà été entendu par des oreilles humanistes, il évoque -- sauf rares exceptions --- au mieux un outil pour les sciences dites dures, au pire la sève d'un arbre ou un plastique aux nombreuses applications. 
+
+De nombreuses raisons pourraient expliquer ce quasi-vide.
+\begin{itemize}
+\item la tendance générale des chercheurs en sciences humaines à mal connaître ou méconnaître l'outil informatique ;
+\item le fait que \LaTeX paraît \emph{au premier abord} peu convivial ;
+\item le fait que pendant longtemps \LaTeX ne disposait pas d'outils pour gérer convenablement et simplement une bibliographie selon les normes propres aux sciences humaines : note de bas de page, distinction entre sources primaires et secondaires etc ;
+\item le fait que pendant longtemps la gestion des caractères non latins n'était pas des plus simples en \LaTeX ;
+\item le fait que les éditeurs de sciences humaines prennent rarement des textes formatés en \LaTeX, parce que les auteurs les rédigent rarement en \LaTeX, parce que les éditeurs les prennent rarement en \LaTeX \ldots
+\end{itemize}
+
+Alors que les chercheurs en sciences humaines sont des spécialistes de l'écrit, pendant longtemps seuls des logiciels de traitement de textes comme OpenOffice.org ou Microsoft Word ont été utilisés pour la rédaction des travaux universitaires.
+
+Et c'est là un paradoxe : en effet, comme nous le verrons, ces traitements de texte souffrent de deux défauts majeurs qui devraient inciter les écrivains à changer :
+\begin{itemize}
+\item Ils produisent une typographie de médiocre qualité. Certes un chercheur ne publie pas lui-même ses travaux mais passe en général par un éditeur. Pour autant, l'apprentissage de la recherche commence par un mémoire de master, puis par une thèse, que l'étudiant édite lui-même pour les soumettre à son directeur. Or, de même qu'un travail manuscrit écrit lisiblement gagne la sympathie de son correcteur\footnote{Combien de fois n'ai-je pas perdu de points pour \enquote{graphie illisible} ?},  une typographie correcte rend la lecture plus agréable.
+\item Leur module de gestion bibliographique manque de souplesse. Je ne connais personne qui m'ait déclaré utiliser ceux livrés en standard avec leur traitement de texte.
+\end{itemize}
 
 \section{Pourquoi \LaTeX{} ?}
 
@@ -111,3 +130,36 @@ Dans  ce livre nous travaillerons sur \XeLaTeX{}. Toutefois comme la plupart de 
 \begin{anedocte}
 Bien que le sujet soit controversé, il semblerait qu'il faille prononcer le  \forme{X} de \TeX{} comme un \forme{χ} grec\footnote{\forme{Latek}}, car le nom \TeX{} viendrait du mot grec \forme{\textgreek{τέχνη}} : \forme{art, sciences}.
 \end{anedocte}
+
+
+\section{Publics visés par cet ouvrage}
+
+Cet ouvrage vise  trois publics distincts.
+
+Tout d'abord, les étudiants et chercheurs en sciences humaines qui ne sont pas rebutés par l'idée d'apprendre un nouvel outil informatique, qui, s'il leur semblera faire perdre du temps au début, leurs fera gagner un précieux temps à l'usage.
+
+Ensuite, les éditeurs de revues et de livres de sciences humaines, pour les inciter à prendre en compte le format \LaTeX dans leur choix de format de fichier, et pour leur montrer l'avantage de ce format par rapport aux autres formats. J'espère montrer que \LaTeX permet de résoudre nombre de problèmes d'édition, notamment en ce qui concerne les normes bibliographiques, puisqu'il distingue aisément le sens et la forme.
+
+Enfin les utilisateurs de \LaTeX venant des sciences dites \enquote{dures} pour leur montrer les spécificités éditoriales des sciences humaines et la nécessité de packages adaptés.
+
+
+\section{Comment lire ce livre}
+
+Cet ouvrage n'est pas un manuel sur \LaTeX{}. Il se veut plutôt une introduction et ne vise donc à présenter que les bases de \LaTeX{}. Une fois ces bases posées le lecteur-rédacteur devrait être en mesure de comprendre la \emph{logique} de \LaTeX{} et par là même de trouver aisément les informations utiles à son projet.
+
+Évidemment, ces bases ne sont pas les mêmes que celles proposées dans d'autres livres d'introduction à \LaTeX{}, généralement orientés vers les sciences dites \enquote{dure.}. 
+Ainsi vous n'y trouverez pas la manière de frapper une équation. En revanche j'y détaille divers éléments passés souvent en vitesse dans les autres introductions : ainsi les diverses façons de faire une citation, d'indiquer un changement de langue, la manière d'écrire dans un ou plusieurs alphabets non latins etc.
+
+Une première partie sera donc consacré à présenter les bases de \LaTeX. Le premier chapitre, sous forme de tutoriel, vise à présenter les concepts de base de \LaTeX. Les autres chapitres, plus formels, décrivent les outils de bases et nécessitent d'avoir compris les concepts. En revanche, leurs ordres de lecture dépend essentiellement des besoins rédactionnels du lecteur. 
+
+Celui-ci pourrait d'ailleurs fort bien commencer par les premiers chapitres de la seconde partie, qui vise à présenter les outils de gestions bibliographiques en \LaTeX{}, en commençant par la constitution de la base de donnée bibliographique.
+
+Une troisième partie vise à donner l'ensemble des outils nécessaires à faciliter la navigation dans le travail final : sommaire, renvois internes, index.
+
+Une quatrième partie vise à présenter des outils de \LaTeX{} dont l'auteur a jugé qu'ils pouvaient être particulièrement utile en sciences humaines.
+
+La séparation entre forme et sens étant au cœur de la logique de \LaTeX{}, j'ai jugé utile d'aborder les questions de mise en forme qu'en dernière partie.
+
+Le lecteur me pardonnera de n'avoir pas mis de conclusion, la nature de ce livre ne s'y prêtant pas. En revanche il trouvera un certain nombre d'annexes, comprenant outre les indispensables index et bibliographies diverses informations utiles : comment installer et mettre à jour  \LaTeX{}, comment trouver de l'aide, une présentation de quelques logiciels autour de \LaTeX{}, un glossaire, une présentation d'outils utiles pour le travail à plusieurs sur un même projet.
+
+Chaque chapitre de ce livre commence par une courte introduction mentionnant son objet ainsi que les pré-requis à sa compréhension. Deux types d'encart se situe dans le cours du texte. Des encarts \enquote{attention} dont il est inutile de détailler la signification et des encarts \enquote{anedocte} visant à satisfaire la curiosité du lecteur et le plaisir de la digression de l'auteur. Les renvois vers d'autres pages de ce manuel sont situés en marges.
