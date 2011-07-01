@@ -1,0 +1,110 @@
+\Chapter{Personnaliser entête et pieds de pages}
+
+\begin{prealable}
+Nous allons voir comment personnaliser les entêtes et pieds de page à l'aide du package \package{fancyhdr}.
+\end{prealable}
+
+
+\section{Utiliser l'un des styles standards}
+
+\LaTeX propose quatre styles standards de pages, définissant le contenu des entête et pieds de page. Pour indiquer à \LaTeX d'utiliser l'un de ces styles, il suffit d'utiliser la commande 
+\begin{minted}{latex}
+\pagestyle{nom_du_style}
+\end{minted} 
+
+Ces styles sont :
+\begin{description}
+\item[empty]: pas d'entête ni de pied de page.
+\item[plain]: pas d'entête mais pieds de pages contenant le numéro de page en centré.
+\item[heading]: pas de pied, entêtes contenant titre du chapitre, de la section ou de la sous-section et le numéro de page.
+\item[myheading] … ?
+\end{description}
+
+À noter que la classe \classe{book} situe par défaut le numéro de page au centre du pied de page pour les débuts de chapitre, et en entête pour les autres pages, du côté de la marge extérieure.
+
+On voit vite les limites de ces styles. Ainsi, comment faire pour avoir à la fois les titres en entête et les numéros de pages en pieds de pages ? Comment indiquer son nom ou la date en pied de page ?
+
+\section{Premiers exemples avec \package{fancyhdr}
+
+\package{Fancyhdr} propose son propre styles, mais qu'il est aisé de personnaliser via des commandes spécifiques. Pour faire fonctionner \package{fancyhdr} il suffit d'écrire les lignes suivantes dans le préambule :
+\begin{minted}{latex}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\end{minted}
+
+Une fois ceci fait, il est possible d'utiliser les six commandes de \package{fancyhdr} servant à définir le contenu des entêtes et pieds de pages :
+
+\begin{descritpion}
+\commande[lhead]prend comme argument le contenu de la partie gauche de l'entête, justifiée à gauche.
+\commande[chead]prend comme argument la partie centrale de l'entête, centrée.
+\commande[rhead]prend comme argument la partie droite de l'entête, justifiée à droite.
+\commande[lfoot]prend comme argument la partie gauche de l'entête, justifiée à gauche.
+\commande[cfoot]prend comme argument la partie centrale de l'entête, centrée.
+\commande[rfoot]prend comme argument la partie droite de l'entêtre, justifiée à droite.
+\end{description}
+
+
+
+\rev{comment mettre exemple minipage ?} 
+
+Supposons que nous souhaitons afficher le numéro de page, en pied de page centré, en indiquant également le nombre total de page. Nous allons utiliser le package \package{lastpage} qui nous permet, après deux compilation\footnote{ou plus si le nombre de page varie entre les compilations} d'obtenir le numéro de la dernière page.
+\begin{minted}{latex}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage{lastpage}
+\cfoot{{\thepage} / \pageref{LastPage}}}
+\end{minted}
+
+La commande \commande{thepage} indique la valeur du compteur \compteur{page}\renvoi{compteur}, correspondant au numéro de page.
+
+\begin{attention}
+\verb|pageref{LastPage} n'indique pas le nombre total de page, mais bien le numéro de la dernière page. Or certaines commandes comme \commande{mainmatter} ont pour effet de recommencer la numérotation des pages. Toutefois, il est rarement utile d'écrire le nombre total de page sur un travail de type \classe{book} qui est généralement bien relié.
+
+\end{attention}
+
+\section{Pages recto-verso et alternance gauche-droite}
+
+Lorsqu'un travail est imprimé en recto-verso, on peut souhaiter que l'entête / le pied de page gauche des pages impaires corresponde à l'entête / le pied de page droite des pages paires et vice-versa.
+
+\package{fancyhdr} a prévu ce cas. Il définit deux commandes : 
+\begin{minted}{latex}
+\fancyhead[position]{texte d'entête}
+\fancyfoot[position]{texte de pied de page}
+\end{minted}
+
+L'argument \argument{position} peut prendre une ou plusieurs des valeurs suivantes :
+\begin{enumerate}
+\item[C]centre
+\item[LO]gauche des pages recto (= intérieur des pages de droite, si on écrit de gauche à droite).
+\item[RO]droite des pages recto (= extérieur des pages de droite, si on écrit de gauche à droite).
+\item[LE]gauche des pages verso (= extérieur des pages  de gauche, si on écrit de gauche à droite).
+\item[RE]droite des pages verso (= intérieur des pages de gauche, si on écrit de gauche à droite).
+\end{enumerate}
+
+Ainsi pour mettre le numéro de page à l'extérieur du pied de page, il suffit d'écrire :
+
+\begin{minted}
+\fancyfoot[LE,RO]{\thepage}
+\end{minted}
+
+Évidemment, si on dit à \LaTeX de générer un fichier à destination d'une impression monoface\renvoi{rectoverso}, celui-ci considère qu'il n'y a que des pages recto.
+
+\section{Titres dans l'entête}
+
+Lorsqu'on utilise le style de page \argument{fancy}, on supprimer automatiquement les styles par défaut, qui contenait notamment les titres de chapitres.
+
+\rev{il faut que je trouve}
+
+\section{Style de la première page des chapitres}
+\rev{il faut que je trouve}
+\section{Filet d'entête et pied de page}
+
+\package{fancyhdr} inclus un filet entre le corps du texte et l'entête. Il est possible de modifier la taille de ce filet ainsi que de rajouter un filet avant le  pied de page.
+
+Pour ce faire, il suffit de redéfinir les commandes \commande{headrulewidth} et \commande{footrulewidth}, qui doivent renvoyer une longueur\renvoi{unite}.
+Par exemple, pour indiquer de ne pas mettre de filet en dessous de l'entête mais d'un mettre un de la moitié de la largeur du texte, il faut indiquer :
+\begin{minted}{latex}
+\renewcommand[\headrulewidth}[0]{0pt}
+\renewcommand[\footrulewidth}[0]{0.5\textwidth}
+
+\end{minted}
