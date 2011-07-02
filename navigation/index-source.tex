@@ -15,13 +15,13 @@ La documentation de \package{biblatex}\footcite{biblatex_options} nous informe q
 \usepackage[indexing=cite]{biblatex}
 \end{minted}
 
-Étant donné qu'il faut à la fois interprété le fichier \ext{bib} et faire un index, nous devons procéder aux compilations dans l'ordre suivant :
+Étant donné qu'il faut à la fois interpréter le fichier \ext{bib} et faire un index, nous devons procéder aux compilations dans l'ordre suivant :
 
 \begin{enumerate}
 \item Compilation avec \XeLaTeX.
 \item Compilation avec Biber (ou BibTeX).
 \item Compilation avec \XeLaTeX pour que les données bibliographiques soit intégrées dans l'index.
-\item Compilation avec Makeindex pour transformer le fichier \forme{idx} en \forme{ind}.
+\item Compilation avec Makeindex pour transformer le fichier \ext{idx} en \ext{ind}.
 \item Compilation avec \XeLaTeX pour finir d'intégrer l'index dans le fichier \ext{pdf}
 \end{enumerate}
 
@@ -60,7 +60,7 @@ Nous avons donc notre index spécifique. Mais encore faut-il que nous disions  �
 
 \subsection{Fomat d'indexation \package{BibLaTeX}}
 
-Nous avons dit que nous utilisions les formats d'indextation \forme{source}. Un format d'indexation \package{BibLaTeX}  est simplement une description de l'opération que \package{BibLaTeX} effectue lorsqu'il doit indexer un champ. 
+Nous avons dit que nous utilisions les formats d'indexation \forme{source}. Un format d'indexation \package{BibLaTeX}  est simplement une description de l'opération que \package{BibLaTeX} effectue lorsqu'il doit indexer un champ. 
 
 Il nous faut donc définir ce format. 
 
@@ -109,8 +109,8 @@ L'auteur de ces lignes a développé un script permettant d'automatiser cette tr
 Pour utiliser ce script, il vous faut :
 \begin{itemize}
 \item Avoir le logiciel Python installé sur votre ordinateur. Ce logiciel est installé en standard sous Mac Os X et sur la plupart des distributions Linux, mais pas sous Windows\footcite{python_windows}.
-\item Télécharger le script sur le site de l'auteur à la l'adresse suivante : \url{python}.
-\item Mettre ce dossier dans le répertoire de notre fichier \ext{idx}. 
+\item Télécharger le script sur le site de l'auteur à la l'adresse suivante : \url{http://geekographie.maieul.net/57}.
+\item Mettre ce fichier dans le répertoire de notre fichier \ext{idx}. 
 \item L'ouvrir et modifier la ligne 8 en remplaçant \verb|xxx.idx| par le nom du fichier à concaténer.
 \item En ligne de commande se rendre dans le  répertoire, puis taper l'entrée : \verb|python index.py|.
 \end{itemize}
