@@ -88,24 +88,20 @@ La commande \commande{DeclareIndexFiledFormat} sert à déclarer la manière d'i
 
 \subsection{Compilation et concaténation des index}
 
-Comme pour tout les index fait avec \package{splitidx}, nous devons compiler en ligne de commande :
-\begin{minted}{bash}
-splitindex xxx
-\end{minted}
 
-Où xxx représentant le fichier à compiler avec splitindex. Après cette compilation, nous obtenons un fichier \fichier{xxx-sources.idx}. Si vous l'ouvrez vous constatez que nous avons des entrées sous la forme : 
+Après la  compilation \XeLaTeX, nous obtenons un fichier \fichier{xxx.idx}. Si vous l'ouvrez vous constatez que nous avons des entrées sous la forme : 
 
 \begin{minted}{latex}
-\indexentry{Author}{page}
-\indexentry{Titleindex@\emph  {Titleindex}}{page}
-\indexentry{Titleaddon}{page}
-\indexentry{---}{page}
+\indexentry[sources]{Author}{page}
+\indexentry[sources]{Titleindex@\emph  {Titleindex}}{page}
+\indexentry[sources]{Titleaddon}{page}
+\indexentry[sources]{---}{page}
 \end{minted}
 
 Nous souhaitons remplacé ces entrées par des entrées sous la forme 
 
 \begin{minted}{latex}
-\indexentry{Author@Author!Titleindex@\emph  {Titleindex}!Titleaddon@Titleaddon}{page}
+\indexentry[sources]{Author@Author!Titleindex@\emph  {Titleindex}!Titleaddon@Titleaddon}{page}
 \end{minted}
 
 L'auteur de ces lignes a développé un script permettant d'automatiser cette transformation. Par ailleurs ce script modifie également l'ordre des tri pour ne pas tenir compte des accents.
@@ -115,17 +111,17 @@ Pour utiliser ce script, il vous faut :
 \item Avoir le logiciel Python installé sur votre ordinateur. Ce logiciel est installé en standard sous Mac Os X et sur la plupart des distributions Linux, mais pas sous Windows\footcite{python_windows}.
 \item Télécharger le script sur le site de l'auteur à la l'adresse suivante : \url{python}.
 \item Mettre ce dossier dans le répertoire de notre fichier \ext{idx}. 
-\item L'ouvrir et modifier la ligne 8 en remplaçant \verb|xxx-sources.idx| par le nom du fichier à concaténer.
+\item L'ouvrir et modifier la ligne 8 en remplaçant \verb|xxx.idx| par le nom du fichier à concaténer.
 \item En ligne de commande se rendre dans le  répertoire, puis taper l'entrée : \verb|python index.py|.
 \end{itemize}
 
 
-Après la concaténation, il nous nous suffit alors d'entrée en ligne de commande :
+Après cette concaténation nous devons compiler en ligne de commande, enfin de séparer les différents index :
 \begin{minted}{bash}
-makeindex xxx-sources
+splitindex xxx
 \end{minted}
 
-Pour transformer notre nouveau fichier \ext{idx} en fichier \ext{ind}.
+
 \subsection{Raffinement}
 
 Nous souhaitons n'indexer que les sources primaires. La solution la plus simple est d'utiliser dans le fichier \ext{bib} un champ personnalisé \champ{usera}. BibLaTeX permet en effet à l'utilisateur d'utiliser librement un certain nombre de champ\footcite[La liste de ces champs est fourni dans][]{biblate_custom_fields}.  Dans ce champ, mettre 1 si l'entrée est une source primaire, 2 si l'entrée est une source secondaire.
@@ -140,9 +136,8 @@ Pour obtenir un index des sources primaires, une fois tout les fichiers mis en p
 \item \verb|xelatex xxx.tex|
 \item \verb|biber xxx|
 \item \verb|xelatex xxx.tex|\footnote{Si un sommaire se situe en début d'ouvrage, il peut être nécéssaire de compiler plusieurs fois.}
-\item \verb|splitindex xxx|
 \item \verb|python index.py|
-\item \verb|makeindex xxx-sources|
+\item \verb|splitindex xxx|
 \item \verb|xelatex xxx|
 \end{itemize}
 
