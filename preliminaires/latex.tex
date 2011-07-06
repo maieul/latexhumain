@@ -1,8 +1,8 @@
-\chapter[Introduction]{Introduction : intérêt de \LaTeX{} en sciences humaines et sociales}
+\chapter*[Introduction]{Introduction : intérêt de \LaTeX{} en sciences humaines et sociales}
 
 \section{Un manque important}
 
-Ce livre est le fruit d'un an de travail et d'utilisation quotidienne de \LaTeX pour la rédaction de mon mémoire de master. Il vient à mes yeux combler un vide. En effet si les ouvrages sur \LaTeX sont nombreux, rares sont ceux destinés plus spécifiquement aux sciences humaines et sociales. 
+Ce livre est le fruit d'un an de travail et d'utilisation quotidienne de \LaTeX pour la rédaction de mon mémoire de master. Il vient à mes yeux combler un vide. En effet si les ouvrages sur \LaTeX sont nombreux, rares sont ceux destinés  spécifiquement aux sciences humaines et sociales. 
 
 Si le mot \LaTeX a déjà été entendu par des oreilles humanistes, il évoque -- sauf rares exceptions --- au mieux un outil pour les sciences dites dures, au pire la sève d'un arbre ou un plastique aux nombreuses applications. 
 
@@ -10,9 +10,9 @@ De nombreuses raisons pourraient expliquer ce quasi-vide.
 \begin{itemize}
 \item la tendance générale des chercheurs en sciences humaines à mal connaître ou méconnaître l'outil informatique ;
 \item le fait que \LaTeX paraît \emph{au premier abord} peu convivial ;
-\item le fait que pendant longtemps \LaTeX ne disposait pas d'outils pour gérer convenablement et simplement une bibliographie selon les normes propres aux sciences humaines : note de bas de page, distinction entre sources primaires et secondaires etc ;
-\item le fait que pendant longtemps la gestion des caractères non latins n'était pas des plus simples en \LaTeX ;
-\item le fait que les éditeurs de sciences humaines prennent rarement des textes formatés en \LaTeX, parce que les auteurs les rédigent rarement en \LaTeX, parce que les éditeurs les prennent rarement en \LaTeX \ldots
+\item le fait que pendant longtemps \LaTeX ne disposait pas d'outils pour gérer convenablement et simplement une bibliographie selon les normes propres aux sciences humaines : notes de bas de page, distinction entre sources primaires et secondaires etc ;
+\item le fait que pendant longtemps la gestion des caractères non latins n'était pas des plus aisés en \LaTeX ;
+\item le fait que les éditeurs de sciences humaines prennent rarement des textes formatés en \LaTeX parce que les auteurs les rédigent rarement en \LaTeX parce que les éditeurs les prennent rarement en \LaTeX \ldots
 \end{itemize}
 
 Alors que les chercheurs en sciences humaines sont des spécialistes de l'écrit, pendant longtemps seuls des logiciels de traitement de textes comme OpenOffice.org ou Microsoft Word ont été utilisés pour la rédaction des travaux universitaires.
@@ -20,7 +20,7 @@ Alors que les chercheurs en sciences humaines sont des spécialistes de l'écrit
 Et c'est là un paradoxe : en effet, comme nous le verrons, ces traitements de texte souffrent de deux défauts majeurs qui devraient inciter les écrivains à changer :
 \begin{itemize}
 \item Ils produisent une typographie de médiocre qualité. Certes un chercheur ne publie pas lui-même ses travaux mais passe en général par un éditeur. Pour autant, l'apprentissage de la recherche commence par un mémoire de master, puis par une thèse, que l'étudiant édite lui-même pour les soumettre à son jury. Et de même qu'un travail manuscrit écrit lisiblement gagne la sympathie de son correcteur\footnote{Combien de fois n'ai-je pas perdu de points pour \enquote{graphie illisible} ?},  une typographie correcte rend la lecture plus agréable.
-\item Leur module de gestion bibliographique manque de souplesse. Je ne connais personne qui m'ait déclaré utiliser ceux livrés en standard avec leur traitement de texte.
+\item Leur module de gestion bibliographique manque de souplesse. Je ne connais personne qui m'ait déclaré êtres satisfaits de ceux livrés en standard avec leur traitement de texte.
 \end{itemize}
 
 \section{Pourquoi \LaTeX{} ?}
@@ -42,7 +42,7 @@ Cette combinaison de deux fonctions différentes dans les  traitements de texte 
 \item La nécessité d'afficher en temps réel le rendu physique du texte tout en conservant une vitesse relativement élevée du logiciel entraîne une baisse de la qualité typographique. Par exemple :
 	\begin{itemize}
 		\item Pour avoir un texte justifié à gauche et à droite, les traitements de texte font varier la taille des espaces entre les mots. Les variations peuvent parfois être considérables ce qui peut diminuer le confort de lecture. Pour éviter ce type d'ennui, les livres \enquote{classiques} coupent les mots en fin de ligne, ce qu'on appelle une césure\footnote{La césure ne se fait toutefois pas n'importe où : elle doit respecter des règles propres à chaque langue.}.
-		\item Les blancs situés avant certains signes de ponctuations, comme par exemple les points d'exclamation font la même taille que les blancs séparant les mots, alors que les règles typographiques \enquote{classiques} prévoient des blancs plus petits.
+		\item Les blancs situés avant certains signes de ponctuations, comme par exemple les points d'exclamation sont de  la même taille que les blancs séparant les mots, alors que les règles typographiques \enquote{classiques} prévoient des blancs plus petits.
 	\end{itemize}
 \item Le fait qu'un même logiciel s'occupe \emph{à la fois} de l'affichage et de la structure du texte incite à confondre les deux\footcite[L'auteur de ces lignes est moins sévère envers les traitements de texte que d'autres LaTeXiens : \cf][]{stupide}  :
 	\begin{itemize}
@@ -53,7 +53,7 @@ Cette combinaison de deux fonctions différentes dans les  traitements de texte 
 \item Les lourds calculs informatiques nécessaire au calcul de la mise en forme en temps réel rendent les traitements de textes particulièrement lents comparativement à d'autres logiciels. Cette lenteur est souvent source d'énervement et de pertes de concentration. En outre, ces logiciels exigent bien souvent du matériel récent.
 \end{itemize}
 
-Par ailleurs, si les traitements de textes récents disposent d'outils de gestions de bibliographies, ceux-ci manquent en général de souplesse c'est pourquoi ils sont rarement utilisés. Ainsi nombreux sont les auteurs à écrire directement leur bibliographie \enquote{à la main} en tapant directement : Nom de l'Auteur, \emph{Titre}, etc. En cas d'erreur ils faut donc corriger l'ensemble des endroits où l'œuvre est citée.
+Par ailleurs, si les traitements de textes récents disposent d'outils de gestions de bibliographies, ceux-ci manquent en général de souplesse c'est pourquoi ils sont rarement utilisés. Ainsi nombreux sont les auteurs à écrire directement leur bibliographie \enquote{à la main} en tapant directement : Nom de l'Auteur, \emph{Titre}, etc. En cas d'erreur, il faut donc corriger l'ensemble des endroits où l'œuvre est citée.
 
 \subsection{Avantage de \LaTeX{}}
 
@@ -61,12 +61,12 @@ Par ailleurs, si les traitements de textes récents disposent d'outils de gestio
 
 \begin{itemize}
 \item L'étape de rédaction, qui se passe dans un éditeur de texte. L'auteur frappe son texte et indique par un certain nombre de commandes sa structure (titres, paragraphes, notes de bas de pages).
-\item L'étape de calcul de l'affichage se fait seulement ensuite : l'auteur fait passer son fichier par un compilateur\footnote{Qu'on peut sommairement décrire comme un ensemble de scripts informatiques destinés à produire un objet informatique à partir d'un langage plus facile à lire pour les humains.}, parfois aussi appelé compositeur. Ce dernier programme va lire l'ensemble des commandes du fichier pour produire un nouveau fichier au format \ext{pdf}\footnote{Historiquement \LaTeX{} produisait un autre format de fichier : \ext{dvi}. Mais pour notre propos, cela n'a pas d'importance : dans ce livre nous n'utiliserons que la production de \ext{pdf}.}.
+\item L'étape de calcul de l'affichage se fait seulement ensuite : l'auteur fait passer son fichier par un compilateur\footnote{Qu'on peut sommairement décrire comme un ensemble de scripts informatiques destinés à produire un objet informatique à partir d'un langage plus facile à lire pour les humains.}, parfois aussi appelé \emph{compositeur}. Ce dernier programme va lire l'ensemble des commandes du fichier pour produire un nouveau fichier au format \ext{pdf}\footnote{Historiquement \LaTeX{} produisait un autre format de fichier : \ext{dvi}. Mais pour notre propos, cela n'a pas d'importance : dans ce livre nous n'utiliserons que la production de \ext{pdf}.}.
 \end{itemize}
 
 Cette séparation permet :
 \begin{itemize}
-\item Une qualité typographique supérieure :  le compositeur n'étant pas contraint par la nécessité d'un affichage en temps réels, il peut faire des calculs plus lourds : ainsi par exemple \LaTeX{} produit des césures typographiques et non pas des blancs à géométrie variable, et équilibre bien mieux la composition du texte.
+\item Une qualité typographique supérieure :  le compositeur n'étant pas contraint par la nécessité d'un affichage en temps réel, il peut faire des calculs plus lourds : ainsi par exemple \LaTeX{} produit des césures typographiques et non pas des blancs à géométrie variable, et équilibre bien mieux la composition du texte.
 \item Une meilleure séparation du sens et de la forme puisque l'auteur donne uniquement des indications de sens.
 \end{itemize}
 
@@ -80,15 +80,15 @@ La gestion d'une bibliographie est à la fois l'un des travaux les plus importan
 
 \subsection{Qu'est qu'un éditeur de texte ?}
 
-J'ai parlé dans ces paragraphes de deux types de logiciels, qu'il ne faut pas confondre :
+J'ai parlé dans les paragraphes précédents de deux types de logiciels, qu'il ne faut pas confondre :
 \begin{itemize}
 	\item Les traitements de texte.
 	\item Les éditeurs de texte.
 \end{itemize}
 
-Nous avons vu ce qu'était les premiers : des logiciels qui s'occupent d'insérer dans un fichier la structure logique d'un texte \emph{et} de montrer son rendu physique.
+Nous avons vu ce qu'étaient les premiers : des logiciels qui s'occupent d'insérer dans un fichier la structure logique d'un texte \emph{et} de montrer son rendu physique.
 Les seconds sont simplement des logiciels qui permettent à une personne d'écrire dans un fichier texte et de placer lui même ses commandes de structurations.
-Toutefois les bon éditeurs de texte font plus que permettre d'écrire dans un fichier texte : ils aident à sa rédaction par différents outils :
+Toutefois les bons éditeurs de texte font plus que cela : ils aident à sa rédaction par différents outils :
 \begin{itemize}
 \item Souvent ils colorient à l'écran les commandes, afin de permettre de mieux les visualiser; c'est ce que l'on appelle la coloration syntaxique.
 \item Ils proposent des raccourcis pour taper les commandes les plus fréquentes :  raccourcis clavier, boutons etc.
@@ -97,9 +97,9 @@ Toutefois les bon éditeurs de texte font plus que permettre d'écrire dans un f
 
 Certains de ces éditeurs de texte sont généralistes et adaptés à plusieurs langages informatiques\footnote{Par exemple le \LaTeX{} et le HTML, ce dernier étant utilisé pour les sites internet.}. D'autres sont spécialisés dans tel ou tel langage : ils proposent en général des outils supplémentaires propres au langage de spécialisation. 
 
-Par exemple les éditeurs spécialisés en \LaTeX{} proposent des boutons spécifiques afin de lancer le compositeur \LaTeX{}.
+Ainsi les éditeurs spécialisés en \LaTeX{} proposent des boutons spécifiques afin de lancer le compositeur \LaTeX{}.
 
-Pour commencer en \LaTeX{} il vous faudra donc abandonner votre ancien traitement de texte et choisir un éditeur de texte spécialisé en \LaTeX{} : nous en listons plusieurs en annexes\renvoi{annexe:editeurs}.
+Pour commencer en \LaTeX{} il vous faudra donc abandonner votre ancien traitement de texte et choisir un éditeur de texte spécialisé en \LaTeX{} : nous en listons plusieurs en annexe\renvoi{annexe:editeurs}.
 
 \section[TeX, LaTeX, XeTeX, XeLaTeX : points communs et différences]{\TeX{}, \LaTeX{}, \XeTeX{} et \XeLaTeX{} : points communs et différences}\label{TeXLaTeX}
 
@@ -107,11 +107,11 @@ Dans ce chapitre nous avons parlé de \LaTeX{}. Le titre de ce livre parle pourt
 
 \begin{enumerate}
 \item En 1977 Donal Knuth invente  \TeX{} qui était un simple compositeur de texte, capable de transformer un texte structuré par des commandes en un texte mis en forme. Avec \TeX{} on pouvait également inventer ses propres commandes.
-\item L'utilisation de \TeX{} était relativement complexe. Pour simplifier cela Leslie Lamport a créé un ensemble de commandes \TeX{}. Cet ensemble de commande a permis de former le langage \LaTeX{} et le compositeur associé.
+\item L'utilisation de \TeX{} était relativement complexe. Leslie Lamport a créé un ensemble de commandes \TeX{} pour en simplifier l'usage. Cet ensemble de commande a permis de former le langage \LaTeX{} et le compositeur associé.
 \item Par la suite un compositeur dérivé de \TeX{} a été créé : \XeTeX{}. Ce compositeur permet deux choses :
 \begin{itemize}
-	\item Une gestion native de l'ensemble des écritures mondiales, par le biais du jeu de caractères Unicode\renvoi{utf8}.
-	\item Une gestion native des nouvelles polices de caractères au format OpenType\footnote{Ce type de fonte permet, par exemple, une gestion poussée des ligatures entre les caractères.}, apparus au début des années 2000.
+	\item Une gestion  de l'ensemble des écritures mondiales, par le biais du jeu de caractères Unicode\renvoi{utf8}.
+	\item Une gestion des nouvelles polices de caractères au format OpenType\footnote{Ce type de fonte permet, par exemple, une gestion poussée des ligatures entre les caractères.}, apparus au début des années 2000.
 
 \end{itemize} 
 \item Pour permettre d'utiliser les commandes de \LaTeX{} avec \TeX{} on a créé \XeLaTeX{}.
@@ -128,7 +128,7 @@ On peut résumer les liens entre \TeX{}, \LaTeX{}, \XeTeX{} et \XeLaTeX{} par le
 Dans  ce livre nous travaillerons sur \XeLaTeX{}. Toutefois comme la plupart de nos propos peuvent s'appliquer indifféremment  à \LaTeX{} et à \XeLaTeX{}, nous parlerons de \LaTeX{}, sauf lorsque nous signalerons une spécificité de \XeLaTeX{}.
 
 \begin{anedocte}
-Bien que le sujet soit controversé, il semblerait qu'il faille prononcer le  \forme{X} de \TeX{} comme un \forme{χ} grec\footnote{\forme{Latek}}, car le nom \TeX{} viendrait du mot grec \forme{\textgreek{τέχνη}} : \forme{art, sciences}.
+Bien que le sujet soit controversé, il semblerait qu'il faille prononcer le  \forme{X} de \TeX{} comme un \forme{χ} grec, car le nom \TeX{} viendrait du mot grec \forme{\textgreek{τέχνη}} : \forme{art, sciences}. Ainsi prononcerait-on \[latek\]
 \end{anedocte}
 
 
@@ -140,7 +140,7 @@ Tout d'abord, les étudiants et chercheurs en sciences humaines qui ne sont pas 
 
 Ensuite, les éditeurs de revues et de livres de sciences humaines, pour les inciter à prendre en compte le format \LaTeX dans leur choix de format de fichier, et pour leur montrer l'avantage de ce format par rapport aux autres formats. J'espère montrer que \LaTeX permet de résoudre nombre de problèmes d'édition, notamment en ce qui concerne les normes bibliographiques, puisqu'il distingue aisément le sens et la forme.
 
-Enfin les utilisateurs de \LaTeX venant des sciences dites \enquote{dures} pour leur montrer les spécificités éditoriales des sciences humaines et la nécessité de packages --- d'extensions --- adaptés.
+Enfin les utilisateurs de \LaTeX venant des sciences dites \enquote{dures} pour leur montrer les spécificités éditoriales des sciences humaines et la nécessité d'extensions --- appelés \forme{package} en \LaTeX adaptés.
 
 
 \section{Comment lire ce livre}
@@ -150,7 +150,7 @@ Cet ouvrage n'est pas un manuel sur \LaTeX{}. Il se veut plutôt une introductio
 Évidemment, ces bases ne sont pas les mêmes que celles proposées dans d'autres livres d'introduction à \LaTeX{}, généralement orientés vers les sciences dites \enquote{dures}. 
 Ainsi vous n'y trouverez pas la manière de frapper une équation. En revanche j'y détaille divers éléments abordés souvent trop rapidement dans les autres introductions : ainsi les diverses façons de faire une citation, d'indiquer un changement de langue, la manière d'écrire dans un ou plusieurs alphabets non latins etc.
 
-Une première partie sera donc consacré à présenter les bases de \LaTeX. Le premier chapitre, sous forme de tutoriel, vise à présenter les concepts de base de \LaTeX. Les autres chapitres, plus formels, décrivent les outils de bases et nécessitent d'avoir compris les concepts. En revanche leurs ordres de lecture dépend essentiellement des besoins rédactionnels du lecteur. 
+Une première partie sera donc consacrée à présenter les bases de \LaTeX. Le premier chapitre, sous forme de tutoriel, vise à présenter les concepts de base de \LaTeX. Les autres chapitres, plus formels, décrivent les outils de bases et nécessitent d'avoir compris les concepts. En revanche leur ordre de lecture dépend essentiellement des besoins rédactionnels du lecteur. 
 
 Celui-ci pourrait d'ailleurs fort bien commencer par les premiers chapitres de la seconde partie, qui vise à présenter les outils de gestions bibliographiques en \LaTeX{}, en commençant par la constitution de la base de donnée bibliographique.
 
