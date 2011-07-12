@@ -1,0 +1,123 @@
+\chapter{Gestion des références bibliques avec \package{Bibleref}}
+
+\begin{prealable}
+
+On peut évidemment considérer la Bible comme une référence bibliographique comme une autre, et inclure ses livres dans la bibliographie générale.
+Toutefois, la présentation d'une référence biblique diverge bien souvent de celle d'une référence bibliographique.
+C'est pourquoi on peut utiliser le package \package{bibleref} et sa traduction \package{bibleref-french}.
+\end{prealable}
+
+
+\section{Chargement du package et options}
+
+Pour que nos références bibliques soient en français, il suffit simplement d'appeler le package \package{bibleref-french}. Celui-ci se chargera d'appeler le package \package{bibleref}.
+
+
+\begin{minted}{latex}
+\usepackage{bibleref}
+\end{minted}
+
+\subsection{Forme catholique ou protestante}
+Le livre que les protestants appellent \forme{Esaïe} est appelé \forme{Isaïe} chez les catholiques. Pour choisir la forme protestante, il suffit de passer l'option \option{protestants} à l'appel du package. Le package se chargera d'uniformiser.
+
+\begin{minted}{latex}
+\usepackage[protestants]{bibleref}
+\end{minted}
+
+\subsection{Styles de références}
+
+Les éditions de la bible divergent parfois quant à la manière d'afficher une référence biblique. En outre, les références peuvent s'afficher tantôt en version abrégée, tantôt en version complète. C'est pourquoi il existe  plusieurs styles de références bibliques. 
+
+On choisit son style par la commande \commande{biblerefstyle}, qu'il est conseillé de mettre en préambule.
+\begin{minted}{latex}
+\biblerefstyle{style}
+\end{minted}
+
+La liste des styles est présentée dans le tableau ci-dessous : 
+
+\begin{longtable}{lp{0.5\textwidth}}
+\bfseries Style & \bfseries Ex\\
+\endhead
+default & \biblerefstyle{default}\bibleverse{IICor}(12:1-5,7) ; \bibleverse{Qo}(1:3)(2:5) ; \bibleverse{Is}(10:)\\
+jerusalem & \biblerefstyle{jerusalem}\bibleverse{IICor}(12:1-5,7) ; \bibleverse{Qo}(1:3)(2:5) ; \bibleverse{Is}(10:)\\
+colombe & \biblerefstyle{colombe}\bibleverse{IICor}(12:1-5,7) ; \bibleverse{Qo}(1:3)(2:5) ; \bibleverse{Is}(10:)\\
+colombefull & \biblerefstyle{colombefull}\bibleverse{IICor}(12:1-5,7) ; \bibleverse{Qo}(1:3)(2:5) ; \bibleverse{Is}(10:)\\
+NBS & \biblerefstyle{NBS}\bibleverse{IICor}(12:1-5,7) ; \bibleverse{Qo}(1:3)(2:5) ; \bibleverse{Is}(10:)\\
+NBSfull & \biblerefstyle{NBSfull}\bibleverse{IICor}(12:1-5,7) ; \bibleverse{Qo}(1:3)(2:5) ; \bibleverse{Is}(10:)\\
+TOB & \biblerefstyle{TOB}\bibleverse{IICor}(12:1-5,7) ; \bibleverse{Qo}(1:3)(2:5) ; \bibleverse{Is}(10:)\\
+TOBfull & \biblerefstyle{TOBfull}\bibleverse{IICor}(12:1-5,7) ; \bibleverse{Qo}(1:3)(2:5) ; \bibleverse{Is}(10:)\\
+text & \biblerefstyle{text}\bibleverse{IICor}(12:1-5,7) ; \bibleverse{Qo}(1:3)(2:5) ; \bibleverse{Is}(10:)\\
+\end{longtable}
+
+En l'absence de style précisé, c'est le style \forme{default} qui l'emporte.
+
+Il est évidemment possible de créer ses propres styles : nous renvoyons au manuel pour en savoir plus\footcite{bibleref-styles}.
+
+
+\section{Référencer un passage biblique}
+
+La syntaxe pour référence un passage biblique varie selon que l'on suite référencer un livre en entier, un chapitre, certains versets. Voici l'ensemble des syntaxes disponibles\footnote{Je ne fais ici que reprendre le manuel.}
+
+\begin{longtable}{ll}
+\begin{english}\verb|\bibleverse{Ex}|\end{english} & \bibleverse{Ex}\\
+\begin{english}\verb|\bibleverse{Ex}(20:)|\end{english} & \bibleverse{Exodus}(20:)\\
+\begin{english}\verb|\bibleverse{Ex}(20:17)|\end{english} & \bibleverse{Exod}(20:17)\\
+\begin{english}\verb|\bibleverse{IICo}(12:21)|\end{english} & \bibleverse{IICo}(12:21)\\
+\begin{english}\verb|\bibleverse{IICor}(12:21-32)|\end{english} & \bibleverse{IICor}(12:21-32)\\
+\begin{english}\verb|\bibleverse{Ex}(20:17)(21:3)|\end{english} & \bibleverse{Ex}(20:17)(21:3)\\
+\begin{english}\verb|\bibleverse{Ex}(15:)(17:)(20:)|\end{english} & \bibleverse{Ex}(15:)(17:)(20:)\\
+\begin{english}\verb|\bibleverse{Ap}(1:2,5,7-9,11)|\end{english} & \bibleverse{Rev}(1:2,5,7-9,11)\\
+\begin{english}\verb|\bibleverse{ICh}(1:3)-(2:7)|\end{english} &
+\bibleverse{IChronicles}(1:3)-(2:7)\\
+\begin{english}\verb|\bibleverse{Lc}(1,4-5,8:)|\end{english} &\bibleverse{Luke}(1,4-5,8:)
+\end{longtable}
+
+Voici la liste des abréviations de livres.
+
+\begin{longtable}{ll}
+Gn	&	Genèse\\Ex	&	Exode\\Lv	&	Lévitique\\Nb	&	Nombres\\Dt	&	Deutéronome\\Jos	&	Josué\\Jg	&	Juges\\1S	&	1 Samuel\\2S	&	2 Samuel\\1R	&	1 Rois\\2R	&	2 Rois\\1Ch	&	1 Chroniques\\2Ch	&	2 Chroniques\\Esd	&	Esdras\\Ne	&	Néhémie\\1M	&	1 Maccabées\\2M	&	2 Maccabées\\Is	&	Isaïe\\Es	&	Esaïe\\Jr	&	Jérémie\\Ez	&	Ezéquiel\\Os	&	Osée\\Jl	&	Joël\\Am	&	Amos\\Ab	&	Abdias\\Jon	&	Jonas\\Mi	&	Michée\\Na	&	Nahum\\So	&	Sophonie\\Ha	&	Habaquq\\Ag	&	Aggée\\Za	&	Zacharie\\Ml	&	Malachie\\Dn	&	Daniel\\Jb	&	Job\\Pr	&	Proverbes\\Qo	&	Qohéleth\\Ct	&	Cantiques des cantiques\\Rt	&	Ruth\\Lm	&	Lamentations\\Est	&	Esther\\Tb	&	Tobie\\Jdt	&	Judith\\Ba	&	Baruch\\Sg	&	Sagesse\\Si	&	Siracide (Ecclésiastique)\\Ps	&	Psaumes\\Mt	&	Matthieu\\Lc	&	Luc\\Jn	&	Jean\\Mc	&	Marc\\Ac	&	Acte\\Rm	&	Romains\\1Co	&	1 Corinthiens\\2Co	&	2 Corinthiens\\Ga	&	Galates\\Ep	&	Éphésiens\\Ph	&	Philippiens\\Col	&	Colossiens\\1Th	&	1 Thessaloniciens\\2Th	&	2 Thessaloniciens\\1Tm	&	1 Timothée\\2Tm	&	2 Timothée\\Tt	&	Tite\\Phm	&	Philémon\\He	&	Hébreux\\Jc	&	Jacques\\1P	&	1 Pierre\\2P	&	2 Pierre\\1Jn	&	1 Jean\\2Jn	&	2 Jean\\3Jn	&	3 Jean\\Jude	&	Jude\\Ap	&	Apocalypse\\
+\end{longtable}
+
+\begin{anedocte}
+Les livres proposées correspondent au canon catholique. On peut ajouter d'autres livres : nous renvoyons à la documentation de \package{bibleref}\footcite{bibleref_nouveauxlivres}.
+
+
+\end{anedocte}
+
+\section{Indexer une référence}
+
+On peut remplacer la commande \commande{bibleverse} par la commande \commande{ibibleverse}. Celle-ci indexe une référence biblique, en plus de l'afficher.
+
+\subsection{Un index à part}
+
+Par défaut, les références sont indexées dans l'index principal. Il est toutefois possible de dire de les indexer ailleurs.
+
+Pour ce faire, avec \package{splitindex}\renvoi{splitindex}, il faut d'abord déclarer un nouvel index.
+
+\begin{minted}{latex}
+\newindex[Index des références bibliques]{bible}
+\end{minted}
+
+Il faut ensuite redéfinir la commande \commande{\biblerefindex} de la manière suivante :
+\begin{minted}{latex}
+\renewcommand{\biblerefindex}[0]{\sindex[sources]}
+\end{minted}
+
+Et à l'endroit où l'on souhaite afficher cet index :
+\begin{minted}{latex}
+\printindex
+\end{minted}
+
+\section{Espaces insécables}
+
+Le package \package{bibleref-french} prévoit d'insérer des espaces insécables :
+\begin{enumerate}
+\item Entre le nombre et le nom quand le nom d’un livre contient un nombre ;
+\item Entre le nom du livre et le numéro de chapitre ;
+\item Après un tiret demi-cadratin (–) dans un intervalle de versets.
+\item Après les virgules de séparations.
+\end{enumerate}
+
+Si beaucoup de références sont indiquées, cela peut amener à des fins de lignes dépassante.
+Pour éviter cela, on peut autoriser temporairement la coupure des espaces entre un livre et un numéro de chapitre. La commande \commande{BRallowhypbch} marque le début de l'autorisation ; \commande{BRforbidhypbch} en marque la fin.
+
