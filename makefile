@@ -1,7 +1,7 @@
 
 XELATEX 	= xelatex -shell-escape
 BIBER		= biber -quiet
-RERUN		= 'rerun LaTeX afterwards'
+RERUN		= 'rerun LaTeX'
 UNDEFINED	= "Citation .* undefined"
 
 
@@ -14,11 +14,13 @@ all:principal.pdf
 	$(XELATEX) $<
 	@echo "Compilation Biber"
 	$(BIBER) $*
-	@if egrep -q $(RERUN) $*.log ; then echo "Compilation XELATEX" && $(XELATEX) $< ; fi
-	
-	@echo "Citations indéfinies:"
-	@egrep -i $(UNDEFINED) $*.log || echo "Aucune"
+	number = 1 ; while egrep -i -q $(RERUN) $*.log ; do \
+	        echo $$number ; \
+	        ((number = number + 1)) ; \
+			echo "Passe XeLaTeX" $$number ; \
+			$(XELATEX) $< ; \
+	    done
 	open $@
 
 clean:
-	@rm *.aux *.log *.out *.toc  *.pdf *idx *ind *run.xml *blg *bbl *bcf
+	@rm -f *.aux *.log *.out *.toc  *.pdf *idx *ind *run.xml *blg *bbl *bcf
