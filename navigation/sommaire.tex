@@ -29,7 +29,7 @@ La table des matières prend elle même un certain volume. Par conséquent si vo
 
 Par défaut la commande \commande{tableofcontents} affiche tout les niveaux de titres, depuis \commande{part} jusqu'au \commande{subparagraph}.\renvoi{niveautitre}. Il est possible de restreindre la profondeur, ou au contraire de l'étendre. Pour ce faire, il suffit de redéfinir un compteur \LaTeX{} : \compteur{tocdepth}.
 
-Un compteur, en \LaTeX{}, est un nombre entier stocké dans la mémoire vive de l'ordinateur. Un compteur peut être appelé à certains endroits par \LaTeX{}. Il peut également être modifié par \LaTeX{}. Typiquement, un compteur est associé à un élément numéroté. Il existe par exemple un compteur \compteur{page} correspondant au numéro de la page, incrémenté par \LaTeX{} à chaque changement de page et utilisé pour afficher le numéro de page. \revision{Un peut technique non ?}
+Un compteur, en \LaTeX{}, est un nombre entier stocké dans la mémoire vive de l'ordinateur. Un compteur peut être appelé à certains endroits par \LaTeX{}. Il peut également être modifié par \LaTeX{}. Typiquement, un compteur est associé à un élément numéroté. Il existe par exemple un compteur \compteur{page} correspondant au numéro de la page, incrémenté par \LaTeX{} à chaque changement de page et utilisé pour afficher le numéro de page. \revision{Un peut technique non ?}
 
 Dans notre cas, le compteur \compteur{tocdepth} n'est pas modifié par \LaTeX{}. En revanche il sert lors de l'affichage de la table des matières. Chaque niveau de titre possède un numéro. \renvoi{numeroniveau}. La commande \commande{tableofcontents} affiche les niveaux de titres dont le numéro est inférieur ou égale à la valeur du compteur \compteur{tocdepth}.
 
@@ -80,14 +80,67 @@ En plus de la table des matières, \LaTeX{} permet d'afficher une table des tabl
 Pour la table des tableaux, il faut utiliser la commande \commande{listoftables} et pour la table des figures la commande \commande{listoffigures}.
 
 
-%
-%\section{Plusieurs tables des matières}
-%
-%La commande \commande{tableofcontents} ne fonctionne qu'une seule fois dans un document \LaTeX{}. Comment faire si on souhaite avoir un sommaire et une table des matières, ou bien des tables des matières par partie ?
-%
-%La méthode la plus simple consiste à  utiliser le package \package{minitoc}.
-%
-% En suspend, en attendant que je comprennent toutes les subtilités.
+
+\section{Plusieurs tables des matières}
+
+La commande \commande{tableofcontents} ne fonctionne qu'une seule fois dans un document \LaTeX{}. Comment faire si on souhaite avoir un sommaire et une table des matières, ou bien des tables des matières par partie ?
+
+\subsection{Un sommaire en plus d'une table des matières}
+
+Bien que cette pratique soit un peu désuète et rarement utile, on peut souhaiter  avoir un table des matières en fin de travail et un sommaire en début.
+Pour ce faire, il suffit d'utiliser le package \package{shorttoc}. Celui-ci définit une commande \commande{shorttoc} à la syntaxe simple :
+
+\begin{minted}{latex}
+\shorttoc{titre}{niveau}
+\end{minted}
+
+Typiquement pour un sommaire qui ne reprendrait que les niveaux de sections et de chapitres, il suffit d'écrire :
+
+\begin{minted}{latex}
+\shorttoc{Sommaire}{0}
+\end{minted}
+
+
+
+
+\subsection{Sommaires partiels}
+
+Il peut aussi arriver qu'on souhaite indiquer un sommaire au début de chaque chapitre. Il faut dans ce cas utiliser le package \package{minitoc} en lui passant l'option \option{french}. On peut ensuite activer les mini-sommaire grâce à la commande \option{dominitoc}
+
+\begin{minted}{latex}
+\usepackage{minitoc}{french}
+\dominitoc
+\end{minted}
+
+Pour afficher les mini-sommaires, il suffit d'utiliser la commande \commande{minitoc} aux endroits voulu, par exemple après chaque titre de chapitre.
+
+\begin{minted}{latex}
+\chapter{A}
+\minitoc
+…
+\chapter{B}
+\minitoc
+\end{minted}
+
+\begin{attention}
+Le package ne peut calculer correctement les sommaires que si la commande \commande{tableofcontents} est utilisée. Si vous souhaitez n'afficher que des mini-sommaires mais pas de tables générales des matières --- ce qui est une idée assez étrange --- vous pouvez utiliser à la place la commande \commande{faketableofcontents}.
+\end{attention}
+
+Pour afficher des mini-sommaires par partie, il faut utiliser la commande \commande{parttoc}. Par exemple :
+
+\begin{minted}{latex}
+\part{A}
+\parttoc
+\chapter{1}
+\chapter{2}
+…
+\part{B}
+\parttoc
+…
+\end{minted}
+
+
+Le package \package{minitoc} est très complexe : il permet par exemple choisir aisément les styles du sommaire. Nous renvoyons au manuel pour plus de détail\footcites{minitoc}[en particulier][]{minitoc_typesseting}.
 
 \section{Des signets dans le PDF : le package \package{hyperref}}\label{hyperref}
 \rev{mettre ailleurs / supprimer ??}
@@ -123,6 +176,3 @@ urlcolor=black,
 \end{minted}
 
 \verb|colorlinks=true| indique nous colorons les liens au lieu de les entourer. Pour \package{hyperref} il existe plusieurs types de liens dont la couleur est configurable. Ici nous indiquons de mettre en noir les types de liens suivants (dans l'ordre) : la couleur des liens de renvois d'une référence bibliographique abrégée à la référence complète, la couleur des liens appelant des fichiers externe au PDF, la couleur des liens internes (notes de bas de pages, renvois), la couleur des liens externes.
-
-
-\printbibliography
