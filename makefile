@@ -3,7 +3,8 @@ XELATEX 	= xelatex -shell-escape
 BIBER		= biber -quiet
 RERUN		= 'rerun latex( afterwards){0}'
 UNDEFINED	= "Citation .* undefined"
-
+LABEL_MULTIPLE		= "(multiply defined)"
+LABEL_NON_DEFINI    = "(Reference .* undefined)"
 
 .PHONY: all  clean
 
@@ -27,7 +28,8 @@ all:principal.pdf
 	    done
 	@echo "Citations indéfinies:"
 	@egrep -i $(UNDEFINED) $*.log || echo "Aucune"
-	open $@
-
+	@echo "Erreurs de label"
+	@egrep -i $(LABEL_MULTIPLE) $*.log
+	@egrep -i $(LABEL_NON_DEFINI) $*.log
 clean:
 	@rm -f *.aux *.log *.out *.toc  *.pdf *idx *ind *run.xml *blg *bbl *bcf
