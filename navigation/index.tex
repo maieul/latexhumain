@@ -224,4 +224,51 @@ il s'agit bien de \verb+|textbf+, non de \verb+|\textbf+
 Nous supposons que vous avez appris à vous servir de \package{MakeIndex} avant d'apprendre à utiliser \package{SplitIndex}, car les principes de base sont les mêmes.
 \end{prealable}
 
-\input{navigation/index-source}
+Le package se charge en remplçant la commande \verb|\usepackage{makeindex}| par \verb|\usepackage{splitidx}| tout en gardant ensuite \commande{makeindex} dans le préambule, ou bien en mettant simplement  \verb|\usepackage[makeindex]{splitidx}|.
+
+\subsection{Définir ses index}
+
+Le package \package{SplitIndex} permet de faire plusieurs index pour un même document. La première étape consiste à définir ces index. On les déclare dans le préambule par la commande 
+\begin{minted}{latex}
+\newindex[Nom de l'index]{abbréviation}
+\end{minted}
+
+L'argument entre crochet est le nom de l'index tel qu'il apparaîtra quand vous aurez compilé votre document. L'argument entre accolades doit être assez court, puisque c'est avec lui que vous indiquerez à quel index appartient chaque entrée que vous indéxez dans votre document.
+
+% cf les noms des fichiers: chaque index donne lieu à un fichier.idx et un .ind (à dev?) dont le nom est sous la forme: monfichier-abbréviation.idx. Ex: monfichier-idx.idx et monfichier-idx.npr. 
+
+Ainsi, pour faire un index des noms propres et un index général, on peut déclarer:
+\begin{minted}{latex}
+\newindex[Index général]{idx}
+\newindex[Noms propres]{npr}
+\end{minted}
+
+\subsection{Indexer son texte}
+Une fois que les index sont déclarés, il faut passer à l'indexation proprement dite. Le principe est similaire à ce que nous avons déjà vu pour le package \package{makeindex}. Mais au lieu de \verb+\index{entrée}+, on utilisera \verb|\sindex[abbréviation]{entrée}| (notez que c'est bien \verb|\sindex|, non \verb|\index|). 
+
+Remarque: Toutes les entrées indiquées non par \verb|sindex| mais par \verb|index| seront automatiquement \enquote{rangées} dans un index général (dont le nom abbrégé est idx)
+
+On peut ainsi indexer notre texte d'Eginhard de la façon suivante:
+
+\begin{minted}[linenos]{latex}
+
+\sindex[idx]{Charles et la papauté|(}Tandis que Charle\sindex[npr]{Charlemagne} était à Rome, il convint
+avec le pape Adrien\sindex[npr]{Adrien} qu’ils enverraient de concert
+des ambassadeurs à Tassilon, duc de Bavière\sindex[npr]{Tassilon}(...)
+Les hommes choisis et envoyés dans cette ambassade furent, de 
+la part du pape, les évêques Formose\sindex[npr]{Formose} et 
+Damase\sindex[npr]{Damase}(…)\sindex[idx]{Charles et la papauté|}.
+
+\end{minted}
+
+Tous les formatages d'entrées que l'on a vu pour \package{makeindex} fonctionnent également avec \package{splitindex}
+
+
+\subsection{Imprimer les index}
+printindex*
+ou printindex+noms des index si on ne veut pas tout les index
+
+mettre remarque > comment tout repasser à un seul index : \verb|\usepackage[allatone]{splitidx}|
+
+
+%\input{navigation/index-source}
