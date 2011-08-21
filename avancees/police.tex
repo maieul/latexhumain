@@ -28,5 +28,55 @@ La commande \commande{setmainfont} sert à définir la police avec empattement (
 
 \begin{anedocte}
 Le package \package{fontspec} permet de définir d'autres familles de caractères. Toutefois en général il n'est pas recommandé de varier les polices dans un textes : c'est pourquoi nous ne détaillons pas ici, mais nous contentons de renvoyer à la documentation du package\footcite{fontspec_nouvellefamille}.
-
 \end{anedocte}
+
+\section{Interlignes}
+
+Le package \package{setspace} --- qui ne possède pas de documentation officielle --- permet de changer facilement l'interligne du document en proposant trois interlignages : simple (c'est le réglage standard), double et \enquote{un et demi}. En général une interline de 1,5 est recommandée pour les travaux universitaires, sauf pour les notes de bas de pages, où un interlignage simple est de mise. Cela tombe bien : le package n'applique le changement d'interligne qu'aux corps du texte. Les notes de bas de page sont donc préservées.
+
+\begin{anedocte}
+Le package \package{setspace}  \enquote{se contente} de définir des nouvelles commandes pour executer des suites complexes de commandes \TeX et \LaTeX nécéssaires à la définitions de l'interlignes en tenant compte de la taille de la police.
+
+Si donc vous souhaitez définir une autre taille d'interligne, vous pouvez essayer de vous inspirer du code du package. Mais ceci nécéssite de maîtriser assez bien \LaTeX. 
+\end{anedocte}
+
+Les trois commandes qui nous intéressent sont \commande{singlespacing}, \commande{onehalfspacing} et \commande{\doublespacing}. Ces commandes s'utilisent de la manière suivante :
+
+\begin{minted}{latex}
+\doublespacing
+Ce texte sera en interligne double.
+\onehalfspacing
+Ce texte sera en interligne 1,5.
+\singlespacing
+Ce texte sera en interligne simple. 
+\end{minted}
+
+Tant qu'aucune commande de changement d'interligne n'est utilisée, le texte reste dans l'interligne courante. Nos commandes sont appelés \forme{commandes de bascule}.
+
+\subsection{\forme{Commande à arguments} et \forme{commande de bascule}}\label{bascule}
+
+Jusqu'à maintenant, à quelques exceptions près, nous n'avions vu que des commandes prenant un certain nombre d'arguments. Ici nos commandes ne prennent pas d'argument, mais changent un certain nombre de paramètres, jusqu'à nouvel ordre. Par exemple, nos commandes de bascule du package \package{setspace} vont changer l'interligne de notre texte. L'utilisation des commandes de bascule est nécéssaire pour la redéfinition de certaines commandes de \LaTeX, ainsi les commandes des titres\renvoi{apparencetitre}.
+
+Il est donc recommandé de mettre la commande \commande{onehalfspacing} en tout début de fichier, par exemple dans le préambule.
+
+\subsection{Environnement de changement d'interligne}
+
+Le package \package{setspace} propose également trois environnements qui permettent de limiter la portée d'un changement d'interligne. 
+
+\begin{minted}{latex}
+\begin{singlespace}
+Texte avec un interligne simple
+\end{singlespace}
+\begin{onehalfspace}
+Texte avec un interligne 1,5.
+\end{onehalfspace}
+\begin{doublespace}
+Texte avec un interligne double.
+\end{doublespace}
+\end{minted}
+
+\subsection[Rédéfinir un environnement : quotation]{(Re)définir un environnement : exemple avec l'environnement \enviro{quotation}}
+
+
+
+
