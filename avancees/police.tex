@@ -40,7 +40,7 @@ Le package \package{setspace}  \enquote{se contente} de définir des nouvelles c
 Si donc vous souhaitez définir une autre taille d'interligne, vous pouvez essayer de vous inspirer du code du package. Mais ceci nécéssite de maîtriser assez bien \LaTeX. 
 \end{anedocte}
 
-Les trois commandes qui nous intéressent sont \commande{singlespacing}, \commande{onehalfspacing} et \commande{\doublespacing}. Ces commandes s'utilisent de la manière suivante :
+Les trois commandes qui nous intéressent sont \commande{singlespacing}, \commande{onehalfspacing} et \commande{doublespacing}. Ces commandes s'utilisent de la manière suivante :
 
 \begin{minted}{latex}
 \doublespacing
@@ -91,7 +91,7 @@ Une telle méthode viole le principe de séparation de fond et de forme. En outr
 
 Mais ici il s'agit non seulement de rédéfinir l'environnement, mais aussi de réutiliser les propriétés de l'ancien environnement. On procède en insérant ce code en début de document, dans le préambule :
 
-\begin{minted}[lineos]{latex}
+\begin{minted}[linenos]{latex}
 \let\oldquotation\quotation
 \let\endoldquotation\endquotation
 \renewenvironment{quotation}
@@ -103,7 +103,7 @@ Commentaires :
 
 \begin{description}
 \item[ligne 1]la commande \commande{let} est une commande \TeX qui copie une commande dans une autre commande. Ici nous copions la commande \commande{quotation} dans la commande \commande{oldquotation}\footnote{Bien que \enquote{old} soit un nom anglais, il est de convention de préfixer ainsi les commandes copiées depuis une autre commande}. La commande \commande{quotation} quant à elle correspond au début de l'environnement \enviro{quotation}, c'est à dire à ce qui est executé par \verb|\begin{quotation}|.
-\item[ligne 2] nous copions la commande \commande{endquotation} correspondant à la fin de l'environnement  \enviro{quotation}\footnote{C'est à dire à ce qui est executé lors du \verb|\end{quotation}| dans une commande \commande{endoldquotation}.
+\item[ligne 2] nous copions la commande \commande{endquotation} correspondant à la fin de l'environnement  \enviro{quotation} --- c'est à dire à ce qui est executé lors du \verb|\end{quotation}| dans une commande \commande{endoldquotation}.
 \end{description}
 
 En créant ces deux commandes \commande{oldquotation} et \commande{endoldquotation} nous avons créé un environnement \enviro{oldquotation}.
