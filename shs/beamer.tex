@@ -58,7 +58,7 @@ Par exemple :
 
 Il est possible de structurer le document Beamer grâce aux commandes \commande{section} et \commande{subsection}\renvoi{niveautitre}\footcite[Le manuel de \classe{Beamer} déconseille d'utiliser  \commande{subsubsection} parce que \enquote{c'est le diable}.][]{beamer_diable} et d'utiliser dans le préambule les commandes de descriptions : \commande{title}, \commande{author} et \commande{date}\renvoi{notioncommande}.
 
-Toutefois ces informations servent uniquement à structurer le document, afin de permettre d'afficher le plan. C'est pourquoi il faut les entrées \emph{en-dehors} des diapositives\footnote{Un  autre intérêt est aussi de permettre d'avoir un seul document pour une version \forme{article} et une version \forme{diapositive} d'un même sujet.}.
+Toutefois ces informations servent uniquement à structurer le document, afin de permettre d'afficher le plan. C'est pourquoi il faut les entrées \emph{en-dehors} des diapositives\footnote{Un  autre intérêt est aussi de permettre d'avoir un seul document pour une version \forme{article} et une version \forme{diapositive} d'un même sujet.}.
 
 En revanche, pour les afficher dans une diapositive, il faut utiliser les commandes \commande{sectionpage} et \commande{subsectionpage} pour les niveaux de titres et \commande{titlepage} pour les informations sur la date, l'auteur et le titre de la conférence.
 
@@ -134,6 +134,11 @@ La commande \commande{alert} sert à mettre en valeur une partie d'un texte. Ell
 \end{frame}
 \end{minted}
 
+\begin{anedocte}
+
+Le package \package{spot} permet des mises en valeurs sous forme de tache lumineuse.
+
+\end{anedocte}
 \section{Notes de conférence}
 
 Il peut être utile pour le conférencier d'avoir, en plus des diapositives, des notes pour lui servir d'aide-mémoire lors d'une conférence.
