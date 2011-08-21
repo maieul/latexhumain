@@ -124,8 +124,9 @@ Si vous avez compris nos propos sur les commandes de début et de fin d'environn
 \end{minted}
 \end{anedocte}
 
-\section{Titre : redéfinir la numérotation}\rev{Réfléchir à mettre ailleurs}
+\section{Personaliser les titres}\rev{Réfléchir à mettre ailleurs}
 
+\subsection{Redéfinir la numérotation}
 Nous avons abordés plus haut la notion de compteur. À chaque niveau de titre, \LaTeX associe un compteur \compteur{niveau}. Ainsi le compteur associé au niveau de titre \commande{chapter} est \compteur{chapter}.
 
 La valeur d'un compteur peut s'afficher grâce à la commande \commande{thecompteur}. Ainsi, si vous écrivez 
@@ -202,4 +203,7 @@ Ce qui nous donne un affichage de la forme :
 \renewcommand \thechapter {\oldthechapter}
 \renewcommand \thesection {\oldthesection}
 
+\rev{voir si on peut définir la numérotation des notes de bas de page en discontinue}
+
+\subsection{Définir l'apparence : sections et niveaux inférieurs}
 
