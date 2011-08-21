@@ -235,3 +235,27 @@ Supposons maintenant que nous souhaitons avoir notre titre en en italique et en 
 \end{minted}
 
 La commande \commande{ssfamily} produit une bascule vers la police sans empattement définie par \commande{setsansfont}, tandis que \commande{it} produit une bascule vers un texte en italique.
+
+\section{Définir l'apparence : chapitre et niveaux supérieurs}
+
+Si on cherche dans le fichier \fichier{book.cls} la commande \commande{chapter}, on trouve\footnote{L. 360 et suivant, à la date du 6 août 2011.} :
+
+\begin{minted}{latex}
+\newcommand\chapter{\if@openright\cleardoublepage\else\clearpage\fi
+                    \thispagestyle{plain}%
+                    \global\@topnum\z@
+                    \@afterindentfalse
+                    \secdef\@chapter\@schapter}
+\end{minted}
+
+Deux élèments nous intéressent : la ligne 2 \verb|thispagestyle{plain}|. On comprend ainsi la raison pour laquelle les  pages de début de chapitre n'ont pas les numéros de de page au même endroit que les autres : le style de cette page est \forme{plain} et non pas \forme{heading}, comme pour les autres pages. \renvoi{styleentetes}. Par conséquent, si on souhaite que les pages de titre aient les mêmes entêtes et pieds de page que les pages standards, il faut redéfinir la commande \commande{\chapter}.\label{entetechapter}.
+
+\begin{minted}{latex}
+\makeatletter
+\renewcommand\chapter{\if@openright\cleardoublepage\else\clearpage\fi
+                    \global\@topnum\z@
+                    \@afterindentfalse
+                    \secdef\@chapter\@schapter}
+\makeatother
+\end{minted}
+

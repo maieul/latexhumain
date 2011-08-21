@@ -5,7 +5,7 @@ Nous allons voir comment personnaliser les entêtes et pieds de page à l'aide d
 \end{prealable}
 
 
-\section{Utiliser l'un des styles standards}
+\section{Utiliser l'un des styles standards}\label{stylesentete}
 
 \LaTeX propose quatre styles standards de pages, définissant le contenu des entête et pieds de page. Pour indiquer à \LaTeX d'utiliser l'un de ces styles, il suffit d'utiliser la commande 
 \begin{minted}{latex}
@@ -15,8 +15,8 @@ Nous allons voir comment personnaliser les entêtes et pieds de page à l'aide d
 Ces styles sont :
 \begin{description}
 \item[empty]: pas d'entête ni de pied de page.
-\item[plain]: pas d'entête mais pieds de pages contenant le numéro de page en centré.
-\item[heading]: pas de pied, entêtes contenant titre du chapitre, de la section ou de la sous-section et le numéro de page.
+\item[plain]: pas d'entête mais pieds de pages contenant le numéro de page en centré. C'est le style correspondant aux pages de début de chapitre. \renvoi{debutchapitre}
+\item[heading]: pas de pied, entêtes contenant titre du chapitre, de la section ou de la sous-section et le numéro de page. C'est le style par défaut.
 \item[myheading] … ?
 \end{description}
 
@@ -32,9 +32,14 @@ On voit vite les limites de ces styles. Ainsi, comment faire pour avoir à la fo
 \pagestyle{fancy}
 \end{minted}
 
+\begin{anedocte}
+Les pages de début de chapitre appliquent automatiquement le style \forme{plain}. Pour désactiver cette activation, il faut modifier le commande \commande{chapter}. Nous en parlons plus loins. \renvoi{entetechapter}
+\end{anedocte}
+
+
 Une fois ceci fait, il est possible d'utiliser les six commandes de \package{fancyhdr} servant à définir le contenu des entêtes et pieds de pages :
 
-\begin{descritpion}
+\begin{description}
 \commande[lhead]prend comme argument le contenu de la partie gauche de l'entête, justifiée à gauche.
 \commande[chead]prend comme argument la partie centrale de l'entête, centrée.
 \commande[rhead]prend comme argument la partie droite de l'entête, justifiée à droite.
@@ -42,7 +47,6 @@ Une fois ceci fait, il est possible d'utiliser les six commandes de \package{fan
 \commande[cfoot]prend comme argument la partie centrale de l'entête, centrée.
 \commande[rfoot]prend comme argument la partie droite de l'entêtre, justifiée à droite.
 \end{description}
-
 
 
 \rev{comment mettre exemple minipage ?} 
