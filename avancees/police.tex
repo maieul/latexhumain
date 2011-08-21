@@ -169,9 +169,9 @@ Il nous suffit de redéfinir ainsi ces commandes :
 \renewcommand \thesection {\thechapter.\@arabic\c@section)~}
 \end{minted} 
 
-Si vous écrivez ces lignes dans votre préambule, vous n'arriverez pas à compiler. Cela tient à une raison simple : les commandes contenant le caractère @ ne peuvent pas être, normalement, utilisées dans un fichier \ext{tex}, mais uniquement dans les fichiers de définition de classe (\ext{cls}) ou de package (\ext{sty}).
+\label{makeatletter}Si vous écrivez ces lignes dans votre préambule, vous n'arriverez pas à compiler. Cela tient à une raison simple : les commandes contenant le caractère @ ne peuvent pas être, normalement, utilisées dans un fichier \ext{tex}, mais uniquement dans les fichiers de définition de classe (\ext{cls}) ou de package (\ext{sty}).
 
-Pour pouvoir les utiliser dans un fichier \ext{tex}, il faut les entourer des commandes \commande{makealetter} et \commande{makeatother}.
+Pour pouvoir les utiliser dans un fichier \ext{tex}, il faut les entourer des commandes \commande{makeatletter} et \commande{makeatother}.
 
 Ce qui nous donne : 
 
@@ -207,3 +207,31 @@ Ce qui nous donne un affichage de la forme :
 
 \subsection{Définir l'apparence : sections et niveaux inférieurs}
 
+Pour personaliser l'apparence des titres, le mieux est de regarder ce que nous proposent les classes standards. Prenons le cas de la classe \class{book}, définie dans le fichier \fichier{book.cls}. En cherchant un peu, nous trouvons\footnote{L. 414 à l'heure où nous écrivons ces lignes.} :
+
+\begin{minted}{latex}
+\newcommand\section{\@startsection {section}{1}{\z@}%
+                                   {-3.5ex \@plus -1ex \@minus -.2ex}%
+                                   {2.3ex \@plus.2ex}%
+                                   {\normalfont\Large\bfseries}}
+\end{minted}
+
+Commentons ces quelques lignes :
+
+\begin{description}
+\item[ligne 1]La commande \commande{section} fait appel à une commande \commande{\@startsection}. Cette commande ajoute donc un niveau de titre à la table des matières. Malgrès son titre, elle peut servir pour n'importe quel niveau de titre (par exemple, pour les \commande{subsection}). Elle prend plusieur argument. Le premier est le nom du niveau : ici \verb|section|. Le second est le niveau de profondeur : \verb|1|. Le troisième est l'indentation prélable : ici \commande{z@}\rev{Qu'est ce ? vérifier quelque part}.
+\item[ligne 2]: quatrième argument de la commande \commande{@startsection}, qui indique l'espace vertical \emph{avant} le titre. Cet espace est idéalement de 3,5 ex \renvoi{unites}, mais peut être compris entre 1,5 ex (3,5 - 2) et 4,5 ex (3,5 + 1), les commandes \commande{@moins} et \commande{@plus} indiquant cette marge de manœuvre.
+\item[ligne 3]: cinquième argument de \commande{@startsection}, qui indique l'espace vertical après le titre. Notre longueur étant positive, le texte qui suit débute un nouveau paragraphe. Une longueur négative (comme c'est le cas pour la définition de la commande \commande{paragraph}) indique qu'il n'y a pas de changement de paragraphe. Ici donc, l'espace après le titre est de 2,3 ex, mais peut atteindre 2,5 ex (2,3 + 0,2).
+\item[ligne 4]: sixième et dernier argument de \commande{@startsection}, qui indique l'apparence proprement dit de notre titre. Il s'agit d'un texte en police normale --- c'est à dire celle définie par la commande \commande{setmainfont} ---, en taille \commande{Large}, mise en gras (\commande{\bfseries}). Ici toutes nos commandes sont considérés comme des commandes de bascule, la bascule finissant avec l'accolade fermante. La commande \commande{bfseries} étant l'équivalent à bascule de la commande \commande{textbf}. Il est recommandé de n'utiliser ici que des commandes à bascule, pour éviter des espaces indésirables. 
+\end{description}
+
+Supposons maintenant que nous souhaitons avoir notre titre en en italique et en police sans empattement. Il nous suffit de redéfinir notre commande \commande{section}, en entourant notre définition de \commande{makeatletter} et \commande{makeatother}.\renvoi{makeatletter}.
+
+\begin{minted}{latex}
+\renewcommand\section{\@startsection {section}{1}{\z@}%
+                                   {-3.5ex \@plus -1ex \@minus -.2ex}%
+                                   {2.3ex \@plus.2ex}%
+                                   {\sffamily\Large\it}}
+\end{minted}
+
+La commande \commande{ssfamily} produit une bascule vers la police sans empattement définie par \commande{setsansfont}, tandis que \commande{it} produit une bascule vers un texte en italique.
