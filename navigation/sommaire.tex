@@ -29,7 +29,7 @@ La table des matières prend elle même un certain volume. Par conséquent si vo
 
 Par défaut la commande \commande{tableofcontents} affiche tout les niveaux de titres, depuis \commande{part} jusqu'au \commande{subparagraph}.\renvoi{niveautitre}. Il est possible de restreindre la profondeur, ou au contraire de l'étendre. Pour ce faire, il suffit de redéfinir un compteur \LaTeX{} : \compteur{tocdepth}.
 
-Un compteur, en \LaTeX{}, est un nombre entier stocké dans la mémoire vive de l'ordinateur. Un compteur peut être appelé à certains endroits par \LaTeX{}. Il peut également être modifié par \LaTeX{}. Typiquement, un compteur est associé à un élément numéroté. Il existe par exemple un compteur \compteur{page} correspondant au numéro de la page, incrémenté par \LaTeX{} à chaque changement de page et utilisé pour afficher le numéro de page. \revision{Un peut technique non ?}
+Un compteur, en \LaTeX{}, est un nombre entier stocké dans la mémoire vive de l'ordinateur. Un compteur peut être appelé à certains endroits par \LaTeX{}. Il peut également être modifié par \LaTeX{}. Typiquement, un compteur est associé à un élément numéroté. Il existe par exemple un compteur \compteur{page} correspondant au numéro de la page, incrémenté par \LaTeX{} à chaque changement de page et utilisé pour afficher le numéro de page. \revision{Un peut technique non ?}\label{compteur}
 
 Dans notre cas, le compteur \compteur{tocdepth} n'est pas modifié par \LaTeX{}. En revanche il sert lors de l'affichage de la table des matières. Chaque niveau de titre possède un numéro. \renvoi{numeroniveau}. La commande \commande{tableofcontents} affiche les niveaux de titres dont le numéro est inférieur ou égale à la valeur du compteur \compteur{tocdepth}.
 

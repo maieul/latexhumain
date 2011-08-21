@@ -123,3 +123,83 @@ Si vous avez compris nos propos sur les commandes de début et de fin d'environn
 \renewcommand{\endquotation}{\endoldquotation\endsinglespace}
 \end{minted}
 \end{anedocte}
+
+\section{Titre : redéfinir la numérotation}\rev{Réfléchir à mettre ailleurs}
+
+Nous avons abordés plus haut la notion de compteur. À chaque niveau de titre, \LaTeX associe un compteur \compteur{niveau}. Ainsi le compteur associé au niveau de titre \commande{chapter} est \compteur{chapter}.
+
+La valeur d'un compteur peut s'afficher grâce à la commande \commande{thecompteur}. Ainsi, si vous écrivez 
+\begin{minted}{latex}
+\thechapter \\
+\thesection
+\end{minted}
+
+Vous constatez qu'à la compilation apparaît le numéro du chapitre, tel qu'il apparaît dans l'entête, et le numéro de section, tel qu'il apparaît dans le titre. Ici par exemple nous obtenons :
+
+
+\begin{itemize}
+\item\thechapter~Chapitre 
+\item\thesection~Section
+\end{itemize}
+
+
+Puisque les compteurs s'affichent à l'aide d'une commande, il est aisée de redéfinir ses commandes. Si vous fouillez le fichier \fichier{book.cls}\renvoi{trouverfichier}, vous pouvez constantez\footnote{Lignes 287-288, à la date où nous écrivons}, les deux (re)définition de commande suivantes :
+
+\begin{minted}[linenos]{latex}
+\renewcommand \thechapter {\@arabic\c@chapter}
+\renewcommand \thesection {\thechapter.\@arabic\c@section}
+\end{minted}
+
+\begin{description}
+\item[Ligne 1]la commande \commande{c@chapter} retourne la valeur --- entière, par définition --- du compteur \compteur{chapter}. Cette valeur ne peut pas être affichée directement, elle doit être au préalable formatée par la commande \commande{\@arabic}, qui l'affiche sous forme de chiffres arabes.
+\item[Ligne 2]la commande \commande{thesection} retourne \commande{thechapter} suivi d'un point, suivi de la valeur du compteur \compteur{section} affichée sous forme de chiffres arabes.
+\end{description}
+
+Supposons maintenant que nous souhaitons deux choses :
+\begin{enumerate}
+\item Afficher en chiffres romains le numéro de chapitre.
+\item Afficher une parenthèse fermante après le numéro de section.
+\end{enumerate}
+
+Il nous suffit de redéfinir ainsi ces commandes :
+
+\begin{minted}{latex}
+\renewcommand \thechapter {\@Roman\c@chapter}
+\renewcommand \thesection {\thechapter.\@arabic\c@section)~}
+\end{minted} 
+
+Si vous écrivez ces lignes dans votre préambule, vous n'arriverez pas à compiler. Cela tient à une raison simple : les commandes contenant le caractère @ ne peuvent pas être, normalement, utilisées dans un fichier \ext{tex}, mais uniquement dans les fichiers de définition de classe (\ext{cls}) ou de package (\ext{sty}).
+
+Pour pouvoir les utiliser dans un fichier \ext{tex}, il faut les entourer des commandes \commande{makealetter} et \commande{makeatother}.
+
+Ce qui nous donne : 
+
+\begin{minted}{latex}
+\makeatletter
+\renewcommand \thechapter {\@Roman\c@chapter}
+\renewcommand \thesection {\thechapter.\@arabic\c@section)}
+\makeatother
+\end{minted}
+
+% Ici on redéfinit temporairement 
+
+\makeatletter
+\let\oldthechapter\thechapter
+\let\oldthesection\thesection
+\renewcommand \thechapter {\@Roman\c@chapter}
+\renewcommand \thesection {\thechapter.\@arabic\c@section)}
+\makeatother
+
+Ce qui nous donne un affichage de la forme :
+
+
+\begin{itemize}
+\item\thechapter~Chapitre 
+\item\thesection~Section
+\end{itemize}
+
+
+\renewcommand \thechapter {\oldthechapter}
+\renewcommand \thesection {\oldthesection}
+
+
