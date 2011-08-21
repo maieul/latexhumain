@@ -1,0 +1,32 @@
+\chapter{Polices, espacement et autre style de textes}
+
+
+\begin{prealable}
+Dans ce chapitre nous allons voir comment changer l'apparence de nos textes : police de caractère, interlignes, styles des niveaux de titres.  
+\end{prealable}
+
+\section{Police de caractères}
+
+Il existe trois grandes familles de police de caractères  (\cf{} \ref{polices} : 
+\begin{description}
+\item[Les polices à empattements]pour le corps du texte. Ces empattements améliorent le confort de lecture, sur version papier du moins. 
+\item[Les polices sans empattements]normallement pour les titres. Par défaut, \LaTeX ne l'applique qu'au titre du document, pas aux titre de parties, chapitres, sections etc.
+\item[Les polices à pas fixe]qui se caractèrisent par le fait que la largeur d'une lettre ne dépend pas de celle-ci, mais est uniforme. Ces polices sont utilisés par les informaticiens pour citer du code informatique. Dans notre domaine, elles peuvent éventuellement servir pour une transcription diplomatique d'un texte ancien\rev{vérifier le terme}.
+\end{description}
+
+Le package \package{fontspec} propose de définir une police pour chaque famille de caractère. Ainsi pour ce livre nous avons choisi les polices \enquote{Linux Libertine} pour les caractères avec empattements, \enquote{Linux Biolinum} pour les caractères sans empattement et \enquote{DejaVu  Sans Mono} pour les caractères à espacement fixe.
+
+Nous avons indiqués dans notre préambule que nous souhaitons les utiliser :
+
+\begin{minted}{latex}
+\setmainfont{Linux Libertine}
+\setsansfont{Linux Biolinum}
+\setmonofont[Scale=0.75]{DejaVu  Sans Mono}
+\end{minted}
+
+La commande \commande{setmainfont} sert à définir la police avec empattement (corps du texte), \commande{setsansfont} celle sans empattement et \commande{setmonofont} la police à espacement fixe. L'argument optionnel peut prendre un certain nombre de paramètres pour la police. Ici nous avons indiqués que nous souhaitons réduire de 25 \% la taille de la police \enquote{DejaVu Sans Mono}, car il s'agit d'une police relativement grande. Le manuel de fontspec précise les paramètres possibles\footcite{fontspec_optionspolices}.
+
+\begin{anedocte}
+Le package \package{fontspec} permet de définir d'autres familles de caractères. Toutefois en général il n'est pas recommandé de varier les polices dans un textes : c'est pourquoi nous ne détaillons pas ici, mais nous contentons de renvoyer à la documentation du package\footcite{fontspec_nouvellefamille}.
+
+\end{anedocte}
