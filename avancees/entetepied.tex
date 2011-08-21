@@ -47,21 +47,17 @@ Une fois ceci fait, il est possible d'utiliser les six commandes de \package{fan
 
 \rev{comment mettre exemple minipage ?} 
 
-Supposons que nous souhaitons afficher le numéro de page, en pied de page centré, en indiquant également le nombre total de page. Nous allons utiliser le package \package{lastpage} qui nous permet, après deux compilation\footnote{ou plus si le nombre de page varie entre les compilations} d'obtenir le numéro de la dernière page.
+Supposons que nous souhaitons afficher le numéro de page, en pied de page centré, en indiquant également le nombre total de page. Nous allons utiliser le package \package{totpages} qui nous permet, après deux compilation\footnote{ou plus si le nombre de page varie entre les compilations} d'obtenir le numéro de la dernière page.
 \begin{minted}{latex}
 \usepackage{fancyhdr}
 \pagestyle{fancy}
-\usepackage{lastpage}
-\cfoot{{\thepage} / \pageref{LastPage}}}
+\usepackage{totpages}
+\cfoot{{\thepage} / \ref{TotPages}}}
 \end{minted}
 
 La commande \commande{thepage} indique la valeur du compteur \compteur{page}\renvoi{compteur}, correspondant au numéro de page.
 
-\begin{attention}
-\verb|pageref{LastPage} n'indique pas le nombre total de page, mais bien le numéro de la dernière page. Or certaines commandes comme \commande{mainmatter} ont pour effet de recommencer la numérotation des pages. Toutefois, il est rarement utile d'écrire le nombre total de page sur un travail de type \classe{book} qui est généralement bien relié.
 
-\rev{ecrire un article pour mon blog / faire un package}.
-\end{attention}
 
 \section{Pages recto-verso et alternance gauche-droite}
 
