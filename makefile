@@ -19,13 +19,16 @@ all:principal.pdf
 	@echo "Compilation XELATEX 2"
 	
 	@$(XELATEX) $<
-	
-	number = 2 ; while egrep -i -q -x $(RERUN) $*.log ; do \
-	        echo $$number ; \
-	        ((number = number + 1)) ; \
-			echo "Passe XeLaTeX" $$number ; \
+	for ((i = 3 ; i < 10 ; i++)) ; \
+	do \
+	if egrep -i -q  $(RERUN) $*.log ; \
+		then \
+			echo "Compilation XELATEX" $$i; \
 			$(XELATEX) $< ; \
-	    done
+		fi \
+	done \
+
+
 	@echo "Citations indéfinies:"
 	@egrep -i $(UNDEFINED) $*.log || echo "Aucune"
 	@echo "Erreurs de label"
