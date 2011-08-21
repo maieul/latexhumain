@@ -77,6 +77,49 @@ Texte avec un interligne double.
 
 \subsection[Rédéfinir un environnement : quotation]{(Re)définir un environnement : exemple avec l'environnement \enviro{quotation}}
 
+En général, les citations ont un interlignage plus réduit que le corps du texte. Ainsi, la tentation serait grande, pour un document en interligne 1,5 de frapper ceci :
 
+\begin{minted}{latex}
+\begin{singlespace}
+\begin{quotation}
+Une citation assez longue.
+\end{quotation}
+\end{singlespace}
+\end{minted}
 
+Une telle méthode viole le principe de séparation de fond et de forme. En outre elle multiplie les lignes de code. Il serait plus sage de redéfinir l'environnement \enviro{quotation}. Voici comment faire simplement\footcite[Nous nous somme basés sur la classe \classe{bredele}][]{bredele}. Nous avons déjà vu plus haut un exemple de rédéfinition d'environnement, pour l'environnement \enviro{latin}\renvoi{redefinirlatin}. 
 
+Mais ici il s'agit non seulement de rédéfinir l'environnement, mais aussi de réutiliser les propriétés de l'ancien environnement. On procède en insérant ce code en début de document, dans le préambule :
+
+\begin{minted}[lineos]{latex}
+\let\oldquotation\quotation
+\let\endoldquotation\endquotation
+\renewenvironment{quotation}
+	{\begin{singlespace}\begin{oldquotation}}
+        {\end{oldquotation}\end{singlespace}}
+\end{minted}
+
+Commentaires : 
+
+\begin{description}
+\item[ligne 1]la commande \commande{let} est une commande \TeX qui copie une commande dans une autre commande. Ici nous copions la commande \commande{quotation} dans la commande \commande{oldquotation}\footnote{Bien que \enquote{old} soit un nom anglais, il est de convention de préfixer ainsi les commandes copiées depuis une autre commande}. La commande \commande{quotation} quant à elle correspond au début de l'environnement \enviro{quotation}, c'est à dire à ce qui est executé par \verb|\begin{quotation}|.
+\item[ligne 2] nous copions la commande \commande{endquotation} correspondant à la fin de l'environnement  \enviro{quotation}\footnote{C'est à dire à ce qui est executé lors du \verb|\end{quotation}| dans une commande \commande{endoldquotation}.
+\end{description}
+
+En créant ces deux commandes \commande{oldquotation} et \commande{endoldquotation} nous avons créé un environnement \enviro{oldquotation}.
+
+\begin{description}
+\item[ligne 3]nous rédéfinissons l'environnement \enviro{quotation}
+\item[ligne 4]au début de cet environnement\renvoi{redefinirlatin}, nous ouvrons les environnements \enviro{singlespace} puis \enviro{oldquotation}.
+\item[ligne 5]à la fin de l'environnement \enviro{quotation}, nous fermons les environnements \enviro{oldquotation} puis \enviro{singlespace}.
+\end{description}
+
+\begin{anedocte}
+Si vous avez compris nos propos sur les commandes de début et de fin d'environnement, vous pouvez vous rendre compte que nous aurions pu obtenir le même résultat avec :
+\begin{minted}{latex}
+\let\oldquotation\quotation
+\let\endoldquotation\endquotation
+\renewcommand{\quotation}{\singlespace\oldquotation}
+\renewcommand{\endquotation}{\endoldquotation\endsinglespace}
+\end{minted}
+\end{anedocte}
