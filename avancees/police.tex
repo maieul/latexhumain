@@ -259,3 +259,14 @@ Deux élèments nous intéressent : la ligne 2 \verb|thispagestyle{plain}|. On c
 \makeatother
 \end{minted}
 
+Le second élèment intéressant est la dernière ligne. La commande \commande{secdef} renvoie vers \commande{@chapter} si nous utilisons \commande{chapter} et vers \commande{@schapter} si nous utilisons \commande{chapter*}.
+
+En fouillant les codes des commandes \commande{@chapter} et \commande{@schapter} nous trouvons qu'elles appellent la commande \commande{@makeschapterhead}\footnote{Définie l. 406}.
+
+\begin{anedocte}
+Vous constaterez que les commandes \commande{@chapter}, \commande{@schapter} et \commande{@makeschapterhead} sont définies via la commande \commande{def} et non pas \commande{newcommand}. 
+
+En effet la définition est faite en \TeX et non pas en \LaTeX. Pour nos propos, cela ne change pas grand chose.
+\end{anedocte} 
+
+
