@@ -2,14 +2,15 @@
 
 Pour pouvoir personaliser le comportement standard de \LaTeX ou d'un package (par exemple les styles de \package{biblatex}, il est en général nécéssaire de regarder les fichiers standards pour redefinir telle ou telle commande (ou macro bibliographique). 
 
-Pour ce faire, il faut trouver leurs emplacements. Dans le fichier \ext{log} produit lors de la compilation est listé l'ensemble des fichiers chargés par le compilateurs. Il est général aisé de connaître le nom du fichier : il s'agit souvent de celui du package ou de la classe. Une recherche dans le fichier permet donc de trouver le chemin, par exemple : \\
+Pour ce faire, il faut trouver leurs emplacements. Dans le fichier \ext{log} produit lors de la compilation est listé l'ensemble des fichiers chargés par le compilateurs. Il est général aisé de connaître le nom du fichier : il s'agit souvent de celui du package ou de la classe. Une recherche dans le fichier permet donc de trouver le chemin, par exemple : 
+
 \verb|/usr/local/texlive/2010/texmf-dist/tex/latex/biblatex/cbx/verbose-trad2.cbx|.
 
 En général les fichiers se trouvent dans des répertoires invisibles via l'interface standard du système d'exploitation. Pour les ouvrir, il faut donc utiliser la ligne de commande, et frapper 
 \begin{description}
 \item[Sous Mac]\verb|open chemin_du_fichier|.
-\item[Sous Windows] ?
-\item[Sous Linux] ?
+\item[Sous Windows] \verb|chemin du fichier|.  Malheureusement, le copier-coller est désactivé par défaut dans l'invite de commande. On peut contourner cela en copiant-collant dans la barre d'adresse du navigateur Firefox.
+\item[Sous Linux] \verb|nom_de_lediteur chemin_du_fichier|.
 
 \begin{attention}
 Il ne faut jamais modifier les fichiers standards. En effet, en cas de mise à jour de ces fichiers, vous perdriez toutes vos modifications. Il vaut mieux en général redéfinir les commandes, quitte à grouper ces redéfinitions dans un fichier.
