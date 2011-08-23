@@ -1,17 +1,18 @@
-\section{Introduction à la ligne de commande}\label{lignedecommande}
+\chapter{Introduction à la ligne de commande}\label{lignedecommande}
 
-\begin{preliminaire}
+\begin{prealable}
 La plupart des éditeurs de textes spécialisés en LaTeX  proposent un bouton pour mettre en œuvre les principales commandes de compilation :  XeLaTeX, MakeIndex, BibTeX.
 
 Toutefois très rapidement il devient nécessaire de pouvoir faire plus : par exemple si l’on utilise le package \package{splitindex}, il faut pouvoir  executer la commande \verb|splitindex|.
 
 Pour ce faire on utilise le terminal du système d'exploitation, qui permet d'executer directement ces commandes. Voici une breve introduction à son utilisation dans le cadre d'un usage de \XeLaTeX.
-\end{preliminaire}
+\end{prealable}
 
-\subsection{La notion de repertoire courant}\label{repcourant}
+\section{La notion de repertoire courant}\label{repcourant}
 
 Ce qu'on appelle \forme{repertoire courant} correspond à l'emplacement où l'on se situe dans l'arborescence des fichiers de l'ordinateur. Quand on veut utiliser les lignes de commande pour se servir de \XeLaTeX, la première chose à faire est de changer le repertoire courant pour se rendre dans le dossier dans lequel se situe les fichiers à compiler.
-\subsection{Mac OS X et Linux}
+
+\section{Mac OS X et Linux}
 
 Sur Mac OS X, le terminal se situe dans le dossier \forme{Utilitaires} du dossier \forme{Applications}. Sur Linux -> compléter.
 
@@ -28,11 +29,11 @@ simplement \verb|cd ..|.
 Lorsque vous êtes dans le répertoire où vous souhaitez exécuter une
 commande, vous pouvez la lancer de la même manière :
 
-\begin{quote}
-\verb|xelatex nomdufichieràcompiler.tex|
-\end{quote}
+\begin{minted}{bash}
+xelatex nomdufichieràcompiler.tex
+\end{minted}
 
-\subsection{Windows}
+\section{Windows}
 Sous Windows, le terminal s'appelle \enquote{Invite de commandes}. Le langage
 est différent de celui que l'on trouve chez les systèmes de type Unix comme
 Linux et Mac OS X. On trouvera cependant quelques similarités.
@@ -58,7 +59,25 @@ simplement \verb|cd ..|.
 Lorsque vous êtes dans le répertoire où vous souhaitez exécuter une
 commande, vous pouvez la lancer de la même manière :
 
-\begin{quote}
-\verb|xelatex nomdufichieràcompiler.tex|
-\end{quote}
+\begin{minted}{bash}
+xelatex nomdufichieràcompiler.tex
+\end{minted}
+
+\section{Trouver les fichiers standards}\label{trouverfichier}
+
+Pour pouvoir personaliser le comportement standard de \LaTeX ou d'un package (par exemple les styles de \package{biblatex}, il est en général nécéssaire de regarder les fichiers standards pour redefinir telle ou telle commande (ou macro bibliographique). 
+
+Pour ce faire, il faut trouver leurs emplacements. Dans le fichier \ext{log} produit lors de la compilation est listé l'ensemble des fichiers chargés par le compilateurs. Il est général aisé de connaître le nom du fichier : il s'agit souvent de celui du package ou de la classe. Une recherche dans le fichier permet donc de trouver le chemin, par exemple : 
+
+\verb|/usr/local/texlive/2010/texmf-dist/tex/latex/biblatex/cbx/verbose-trad2.cbx|.
+
+En général les fichiers se trouvent dans des répertoires invisibles via l'interface standard du système d'exploitation. Pour les ouvrir, il faut donc utiliser la ligne de commande, et frapper 
+\begin{description}
+\item[Sous Mac]\verb|open chemin_du_fichier|.
+\item[Sous Windows] \verb|chemin du fichier|.  Malheureusement, le copier-coller est désactivé par défaut dans l'invite de commande. On peut contourner cela en copiant-collant dans la barre d'adresse du navigateur Firefox.
+\item[Sous Linux] \verb|nom_de_lediteur chemin_du_fichier|.
+\end{description}
+\begin{attention}
+Il ne faut jamais modifier les fichiers standards. En effet, en cas de mise à jour de ces fichiers, vous perdriez toutes vos modifications. Il vaut mieux en général redéfinir les commandes, quitte à grouper ces redéfinitions dans un fichier.
+\end{attention}
 
