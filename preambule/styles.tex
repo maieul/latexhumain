@@ -6,3 +6,13 @@
                                     {\normalfont\normalsize\bfseries}}
 
 \makeatother
+
+\defbibheading{bibliography}{}
+
+\DeclareDataInheritance{*}{*}{
+	\noinherit{keywords}
+}
+
+\renewcommand{\newunitpunct}[0]{\addcomma\addspace}
+
+\renewcommand{\subtitlepunct}[0]{\addspace\addcolon\addspace}
