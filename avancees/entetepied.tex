@@ -96,8 +96,9 @@ Lorsqu'on utilise le style de page \argument{fancy}, on supprime automatiquement
 
 \rev{il faut que je trouve}
 
-\section{Style de la première page des chapitres}
-\rev{il faut que je trouve}
+\section{Style de la première page des chapitres}\label{entetechapter}
+
+La première page des chapitres utilise le style \verb|plain|, et non pas \verb|heading|. Pour rétablir le style \verb|heading| le plus simple est de redéfinir la commande \commande{chapter}. Nous en parlons dans un autre chapitre.\renvoi{chapitrepagestyle}
 \section{Filet d'entête et pied de page}
 
 \package{fancyhdr} inclus un filet entre le corps du texte et l'entête. Il est possible de modifier l'épaisseur de ce filet ainsi que de rajouter un filet avant le  pied de page.

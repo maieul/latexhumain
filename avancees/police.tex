@@ -248,7 +248,7 @@ Si on cherche dans le fichier \fichier{book.cls} la commande \commande{chapter},
                     \secdef\@chapter\@schapter}
 \end{minted}
 
-Deux élèments nous intéressent : la ligne 2 \verb|thispagestyle{plain}|. On comprend ainsi la raison pour laquelle les  pages de début de chapitre n'ont pas les numéros de de page au même endroit que les autres : le style de cette page est \forme{plain} et non pas \forme{heading}, comme pour les autres pages. \renvoi{styleentetes}. Par conséquent, si on souhaite que les pages de titre aient les mêmes entêtes et pieds de page que les pages standards, il faut redéfinir la commande \commande{\chapter}.\label{entetechapter}.
+Deux élèments nous intéressent : la ligne 2 \verb|thispagestyle{plain}|. On comprend ainsi la raison pour laquelle les  pages de début de chapitre n'ont pas les numéros de de page au même endroit que les autres : le style de cette page est \forme{plain} et non pas \forme{heading}, comme pour les autres pages. \renvoi{styleentetes}. Par conséquent, si on souhaite que les pages de titre aient les mêmes entêtes et pieds de page que les pages standards, il faut redéfinir la commande \commande{chapter}.\label{entetechapter}.\label{chapitrepagestyle}
 
 \begin{minted}{latex}
 \makeatletter
