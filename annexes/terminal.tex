@@ -13,6 +13,24 @@ Pour ce faire on utilise le terminal du système d'exploitation, qui permet d'ex
 Ce qu'on appelle \forme{repertoire courant} correspond à l'emplacement où l'on se situe dans l'arborescence des fichiers de l'ordinateur. Quand on veut utiliser les lignes de commande pour se servir de \XeLaTeX, la première chose à faire est de changer le repertoire courant pour se rendre dans le dossier dans lequel se situe les fichiers à compiler.
 \subsection{Mac OS X et Linux}
 
+Sur Mac OS X, le terminal se situe dans le dossier \forme{Utilitaires} du dossier \forme{Applications}. Sur Linux -> compléter.
+
+Le repertoire courant est généralement indiqué à gauche de la ligne, le symbole  \~  représentant le dossier de départ. Pour lister son contenu, frapper \verb|ls|. Pour valider une commande, il faut frapper sur la touche \verb|Entrée|.
+
+Pour vous déplacer dans un répertoire, il suffit de taper la commande
+\verb|cd| suivie du dossier où vous souhaitez vous rendre.
+
+Ainsi la commande \verb|cd projet-latex| vous fera pénétrer dans le
+répertoire \verb|projet-latex|, ce que vous pouvez vérifier avec la
+commande \verb|dir|. Pour vous déplacer dans un répertoire parent, tapez
+simplement \verb|cd ..|.
+
+Lorsque vous êtes dans le répertoire où vous souhaitez exécuter une
+commande, vous pouvez la lancer de la même manière :
+
+\begin{quote}
+\verb|xelatex nomdufichieràcompiler.tex|
+\end{quote}
 
 \subsection{Windows}
 Sous Windows, le terminal s'appelle \enquote{Invite de commandes}. Le langage
