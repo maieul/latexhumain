@@ -7,9 +7,7 @@ La mise en forme par défaut de l'index n'est pas très satisfaisante. On peut h
 Les commandes pour formater l'index sont à placer dans un fichier \fichier{monstyle.ist} que vous devez créer vous-même.
 
 \begin{attention}
-Pensez à placer ce fichier à un endroit où \LaTeX peut le trouver, par exemple dans le dossier courant.
-
-(est-ce qu'on explique qq part comment indiquer un chemin ds le terminal? ds le chap sur les packages?)
+Pensez à placer ce fichier à un endroit où \LaTeX peut le trouver, par exemple dans le dossier courant. \renvoi{repcourant}
 \end{attention}
 
 Il faut ensuite taper dans le terminal :
@@ -82,7 +80,7 @@ Mais j'ai ouvert une accolade… il me faut la refermer:
 
 \verb|\\nopagebreak| évite qu'une lettre-séparatrice se retrouve seule en fin de page. 
 
-%Est-ce que le \n est nécessaire? Pas trop sûre... vérifier, essayer de l'expliquer.
+
 
 Ce n'est pas fini. Mes lettres sont actuellement justifiées à gauche, comme les entrées de l'index. Je voudrais qu'elles soient centrées: 
 
@@ -119,14 +117,12 @@ Evêques \\
 \end{tabbing}
 \end{quotation}
 
-%faire un envoi sur la différence entre \hfill et \hfil? Sur les longueur ebsolues et relatives?
-Si je préfère qu'elles soient simplement légèrement décalées vers la droite, je peux utiliser, à la place de \verb| \\hfill |, \verb| \\hspace*{-1ex} |  qui rajoute à gauche un espace de la taille d'un -x. 
+
+Si je préfère qu'elles soient simplement légèrement décalées vers la droite, je peux utiliser, à la place de \verb| \\hfill |, \verb| \\hspace*{-1ex} |  qui rajoute à gauche un espace de la taille d'un -x. \renvoi{unite}\renvoi{espace}
 
 
-Quand on a compris ce système, il est alors assez simple de formater à sa guise l'index. C'est pourquoi, pour les autres options, je renvoie ici à la lecture du manuel.
+Quand on a compris ce système, il est alors assez simple de formater à sa guise l'index. C'est pourquoi, pour les autres options, je renvoie ici à la lecture du manuel\footcite[On pourra aussi consulter][]{frama_index}. 
 
 
 
-%man makeindex: indique les différentes obtions. En détailler quelques unes? ex: aligner les numéros des pages au bout de la ligne (avec ou sans points dans l'espace blanc); Ajouter les lettres , etc
-%heading_prefix "{\\bfseries\\hfil "
-%heading_suffix "\\hfil}\\nopagebreak\n" >un seul { car on est en Tex. Mais latex trouve que manque une accolade > la refermer la fois d'après.
+
