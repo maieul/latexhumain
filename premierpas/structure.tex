@@ -54,13 +54,12 @@ Toutefois un titre non numéroté ne sera pas ajouté à la table des matières\
 
 Un exemple sera plus parlant :
 
-\begin{listing}[ht]
+
 \begin{minted}[linenos]{latex}
 \chapter*{Introduction}
 \addcontentsline{toc}{chapter}{Introduction}
 \end{minted}
-\caption{Un titre non numéroté dans la table des matières}
-\end{listing}
+
 
 \begin{anedocte}
 Le lecteur alerte se demandera sans doute pourquoi il est nécessaire de mettre \verb|toc| comme premier argument. Cela correspond à l'extension du fichier qui contiendra la table des matières : nous renvoyons vers le chapitre dédiée à ce sujet.\renvoi{toc}
