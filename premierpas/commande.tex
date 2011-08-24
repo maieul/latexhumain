@@ -102,6 +102,22 @@ Nous décrirons plus loin dans ce chapitre un ensemble de commande de mise en fo
 \end{attention}
 
 
+\begin{anedocte}\label{commentaireredac}
+On peut ainsi très facilement créer une commande \commande{commentaire} servant pour indiquer des commentaires personnels au cour de la rédaction, afin de les avoir sous soi lors d'une relecture papier.
+
+Par exemple :
+
+\begin{minted}{latex}
+\newcommand{\commentaire}[1]{\marginpar{#1}}
+\end{minted}
+
+Lors de l'impression finale, il suffira de changer cette commande par :
+\begin{minted}{latex}
+\newcommand{\commentaire}[1]{}
+\end{minted}
+
+\end{anedocte}
+
 \subsection{Code d'une commande sur plusieurs lignes}\label{commandepourcent}
 
 Jusqu'ici nos commandes étaient relativement simples. Mais il peut arriver que leur code se complexifie. Nous souhaiterons alors l'avoir sur plusieurs lignes.
