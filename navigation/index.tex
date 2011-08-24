@@ -261,14 +261,26 @@ Damase\sindex[npr]{Damase}(…)\sindex[idx]{Charles et la papauté|}.
 
 \end{minted}
 
-Tous les formatages d'entrées que l'on a vu pour \package{makeindex} fonctionnent également avec \package{splitindex}
-
 
 \subsection{Imprimer les index}
-printindex*
-ou printindex+noms des index si on ne veut pas tout les index
 
-mettre remarque > comment tout repasser à un seul index : \verb|\usepackage[allatone]{splitidx}|
+Pour imprimer l'index \forme{nom}, il suffit d'utiliser la commande \commande{printindex} en lui passant le nom abregé de l'index en argument. Ainsi pour imprimer l'index de noms propres:
+
+\begin{minted}{latex}
+\printindex[npr]
+\end{minted}
+
+Pour imprimer l'ensemble des index, il faut utiliser la commande \commande{printindex*}.
+
+Par défaut, les index ont un titre de niveau \commande{chapter} dans la classe \classe{book} et de niveau \commande{section} dans la classe \section{article}. Il est possible d'imprimer les index avec un titre de niveau immédiatement inférieur, pour par exemple regrouper l'ensemble des index dans un chapitre, divisé en section. Il faut utiliser dans ce cas la commande \commande{printsubindex} (ou \commande{printsubindex} pour tous les imprimer.
+
+Par exemple :
+
+\begin{minted}{latex}
+\chapter{Index}
+\printsubindex*
+\end{minted}
 
 
-%\input{navigation/index-source}
+
+\input{navigation/index-source}
