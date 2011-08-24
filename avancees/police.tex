@@ -126,7 +126,7 @@ Si vous avez compris nos propos sur les commandes de début et de fin d'environn
 
 \section{Personaliser les titres}\rev{Réfléchir à mettre ailleurs}
 
-\subsection{Redéfinir la numérotation}
+\subsection{Redéfinir la numérotation}\label{apparencecompteur}
 Nous avons abordés plus haut la notion de compteur. À chaque niveau de titre, \LaTeX associe un compteur \compteur{niveau}. Ainsi le compteur associé au niveau de titre \commande{chapter} est \compteur{chapter}.
 
 La valeur d'un compteur peut s'afficher grâce à la commande \commande{thecompteur}. Ainsi, si vous écrivez 
@@ -342,3 +342,31 @@ Cela nous donne au final :
 \end{minted}
 
 Évidemment, il faudrait appliquer le même type de modifications sur la commande \commande{makeschapterhead}. On pourrait aussi s'amuser à modifier ce qui est produit par \commande{part}. Il faudra, pareillement, fouiller le fichier \commande{book.cls}.
+
+\section[Manipuler les compteurs]{Manipuler les compteurs : le cas des notes de bas de page}
+
+Nous avons vu comment modifier l'affichage d'un compteur.\renvoi{apparencecompteur} Mais comment modifier la valeur d'un compteur ? Il existe pour cela deux fonctions : \verb|setcounter{compteur}{valeur}| pour affecter la valeur \forme{valeur} au compteur \forme{compteur}, et \verb|addtocounter{compteur}{valeur}| pour \emph{additionner} la valeur \forme{valeur} au compteur \forme{compteur}. La valeur ajoutée pouvant être négative, il est ainsi possible de faire reculer un compteur.
+
+En outre, il exisite une commande \commande{refstepcounter} qui permet d'incrémenter de une unité un compteur. C'est celle qui est utilisé par les commandes niveau de titre.\ref{niveautitre}.
+
+
+
+Il est possible de créer son propre compteur grâce à la commande \verb|\newcounter{compteur}[compteur 2]|. Si l'argument \argument{compteur 2} est présent, alors il indique que la valeur du compteur \argument{compteur} doit être réinitialisé lorsque la commande \commande{refstepcounter} est appliquée au compteur \argument{compteur 2}.
+
+La commande  \verb|@addtoreset{compteur}{compteur2}|  permet d'appliquer cette règle sur un compteur déjà existant.
+
+Ainsi, dans le fichier \fichier{book.cls}, vous remarquerez la ligne suivante\footnote{L. 718, à la date du 24 août 2011}  :
+\begin{minted}{latex}
+\@addtoreset{footnote}{chapter}
+\end{minted} 
+
+Ce qui signifie que le compteur  \compteur{footnote}, qui correspond à la numérotation des notes de bas de page, est réinitialisé à chaque nouveau chapitre \emph{numéroté}. 
+
+Si nous souhaitons annuler cette commande, pour avoir des notes de bas de page en numérotation continue, il nous faut utiliser le package \package{remreset} et sa commande \commande{@removefromreset} :
+
+\begin{minted}{latex}
+\usepackage{remreset}
+\makeatletter
+\@removefromreset{footnote}{chapter}
+\makeatother
+\end{minted}
