@@ -284,3 +284,38 @@ Par exemple :
 
 
 \input{navigation/index-source}
+
+\section{Ajouter l'index dans la table des matières}
+
+On peut souhaiter que notre index soit indiqué dans la table des matières. On pourrait utiliser la commande \commande{addcontentsline}\label{addcontentsline} de la manière suivante :
+
+\begin{minted}{latex}
+\printindex
+\addcontentsline{toc}{chapter}{index}
+\end{minted}
+
+Seulement voilà : si notre index fait plus d'une page, sont entrée dans le sommaire ne sera pas situé au bon endroit. À contrario, si nous mettons
+
+\begin{minted}{latex}
+\addcontentsline{toc}{chapter}{index}
+\printindex
+\end{minted}
+
+alors le problème d'un décalage existe aussi, puisque l'index va systématiquement commencer sur une page de droite. Il peut donc y avoir un saut de page entre la commande \commande{addcontentsline} et la commande{printindex}. 
+
+La solution est d'indiquer à \LaTeX d'utiliser une page paire --- de droite dans une écriture de gauche à droite ---  avant d'utiliser la commande \addcontentsline. Cela se fait en utilisant la commande \commande{cleardoublepage}
+
+\begin{minted}{latex}
+\cleardoublepage
+\addcontentsline{toc}{chapter}{index}
+\printindex
+\end{minted}
+
+En outre, le signet PDF produit par le package \package{hyperref}\renvoi{hyperref} se trouvera décalé. Pour éviter cela, il faut utiliser la commande \commande{phantomsection} avant la commande \commande{addcontentsline}. Ce qui nous donne donc au final :
+
+\begin{minted}{latex}
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{index}
+\printindex
+\end{minted}
