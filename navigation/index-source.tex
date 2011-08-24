@@ -9,7 +9,7 @@ Pour comprendre cette section, vous devez vous êtes familiarisé avec les indic
 
 \subsection{Premier essai}
 
-La documentation de \package{biblatex}\footcite{biblatex_options} nous informe qu'il existe  au chargement du package une option \option{indexing} qui permet d'indexer automatiquement les références bibliographiques. Comme nous nous souhaitons indexer que lors des appels aux commandes \commande{PREFIXcite}  ---  non pas lors de l'appel à la commande \commande{printbibliography} --- nous donnons la valeur \forme{cite} à cette option. 
+La documentation de \package{biblatex}\footcite{biblatex_options} nous informe qu'il existe  au chargement du package une option \option{indexing} qui permet d'indexer automatiquement les références bibliographiques. Comme nous nous souhaitons indexer que lors des appels aux commandes \cs{PREFIXcite}  ---  non pas lors de l'appel à la commande \cs{printbibliography} --- nous donnons la valeur \forme{cite} à cette option. 
 
 \begin{minted}{latex}
 \usepackage[indexing=cite]{biblatex}
@@ -46,12 +46,12 @@ Pour créer un index spécifique aux sources, rien de particulier : il suffit d'
 
 \subsection{Modifications des macros de \package{BibLaTeX}}
 
-Nous avons donc notre index spécifique. Mais encore faut-il que nous disions  à \package{biblatex} d'y écrire son index. Pour ce faire nous allons d'abord redéfinir la macro \macro{citeindex} qui est appelée à chaque commande \commande{PREFIXcite}.
+Nous avons donc notre index spécifique. Mais encore faut-il que nous disions  à \package{biblatex} d'y écrire son index. Pour ce faire nous allons d'abord redéfinir la macro \macro{citeindex} qui est appelée à chaque commande \cs{PREFIXcite}.
 
 \inputminted{exemples/navigation/index-source/citeindex.tex}
 
 \begin{description}
-\item[ligne 2]la commande \commande{ifciteindex} vérifier que l'option \option{indexing} de \package{biblatex} est bien égale à \verb|true| ou bien à \verb|cite|. Ce qui suit entre accolades est exécuté dans ce cas.
+\item[ligne 2]la commande \cs{ifciteindex} vérifier que l'option \option{indexing} de \package{biblatex} est bien égale à \verb|true| ou bien à \verb|cite|. Ce qui suit entre accolades est exécuté dans ce cas.
 \item[ligne 3]nous indexons le champ \champ{author}.  Nous utilisons le format d'indexation \verb|sources|.
 \item[ligne4]nous indexons le champ \champ{indextitle}. Si ce champ est vide \package{BibLaTeX} utilise à la place le champ \champ{title}. Nous utilisons le format d'indexation \verb|sources|.
 \item[ligne 5]nous indexons le champ \champ{titleaddon}. Nous utilisons le format d'indexation \verb|sources|.
@@ -84,7 +84,7 @@ Nous disions en première ligne que nous déclarions un format d'indexation \ver
   }
 \end{minted}
 
-La commande \commande{DeclareIndexFiledFormat} sert à déclarer la manière d'indexer le champs qui ne sont ni des listes ni des noms. La valeur \verb|#1| correspond à la valeur du champ à indexer. En deuxième ligne, nous vérifions que le champ à indexer à est \champ{indextitle} : si c'est le cas, nous l'indexons dans l'index \forme{source} en mettant l'emphase sur le titre pour l'affichage final. Sinon, nous l'indexons simplement dans l'index \forme{source}.
+La commande \cs{DeclareIndexFiledFormat} sert à déclarer la manière d'indexer le champs qui ne sont ni des listes ni des noms. La valeur \verb|#1| correspond à la valeur du champ à indexer. En deuxième ligne, nous vérifions que le champ à indexer à est \champ{indextitle} : si c'est le cas, nous l'indexons dans l'index \forme{source} en mettant l'emphase sur le titre pour l'affichage final. Sinon, nous l'indexons simplement dans l'index \forme{source}.
 
 \subsection{Compilation et concaténation des index}
 

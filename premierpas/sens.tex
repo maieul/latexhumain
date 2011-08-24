@@ -31,7 +31,7 @@ Nous allons ici présenter quelques autres commandes et environnements de mise e
 
 \subsection{Mise en valeur d'un texte}
 
-On peut ponctuellement vouloir mettre en valeur un morceau de son écrit. Pour ce faire il existe la commande \commande{emph}\footnote{\forme{emph} comme \footnote{emphase}.}
+On peut ponctuellement vouloir mettre en valeur un morceau de son écrit. Pour ce faire il existe la commande \cs{emph}\footnote{\forme{emph} comme \footnote{emphase}.}
 
 Exemple :
 
@@ -47,11 +47,11 @@ Le quatrième siècle voit la naissance d'une Église impériale et par conséqu
 
 Toutefois, à la différence d'une commande qui indiquerait directement de mettre en italique, cette commande pourrait, si on voulait, donner un résultat différent (par exemple, une mise en couleur). 
 
-Une autre propriété intéressante est la gestion des imbrications : par défaut une commande \commande{emph} à l'intérieur d'une autre commande \commande{emph} donnera un texte en caractères droits.
+Une autre propriété intéressante est la gestion des imbrications : par défaut une commande \cs{emph} à l'intérieur d'une autre commande \cs{emph} donnera un texte en caractères droits.
 
 \subsection{Le paratexte : notes de bas de page et de marges}
 
-\LaTeX propose deux commandes pour indiquer des paratextes\footnote{La question des apparats critiques mise à part, question que nous traiterons plus loin} : pour des notes de bas de page et de marge. Ces commandes sont respectivement \commande{footnote} et \commande{marginpar}.
+\LaTeX propose deux commandes pour indiquer des paratextes\footnote{La question des apparats critiques mise à part, question que nous traiterons plus loin} : pour des notes de bas de page et de marge. Ces commandes sont respectivement \cs{footnote} et \cs{marginpar}.
 
 \begin{minted}{latex}
 	Lorem\footnote{Une note de bas de page.} ipsum dolor amat. Aliquam lectus orci, adipiscing et, sodales ac, feugiat non, lacus. Ut dictum velit nec est. 
@@ -80,7 +80,7 @@ Une autre propriété intéressante est la gestion des imbrications : par défau
 \subsubsection{Les listes numérotées}
 
 Une liste numérotée est un environnement \enviro{enumerate}.
-Chaque élément de la liste est marqué par la commande \commande{item}.
+Chaque élément de la liste est marqué par la commande \cs{item}.
 
 \begin{minted}{latex}
 \begin{enumerate}
@@ -105,7 +105,7 @@ Il existe un package \package{etaremune} qui permet d'avoir un environnement  \e
 \subsubsection{Les listes non numérotées}
 
 Une liste non-numérotée est un environnement \enviro{itemize}.
-Chaque élément de la liste est marqué par la commande \commande{item}.
+Chaque élément de la liste est marqué par la commande \cs{item}.
 
 \begin{minted}{latex}
 \begin{itemize}
@@ -123,7 +123,7 @@ Chaque élément de la liste est marqué par la commande \commande{item}.
 
 \subsubsection{Les listes de descriptions}
 
-Une liste de descriptions assigne des valeurs une à une. Une telle liste peut être utile pour des lexiques, des glossaires, des chronologies etc. Pour chaque couple, la première valeur est passée comme argument à la commande \commande{item}. Les listes de définitions sont des environnements \enviro{description}.
+Une liste de descriptions assigne des valeurs une à une. Une telle liste peut être utile pour des lexiques, des glossaires, des chronologies etc. Pour chaque couple, la première valeur est passée comme argument à la commande \cs{item}. Les listes de définitions sont des environnements \enviro{description}.
 
 
 \begin{minted}{latex}

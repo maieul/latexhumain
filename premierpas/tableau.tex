@@ -74,9 +74,9 @@ On peut utiliser le package \package{slahshbox} afin d'avoir un cellule divisée
 \end{anedocte}
 \subsubsection{Séparation des cellules}
 
-On peut tracer des filets de séparations des cellules : pour tracer un filet de séparation horizontal, il suffit d'utiliser la commande \commande{hline}. Pour un filet de séparation vertical, il faut mettre le caractère \verb|l|\footnote{Ce caractère, appelé \forme{pipe} ne doit pas être confondu avec un l.} entre les types de cellules.
+On peut tracer des filets de séparations des cellules : pour tracer un filet de séparation horizontal, il suffit d'utiliser la commande \cs{hline}. Pour un filet de séparation vertical, il faut mettre le caractère \verb|l|\footnote{Ce caractère, appelé \forme{pipe} ne doit pas être confondu avec un l.} entre les types de cellules.
 
-On peut tracer des filets horizontaux plus petits en utilisant la commande \commande{cline}:
+On peut tracer des filets horizontaux plus petits en utilisant la commande \cs{cline}:
 
 \begin{minted}{latex}
 \cline{col1-col2}
@@ -106,7 +106,7 @@ Il est possible de fusionner des cellules. Pour une fusion de colonnes, il faut 
 \item \argument{contenu} est le contenu de la ligne fusionné.
 \end{itemize}
 
-Pour une fusion de lignes, il faut charger le package \package{multirow}. Celui-ci propose une commande \commande{multirow} dont voici la syntaxe simplifiée\footnote{Simplifiée car nous ne présentons pas les arguments optionnels : nous renvoyons à la documentation.}.
+Pour une fusion de lignes, il faut charger le package \package{multirow}. Celui-ci propose une commande \cs{multirow} dont voici la syntaxe simplifiée\footnote{Simplifiée car nous ne présentons pas les arguments optionnels : nous renvoyons à la documentation.}.
 
 
 \begin{minted}{latex}
@@ -122,7 +122,7 @@ Pour une fusion de lignes, il faut charger le package \package{multirow}. Celui-
 \inputminted{exemples/premierpas/nontextuels/tableaufusion.tex}
 \input{exemples/premierpas/nontextuels/tableaufusion}
 
-On remarquera que les lignes dont une colonne a été fusionnée doivent contenir des cellules vides. La commande \commande{multirow} ne modifie pas la structure du tableau : elle indique simplement que le texte est sur plusieurs lignes.
+On remarquera que les lignes dont une colonne a été fusionnée doivent contenir des cellules vides. La commande \cs{multirow} ne modifie pas la structure du tableau : elle indique simplement que le texte est sur plusieurs lignes.
 
 \subsection{Long tableau}
 
@@ -138,7 +138,7 @@ Pour éviter cela, il faut donc utiliser l'environnement \enviro{longtable} du p
 …
 \end{longtable}
 
-La syntaxe d'un environnement \enviro{longtable} est identique à celle d'un environnement \enviro{tabular}. Toutefois le package propose deux  commandes supplémentaires pour préciser les en-têtes et pieds de tableau, qui seront répétés sur chaque pages. Ces commandes sont, respectivement, \commande{endhead} et \commande{endfoot}. Il existe aussi aussi une commande \commande{endfirsthead} pour préciser l'en-tête sur spécifique à la première page du tableau et une commande \commande{endlastfoot} pour préciser le pied de tableau spécifique à la dernière page du tableau.
+La syntaxe d'un environnement \enviro{longtable} est identique à celle d'un environnement \enviro{tabular}. Toutefois le package propose deux  commandes supplémentaires pour préciser les en-têtes et pieds de tableau, qui seront répétés sur chaque pages. Ces commandes sont, respectivement, \cs{endhead} et \cs{endfoot}. Il existe aussi aussi une commande \cs{endfirsthead} pour préciser l'en-tête sur spécifique à la première page du tableau et une commande \cs{endlastfoot} pour préciser le pied de tableau spécifique à la dernière page du tableau.
 
 Ces quatre commandes sont optionnelles, elles  doivent s'utiliser en début de tableau : il faut placer les éléments correspondants \emph{avant} chacune des commandes, de la manière suivante :
 
@@ -172,7 +172,7 @@ Le format \ext{csv} est un format standard de données tabulaires. Malheureuseme
 
 
 Toutefois pour des données simples, comme par exemple un tableau statistiques, il suffit amplement. 
-Il vous faut donc exporter votre tableau au format csv. La première ligne correspondant à l'entête. Certains logiciels d'export au format svn ne laisse pas le choix quant aux séparateurs de champs. Dans ce cas, il faut utiliser la commande \commande{setcsvseparator} pour définir les champs. Par exemple, si le séparateur est un point-virgule :
+Il vous faut donc exporter votre tableau au format csv. La première ligne correspondant à l'entête. Certains logiciels d'export au format svn ne laisse pas le choix quant aux séparateurs de champs. Dans ce cas, il faut utiliser la commande \cs{setcsvseparator} pour définir les champs. Par exemple, si le séparateur est un point-virgule :
 
 \begin{minted}{latex}
 \setcsvseparator{;}
@@ -215,7 +215,7 @@ Le résultat est le tableau \ref{csvtolongtable}\renvoi{csvtolongtable}.
 \begin{table}[p]
 \setcsvseparator{;}
 \input{exemples/premierpas/nontextuels/csvtolongtable}
-\caption{Exemple d'utilisation de la commande \commande{csvtolongtable}}
+\caption{Exemple d'utilisation de la commande \cs{csvtolongtable}}
 \label{csvtolongtable}
 \end{table}
 

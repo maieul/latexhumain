@@ -24,7 +24,7 @@ Nous avons indiqués dans notre préambule que nous souhaitons les utiliser :
 \setmonofont[Scale=0.75]{DejaVu  Sans Mono}
 \end{minted}
 
-La commande \commande{setmainfont} sert à définir la police avec empattement (corps du texte), \commande{setsansfont} celle sans empattement et \commande{setmonofont} la police à espacement fixe. L'argument optionnel peut prendre un certain nombre de paramètres pour la police. Ici nous avons indiqués que nous souhaitons réduire de 25 \% la taille de la police \enquote{DejaVu Sans Mono}, car il s'agit d'une police relativement grande. Le manuel de fontspec précise les paramètres possibles\footcite{fontspec_optionspolices}.
+La commande \cs{setmainfont} sert à définir la police avec empattement (corps du texte), \cs{setsansfont} celle sans empattement et \cs{setmonofont} la police à espacement fixe. L'argument optionnel peut prendre un certain nombre de paramètres pour la police. Ici nous avons indiqués que nous souhaitons réduire de 25 \% la taille de la police \enquote{DejaVu Sans Mono}, car il s'agit d'une police relativement grande. Le manuel de fontspec précise les paramètres possibles\footcite{fontspec_optionspolices}.
 
 \begin{anedocte}
 Le package \package{fontspec} permet de définir d'autres familles de caractères. Toutefois en général il n'est pas recommandé de varier les polices dans un textes : c'est pourquoi nous ne détaillons pas ici, mais nous contentons de renvoyer à la documentation du package\footcite{fontspec_nouvellefamille}.
@@ -40,7 +40,7 @@ Le package \package{setspace}  \enquote{se contente} de définir des nouvelles c
 Si donc vous souhaitez définir une autre taille d'interligne, vous pouvez essayer de vous inspirer du code du package. Mais ceci nécéssite de maîtriser assez bien \LaTeX. 
 \end{anedocte}
 
-Les trois commandes qui nous intéressent sont \commande{singlespacing}, \commande{onehalfspacing} et \commande{doublespacing}. Ces commandes s'utilisent de la manière suivante :
+Les trois commandes qui nous intéressent sont \cs{singlespacing}, \cs{onehalfspacing} et \cs{doublespacing}. Ces commandes s'utilisent de la manière suivante :
 
 \begin{minted}{latex}
 \doublespacing
@@ -57,7 +57,7 @@ Tant qu'aucune commande de changement d'interligne n'est utilisée, le texte res
 
 Jusqu'à maintenant, à quelques exceptions près, nous n'avions vu que des commandes prenant un certain nombre d'arguments. Ici nos commandes ne prennent pas d'argument, mais changent un certain nombre de paramètres, jusqu'à nouvel ordre. Par exemple, nos commandes de bascule du package \package{setspace} vont changer l'interligne de notre texte. L'utilisation des commandes de bascule est nécéssaire pour la redéfinition de certaines commandes de \LaTeX, ainsi les commandes des titres\renvoi{apparencetitre}.
 
-Il est donc recommandé de mettre la commande \commande{onehalfspacing} en tout début de fichier, par exemple dans le préambule.
+Il est donc recommandé de mettre la commande \cs{onehalfspacing} en tout début de fichier, par exemple dans le préambule.
 
 \subsection{Environnement de changement d'interligne}
 
@@ -102,11 +102,11 @@ Mais ici il s'agit non seulement de rédéfinir l'environnement, mais aussi de r
 Commentaires : 
 
 \begin{description}
-\item[ligne 1]la commande \commande{let} est une commande \TeX qui copie une commande dans une autre commande. Ici nous copions la commande \commande{quotation} dans la commande \commande{oldquotation}\footnote{Bien que \enquote{old} soit un nom anglais, il est de convention de préfixer ainsi les commandes copiées depuis une autre commande}. La commande \commande{quotation} quant à elle correspond au début de l'environnement \enviro{quotation}, c'est à dire à ce qui est executé par \verb|\begin{quotation}|.
-\item[ligne 2] nous copions la commande \commande{endquotation} correspondant à la fin de l'environnement  \enviro{quotation} --- c'est à dire à ce qui est executé lors du \verb|\end{quotation}| dans une commande \commande{endoldquotation}.
+\item[ligne 1]la commande \cs{let} est une commande \TeX qui copie une commande dans une autre commande. Ici nous copions la commande \cs{quotation} dans la commande \cs{oldquotation}\footnote{Bien que \enquote{old} soit un nom anglais, il est de convention de préfixer ainsi les commandes copiées depuis une autre commande}. La commande \cs{quotation} quant à elle correspond au début de l'environnement \enviro{quotation}, c'est à dire à ce qui est executé par \verb|\begin{quotation}|.
+\item[ligne 2] nous copions la commande \cs{endquotation} correspondant à la fin de l'environnement  \enviro{quotation} --- c'est à dire à ce qui est executé lors du \verb|\end{quotation}| dans une commande \cs{endoldquotation}.
 \end{description}
 
-En créant ces deux commandes \commande{oldquotation} et \commande{endoldquotation} nous avons créé un environnement \enviro{oldquotation}.
+En créant ces deux commandes \cs{oldquotation} et \cs{endoldquotation} nous avons créé un environnement \enviro{oldquotation}.
 
 \begin{description}
 \item[ligne 3]nous rédéfinissons l'environnement \enviro{quotation}
@@ -127,9 +127,9 @@ Si vous avez compris nos propos sur les commandes de début et de fin d'environn
 \section{Personaliser les titres}\rev{Réfléchir à mettre ailleurs}
 
 \subsection{Redéfinir la numérotation}\label{apparencecompteur}
-Nous avons abordés plus haut la notion de compteur. À chaque niveau de titre, \LaTeX associe un compteur \compteur{niveau}. Ainsi le compteur associé au niveau de titre \commande{chapter} est \compteur{chapter}.
+Nous avons abordés plus haut la notion de compteur. À chaque niveau de titre, \LaTeX associe un compteur \compteur{niveau}. Ainsi le compteur associé au niveau de titre \cs{chapter} est \compteur{chapter}.
 
-La valeur d'un compteur peut s'afficher grâce à la commande \commande{thecompteur}. Ainsi, si vous écrivez 
+La valeur d'un compteur peut s'afficher grâce à la commande \cs{thecompteur}. Ainsi, si vous écrivez 
 \begin{minted}{latex}
 \thechapter \\
 \thesection
@@ -152,8 +152,8 @@ Puisque les compteurs s'affichent à l'aide d'une commande, il est aisée de red
 \end{minted}
 
 \begin{description}
-\item[Ligne 1]la commande \commande{c@chapter} retourne la valeur --- entière, par définition --- du compteur \compteur{chapter}. Cette valeur ne peut pas être affichée directement, elle doit être au préalable formatée par la commande \commande{\@arabic}, qui l'affiche sous forme de chiffres arabes.
-\item[Ligne 2]la commande \commande{thesection} retourne \commande{thechapter} suivi d'un point, suivi de la valeur du compteur \compteur{section} affichée sous forme de chiffres arabes.
+\item[Ligne 1]la commande \cs{c@chapter} retourne la valeur --- entière, par définition --- du compteur \compteur{chapter}. Cette valeur ne peut pas être affichée directement, elle doit être au préalable formatée par la commande \cs{\@arabic}, qui l'affiche sous forme de chiffres arabes.
+\item[Ligne 2]la commande \cs{thesection} retourne \cs{thechapter} suivi d'un point, suivi de la valeur du compteur \compteur{section} affichée sous forme de chiffres arabes.
 \end{description}
 
 Supposons maintenant que nous souhaitons deux choses :
@@ -171,7 +171,7 @@ Il nous suffit de redéfinir ainsi ces commandes :
 
 \label{makeatletter}Si vous écrivez ces lignes dans votre préambule, vous n'arriverez pas à compiler. Cela tient à une raison simple : les commandes contenant le caractère @ ne peuvent pas être, normalement, utilisées dans un fichier \ext{tex}, mais uniquement dans les fichiers de définition de classe (\ext{cls}) ou de package (\ext{sty}).
 
-Pour pouvoir les utiliser dans un fichier \ext{tex}, il faut les entourer des commandes \commande{makeatletter} et \commande{makeatother}.
+Pour pouvoir les utiliser dans un fichier \ext{tex}, il faut les entourer des commandes \cs{makeatletter} et \cs{makeatother}.
 
 Ce qui nous donne : 
 
@@ -219,13 +219,13 @@ Pour personaliser l'apparence des titres, le mieux est de regarder ce que nous p
 Commentons ces quelques lignes :
 
 \begin{description}
-\item[ligne 1]La commande \commande{section} fait appel à une commande \commande{\@startsection}. Cette commande ajoute donc un niveau de titre à la table des matières. Malgrès son titre, elle peut servir pour n'importe quel niveau de titre (par exemple, pour les \commande{subsection}). Elle prend plusieur argument. Le premier est le nom du niveau : ici \verb|section|. Le second est le niveau de profondeur : \verb|1|. Le troisième est l'indentation prélable : ici \commande{z@}, c'est à dire une longueur nulle.
-\item[ligne 2]: quatrième argument de la commande \commande{@startsection}, qui indique l'espace vertical \emph{avant} le titre. Cet espace est idéalement de 3,5 ex \renvoi{unite}, mais peut être compris entre 1,5 ex (3,5 - 2) et 4,5 ex (3,5 + 1), les commandes \commande{@moins} et \commande{@plus} indiquant cette marge de manœuvre.
-\item[ligne 3]: cinquième argument de \commande{@startsection}, qui indique l'espace vertical après le titre. Notre longueur étant positive, le texte qui suit débute un nouveau paragraphe. Une longueur négative (comme c'est le cas pour la définition de la commande \commande{paragraph}) indique qu'il n'y a pas de changement de paragraphe. Ici donc, l'espace après le titre est de 2,3 ex, mais peut atteindre 2,5 ex (2,3 + 0,2).
-\item[ligne 4]: sixième et dernier argument de \commande{@startsection}, qui indique l'apparence proprement dit de notre titre. Il s'agit d'un texte en police normale --- c'est à dire celle définie par la commande \commande{setmainfont} ---, en taille \commande{Large}, mise en gras (\commande{\bfseries}). Ici toutes nos commandes sont considérés comme des commandes de bascule, la bascule finissant avec l'accolade fermante. La commande \commande{bfseries} étant l'équivalent à bascule de la commande \commande{textbf}. Il est recommandé de n'utiliser ici que des commandes à bascule, pour éviter des espaces indésirables.\label{bfseries}
+\item[ligne 1]La commande \cs{section} fait appel à une commande \cs{\@startsection}. Cette commande ajoute donc un niveau de titre à la table des matières. Malgrès son titre, elle peut servir pour n'importe quel niveau de titre (par exemple, pour les \cs{subsection}). Elle prend plusieur argument. Le premier est le nom du niveau : ici \verb|section|. Le second est le niveau de profondeur : \verb|1|. Le troisième est l'indentation prélable : ici \cs{z@}, c'est à dire une longueur nulle.
+\item[ligne 2]: quatrième argument de la commande \cs{@startsection}, qui indique l'espace vertical \emph{avant} le titre. Cet espace est idéalement de 3,5 ex \renvoi{unite}, mais peut être compris entre 1,5 ex (3,5 - 2) et 4,5 ex (3,5 + 1), les commandes \cs{@moins} et \cs{@plus} indiquant cette marge de manœuvre.
+\item[ligne 3]: cinquième argument de \cs{@startsection}, qui indique l'espace vertical après le titre. Notre longueur étant positive, le texte qui suit débute un nouveau paragraphe. Une longueur négative (comme c'est le cas pour la définition de la commande \cs{paragraph}) indique qu'il n'y a pas de changement de paragraphe. Ici donc, l'espace après le titre est de 2,3 ex, mais peut atteindre 2,5 ex (2,3 + 0,2).
+\item[ligne 4]: sixième et dernier argument de \cs{@startsection}, qui indique l'apparence proprement dit de notre titre. Il s'agit d'un texte en police normale --- c'est à dire celle définie par la commande \cs{setmainfont} ---, en taille \cs{Large}, mise en gras (\cs{\bfseries}). Ici toutes nos commandes sont considérés comme des commandes de bascule, la bascule finissant avec l'accolade fermante. La commande \cs{bfseries} étant l'équivalent à bascule de la commande \cs{textbf}. Il est recommandé de n'utiliser ici que des commandes à bascule, pour éviter des espaces indésirables.\label{bfseries}
 \end{description}
 
-Supposons maintenant que nous souhaitons avoir notre titre en en italique et en police sans empattement. Il nous suffit de redéfinir notre commande \commande{section}, en entourant notre définition de \commande{makeatletter} et \commande{makeatother}.\renvoi{makeatletter}.
+Supposons maintenant que nous souhaitons avoir notre titre en en italique et en police sans empattement. Il nous suffit de redéfinir notre commande \cs{section}, en entourant notre définition de \cs{makeatletter} et \cs{makeatother}.\renvoi{makeatletter}.
 
 \begin{minted}{latex}
 \renewcommand\section{\@startsection {section}{1}{\z@}%
@@ -234,11 +234,11 @@ Supposons maintenant que nous souhaitons avoir notre titre en en italique et en 
                                    {\sffamily\Large\it}}
 \end{minted}
 
-La commande \commande{ssfamily} produit une bascule vers la police sans empattement définie par \commande{setsansfont}, tandis que \commande{it} produit une bascule vers un texte en italique.
+La commande \cs{ssfamily} produit une bascule vers la police sans empattement définie par \cs{setsansfont}, tandis que \cs{it} produit une bascule vers un texte en italique.
 
 \section{Définir l'apparence : chapitre et niveaux supérieurs}
 
-Si on cherche dans le fichier \fichier{book.cls} la commande \commande{chapter}, on trouve\footnote{L. 360 et suivant, à la date du 6 août 2011.} :
+Si on cherche dans le fichier \fichier{book.cls} la commande \cs{chapter}, on trouve\footnote{L. 360 et suivant, à la date du 6 août 2011.} :
 
 \begin{minted}{latex}
 \newcommand\chapter{\if@openright\cleardoublepage\else\clearpage\fi
@@ -248,7 +248,7 @@ Si on cherche dans le fichier \fichier{book.cls} la commande \commande{chapter},
                     \secdef\@chapter\@schapter}
 \end{minted}
 
-Deux élèments nous intéressent : la ligne 2 \verb|thispagestyle{plain}|. On comprend ainsi la raison pour laquelle les  pages de début de chapitre n'ont pas les numéros de de page au même endroit que les autres : le style de cette page est \forme{plain} et non pas \forme{heading}, comme pour les autres pages. \renvoi{styleentetes}. Par conséquent, si on souhaite que les pages de titre aient les mêmes entêtes et pieds de page que les pages standards, il faut redéfinir la commande \commande{chapter}.\label{entetechapter}.\label{chapitrepagestyle}
+Deux élèments nous intéressent : la ligne 2 \verb|thispagestyle{plain}|. On comprend ainsi la raison pour laquelle les  pages de début de chapitre n'ont pas les numéros de de page au même endroit que les autres : le style de cette page est \forme{plain} et non pas \forme{heading}, comme pour les autres pages. \renvoi{styleentetes}. Par conséquent, si on souhaite que les pages de titre aient les mêmes entêtes et pieds de page que les pages standards, il faut redéfinir la commande \cs{chapter}.\label{entetechapter}.\label{chapitrepagestyle}
 
 \begin{minted}{latex}
 \makeatletter
@@ -259,17 +259,17 @@ Deux élèments nous intéressent : la ligne 2 \verb|thispagestyle{plain}|. On c
 \makeatother
 \end{minted}
 
-Le second élèment intéressant est la dernière ligne. La commande \commande{secdef} renvoie vers \commande{@chapter} si nous utilisons \commande{chapter} et vers \commande{@schapter} si nous utilisons \commande{chapter*}.
+Le second élèment intéressant est la dernière ligne. La commande \cs{secdef} renvoie vers \cs{@chapter} si nous utilisons \cs{chapter} et vers \cs{@schapter} si nous utilisons \cs{chapter*}.
 
-En fouillant les codes des commandes \commande{@chapter} et \commande{@schapter} nous trouvons qu'elles appellent respectivement la commande \commande{@makechapterhead} et \commande{@makeschapterhead}.
+En fouillant les codes des commandes \cs{@chapter} et \cs{@schapter} nous trouvons qu'elles appellent respectivement la commande \cs{@makechapterhead} et \cs{@makeschapterhead}.
 
 \begin{anedocte}
-Vous constaterez que les commandes \commande{@chapter}, \commande{@schapter}, \commande{@makechapterhead} et \commande{@makeschapterhead} sont définies via la commande \commande{def} et non pas \commande{newcommand}. 
+Vous constaterez que les commandes \cs{@chapter}, \cs{@schapter}, \cs{@makechapterhead} et \cs{@makeschapterhead} sont définies via la commande \cs{def} et non pas \cs{newcommand}. 
 
 En effet la définition est faite en \TeX et non pas en \LaTeX. Pour nos propos, cela ne change pas grand chose.
 \end{anedocte} 
 
-Intéressons nous à la commande \commande{@makechapterhead} 
+Intéressons nous à la commande \cs{@makechapterhead} 
 
 \begin{minted}{latex}
 \def\@makechapterhead#1{%
@@ -291,14 +291,14 @@ Intéressons nous à la commande \commande{@makechapterhead}
 Analysons là :
 
 \begin{description}
-\item[ligne 2]la commande  \commande{vspace} produit un espace vertical, ici de 50 pt (comme l'indique la commande \commande{p@}). La présence d'un astérix indique que notre espace vertical continue après un changement de page.
-\item[ligne 3]la commande \commande{parindent} indique l'indication de paragraphe à ce point précis : ici une longueur nulle (\commande{z@}). La commande \commande{raggedright} signifie que le texte va être aligné à gauche --- à l'inverse \commande{raggedleft} signifierait que le texte serait aligné à droite. Quant à la commande \commande{normalfont}, inutile de dire qu'elle signifie que la police standard --- celle définie par la commande \commande{setmainfont} --- est utilisée.
-\item[les lignes 4, 5, 9 et 10] servent à conditionner l'affichage d'un numéro de chapitre à la présence la partie principale du document (celle qui suit \commande{mainmatter}\renvoi{sectionbook}) et à la valeur du compteur \compteur{secnumdepth}, que vous pouvez redéfinir pour empêcher la numérotation de certains niveaux de titre.
-\item[ligne 6], on affiche en taille \commande{huge}\renvoi{taille}, en gras (\commande{bfserie}\renvoi{bfseries}) la chaîne de langue de début de chapitre (\commande{@chapapp}) suivie d'une espace et du numéro de chapitre (le compteur \compteur{chapter}, affiché via la commande {thechapter}.
-\item[ligne 7], on insére un paragraph (\commande{par}) et on indique d'empêcher un changement de page (\commande{nobreak}).
+\item[ligne 2]la commande  \cs{vspace} produit un espace vertical, ici de 50 pt (comme l'indique la commande \cs{p@}). La présence d'un astérix indique que notre espace vertical continue après un changement de page.
+\item[ligne 3]la commande \cs{parindent} indique l'indication de paragraphe à ce point précis : ici une longueur nulle (\cs{z@}). La commande \cs{raggedright} signifie que le texte va être aligné à gauche --- à l'inverse \cs{raggedleft} signifierait que le texte serait aligné à droite. Quant à la commande \cs{normalfont}, inutile de dire qu'elle signifie que la police standard --- celle définie par la commande \cs{setmainfont} --- est utilisée.
+\item[les lignes 4, 5, 9 et 10] servent à conditionner l'affichage d'un numéro de chapitre à la présence la partie principale du document (celle qui suit \cs{mainmatter}\renvoi{sectionbook}) et à la valeur du compteur \compteur{secnumdepth}, que vous pouvez redéfinir pour empêcher la numérotation de certains niveaux de titre.
+\item[ligne 6], on affiche en taille \cs{huge}\renvoi{taille}, en gras (\cs{bfserie}\renvoi{bfseries}) la chaîne de langue de début de chapitre (\cs{@chapapp}) suivie d'une espace et du numéro de chapitre (le compteur \compteur{chapter}, affiché via la commande {thechapter}.
+\item[ligne 7], on insére un paragraph (\cs{par}) et on indique d'empêcher un changement de page (\cs{nobreak}).
 \item[ligne 8]on insére un espace vertical de 20 pt.
-\item[ligne 9]: au niveau visée par ce livre, la compréhension de cette ligné n'est pas indispensable. Pour les curieux toutefois, cette ligne sert à prévenir un titre sur plusieurs lignes. Sommairement, on peut dire que prévenir les ruptures de lignes ou les changements de pages, \LaTeX utilisent des paramètres appelés \forme{penalty}. Plus une \forme{penalty} est importante, plus la probabilité d'une rupture est faible. Ici la \forme{penalty} d'interlignage --- de rupture de ligne --- est indiqué à 1000 (\commande{@M}). 
-\item[ligne 10]: on indique le titre (\#1) en taille \commande{Huge}, en gras (\commande{bfseries}). On introduit ensuite un paragraphe (\commande{par}), en demandant d'éviter les changements de page (\commande{nobreak}).
+\item[ligne 9]: au niveau visée par ce livre, la compréhension de cette ligné n'est pas indispensable. Pour les curieux toutefois, cette ligne sert à prévenir un titre sur plusieurs lignes. Sommairement, on peut dire que prévenir les ruptures de lignes ou les changements de pages, \LaTeX utilisent des paramètres appelés \forme{penalty}. Plus une \forme{penalty} est importante, plus la probabilité d'une rupture est faible. Ici la \forme{penalty} d'interlignage --- de rupture de ligne --- est indiqué à 1000 (\cs{@M}). 
+\item[ligne 10]: on indique le titre (\#1) en taille \cs{Huge}, en gras (\cs{bfseries}). On introduit ensuite un paragraphe (\cs{par}), en demandant d'éviter les changements de page (\cs{nobreak}).
 \item[ligne 11]on insére un espace vertical de 40 pt.
 \end{description}
 
@@ -311,12 +311,12 @@ Nous souhaitons avoir :
 \item Un trait horizontal en dessous du texte.
 \end{itemize}
 
-Pour ce faire, nous allons reprendre le code existant et le copier coller dans notre préambule entre \commande{makeatletter} et \commande{makeatother}. Nous allons ensuite effectuer les modifications suivantes :
+Pour ce faire, nous allons reprendre le code existant et le copier coller dans notre préambule entre \cs{makeatletter} et \cs{makeatother}. Nous allons ensuite effectuer les modifications suivantes :
 
 \begin{itemize}
-\item Remplacer \commande{raggedright} par \commande{raggedleft} pour avoir nos textes à droite.
-\item Remplacer le premier \commande{huge}\commande{bfseries} par \commande{scshape}, pour avoir \forme{chapitre} en petite capitale.
-\item Insérer la commande \commande{hrulefill}, qui sert à produire un filet horizontal, entre les lignes 10 et 11.
+\item Remplacer \cs{raggedright} par \cs{raggedleft} pour avoir nos textes à droite.
+\item Remplacer le premier \cs{huge}\cs{bfseries} par \cs{scshape}, pour avoir \forme{chapitre} en petite capitale.
+\item Insérer la commande \cs{hrulefill}, qui sert à produire un filet horizontal, entre les lignes 10 et 11.
 \end{itemize}
 
 Cela nous donne au final :
@@ -341,17 +341,17 @@ Cela nous donne au final :
 \makeatother
 \end{minted}
 
-Évidemment, il faudrait appliquer le même type de modifications sur la commande \commande{makeschapterhead}. On pourrait aussi s'amuser à modifier ce qui est produit par \commande{part}. Il faudra, pareillement, fouiller le fichier \commande{book.cls}.
+Évidemment, il faudrait appliquer le même type de modifications sur la commande \cs{makeschapterhead}. On pourrait aussi s'amuser à modifier ce qui est produit par \cs{part}. Il faudra, pareillement, fouiller le fichier \cs{book.cls}.
 
 \section[Manipuler les compteurs]{Manipuler les compteurs : le cas des notes de bas de page}
 
 Nous avons vu comment modifier l'affichage d'un compteur.\renvoi{apparencecompteur} Mais comment modifier la valeur d'un compteur ? Il existe pour cela deux fonctions : \verb|setcounter{compteur}{valeur}| pour affecter la valeur \forme{valeur} au compteur \forme{compteur}, et \verb|addtocounter{compteur}{valeur}| pour \emph{additionner} la valeur \forme{valeur} au compteur \forme{compteur}. La valeur ajoutée pouvant être négative, il est ainsi possible de faire reculer un compteur.
 
-En outre, il exisite une commande \commande{refstepcounter} qui permet d'incrémenter de une unité un compteur. C'est celle qui est utilisé par les commandes niveau de titre.\ref{niveautitre}.
+En outre, il exisite une commande \cs{refstepcounter} qui permet d'incrémenter de une unité un compteur. C'est celle qui est utilisé par les commandes niveau de titre.\ref{niveautitre}.
 
 
 
-Il est possible de créer son propre compteur grâce à la commande \verb|\newcounter{compteur}[compteur 2]|. Si l'argument \argument{compteur 2} est présent, alors il indique que la valeur du compteur \argument{compteur} doit être réinitialisé lorsque la commande \commande{refstepcounter} est appliquée au compteur \argument{compteur 2}.
+Il est possible de créer son propre compteur grâce à la commande \verb|\newcounter{compteur}[compteur 2]|. Si l'argument \argument{compteur 2} est présent, alors il indique que la valeur du compteur \argument{compteur} doit être réinitialisé lorsque la commande \cs{refstepcounter} est appliquée au compteur \argument{compteur 2}.
 
 La commande  \verb|@addtoreset{compteur}{compteur2}|  permet d'appliquer cette règle sur un compteur déjà existant.
 
@@ -362,7 +362,7 @@ Ainsi, dans le fichier \fichier{book.cls}, vous remarquerez la ligne suivante\fo
 
 Ce qui signifie que le compteur  \compteur{footnote}, qui correspond à la numérotation des notes de bas de page, est réinitialisé à chaque nouveau chapitre \emph{numéroté}. 
 
-Si nous souhaitons annuler cette commande, pour avoir des notes de bas de page en numérotation continue, il nous faut utiliser le package \package{remreset} et sa commande \commande{@removefromreset} :
+Si nous souhaitons annuler cette commande, pour avoir des notes de bas de page en numérotation continue, il nous faut utiliser le package \package{remreset} et sa commande \cs{@removefromreset} :
 
 \begin{minted}{latex}
 \usepackage{remreset}

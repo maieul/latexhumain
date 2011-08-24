@@ -18,7 +18,7 @@ Le PDF résultant de la compilation d'un fichier Beamer pourra être affiché so
 
 Le reste du préambule contient la même chose que pour un fichier \ext{tex} classique : appels aux packages, définitions éventuelles de commandes etc.
 
-Toutefois il est possible de définir la manière dont les diapositives vont s'afficher, en utilisant dans le préambule la commande \commande{usetheme}. Par exemple pour utiliser le thème \forme{Darmstadt} :
+Toutefois il est possible de définir la manière dont les diapositives vont s'afficher, en utilisant dans le préambule la commande \cs{usetheme}. Par exemple pour utiliser le thème \forme{Darmstadt} :
 
 \begin{minted}{latex}
 \usetheme{Darmstadt}
@@ -56,11 +56,11 @@ Par exemple :
 
 \subsection{Diapositives de titres}
 
-Il est possible de structurer le document Beamer grâce aux commandes \commande{section} et \commande{subsection}\renvoi{niveautitre}\footcite[Le manuel de \classe{Beamer} déconseille d'utiliser  \commande{subsubsection} parce que \enquote{c'est le diable}.][]{beamer_diable} et d'utiliser dans le préambule les commandes de descriptions : \commande{title}, \commande{author} et \commande{date}\renvoi{notioncommande}.
+Il est possible de structurer le document Beamer grâce aux commandes \cs{section} et \cs{subsection}\renvoi{niveautitre}\footcite[Le manuel de \classe{Beamer} déconseille d'utiliser  \cs{subsubsection} parce que \enquote{c'est le diable}.][]{beamer_diable} et d'utiliser dans le préambule les commandes de descriptions : \cs{title}, \cs{author} et \cs{date}\renvoi{notioncommande}.
 
 Toutefois ces informations servent uniquement à structurer le document, afin de permettre d'afficher le plan. C'est pourquoi il faut les entrées \emph{en-dehors} des diapositives\footnote{Un  autre intérêt est aussi de permettre d'avoir un seul document pour une version \forme{article} et une version \forme{diapositive} d'un même sujet.}.
 
-En revanche, pour les afficher dans une diapositive, il faut utiliser les commandes \commande{sectionpage} et \commande{subsectionpage} pour les niveaux de titres et \commande{titlepage} pour les informations sur la date, l'auteur et le titre de la conférence.
+En revanche, pour les afficher dans une diapositive, il faut utiliser les commandes \cs{sectionpage} et \cs{subsectionpage} pour les niveaux de titres et \cs{titlepage} pour les informations sur la date, l'auteur et le titre de la conférence.
 
 \inputminted{exemples/shs/beamer/structure.tex}
 
@@ -82,7 +82,7 @@ La syntaxe de l'affichage couche par couche (en anglais \textenglish{overlay spe
 \end{frame}
 \end{minted}
 
-Toutes les commandes \LaTeX{} ne réagissent pas nécessairement aux spécifications de couche : par exemple la commande \commande{emph} ne réagit pas : si vous utilisez une spécification de couche avec cette commande, la spécification apparaîtra sur la diapositive.
+Toutes les commandes \LaTeX{} ne réagissent pas nécessairement aux spécifications de couche : par exemple la commande \cs{emph} ne réagit pas : si vous utilisez une spécification de couche avec cette commande, la spécification apparaîtra sur la diapositive.
 
 On peut vouloir obtenir un PDF où toutes les couches d'une diapositive apparaissent d'un seul coup, afin par exemple d'avoir une version papier\footcite[À noter qu'il est possible de fabriquer un PDF destiné à l'impression sur transparents -- en cas de défaillance du vidéo-projecteur -- en précisant quelles couches doivent être séparées sur les transparents. Voir :][]{beamer_trans}. Pour ce faire, il suffit d'utiliser l'option de package \option{handout}.
 
@@ -120,9 +120,9 @@ Il est possible de mettre en valeur certains éléments de plusieurs manières. 
 
 L'apparence des blocs dépend du thème choisi.
 
-\subsection{La commande \commande{alert}}
+\subsection{La commande \cs{alert}}
 
-La commande \commande{alert} sert à mettre en valeur une partie d'un texte. Elle peut recevoir une spécification de couches. Cela est très utile pour indiquer à l'auditoire le sujet dont on parle. 
+La commande \cs{alert} sert à mettre en valeur une partie d'un texte. Elle peut recevoir une spécification de couches. Cela est très utile pour indiquer à l'auditoire le sujet dont on parle. 
 
 \begin{minted}{latex}
 \begin{frame}
@@ -143,7 +143,7 @@ Le package \package{spot} permet des mises en valeurs sous forme de tache lumine
 
 Il peut être utile pour le conférencier d'avoir, en plus des diapositives, des notes pour lui servir d'aide-mémoire lors d'une conférence.
 
-Pour ce faire il suffit d'utiliser la commande \commande{note} dans une diapositive.
+Pour ce faire il suffit d'utiliser la commande \cs{note} dans une diapositive.
 
 \begin{minted}{latex}
 \begin{frame}
@@ -153,7 +153,7 @@ Le contenu proprement dit de la diapositive.
 \end{frame}
 \end{minted}
 
-On peut afficher plusieurs notes sous formes de listes en passant l'argument \argument{item} à la commande \commande{note}.
+On peut afficher plusieurs notes sous formes de listes en passant l'argument \argument{item} à la commande \cs{note}.
 
 \begin{minted}{latex}
 \begin{frame}
@@ -167,7 +167,7 @@ Le contenu proprement dit de la diapositive.
 
 Les notes n'apparaissent pas sur la diapositive, mais sont reportées après la diapositive, dans une page spéciale du fichier PDF. Cela n'est pas très pratique : on souhaiterait avoir d'une part les diapositives, d'autre part les notes. 
 
-Pour ce faire il suffit d'utiliser dans le préambule la commande \commande{setbeameroption} avec le bon argument.
+Pour ce faire il suffit d'utiliser dans le préambule la commande \cs{setbeameroption} avec le bon argument.
 
 \begin{minted}{latex}
 \setbeameroption{hide notes}
@@ -183,7 +183,7 @@ Il est également possible de produire un fichier contenant les diapositives et 
 
 \section{Écrire son article dans le même fichier que la présentation}
 
-Il peut être judicieux d'écrire l'article correspondant à la présentation dans le même fichier que celui-ci. Pour ce faire, la solution est relativement simple : il suffit d'écrire le contenu de l'article entre les environnements (ou les commandes) \commande{frame}\footcites[À noter qu'on peut aussi introduire des miniatures des diapositives  dans l'article, voir :][]{beamer_diapo_article}.
+Il peut être judicieux d'écrire l'article correspondant à la présentation dans le même fichier que celui-ci. Pour ce faire, la solution est relativement simple : il suffit d'écrire le contenu de l'article entre les environnements (ou les commandes) \cs{frame}\footcites[À noter qu'on peut aussi introduire des miniatures des diapositives  dans l'article, voir :][]{beamer_diapo_article}.
 
 \begin{minted}{latex}
 \section{Introduction}

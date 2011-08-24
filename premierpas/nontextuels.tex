@@ -83,11 +83,11 @@ Analysons le code :
 
 \begin{description}
 \item[Ligne 1]l'environnement \enviro{tikzpicture} est l'environnement utilisé pour insérer une figure TikZ. Il peut recevoir de nombreux arguments pour modifier certains aspects, tels que épaisseurs par défaut des lignes, tailles du texte, orientation du schéma. Nous renvoyons à la documentation.
-\item[Ligne 2] un nœud TikZ, matérialisé ici par le commande \commande{node} est un bloc de texte. On pourrait passer des options à cette commande, afin de modifier certains aspects (par exemple afficher un contour au texte).
+\item[Ligne 2] un nœud TikZ, matérialisé ici par le commande \cs{node} est un bloc de texte. On pourrait passer des options à cette commande, afin de modifier certains aspects (par exemple afficher un contour au texte).
 \item[Lignes 3 et 4] \verb|child| désigne ici une opération : associer un fils au nœud précédent. Ce fils est lui même un nœud (\verb|node|)
 \item[Lignes 5 à 12]même chose que précédemment, sauf que le nœud D se voit attribuer des fils (E et F). Notez le nombre d'accolade et leurs imbrications : c'est ce qui permet à \package{TikZ} de construire correctement la généalogie.
 \item[Ligne 13] le point-virgule est important.
-Il est obligatoire après chaque commande \package{TikZ} (ici \commande{node}).
+Il est obligatoire après chaque commande \package{TikZ} (ici \cs{node}).
 \item[Ligne 14] fin de graphisme \package{TikZ}
 \end{description}
 
@@ -131,7 +131,7 @@ Celle pour insérer le second est la suivante :
 \end{table} 
 \end{minted}
 
-Si la commande \commande{caption} est insérée au dessus de la figure, de l'image ou du table, la légende sera située au dessus de l'élément et non en dessous. Il est possible, mais déconseillée, de ne pas mettre de légende.
+Si la commande \cs{caption} est insérée au dessus de la figure, de l'image ou du table, la légende sera située au dessus de l'élément et non en dessous. Il est possible, mais déconseillée, de ne pas mettre de légende.
 
 Un exemple de flottant se situe  dans ce chapitre : la figure \ref{figure:genealogie}\renvoi{figure:genealogie}.
 \begin{attention}
@@ -140,7 +140,7 @@ Un exemple de flottant se situe  dans ce chapitre : la figure \ref{figure:geneal
 	De même on pourrait souhaiter renvoyer automatiquement vers le numéro et la page d'une figure : nous en parlons dans le chapitre consacré à la navigation à l'intérieur d'un document.\renvoi{label}
 \end{attention}
 
-À noter que, comme les titres, la commande \commande{caption} peut recevoir un argument optionnel qui comptera pour titre dans la table des figures ou la table des tableaux :\renvoi{tablefigure}
+À noter que, comme les titres, la commande \cs{caption} peut recevoir un argument optionnel qui comptera pour titre dans la table des figures ou la table des tableaux :\renvoi{tablefigure}
 
 \begin{minted}{latex}
 \caption[Légende pour la table]{Légende}
@@ -148,7 +148,7 @@ Un exemple de flottant se situe  dans ce chapitre : la figure \ref{figure:geneal
 
 \begin{anedocte}
 
-Il peut-être utile de centrer le contenu du flottant. Il s'agit ici d'une exception au principe de séparation du fond de la forme. Pour procéder à ce centrage, il faut utiliser la commande \commande{centering}.
+Il peut-être utile de centrer le contenu du flottant. Il s'agit ici d'une exception au principe de séparation du fond de la forme. Pour procéder à ce centrage, il faut utiliser la commande \cs{centering}.
 
 \begin{minted}{latex}
 \begin{figure}[paramètre de placement]
@@ -188,7 +188,7 @@ Le paramètre de placement indique à \LaTeX comment placer idéalement les flot
 
 Si le système des flottants permet généralement de conserver une mise en page correcte tout en n'éloignant pas trop l'élément de son emplacement, il arrive parfois qu'il l'éloignement soit trop important.
 
-Pour remédier à ce problème, on pourra utiliser la commande \commande{FloatBarrier} du paquet \package{placeins}. 
+Pour remédier à ce problème, on pourra utiliser la commande \cs{FloatBarrier} du paquet \package{placeins}. 
 Tout les flottants appelés précédemment seront systématiquement placés avant cette commande.
 
 \subsection{Sous-figure}

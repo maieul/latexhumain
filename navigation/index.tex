@@ -14,7 +14,7 @@ Dans ce chapitre nous verrons comment faire des index\footnote{Je remercie ma s�
 \subsection{Principe de base}
 
 
-Pour indexer un document, il faut utiliser le package \package{makeidx}. Dans le préambule il faut placer la commande \commande{makeindex} pour que \LaTeX{} puisse créer un index.
+Pour indexer un document, il faut utiliser le package \package{makeidx}. Dans le préambule il faut placer la commande \cs{makeindex} pour que \LaTeX{} puisse créer un index.
 
 \begin{minted}{latex}
 \usepackage{makeidx}
@@ -64,7 +64,7 @@ Il suffira ensuite, au cours de la rédaction de son texte, de taper par exemple
 
 \subsubsection{Générer l'index}
 
-Si notre fichier principal s'appel \fichier{exemple.tex}, lors de la première compilation, la commande \commande{makeindex} indique à \LaTeX{} de créer un fichier de type \fichier{exemple.idx}, contenant la liste de toutes les entrées que l'on a placées. 
+Si notre fichier principal s'appel \fichier{exemple.tex}, lors de la première compilation, la commande \cs{makeindex} indique à \LaTeX{} de créer un fichier de type \fichier{exemple.idx}, contenant la liste de toutes les entrées que l'on a placées. 
  
  %Chaque entrée se présente de la manière suivante:\\
 %\verb+\indexentry{nom de l'entrée}{numéro de la page}+.
@@ -92,7 +92,7 @@ Il est possible de ne pas indiquer l'extension \ext{idx}.
 %
 %\end{minted}
 
-Il suffit alors de compiler à nouveau le document principal pour y intégrer son index, qui apparaîtra à l'emplacement que l'on aura indiqué par la commande \commande{printindex}.
+Il suffit alors de compiler à nouveau le document principal pour y intégrer son index, qui apparaîtra à l'emplacement que l'on aura indiqué par la commande \cs{printindex}.
 
 
 %essayer de faire marcher showidx
@@ -189,7 +189,7 @@ Empereurs\\
 \end{tabbing}
 \end{quotation}
 
-Cette commande est aussi utile pour mettre en évidence une entrée dans l'index en modifiant son aspect. En mettant \verb+\index{entrée@\textbf{entrée formatée}+, l'entrée apparaît en gras dans l'index. Ceci est valable pour toutes les commandes modifiant la fonte. Modifions ainsi comme suit la commande \commande{auteur} que l'on a crée:
+Cette commande est aussi utile pour mettre en évidence une entrée dans l'index en modifiant son aspect. En mettant \verb+\index{entrée@\textbf{entrée formatée}+, l'entrée apparaît en gras dans l'index. Ceci est valable pour toutes les commandes modifiant la fonte. Modifions ainsi comme suit la commande \cs{auteur} que l'on a crée:
 
 \begin{minted}{latex}
 \newcommand\auteur[2]{#1~\textsc{#2}\index{#2 #1@\textsc{#2}, #1}\xspace}
@@ -224,7 +224,7 @@ il s'agit bien de \verb+|textbf+, non de \verb+|\textbf+
 Nous supposons que vous avez appris à vous servir de \package{MakeIndex} avant d'apprendre à utiliser \package{SplitIndex}, car les principes de base sont les mêmes.
 \end{prealable}
 
-Le package se charge en remplçant la commande \verb|\usepackage{makeindex}| par \verb|\usepackage{splitidx}| tout en gardant ensuite \commande{makeindex} dans le préambule, ou bien en mettant simplement  \verb|\usepackage[makeindex]{splitidx}|.
+Le package se charge en remplçant la commande \verb|\usepackage{makeindex}| par \verb|\usepackage{splitidx}| tout en gardant ensuite \cs{makeindex} dans le préambule, ou bien en mettant simplement  \verb|\usepackage[makeindex]{splitidx}|.
 
 \subsection{Définir ses index}
 
@@ -264,15 +264,15 @@ Damase\sindex[npr]{Damase}(…)\sindex[idx]{Charles et la papauté|}.
 
 \subsection{Imprimer les index}
 
-Pour imprimer l'index \forme{nom}, il suffit d'utiliser la commande \commande{printindex} en lui passant le nom abregé de l'index en argument. Ainsi pour imprimer l'index de noms propres:
+Pour imprimer l'index \forme{nom}, il suffit d'utiliser la commande \cs{printindex} en lui passant le nom abregé de l'index en argument. Ainsi pour imprimer l'index de noms propres:
 
 \begin{minted}{latex}
 \printindex[npr]
 \end{minted}
 
-Pour imprimer l'ensemble des index, il faut utiliser la commande \commande{printindex*}.
+Pour imprimer l'ensemble des index, il faut utiliser la commande \cs{printindex*}.
 
-Par défaut, les index ont un titre de niveau \commande{chapter} dans la classe \classe{book} et de niveau \commande{section} dans la classe \section{article}. Il est possible d'imprimer les index avec un titre de niveau immédiatement inférieur, pour par exemple regrouper l'ensemble des index dans un chapitre, divisé en section. Il faut utiliser dans ce cas la commande \commande{printsubindex} (ou \commande{printsubindex} pour tous les imprimer.
+Par défaut, les index ont un titre de niveau \cs{chapter} dans la classe \classe{book} et de niveau \cs{section} dans la classe \section{article}. Il est possible d'imprimer les index avec un titre de niveau immédiatement inférieur, pour par exemple regrouper l'ensemble des index dans un chapitre, divisé en section. Il faut utiliser dans ce cas la commande \cs{printsubindex} (ou \cs{printsubindex} pour tous les imprimer.
 
 Par exemple :
 
@@ -287,7 +287,7 @@ Par exemple :
 
 \section{Ajouter l'index dans la table des matières}
 
-On peut souhaiter que notre index soit indiqué dans la table des matières. On pourrait utiliser la commande \commande{addcontentsline} de la manière suivante :
+On peut souhaiter que notre index soit indiqué dans la table des matières. On pourrait utiliser la commande \cs{addcontentsline} de la manière suivante :
 
 \begin{minted}{latex}
 \printindex
@@ -301,9 +301,9 @@ Seulement voilà : si notre index fait plus d'une page, sont entrée dans le som
 \printindex
 \end{minted}
 
-alors le problème d'un décalage existe aussi, puisque l'index va systématiquement commencer sur une page de droite. Il peut donc y avoir un saut de page entre la commande \commande{addcontentsline} et la commande{printindex}. 
+alors le problème d'un décalage existe aussi, puisque l'index va systématiquement commencer sur une page de droite. Il peut donc y avoir un saut de page entre la commande \cs{addcontentsline} et la commande{printindex}. 
 
-La solution est d'indiquer à \LaTeX d'utiliser une page paire --- de droite dans une écriture de gauche à droite ---  avant d'utiliser la commande \addcontentsline. Cela se fait en utilisant la commande \commande{cleardoublepage}
+La solution est d'indiquer à \LaTeX d'utiliser une page paire --- de droite dans une écriture de gauche à droite ---  avant d'utiliser la commande \addcontentsline. Cela se fait en utilisant la commande \cs{cleardoublepage}
 
 \begin{minted}{latex}
 \cleardoublepage
@@ -311,7 +311,7 @@ La solution est d'indiquer à \LaTeX d'utiliser une page paire --- de droite dan
 \printindex
 \end{minted}
 
-En outre, le signet PDF produit par le package \package{hyperref}\renvoi{hyperref} se trouvera décalé. Pour éviter cela, il faut utiliser la commande \commande{phantomsection} avant la commande \commande{addcontentsline}. Ce qui nous donne donc au final :
+En outre, le signet PDF produit par le package \package{hyperref}\renvoi{hyperref} se trouvera décalé. Pour éviter cela, il faut utiliser la commande \cs{phantomsection} avant la commande \cs{addcontentsline}. Ce qui nous donne donc au final :
 
 \begin{minted}{latex}
 \cleardoublepage

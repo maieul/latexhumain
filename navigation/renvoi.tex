@@ -5,10 +5,10 @@ Dans ce court chapitre nous allons nous intéresser à la manière d'opérer des
 Il s'agit de permettre d'afficher des textes du type : \enquote{Nous renvoyons au chapitre N. page P.}
 \end{prealable}
 
-\section{Étiqueter des  emplacements : la commande \commande{label}}
+\section{Étiqueter des  emplacements : la commande \cs{label}}
 
 Pour permettre de faire des renvois internes, il est nécessaire de placer des \enquote{étiquettes} aux endroits vers lesquels on souhaite renvoyer.
-Cet étiquetage  se fait avec la commande \commande{label{etiquette}}.
+Cet étiquetage  se fait avec la commande \cs{label{etiquette}}.
 
 \begin{anedocte}
 Lors de la relecture, il peut être intéressant d'avoir les étiquettes affichées en marge. On utilisera pour ce faire le package \package{showlabels}.
@@ -36,7 +36,7 @@ note les emplacements des étiquettes dans un fichier. À la seconde compilation
 
 \subsection{Renvoyer à une page}
 
-Pour renvoyer au numéro de page correspondant à l'étiquette \forme{etiquette} il suffit d'utiliser la commande \commande{pageref}.
+Pour renvoyer au numéro de page correspondant à l'étiquette \forme{etiquette} il suffit d'utiliser la commande \cs{pageref}.
 
 \begin{minted}{latex}
 blabla \label{etiquette}
@@ -47,7 +47,7 @@ Nous renvoyons à la page  \pageref{etiquette}.
 
 \subsection{Renvoyer à un numéro de section}
 
-Pour renvoyer à un numéro de section, il suffit d'utiliser la commande \commande{ref}.
+Pour renvoyer à un numéro de section, il suffit d'utiliser la commande \cs{ref}.
 
 \begin{minted}{latex}
 \section{Section} \label{etiquette}
@@ -57,7 +57,7 @@ Nous renvoyons à la section  \ref{etiquette}.
  
 \subsection{Renvoyer à un titre de section}\label{renvoititre}
 
-Pour renvoyer à un titre de section, il suffit d'utiliser la commande \commande{nameref}.
+Pour renvoyer à un titre de section, il suffit d'utiliser la commande \cs{nameref}.
 
 \begin{minted}{latex}
 \section{Section} \label{etiquette}
@@ -68,14 +68,14 @@ Nous renvoyons à la section  \enquote{\nameref{etiquette}}.
 Toutefois cette commande n'est pas disponible en standard : elle est proposée par le package \package{hyperref}. Il faut donc charger ce package dans le préambule. Nous documentons plus loin quelques fonctionnalité de ce package\renvoi{hyperref}.
 
 
-\section{Où placer la commande \commande{label} ?}
+\section{Où placer la commande \cs{label} ?}
 
 Pour le moment, nous avons vu des renvois vers des sections, mais le système de renvois est beaucoup plus souple.
 
 Une étiquette permet de renvoyer à tout élément numéroté, comme un titre, une note de base de page, une légende de flottant. Elle peut aussi renvoyer à un endroit précis, uniquement pour la page.
 
 \begin{itemize}
-\item Si l'étiquette \commande{label} est placée \emph{dans}  une commande  d'élément numéroté, elle renvoie à cette élément. Par exemple, pour renvoyer à une figure \renvoi{legende} :
+\item Si l'étiquette \cs{label} est placée \emph{dans}  une commande  d'élément numéroté, elle renvoie à cette élément. Par exemple, pour renvoyer à une figure \renvoi{legende} :
 \begin{minted}{latex}
 \begin{figure}[paramètre de placement]
 	Insertion de la figure

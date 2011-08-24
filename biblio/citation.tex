@@ -79,9 +79,9 @@ Par exemple :
 \cite{Saxer1980}
 \end{quotation}
 
-L'usage en sciences humaines est de citer en note de bas de page. C'est pourquoi, il vaut mieux utiliser : \verb|\footcite{Saxer1980}|,\label{footcite} qui indiquera la référence en note de bas de page, en ajoutant automatiquement le point de fin de note. On peut également décider d'utiliser la commande \commande{parencite}, pour citer entre parenthèses. 
+L'usage en sciences humaines est de citer en note de bas de page. C'est pourquoi, il vaut mieux utiliser : \verb|\footcite{Saxer1980}|,\label{footcite} qui indiquera la référence en note de bas de page, en ajoutant automatiquement le point de fin de note. On peut également décider d'utiliser la commande \cs{parencite}, pour citer entre parenthèses. 
 
-Mais on peut aussi choisir la commande \commande{autocite}. Le mode de citation (notes de bas page, citation directe, citation entre parenthèse etc.) dépendra du style de citation choisi : pour les styles de la famille \verb|verbose|, ce sera les notes de bas de pages. 
+Mais on peut aussi choisir la commande \cs{autocite}. Le mode de citation (notes de bas page, citation directe, citation entre parenthèse etc.) dépendra du style de citation choisi : pour les styles de la famille \verb|verbose|, ce sera les notes de bas de pages. 
 
 \subsection{Les options prenote et postenote}
 
@@ -130,7 +130,7 @@ Ou encore les pages 25 et 35:
 \autocite[35 \& 25]{Saxer1980}
 \end{minted}
 
-Toutefois, je peux vouloir citer la page précise et mettre autre chose dans le champ \champ{post} : pour ce faire, j'utilise la commande \commande{pno}, pour que \package{BibLaTeX} insère lui même le \forme{p.} :
+Toutefois, je peux vouloir citer la page précise et mettre autre chose dans le champ \champ{post} : pour ce faire, j'utilise la commande \cs{pno}, pour que \package{BibLaTeX} insère lui même le \forme{p.} :
 
 \begin{minted}{latex}
 \autocite[\pno~22 avec lequel nous sommes en désaccord.]{Saxer1980}
@@ -140,7 +140,7 @@ Toutefois, je peux vouloir citer la page précise et mettre autre chose dans le 
 	\parencite[\pno~22 avec lequel nous sommes en désaccord.]{Saxer1980}
 \end{quotation}
 
-On pourra également utiliser les commandes \commande{nopp} pour ne pas afficher de préfixe de pagination,  \commande{psq} pour indiquer qu'il également faut prendre la page suivante et \commande{psqq} pour indiquer qu'il faut prendre les pages suivantes.
+On pourra également utiliser les commandes \cs{nopp} pour ne pas afficher de préfixe de pagination,  \cs{psq} pour indiquer qu'il également faut prendre la page suivante et \cs{psqq} pour indiquer qu'il faut prendre les pages suivantes.
 
 On peut préciser le type de pagination possible : pagine-t-on en pages, en colonnes etc ? Pour cela, il faut préciser le champ \champ{pagination}, en donnant l'une des valeurs suivantes : 
 

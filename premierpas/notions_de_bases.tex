@@ -117,7 +117,7 @@ On peut déroger à cette règle en passant une option à l'appel de classe \ren
 \end{description}
 
 Nous pouvons maintenant définir la notion de commande. Une commande  est un bout de code qui sera interprété par le compilateur pour effectuer une suite d'opérations, c'est un raccourci d'écritures. 
-Ici la commande \commande{maketitle} affiche les informations tel que le titre, la date et l'auteur du travail, informations que le compilateur aura retenu grâce aux commandes utilisés au préalables.
+Ici la commande \cs{maketitle} affiche les informations tel que le titre, la date et l'auteur du travail, informations que le compilateur aura retenu grâce aux commandes utilisés au préalables.
 
 Une commande peut prendre des arguments , certains facultatifs, d'autres obligatoires. Ces arguments  modifieront alors son comportement.
 
@@ -130,7 +130,7 @@ La syntaxe d'une commande est : \label{syntaxecommande}
 Entre crochet sont indiqués les arguments optionnels, entre accolades les arguments obligatoires.
 
 
-L'ordre des arguments dépend de chaque commande, et les arguments optionnels ne sont pas systématiquement avant les arguments obligatoires. Ils peuvent être après, ou s'intercaler entre. Notez que certaines commandes peuvent ne pas prendre d'argument : c'est le cas ici de \commande{maketitle}\footnote{Si l'argument de la commande  \commande{date} est vide, alors la date affichée  sera la date de la compilation , sinon celle passée en argument.}.
+L'ordre des arguments dépend de chaque commande, et les arguments optionnels ne sont pas systématiquement avant les arguments obligatoires. Ils peuvent être après, ou s'intercaler entre. Notez que certaines commandes peuvent ne pas prendre d'argument : c'est le cas ici de \cs{maketitle}\footnote{Si l'argument de la commande  \cs{date} est vide, alors la date affichée  sera la date de la compilation , sinon celle passée en argument.}.
 
 La grande force de \LaTeX est justement de permettre d'utiliser des commandes afin d'éviter de répéter des tâches fréquentes. C'est pourquoi nous apprendrons à définir nos propres commandes.
 

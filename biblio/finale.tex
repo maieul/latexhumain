@@ -8,7 +8,7 @@ Dans ce chapitre nous allons voir comment afficher et trier une bibliographie.
 
 \section{Affichage de la bibliographie}
 
-La commande \commande{printbibliography} est la commande de base pour imprimer une bibliographie. Si vous l'essayez dans votre projet, vous obtiendrez une bibliographie reprenant l'ensemble des œuvres que vous avez citées au cours de votre travail. Ainsi, vous êtes certains de ne rien oublier.
+La commande \cs{printbibliography} est la commande de base pour imprimer une bibliographie. Si vous l'essayez dans votre projet, vous obtiendrez une bibliographie reprenant l'ensemble des œuvres que vous avez citées au cours de votre travail. Ainsi, vous êtes certains de ne rien oublier.
 
 Toutefois une telle bibliographie est peu utile : elle mélange allègrement sources primaires et études secondaires, ne distingue pas selon les chapitres etc. Nous allons donc voir maintenant comment sectionner une bibliographie en plusieurs morceaux. Mais auparavent il nous faut mentionner une spécificité pour les sciences humaines.
 
@@ -25,7 +25,7 @@ Ainsi, lors de l'appel au package \package{biblatex}, il suffit d'écrire :
 
 \section{Trier une bibliographie par catégorie de document}
 
-Une première manière de trier une bibliographie peut être selon le type de document. Les entrées bibliographiques peuvent avoir un champ \champ{entrysubtype} qui permet de préciser le type d'entrée (par exemple, préciser si une entrée est une lettre, un traité, une prédication etc.). On peut passer à la commande \commande{printbibliography} un argument afin de n'afficher que certains types de documents. Supposons que nous ne souhaitons afficher que les entrées dont le champ \champ{entrysubtype} a pour valeur \enquote{lettre}. Il suffit d'écrire :
+Une première manière de trier une bibliographie peut être selon le type de document. Les entrées bibliographiques peuvent avoir un champ \champ{entrysubtype} qui permet de préciser le type d'entrée (par exemple, préciser si une entrée est une lettre, un traité, une prédication etc.). On peut passer à la commande \cs{printbibliography} un argument afin de n'afficher que certains types de documents. Supposons que nous ne souhaitons afficher que les entrées dont le champ \champ{entrysubtype} a pour valeur \enquote{lettre}. Il suffit d'écrire :
 
 \begin{minted}{latex}
 \printbibliography[subtype=lettre]
@@ -50,9 +50,9 @@ Une telle méthode permet aisément de séparer une bibliographie en plusieurs p
 
 \section{Changer le niveau de titre d'une bibliographie}
 
-Par défaut, les titres de bibliographie sont de niveaux \commande{chapter*}\renvoi{niveautitre}. Mais il est possible de redéfinir ces titres, grâce à la commande \commande{defbibheading}.
+Par défaut, les titres de bibliographie sont de niveaux \cs{chapter*}\renvoi{niveautitre}. Mais il est possible de redéfinir ces titres, grâce à la commande \cs{defbibheading}.
 
-Imaginons que je souhaite que le titre de la bibliographie soit de niveau \commande{subsection}
+Imaginons que je souhaite que le titre de la bibliographie soit de niveau \cs{subsection}
 
 \begin{minted}{latex}
 \defbibheading{bibliography}[\bibname]{\subsection{#1}}
@@ -60,15 +60,15 @@ Imaginons que je souhaite que le titre de la bibliographie soit de niveau \comma
 
 Analysons ce code :
 \begin{enumerate}
-\item Le premier argument correspond au nom de l'entête de bibliographie (du titre de bibliographie). L'entête nommé \forme{bibliography} est celui utilisé par défaut. Mais on pourrait très bien définir un entête \forme{toto}, il suffirait alors de passer un argument \argument{heading} à la commande \commande{printbibliography}.
+\item Le premier argument correspond au nom de l'entête de bibliographie (du titre de bibliographie). L'entête nommé \forme{bibliography} est celui utilisé par défaut. Mais on pourrait très bien définir un entête \forme{toto}, il suffirait alors de passer un argument \argument{heading} à la commande \cs{printbibliography}.
 
 \begin{minted}{latex}
 \defbibheading{toto}[\bibname]{\subsection{#1}}
 \printbibliography[heading=toto]
 \end{minted}
 
-\item Le second argument, ici \commande{bibname} correspond au titre par défaut. Dans notre cas, la commande \commande{bibname} renvoie simplement la valeur \forme{Bibliographie}.
-\item Le troisième argument contient le code qui sera appelé pour créer l'entête d'une bibliographie. Ici on déclare qu'on passe le titre (le \verb|#1|) à une commande \commande{subsection}.
+\item Le second argument, ici \cs{bibname} correspond au titre par défaut. Dans notre cas, la commande \cs{bibname} renvoie simplement la valeur \forme{Bibliographie}.
+\item Le troisième argument contient le code qui sera appelé pour créer l'entête d'une bibliographie. Ici on déclare qu'on passe le titre (le \verb|#1|) à une commande \cs{subsection}.
 \end{enumerate}
 
 
@@ -94,7 +94,7 @@ Par exemple
 
 Une autre manière de  sectionner une bibliographie est de faire des parties thématiques. Pour cela, une solution est d'indiquer des mots clés dans le champ \champ{keywords} des entrées bibliographiques. Les mots clés doivent être séparés par des virgules.
 
-On peut alors passer l'argument \argument{keyword} à la commande \commande{printbibliography}. On peut ainsi sélectionner toutes les entrées ayant la valeur \forme{xxx} dans leurs champs \champ{keywords} :
+On peut alors passer l'argument \argument{keyword} à la commande \cs{printbibliography}. On peut ainsi sélectionner toutes les entrées ayant la valeur \forme{xxx} dans leurs champs \champ{keywords} :
 
 \begin{minted}{latex}
 \printbibliography[keyword=xxx]
@@ -122,7 +122,7 @@ On peut aussi vouloir afficher une bibliographie correspondant à une partie du 
 
 La méthode la plus simple est de passer un argument \argument{refsegment} lors de l'appel au package \package{biblatex}. La valeur de cet argument peut-être \argument{part}, \argument{chapter}, \argument{section}, \argument{subsection}, qui indique à quelle niveau de titre commencer une nouvelle section bibliographique\footcite[Il est toutefois possible de créer des sections bibliographiques autrement que suivant les niveaux de titre, voir :]{biblatex_segment}.
 
-Chaque segment bibliographique possède un nombre, compris entre 0 et N. On peut connaître la valeur du segment courant grâce à la commande \commande{therefsegment}.
+Chaque segment bibliographique possède un nombre, compris entre 0 et N. On peut connaître la valeur du segment courant grâce à la commande \cs{therefsegment}.
 
 On peut ainsi afficher à la fin de chaque chapitre un bibliographie du chapitre :
 
@@ -148,7 +148,7 @@ On peut ainsi afficher à la fin de chaque chapitre un bibliographie du chapitre
 
 \section{Ajout de références non citées}
 
-On peut vouloir ajouter dans une bibliographie des références qui n'ont pas été explicitement citées. Il faut pour ce faire utiliser la commande \commande{nocite}.
+On peut vouloir ajouter dans une bibliographie des références qui n'ont pas été explicitement citées. Il faut pour ce faire utiliser la commande \cs{nocite}.
 
 \begin{minted}{latex}
 \nocite{clef1,clef2,…}

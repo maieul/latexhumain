@@ -74,7 +74,7 @@ Nous conseillons donc de ce tourner vers le package \package{xargs} et \package{
 Mais tout ceci dépasserait le cadre de cette ouvrage.
 \end{anedocte}
 
-Fort bien, mais comment faire pour mettre en forme ? Il faut pour cela utiliser une commande de mise en forme à l'intérieur de la déclaration de commande de mise en sens. Par exemple, pour mettre en petites capitales la commande est \commande{textsc}.
+Fort bien, mais comment faire pour mettre en forme ? Il faut pour cela utiliser une commande de mise en forme à l'intérieur de la déclaration de commande de mise en sens. Par exemple, pour mettre en petites capitales la commande est \cs{textsc}.
 
 \begin{minted}{latex}
 \newcommand{\auteur}[2]{\textsc{#1}* (#2)}
@@ -96,14 +96,14 @@ Nous décrirons plus loin dans ce chapitre un ensemble de commande de mise en fo
 	
 	Gageons qu'avec le développement  de \LaTeX dans le monde des sciences humaines les éditeurs rechignent de moins en moins à accepter ce format.
 	
-	Nous recommandons par ailleurs de regrouper toutes ses déclarations de commandes dans un fichier unique, appelés via une commande \commande{include}.
+	Nous recommandons par ailleurs de regrouper toutes ses déclarations de commandes dans un fichier unique, appelés via une commande \cs{include}.
 	
 	Il est également possible de créer son propre package, pour des commandes utilisées fréquemment dans plusieurs projets\footcite[Ceci dépasserais le cadre de cet ouvrage : je renvois à d'autres documents. Par exemples][]{creer_sty}.
 \end{attention}
 
 
 \begin{anedocte}\label{commentaireredac}
-On peut ainsi très facilement créer une commande \commande{commentaire} servant pour indiquer des commentaires personnels au cour de la rédaction, afin de les avoir sous soi lors d'une relecture papier.
+On peut ainsi très facilement créer une commande \cs{commentaire} servant pour indiquer des commentaires personnels au cour de la rédaction, afin de les avoir sous soi lors d'une relecture papier.
 
 Par exemple :
 
@@ -163,7 +163,7 @@ n'était pas montaniste mais tertullianiste.
 On ne constate pas d'espace intempestifs.
 
 
-\subsection[Étoiler newcommand]{Étoiler \commande{newcommand}}
+\subsection[Étoiler newcommand]{Étoiler \cs{newcommand}}
 
 La création des commandes sous \LaTeX est une fonctionnalité très puissante, mais potentiellement dangereuse.
 
@@ -210,7 +210,7 @@ Mais dans ce cas, l'espace disparaît lors de la compilation :
 Ceci est très intéressant \cf cela.
 \end{quotation}
 
-La solution consiste à utiliser dans la définition de commande la commande \commande{xspace} du package éponyme. Cette commande permet de gérer automatiquement les espaces qui suivent l'appel à une commande, en tenant compte de la typographie.
+La solution consiste à utiliser dans la définition de commande la commande \cs{xspace} du package éponyme. Cette commande permet de gérer automatiquement les espaces qui suivent l'appel à une commande, en tenant compte de la typographie.
 
 \begin{minted}{latex}
 \newcommand{\cf}[0]{\emph{cf.}\xspace}
@@ -237,16 +237,16 @@ Il est possible de définir de manière absolue la taille des caractères en ind
  	 \hline
 	 \endhead
 	
-	 \commande{tiny} 			& 	\tiny{abcdefghijklmnopqrstuvwxyz} 			\\
-	 \commande{scriptsize} 		& 	\scriptsize{abcdefghijklmnopqrstuvwxyz} 		\\
-	 \commande{footnotesize} 	& 	\footnotesize{abcdefghijklmnopqrstuvwxyz}		\\
-	 \commande{small}			&	\small{abcdefghijklmnopqrstuvwxyz}			\\
-	 \commande{normalsize}		& 	\normalsize{abcdefghijklmnopqrstuvwxyz}		\\
-	 \commande{large}			&	\large{abcdefghijklmnopqrstuvwxyz}			\\
-	 \commande{Large}			& 	\Large{abcdefghijklmnopqrstuvwxyz}			\\
-	 \commande{LARGE}		& 	\LARGE{abcdefghijklmnopqrstuvwxyz}			\\
-	 \commande{huge}			& 	\huge{abcdefghijklmnopqrstuvwxyz}			\\
-	 \commande{Huge}			&	\Huge{abcdefghijklmnopqrstuvwxyz}			\\
+	 \cs{tiny} 			& 	\tiny{abcdefghijklmnopqrstuvwxyz} 			\\
+	 \cs{scriptsize} 		& 	\scriptsize{abcdefghijklmnopqrstuvwxyz} 		\\
+	 \cs{footnotesize} 	& 	\footnotesize{abcdefghijklmnopqrstuvwxyz}		\\
+	 \cs{small}			&	\small{abcdefghijklmnopqrstuvwxyz}			\\
+	 \cs{normalsize}		& 	\normalsize{abcdefghijklmnopqrstuvwxyz}		\\
+	 \cs{large}			&	\large{abcdefghijklmnopqrstuvwxyz}			\\
+	 \cs{Large}			& 	\Large{abcdefghijklmnopqrstuvwxyz}			\\
+	 \cs{LARGE}		& 	\LARGE{abcdefghijklmnopqrstuvwxyz}			\\
+	 \cs{huge}			& 	\huge{abcdefghijklmnopqrstuvwxyz}			\\
+	 \cs{Huge}			&	\Huge{abcdefghijklmnopqrstuvwxyz}			\\
 \end{longtable}
 
 \subsection{Style de caractères}
@@ -257,19 +257,19 @@ Voici une liste non exhaustive de commandes utiles pour personnaliser les styles
 \begin{longtable}{l|l}
 	Commande				& Effet 								\\
 	\hline
-	\commande{textit}			& \textit{Italique}							\\
-	\commande{emph}			& \emph{Texte en emphase}					\\
-	\commande{textbf}			&  \textbf{Gras}							\\
-	\commande{textsc}			& \textsc{Petites capitales}					\\
-	\commande{underline}		& \textsc{Souligné}	 (à éviter)				\\
-	\commande{textsuperscript}	&  \textsuperscript{Exposant}					\\
+	\cs{textit}			& \textit{Italique}							\\
+	\cs{emph}			& \emph{Texte en emphase}					\\
+	\cs{textbf}			&  \textbf{Gras}							\\
+	\cs{textsc}			& \textsc{Petites capitales}					\\
+	\cs{underline}		& \textsc{Souligné}	 (à éviter)				\\
+	\cs{textsuperscript}	&  \textsuperscript{Exposant}					\\
 	\endhead
 	
 \end{longtable}
 
 \subsection{Couleur}
 
-Les couleurs ne sont pas gérées nativement dans \LaTeX. Il faut passer par le package \package{color} ou le package \package{xcolor}. Ils proposent tout les deux une commande \commande{textcolor}
+Les couleurs ne sont pas gérées nativement dans \LaTeX. Il faut passer par le package \package{color} ou le package \package{xcolor}. Ils proposent tout les deux une commande \cs{textcolor}
 
 \begin{minted}{latex}
 
@@ -318,7 +318,7 @@ On peut passage les arguments \argument{dvipsnames}, \argument{svgnames} ou \pac
 
 \subsubsection{Définir ses propres couleurs}
 
-Il est possible de définir ses propres couleurs. Il faut pour se faire utiliser \commande{definecolor}, selon la syntaxe suivante :
+Il est possible de définir ses propres couleurs. Il faut pour se faire utiliser \cs{definecolor}, selon la syntaxe suivante :
 
 \begin{minted}{latex}
 \definecolor{nom}{methode}{definition}

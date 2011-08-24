@@ -87,7 +87,7 @@ Concrètement comment fait-on ?
 	\item \verb|\include{chemin_du_fichier}|, qui entraînera systématiquement un saut de page.
 	\item \verb|\input{chemin_du_fichier}|, qui n'entraînera pas de saut de page.
 \end{itemize}
-\item La commande \commande{input}, contrairement à \commande{include} peut être aussi appelée dans un fichier \enquote{fichier}, voire dans un fichier \enquote{petit-fils} etc.
+\item La commande \cs{input}, contrairement à \cs{include} peut être aussi appelée dans un fichier \enquote{fichier}, voire dans un fichier \enquote{petit-fils} etc.
 
 \end{enumerate}
 
@@ -119,15 +119,15 @@ Nous conseillons de mettre les fichiers \enquote{fils} dans un ou plusieurs sous
 
 La classe \classe{book} propose, en plus des niveaux de titres, une manière de structurer en quatre parties sont travail : préambules (avant-propos, sommaire, introductions etc.) ; corps du travail ; appendices ; outils de navigation (index, glossaires, bibliographie, tables des matières,  etc.). 
 
-Chacune de ces parties est indiquée par une commande initiale, respectivement : \commande{frontmatter} ; \commande{mainmatter} ; \commande{appendix}\footnote{Cette commande existe aussi dans la classe \classe{article}.}\commande{backmatter}.
+Chacune de ces parties est indiquée par une commande initiale, respectivement : \cs{frontmatter} ; \cs{mainmatter} ; \cs{appendix}\footnote{Cette commande existe aussi dans la classe \classe{article}.}\cs{backmatter}.
 
 Cette structuration en partie globales aura un impact sur la présentation des numéro de page (romains ou arabes) et sur la numérotation des titres.
 
 Ainsi, par défaut : \begin{enumerate}
-\item\commande{frontmatter} donne des titres non numérotés mais présents dans la table des matières. En outre les numéros de pages sont en chiffres romains minuscules. 
-\item\commande{maintmatter} donne des titres numérotés. La numérotation des pages est réinitialisée et est en chiffre arabe.
-\item\commande{appendix} affiche les numéros de titres sous forme de lettres majuscules. Le texte \forme{chapitre} est remplacé par \forme{appendice}.
-\item\commande{backmatter} supprime les numéros de chapitre mais les présente dans la table des matières.
+\item\cs{frontmatter} donne des titres non numérotés mais présents dans la table des matières. En outre les numéros de pages sont en chiffres romains minuscules. 
+\item\cs{maintmatter} donne des titres numérotés. La numérotation des pages est réinitialisée et est en chiffre arabe.
+\item\cs{appendix} affiche les numéros de titres sous forme de lettres majuscules. Le texte \forme{chapitre} est remplacé par \forme{appendice}.
+\item\cs{backmatter} supprime les numéros de chapitre mais les présente dans la table des matières.
 \end{enumerate}
 
 

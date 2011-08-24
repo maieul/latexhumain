@@ -85,7 +85,7 @@ texte dans une autre langue
 
 \subsection{Le problème du latin}\label{redefinirlatin}
 
-L'auteur du package \package{polyglossia} étant anglophone, il l'a créé de telle sorte que le latin respecte la typographie latine. Ainsi le francophone aura quelque soucis s'il met des espaces avant les signes typographiques doubles dans un environnement \enviro{latin} ou dans une commande \commande{textlatin}.
+L'auteur du package \package{polyglossia} étant anglophone, il l'a créé de telle sorte que le latin respecte la typographie latine. Ainsi le francophone aura quelque soucis s'il met des espaces avant les signes typographiques doubles dans un environnement \enviro{latin} ou dans une commande \cs{textlatin}.
 Pourtant il pourrait vouloir utiliser cet environnement ou cette commande, afin d'avoir un respect des césures latines.
 
 Pour ce faire, il devra redéfinir l'environnement \enviro{latin} par le code suivant :
@@ -95,7 +95,7 @@ Pour ce faire, il devra redéfinir l'environnement \enviro{latin} par le code su
 \end{minted}
 
 \begin{anedocte}
-La commande \commande{renewenvironnement} redéfinit un environnement, ici \enviro{latin}. Le deuxième argument de la commande indique ce qui se passe lors que l'on ouvre l'environnement, le troisième argument ce qui se passe lorsqu'on l'on ferme l'environnement. L'environnement \enviro{hyphenrules} indique un changement de règle de césures.
+La commande \cs{renewenvironnement} redéfinit un environnement, ici \enviro{latin}. Le deuxième argument de la commande indique ce qui se passe lors que l'on ouvre l'environnement, le troisième argument ce qui se passe lorsqu'on l'on ferme l'environnement. L'environnement \enviro{hyphenrules} indique un changement de règle de césures.
 \end{anedocte}
 
 

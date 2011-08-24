@@ -28,7 +28,7 @@ Le livre que les protestants appellent \forme{Esaïe} est appelé \forme{Isaïe}
 
 Les éditions de la bible divergent parfois quant à la manière d'afficher une référence biblique. En outre, les références peuvent s'afficher tantôt en version abrégée, tantôt en version complète. C'est pourquoi il existe  plusieurs styles de références bibliques. 
 
-On choisit son style par la commande \commande{biblerefstyle}, qu'il est conseillé de mettre en préambule.
+On choisit son style par la commande \cs{biblerefstyle}, qu'il est conseillé de mettre en préambule.
 \begin{minted}{latex}
 \biblerefstyle{style}
 \end{minted}
@@ -75,7 +75,80 @@ La syntaxe pour référence un passage biblique varie selon que l'on suite réf�
 Voici la liste des abréviations de livres.
 
 \begin{longtable}{ll}
-Gn	&	Genèse\\Ex	&	Exode\\Lv	&	Lévitique\\Nb	&	Nombres\\Dt	&	Deutéronome\\Jos	&	Josué\\Jg	&	Juges\\1S	&	1 Samuel\\2S	&	2 Samuel\\1R	&	1 Rois\\2R	&	2 Rois\\1Ch	&	1 Chroniques\\2Ch	&	2 Chroniques\\Esd	&	Esdras\\Ne	&	Néhémie\\1M	&	1 Maccabées\\2M	&	2 Maccabées\\Is	&	Isaïe\\Es	&	Esaïe\\Jr	&	Jérémie\\Ez	&	Ezéquiel\\Os	&	Osée\\Jl	&	Joël\\Am	&	Amos\\Ab	&	Abdias\\Jon	&	Jonas\\Mi	&	Michée\\Na	&	Nahum\\So	&	Sophonie\\Ha	&	Habaquq\\Ag	&	Aggée\\Za	&	Zacharie\\Ml	&	Malachie\\Dn	&	Daniel\\Jb	&	Job\\Pr	&	Proverbes\\Qo	&	Qohéleth\\Ct	&	Cantiques des cantiques\\Rt	&	Ruth\\Lm	&	Lamentations\\Est	&	Esther\\Tb	&	Tobie\\Jdt	&	Judith\\Ba	&	Baruch\\Sg	&	Sagesse\\Si	&	Siracide (Ecclésiastique)\\Ps	&	Psaumes\\Mt	&	Matthieu\\Lc	&	Luc\\Jn	&	Jean\\Mc	&	Marc\\Ac	&	Acte\\Rm	&	Romains\\1Co	&	1 Corinthiens\\2Co	&	2 Corinthiens\\Ga	&	Galates\\Ep	&	Éphésiens\\Ph	&	Philippiens\\Col	&	Colossiens\\1Th	&	1 Thessaloniciens\\2Th	&	2 Thessaloniciens\\1Tm	&	1 Timothée\\2Tm	&	2 Timothée\\Tt	&	Tite\\Phm	&	Philémon\\He	&	Hébreux\\Jc	&	Jacques\\1P	&	1 Pierre\\2P	&	2 Pierre\\1Jn	&	1 Jean\\2Jn	&	2 Jean\\3Jn	&	3 Jean\\Jude	&	Jude\\Ap	&	Apocalypse\\
+Gn	&	Genèse\\
+Ex	&	Exode\\
+Lv	&	Lévitique\\
+Nb	&	Nombres\\
+Dt	&	Deutéronome\\
+Jos	&	Josué\\
+Jg	&	Juges\\
+1S	&	1 Samuel\\
+2S	&	2 Samuel\\
+1R	&	1 Rois\\
+2R	&	2 Rois\\
+1Ch	&	1 Chroniques\\
+2Ch	&	2 Chroniques\\
+Esd	&	Esdras\\
+Ne	&	Néhémie\\
+1M	&	1 Maccabées\\
+2M	&	2 Maccabées\\
+Is	&	Isaïe\\
+Es	&	Esaïe\\
+Jr	&	Jérémie\\
+Ez	&	Ezéquiel\\
+Os	&	Osée\\
+Jl	&	Joël\\
+Am	&	Amos\\
+Ab	&	Abdias\\
+Jon	&	Jonas\\
+Mi	&	Michée\\
+Na	&	Nahum\\
+So	&	Sophonie\\
+Ha	&	Habaquq\\
+Ag	&	Aggée\\
+Za	&	Zacharie\\
+Ml	&	Malachie\\
+Dn	&	Daniel\\
+Jb	&	Job\\
+Pr	&	Proverbes\\
+Qo	&	Qohéleth\\
+Ct	&	Cantiques des cantiques\\
+Rt	&	Ruth\\
+Lm	&	Lamentations\\
+Est	&	Esther\\
+Tb	&	Tobie\\
+Jdt	&	Judith\\
+Ba	&	Baruch\\
+Sg	&	Sagesse\\
+Si	&	Siracide (Ecclésiastique)\\
+Ps	&	Psaumes\\
+Mt	&	Matthieu\\
+Lc	&	Luc\\
+Jn	&	Jean\\
+Mc	&	Marc\\
+Ac	&	Acte\\
+Rm	&	Romains\\
+1Co	&	1 Corinthiens\\
+2Co	&	2 Corinthiens\\
+Ga	&	Galates\\
+Ep	&	Éphésiens\\
+Ph	&	Philippiens\\
+Col	&	Colossiens\\
+1Th	&	1 Thessaloniciens\\
+2Th	&	2 Thessaloniciens\\
+1Tm	&	1 Timothée\\
+2Tm	&	2 Timothée\\
+Tt	&	Tite\\
+Phm	&	Philémon\\
+He	&	Hébreux\\
+Jc	&	Jacques\\
+1P	&	1 Pierre\\
+2P	&	2 Pierre\\
+1Jn	&	1 Jean\\
+2Jn	&	2 Jean\\
+3Jn	&	3 Jean\\
+Jude	&	Jude\\
+Ap	&	Apocalypse\\
 \end{longtable}
 
 \begin{anedocte}
@@ -86,7 +159,7 @@ Les livres proposées correspondent au canon catholique. On peut ajouter d'autre
 
 \section{Indexer une référence}
 
-On peut remplacer la commande \commande{bibleverse} par la commande \commande{ibibleverse}. Celle-ci indexe une référence biblique, en plus de l'afficher.
+On peut remplacer la commande \cs{bibleverse} par la commande \cs{ibibleverse}. Celle-ci indexe une référence biblique, en plus de l'afficher.
 
 \subsection{Un index à part}
 
@@ -98,7 +171,7 @@ Pour ce faire, avec \package{splitindex}\renvoi{splitindex}, il faut d'abord dé
 \newindex[Index des références bibliques]{bible}
 \end{minted}
 
-Il faut ensuite redéfinir la commande \commande{\biblerefindex} de la manière suivante :
+Il faut ensuite redéfinir la commande \cs{biblerefindex} de la manière suivante :
 \begin{minted}{latex}
 \renewcommand{\biblerefindex}[0]{\sindex[sources]}
 \end{minted}
@@ -119,5 +192,5 @@ Le package \package{bibleref-french} prévoit d'insérer des espaces insécables
 \end{enumerate}
 
 Si beaucoup de références sont indiquées, cela peut amener à des fins de lignes dépassante.
-Pour éviter cela, on peut autoriser temporairement la coupure des espaces entre un livre et un numéro de chapitre. La commande \commande{BRallowhypbch} marque le début de l'autorisation ; \commande{BRforbidhypbch} en marque la fin.
+Pour éviter cela, on peut autoriser temporairement la coupure des espaces entre un livre et un numéro de chapitre. La commande \cs{BRallowhypbch} marque le début de l'autorisation ; \cs{BRforbidhypbch} en marque la fin.
 

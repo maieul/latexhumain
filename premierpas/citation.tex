@@ -31,7 +31,7 @@ Nous allons donc utiliser le package \package{csquotes} qui propose des commande
 	\usepackage{csquotes}
 \end{minted}
 
-Le package propose une première commande utile : \commande{\enquote{citation}}, qui sert pour les citations en ligne.
+Le package propose une première commande utile : \cs{\enquote{citation}}, qui sert pour les citations en ligne.
 
 \begin{minted}{latex}
 	Comme le dit très justement xxx : \enquote{Lorsque yyy déclare \enquote{zzz} il ne déclare rien du tout}.
@@ -153,7 +153,7 @@ Le package \package{csquotes} proposent deux commandes spécifiques pour signale
 
 \subsection{Citation tronquée}
 
-La commande \commande{textelp{}} signale un texte tronqué. Si on lui passe un argument, on signale qu'on ajoute un texte après la troncature.
+La commande \cs{textelp{}} signale un texte tronqué. Si on lui passe un argument, on signale qu'on ajoute un texte après la troncature.
 
 \begin{minted}{latex}
 	\begin{quotation}
@@ -181,7 +181,7 @@ On peut décider de la manière dont la troncature et l'ajout sont signalés : c
 
 \subsection{Citation modifiée}
 
-Pour signaler une modification dans une citation, on utilise  \commande{textins{}}.
+Pour signaler une modification dans une citation, on utilise  \cs{textins{}}.
 \begin{minted}{latex}
 \begin{quotation}
 	Comme le disait très justement xxx : \enquote{Lorsque yyy \textins{a déclaré} \enquote{zzz} il \textins{n'a rien déclaré} du tout}.
@@ -192,4 +192,4 @@ Pour signaler une modification dans une citation, on utilise  \commande{textins{
 	Comme le disait très justement xxx : \enquote{Lorsque yyy \textins{a déclaré} \enquote{zzz} il \textins{n'a rien déclaré} du tout}.
 \end{quotation}
 
-La commande \commande{textins*{}} est une variante, servant pour déclarer les changements mineurs nécessaires au nouveau contexte d'énonciation : mise en majuscules, changement de personne etc.
+La commande \cs{textins*{}} est une variante, servant pour déclarer les changements mineurs nécessaires au nouveau contexte d'énonciation : mise en majuscules, changement de personne etc.

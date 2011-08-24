@@ -27,13 +27,13 @@ La table des matières prend elle même un certain volume. Par conséquent si vo
 
 \section[Choix de la profondeur]{Choisir la profondeur de la table des matières : la notion de compteur}\label{tocdepth}
 
-Par défaut la commande \commande{tableofcontents} affiche tout les niveaux de titres, depuis \commande{part} jusqu'au \commande{subparagraph}.\renvoi{niveautitre}. Il est possible de restreindre la profondeur, ou au contraire de l'étendre. Pour ce faire, il suffit de redéfinir un compteur \LaTeX{} : \compteur{tocdepth}.
+Par défaut la commande \cs{tableofcontents} affiche tout les niveaux de titres, depuis \cs{part} jusqu'au \cs{subparagraph}.\renvoi{niveautitre}. Il est possible de restreindre la profondeur, ou au contraire de l'étendre. Pour ce faire, il suffit de redéfinir un compteur \LaTeX{} : \compteur{tocdepth}.
 
 Un compteur, en \LaTeX{}, est un nombre entier stocké dans la mémoire vive de l'ordinateur. Un compteur peut être appelé à certains endroits par \LaTeX{}. Il peut également être modifié par \LaTeX{}. Typiquement, un compteur est associé à un élément numéroté. Il existe par exemple un compteur \compteur{page} correspondant au numéro de la page, incrémenté par \LaTeX{} à chaque changement de page et utilisé pour afficher le numéro de page.\label{compteur}
 
-Dans notre cas, le compteur \compteur{tocdepth} n'est pas modifié par \LaTeX{}. En revanche il sert lors de l'affichage de la table des matières. Chaque niveau de titre possède un numéro. \renvoi{numeroniveau}. La commande \commande{tableofcontents} affiche les niveaux de titres dont le numéro est inférieur ou égale à la valeur du compteur \compteur{tocdepth}.
+Dans notre cas, le compteur \compteur{tocdepth} n'est pas modifié par \LaTeX{}. En revanche il sert lors de l'affichage de la table des matières. Chaque niveau de titre possède un numéro. \renvoi{numeroniveau}. La commande \cs{tableofcontents} affiche les niveaux de titres dont le numéro est inférieur ou égale à la valeur du compteur \compteur{tocdepth}.
 
-Le niveau \commande{subsubsection} a comme numéro 3. Pour afficher dans la table des matières tous les niveaux de titres jusqu'au niveau \commande{subsubsection} inclus, il faut donc affecter la valeur 3 à  \compteur{tocdepth}. Pour ce faire il faut utiliser la commande \commande{setcounter} :
+Le niveau \cs{subsubsection} a comme numéro 3. Pour afficher dans la table des matières tous les niveaux de titres jusqu'au niveau \cs{subsubsection} inclus, il faut donc affecter la valeur 3 à  \compteur{tocdepth}. Pour ce faire il faut utiliser la commande \cs{setcounter} :
 
 \begin{minted}{latex}
 \setcounter{tocdepth}{3}
@@ -43,7 +43,7 @@ Le niveau \commande{subsubsection} a comme numéro 3. Pour afficher dans la tabl
 \section[Table des matières ou sommaire ?]{Table des matières ou sommaire ? les chaînes de langues de polyglossia}
 
 \revision{peut être à mettre dans un chapitre à part ?}
-En France, une table des matière se situe en fin d'ouvrage, tandis qu'un sommaire se situe en début d'ouvrage. Par défaut la commande \commande{tableofcontents} indique que nous avons affaire à une  \enquote{table des matières} et non pas à un \commande{sommaire}. Comment faire ? Il suffit de redéfinir les chaînes de langues. 
+En France, une table des matière se situe en fin d'ouvrage, tandis qu'un sommaire se situe en début d'ouvrage. Par défaut la commande \cs{tableofcontents} indique que nous avons affaire à une  \enquote{table des matières} et non pas à un \cs{sommaire}. Comment faire ? Il suffit de redéfinir les chaînes de langues. 
 
 Nous avons déjà vu la notion de chaîne de langues pour la bibliographie.\renvoi{i18nchaines} Il s'agit ici  d'une idée similaire, mais pour le package \package{polyglossia}. La syntaxe est toutefois différentes. Comme pour les toutes les chaînes de langues, il faut commencer par découvrir quelle est la chaîne à modifier. Cela se passe dans le fichier \fichier{french.ldf}. Vous pouvez repérer une ligne contenant \verb|\def\captionsfrench{%|. 
 Cette ligne est suivie d'autres lignes sous la forme : \verb|\def\chaine{Valeur}%|. Et ce jusqu'à une accolade fermante.
@@ -66,29 +66,29 @@ Dans le cas présent, cela donne :
 
 
 \begin{anedocte}
-La commande \commande{def} permet de créer des nouvelles commandes. Toutefois à la différence de la commande \commande{newcommand}, les commandes ainsi créées appartiennent à \TeX{} et non pas à \LaTeX{}.\renvoi{TeXLaTeX}
+La commande \cs{def} permet de créer des nouvelles commandes. Toutefois à la différence de la commande \cs{newcommand}, les commandes ainsi créées appartiennent à \TeX{} et non pas à \LaTeX{}.\renvoi{TeXLaTeX}
 
 Définir des commandes en \TeX{} par rapport à les définir en \LaTeX{} permet plus de souplesse. Mais cela demande plus de maîtrise technique pour éviter divers problèmes (comme des erreurs de compilation.). C'est pourquoi nous n'en parlons pas dans ce livre, sauf précisément ici.
 
-Les commandes \TeX{} peuvent contenir des \enquote{sous commandes}. Ici par exemple, la commande \commande{captionfrench} contient la sous commande \commande{contentsname}. Nous utilisons la commande \TeX{} \commande{gappto} pour \enquote{injecter} une sous-commande dans une commande déjà définir.
+Les commandes \TeX{} peuvent contenir des \enquote{sous commandes}. Ici par exemple, la commande \cs{captionfrench} contient la sous commande \cs{contentsname}. Nous utilisons la commande \TeX{} \cs{gappto} pour \enquote{injecter} une sous-commande dans une commande déjà définir.
 \end{anedocte}
 
 \section{Table des figures et tables des tableaux}\label{tablefigure}
 
 En plus de la table des matières, \LaTeX{} permet d'afficher une table des tableaux et une table des figures. Il est nécessaire pour que ces tables soit constituées que les tableaux et figures soient des flottants avec une légende. \renvoi{legende}
 
-Pour la table des tableaux, il faut utiliser la commande \commande{listoftables} et pour la table des figures la commande \commande{listoffigures}.
+Pour la table des tableaux, il faut utiliser la commande \cs{listoftables} et pour la table des figures la commande \cs{listoffigures}.
 
 
 
 \section{Plusieurs tables des matières}
 
-La commande \commande{tableofcontents} ne fonctionne qu'une seule fois dans un document \LaTeX{}. Comment faire si on souhaite avoir un sommaire et une table des matières, ou bien des tables des matières par partie ?
+La commande \cs{tableofcontents} ne fonctionne qu'une seule fois dans un document \LaTeX{}. Comment faire si on souhaite avoir un sommaire et une table des matières, ou bien des tables des matières par partie ?
 
 \subsection{Un sommaire en plus d'une table des matières}
 
 Bien que cette pratique soit un peu désuète et rarement utile, on peut souhaiter  avoir un table des matières en fin de travail et un sommaire en début.
-Pour ce faire, il suffit d'utiliser le package \package{shorttoc}. Celui-ci définit une commande \commande{shorttoc} à la syntaxe simple :
+Pour ce faire, il suffit d'utiliser le package \package{shorttoc}. Celui-ci définit une commande \cs{shorttoc} à la syntaxe simple :
 
 \begin{minted}{latex}
 \shorttoc{titre}{niveau}
@@ -112,7 +112,7 @@ Il peut aussi arriver qu'on souhaite indiquer un sommaire au début de chaque ch
 \dominitoc
 \end{minted}
 
-Pour afficher les mini-sommaires, il suffit d'utiliser la commande \commande{minitoc} aux endroits voulu, par exemple après chaque titre de chapitre.
+Pour afficher les mini-sommaires, il suffit d'utiliser la commande \cs{minitoc} aux endroits voulu, par exemple après chaque titre de chapitre.
 
 \begin{minted}{latex}
 \chapter{A}
@@ -123,10 +123,10 @@ Pour afficher les mini-sommaires, il suffit d'utiliser la commande \commande{min
 \end{minted}
 
 \begin{attention}
-Le package ne peut calculer correctement les sommaires que si la commande \commande{tableofcontents} est utilisée. Si vous souhaitez n'afficher que des mini-sommaires mais pas de tables générales des matières --- ce qui est une idée assez étrange --- vous pouvez utiliser à la place la commande \commande{faketableofcontents}.
+Le package ne peut calculer correctement les sommaires que si la commande \cs{tableofcontents} est utilisée. Si vous souhaitez n'afficher que des mini-sommaires mais pas de tables générales des matières --- ce qui est une idée assez étrange --- vous pouvez utiliser à la place la commande \cs{faketableofcontents}.
 \end{attention}
 
-Pour afficher des mini-sommaires par partie, il faut utiliser la commande \commande{parttoc}. Par exemple :
+Pour afficher des mini-sommaires par partie, il faut utiliser la commande \cs{parttoc}. Par exemple :
 
 \begin{minted}{latex}
 \part{A}
@@ -164,7 +164,7 @@ Mais on peut cependant vouloir les faire disparaître à l'écran aussi. Pour ce
 \item Que nous voulons que cette couleur soit le noir. En effet la couleur des liens est conservée à l'impression, contrairement à la couleur des cadres.
 \end{enumerate}
 
-Pour ce faire, nous allons utiliser la commande \commande{hypersetup} dans le préambule. La commande prend comme argument des paramètres du package, séparées par une virgule.
+Pour ce faire, nous allons utiliser la commande \cs{hypersetup} dans le préambule. La commande prend comme argument des paramètres du package, séparées par une virgule.
 
 Pour notre cas ceci suffit
 \begin{minted}{latex}

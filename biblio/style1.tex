@@ -34,7 +34,7 @@ alors que le règles françaises voudraient que l'on ait :
 	
 À l'intérieur d'une référence bibliographique, BibLaTex distingue des unités de sens\footnote{À vrai dire il existe des unités plus vastes, appelés blocs. Mais ces unités servent pour des réglages avancés de l'affichage de la bibliographie finale.}. Ici : l'auteur, le titre, l'adresse, l'éditeur, l'année. 
 
-	Ces unités sont séparés par des signes de ponctuations. Ces séparateurs sont définis par la commande \commande{newunitpunct}.
+	Ces unités sont séparés par des signes de ponctuations. Ces séparateurs sont définis par la commande \cs{newunitpunct}.
 	
 	Il suffit donc de redéfinir la commande. Pour cela il suffit de mettre dans le préambule\footnote{Cela n'est pas strictement nécessaire, mais c'est une bonne méthode que de mettre l'ensemble des commandes de personnalisations de styles dans le préambule. Nous conseillons de mettre toutes les commandes de personnalisation des styles bibliographiques dans un seul fichier, appelé dans le préambule.} : 
 		
@@ -57,7 +57,7 @@ alors que le règles françaises voudraient que l'on ait :
 	
 	La virgule entre les deux points et \emph{Concilia Africae} s'explique parce qu'une unité a été créée, unité qui doit contenir normalement la valeur du champ \champ{Bookauthor}.
 	
-	Pour éviter ce problème, il ne faut pas mettre directement dans la définition de la commande \commande{newunitpunct} les signes de ponctuation. Il faut utiliser les commandes de ponctuation\footcite[Listées dans][]{biblatex_ponctuation}. En effet, ces commandes afficheront la ponctuation uniquement si l'unité qui précède a bien un contenu\footnote{Par ailleurs, elle suppriment les espaces multiples qui précédent.}.\label{commandeponctuation}
+	Pour éviter ce problème, il ne faut pas mettre directement dans la définition de la commande \cs{newunitpunct} les signes de ponctuation. Il faut utiliser les commandes de ponctuation\footcite[Listées dans][]{biblatex_ponctuation}. En effet, ces commandes afficheront la ponctuation uniquement si l'unité qui précède a bien un contenu\footnote{Par ailleurs, elle suppriment les espaces multiples qui précédent.}.\label{commandeponctuation}
 	
 	Il faut donc mettre dans notre cas :
 	
@@ -66,7 +66,7 @@ alors que le règles françaises voudraient que l'on ait :
 	\end{minted}
 	
 	\begin{anedocte}
-		Nous n'avons par parlé jusqu'à présent de la commande \commande{renewcommand}. Celle-ci est identique à la commande \commande{newcommand} à la différence qu'elle permet de redéfinir une commande déjà existante.
+		Nous n'avons par parlé jusqu'à présent de la commande \cs{renewcommand}. Celle-ci est identique à la commande \cs{newcommand} à la différence qu'elle permet de redéfinir une commande déjà existante.
 	\end{anedocte}
 	
 	
@@ -96,7 +96,7 @@ Lorsque nous utilisons une commande de citation multiple\renvoi{citemultiple}, l
 \cites{Saxer1980}{Junod1992}
 \end{quotation}
 
-On peut là aussi modifier le séparateur en rédefinissant la commande \commande{multicitedelim}. Par exemple pour avoir une virgule :
+On peut là aussi modifier le séparateur en rédefinissant la commande \cs{multicitedelim}. Par exemple pour avoir une virgule :
 
 \begin{minted}{latex}
 \renewcommand{\multicitedelim}[0]{\addcomma\addspace}
@@ -112,7 +112,7 @@ La ponctuation n'est pas le seul point où \package{BibLaTeX} propose des points
 	
 	\renewcommand{\mkbibnameprefix}[1]{\parentext{#1}}
 	
-Il est parfois d'usage de mettre la particule entre parenthèse. Pour ce faire, il suffit de redéfinir la commande \commande{mkbibnameprefix}. Cette commande prend un argument, qui est la particule. Ainsi pour la mettre automatiquement entre parenthèse, il suffit d'écrire.
+Il est parfois d'usage de mettre la particule entre parenthèse. Pour ce faire, il suffit de redéfinir la commande \cs{mkbibnameprefix}. Cette commande prend un argument, qui est la particule. Ainsi pour la mettre automatiquement entre parenthèse, il suffit d'écrire.
 	
 	\begin{minted}{latex}
 \renewcommand{\mkbibnameprefix}[1]{(#1)}
@@ -124,7 +124,7 @@ Voire pour être encore plus correct :
 \renewcommand{\mkbibnameprefix}[1]{\parentext{#1}}
 	\end{minted}
 
-La commande \commande{parentext} mettant entre parenthèse un texte passé en argument. On obtient le résultat souhaité : 
+La commande \cs{parentext} mettant entre parenthèse un texte passé en argument. On obtient le résultat souhaité : 
 
 	\begin{quotation}
 	\cite{BeauvoirSexe}
@@ -170,7 +170,7 @@ clef	= {{chaîne longue}{chaîne courte}}|
 	\end{anedocte}
 	Il nous faut donc repérer la clef correspondante à notre chaîne \enquote{dans}. Très rapidement nous trouvons qu'il s'agit de la chaine \verb|in|.
 	
-	Une fois  notre clef repérée, il est facile de lui attribuer une nouvelle valeur\footnote{Cette valeur sera utilisée que l'on choisisse le mode abrégé ou non.}, grâce à la commande \commande{DefineBibliographyStrings{lang}{chaînes}}, qu'il faut placer dans le préambule du fichier\footnote{Il ne faut surtout pas modifier les fichiers standards : on perdrait les modifications à chaque mise à jour.}.
+	Une fois  notre clef repérée, il est facile de lui attribuer une nouvelle valeur\footnote{Cette valeur sera utilisée que l'on choisisse le mode abrégé ou non.}, grâce à la commande \cs{DefineBibliographyStrings{lang}{chaînes}}, qu'il faut placer dans le préambule du fichier\footnote{Il ne faut surtout pas modifier les fichiers standards : on perdrait les modifications à chaque mise à jour.}.
 	
 	\begin{minted}{latex}
 \DefineBibliographyStrings{french}{%
