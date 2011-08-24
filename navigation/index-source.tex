@@ -34,7 +34,7 @@ On constate cependant deux problèmes :
 En outre nous aimerions :
 \begin{enumerate}
 \item Limiter l'indexation aux sources primaires.
-\item Indexer aussi, comme troisième niveau d'index, le champ \champ{titleaddon} qui nous sert pour les division de source. \renvoi{divisionsource}
+\item Indexer aussi, comme troisième niveau d'index, le champ \champ{titleaddon} qui nous sert pour les division de source. \renvoi{divisionsource}
 \end{enumerate}
 
 \subsection{Création d'un index spécifique}
@@ -72,7 +72,7 @@ Il nous faut donc définir ce format.
   }
 \end{minted}
 
-Nous disions en première ligne que nous déclarions un format d'indexation \verb|sources| pour les noms propres. Dans la ligne suivante, nous déclarons ce que nous faisons : nous appelons une macro \macro{index:name}. Cette macro est déjà définie par \package{biblatex}. Elle reçoit plusieurs argument. Le première argument est la commande à exécuter : ici \verb|\sindex[sources]|, qui permet d'indexer dans l'index \verb|source| définis plus haut. Les autres arguments sont repris des codes de \package{biblatex} est désigne les différentes parties du nom à indexer\footcite[Nous renvoyons le lecteur à la documentation de \package{BibLaTeX} : ][]{biblatex_formats}.
+Nous disions en première ligne que nous déclarions un format d'indexation \verb|sources| pour les noms propres. Dans la ligne suivante, nous déclarons ce que nous faisons : nous appelons une macro \macro{index:name}. Cette macro est déjà définie par \package{biblatex}. Elle reçoit plusieurs argument. Le première argument est la commande à exécuter : ici \verb|\sindex[sources]|, qui permet d'indexer dans l'index \verb|source| définis plus haut. Les autres arguments sont repris des codes de \package{biblatex} est désigne les différentes parties du nom à indexer\footcite[Nous renvoyons le lecteur à la documentation de \package{BibLaTeX} : ][]{biblatex_formats}.
 
 
 \subsubsection{Indexation des autres champs}
@@ -106,7 +106,7 @@ Nous souhaitons remplacé ces entrées par des entrées sous la forme
 
 L'auteur de ces lignes a développé un script permettant d'automatiser cette transformation. Par ailleurs ce script modifie également l'ordre des tri pour ne pas tenir compte des accents.
 
-Pour utiliser ce script, il vous faut :
+Pour utiliser ce script, il vous faut :\label{python}
 \begin{itemize}
 \item Avoir le logiciel Python installé sur votre ordinateur. Ce logiciel est installé en standard sous Mac Os X et sur la plupart des distributions Linux, mais pas sous Windows\footcite{python_windows}.
 \item Télécharger le script sur le site de l'auteur à la l'adresse suivante : \url{http://geekographie.maieul.net/57}.
