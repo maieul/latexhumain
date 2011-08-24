@@ -7,9 +7,15 @@ Nous allons voir comment personnaliser les entêtes et pieds de page à l'aide d
 
 \section{Utiliser l'un des styles standards}\label{stylesentete}
 
-\LaTeX propose quatre styles standards de pages, définissant le contenu des entête et pieds de page. Pour indiquer à \LaTeX d'utiliser l'un de ces styles, il suffit d'utiliser la commande 
+\LaTeX propose quatre styles standards de pages, définissant le contenu des entête et pieds de page. Pour indiquer à \LaTeX d'utiliser l'un de ces styles, il suffit d'utiliser la commande \commande{pagestyle}
 \begin{minted}{latex}
 \pagestyle{nom_du_style}
+\end{minted} 
+
+On peut également modifier le style d'une page en particulière grâce à la commande \commande{thispagestyle}.
+
+\begin{minted}{latex}
+\thispagestyle{nom_du_style}
 \end{minted} 
 
 Ces styles sont :
