@@ -297,7 +297,7 @@ Analysons là :
 \item[ligne 6], on affiche en taille \cs{huge}\renvoi{taille}, en gras (\cs{bfserie}\renvoi{bfseries}) la chaîne de langue de début de chapitre (\cs{@chapapp}) suivie d'une espace et du numéro de chapitre (le compteur \compteur{chapter}, affiché via la commande {thechapter}.
 \item[ligne 7], on insére un paragraph (\cs{par}) et on indique d'empêcher un changement de page (\cs{nobreak}).
 \item[ligne 8]on insére un espace vertical de 20 pt.
-\item[ligne 9]: au niveau visée par ce livre, la compréhension de cette ligné n'est pas indispensable. Pour les curieux toutefois, cette ligne sert à prévenir un titre sur plusieurs lignes. Sommairement, on peut dire que prévenir les ruptures de lignes ou les changements de pages, \LaTeX utilisent des paramètres appelés \forme{penalty}. Plus une \forme{penalty} est importante, plus la probabilité d'une rupture est faible. Ici la \forme{penalty} d'interlignage --- de rupture de ligne --- est indiqué à 1000 (\cs{@M}). 
+\item[ligne 9]: au niveau visée par ce livre, la compréhension de cette ligné n'est pas indispensable. Pour les curieux toutefois, cette ligne sert à prévenir un titre sur plusieurs lignes. Sommairement, on peut dire que prévenir les ruptures de lignes ou les changements de pages, \LaTeX utilisent des paramètres appelés \concept{penalty}. Plus une \concept{penalty} est importante, plus la probabilité d'une rupture est faible. Ici la \concept{penalty} d'interlignage --- de rupture de ligne --- est indiqué à 1000 (\cs{@M}). 
 \item[ligne 10]: on indique le titre (\#1) en taille \cs{Huge}, en gras (\cs{bfseries}). On introduit ensuite un paragraphe (\cs{par}), en demandant d'éviter les changements de page (\cs{nobreak}).
 \item[ligne 11]on insére un espace vertical de 40 pt.
 \end{description}
@@ -345,7 +345,7 @@ Cela nous donne au final :
 
 \section[Manipuler les compteurs]{Manipuler les compteurs : le cas des notes de bas de page}
 
-Nous avons vu comment modifier l'affichage d'un compteur.\renvoi{apparencecompteur} Mais comment modifier la valeur d'un compteur ? Il existe pour cela deux fonctions : \cs{setcounter}\marg{compteur}\marg{valeur} pour affecter la valeur \forme{valeur} au compteur \forme{compteur}, et \cs{addtocounter}\marg{compteur}\marg{valeur} pour \emph{additionner} la valeur \forme{valeur} au compteur \forme{compteur}. La valeur ajoutée pouvant être négative, il est ainsi possible de faire reculer un compteur.
+Nous avons vu comment modifier l'affichage d'un compteur.\renvoi{apparencecompteur} Mais comment modifier la valeur d'un compteur ? Il existe pour cela deux fonctions : \cs{setcounter}\marg{compteur}\marg{valeur} pour affecter la valeur \contenuarg{valeur} au compteur \contenuarg{compteur}, et \cs{addtocounter}\marg{compteur}\marg{valeur} pour \emph{additionner} la valeur \contenuarg{valeur} au compteur \contenuarg{compteur}. La valeur ajoutée pouvant être négative, il est ainsi possible de faire reculer un compteur.
 
 En outre, il exisite une commande \cs{refstepcounter} qui permet d'incrémenter de une unité un compteur. C'est celle qui est utilisé par les commandes niveau de titre.\ref{niveautitre}.
 

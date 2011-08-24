@@ -36,7 +36,7 @@ note les emplacements des étiquettes dans un fichier. À la seconde compilation
 
 \subsection{Renvoyer à une page}
 
-Pour renvoyer au numéro de page correspondant à l'étiquette \forme{etiquette} il suffit d'utiliser la commande \cs{pageref}.
+Pour renvoyer au numéro de page correspondant à l'étiquette \argument{etiquette} il suffit d'utiliser la commande \cs{pageref}\marg{etiquette}.
 
 \begin{minted}{latex}
 blabla \label{etiquette}
@@ -90,7 +90,7 @@ Nous renvoyons à la figure \ref{figure} situé page \pageref{figure}.
 
 \section{Comment nommer ses étiquettes ?}
 
-Vous êtes bien sûr libre de trouver votre propre système de nommage d'étiquette. Toutefois il est d'avoir quelque chose de la forme : \forme{type:nom}, où \forme{forme} désigne le type d'élément vers lequel on renvoie.
+Vous êtes bien sûr libre de trouver votre propre système de nommage d'étiquette. Toutefois il est d'avoir quelque chose de la forme : \contenuarg{type:nom}, où \contenuarg{forme} désigne le type d'élément vers lequel on renvoie.
 
 Exemples :
 
