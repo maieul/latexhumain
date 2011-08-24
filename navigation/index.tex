@@ -53,7 +53,7 @@ Il vaut mieux accoler la commande \verb+\index{entrée}+ directement au  mot à 
 %% Ne faudrait-il pas créer un environnement mettre "Remarque"? qui irait mieux que anecdote par ex pour certains endroits plutôt que "Anecdote" ou attention? Ici, par exemple( ou ds le chapitre notion de base, sur babel)
 L'indexation d'un texte n'est pas automatique: il faut placer \verb+\index+ à chaque endroit  que l'on veut référencer. Pour éviter d'oublier, dans cette démarche fastidieuse, de référencer certaines occurrences, on  peut bien sûr créer une commande  spécifique.
 
-Ainsi, pour indexer automatiquement tous les noms propres d'un texte, déclarons la commande suivante:
+Ainsi, pour indexer automatiquement tous les noms propres d'un texte, déclarons la commande suivante:\label{indexauteur}
 \begin{minted}{latex}
 \newcommand\auteur[2]{#1~\textsc{#2}\index{#2, #1}\xspace}
 \end{minted}
@@ -218,7 +218,7 @@ il s'agit bien de \verb+|textbf+, non de \verb+|\textbf+
 
 
 
-\section{\package{SplitIndex}, ou comment faire plusieurs index}
+\section{\package{SplitIndex}, ou comment faire plusieurs index} \label{splitindex}
 
 \begin{prealable}
 Nous supposons que vous avez appris à vous servir de \package{MakeIndex} avant d'apprendre à utiliser \package{SplitIndex}, car les principes de base sont les mêmes.

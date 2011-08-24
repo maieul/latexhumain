@@ -1,4 +1,4 @@
-\Chapter{Personnaliser entête et pieds de pages}
+\chapter{Personnaliser entête et pieds de pages}\label{entete}
 
 \begin{prealable}
 Nous allons voir comment personnaliser les entêtes et pieds de page à l'aide du package \package{fancyhdr}.
@@ -21,16 +21,16 @@ On peut également modifier le style d'une page en particulière grâce à la co
 Ces styles sont :
 \begin{description}
 \item[empty]: pas d'entête ni de pied de page.
-\item[plain]: pas d'entête mais pieds de pages contenant le numéro de page en centré. C'est le style correspondant aux pages de début de chapitre. \renvoi{debutchapitre}
-\item[heading]: pas de pied, entêtes contenant titre du chapitre, de la section ou de la sous-section et le numéro de page. C'est le style par défaut.
-\item[myheading] … ?
+\item[plain]: pas d'entête mais pieds de pages contenant le numéro de page en centré. C'est le style correspondant aux pages de début de chapitre. \renvoi{chapitrepagestyle}
+\item[heading]: pas de pied, entêtes contenant titre du chapitre, de la section ou de la sous-section et le numéro de page. C'est le style par défaut. \label{styleentetes}
+\item[myheading]: similaire au précédent, mais l'entête peut-être personnalisé\footcite[Nous tenons cette information du][\pno~222, qui ne précise pas comment faire]{latex_companion}.
 \end{description}
 
 
 
 On voit vite les limites de ces styles. Ainsi, comment faire pour avoir à la fois les titres en entête et les numéros de pages en pieds de pages ? Comment indiquer son nom ou la date en pied de page ?
 
-\section{Premiers exemples avec \package{fancyhdr}
+\section{Premiers exemples avec \package{fancyhdr}}
 
 \package{Fancyhdr} propose son propre styles, mais qu'il est aisé de personnaliser via des commandes spécifiques. Pour faire fonctionner \package{fancyhdr} il suffit d'écrire les lignes suivantes dans le préambule :
 \begin{minted}{latex}
@@ -46,12 +46,12 @@ Les pages de début de chapitre appliquent automatiquement le style \forme{plain
 Une fois ceci fait, il est possible d'utiliser les six commandes de \package{fancyhdr} servant à définir le contenu des entêtes et pieds de pages :
 
 \begin{description}
-\commande[lhead]prend comme argument le contenu de la partie gauche de l'entête, justifiée à gauche.
-\commande[chead]prend comme argument la partie centrale de l'entête, centrée.
-\commande[rhead]prend comme argument la partie droite de l'entête, justifiée à droite.
-\commande[lfoot]prend comme argument la partie gauche de l'entête, justifiée à gauche.
-\commande[cfoot]prend comme argument la partie centrale de l'entête, centrée.
-\commande[rfoot]prend comme argument la partie droite de l'entêtre, justifiée à droite.
+\item[\commande{lhead}]prend comme argument le contenu de la partie gauche de l'entête, justifiée à gauche.
+\item[\commande{chead}]prend comme argument la partie centrale de l'entête, centrée.
+\item[\commande{rhead}]prend comme argument la partie droite de l'entête, justifiée à droite.
+\item[\commande{lfoot}]prend comme argument la partie gauche de l'entête, justifiée à gauche.
+\item[\commande{cfoot}]prend comme argument la partie centrale de l'entête, centrée.
+\item[\commande{rfoot}]prend comme argument la partie droite de l'entêtre, justifiée à droite.
 \end{description}
 
 
@@ -90,7 +90,7 @@ L'argument \argument{position} peut prendre une ou plusieurs des valeurs suivant
 
 Ainsi pour mettre le numéro de page à l'extérieur du pied de page, il suffit d'écrire :
 
-\begin{minted}
+\begin{minted}{latex}
 \fancyfoot[LE,RO]{\thepage}
 \end{minted}
 

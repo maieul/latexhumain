@@ -1,4 +1,4 @@
-\chapter{Mettre en sens (2) : l'art de citer en LaTeX}
+\chapter{Mettre en sens (2) : l'art de citer en LaTeX}\label{citertexte}
 
 
 Nous évoquerons dans ce chapitre les citations \emph{explicites et textuelles}, c'est à dire celles où l'auteur du travail ne se contente pas de renvoyer à une source ou à une étude, mais cite des extraits de cette source.
@@ -12,7 +12,7 @@ Toute citation se doit d'être accompagnée d'une référence, généralement en
 
 \end{attention}
 
-\section{Citation dans le corps du texte}
+\section{Citation dans le corps du texte}\label{guillemets}
 
 Les citations dans le corps d'un texte sont normalement entourées de guillemets français : \verb|« |\ldots \verb| »|. Lorsque qu'on cite un texte qui cite un texte, la citation dans la citation s'entoure de guillemets courbes \verb|“”|. 
 
@@ -23,7 +23,7 @@ Les citations dans le corps d'un texte sont normalement entourées de guillemets
 Les claviers disponibles sur nos ordinateurs ne disposent généralement que des guillemets anglais\footnote{Deux exceptions notables sont la disposition de clavier Bépo, et la gestion des claviers sous GNU/Linux (essayez la combinaison de touche \texttt{AltGr + w} et \texttt{AltGr + x}.} : \verb|" "|. 
 La plupart des logiciels WYSIWYG convertissent automatiquement les guillemets vers des guillemets français. Rares sont les éditeurs de texte qui le proposent\footnote{C'est d'ailleurs à nos yeux une des raisons qui fait qu'un site internet d'un quotidien national dit \enquote{de référence} n'utilise pas de guillemet français sur sa page d'accueil (à la date du 10 avril 2011), les rédacteurs ne prenant pas le temps de taper les combinaisons complexes de touches nécessaires à la frappe de guillemets français}. 
 
-En outre, en vertu du principe de séparation du sens et de la forme, évoqué plus haut\renvoi{sensform}, il est plus pertinent d'utiliser une commande spécifique pour indiquer une citation dans le corps du texte.
+En outre, en vertu du principe de séparation du sens et de la forme, évoqué plus haut\renvoi{sensforme}, il est plus pertinent d'utiliser une commande spécifique pour indiquer une citation dans le corps du texte.
 
 Nous allons donc utiliser le package \package{csquotes} qui propose des commandes  pour les citations.
 

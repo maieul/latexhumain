@@ -3,7 +3,7 @@
 \begin{prealable}
 Nous supposons que vous avez installé \LaTeX et un éditeur de texte spécialisé en \LaTeX. Voyez en annexe. \renvoi{install}.
 
-La première chose à faire est de vérifier que ce logiciel de traitement de texte enregistre bien en UTF-8\footnote{Cela se trouve en général dans les préférences du logiciel, dans une rubrique \emph{enregistrement} ou \emph{encodage} : consultez le manuel de votre logiciel le cas échéant.}. Nous reviendrons plus loin\renvoi{unicode} sur l'intérêt d'un tel encodage, sachez simplement que il permet d'utiliser des signes non latins\footnote{Cyrilliques, grecs, sanskrits, hébraïques etc. Et même extra-terrestres.}.
+La première chose à faire est de vérifier que ce logiciel de traitement de texte enregistre bien en UTF-8\footnote{Cela se trouve en général dans les préférences du logiciel, dans une rubrique \emph{enregistrement} ou \emph{encodage} : consultez le manuel de votre logiciel le cas échéant.}. Nous reviendrons plus loin\renvoi{utf8} sur l'intérêt d'un tel encodage, sachez simplement que il permet d'utiliser des signes non latins\footnote{Cyrilliques, grecs, sanskrits, hébraïques etc. Et même extra-terrestres.}.
 
 \end{prealable}
 
@@ -30,15 +30,15 @@ La première ligne \verb|\documentclass[12pt]{book}| déclare la classe du docum
 \item Les en-têtes et pieds de page.
 \end{itemize}
 
-Il existe en standard plusieurs classes de documents : citons \classe{book}, pour rédiger un livre ; \classe{article} pour un article (si, si !) ; \classe{beamer} pour un présentation sous forme de diapositive à projeter. Dans cet ouvrage, nous aborderons essentiellement les deux premières, nous ferons également une bréve présentation de \classe{beamer}\renvoi{Beamer}.
+Il existe en standard plusieurs classes de documents : citons \classe{book}, pour rédiger un livre ; \classe{article} pour un article (si, si !) ; \classe{beamer} pour un présentation sous forme de diapositive à projeter. Dans cet ouvrage, nous aborderons essentiellement les deux premières, nous ferons également une bréve présentation de \classe{beamer}\renvoi{beamer}.
 
-Nous aborderons également, dans un chapitre spécifique\renvoi{Bredele}, la classe \classe{Bredele}, qui n'est pas livrée en standard avec \LaTeX. Elle est con\c cue spécifiquement pour des travaux de type mémoire de master ou thèse de doctorat, suivant les normes universitaires fran\c caises les plus courantes.
 
-Tout document \LaTeX doit commencer par une déclaration de classe , avant toutes autres lignes. La syntaxe est la suivante :
+
+Tout document \LaTeX doit commencer par une déclaration de classe, avant toutes autres lignes. La syntaxe est la suivante :
 
 \verb|\documentclass[options]{classe}|
 
- Les options viennent spécifier certaines propriétés de la classe. Dans notre exemple, nous précisions que la taille de la police du texte courant doit être de 12~pt. Vous pouvez préciser plusieurs options, en les séparant par des virgules. 
+Les options viennent spécifier certaines propriétés de la classe. Dans notre exemple, nous précisions que la taille de la police du texte courant doit être de 12~pt. Vous pouvez préciser plusieurs options, en les séparant par des virgules. \label{optionsclasse}
  
  Voici quelques options disponibles et utiles en sciences humaines. 
 
@@ -67,7 +67,7 @@ Il s'agit, comme vous auriez pu le deviner, d'appel à des packages. Un package 
 
 Le premier package est \package{fontspec}. Il est utile à \XeLaTeX  pour une typographie avancée, notamment pour les langues autres que l'anglais\footnote{Pour être précis, il détermine des commandes utilisées par le package \package{polyglossia} lorsque définis le fran\c cais comme langue principale du document.}. 
 
-Le second package est \package{xunicode}. Il permet de gérer l'unicode, autrement appelé Utf-8\footnote{En réalité Utf-8 n'est pas tout à fait Unicode, mais une implémentation de ce dernier. Toutefois, pour simplifier, nous assimilerons les deux.}. Il nous permettra d'utiliser des caractères non-latin\renvoi{utf-8}.
+Le second package est \package{xunicode}. Il permet de gérer l'unicode, autrement appelé Utf-8\footnote{En réalité Utf-8 n'est pas tout à fait Unicode, mais une implémentation de ce dernier. Toutefois, pour simplifier, nous assimilerons les deux.}. Il nous permettra d'utiliser des caractères non-latin\renvoi{utf8}.
 
 \begin{attention}
 Ces deux packages doivent être appelés dans cet ordre, et non en sens inverse.
@@ -96,7 +96,7 @@ Vous trouverez aisément des informations sur \package{babel} sur Internet.
 
 \subsection{Le corps du document}
 
-Tout ce que nous avons vu jusqu'à maintenant faisaient parti de ce qu'on appel l'en-tête\footnote{En anglais header.}, parfois appelé préambule, du document. Ce sont des informations qui n'apparaîtront pas dans le document final, mais qui sont utiles à sa composition, autrement dit des méta-données. Tout les packages que vous voudrez utiliser seront à appeler dans l'en-tête.
+Tout ce que nous avons vu jusqu'à maintenant faisaient parti de ce qu'on appelle le préambule du document.\label{preambule} Ce sont des informations qui n'apparaîtront pas dans le document final, mais qui sont utiles à sa composition, autrement dit des méta-données. Tout les packages que vous voudrez utiliser seront à appeler dans l'en-tête.
 
 Tout ce qui se trouve entre la ligne \verb|\begin{document}| et \verb|\end{document}| constitue le corps du document, le contenu proprement dit de votre travail.
 
@@ -112,7 +112,7 @@ Enfin, rien de ce qui se trouve après \verb|\end{document}| ne sera analysé pa
 \end{minted}
 
 Les trois premières lignes définissent respectivement le titre, l'auteur et la date du travail.  
-La dernière ligne affiche ces informations. Si votre document est de classe  \classe{book}, alors le compilateur les affichera sur une page à part. S'il est de classe  \classe{article}, il l'affichera sans provoquer de saut de page.\footnote{Si la classe  est \classe{Bredele}, il fera cela de manière similaire à article, mais affichera également des informations supplémentaires, indiqués auparavant. Voir le chapitre sur \classe{Bredele}}.
+La dernière ligne affiche ces informations. Si votre document est de classe  \classe{book}, alors le compilateur les affichera sur une page à part. S'il est de classe  \classe{article}, il l'affichera sans provoquer de saut de page.
 
 On peut déroger à cette règle en passant une option à l'appel de classe \renvoi{optionsclasse}.
 \begin{description}
@@ -120,21 +120,16 @@ On peut déroger à cette règle en passant une option à l'appel de classe \ren
 \item[titlepage] pour avoir une page de titre spécifique.
 \end{description}
 
-Nous pouvons maintenant définir la notion de commande . Une commande  est un bout de code qui sera interprété par le compilateur pour effectuer une suite d'opérations, c'est un raccourci d'écritures. 
+Nous pouvons maintenant définir la notion de commande. Une commande  est un bout de code qui sera interprété par le compilateur pour effectuer une suite d'opérations, c'est un raccourci d'écritures. 
 Ici la commande \commande{maketitle} affiche les informations tel que le titre, la date et l'auteur du travail, informations que le compilateur aura retenu grâce aux commandes utilisés au préalables.
 
 Une commande peut prendre des arguments , certains facultatifs, d'autres obligatoires. Ces arguments  modifieront alors son comportement.
 
-La syntaxe d'une commande est :
-
-
-\begin{listing}[ht]
+La syntaxe d'une commande est : \label{syntaxecommande}
 
 \begin{minted}{latex}
 \nom[opt1][…][optn]{obl1}{…}{obln}
 \end{minted}
-\caption{Syntaxe de base d'une commande}
-\end{listing}
 
 Entre crochet sont indiqués les arguments optionnels, entre accolades les arguments obligatoires.
 

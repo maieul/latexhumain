@@ -1,7 +1,7 @@
 \chapter{Citer des références}
 
 \begin{prealable}
-Nous avons vu plus haut les différentes manières de citer un texte dans \renvoi{citertexte} dans le corps du travail. Nous avons également vu comment remplir une base de données bibliographique\renvoi{bibliofichier}.
+Nous avons vu plus haut les différentes manières de citer un texte dans \renvoi{citertexte} dans le corps du travail. Nous avons également vu comment remplir une base de données bibliographique\renvoi{bddbiblio}.
 
 Il ne nous reste plus qu'à mettre en relation les textes cités avec la base de données constituée pour avoir un travail correct, en indiquant les références des citations. C'est l'objet de ce chapitre.
 
@@ -48,7 +48,7 @@ Pour que \LaTeX{} sache où chercher les références bibliographiques, il faut 
 \bibliography{chemin du fichier sans l'extension}
 \end{minted}
 
-Le chemin du fichier s'indique de la même manière que n'importe quel chemin de fichier\renvoi{chemin du fichier}.
+Le chemin du fichier s'indique de la même manière que n'importe quel chemin de fichier\renvoi{chemin}.
 
 \begin{attention}
 Il est possible d'appeler plusieurs fichiers bibliographiques. Nous le déconseillons, dans la mesure où cela contraint à vérifier qu'il n'y ait pas plusieurs entrées avec la même clef.
@@ -79,7 +79,7 @@ Par exemple :
 \cite{Saxer1980}
 \end{quotation}
 
-L'usage en sciences humaines est de citer en note de bas de page. C'est pourquoi, il vaut mieux utiliser : \verb|\footcite{Saxer1980}|, qui indiquera la référence en note de bas de page, en ajoutant automatiquement le point de fin de note. On peut également décider d'utiliser la commande \commande{parencite}, pour citer entre parenthèses. 
+L'usage en sciences humaines est de citer en note de bas de page. C'est pourquoi, il vaut mieux utiliser : \verb|\footcite{Saxer1980}|,\label{footcite} qui indiquera la référence en note de bas de page, en ajoutant automatiquement le point de fin de note. On peut également décider d'utiliser la commande \commande{parencite}, pour citer entre parenthèses. 
 
 Mais on peut aussi choisir la commande \commande{autocite}. Le mode de citation (notes de bas page, citation directe, citation entre parenthèse etc.) dépendra du style de citation choisi : pour les styles de la famille \verb|verbose|, ce sera les notes de bas de pages. 
 
@@ -109,7 +109,7 @@ sujet similaire.]{Saxer1980} blabla
 	Blabla \parencite[Voir également][qui porte sur un sujet similaire.]{Saxer1980} blabla
 \end{quotation}
 
-\subsection{L'argument \argument{postnote} et la numérotation des pages}
+\subsection{L'argument \argument{postnote} et la numérotation des pages}\label{pagespostnote}
 
 L'argument \argument{postnote} peut servir à indiquer les pages précise de notre ouvrage\footcite[On consultera pour plus de détails : ][]{biblatex_pages}. Il suffit pour cela qu'il contienne une valeur de type numérique, en chiffres arabes ou romains, ou bien une séquence de valeurs numériques.
 
