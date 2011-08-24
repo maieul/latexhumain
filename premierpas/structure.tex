@@ -119,15 +119,15 @@ Nous conseillons de mettre les fichiers \enquote{fils} dans un ou plusieurs sous
 
 La classe \classe{book} propose, en plus des niveaux de titres, une manière de structurer en quatre parties sont travail : préambules (avant-propos, sommaire, introductions etc.) ; corps du travail ; appendices ; outils de navigation (index, glossaires, bibliographie, tables des matières,  etc.). 
 
-Chacune de ces parties est indiquée par une commande initiale, respectivement : \commande{frontmatter} ; \commande{mainmatter} ; \commande{appendix}\footnote{Cette commande existe aussi dans la classe \classe{article}}\commande{backmatter}.
+Chacune de ces parties est indiquée par une commande initiale, respectivement : \commande{frontmatter} ; \commande{mainmatter} ; \commande{appendix}\footnote{Cette commande existe aussi dans la classe \classe{article}.}\commande{backmatter}.
 
 Cette structuration en partie globales aura un impact sur la présentation des numéro de page (romains ou arabes) et sur la numérotation des titres.
 
 Ainsi, par défaut : \begin{enumerate}
 \item\commande{frontmatter} donne des titres non numérotés mais présents dans la table des matières. En outre les numéros de pages sont en chiffres romains miniscules. 
 \item\commande{maintmatter} donne des titres numérotés. La numérotation des pages est réinitialisée et est en chiffre arabe.
-\item\commande{appendix} affiche les numéros de titres sous forme de lettres majuscules.
-\item\commande{backmatter} supprime les numéros de titre mais présent dans la table des matières. Mais 
+\item\commande{appendix} affiche les numéros de titres sous forme de lettres majuscules. Le texte \forme{chapitre} est remplacé par \forme{appendice}.
+\item\commande{backmatter} supprime les numéros de chapitre mais les présente dans la table des matières.
 \end{enumerate}
 
 
