@@ -69,7 +69,7 @@ Par exemple, nous souhaitons citer  un livre de Victor Saxer que nous avons entr
 
 \inputminted{exemples/biblio/fichier/saxer.bib}
 
-Nous écrivons \verb|\cite{Saxer1980}|. 
+Nous écrivons \cs{cite}\verb|{Saxer1980}|. 
 
 Après la troisième compilation\renvoi{3compil}, la référence apparaîtra selon le style choisi lors de l'appel à  \package{BibLaTeX}.
 
@@ -79,7 +79,7 @@ Par exemple :
 \cite{Saxer1980}
 \end{quotation}
 
-L'usage en sciences humaines est de citer en note de bas de page. C'est pourquoi, il vaut mieux utiliser : \verb|\footcite{Saxer1980}|,\label{footcite} qui indiquera la référence en note de bas de page, en ajoutant automatiquement le point de fin de note. On peut également décider d'utiliser la commande \cs{parencite}, pour citer entre parenthèses. 
+L'usage en sciences humaines est de citer en note de bas de page. C'est pourquoi, il vaut mieux utiliser : \cs{footcite}\verb|{Saxer1980}|,\label{footcite} qui indiquera la référence en note de bas de page, en ajoutant automatiquement le point de fin de note. On peut également décider d'utiliser la commande \cs{parencite}, pour citer entre parenthèses. 
 
 Mais on peut aussi choisir la commande \cs{autocite}. Le mode de citation (notes de bas page, citation directe, citation entre parenthèse etc.) dépendra du style de citation choisi : pour les styles de la famille \verb|verbose|, ce sera les notes de bas de pages. 
 

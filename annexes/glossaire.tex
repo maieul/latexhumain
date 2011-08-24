@@ -9,18 +9,18 @@
 
 \item[Clef bibliographique]identifiant unique attribué à une référence bibliographique. Il est conseillé de n'y mettre que des caractères alphanumériques non accentués.
 
-\item[Clef d'index] code indiquant la position d'une entrée dans un index. Il est nécéssaire de définir une clef d'index pour les entrées comportant des caractères accentués. Les clefs d'index peuvent également servir pour des indexs non alphabétiques (par exemple des index par date de régne.).
+\item[Clef d'index] code indiquant la position d'une entrée dans un index. Il est nécéssaire de définir une clef d'index pour les entrées comportant des caractères accentués. Les clefs d'index peuvent également servir pour des index non alphabétiques (par exemple des index par date de régne.).
 \item[Commentaire] texte qui n'est pas interpreté par le compilateur. Tout ce qui est situé entre le signe \% et la fin de ligne est un commentaire.
 
 \item[Compilateur]\enquote{logiciel} chargé d'interpréter le fichier \ext{tex} pour produire un fichier \ext{pdf}. Dans ce livre nous utilisons le compilateur \XeLaTeX, plus récent que \LaTeX.
 
-\item[Environnement]portion de document ayant une signification spécifique et qui, par conséquent, reçoit un traitement spécifique. Le début et la fin d'un environnement se marquent par \verb|\begin{nom de l'environnement}| et \verb|\end{nom de l'environnement}|. \LaTeX propose des environnements, les packages en rajoutent et il est possible de définir ses propres environnements.
+\item[Environnement]portion de document ayant une signification spécifique et qui, par conséquent, reçoit un traitement spécifique. Le début et la fin d'un environnement se marquent par \cs{begin}\oarg{nom de l'environnement} et \cs{end}\oarg{nom de l'environnement}|. \LaTeX propose des environnements, les packages en rajoutent et il est possible de définir ses propres environnements.
 
 \item[Macro bibliographique]sous élèment d'un style bibliographique, en général chargé de gérer l'affichage d'un ou plusieurs champs.
 
 \item[Package]chargé dans le préambule, les packages sont des fichiers qui permettent d'étendre les fonctionalités  de \LaTeX.
 
-\item[Preambule]partie du code \ext{tex} située avant \verb|\begin{environnement}|. Son contenu n'est pas affiché dans le document final, mais sert à divers usages, notamment le chargement de package.
+\item[Preambule]partie du code \ext{tex} située avant \cs{begin}\oarg{environnement}. Son contenu n'est pas affiché dans le document final, mais sert à divers usages, notamment le chargement de package.
 
 \item[Style bibliographique]manière d'afficher une entrée bibliographique, indépendamment de son contenu sémantique. Le package \package{biblatex} propose un certains nombres de styles bibliographiques, qu'il est possible de personaliser. On peut également créer son propre style bibliographique (intéressant pour les éditeurs de livres et revues.)
 \end{description}

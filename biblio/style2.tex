@@ -12,7 +12,7 @@
 Pour comprendre comment personnaliser l'affichage bibliographique, il est nécessaire de comprendre sommairement ce qui passe lorsqu'on utilise une commande de citation. 
 
 \begin{itemize}
-\item Lorsqu'on appelle une commande de citation, du type \verb|PREFXIcite|, cette commande va appeler :
+\item Lorsqu'on appelle une commande de citation, du type \cs{PREFXIcite}, cette commande va appeler :
 	\begin{itemize}
 		\item Des macros bibliographiques, chargées d'afficher l'argument \argument{prenote} ou \argument{postnote}, ou encore de gérer les citations répétées. Les macros bibliographiques sont des types particuliers de commandes, propres au package \package{biblatex}. 
 		\item Un driver\footnote{Bien que le terme \enquote{driver} ne soit pas français, nous l'utilisons car il est utilisé dans les commandes internes de BibLaTeX} bibliographique. Un driver correspond à un type d'entrée (@article, @book etc.), et se charge d'afficher les champs de l'entrée dans le bon ordre. Pour ce faire, un driver appelle :

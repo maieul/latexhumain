@@ -102,8 +102,8 @@ Mais ici il s'agit non seulement de rédéfinir l'environnement, mais aussi de r
 Commentaires : 
 
 \begin{description}
-\item[ligne 1]la commande \cs{let} est une commande \TeX qui copie une commande dans une autre commande. Ici nous copions la commande \cs{quotation} dans la commande \cs{oldquotation}\footnote{Bien que \enquote{old} soit un nom anglais, il est de convention de préfixer ainsi les commandes copiées depuis une autre commande}. La commande \cs{quotation} quant à elle correspond au début de l'environnement \enviro{quotation}, c'est à dire à ce qui est executé par \verb|\begin{quotation}|.
-\item[ligne 2] nous copions la commande \cs{endquotation} correspondant à la fin de l'environnement  \enviro{quotation} --- c'est à dire à ce qui est executé lors du \verb|\end{quotation}| dans une commande \cs{endoldquotation}.
+\item[ligne 1]la commande \cs{let} est une commande \TeX qui copie une commande dans une autre commande. Ici nous copions la commande \cs{quotation} dans la commande \cs{oldquotation}\footnote{Bien que \enquote{old} soit un nom anglais, il est de convention de préfixer ainsi les commandes copiées depuis une autre commande}. La commande \cs{quotation} quant à elle correspond au début de l'environnement \enviro{quotation}, c'est à dire à ce qui est exécuté par \cs{begin}\verb|{quotation}|.
+\item[ligne 2] nous copions la commande \cs{endquotation} correspondant à la fin de l'environnement  \enviro{quotation} --- c'est à dire à ce qui est exécuté lors du \cs{end}\verb|{quotation}| dans une commande \cs{endoldquotation}.
 \end{description}
 
 En créant ces deux commandes \cs{oldquotation} et \cs{endoldquotation} nous avons créé un environnement \enviro{oldquotation}.
@@ -152,7 +152,7 @@ Puisque les compteurs s'affichent à l'aide d'une commande, il est aisée de red
 \end{minted}
 
 \begin{description}
-\item[Ligne 1]la commande \cs{c@chapter} retourne la valeur --- entière, par définition --- du compteur \compteur{chapter}. Cette valeur ne peut pas être affichée directement, elle doit être au préalable formatée par la commande \cs{\@arabic}, qui l'affiche sous forme de chiffres arabes.
+\item[Ligne 1]la commande \cs{c@chapter} retourne la valeur --- entière, par définition --- du compteur \compteur{chapter}. Cette valeur ne peut pas être affichée directement, elle doit être au préalable formatée par la commande \cs{@arabic}, qui l'affiche sous forme de chiffres arabes.
 \item[Ligne 2]la commande \cs{thesection} retourne \cs{thechapter} suivi d'un point, suivi de la valeur du compteur \compteur{section} affichée sous forme de chiffres arabes.
 \end{description}
 
@@ -219,10 +219,10 @@ Pour personaliser l'apparence des titres, le mieux est de regarder ce que nous p
 Commentons ces quelques lignes :
 
 \begin{description}
-\item[ligne 1]La commande \cs{section} fait appel à une commande \cs{\@startsection}. Cette commande ajoute donc un niveau de titre à la table des matières. Malgrès son titre, elle peut servir pour n'importe quel niveau de titre (par exemple, pour les \cs{subsection}). Elle prend plusieur argument. Le premier est le nom du niveau : ici \verb|section|. Le second est le niveau de profondeur : \verb|1|. Le troisième est l'indentation prélable : ici \cs{z@}, c'est à dire une longueur nulle.
+\item[ligne 1]La commande \cs{section} fait appel à une commande \cs{@startsection}. Cette commande ajoute donc un niveau de titre à la table des matières. Malgrès son titre, elle peut servir pour n'importe quel niveau de titre (par exemple, pour les \cs{subsection}). Elle prend plusieur argument. Le premier est le nom du niveau : ici \verb|section|. Le second est le niveau de profondeur : \verb|1|. Le troisième est l'indentation prélable : ici \cs{z@}, c'est à dire une longueur nulle.
 \item[ligne 2]: quatrième argument de la commande \cs{@startsection}, qui indique l'espace vertical \emph{avant} le titre. Cet espace est idéalement de 3,5 ex \renvoi{unite}, mais peut être compris entre 1,5 ex (3,5 - 2) et 4,5 ex (3,5 + 1), les commandes \cs{@moins} et \cs{@plus} indiquant cette marge de manœuvre.
 \item[ligne 3]: cinquième argument de \cs{@startsection}, qui indique l'espace vertical après le titre. Notre longueur étant positive, le texte qui suit débute un nouveau paragraphe. Une longueur négative (comme c'est le cas pour la définition de la commande \cs{paragraph}) indique qu'il n'y a pas de changement de paragraphe. Ici donc, l'espace après le titre est de 2,3 ex, mais peut atteindre 2,5 ex (2,3 + 0,2).
-\item[ligne 4]: sixième et dernier argument de \cs{@startsection}, qui indique l'apparence proprement dit de notre titre. Il s'agit d'un texte en police normale --- c'est à dire celle définie par la commande \cs{setmainfont} ---, en taille \cs{Large}, mise en gras (\cs{\bfseries}). Ici toutes nos commandes sont considérés comme des commandes de bascule, la bascule finissant avec l'accolade fermante. La commande \cs{bfseries} étant l'équivalent à bascule de la commande \cs{textbf}. Il est recommandé de n'utiliser ici que des commandes à bascule, pour éviter des espaces indésirables.\label{bfseries}
+\item[ligne 4]: sixième et dernier argument de \cs{@startsection}, qui indique l'apparence proprement dit de notre titre. Il s'agit d'un texte en police normale --- c'est à dire celle définie par la commande \cs{setmainfont} ---, en taille \cs{Large}, mise en gras (\cs{bfseries}). Ici toutes nos commandes sont considérés comme des commandes de bascule, la bascule finissant avec l'accolade fermante. La commande \cs{bfseries} étant l'équivalent à bascule de la commande \cs{textbf}. Il est recommandé de n'utiliser ici que des commandes à bascule, pour éviter des espaces indésirables.\label{bfseries}
 \end{description}
 
 Supposons maintenant que nous souhaitons avoir notre titre en en italique et en police sans empattement. Il nous suffit de redéfinir notre commande \cs{section}, en entourant notre définition de \cs{makeatletter} et \cs{makeatother}.\renvoi{makeatletter}.
@@ -248,7 +248,7 @@ Si on cherche dans le fichier \fichier{book.cls} la commande \cs{chapter}, on tr
                     \secdef\@chapter\@schapter}
 \end{minted}
 
-Deux élèments nous intéressent : la ligne 2 \verb|thispagestyle{plain}|. On comprend ainsi la raison pour laquelle les  pages de début de chapitre n'ont pas les numéros de de page au même endroit que les autres : le style de cette page est \forme{plain} et non pas \forme{heading}, comme pour les autres pages. \renvoi{styleentetes}. Par conséquent, si on souhaite que les pages de titre aient les mêmes entêtes et pieds de page que les pages standards, il faut redéfinir la commande \cs{chapter}.\label{entetechapter}.\label{chapitrepagestyle}
+Deux éléments nous intéressent : la ligne 2 \cs{thispagestyle}\verb|{plain}|. On comprend ainsi la raison pour laquelle les  pages de début de chapitre n'ont pas les numéros de de page au même endroit que les autres : le style de cette page est \forme{plain} et non pas \forme{heading}, comme pour les autres pages. \renvoi{styleentetes}. Par conséquent, si on souhaite que les pages de titre aient les mêmes entêtes et pieds de page que les pages standards, il faut redéfinir la commande \cs{chapter}.\label{entetechapter}.\label{chapitrepagestyle}
 
 \begin{minted}{latex}
 \makeatletter
@@ -345,15 +345,15 @@ Cela nous donne au final :
 
 \section[Manipuler les compteurs]{Manipuler les compteurs : le cas des notes de bas de page}
 
-Nous avons vu comment modifier l'affichage d'un compteur.\renvoi{apparencecompteur} Mais comment modifier la valeur d'un compteur ? Il existe pour cela deux fonctions : \verb|setcounter{compteur}{valeur}| pour affecter la valeur \forme{valeur} au compteur \forme{compteur}, et \verb|addtocounter{compteur}{valeur}| pour \emph{additionner} la valeur \forme{valeur} au compteur \forme{compteur}. La valeur ajoutée pouvant être négative, il est ainsi possible de faire reculer un compteur.
+Nous avons vu comment modifier l'affichage d'un compteur.\renvoi{apparencecompteur} Mais comment modifier la valeur d'un compteur ? Il existe pour cela deux fonctions : \cs{setcounter}\marg{compteur}\marg{valeur} pour affecter la valeur \forme{valeur} au compteur \forme{compteur}, et \cs{addtocounter}\marg{compteur}\marg{valeur} pour \emph{additionner} la valeur \forme{valeur} au compteur \forme{compteur}. La valeur ajoutée pouvant être négative, il est ainsi possible de faire reculer un compteur.
 
 En outre, il exisite une commande \cs{refstepcounter} qui permet d'incrémenter de une unité un compteur. C'est celle qui est utilisé par les commandes niveau de titre.\ref{niveautitre}.
 
 
 
-Il est possible de créer son propre compteur grâce à la commande \verb|\newcounter{compteur}[compteur 2]|. Si l'argument \argument{compteur 2} est présent, alors il indique que la valeur du compteur \argument{compteur} doit être réinitialisé lorsque la commande \cs{refstepcounter} est appliquée au compteur \argument{compteur 2}.
+Il est possible de créer son propre compteur grâce à la commande \cs{newcounter}\marg{compteur}\oarg{compteur 2}|. Si l'argument \argument{compteur 2} est présent, alors il indique que la valeur du compteur \argument{compteur} doit être réinitialisé lorsque la commande \cs{refstepcounter} est appliquée au compteur \argument{compteur 2}.
 
-La commande  \verb|@addtoreset{compteur}{compteur2}|  permet d'appliquer cette règle sur un compteur déjà existant.
+La commande  \cs{@addtoreset}\marg{compteur}\marg{compteur2}  permet d'appliquer cette règle sur un compteur déjà existant.
 
 Ainsi, dans le fichier \fichier{book.cls}, vous remarquerez la ligne suivante\footnote{L. 718, à la date du 24 août 2011}  :
 \begin{minted}{latex}

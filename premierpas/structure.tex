@@ -13,27 +13,27 @@ Pour introduire un titre dans \LaTeX{} -- en dehors du titre du travail --, il s
 
 Le titre court est facultatif, comme l'indique le fait qu'il soit entre crochets\renvoi{syntaxecommande}. Il servira pour la table de matière et, éventuellement, pour les entêtes des pages\renvoi{toc}\renvoi{entete}.
 
-Évidemment \verb|\titre| doit être remplacé par le type de titre. Voici les niveaux de titre disponibles, du plus général au plus détaillé. Plus un titre se trouve haut dans la hiérachie, plus son numéro de niveau est faible.
+Évidemment \cs{titre} doit être remplacé par le type de titre. Voici les niveaux de titre disponibles, du plus général au plus détaillé. Plus un titre se trouve haut dans la hiérachie, plus son numéro de niveau est faible.
 
  	\begin{tabular}{|l||l|l|}
 	\hline 	
  	Commande 				& Sens 						& Numéro de niveau 	\\
  	\hline
  	\hline
- 	\verb|\part| 			& Titre de partie 			& -1	 \\
- 	\verb|\chapter| 		& Titre de chapitre 		& 0 	 	 \\
-	\verb|\section|			& Titre de section  		& 1			\\
-	\verb|\subsection|		& Titre de sous-section 	& 2			\\
-	\verb|\subsubsection|	& Titre de sous-sous-section& 3			\\
-	\verb|\paragraph|		& Titre de paragraphe 		&4			\\
-	\verb|\paragraph|		& Titre de sous-paragraphe 	&5			\\
+ 	\cs{part}			& Titre de partie 			& -1	 \\
+ 	\cs{chapter} 		& Titre de chapitre 		& 0 	 	 \\
+	\cs{section}			& Titre de section  		& 1			\\
+	\cs{subsection}		& Titre de sous-section 	& 2			\\
+	\cs{subsubsection}	& Titre de sous-sous-section& 3			\\
+	\cs{paragraph}		& Titre de paragraphe 		&4			\\
+	\cs{subparagraph}		& Titre de sous-paragraphe 	&5			\\
 	\hline
 	\end{tabular}
 
 
 Quelques remarques importantes :
 \begin{itemize}
-\item Le niveau \verb|\chapter| n'existe pas dans la classe \classe{article} ;
+\item Le niveau \cs{chapter} n'existe pas dans la classe \classe{article} ;
 \item Chaque niveau de titre se voit attribuer un numéro. Ce numéro sert lors de l'affichage de la table des matières pour définir sa profondeur.\label{numeroniveau}\renvoi{tocdepth}
 \item Les niveaux dont les numéros sont inférieurs à 1 provoquent, par défaut, un changement de pages.
 \item Les niveaux dont les numéros sont supérieurs à 3 ne provoquent pas de changement de paragraphe. Ils sont positionnés en \enquote{lettrine}.
@@ -45,11 +45,11 @@ Par défaut, tout les titres sont numérotés automatiquement\footnote{Nous verr
 \chapter*{Un chapitre non numéroté}
 \end{minted}
 
-Toutefois un titre non numéroté ne sera pas ajouté à la table des matières\renvoi{toc}. Pour contourner ce problème, il faut utiliser la commande \\
-\verb|\addcontentsline{toc}{1}{2}| où : \label{addcontentsline}
+Toutefois un titre non numéroté ne sera pas ajouté à la table des matières\renvoi{toc}. Pour contourner ce problème, il faut utiliser la commande 
+\cs{addcontentsline}\verb|{toc}|\marg{1}\marg{2}| où : \label{addcontentsline}
 \begin{description}
-	\item[1] est le type de titre ;
-	\item[2] est le texte du titre ;
+	\item[\marg{1}] est le type de titre ;
+	\item[\marg{2}] est le texte du titre ;
 \end{description}
 
 Un exemple sera plus parlant :
@@ -84,8 +84,8 @@ Concrètement comment fait-on ?
 \item Les fichiers \enquote{fils} ne devront contenir aucun appel de classe.
 \item Ils seront inclus dans le document fils par l'une des commandes suivantes :
 \begin{itemize}
-	\item \verb|\include{chemin_du_fichier}|, qui entraînera systématiquement un saut de page.
-	\item \verb|\input{chemin_du_fichier}|, qui n'entraînera pas de saut de page.
+	\item \cs{include}\marg{chemin-du-fichier}|, qui entraînera systématiquement un saut de page.
+	\item \cs{input}\marg{chemin-du-fichier}|, qui n'entraînera pas de saut de page.
 \end{itemize}
 \item La commande \cs{input}, contrairement à \cs{include} peut être aussi appelée dans un fichier \enquote{fichier}, voire dans un fichier \enquote{petit-fils} etc.
 
@@ -103,9 +103,11 @@ En \LaTeX{}, le chemin du fichier se compte à partir du fichier \enquote{père}
 On indique le chemin du fichier en séparant chaque dossiers par \verb|/|.\footnote{Cette norme s'applique même sous Windows, qui sépare traditionnellement les répertoires par des \texttt{\ } dans les chemins.} Par exemple, nous souhaitons inclure le fichier nommé \verb|c.tex| situé dans le dossier \verb|b|, lui même situé dans le dossier \verb|a|, qui se trouve à côté du fichier \enquote{père}.
 
 Il faut que nous mettions dans notre fichier \enquote{père} :
-
-\verb|\input{a/b/c}| ou bien \verb|\include{a/b/c}|.
-
+\begin{minted}{latex}
+\input{a/b/c}
+%ou bien
+\include{a/b/c}
+\end{minted}
 \begin{attention}
 
 Il ne faut pas mettre l'extension \ext{tex} dans le nom du fichier.
@@ -130,5 +132,3 @@ Ainsi, par défaut : \begin{enumerate}
 \item\cs{backmatter} supprime les numéros de chapitre mais les présente dans la table des matières.
 \end{enumerate}
 
-
- 

@@ -55,7 +55,7 @@ Nous avons donc notre index spécifique. Mais encore faut-il que nous disions  �
 \item[ligne 3]nous indexons le champ \champ{author}.  Nous utilisons le format d'indexation \verb|sources|.
 \item[ligne4]nous indexons le champ \champ{indextitle}. Si ce champ est vide \package{BibLaTeX} utilise à la place le champ \champ{title}. Nous utilisons le format d'indexation \verb|sources|.
 \item[ligne 5]nous indexons le champ \champ{titleaddon}. Nous utilisons le format d'indexation \verb|sources|.
-\item[ligne 6]nous indexons la valeur \verb|---| dans le fichier \fichier{xxx-source.idx}. Cette valeur servira plus tard lors de l'exécution d'un script python.\renvoi{python}. En effet, une des limitations de biblatex est qu'il ne peut indexer qu'un seul champ à la fois, et n'est pas capable, pour le moment, de produire des entrées d'index du type \verb|\index{Champ1!Champ2!Champ3}|. Pour contourner cela, nous avons conçu un script qui concaténe dans le fichier \ext{idx} trois indexations en une seule indexation. Pour que ce script ne concaténe pas ensemble des indexations qui ne doivent pas être concaténée, nous écrivons des fausses indexations sous la forme \verb|---|, qui serviront de point de repère au script.
+\item[ligne 6]nous indexons la valeur \verb|---| dans le fichier \fichier{xxx-source.idx}. Cette valeur servira plus tard lors de l'exécution d'un script python.\renvoi{python}. En effet, une des limitations de biblatex est qu'il ne peut indexer qu'un seul champ à la fois, et n'est pas capable, pour le moment, de produire des entrées d'index du type \cs{index}\marg{Champ1!Champ2!Champ3}. Pour contourner cela, nous avons conçu un script qui concaténe dans le fichier \ext{idx} trois indexations en une seule indexation. Pour que ce script ne concaténe pas ensemble des indexations qui ne doivent pas être concaténée, nous écrivons des fausses indexations sous la forme \verb|---|, qui serviront de point de repère au script.
 \end{description}
 
 \subsection{Fomat d'indexation \package{BibLaTeX}}
@@ -72,7 +72,7 @@ Il nous faut donc définir ce format.
   }
 \end{minted}
 
-Nous disions en première ligne que nous déclarions un format d'indexation \verb|sources| pour les noms propres. Dans la ligne suivante, nous déclarons ce que nous faisons : nous appelons une macro \macro{index:name}. Cette macro est déjà définie par \package{biblatex}. Elle reçoit plusieurs argument. Le première argument est la commande à exécuter : ici \verb|\sindex[sources]|, qui permet d'indexer dans l'index \verb|source| définis plus haut. Les autres arguments sont repris des codes de \package{biblatex} est désigne les différentes parties du nom à indexer\footcite[Nous renvoyons le lecteur à la documentation de \package{BibLaTeX} : ][]{biblatex_formats}.
+Nous disions en première ligne que nous déclarions un format d'indexation \verb|sources| pour les noms propres. Dans la ligne suivante, nous déclarons ce que nous faisons : nous appelons une macro \macro{index:name}. Cette macro est déjà définie par \package{biblatex}. Elle reçoit plusieurs argument. Le première argument est la commande à exécuter : ici \cs{sindex}\verb|[sources]|, qui permet d'indexer dans l'index \verb|source| définis plus haut. Les autres arguments sont repris des codes de \package{biblatex} est désigne les différentes parties du nom à indexer\footcite[Nous renvoyons le lecteur à la documentation de \package{BibLaTeX} : ][]{biblatex_formats}.
 
 
 \subsubsection{Indexation des autres champs}
