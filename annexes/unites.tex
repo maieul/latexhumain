@@ -46,3 +46,16 @@ Voici les principales commandes de longueur :
 	 \cs{parskip}	& Distance verticale entre deux paragraphes. \\
 	 
 \end{longtable}
+
+\section{Elasticité}
+
+Il est possible de définir une certaine élasticité pour les longueurs, qui permet de s'adapter à l'espace disponible et aux contraintes de mise en page\footnote{Par exemple concernant les veuves et orphelins}. Pour ce faire, on utilise les mot clefs \verb|minus| et \verb|plus|.
+Ainsi si je souhaite afficher un espace blanc \renvoi{espace} vertical d'une longueur comprise entre 1cm et 3 cm, mais tournant idéalement autour de 2.5 cm, j'écris :
+
+\begin{minted}{latex}
+\vspace{2.5cm minus 1.5cm plus 2.5}
+\end{minted}
+
+Cette syntaxe est utilisé dans les commandes de définitions des entêtes de section, sous une forme légerement différent.\renvoi{apparencetitre}
+
+Plus globalement, avec une syntaxe de longueur de type \verb|a minus b plus c| la longueur finale \verb|m| sera telle que $ a - b \leq m \leq a + c $.  
