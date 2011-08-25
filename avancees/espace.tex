@@ -4,6 +4,8 @@
 Dans ce chapitre, nous allons voir quelques commandes permettant de modifier la mise en page.
 Rappelons que normalement, il ne faut pas utiliser ces commandes tels quels, mais les imbriquer dans des commandes de mise en sens.\renvoi{sensforme}
 
+Il ne s'agit ici que d'une très courte introduction : d'autres ouvrages en parlent mieux que nous\footcites(En particulier)(){frama}{latex_graphic_companion}.
+
 En ce qui concerne les unités de longueurs, nous renvoyons à l'\ref{unite}.\renvoi{unite}
 \end{prealable}
 
@@ -131,5 +133,19 @@ Pour des textes encadrés ou sur fond coloré, on pourra utiliser le package \pa
 
 On peut tracer un trait horizontal avec la commande \cs{rule}\oarg{profondeur}\marg{longueur}\marg{épaisseur}, ou \argument{profondeur} correspond à l'écart entre le trait et le bas de la ligne de texte.
 
-Pour des traits discontinues, pointillés, non horizontaux etc., on se reportera au package \package{epic} ou, selon le cas, à \package{TikZ}. 
+On peut aussi utiliser les commandes \cs{hrulefill} et \cs{dotfill} qui permettent de tracer respectivement des lignes et des points, en \enquote{comprimant} le texte qui suit, c'est à dire en étant au maximum la longueur de la ligne ou de la suite de point.
+
+Exemple :
+\begin{minted}{latex}
+\hrulefill Du texte comprimé.
+
+\dotfill Du texte comprimé.
+\end{minted}
+
+
+\hrulefill Du texte comprimé.
+
+\dotfill Du texte comprimé.
+
+Pour des traits plus complexes, par exemple en diagonal ou en pointillés, on se reportera au package \package{epic} ou, selon le cas, à \package{TikZ}. 
 
