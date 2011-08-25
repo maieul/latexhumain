@@ -26,7 +26,7 @@ Pour les redéfinir, il faut utiliser la commande \cs{setlength}\marg{longueur}\
 \setlength{\parindent}{3ex}
 \end{minted}
 
-On peut aussi utiliser \cs{addtolength}\marg{longueur}\marg{valeur}, qui additionne \contenuarg{valeur} à la longueur déjà exister.
+On peut aussi utiliser \cs{addtolength}\marg{longueur}\marg{valeur}, qui additionne \argument{valeur} à la longueur déjà existante.
 
 Ainsi pour ajouter 1 pt à l'espacement entre deux paragraphes :
 
@@ -122,3 +122,14 @@ Ce qui nous donne au final :
                {\endlist}
 \makeatother
 \end{minted}
+
+\begin{anedocte}
+Pour des textes encadrés ou sur fond coloré, on pourra utiliser le package \package{framed} et/ou bien le package \package{fancybox}\footcites[On peut également consulter][qui regorge d'exemple pratique de \enquote{mise en boîte}]{frama}[on consultera en particulier][]{frama_boites}. 
+\end{anedocte}
+
+\section{Trait horizontal}
+
+On peut tracer un trait horizontal avec la commande \cs{rule}\oarg{profondeur}\marg{longueur}\marg{épaisseur}, ou \argument{profondeur} correspond à l'écart entre le trait et le bas de la ligne de texte.
+
+Pour des traits discontinues, pointillés, non horizontaux etc., on se reportera au package \package{epic} ou, selon le cas, à \package{TikZ}. 
+
