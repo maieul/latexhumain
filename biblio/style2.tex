@@ -89,7 +89,7 @@ Dedans vous pouvez  repérer les lignes suivantes :
 
 Il s'agit d'un driver bibliographique expliquant comment afficher les entrées de type @book. Ce driver fait appel à des macros bibliographiques (les commandes \cs{usebibmacro}). Ces macros sont communes à plusieurs drivers, ce qui permet d'avoir une certaine uniformité de style (par exemple, afin que les noms d'auteurs s'affichent systématiquement de la même façon).
 
-Dans le lot des macros appelées, on constate l'appel à la macro \macro{publisher+location+date}, via la commande
+Dans le lot des macros appelées, on constate l'appel à la macro \bibmacro{publisher+location+date}, via la commande
 
 \begin{minted}{latex}
 \usebibmacro{publisher+location+date}
@@ -102,7 +102,7 @@ En fouillant un peu le même fichier, on repère l'endroit où la macro est déf
 Nous allons commenter succinctement ces lignes, avant d'expliquer comment faire pour inverser l'ordre des deux champs (mais normalement, en lisant nos commentaires, vous devriez comprendre tout de suite). 
 
 \begin{description}
-\item[Ligne 1]La commande \cs{newbibmacro*} indique qu'on déclare une nouvelle macro bibliographique, ici \macro{publisher+location+date}. Pour indiquer qu'on redéfinit une macro déjà existant, il faut utiliser dans le préambule\footnote{Où ailleurs dans le fichier \ext{tex} mais en tout cas pas dans les fichiers standards.} la commande \cs{renewbibmacro*}. La définition de la macro se trouve dans les accolades qui suivent.
+\item[Ligne 1]La commande \cs{newbibmacro*} indique qu'on déclare une nouvelle macro bibliographique, ici \bibmacro{publisher+location+date}. Pour indiquer qu'on redéfinit une macro déjà existant, il faut utiliser dans le préambule\footnote{Où ailleurs dans le fichier \ext{tex} mais en tout cas pas dans les fichiers standards.} la commande \cs{renewbibmacro*}. La définition de la macro se trouve dans les accolades qui suivent.
 \item[Ligne2]La commande \cs{printlist} indique qu'on affiche un champ qui pourrait se présenter sous forme de liste, c'est à dire où le mot clef \forme{and} à un sens. Ici il s'agit du champ \champ{location}. \item[Ligne 3]La commande \cs{iflistundef} test la valeur d'un champ qui pourrait être une liste, ici le champ \champ{publisher}. Si ce champ est vide, il exécute le contenu de la première accolade (ligne 4), sinon celui de la seconde (ligne 5).
 \item[Ligne 4]Si donc le champ \champ{publisher} est vide, on crée une nouvelle unité bibliographique (\cs{setunit*})\label{unitepersonalisee} séparée de la précédente par une virgule suivie d'une espace (\cs{addcomma}\cs{space}).
 \item[Ligne 5]Si le champ \champ{publisher} n'est pas vide, alors on crée une nouvelle unité bibliographique, séparée de la suivante par deux-points suivi d'une espace (\cs{addcolon}\cs{space}).
@@ -196,7 +196,7 @@ Pour la faire fonctionner, il faut utiliser Biber\renvoi{biber}, et passer l'opt
 
 Une fois ceci fait, il est nécessaire de savoir où appliquer cette commande. Commençons par fouiller le fichier \ext{cbx}, puisqu'il s'agit d'un style pour une commande \cs{PREFIXcite}. Recherchons l'expression \forme{opcit} qui correspond à la chaîne de langue qui renvoie \forme{op. cit.} (voir chapitre précédent).\renvoi{opcit}.
 
-On repère rapidement qu'elle se trouve dans une macro \macro{cite:title}.
+On repère rapidement qu'elle se trouve dans une macro \bibmacro{cite:title}.
 
 \begin{english}%en attendant que ce bug soit résolu
 \inputminted{exemples/biblio/styles2/citetitle.tex}
@@ -204,7 +204,7 @@ On repère rapidement qu'elle se trouve dans une macro \macro{cite:title}.
 Procédons à l'analyse :
 
 \begin{description}
-\item[Ligne 1]le nom de la macro est \macro{cite:title}.
+\item[Ligne 1]le nom de la macro est \bibmacro{cite:title}.
 \item[Ligne 2]la commande \cs{printtext} sert à deux chose : à mettre directement un texte en s'assurant que BibLaTeX gère la ponctuation ou bien à assembler plusieurs champs dans un seul bloc typographique. Ici, nous avons affaire au second usage. L'argument \arg{bibhyperlink} signifie que \package{BibLaTeX} va s'occuper de mettre un lien hypertexte à l'intérieur du document PDF.
 \item[Ligne 3]la commande \cs{printfield} imprime un champ. Ici le pseudo-champ \champ{labeltitle} : celui-ci renvoie la valeur du champ \champ{shortitle} s'il est définie, sinon celle de \champ{title}.\renvoi{shortfields}. Il l'affiche selon le format \arg{citetitle}\footcite[On pourrait si on voulait définir une autre manière d'afficher ce champ grâce à la commande \cs{DeclareFieldFormat}. Voir][]{biblatex_formating}.
 \item[Ligne 4]nouvelle unité bibliographique, dont le séparateur est défini par la commande \cs{nametitledelim}.
