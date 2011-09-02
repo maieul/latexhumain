@@ -90,10 +90,3 @@
 \let\oldxelatex\XeLaTeX
 \renewcommand{\XeLaTeX}[0]{%
 	\oldxelatex\xspace}
-% Par rapport au package doc, on rétablis la commande. Cf latex.ltx l. 57 et doc.sty l. 566
-\makeatletter
-\def\dotfill{%
-  \leavevmode
-  \cleaders \hb@xt@ .44em{\hss.\hss}\hfill
-  \kern\z@}
-\makeatother
