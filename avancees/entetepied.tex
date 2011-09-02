@@ -79,7 +79,7 @@ Lorsqu'un travail est imprimé en recto-verso, on peut souhaiter que l'entête /
 \fancyfoot[position]{texte de pied de page}
 \end{minted}
 
-L'argument \argument{position} peut prendre une ou plusieurs des valeurs suivantes :
+L'argument \arg{position} peut prendre une ou plusieurs des valeurs suivantes :
 \begin{enumerate}
 \item[C]centre
 \item[LO]gauche des pages paires (= intérieur des pages de droite, si on écrit de gauche à droite).
@@ -98,7 +98,7 @@ Ainsi pour mettre le numéro de page à l'extérieur du pied de page, il suffit 
 
 \section{Titres dans l'entête : le mécanisme des marqueurs}
 
-Lorsqu'on utilise le style de page \argument{fancy}, on supprime automatiquement les styles par défaut, qui contenait notamment les titres de chapitre et de section. On peut vouloir les restaurer, voire les modifier. Pour ce faire il est nécéssaire de comprendre les mécanisme des marqueurs de \LaTeX. 
+Lorsqu'on utilise le style de page \arg{fancy}, on supprime automatiquement les styles par défaut, qui contenait notamment les titres de chapitre et de section. On peut vouloir les restaurer, voire les modifier. Pour ce faire il est nécéssaire de comprendre les mécanisme des marqueurs de \LaTeX. 
 
 Le principe de base est simple : des commandes de marquage vont stocker en mémoire des marqueurs. Lesdits marqueurs seront appelés par d'autres commandes. Ces commandes sont  deux : \cs{leftmark} et \cs{rightmark}.
 
@@ -111,7 +111,7 @@ Les deux commandes de marquage sont \cs{markboth} et \cs{markright} :
 
 \begin{itemize}
 \item \cs{leftmark} retourne le premier argument de la dernière commande \cs{markboth}.
-\item \cs{rightmark} retourne l'argument \argument{marqueur droit} de la première commande \cs{markright} ou \cs{markboth} \emph{si l'une de ces commandes est présente sur la page en cour}. En revanche, si la page en cours ne contient pas l'une de ces commandes, alors \cs{rightmark} retourne l'argument \argument{marqueur droit} de la dernière commande \cs{markright} ou \cs{markboth} utilisé.
+\item \cs{rightmark} retourne l'argument \arg{marqueur droit} de la première commande \cs{markright} ou \cs{markboth} \emph{si l'une de ces commandes est présente sur la page en cour}. En revanche, si la page en cours ne contient pas l'une de ces commandes, alors \cs{rightmark} retourne l'argument \arg{marqueur droit} de la dernière commande \cs{markright} ou \cs{markboth} utilisé.
 \end{itemize}
 
 Concrètement dans la classe \classe{book}, ces commandes sont appelées par les commandes \cs{chapter} et \cs{section} via les commandes \cs{chaptermark} et \cs{sectionmark}. 

@@ -11,7 +11,7 @@ Voyons maintenant comment créer ces commandes personalisées.
 
 Reprenons notre exemple : nous voulons créer une commande personnalisée servant à indiquer que nous parlons d'un auteur : \cs{auteur}\marg{nom}.
 
-Notre commande se décompose en plusieurs parties : son nom (ici \contenuarg{auteur}) et ses arguments (ici, un seul \argument{nom}).
+Notre commande se décompose en plusieurs parties : son nom (ici \contenuarg{auteur}) et ses arguments (ici, un seul \arg{nom}).
 
 Une commande LaTeX peut prendre jusqu'à 9 arguments, ce qui est en général bien suffisant. Si nous notons N le nombre d'arguments, la syntaxe de la déclaration d'une nouvelle commande est là suivante :
 
@@ -24,7 +24,7 @@ Une commande LaTeX peut prendre jusqu'à 9 arguments, ce qui est en général bi
 	
 	Les noms sont sensibles à la casse : \verb|\a| est différent de \verb|\A|.
 \end{attention}
-À l'intérieur de la partie \argument{code}, on pourra  :
+À l'intérieur de la partie \arg{code}, on pourra  :
 \begin{itemize}
 	\item Mettre du texte.
 	\item Utiliser des commandes de mise en forme ou de mise en sens.
@@ -314,7 +314,7 @@ Celui-ci présente les couleurs de bases suivantes :
 
 \subsubsection{Couleurs supplémentaires}
 
-On peut passage les arguments \argument{dvipsnames}, \argument{svgnames} ou \package{x11names} lors de l'appel au package \package{xcolor}, chacune de ces arguments fournissant un jeu de couleur. Ne pouvant lister toutes ces couleurs dans cette ouvrage, nous renvoyons à la documentation de \package{xcolor}\footcite{xcolor_jeu}.
+On peut passage les arguments \arg{dvipsnames}, \arg{svgnames} ou \package{x11names} lors de l'appel au package \package{xcolor}, chacune de ces arguments fournissant un jeu de couleur. Ne pouvant lister toutes ces couleurs dans cette ouvrage, nous renvoyons à la documentation de \package{xcolor}\footcite{xcolor_jeu}.
 
 \subsubsection{Définir ses propres couleurs}
 

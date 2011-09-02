@@ -85,7 +85,7 @@ Mais on peut aussi choisir la commande \cs{autocite}. Le mode de citation (notes
 
 \subsection{Les options prenote et postenote}
 
-Supposons que nous souhaitons afficher, avant notre référence, un texte. Par exemple : \enquote{Voir également}. On utilise l'argument optionnel \argument{prenote}.
+Supposons que nous souhaitons afficher, avant notre référence, un texte. Par exemple : \enquote{Voir également}. On utilise l'argument optionnel \arg{prenote}.
 
 \begin{minted}{latex}
 Blabla \autocite[Voir également][]{Saxer1980} blablabla.
@@ -97,7 +97,7 @@ Blabla \parencite[Voir également][]{Saxer1980} blablabla.
 
 
 
-On peut également souhaiter afficher quelque chose après la référence. On utilise dans ce cas l'argument \argument{postnote}.
+On peut également souhaiter afficher quelque chose après la référence. On utilise dans ce cas l'argument \arg{postnote}.
 
 \begin{minted}{latex}
 Blabla \autocite[Voir également][qui porte sur un
@@ -109,9 +109,9 @@ sujet similaire.]{Saxer1980} blabla
 	Blabla \parencite[Voir également][qui porte sur un sujet similaire.]{Saxer1980} blabla
 \end{quotation}
 
-\subsection{L'argument \argument{postnote} et la numérotation des pages}\label{pagespostnote}
+\subsection{L'argument \arg{postnote} et la numérotation des pages}\label{pagespostnote}
 
-L'argument \argument{postnote} peut servir à indiquer les pages précise de notre ouvrage\footcite[On consultera pour plus de détails : ][]{biblatex_pages}. Il suffit pour cela qu'il contienne une valeur de type numérique, en chiffres arabes ou romains, ou bien une séquence de valeurs numériques.
+L'argument \arg{postnote} peut servir à indiquer les pages précise de notre ouvrage\footcite[On consultera pour plus de détails : ][]{biblatex_pages}. Il suffit pour cela qu'il contienne une valeur de type numérique, en chiffres arabes ou romains, ou bien une séquence de valeurs numériques.
 
 Par exemple pour citer la page 25 : 
 \begin{minted}{latex}
@@ -156,7 +156,7 @@ On peut préciser le type de pagination possible : pagine-t-on en pages, en colo
 
 
 
-Un problème se pose lorsqu'il y a déjà un champ \champ{pages} de rempli : on se retrouve avec deux numérotation de pages : celle indiquée dans le champ \champ{pages} et celle indiquée par l'option \argument{postnote}. Prenons l'entrée suivante :
+Un problème se pose lorsqu'il y a déjà un champ \champ{pages} de rempli : on se retrouve avec deux numérotation de pages : celle indiquée dans le champ \champ{pages} et celle indiquée par l'option \arg{postnote}. Prenons l'entrée suivante :
 
 \inputminted{exemples/biblio/fichier/junod.bib}
 
@@ -226,7 +226,7 @@ Il est possible de citer plusieurs œuvres d'un coup : pour cela, il faut utilis
 \PREFIXcites[prenote][postnote]{clef}[prenote][postenote]{clef}…
 \end{minted}
 
-Il est possible de citer autant d'œuvres que souhaité. Chaque élément cité a droit à son argument \argument{prenote} et \argument{postnote}, qui s'utilisent de la même manière que pour les citations simples.
+Il est possible de citer autant d'œuvres que souhaité. Chaque élément cité a droit à son argument \arg{prenote} et \arg{postnote}, qui s'utilisent de la même manière que pour les citations simples.
 
 
 Voici un exemple d'utilisation : 
@@ -247,7 +247,7 @@ Il est possible de préciser un texte à afficher avant la liste des des référ
 
 Les séparateurs de citations sont par défaut des points-virgule. Il est possible de les modifier globalement, nous en parlerons plus loin.\renvoi{multicitedelim}
 
-Toutefois, si un argument \argument{postnote} d'un élément de la commande de citation multiple finit par un signe de ponctuation, alors le point-virgule n'apparaîtra pas entre cet élément et le suivant :
+Toutefois, si un argument \arg{postnote} d'un élément de la commande de citation multiple finit par un signe de ponctuation, alors le point-virgule n'apparaîtra pas entre cet élément et le suivant :
 
 \begin{minted}{latex}
 \autocites[on consultera également :]{Saxer1980}{Junod1992}

@@ -20,7 +20,7 @@ La création d'un tableau simple se fait grâce à l'environnement \enviro{table
 
 Le caractère \verb|&| marquent un changement de cellule. Les \verb|\\| marquent un changement de ligne.
 
-L'argument \argument{type de colonnes} de l'environnement \enviro{tabular} sert à préciser :
+L'argument \arg{type de colonnes} de l'environnement \enviro{tabular} sert à préciser :
 \begin{enumerate}
 	\item Le nombre de cellules.
 	\item Le formatage du texte à l'intérieur des cellules.
@@ -82,7 +82,7 @@ On peut tracer des filets horizontaux plus petits en utilisant la commande \cs{c
 \cline{col1-col2}
 \end{minted}
 
-où \argument{col1} et \argument{col2} doivent être remplacés par les numéros de colonnes.
+où \arg{col1} et \arg{col2} doivent être remplacés par les numéros de colonnes.
 
 \inputminted{exemples/premierpas/nontextuels/tableauseparateur.tex}
 \input{exemples/premierpas/nontextuels/tableauseparateur}
@@ -101,9 +101,9 @@ Il est possible de fusionner des cellules. Pour une fusion de colonnes, il faut 
 
 \begin{itemize}
 
-\item \argument{nombcol} est le nombre de colonne à fusionner.
-\item \argument{type} est le type de colonne qui en résulte, selon la syntaxe vu plus haut.
-\item \argument{contenu} est le contenu de la ligne fusionné.
+\item \arg{nombcol} est le nombre de colonne à fusionner.
+\item \arg{type} est le type de colonne qui en résulte, selon la syntaxe vu plus haut.
+\item \arg{contenu} est le contenu de la ligne fusionné.
 \end{itemize}
 
 Pour une fusion de lignes, il faut charger le package \package{multirow}. Celui-ci propose une commande \cs{multirow} dont voici la syntaxe simplifiée\footnote{Simplifiée car nous ne présentons pas les arguments optionnels : nous renvoyons à la documentation.}.
@@ -114,9 +114,9 @@ Pour une fusion de lignes, il faut charger le package \package{multirow}. Celui-
 \end{minted}
 
 \begin{itemize}
-\item \argument{lignes} est le nombre de lignes concernées par la fusion.
-\item \argument{largeur} est la largeur du texte. On peut mettre \verb|*| pour laisser \LaTeX{} s'en charger.
-\item \argument{contenu} est le contenu de la cellule issue de la fusion.
+\item \arg{lignes} est le nombre de lignes concernées par la fusion.
+\item \arg{largeur} est la largeur du texte. On peut mettre \verb|*| pour laisser \LaTeX{} s'en charger.
+\item \arg{contenu} est le contenu de la cellule issue de la fusion.
 \end{itemize}
 
 \inputminted{exemples/premierpas/nontextuels/tableaufusion.tex}

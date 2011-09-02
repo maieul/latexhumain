@@ -14,7 +14,7 @@ Toutefois une telle bibliographie est peu utile : elle mélange allègrement sou
 
 \section{Choix du style de bibliographie}
 
-De même qu'il est possible de choisir, lors de l'appel à \package{biblatex} les styles de références bibliographiques, il est possible de choisir un style bibliographique grâce à l'argument \argument{bibstyle}. Pour les sciences humaines, il vaut mieux choisir \verb|verbose| qui nous assure d'avoir une référence complète, sans pour autant attribuer un numéro à chaque entrée.
+De même qu'il est possible de choisir, lors de l'appel à \package{biblatex} les styles de références bibliographiques, il est possible de choisir un style bibliographique grâce à l'argument \arg{bibstyle}. Pour les sciences humaines, il vaut mieux choisir \verb|verbose| qui nous assure d'avoir une référence complète, sans pour autant attribuer un numéro à chaque entrée.
 
 Ainsi, lors de l'appel au package \package{biblatex}, il suffit d'écrire :
 
@@ -31,7 +31,7 @@ Une première manière de trier une bibliographie peut être selon le type de do
 \printbibliography[subtype=lettre]
 \end{minted}
 
-On peut passer un argument \argument{title} afin de préciser le titre de notre bibliographie :
+On peut passer un argument \arg{title} afin de préciser le titre de notre bibliographie :
 
 \begin{minted}{latex}
 \printbibliography[subtype=lettre,title=Lettres]
@@ -60,7 +60,7 @@ Imaginons que je souhaite que le titre de la bibliographie soit de niveau \cs{su
 
 Analysons ce code :
 \begin{enumerate}
-\item Le premier argument correspond au nom de l'entête de bibliographie (du titre de bibliographie). L'entête nommé \forme{bibliography} est celui utilisé par défaut. Mais on pourrait très bien définir un entête \forme{toto}, il suffirait alors de passer un argument \argument{heading} à la commande \cs{printbibliography}.
+\item Le premier argument correspond au nom de l'entête de bibliographie (du titre de bibliographie). L'entête nommé \forme{bibliography} est celui utilisé par défaut. Mais on pourrait très bien définir un entête \forme{toto}, il suffirait alors de passer un argument \arg{heading} à la commande \cs{printbibliography}.
 
 \begin{minted}{latex}
 \defbibheading{toto}[\bibname]{\subsection{#1}}
@@ -94,7 +94,7 @@ Par exemple
 
 Une autre manière de  sectionner une bibliographie est de faire des parties thématiques. Pour cela, une solution est d'indiquer des mots clés dans le champ \champ{keywords} des entrées bibliographiques. Les mots clés doivent être séparés par des virgules.
 
-On peut alors passer l'argument \argument{keyword} à la commande \cs{printbibliography}. On peut ainsi sélectionner toutes les entrées ayant la valeur \forme{xxx} dans leurs champs \champ{keywords} :
+On peut alors passer l'argument \arg{keyword} à la commande \cs{printbibliography}. On peut ainsi sélectionner toutes les entrées ayant la valeur \forme{xxx} dans leurs champs \champ{keywords} :
 
 \begin{minted}{latex}
 \printbibliography[keyword=xxx]
@@ -120,7 +120,7 @@ Il est enfin possible de combiner plusieurs mots clés. Dans ce cas, les entrée
 
 On peut aussi vouloir afficher une bibliographie correspondant à une partie du document, par exemple un chapitre. BibLaTeX propose cela grâce à la définition de segment bibliographique : un segment bibliographique étant une partie de document ayant sa bibliographie propre\footcites[En réalité \package{BibLaTeX} propose deux choses différentes : \enquote{segment} et \enquote{section} bibliographique. Seules les sections bibliographiques ont \enquote{réellement} une bibliographie propre, dans la mesure où, si on utilise un style \enquote{numeroté} de bibliographie, la numérotation recommence à chaque changement de section, mais pas à chaque changement de segment. Toutefois il est rare en science humaine d'utiliser un style bibliographique numéroté. C'est pourquoi nous ne parlons ici que des segments bibliographiques et non pas des sections bibliographiques.][]{biblatex_section}{biblatex_segment}
 
-La méthode la plus simple est de passer un argument \argument{refsegment} lors de l'appel au package \package{biblatex}. La valeur de cet argument peut-être \argument{part}, \argument{chapter}, \argument{section}, \argument{subsection}, qui indique à quelle niveau de titre commencer une nouvelle section bibliographique\footcite[Il est toutefois possible de créer des sections bibliographiques autrement que suivant les niveaux de titre, voir :]{biblatex_segment}.
+La méthode la plus simple est de passer un argument \arg{refsegment} lors de l'appel au package \package{biblatex}. La valeur de cet argument peut-être \arg{part}, \arg{chapter}, \arg{section}, \arg{subsection}, qui indique à quelle niveau de titre commencer une nouvelle section bibliographique\footcite[Il est toutefois possible de créer des sections bibliographiques autrement que suivant les niveaux de titre, voir :]{biblatex_segment}.
 
 Chaque segment bibliographique possède un nombre, compris entre 0 et N. On peut connaître la valeur du segment courant grâce à la commande \cs{therefsegment}.
 
@@ -162,7 +162,7 @@ Pour ajouter l'ensemble des références d'un fichier \ext{bib} il suffit d'écr
 
 \section{Tri à l'intérieur d'une bibliographie}
 
-Vous aurez constaté que la bibliographie est triée par nom d'auteur, puis par titre, puis par année. Il est possible de passer un argument \argument{sorting} lors de l'appel au package \package{biblatex}. Cet argument prend pour valoir l'un des schémas de tri proposés par BibLaTeX ou bien définis par vos soins\footcites[Pour les schémas de tri standards voir][]{biblatex_tri}[pour les schémas personnalisés voir][qui nécéssite l'utilisation de Biber (\cf{} \pageref{biber})]{biblatex_triperso}.
+Vous aurez constaté que la bibliographie est triée par nom d'auteur, puis par titre, puis par année. Il est possible de passer un argument \arg{sorting} lors de l'appel au package \package{biblatex}. Cet argument prend pour valoir l'un des schémas de tri proposés par BibLaTeX ou bien définis par vos soins\footcites[Pour les schémas de tri standards voir][]{biblatex_tri}[pour les schémas personnalisés voir][qui nécéssite l'utilisation de Biber (\cf{} \pageref{biber})]{biblatex_triperso}.
 
 Par exemple pour trier par nom d'auteur, année, titre :
 
