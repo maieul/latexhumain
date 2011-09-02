@@ -44,7 +44,7 @@ Pour créer un index spécifique aux sources, rien de particulier : il suffit d'
 \newindex[Index des sources]{sources}
 \end{minted}
 
-\subsection{Modifications des macros de \package{BibLaTeX}}
+\subsection{Modifications des macros de \packagenoidx{BibLaTeX}}\sindex[pkg]{BibLaTeX}
 
 Nous avons donc notre index spécifique. Mais encore faut-il que nous disions  à \package{biblatex} d'y écrire son index. Pour ce faire nous allons d'abord redéfinir la macro \bibmacro{citeindex} qui est appelée à chaque commande \cs{PREFIXcite}.
 
@@ -58,7 +58,7 @@ Nous avons donc notre index spécifique. Mais encore faut-il que nous disions  �
 \item[ligne 6]nous indexons la valeur \verb|---| dans le fichier \fichier{xxx-source.idx}. Cette valeur servira plus tard lors de l'exécution d'un script python.\renvoi{python}. En effet, une des limitations de biblatex est qu'il ne peut indexer qu'un seul champ à la fois, et n'est pas capable, pour le moment, de produire des entrées d'index du type \cs{index}\marg{Champ1!Champ2!Champ3}. Pour contourner cela, nous avons conçu un script qui concaténe dans le fichier \ext{idx} trois indexations en une seule indexation. Pour que ce script ne concaténe pas ensemble des indexations qui ne doivent pas être concaténée, nous écrivons des fausses indexations sous la forme \verb|---|, qui serviront de point de repère au script.
 \end{description}
 
-\subsection{Fomat d'indexation \package{BibLaTeX}}
+\subsection{Fomat d'indexation \packagenoidx{BibLaTeX}}\sindex[pkg]{BibLaTeX}
 
 Nous avons dit que nous utilisions les formats d'indexation \forme{source}. Un format d'indexation \package{BibLaTeX}  est simplement une description de l'opération que \package{BibLaTeX} effectue lorsqu'il doit indexer un champ. 
 

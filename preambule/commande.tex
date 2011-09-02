@@ -8,9 +8,12 @@
 
 \newcommand{\forme}[1]{\enquote{#1}}
 
-\newcommand{\classe}[1]{%
-	\sindex[classe]{#1}%
+\newcommand{\classenoidx}[1]{%
 	\textbf{#1}%
+}
+\newcommand{\classe}[1]{%
+	\classenoidx{#1}%	
+	\sindex[classe]{#1}%
 }
 \newcommand{\champ}[1]{%
 	\sindex[champ]{#1}%
@@ -20,9 +23,12 @@
 \newcommand{\fichier}[1]{%
 	#1%
 }
-\newcommand{\enviro}[1]{%
-	\sindex[enviro]{#1}%
+\newcommand{\environoidx}[1]{%
 	\textbf{#1}%
+}
+\newcommand{\enviro}[1]{%
+	\environoidx{#1}%
+	\sindex[enviro]{#1}%
 }
 
 
@@ -43,9 +49,13 @@
 \newcommand{\revision}[1]{%
 	\marginpar{Rev : #1}%
 }
-\newcommand{\package}[1]{%
-	\sindex[pkg]{#1}%	
+\newcommand{\packagenoidx}[1]{% le style des packages, sans indexation
 	\emph{#1}%
+}
+
+\newcommand{\package}[1]{%
+	\packagenoidx{#1}%
+	\sindex[pkg]{#1}%		
 }
 
 \newcommand{\renvoi}[1]{\marginpar{p. \pageref{#1}}}
