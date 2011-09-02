@@ -23,6 +23,7 @@ all:principal.pdf
 	do \
 	if egrep -i -q  $(RERUN) $*.log ; \
 		then \
+			splitindex $* ; \
 			echo "Compilation XELATEX" $$i; \
 			$(XELATEX) $< ; \
 		fi \
