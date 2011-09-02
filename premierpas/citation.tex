@@ -105,21 +105,19 @@ De plus, qu'il soit permis de lire les passions des martyrs, lorsqu'on célèbre
 \subsection{L'environnement \enviro{verse} et le package \package{verse}}
 
 
-Cet environnement permet de citer de façon rapide et simple des poèmes. Chaque vers, à l'exception du dernier, doit se terminer par \verb|\\|. Si le vers est composé de plusieurs strophes, il suffit de sauter une ligne entre chaque strophe.   
+L'environnement  \enviro{verse} permet de citer de façon rapide et simple des poèmes, en gérant notamment le rejet en cas de vers trop long. Chaque vers, à l'exception du dernier, doit se terminer par \verb|\\|. Si le vers est composé de plusieurs strophes, il suffit de sauter une ligne entre chaque strophe.    
 
-Cet environnement est très limité: il ne permet pas de numéroter ni d'indenter les vers, ni encore de rajouter un titre. Si l'on est ammené à citer fréquemment des vers, il vaut mieux appeler dans le préambule le package \package{verse}. La citation du poème se fait de la même manière.
+Cet environnement est très limité: il ne permet pas de numéroter ni d'indenter les vers, ni encore de rajouter un titre. Si l'on est amené à citer fréquemment des vers, il vaut mieux appeler dans le préambule le package \package{verse}. La citation du poème se fait de la même manière.
 
 
-Avec ce package, pour numéroter les vers cités, il faut indiquer \cs{poemlines}\oarg{nbr} :  \arg{nbr} 
+Avec ce package, pour numéroter les vers cités, il faut indiquer \cs{poemlines}\marg{nbr} :  \arg{nbr} 
 définit la fréquence avec laquelle les vers seront numérotés. 
 
-\begin{anedocte}
-Si l'on ne cite pas un poème en entier, mais simplement un passage, il faut indiquer, si l'on utilise \cs{poemlines}, à quel vers commence le passage cité, afin que la numérotation des vers que l'on cite soit la bonne. On utilise pour cela la commande \cs{setverselinenums}\oarg{premier vers}\oarg{premier vers numéroté} : \arg{premier vers} indique le numéro du premier vers que l'on cite, \arg{premier vers numéroté} où doit commencer la numérotation. Ainsi, \cs{setverselinenums}\oarg{12}\oarg{15} indique que l'extrait que l'on cite commence par le douzième vers du poème, et que le premier vers numéroté sera le quinzième. Avec \cs{setverselinenums}\oarg{12}\oarg{12}, le premier vers cité sera le premier numéroté.
-\end{anedocte}
 
-
+Citons pour un exemple un poème entier, dont les vers seront numérotés, de façon assez traditionnelle, une fois sur cinq. En tapant ceci:
 \begin{minted}{latex}
-\begin{verse}\poemlines{5}
+\begin{verse}
+\poemlines{5}
 
 Demain, dès l'aube, à l'heure où blanchit la campagne,\\
 Je partirai. Vois-tu, je sais que tu m'attends.\\
@@ -138,6 +136,8 @@ Un bouquet de houx vert et de bruyère en fleur.\\
 
 \end{verse}
 \end{minted}
+
+on obtient cela :
 
 \begin{verse}
 \poemlines{5}
@@ -160,16 +160,49 @@ Un bouquet de houx vert et de bruyère en fleur.\footcite{demain}\\
 \end{verse}
 
 
+
+Si l'on ne cite pas un poème en entier, mais simplement un passage, il faut indiquer à quel vers commence le passage cité, afin que la numérotation des vers que l'on cite soit la bonne. On utilise pour cela la commande \cs{setverselinenums}\marg{premier vers}\marg{premier vers numéroté} : \arg{premier vers} indique le numéro du premier vers que l'on cite, \arg{premier vers numéroté} où doit commencer la numérotation. Ainsi, \cs{setverselinenums}\marg{12}\marg{15} indique que l'extrait que l'on cite commence par le douzième vers du poème, et que le premier vers numéroté sera le quinzième. Avec \cs{setverselinenums}\marg{12}\marg{12}, le premier vers cité sera le premier numéroté.
+
+Ne citant que la troisième strophe, par exemple, il faut taper :
+\begin{minted}{latex}
+\begin{verse}
+\poemlines{5}
+\setverselinenums{9}{10}
+
+
+Je ne regarderai ni l'or du soir qui tombe,\\
+Ni les voiles au loin descendant vers Harfleur,\\
+Et, quand j'arriverai, je mettrai sur ta tombe\\
+Un bouquet de houx vert et de bruyère en fleur.\\
+
+\end{verse}
+\end{minted}
+
+pour obtenir, correctement numéroté, 
+
+\begin{verse}
+\poemlines{5}
+\setverselinenums{9}{10}
+
+
+Je ne regarderai ni l'or du soir qui tombe,\\
+Ni les voiles au loin descendant vers Harfleur,\\
+Et, quand j'arriverai, je mettrai sur ta tombe\\
+Un bouquet de houx vert et de bruyère en fleur.\\
+
+\end{verse}
+
 \begin{anedocte}
-Dans la typographie française, il est d'usage de mettre un crochet droit [ au début d'un rejet. Ni l'environnement ni le package \package{verse} ne suivent cette pas cette règle. Pour obtenir le crochet droit, il faut indiquer dans le préambule \cs{usepackage}\verb|[squarebr]{gmverse}| et indiquer, une fois commencé l'environnement \enviro{verse}, \cs{versehangrightsquare}.
+Dans la typographie française, il est d'usage de mettre un crochet droit [ au début d'un rejet. Ni l'environnement ni le package \package{verse} ne suivent cette règle. Pour obtenir le crochet droit, il faut indiquer dans le préambule \cs{usepackage}\oarg{squarebr}\marg{gmverse}| et indiquer, une fois commencé l'environnement \enviro{verse}, \cs{versehangrightsquare}.
 \end{anedocte}
 
-Le package \package{verse} permet aussi d'indenter de façon très souple une strophe. On indique avec la commande \cs{indentpattern}\oarg{$n_1 n_2 n_x$} l'indentation de chaque vers contenu dans la strophe encadrée dans l'environnement \enviro{patverse}: chaque nombre correspond à un vers. Le premier vers n'est jamais indenté, mais il suffit de le \enquote{transformer} en deuxième vers en le faisant précéder de \verb|\\|.
-Si l'on tape :  
-\begin{minted}{latex}
-\begin{verse} \poemlines{1}
+Le package \package{verse} permet aussi d'indenter de façon très souple une strophe. On indique avec la commande \cs{indentpattern}\oarg{$n_1 n_2 n_x$} l'indentation de chaque vers contenu dans la strophe encadrée dans l'environnement \enviro{patverse}: $n_1$ correspond au premier vers, $n_2$ au deuxième et ainsi de suite. Le premier vers n'est jamais indenté, mais il suffit de le faire précéder de \cs{vin}. Avec le code suivant :
 
-\indentpattern{010110} \begin{patverse} 
+\begin{minted}{latex}
+\begin{verse} 
+\poemlines{1}
+\indentpattern{010110} 
+\begin{patverse} 
 
 \vin There was a young lady of Ryde \\
  Who ate some apples and died.  \\
@@ -177,9 +210,11 @@ Si l'on tape :
  Inside the lamented \\
  And made cider inside her inside. \\
 
-\end{patverse}  \end{verse}
+\end{patverse}  
+\end{verse}
 \end{minted}
- on obtient donc
+
+on obtient donc:
   
 \begin{verse} \poemlines{1}
 
@@ -193,10 +228,10 @@ Si l'on tape :
 
 \end{patverse}  \end{verse} 
  
- Si l'on a besoin de répéter une indentation tout le long d'un poème, on remplace \enviro{patverse} par \enviro{patverse*}. Pour citer un long extrait en hexamètre dactylique, plutôt que d'indiquer l'indentation pour chaque vers, il suffit donc d'indiquer \cs{indentpattern}\verb|{01}| et d'insérer tout le poème  dans \enviro{patverse*} pour avoir un vers sur deux indenter.
+ Si l'on a besoin de répéter une indentation tout le long d'un poème, on remplace \enviro{patverse} par \enviro{patverse*}. Pour citer un long extrait en hexamètre dactylique, plutôt que d'indiquer l'indentation pour chaque vers, il suffit donc d'indiquer \cs{indentpattern}\verb|{01}| et d'insérer tout le poème  dans \enviro{patverse*} pour avoir un vers sur deux indenté.
  
  
- Le package \package{verse} offre d'autre possibilités qui dépassent la simple citation de poésie dans le cours d'un texte. A l'instar d'un autre package, \package{poemscol}, c'est un véritable outil pour éditer de la poésie (nous vous renvoyons ici aux manuels de ces packages). Ni l'un ni l'autre ne permettent en revanche de faire des éditions bilingues: pour cela, il faut utiliser les packages \package{ledmac} et \package{ledpar}. \renvoi{ledmac}
+ Le package \package{verse} offre bien d'autres possibilités qui dépassent la simple citation de poésie dans le cours d'un texte. A l'instar d'un autre package, \package{poemscol}, c'est un véritable outil pour éditer de la poésie (nous vous renvoyons ici aux manuels de ces packages). Ni l'un ni l'autre ne permettent en revanche de faire des éditions bilingues: pour cela, il faut utiliser les packages \package{ledmac} et \package{ledpar}. \renvoi{ledmac}
 
 
 \section{Citations tronquées et modifiées}
