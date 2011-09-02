@@ -6,8 +6,26 @@
 % \arg	-> pour un argument cité dans le court du texte : <arg>
 % \contenuarg -> pour un exemple d'argument. titi
 
+% Repris de doc.sty, ligne 636 ss.
+\DeclareRobustCommand\meta[1]{%
+     \ensuremath\langle
+     \ifmmode \expandafter \nfss@text \fi
+     {%
+      \meta@font@select
+      \edef\meta@hyphen@restore
+        {\hyphenchar\the\font\the\hyphenchar\font}%
+      \hyphenchar\font\m@ne
+      \language\l@nohyphenation
+      #1\/%
+      \meta@hyphen@restore
+     }\ensuremath\rangle
+}
+\def\meta@font@select{\itshape}
+% Fin de la reprise
+
+
 \let\oldcs\cs
-\newindex{cs}
+\newindex[Commandes]{cs}
 
 \apptocmd{\cs}{\sindex[cs]{#1@\oldcs{#1}}}{}{}
 
