@@ -1,16 +1,19 @@
 \input{preambule/documentation}
-
+\newindex{classe}
+\newindex{champ}
+\newindex{enviro}
+\newindex{pkg}
 \newcommand*{\cf}[0]{\emph{cf}.}
 
 
 \newcommand{\forme}[1]{\enquote{#1}}
 
 \newcommand{\classe}[1]{%
-	%\index{#1}%
+	\sindex[classe]{#1}%
 	\textbf{#1}%
 }
 \newcommand{\champ}[1]{%
-	%\index{#1}%
+	\sindex[champ]{#1}%
 	\textbf{#1}%
 }
 
@@ -18,7 +21,7 @@
 	#1%
 }
 \newcommand{\enviro}[1]{%
-	%\index{#1}%
+	\sindex[enviro]{#1}%
 	\textbf{#1}%
 }
 
@@ -41,6 +44,7 @@
 	\marginpar{Rev : #1}%
 }
 \newcommand{\package}[1]{%
+	\sindex[pkg]{#1}%	
 	\emph{#1}%
 }
 

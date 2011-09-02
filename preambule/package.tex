@@ -6,8 +6,7 @@
 \setotherlanguage{english}
 \setotherlanguage[variant=ancient]{greek}
 \usepackage{minted}
-
-\usepackage{doc}
+\usepackage[makeindex]{splitidx}
 \usepackage[citestyle=verbose-trad2,bibstyle=verbose,backend=biber,citetracker=false,citepages=omit]{biblatex}
 \setmainfont[Mapping=tex-text,Ligatures=Common]{Linux Libertine}
 \setsansfont[Mapping=tex-text,Ligatures=Common]{Linux Biolinum}
@@ -15,8 +14,8 @@
 
 \usepackage{placeins}%Pour que les flottants ne flottent pas trop
 \usepackage{verse}
-\usepackage{ltxdockit}
-%\usepackage{btxdockit}	% Pour documenter les différents champs
+\usepackage{ltxdockit} % Pour documenter les commandes et les arguments. En fait je modifie une partie du code.
+
 \usepackage{ifthen}
 \usepackage{xargs}
 \usepackage{xspace}

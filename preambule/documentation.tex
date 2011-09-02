@@ -1,6 +1,19 @@
-\def\cmd#1{\cs{\expandafter\cmd@to@cs\string#1}}
-\def\cmd@to@cs#1#2{\char\number`#2\relax}
-\def\cmd#1{\cs{\expandafter\cmd@to@cs\string#1}}
+% Commande utile pour documenter :
+% \cs 	-> indique une commande, et l'index
+% \csp	-> même chose que précédente, mais marque la page en gras dans l'index.
+% \marg	-> pour un argument obligatoire {<arg>}
+% \oarg	-> pour un argument optionnel [<arg>]
+% \arg	-> pour un argument cité dans le court du texte : <arg>
+% \contenuarg -> pour un exemple d'argument. titi
+
+\let\oldcs\cs
+\newindex{cs}
+
+\apptocmd{\cs}{\sindex[cs]{#1@\oldcs{#1}}}{}{}
+
+\newcommand*{\hyperpagetextbf}[1]{\textbf{\hyperpage{#1}}}
+
+\newcommand*{\csp}[1]{\oldcs{#1}\sindex[cs]{#1@\oldcs{#1}|hyperpagetextbf}}
 \providecommand\marg[1]{%
   {\ttfamily\char`\{}\meta{#1}{\ttfamily\char`\}}}
 \providecommand\oarg[1]{%
