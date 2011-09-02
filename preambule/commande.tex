@@ -1,7 +1,7 @@
 \input{preambule/documentation}
 
 \newcommand*{\cf}[0]{\emph{cf}.}
-\newcommand{\vide}[0]{}
+
 
 \newcommand{\forme}[1]{\enquote{#1}}
 
@@ -22,17 +22,6 @@
 	\textbf{#1}%
 }
 
-\newcommand{\concept}[2]{%
-	\ifthenelse{\equal{#1}{\vide}}%
-	{%\index{#1}%
-	\emph{#2}%
-	}%
-	{%
-	%\index{#1}%
-	\emph{#2}%
-	}%
-}
-
 
 
 \newcommand*{\ext}[1]{%
@@ -41,9 +30,8 @@
 }
 
 
-\newcommand{\notion}[2]{%Synonyme de concept
-	\concept[#1]{#2}%
-}
+
+
 \newcommand{\option}[1]{%
 	\textbf{#1}%
 }
