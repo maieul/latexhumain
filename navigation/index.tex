@@ -57,7 +57,7 @@ Ainsi, pour indexer automatiquement tous les noms propres d'un texte, déclarons
 \begin{minted}{latex}
 \newcommand\auteur[2]{#1~\textsc{#2}\index{#2, #1}\xspace}
 \end{minted}
-\renewcommand\auteur[2]{#1~\textsc{#2}\index{#2, #1}\xspace}
+\renewcommand\auteur[2]{#1~\textsc{#2}\xspace}
 
 Il suffira ensuite, au cours de la rédaction de son texte, de taper par exemple \cs{auteur}\verb|{Victor}{Hugo}| pour obtenir \enquote{\auteur{Victor}{Hugo}} dans le cours de son texte, indexé sous l'entrée \enquote{Hugo, Victor}.
 
