@@ -9,6 +9,8 @@
 
 \item[Clef bibliographique]identifiant unique attribué à une référence bibliographique. Il est conseillé de n'y mettre que des caractères alphanumériques non accentués.
 
+\item[Classe]indication du type éditorial du document à produire. Son choix se fait au tout début du document \LaTeX avec la commande \cs{documentclasse}\oarg{options}\marg{classe}. La classe influence notamment le rendu final et les commandes disponibles.
+
 \item[Clef d'index] code indiquant la position d'une entrée dans un index. Il est nécéssaire de définir une clef d'index pour les entrées comportant des caractères accentués. Les clefs d'index peuvent également servir pour des index non alphabétiques (par exemple des index par date de régne.).
 
 \item[Commande] morceaux de code qui sera interpété par le compilateur pour effectuer une suite d'opération. Une commande est un raccourci d'écriture. \LaTeX propose des commandes, les packages en rajoutent et il est possible de définir ses propres commandes.
@@ -26,4 +28,6 @@
 \item[Preambule]partie du code \ext{tex} située avant \cs{begin}\oarg{environnement}. Son contenu n'est pas affiché dans le document final, mais sert à divers usages, notamment le chargement de package.
 
 \item[Style bibliographique]manière d'afficher une entrée bibliographique, indépendamment de son contenu sémantique. Le package \package{biblatex} propose un certains nombres de styles bibliographiques, qu'il est possible de personaliser. On peut également créer son propre style bibliographique (intéressant pour les éditeurs de livres et revues.)
+
+\item[WYSIWYG], abréviation de \textenglish{\emph{What You See Is What You Get}} : \enquote{ce que vous voyez est ce que vous produisez}. Se dit d'un logiciel qui affiche à l'écran le résultat final. Les traitements de texte comme OpenOffice.Org ou Microsoft Word sont des logiciels WYSIWYG.
 \end{description}
