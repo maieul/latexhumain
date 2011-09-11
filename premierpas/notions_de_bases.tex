@@ -1,42 +1,44 @@
 \chapter[Commencer avec XeLaTeX]{Commencer avec \XeLaTeX}\label{commencer}
 
 \begin{prealable}
-Nous supposons que vous avez installé \LaTeX et un éditeur de texte spécialisé en \LaTeX. Voyez en annexe. \renvoi{install}.
+Nous supposons que vous avez installé \LaTeX et un éditeur de texte spécialisé en \LaTeX. Voyez en annexe. \renvoi{install}\renvoi{logiciel}
 
-La première chose à faire est de vérifier que ce logiciel de traitement de texte enregistre bien en UTF-8\footnote{Cela se trouve en général dans les préférences du logiciel, dans une rubrique \emph{enregistrement} ou \emph{encodage} : consultez le manuel de votre logiciel le cas échéant.}. Nous reviendrons plus loin\renvoi{utf8} sur l'intérêt d'un tel encodage, sachez simplement que il permet d'utiliser des signes non latins\footnote{Cyrilliques, grecs, sanskrits, hébraïques etc. Et même extra-terrestres.}.
+La première chose à faire est de vérifier que ce logiciel de traitement de texte enregistre bien en UTF-8\footnote{Le réglage se trouve en général dans les préférences du logiciel, dans une rubrique \emph{enregistrement} ou \emph{encodage} : consultez le manuel de votre logiciel le cas échéant.}. Nous reviendrons plus loin\renvoi{utf8} sur l'intérêt d'un tel encodage, sachez simplement que il permet d'utiliser des signes non latins\footnote{Cyrilliques, grecs, sanskrits, hébraïques etc. Et même extra-terrestres.}.
 
 \end{prealable}
 
 \section{Un premier document}
 
-Dans votre éditeur de texte, tapez le code suivant :\footnote{Comme nous l'avons expliqué en introduction, la coloration que vous voyiez ici à un sens syntaxique : ne vous préoccupez pas de savoir comment cela apparaîtra dans votre éditeur, et ne pensez pas que cela apparaîtra ainsi une fois compilé.} puis cliquez sur le bouton de compilation avec \XeLaTeX \footnote{Cela encore une fois dépend de votre éditeur de texte. Pour le moment vous pouvez vous contenter de ce bouton, mais un jour vous devrez apprendre à faire quelques lignes de commandes : ne vous inquiétez pas, tout sera expliqué.}.
+Dans votre éditeur de texte, frappez le code suivant :\footnote{Comme nous l'avons expliqué en introduction (p.~\pageref{colorationsyntax}), la coloration que vous voyiez ici, si vous lisez la version informatique de ce livre, a un sens syntaxique : ne vous préoccupez pas de savoir comment cela apparaîtra dans votre éditeur, et ne pensez pas que cela apparaîtra ainsi une fois compilé.} puis cliquez sur le bouton de compilation avec \XeLaTeX \footnote{Sa position dépend de votre éditeur de texte. Pour le moment vous pouvez vous contenter de ce bouton, mais un jour vous devrez apprendre à faire quelques lignes de commandes : ne vous inquiétez pas, tout sera expliqué.} :
 
 \inputminted{exemples/premierpas/notions/1.tex}
 
 
-Regardez le PDF obtenu, nous allons lire le code que vous avez copié et le commenter ligne par ligne, afin de comprendre les principes de base de \LaTeX.
+Regardez le PDF obtenu :  afin de comprendre les principes de base de \LaTeX nous allons lire le code que vous avez copié et le commenter ligne par ligne.
 
 \section{Structure d'un document \LaTeX}
 
 \subsection{La classe du document}
-La première ligne \cs{documentclass}\verb|[12pt]{book}| déclare la classe du document, ici \classe{book}. Une classe correspond à un choix éditorial    ---mise en page et organisation générale du document ---. Le choix de la classe influencera entre autre :
+La première ligne \csp{documentclass}\verb|[12pt]{book}| déclare la classe du document, ici \classe{book}. Une classe correspond à un choix éditorial    --- mise en page et organisation générale du document. Le choix de la classe influence entre autre :
 \begin{itemize}
 \item Le nombre de niveaux de titre disponibles.
 \item Les marges appliquées.
 \item Les en-têtes et pieds de page.
 \end{itemize}
 
-Il existe en standard plusieurs classes de documents : citons \classe{book}, pour rédiger un livre ; \classe{article} pour un article (si, si !) ; \classe{beamer} pour un présentation sous forme de diapositive à projeter. Dans cet ouvrage, nous aborderons essentiellement les deux premières, nous ferons également une bréve présentation de \classe{beamer}\renvoi{beamer}.
+Il existe en standard plusieurs classes de documents : citons \classe{book}, pour rédiger un livre ; \classe{article} pour un article (si, si !) ; \classe{beamer} pour un présentation sous forme de diapositive à projeter. Dans cet ouvrage, nous aborderons essentiellement les deux premières, nous ferons également une brève présentation de \classe{beamer}\renvoi{beamer}.
 
 
 
-Tout document \LaTeX doit commencer par une déclaration de classe, avant toutes autres lignes. La syntaxe est la suivante :
+Tout document \LaTeX doit commencer par une déclaration de classe, avant toutes autres lignes. La syntaxe est la suivante : \cs{documentclass}\oarg{options}\marg{classe}
 
-\cs{documentclass}\oarg{options}\marg{classe}
+\begin{attention}
+Dans la suite de ce livre, tout texte situé entre crochets (\meta{ainsi}), doit être remplacé dans votre fichier \ext{tex} par une valeur textuelle.
+\end{attention}
 
-Les options viennent spécifier certaines propriétés de la classe. Dans notre exemple, nous précisions que la taille de la police du texte courant doit être de 12~pt. Vous pouvez préciser plusieurs options, en les séparant par des virgules. \label{optionsclasse}
- 
- Voici quelques options disponibles et utiles en sciences humaines. 
+Les options viennent spécifier certaines propriétés de la classe. Dans notre exemple, nous précisons que la taille de la police du texte courant doit être de 12~pt et que le format du papier est A4. Vous pouvez indiquer plusieurs options, en les séparant par des virgules. \label{optionsclasse}. 
+
+Voici quelques options disponibles et utiles en sciences humaines :
 
 \begin{description}
 \item[10pt] pour une police de base en 10 pt.
@@ -45,7 +47,7 @@ Les options viennent spécifier certaines propriétés de la classe. Dans notre 
 \item[onecolumn] pour un texte sur une seule colonne. C'est le cas par défaut sur les classes citées.
 \item[twocolumn] pour un texte sur deux colonne.
 \item[oneside] pour une impression en recto seulement.
-\item[twoside] pour une impression en recto-verso\footnote{Cet argument et le précédent servent essentiellement pour la classe \classe{book}. En effet, si le document est prévu pour une impression recto-verso, cette classe produira des marges gauches et droites de tailles différentes. La taille des marges sera prévu selon que la page est recto ou verso.}.\label{rectoverso}
+\item[twoside] pour une impression en recto-verso\footnote{Cette option et la précédente servent essentiellement pour les question de reliure. En effet, l'option \option{twoside} produit des marges gauches et droites de tailles différentes, la taille des marges dépendant du caractère recto ou verso de la page. En outre la numérotation des pages est inscrite à gauche et à droite  en alternance.}.\label{rectoverso}
 \end{description}
 
 Nous en préciserons d'autres au fur et à mesure de l'ouvrage, lorsque les notions requises auront été abordées.
@@ -53,86 +55,80 @@ Nous en préciserons d'autres au fur et à mesure de l'ouvrage, lorsque les noti
 \subsection{L'appel aux packages}
 
 Voyons les trois lignes suivantes : 
-\begin{minted}[linenos]{latex}
+\begin{minted}[linenos,firstnumber=2]{latex}
 \usepackage{fontspec}
 \usepackage{xunicode}
 \usepackage{polyglossia}
 \end{minted}
 
-Il s'agit, comme vous auriez pu le deviner, d'appel à des packages. Un package est un ensemble de fichiers qui ajoutent des fonctionnalités à \LaTeX, c'est l'équivalent d'un plugin sous Firefox. 
+Il s'agit, comme vous auriez pu le deviner, d'appel à des packages\footnote{Nous avons fait volontairement le choix de ne pas traduire ce terme, pour éviter des confusions.}. Un package est un ensemble de fichiers qui ajoutent des fonctionnalités à \LaTeX, c'est l'équivalent d'un plugin sous Firefox. 
 
-Le premier package est \package{fontspec}. Il est utile à \XeLaTeX  pour une typographie avancée, notamment pour les langues autres que l'anglais\footnote{Pour être précis, il détermine des commandes utilisées par le package \package{polyglossia} lorsque définis le fran\c cais comme langue principale du document.}. 
+Le premier package est \package{fontspec}. Il est utile à \XeLaTeX  pour une typographie avancée, notamment pour disposer d'accents dans le document PDF produit. 
 
-Le second package est \package{xunicode}. Il permet de gérer l'unicode, autrement appelé Utf-8\footnote{En réalité Utf-8 n'est pas tout à fait Unicode, mais une implémentation de ce dernier. Toutefois, pour simplifier, nous assimilerons les deux.}. Il nous permettra d'utiliser des caractères non-latin\renvoi{utf8}.
+Le second package est \package{xunicode}. Il permet de gérer l'unicode, autrement appelé UTF-8\footnote{En réalité UTF-8 n'est pas tout à fait Unicode, mais une implémentation de ce dernier. Toutefois, pour simplifier, nous assimilons les deux.}. Il nous permet d'utiliser des caractères non-latin dans le document \ext{tex}.\renvoi{utf8}
 
-\begin{attention}
-Ces deux packages doivent être appelés dans cet ordre, et non en sens inverse.
-\end{attention}
 
-Le troisième permet de gérer facilement un document multilingue\renvoi{i18n} et les changements typographiques que cela implique.
+Le troisième, \package{polyglossia} permet de gérer facilement un document multilingue\renvoi{i18n} et les changements typographiques qu'un tel document implique.
 
-C'est trois packages sont propres à \XeLaTeX  : ils ne fonctionneront pas avec un compilateur \LaTeX.
+C'est trois packages sont propres à \XeLaTeX  : ils ne fonctionnent pas avec \LaTeX.\ref{TeXLaTeX}
 
-Certains packages peuvent recevoir des options qui modifieront leur comportement standard. La syntaxe est alors :
-
-\cs{usepackage}\oarg{options}\marg{package}
+Certains packages peuvent recevoir des options qui modifieront leur comportement standard. La syntaxe est alors \csp{usepackage}\oarg{options}\marg{package}
 
 Tout au long de cet ouvrage, nous aborderons divers packages.
 
 \subsection{Le fran\c cais, langue par défaut\label{french}}
 
-Tout de suite après, la ligne \cs{setmainlanguage}\verb|{french}| indique que nous utilisons comme langue principale du document le fran\c cais\renvoi{i18n}, et donc que le compositeur de texte devra prendre en compte la typographie fran\c caise. Cette ligne n'est compréhensible par le compilateur que parce que nous avons chargé au préalable \package{polyglossia}.
+Tout de suite après, la ligne \csp{setmainlanguage}\verb|{french}| indique que nous utilisons comme langue principale du document le fran\c cais\renvoi{i18n}, et donc que le compositeur de texte devra prendre en compte la typographie fran\c caise. Cette ligne n'est compréhensible par le compilateur que parce que nous avons chargé \package{polyglossia} au préalable.
 
 \begin{anedocte}
-Vous entendrez peut-être parler du package \package{babel}. Ce package est très souvent utilisé à la place de \package{polyglossia}, notamment parce qu'il est plus ancien. Toutefois, nous avons choisis pour notre part de nous limiter à \package{polyglossia}, puisque c'est lui que nous avons utilisé pour nos travaux.
+Vous entendrez peut-être parler du package \package{babel}.Il est très souvent utilisé à la place de \package{polyglossia}, notamment parce qu'il est plus ancien. Toutefois, nous avons choisis pour notre part de nous limiter à \package{polyglossia}, puisque c'est lui que nous avons utilisé pour nos travaux et qu'il possède plus de fonctionalités, notamment pour les langues notées dans un alphabet non latin.
 
-Vous trouverez aisément des informations sur \package{babel} sur Internet.
+Vous trouverez aisément des informations à propos \package{babel} sur Internet.
 
 \end{anedocte}
 
 \subsection{Le corps du document}
 
-Tout ce que nous avons vu jusqu'à maintenant faisaient parti de ce qu'on appelle le préambule du document.\label{preambule} Ce sont des informations qui n'apparaîtront pas dans le document final, mais qui sont utiles à sa composition, autrement dit des méta-données. Tout les packages que vous voudrez utiliser seront à appeler dans l'en-tête.
+Tout ce que nous avons vu jusqu'à maintenant faisait parti de ce qu'on appelle le préambule du document.\label{preambule} Ce sont des informations qui n'apparaissent pas \emph{in extenso} dans le document final, mais qui sont utiles à sa composition, autrement dit des méta-données. Tout les packages que vous souhaitez utiliser sont à appeler dans le préambule.
 
-Tout ce qui se trouve entre la ligne \cs{begin}\verb|{document}| et \cs{verb}|{document}| constitue le corps du document, le contenu proprement dit de votre travail.
+Tout ce qui se trouve entre la ligne \cs{begin}\verb|{document}| et \cs{end}\verb|{document}| constitue le corps du document, le contenu proprement dit de votre travail.
 
-Enfin, rien de ce qui se trouve après \cs{end}\verb|{document}| ne sera analysé par le compilateur. Vous pouvez donc y mettre ce que vous voudrez, cependant nous ne vous le conseillons pas.
+Enfin, rien de ce qui se trouve après \cs{end}\verb|{document}| n'est analysé par le compilateur. Vous pouvez donc y mettre ce que vous voulez, cependant nous ne vous le conseillons pas.
 
 \subsection{Titre, auteur et date : la notion de commande}\label{notioncommande}
 
-\begin{minted}{latex}
+\begin{minted}[linenos,firstnumber=8]{latex}
 \title{Un titre d'ouvrage}
 \author{Le nom de son auteur}
-\date{}
+\date{Une date}
 \maketitle
 \end{minted}
 
-Les trois premières lignes définissent respectivement le titre, l'auteur et la date du travail.  
-La dernière ligne affiche ces informations. Si votre document est de classe  \classe{book}, alors le compilateur les affichera sur une page à part. S'il est de classe  \classe{article}, il l'affichera sans provoquer de saut de page.
+Les trois premières de ces lignes définissent respectivement le titre\sindex[cs]{title@\oldcs{title}|hyperpagetextbf}, l'auteur\sindex[cs]{author@\oldcs{author}|hyperpagetextbf} et la date\sindex[cs]{date@\oldcs{date}|hyperpagetextbf} du travail. En ce qui concerne cette dernière, ne pas l'indiquer revient à indiquer  celle du jour de la compilation.
 
-On peut déroger à cette règle en passant une option à l'appel de classe \renvoi{optionsclasse}.
+La dernière ligne affiche ces informations. Si votre document est de classe  \classe{book}, alors le compilateur les dispose sur une page à part. S'il est de classe  \classe{article}, il les affiche sans provoquer de saut de page.
+
+On peut déroger à cette règle en passant une option à l'appel de classe\renvoi{optionsclasse}.
 \begin{description}
 \item[notitlepage] pour ne pas avoir de page de titre spécifique.
 \item[titlepage] pour avoir une page de titre spécifique.
 \end{description}
 
-Nous pouvons maintenant définir la notion de commande. Une commande  est un bout de code qui sera interprété par le compilateur pour effectuer une suite d'opérations, c'est un raccourci d'écritures. 
-Ici la commande \cs{maketitle} affiche les informations tel que le titre, la date et l'auteur du travail, informations que le compilateur aura retenu grâce aux commandes utilisés au préalables.
+Nous pouvons maintenant définir la notion de commande. Une commande  est un bout de code qui est interprété par le compilateur pour effectuer une suite d'opérations, c'est un raccourci d'écriture. 
+Ici la commande \csp{maketitle} affiche les informations tel que le titre, la date et l'auteur du travail, informations que le compilateur a apprises grâce aux commandes utilisées au préalable.
 
-Une commande peut prendre des arguments , certains facultatifs, d'autres obligatoires. Ces arguments  modifieront alors son comportement.
+Une commande peut prendre des arguments, certains facultatifs, d'autres obligatoires. Ces arguments  modifient son comportement.
 
-La syntaxe d'une commande est : \label{syntaxecommande}
-
-\begin{minted}{latex}
-\nom[opt1][…][optn]{obl1}{…}{obln}
-\end{minted}
-
-Entre crochet sont indiqués les arguments optionnels, entre accolades les arguments obligatoires.
+La syntaxe d'une commande est : \cs{nom}\oarg{opt1}\oarg{{…}\oarg{optn}\marg{obl1}\marg{…}\marg{obln} \label{syntaxecommande}
 
 
-L'ordre des arguments dépend de chaque commande, et les arguments optionnels ne sont pas systématiquement avant les arguments obligatoires. Ils peuvent être après, ou s'intercaler entre. Notez que certaines commandes peuvent ne pas prendre d'argument : c'est le cas ici de \cs{maketitle}\footnote{Si l'argument de la commande  \cs{date} est vide, alors la date affichée  sera la date de la compilation , sinon celle passée en argument.}.
 
-La grande force de \LaTeX est justement de permettre d'utiliser des commandes afin d'éviter de répéter des tâches fréquentes. C'est pourquoi nous apprendrons à définir nos propres commandes.
+Entre crochets sont indiqués les arguments optionnels, entre accolades les arguments obligatoires.
+
+
+L'ordre des arguments dépend de chaque commande, et les arguments optionnels ne sont pas systématiquement avant les arguments obligatoires : ils peuvent être après ou s'intercaler entre. Notez que certaines commandes peuvent ne pas prendre d'argument : c'est le cas ici de \cs{maketitle}.
+
+La grande force de \LaTeX est justement de permettre d'utiliser des commandes afin d'éviter de répéter des tâches fréquentes. C'est pourquoi nous apprendrons à définir nos propres commandes\renvoi{creercommandes}.
 
 
 
@@ -142,7 +138,7 @@ La grande force de \LaTeX est justement de permettre d'utiliser des commandes af
 Regardez maintenant les lignes suivantes et leurs résultats à la compilation .
 
 
-\begin{minted}[linenos]{latex}
+\begin{minted}[linenos,firstnumber=13]{latex}
 Lorem ipsum dolor sit amet, consectetuer adipiscing elit ?
 Morbi commodo ; ipsum sed pharetra gravida !
 Nullam sit amet enim. Suspendisse id : velit vitae ligula.
@@ -158,9 +154,9 @@ erat      elit consectetuer erat, id egestas pede nibh eget odio.
 
 Nous pouvons constater plusieurs choses.
 \begin{itemize}
-\item Une ligne vide produit un changement de paragraphe. De fait, plusieurs lignes vide produisent aussi un changement de paragraphe.
-\item Un retour à la ligne en revanche se comporte comme une espace. C'est une grande différence avec les logiciels WYSIWYG, qui produisent automatiquement un saut de paragraphe par un retour à la ligne.
-\item Plusieurs espaces à la suite produisent un seul espace. 
+\item Une ligne vide produit un changement de paragraphe. Plusieurs lignes vides produisent un seul changement de paragraphe.
+\item Un retour à la ligne en revanche se comporte comme une espace\footnote{En matière typographie, ce terme est féminin.}. C'est une grande différence avec les logiciels WYSIWYG, qui traduisent automatiquement un saut de paragraphe par un retour à la ligne.
+\item Plusieurs espaces à la suite produisent une seule espace. 
 \end{itemize}
 
 Vous connaissez donc les règles de bases de la rédaction d'un texte en \LaTeX.
@@ -170,9 +166,12 @@ Vous connaissez donc les règles de bases de la rédaction d'un texte en \LaTeX.
 
 Nous l'avons dit \LaTeX produit une mise en page et une typographie plus correcte qu'un logiciel de type WYSIWYG. Pour autant, il est nécessaire de lui fournir un code correct, afin qu'il puisse déterminer comment typographier.
 
-Il faut donc mettre une espace avant les signes de ponctuation double (; : ? ! principalement)\footnote{Sauf si on se trouve dans un texte dans une langue qui n'a pas d'espace avant ces signes.}. \LaTeX produira alors une espace fine, comme il se doit en bonne typographie fran\c caise\footnote{\emph{Une} espace fine est une espace plus petit qu'une espace normale.}.
+\LaTeX produit automatiquement  une espace fine devant les signes de ponctuations double, principalement \verb|!:;?| principalement, comme il se doit en bonne typographie fran\c caise\footnote{Une espace fine est une espace plus petit qu'une espace normale.}. Toutefois, nous recommandons d'insérer des espaces dans le fichier \ext{tex} avant ces signes de ponctuation double, pour le confort de lecture.
 
-Il faut également mettre une espace après chaque signe de ponctuation. Pour ce qui est des points de suspensions, il est mieux de ne pas frapper trois points à la suite, mais d'utiliser la commande \cs{ldots} qui espacera correctement les points\footnote{Il est tout à fait possible de configurer l'éditeur de texte pour qu'il remplace automatiquement trois points à la suite par cette commande}.
+\begin{attention}
+Les espaces avant les signes de ponctuation double sont une spécificité de la typographie française. Il ne sont généralement pas présent dans les autres langues. C'est pourquoi, si vous écrivez dans une autre langue que celle de Molière, il ne faut pas mettre ces espaces.
+\end{attention}
+En revanche \emph{il est obligatoire de mettre une espace après chaque signe de ponctuation}. Pour ce qui est des points de suspensions, il est mieux de ne pas frapper trois points à la suite, mais d'utiliser la commande \cs{ldots} qui espacera correctement les points\footnote{Il est tout à fait possible de configurer l'éditeur de texte pour qu'il remplace automatiquement trois points à la suite par cette commande}.
 
 En ce qui concerne les guillemets, une partie sera consacré plus tard à l'art et la manière de faire des citations en \LaTeX.\renvoi{guillemets} Nous n'en parlons donc pas maintenant.
 
@@ -183,57 +182,28 @@ Signalons enfin trois types de tirets :
 \item \verb|---| qui produit un tiret cadratin (---), pour des incises\footnote{Certains éditeurs préférent utiliser des tirets demi-cadratins.}.
 \end{itemize}
  
-Enfin, il est parfois utile d'insérer une espace insécable, pour éviter que deux mots se retrouvent séparés par un retour à la ligne, par exemple entre un nom de souverain sa numérotation de règne : \enquote{Jean~XXIII}.  L'espace insécable s'introduit par le caractère \verb|~|.
-
-%Par exemple si je parle d'Augustin~d'Hippone, je souhaiterait que \enquote{Augustin} soit systématiquement à côté de \enquote{d'Hippone}, y compris en fin de ligne. 
-%Pour insérer une espace insécable, il suffit de taper le caractère \~.
-
-%Un exemple sera sans doute plus parlant.
-
-
-%\begin{minted}[linenos]{latex}
-%blablabla bla bla blo blo Augustin d'Hippone
-%\end{minted}
-
-
-%donne
-
-%\fbox{\begin{minipage}{\linewidth}
-%blablabla bla bla blo blo d'Augustin d'Hippone
-%\end{minipage}}
-
-%tandis que 
-
-%
-%\begin{minted}[linenos]{latex}
-%blablabla bla bla blo bloAugustin~d'Hippone 
-%\end{minted}
-
-
-%donne
-
-%\fbox{\begin{minipage}{\linewidth}
-%blablabla bla bla blo blo Augustin~d'Hippone
-%\end{minipage}}
+Enfin, il est parfois utile d'insérer une espace insécable, pour éviter que deux mots se trouvent séparés par un retour à la ligne, par exemple entre un nom de souverain et son numéro de règne : \enquote{Jean~\textsc{xxiii}}.  L'espace insécable est produit par le caractère \verb|~|.
 
 
 
-Par ailleurs, comme vous avez pu le constater, \LaTeX interprète de manière spécifique un certain nombre de caractères : \verb|\{}|, à quoi nous ajoutons \verb|%_&$#~| \footnote{Nous ne verrons pas l'utilité \LaTeX  de tout ces caractères, certains servant essentiellement pour rédiger des formules mathématiques.}.
+Par ailleurs, comme vous avez pu le constater, \LaTeX interprète de manière spécifique un certain nombre de caractères : \verb|\{}~|, à quoi nous ajoutons \verb|%_&$#^| \footnote{Nous ne verrons pas l'utilité \LaTeX  de tout ces caractères, certains servant essentiellement pour rédiger des formules mathématiques.}.
 
-Comment faire si nous voulons afficher un de ces caractères ? La solution est simple : il faut le faire précéder du caractère \verb|\|. Ainsi \verb|\%| affichera \%.   
+Comment faire si nous désirons afficher un de ces caractères ? Il faut les faire précéder du caractère \verb|\|. Ainsi pour insérer le caractère \verb|%|, il faut écrire \verb|\%|. 
 
-
-
-
+Trois exceptions toutefois :
+\begin{description}
+\item[\textbackslash]qui s'insère avec la commande \csp{\textasciicircum} ;
+\item[\textasciitilde]qui s'insère avec la commande \csp{\textasciitilde} ; 
+\item[\textasciicircum]qui s'insère avec la commande \csp{\textasciicircum}. 
+\end{description} 
 \subsection{Un commentaire}
 
 La ligne suivante est : \verb|%La fin du document|
 
 Il existe en \LaTeX une règle simple : tout ce qui se trouve à droite d'un signe \verb|%| est un commentaire.
+C'est à dire qu'il n'est pas interprété par le compilateur et n'apparaît donc pas dans le document final. 
 
-C'est à dire qu'il ne sera pas interprété par le compilateur et n'apparaîtra donc pas dans le document final. 
-
-Nous conseillons d'utiliser les commentaires pour indiquer les grandes structure du documents, pour commenter les commandes que vous créerez vous mêmes. 
+Nous conseillons d'utiliser les commentaires pour indiquer les grandes structure du documents et pour commenter les commandes que vous créez vous mêmes\renvoi{creercommandes}. 
 
 Vous pouvez aussi vous en servir, par exemple, pour faire un commentaire à usage personnel ligne à ligne d'un texte que vous traduisez.
 
@@ -243,20 +213,14 @@ En revanche, nous vous déconseillons de l'utiliser pour des notes personnelles 
 
 \subsection{La notion d'environnement environnement }
 
-Nous avons vu jusqu'à maintenant les notions de  package, en-tête, commande . 
+Nous avons vu jusqu'à maintenant les notions de  package, en-tête, commande. 
+Il nous reste à définir une dernière notion de base : celle d'environnement .
 
-Il nous reste à définir une dernière notion de base. Il s'agit de celle d'environnement .
-
-Un environnement  est une portion de document ayant une signification spécifique et qui par conséquent subira un traitement spécifique. Par exemple, pour indiquer une citation, une liste etc. Nous découvrirons au fur et à mesure  des environnements. 
+Un environnement  est une portion de document ayant une signification spécifique et qui par conséquent subit un traitement spécifique. Par exemple, pour indiquer une citation, une liste etc. Nous découvrirons au fur et à mesure  des environnements. 
 
 
-On marque le début d'un environnement  \verb|nom| par la commande  :
+On marque le début d'un environnement  \meta{nom} par la commande \csp{\begin}\marg{nom} et on le termine par la commande \csp{\end}\marg{nom}.
 
-\begin{minted}{latex}
-\begin{nom}
-\end{minted}
-
-et on le termine par 
 \begin{minted}{latex}
 \end{nom}
 \end{minted}
@@ -284,7 +248,7 @@ blabl
 \end{minted}
 
 
-En revanche il n'est pas possible de superposer des environnements : ainsi le code suivant ne fonctionnera pas.
+En revanche il n'est pas possible de superposer des environnements : ainsi le code suivant ne fonctionne pas et produit une erreur lors de la compilation.
 
 
 \begin{minted}{latex}
