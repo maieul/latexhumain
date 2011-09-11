@@ -6,7 +6,7 @@ Après avoir découvert les bases de \LaTeX{}, apprenons la manière de structur
 \section{Différents niveaux de titres}\label{niveautitre}
 
 \LaTeX{} propose par défaut six ou sept niveaux de titre, selon la classe choisie.
-Pour introduire un titre dans \LaTeX{} --- en dehors du titre du travail --- il suffit d'utiliser une commande de titre qui possède la syntaxe suivante: \cs{\titre}\oarg{titre court}\marg{titre long}.
+Pour introduire un titre dans \LaTeX{} --- en dehors du titre du travail --- il suffit d'utiliser une commande de titre qui possède la syntaxe suivante: \cs{titre}\oarg{titre court}\marg{titre long}.
 
 Le titre court est facultatif, comme l'indique le fait qu'il soit entre crochets\renvoi{syntaxecommande}. Il sert pour la table de matière et, éventuellement, pour les entêtes des pages\renvoi{toc}\renvoi{entete}.
 
@@ -37,7 +37,7 @@ Quelques remarques importantes :
 \end{itemize}
 
 \subsection{Des titres non numérotés}
-Par défaut, tout les titres sont automatiquement numérotés\footnote{Nous verrons plus loin comment changer la numérotation (p.~\pageref{apparencecompteur}).}. Il est possible d'avoir un titre non numéroté, en faisant suivre le nom de la commande d'un astérisque : \csp{\chapter*}\verb|{Un chapitre non numéroté}|.
+Par défaut, tout les titres sont automatiquement numérotés\footnote{Nous verrons plus loin comment changer la numérotation (p.~\pageref{apparencecompteur}).}. Il est possible d'avoir un titre non numéroté, en faisant suivre le nom de la commande d'un astérisque : \csp{chapter*}\verb|{Un chapitre non numéroté}|.
 
 
 Toutefois un titre non numéroté ne sera pas ajouté à la table des matières\renvoi{toc}. Pour contourner ce problème, il faut utiliser la commande 
@@ -97,9 +97,9 @@ En \LaTeX{}, le chemin du fichier se compte à partir du fichier \enquote{père}
 
 On indique le chemin du fichier en séparant chaque dossiers par \verb|/|.\footnote{Cette norme s'applique même sous Windows, qui sépare traditionnellement les répertoires par des \texttt{\ } dans les chemins.} Par exemple, nous souhaitons inclure le fichier nommé \verb|c.tex| situé dans le dossier \verb|b|, lui même situé dans le dossier \verb|a|, qui se trouve à côté du fichier \enquote{père}.
 
-Il faut que nous mettions dans notre fichier \enquote{père} : \cs{\input}\verb|{a/b/c}|
+Il faut que nous mettions dans notre fichier \enquote{père} : \cs{input}\verb|{a/b/c}|
 ou bien
-\cs{\include}\verb|{a/b/c}|
+\cs{include}\verb|{a/b/c}|
 
 \begin{attention}
 
