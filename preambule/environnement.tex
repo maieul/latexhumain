@@ -9,48 +9,30 @@
 	}
 \makeatletter
 \newenvironment{anedocte}[0]{
-	\vspace*{0.25ex}
-	
-	\paragraph{Anedocte}
-	
-	\list{}{\listparindent 1.5em%
-                        \itemindent    \listparindent
-                        \rightmargin   \leftmargin
+	\list{\includegraphics[width=1.3em]{images/pieds.png}}{\listparindent 1.5em%
+                        \itemindent    \listparindent%
+                        \rightmargin   \leftmargin%
+                        \labelsep 0.2em%
                         \parsep        \z@ \@plus\p@}%
-                \item\relax
-	
-	\footnotesize
-	
-	}
-	{
-	
-	\normalsize
-	
-	\endlist
-	
-	\vspace*{0.25ex}
+                \item\relax%
+	\footnotesize%
+	}%
+	{%
+	\normalsize%
+	\endlist%
 	}
 \newenvironment{attention}[0]{
-	\vspace*{0.25ex}
-	
-	\paragraph{Attention}
-	
-	\list{}{\listparindent 1.5em%
-                        \itemindent    \listparindent
-                        \rightmargin   \leftmargin
-                        \parsep        \z@ \@plus\p@}%
-                \item\relax
-	
+	\list{\rotatebox{90}{\includegraphics[height=1.3em]{images/eclair.png}}}{\listparindent 1.5em%
+                        \itemindent    \listparindent%
+                        \rightmargin   \leftmargin%
+                        \labelsep 0.2em%
+                        \parsep       \z@ \@plus\p@}%
+                \item\relax%
 	\footnotesize
-	
-	}
-	{
-	
-	\normalsize
-	
-	\endlist
-	
-	\vspace*{0.25ex}
+	}%
+	{%
+	\normalsize%
+	\endlist%
 	}
 
 
