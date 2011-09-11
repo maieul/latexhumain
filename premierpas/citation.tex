@@ -218,7 +218,7 @@ Un bouquet de houx vert et de bruyère en fleur.
 \end{verse}
 
 \begin{anedocte}
-Dans la typographie française, il est d'usage de mettre un crochet droit [ au début d'un rejet. Ni l'environnement ni le package \package{verse} ne suivent cette règle. Pour obtenir le crochet droit, il faut indiquer dans le préambule \cs{usepackage}\oarg{squarebr}\marg{gmverse}| et indiquer, une fois commencé l'environnement \enviro{verse}, \cs{versehangrightsquare}.
+Dans la typographie française, il est d'usage de mettre un crochet droit [ au début d'un rejet. Ni l'environnement ni le package \package{verse} ne suivent cette règle. Pour obtenir le crochet droit, il faut indiquer dans le préambule \cs{usepackage}\verb|[squarebr]{gmverse}| et indiquer, une fois commencé l'environnement \enviro{verse}, \cs{versehangrightsquare}.
 \end{anedocte}
 
 Le package \package{verse} permet aussi d'indenter de façon très souple une strophe. On indique avec la commande \csp{indentpattern}\oarg{$n_1 n_2 n_x$} l'indentation de chaque vers contenu dans la strophe encadrée dans l'environnement \enviro{patverse}: \meta{$n_1$} correspond au premier vers, \meta{$n_2$} au deuxième et ainsi de suite. Le premier vers n'est jamais indenté, mais il suffit de le faire précéder de \csp{vin}. Avec le code suivant :
