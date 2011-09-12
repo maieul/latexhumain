@@ -1,16 +1,16 @@
 \chapter{Gérer les langues avec \packagenoidx{Xunicode} et \packagenoidx{Polyglossia}}\sindex[pkg]{Xunicode}\sindex[pkg]size(,);{Polyglossia}\label{i18n}
 
 \begin{prealable}
-	Dans ce chapitre nous verrons manière de signaler à \LaTeX les changements de langues, ainsi que les méthodes pour écrire en caractères non latins.
+	Dans ce chapitre nous verrons la manière de signaler à \LaTeX les changements de langue, ainsi que les méthodes pour écrire en caractères non latins.
 \end{prealable}
 
-\section{Indiquer les changements de langues}
+\section{Indiquer les changements de langue}
 
-\subsection{Pourquoi indiquer les changements de langues ?}
+\subsection{Pourquoi indiquer les changements de langue ?}
 
-Voici les principales raisons d'indiquer les changements de langues :
+Voici les principales raisons :
 \begin{enumerate}
-\item Chaque langue  a ses propres règles typographiques (espacement avant et/ou après les signes de ponctutations, par exemple). Indiquer la langue courante permet donc à \LaTeX d'adapter sa typographie.
+\item Chaque langue  a ses propres règles typographiques (espacement avant et/ou après les signes de ponctuation, par exemple). Indiquer la langue courante permet donc à \LaTeX d'adapter sa typographie.
 \item Chaque langue a ses propres règles de césure des mots : indiquer la langue permet d'avoir une césure correcte.
 \end{enumerate}
 
@@ -19,58 +19,45 @@ Voici les principales raisons d'indiquer les changements de langues :
 
 \subsubsection{Langue principale et langues secondaires}
 
-Nous avons vu qu'on indiquait dans le préambule que le français était langue principale par la commande : \renvoi{french}
-
-\begin{minted}{latex}
-\setmainlanguage{french}
-\end{minted}
-
-Évidemment on pourrait indiquer une autre langue :  par exemple si vous écriviez votre travail en grec :
-
-\begin{minted}{latex}
-\setmainlanguage{greek}
-\end{minted}
-
-On pourrait même préciser qu'il s'agit du grec ancien\footnote{L'auteur de ces lignes aime retarder de quelques mondialisations, c'est pourquoi il préfère le grec ancien à l'anglais.}.
-
-\begin{minted}{latex}
-\setmainlanguage[variant=ancient]{greek}
-\end{minted}
+Nous avons vu qu'on indique dans le préambule que le français est langue principale par la commande : \cs{setmainlanguage}\verb|{french}|\renvoi{french}.
 
 
-On trouvera une liste des langues disponibles et de leurs variantes dans la documentation de \package{polyglossia}\footcite{polyglossia}. Dans le cas où votre langue n'est pas disponible, trois solutions s'offrent à vous :
+
+
+Évidemment on pourrait indiquer une autre langue :  par exemple si vous écrivez votre travail en grec :
+\cs{setmainlanguage}\verb|{greek}|.
+
+
+On pourrait même préciser qu'il s'agit du grec ancien\footnote{L'auteur de ces lignes aime retarder de quelques mondialisations, c'est pourquoi il préfère le grec ancien à l'anglais.} : \cs{setmainlanguage}\verb|[variant=ancient]{greek}|.
+
+
+
+On trouve une liste des langues disponibles et de leurs variantes dans la documentation de \package{polyglossia}\footcite{polyglossia}. Dans le cas où votre langue n'est pas disponible, trois solutions s'offrent à vous :
 \begin{itemize}
-\item Regardez si le package babel ne peut rien faire pour vous. 
-\item Écrivez à l'auteur\footnote{Du package, pas de ces lignes.} en lui présentant le nom de la langue et ses règles typographiques et de césures et demandez lui gentiment d'ajouter une langue \package{polyglossia}.
-\item Ne respectez pas les bonnes raisons d'indiquer les changements de langues.
+\item Regardez si le package \package{babel} ne peut rien faire pour vous. 
+\item Écrivez à l'auteur\footnote{Du package, pas de ces lignes.} en lui présentant le nom de la langue et ses règles typographiques et de césure et demandez lui gentiment d'ajouter une langue à \package{polyglossia}.
+\item Ne respectez pas les bonnes raisons d'indiquer les changements de langue.
 \end{itemize}
 
-Pour pouvoir indiquer des changements de langues, il faut déclarer dans le préambule des langues secondaires, par la commande : \cs{setotherlanguage}\oarg{options}\marg{codelang}
+Pour pouvoir indiquer des changements de langue, il faut déclarer dans le préambule les langues secondaires, par la commande : \csp{setotherlanguage}\oarg{options}\marg{codelang} où \arg{codelang} est remplacé par le code de la langue (par exemple \contenuarg{greek}).
 
+Les options sont principalement les variantes, mais il peut également s'agir d'option d'affichage des nombres ou des dates : voir le manuel de \package{polyglossia}\footcite{polyglossia_options}.
 
-où \arg{codelang} est remplacé par le code de la langue (par exemple \verb|greek|)
-
-Ici les options sont principalement les variantes, mais il peut également s'agir d'option d'affichage des nombres ou des dates : voir le manuel de \package{biblatex}.
-
-\subsection{Indiquer un changement de langue}
+\subsection{Indiquer un changement de langue}\label{changerlang}
 
 Il existe deux manières d'indiquer un changement de langue.
 
 \subsubsection{Par une commande}
 
 On peut le faire par une commande 
-\begin{minted}{latex}
-\textcodelang[options]{texte dans une
-autre langue}
-\end{minted}
-
- par exemple : 
+\csp{text\meta{codelang}}\oarg{options}\marg{texte dans une
+autre langue} par exemple : 
 
 \begin{minted}{latex}
 \textgreek[variant=ancient]{Ἐν ἀρχῇ ἦν ὁ λόγος}
 \end{minted}
 
-\subsection{Par un environnement}
+\subsubsection{Par un environnement}
 
 Pour des textes plus longs, il peut être intéressant d'utiliser plutôt un environnement \enviro{codelang}:
 
@@ -82,7 +69,7 @@ texte dans une autre langue
 
 \subsection{Le problème du latin}\label{redefinirlatin}
 
-L'auteur du package \package{polyglossia} étant anglophone, il l'a créé de telle sorte que le latin respecte la typographie latine. Ainsi le francophone aura quelque soucis s'il met des espaces avant les signes typographiques doubles dans un environnement \enviro{latin} ou dans une commande \cs{textlatin}.
+Dans le package \package{polyglossia} le latin suit la typographie anglaise. Ainsi le francophone aura quelque soucis s'il souhaite des espaces avant les signes typographiques doubles dans un environnement \enviro{latin} ou dans une commande \cs{textlatin}.
 Pourtant il pourrait vouloir utiliser cet environnement ou cette commande, afin d'avoir un respect des césures latines.
 
 Pour ce faire, il devra redéfinir l'environnement \enviro{latin} par le code suivant :
@@ -92,45 +79,45 @@ Pour ce faire, il devra redéfinir l'environnement \enviro{latin} par le code su
 \end{minted}
 
 \begin{anedocte}
-La commande \cs{renewenvironnement} redéfinit un environnement, ici \enviro{latin}. Le deuxième argument de la commande indique ce qui se passe lors que l'on ouvre l'environnement, le troisième argument ce qui se passe lorsqu'on l'on ferme l'environnement. L'environnement \enviro{hyphenrules} indique un changement de règle de césures.
+La commande \csp{renewenvironnement} redéfinit un environnement, ici \enviro{latin}. Le deuxième argument de la commande indique ce qui se passe lors que l'on ouvre l'environnement, le troisième argument ce qui se passe lorsqu'on l'on ferme l'environnement. L'environnement \enviro{hyphenrules} indique un changement de règle de césures.
 \end{anedocte}
 
 
-\section{Taper des textes en caractères non latins}\label{utf8}
+\section{Saisir des textes en caractères non latins}\label{utf8}
 
 Ce que nous allons expliquer maintenant n'a en réalité pas grand chose à voir avec \LaTeX. Il s'agit en réalité d'un problème plus général à l'informatique : comment écrire dans des caractères non latins ? Nous allons ici expliquer la mauvaise méthode, puis la bonne méthode.
 
-Nous commencerons par un peu d'explications techniques extrêmement simplifiées, que les puristes nous pardonnent.
+Nous commencerons par un peu d'explications techniques extrêmement simplifiées : que les puristes nous pardonnent.
 
-\subsection{Les jeux de caractères : ou comment se servir de nombre pour autre chose que de l'algèbre.}
+\subsection{Les jeux de caractères : ou comment se servir de nombres pour autre chose que des mathématiques}
 
 Au départ, un ordinateur ne manipule que des nombres. Mais les ordinateurs servant aux humains, ceux-ci leurs ont appris à \enquote{stocker} des caractères, en associant des lettres à des nombres.
 
-Seulement voilà : les premiers ordinateurs ayant été développés par des anglo-saxons, on a  attribué des nombres qu'à  127 caractères, ce qui suffisait largement pour écrire en anglais et ajouter des caractères spécifiques, comme les accolades informatiques\footnote{Celles dont vous vous servez pour les commandes \LaTeX}.  Le jeu de caractères connu sous le doux nom d'ASCII\footnote{\textenglish{American Standard Code for Information Interchange.}} a ainsi vu le jour.
+Mais les premiers ordinateurs ayant été développés par des anglo-saxons, on a  attribué des nombres qu'à  127 caractères, ce qui suffisait largement pour écrire en anglais et ajouter des caractères spécifiques, comme les accolades informatiques\footnote{Celles dont vous vous servez pour les commandes \LaTeX.}.  Le jeu de caractères connu sous le doux nom d'ASCII\footnote{\textenglish{American Standard Code for Information Interchange.}} a ainsi vu le jour.
 
-Mais un jour d'autres peuples que les anglo-saxons ont voulu écrire avec un ordinateur et ont souhaité écrire leur propres caractères. Par exemple les européens occidentaux ont voulu taper des accents, des cédilles, des trémas et autres joyeusetés. On a donc créé un nouveau système de codage pour représenter les caractères latin occidentaux, en attribuant des nombres à d'autres caractères. On a ainsi formé le jeu de caractère  ISO-8859-1. 
+Un jour d'autres peuples que les anglo-saxons ont voulu écrire avec un ordinateur et ont souhaité frapper leurs propres caractères. Par exemple les européens occidentaux ont voulu taper des accents, des cédilles, des trémas et autres joyeusetés. On a donc créé un nouveau système de codage pour représenter les caractères latin occidentaux, en attribuant des nombres à d'autres caractères. On a ainsi formé le jeu de caractère  ISO-8859-1. 
 
-Seulement voilà : d'autres peuples ont voulu écrire leurs caractères et c'est ainsi que furent inventés des jeux de caractères comme ISO-8859-5 pour les caractères cyrilliques. En outre certaines entreprises inventent leurs propres manières de stocker des caractères :  ainsi Apple invente MacRoman et Microsoft Windows-1252\footnote{D'où le fait que pendant longtemps les accents « sautaient » régulièrement lorsqu'on envoyait un email d'un ordinateur Apple vers un PC sous Windows}. 
+D'autres  ont voulu frapper leurs caractères et c'est ainsi que furent inventés des jeux de caractères comme ISO-8859-5 pour les caractères cyrilliques. En outre certaines entreprises inventèrent leurs propres manières de stocker des caractères :  ainsi Appla invente MacRoman et Microsoft Windows-1252\footnote{D'où le fait que pendant longtemps les accents « sautaient » régulièrement lorsqu'on envoyait un email d'un ordinateur Apple vers un PC sous Windows ou \emph{vice-versa}.}. 
 
-Mais certaines personnes souhaitaient mélanger des caractères de divers alphabets : par exemple écrire tantôt en grec, tantôt en cyrillique, tantôt en caractères latins. Comment faire ? Pendant longtemps une technique utilisée\footnote{Qui malheureusement est encore utilisée, voir apprise, par des personnes peu au courant des évolutions informatiques} consistait à écrire dans un jeu de caractères donné, typiquement ISO-8859-1 mais à dire d'afficher dans une police qui affichait alors dans un autre alphabet. 
+Mais certaines personnes souhaitaient mélanger des caractères de divers alphabets : par exemple écrire tantôt en grec, tantôt en cyrillique, tantôt en caractères latins. Comment faire ? Pendant longtemps une technique utilisée\footnote{Qui malheureusement est encore utilisée, voir apprise, par des personnes peu au courant des évolutions informatiques.} consistait à écrire dans un jeu de caractères donné, typiquement ISO-8859-1, mais à dire d'utiliser une police qui affichait le texte dans un autre alphabet. 
 
-Par exemple, pour écrire le caractère grec \enquote{α} ont écrivait le caractère latin \enquote{a} et disait qu'on l'affichait dans la police SPIonic. Cette méthode posait (et pose encore) de nombreux problèmes :
+Par exemple, pour écrire le caractère grec \enquote{α} ont écrivait le caractère latin \enquote{a} et disait qu'on l'affichait dans la police SPIonic. Cette méthode posait --- et pose encore --- de nombreux problèmes :
 \begin{itemize}
 \item Elle nécessitait que la police soit présente sur toutes les machines de travail.
-\item Ne stockant pas l'information exacte sur le caractère (puisqu'elle utilise un code pour désigner autre chose que ce qu'il devait désigné), elle ne permettait pas aisément de faire une recherche.
+\item Ne stockant pas l'information exacte sur le caractère, puisqu'elle utilise un code pour désigner autre chose que ce qu'il devait désigné, elle ne permettait pas aisément de faire une recherche.
 \item Avec \LaTeX, étant donné que nous ne sommes pas dans un système WYSIWIG, elle rendait la rédaction et la relecture extrêmement pénible.
 \item Elle était un non sens informatique et logique. 
 \end{itemize}
 
 Une métaphore simple explique le problème : supposons que vous vouliez une maison en brique rouge. Que diriez vous si votre entreprise de maçonnerie vous posait du parpaing, puis le peignait en rouge pour faire croire que c'est de la brique ? Voilà le problème fondamental de cette méthode : elle fait prendre du parpaing (la lettre \enquote{a}) pour de la brique (la lettre \enquote{α}) en se servant d'une peinture (la police de caractères).
 
-Heureusement petit à petit une solution a émergé : elle a consisté à inventer un jeu de caractère qui puisse stocker tout les caractères présents sur la terre y compris dans le passé, tout en laissant de la place pour les caractères des civilisations extra-terrestres qu'un jour, éventuellement, nous rencontrerions. Ce jeu de caractère s'appelle \emph{unicode}.
+Heureusement petit à petit une solution a émergé : elle a consisté à inventer un jeu de caractère qui puisse stocker tout les caractères présents sur la terre, y compris dans le passé, tout en laissant de la place pour les caractères des civilisations extra-terrestres qu'un jour, éventuellement, nous rencontrerions. Ce jeu de caractère s'appelle \emph{Unicode}.
 
-Avec ce jeu de caractère, il est donc possible de mélanger allègrement de l'arabe, du vietnamien, de l'hébreu et du cyrillique dans un même fichier. Toutefois, histoire de compliquer les choses, plusieurs \emph{implémentations} de ces jeux de caractères ont été inventées, chacune présentant des avantages et des inconvénient divers (par exemple sur le volume des fichiers et les temps de recherches). La plus courante de ces implémentations est UTF-8.
+Avec ce jeu de caractère, il est donc possible de mélanger allègrement de l'arabe, du vietnamien, de l'hébreu et du cyrillique dans un même fichier. Toutefois, histoire de compliquer les choses, plusieurs implémentations de ces jeux de caractères ont été inventées, chacune présentant des avantages et des inconvénient divers\footnote{Par exemple sur le volume des fichiers et les temps de recherches.}. La plus courante de ces implémentations est UTF-8.
 
-C'est celle que vous utilisez depuis que vous lisez ce livre, si du moins vous avez lu le chapitre \ref{commencer} \renvoi{commencer}.
+C'est celle que vous utilisez depuis que vous lisez ce livre, si du moins vous avez lu le chapitre~\ref{commencer}\renvoi{commencer}.
 
-En un mot : Unicode dans sa variante UTF-8 est aujourd'hui la meilleuer méthode pour écrire des fichiers mêlants plusieurs familles de caractères\footnote{L'auteur pense même que, étant donné la baisse des coûts de stockages et de transferts, on ne devrait plus utiliser que ce jeu de caractères, ce qui aurait pour mérite de permettre bien plus facilement à tous les peuples de s'exprimer dans leur langue. Malheureusement son expérience personnelle lui prouve que cela n'est pas encore toujours le cas, y compris chez des gens qui \enquote{font de l'informatique à longueur de journée}.}
+En un mot : Unicode dans sa variante UTF-8 est aujourd'hui la meilleure méthode pour écrire des fichiers mêlants plusieurs familles de caractères\footnote{L'auteur pense même que, étant donné la baisse des coûts de stockages et de transferts, on ne devrait plus utiliser que ce jeu de caractères, ce qui aurait pour mérite de permettre bien plus facilement à tous les peuples de s'exprimer dans leur langue. Malheureusement son expérience personnelle lui prouve que cela n'est pas encore toujours le cas.}.}
 
 \begin{anedocte}Le lecteur narquois fera remarquer que le même problème qu'avec la méthode de la police se pose : à savoir que chaque ordinateur de travail devrait implanter Unicode et UTF-8 chez lui. 
 
@@ -140,18 +127,18 @@ L'auteur fera remarquer qu'aujourd'hui tout les ordinateurs possèdent en natif 
 
 \subsection{Concrètement}
 
-Fort bien, fort bien, stockons en UTF-8. Mais comment écrit-on en UTF-8 ? Avec les claviers des ordinateurs vendus en Europe occidentale,\footnote{Le lecteur militant voudra bien pardonner cet ethnocentrisme.} nous n'avons pas les caractères grecs à portée.
+Fort bien, fort bien, stockons en UTF-8. Mais comment écrit-on en UTF-8 ? Avec les claviers des ordinateurs vendus en Europe occidentale\footnote{Le lecteur militant voudra bien pardonner cet ethnocentrisme.}, nous n'avons pas les caractères grecs à portée.
 
-Il faut ici distinguer le support physique --- le clavier avec ces touches concrètes --- du support logique : le fait que telle touche appuyée donne tel ou tel caractère. 
+Il faut ici distinguer le support physique : le clavier avec ces touches concrètes et le support logique : le fait que telle touche appuyée donne tel ou tel caractère. 
 
-Pour reprendre notre cas, il suffit de dire à notre ordinateur que la touche A correspond au caractère α. Les ordinateurs récents proposent plusieurs pilotes de clavier en standard\footnote{Sous Macintosh, cela se règle dans les Préférences Systèmes, Panneau \enquote{International}, sous Windows cela se règle dans les panneaux de configuration, panneau \enquote{options régionales et linguistiques}, sous Linux, cela dépend de votre distribution}. Toutefois ces pilotes de clavier sont généralement destinées aux langues contemporaines, et rarement adaptés aux langues anciennes (par exemple pour les accents sur le grec). Heureusement on trouve aisément sur Internet des pilotes de clavier pour d'autres langues\footcite[Pour ce qui concerne le grec ancien, le syriaque, l'hébreu ancien, on pourra utiliser les claviers proposés par Michel Langlois][,~]{clavierLanglois}[ou encore, pour le grec, les claviers de l'École Normal Supérieur][]{clavierENS}.
+Pour reprendre notre cas, il suffit de dire à notre ordinateur que la touche A correspond au caractère α. Les ordinateurs récents proposent plusieurs pilotes de clavier en standard\footnote{Sous Macintosh, cela se règle dans les Préférences Systèmes, Panneau \enquote{International}, sous Windows cela se règle dans les panneaux de configuration, panneau \enquote{options régionales et linguistiques}, sous Linux, cela dépend de votre distribution}. Toutefois ces pilotes de clavier sont généralement destinés aux langues contemporaines, et rarement adaptés aux langues anciennes --- par exemple pour les accents sur le grec. Heureusement on trouve aisément sur Internet des pilotes de clavier pour d'autres langues\footcites[Pour ce qui concerne le grec ancien, le syriaque, l'hébreu ancien, on pourra utiliser les claviers proposés par Michel Langlois][\nopp,~]{clavierLanglois}[ou encore, pour le grec, les pilotes de l'École Normale Supérieure][]{clavierENS}.
 
 
 \subsection{Et les changements de sens d'écriture ?}
 
-Certaines langues s'écrivent de droite à gauche, d'autres de gauche à droite. On souhaiterait que les alignements de paragraphes, les positions des titres et d'autres élèments correspondent au sens de langue. 
-Comment signaler cela à \LaTeX ? Le signalement des changements de langues suffit.
+Certaines langues s'écrivent de droite à gauche, d'autres de gauche à droite. On souhaiterait que les alignements de paragraphes, les positions des titres et d'autres éléments correspondent au sens de la langue. 
+Comment signaler cela à \LaTeX ? Le signalement des changements de langues suffit\ref{changerlang}.
 
 \begin{anedocte}
-Pour ce qui concerne l'écriture en boustrophédon, on utilisera le package \package{bidi}. Celui-ci possède des  commandes qui permette d'indiquer des changements de sens. 
+Pour ce qui concerne l'écriture en boustrophédon, on utilisera le package \package{bidi}. Celui-ci possède des  commandes qui permettent d'indiquer des changements de sens. 
 \end{anedocte}
