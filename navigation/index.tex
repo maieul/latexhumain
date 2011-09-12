@@ -247,11 +247,11 @@ Ainsi, pour faire un index des noms propres et un index général, on peut décl
 Une fois que les index sont déclarés, il faut passer à l'indexation proprement dite. Le principe est similaire à ce que nous avons déjà vu pour le package \package{makeindex}.
 Mais au lieu de \cs{index}\marg{entrée}, on utilisera \cs{sindex}\oarg{abbréviation}\marg{entrée} (notez que c'est bien \cs{sindex}, non \cs{index}). 
 
-\begin{anedocte}
+\begin{plusloins}
 
 Toutes les entrées indiquées non par \cs{sindex} mais par \cs{index} seront automatiquement \enquote{rangées} dans un index général (dont le nom abbrégé est idx)
 
-\end{anedocte}
+\end{plusloins}
 On peut ainsi indexer notre texte d'Eginhard de la façon suivante:
 
 \begin{minted}[linenos]{latex}
@@ -324,6 +324,6 @@ En outre, le signet PDF produit par le package \package{hyperref}\renvoi{hyperre
 \printindex
 \end{minted}
 
-\begin{anedocte}
+\begin{plusloins}
 Évidemment le même technique pourrait être utilisé pour indiquer l'emplacement de la table des matières … dans la table des matières !
-\end{anedocte}
+\end{plusloins}

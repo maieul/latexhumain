@@ -65,9 +65,9 @@ alors que le règles françaises voudraient que l'on ait :
 \renewcommand{\newunitpunct}[0]{\addcomma\addspace}
 	\end{minted}
 	
-	\begin{anedocte}
+	\begin{plusloins}
 		Nous n'avons par parlé jusqu'à présent de la commande \cs{renewcommand}. Celle-ci est identique à la commande \cs{newcommand} à la différence qu'elle permet de redéfinir une commande déjà existante.
-	\end{anedocte}
+	\end{plusloins}
 	
 	
 \subsection{Une séparateur spécifique à deux unités}
@@ -158,7 +158,7 @@ La commande \cs{parentext} mettant entre parenthèse un texte passé en argument
 clef	= {{chaîne longue}{chaîne courte}}|
 	\end{minted}
 	
-	\begin{anedocte}
+	\begin{plusloins}
 	Chaque chaîne de langue est disponible en version longue ou courte. On peut passer une option lors de l'appel du package \package{biblatex} pour décider d'utiliser les versions longues.
 	
 	\begin{minted}{latex}
@@ -167,7 +167,7 @@ clef	= {{chaîne longue}{chaîne courte}}|
 	
 	 Toutefois quand on redéfinit une chaîne de langue, on ne lui accorde qu'une seule version.
 	
-	\end{anedocte}
+	\end{plusloins}
 	Il nous faut donc repérer la clef correspondante à notre chaîne \enquote{dans}. Très rapidement nous trouvons qu'il s'agit de la chaine \verb|in|.
 	
 	Une fois  notre clef repérée, il est facile de lui attribuer une nouvelle valeur\footnote{Cette valeur sera utilisée que l'on choisisse le mode abrégé ou non.}, grâce à la commande \cs{DefineBibliographyStrings{lang}{chaînes}}, qu'il faut placer dans le préambule du fichier\footnote{Il ne faut surtout pas modifier les fichiers standards : on perdrait les modifications à chaque mise à jour.}.

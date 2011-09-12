@@ -26,19 +26,19 @@ Nous avons indiqués dans notre préambule que nous souhaitons les utiliser :
 
 La commande \cs{setmainfont} sert à définir la police avec empattement (corps du texte), \cs{setsansfont} celle sans empattement et \cs{setmonofont} la police à espacement fixe. L'argument optionnel peut prendre un certain nombre de paramètres pour la police. Ici nous avons indiqués que nous souhaitons réduire de 25 \% la taille de la police \enquote{DejaVu Sans Mono}, car il s'agit d'une police relativement grande. Le manuel de fontspec précise les paramètres possibles\footcite{fontspec_optionspolices}.
 
-\begin{anedocte}
+\begin{plusloins}
 Le package \package{fontspec} permet de définir d'autres familles de caractères. Toutefois en général il n'est pas recommandé de varier les polices dans un textes : c'est pourquoi nous ne détaillons pas ici, mais nous contentons de renvoyer à la documentation du package\footcite{fontspec_nouvellefamille}.
-\end{anedocte}
+\end{plusloins}
 
 \section{Interlignes}\label{interligne}
 
 Le package \package{setspace} --- qui ne possède pas de documentation officielle --- permet de changer facilement l'interligne du document en proposant trois interlignages : simple (c'est le réglage standard), double et \enquote{un et demi}. En général une interline de 1,5 est recommandée pour les travaux universitaires, sauf pour les notes de bas de pages, où un interlignage simple est de mise. Cela tombe bien : le package n'applique le changement d'interligne qu'aux corps du texte. Les notes de bas de page sont donc préservées.
 
-\begin{anedocte}
+\begin{plusloins}
 Le package \package{setspace}  \enquote{se contente} de définir des nouvelles commandes pour executer des suites complexes de commandes \TeX et \LaTeX nécéssaires à la définitions de l'interlignes en tenant compte de la taille de la police.
 
 Si donc vous souhaitez définir une autre taille d'interligne, vous pouvez essayer de vous inspirer du code du package. Mais ceci nécéssite de maîtriser assez bien \LaTeX. 
-\end{anedocte}
+\end{plusloins}
 
 Les trois commandes qui nous intéressent sont \cs{singlespacing}, \cs{onehalfspacing} et \cs{doublespacing}. Ces commandes s'utilisent de la manière suivante :
 
@@ -114,7 +114,7 @@ En créant ces deux commandes \cs{oldquotation} et \cs{endoldquotation} nous avo
 \item[ligne 5]à la fin de l'environnement \enviro{quotation}, nous fermons les environnements \enviro{oldquotation} puis \enviro{singlespace}.
 \end{description}
 
-\begin{anedocte}
+\begin{plusloins}
 Si vous avez compris nos propos sur les commandes de début et de fin d'environnement, vous pouvez vous rendre compte que nous aurions pu obtenir le même résultat avec :
 \begin{minted}{latex}
 \let\oldquotation\quotation
@@ -122,7 +122,7 @@ Si vous avez compris nos propos sur les commandes de début et de fin d'environn
 \renewcommand{\quotation}{\singlespace\oldquotation}
 \renewcommand{\endquotation}{\endoldquotation\endsinglespace}
 \end{minted}
-\end{anedocte}
+\end{plusloins}
 
 \section{Personaliser les titres}\rev{Réfléchir à mettre ailleurs}
 
@@ -263,11 +263,11 @@ Le second élèment intéressant est la dernière ligne. La commande \cs{secdef}
 
 En fouillant les codes des commandes \cs{@chapter} et \cs{@schapter} nous trouvons qu'elles appellent respectivement la commande \cs{@makechapterhead} et \cs{@makeschapterhead}.
 
-\begin{anedocte}
+\begin{plusloins}
 Vous constaterez que les commandes \cs{@chapter}, \cs{@schapter}, \cs{@makechapterhead} et \cs{@makeschapterhead} sont définies via la commande \cs{def} et non pas \cs{newcommand}. 
 
 En effet la définition est faite en \TeX et non pas en \LaTeX. Pour nos propos, cela ne change pas grand chose.
-\end{anedocte} 
+\end{plusloins} 
 
 Intéressons nous à la commande \cs{@makechapterhead} 
 

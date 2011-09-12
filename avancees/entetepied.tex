@@ -38,9 +38,9 @@ On voit vite les limites de ces styles. Ainsi, comment faire pour avoir à la fo
 \pagestyle{fancy}
 \end{minted}
 
-\begin{anedocte}
+\begin{plusloins}
 Les pages de début de chapitre appliquent automatiquement le style \forme{plain}. Pour désactiver cette activation, il faut modifier le commande \cs{chapter}. Nous en parlons plus loins. \renvoi{entetechapter}
-\end{anedocte}
+\end{plusloins}
 
 
 Une fois ceci fait, il est possible d'utiliser les six commandes de \package{fancyhdr} servant à définir le contenu des entêtes et pieds de pages :
@@ -144,9 +144,9 @@ Notez bien que nous indiquons que la commande \cs{sectionmark} prend un argument
 \renewcommand{\chaptermark}[1]{\markboth {\MakeUppercase{\thechapter #1}}{}}
 \end{minted}
 
-\begin{anedocte}
+\begin{plusloins}
 Si vous vous amusez à fouiller le fichier \fichier{book.cls}, vous verrez que la commande \cs{chaptermark} est définie deux fois. En réalité, la définition est conditionné par l'option de classe \option{twoside} ou \option{oneside}.
-\end{anedocte}
+\end{plusloins}
 \section{Filet d'entête et pied de page}
 
 \package{fancyhdr} inclus un filet entre le corps du texte et l'entête. Il est possible de modifier l'épaisseur de ce filet ainsi que de rajouter un filet avant le  pied de page.

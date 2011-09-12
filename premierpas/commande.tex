@@ -64,7 +64,7 @@ Il est bien connu que \auteur{Tertullien}{150 ? - 220 ?}
 n'était pas montaniste mais tertullianiste.
 \end{quotation}
 
-\begin{anedocte}
+\begin{plusloins}
 Le lecteur attentif se rappellera \renvoi{syntaxecommande} qu'il est possible d'avoir des commandes avec des arguments optionnels. Il souhaitera sans doute en créer lui même.
 
 Si \LaTeX prévoit bien en standard un mécanisme pour permettre cela, le mécanisme est relativement peu souple. 
@@ -72,7 +72,7 @@ Si \LaTeX prévoit bien en standard un mécanisme pour permettre cela, le mécan
 Nous conseillons donc de ce tourner vers le package \package{xargs} et \package{ifthenelse} afin de pouvoir faire des tests à l'intérieur d'une déclaration de commande.
 
 Mais tout ceci dépasserait le cadre de cette ouvrage.
-\end{anedocte}
+\end{plusloins}
 
 Fort bien, mais comment faire pour mettre en forme ? Il faut pour cela utiliser une commande de mise en forme à l'intérieur de la déclaration de commande de mise en sens. Par exemple, pour mettre en petites capitales la commande est \cs{textsc}.
 
@@ -102,7 +102,7 @@ Nous décrirons plus loin dans ce chapitre un ensemble de commande de mise en fo
 \end{attention}
 
 
-\begin{anedocte}\label{commentaireredac}
+\begin{plusloins}\label{commentaireredac}
 On peut ainsi très facilement créer une commande \cs{commentaire} servant pour indiquer des commentaires personnels au cour de la rédaction, afin de les avoir sous soi lors d'une relecture papier.
 
 Par exemple :
@@ -116,7 +116,7 @@ Lors de l'impression finale, il suffira de changer cette commande par :
 \newcommand{\commentaire}[1]{}
 \end{minted}
 
-\end{anedocte}
+\end{plusloins}
 
 \subsection{Code d'une commande sur plusieurs lignes}\label{commandepourcent}
 

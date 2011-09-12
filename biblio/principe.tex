@@ -20,13 +20,13 @@ La logique de la gestion bibliographique en \LaTeX{} est relativement simple. Un
 
 Dans le document \LaTeX{}, on précise dans l'en-tête le nom du fichier externe. À chaque fois que l'on souhaite citer une référence, οn utilise une commande en lui passant la clef en argument. Le package \package{biblatex} se charge alors d'afficher la référence selon un style de citation\footnote{C’est-à-dire une présentation.} déterminé. Ainsi, si on veut changer l'ordre de présentation, par exemple intervertir l'éditeur et la ville de publication, il suffit de modifier le style, ce qui se fait aisément, puisque les styles sont une série de commandes \LaTeX{}. Par ailleurs \package{BibLaTex} gérera automatiquement les références déjà citées et introduira tout seul en fonction du style choisi les abréviations universitaires. 
 
-\begin{anedocte}
+\begin{plusloins}
 
 \package{BibLaTex} n'est pas forcément nécessaire pour gérer une bibliographie avec \LaTeX{}. Cependant, les fonctionnalités standards de LaTeX pour la gestion bibliographiques sont très limitées, et inadaptées aux sciences humaines. 
 
 Vous trouverez peut-être sur internet des fichiers \ext{bst}. Ces fichiers sont des styles bibliographiques, mais pour les fonctionnalités standards de \LaTeX{}. Ils ne peuvent servir pour \package{BibLaTex}. Cependant il est aisé d'avoir ses propres styles BibLaTex tandis que la syntaxe des fichiers \ext{bst} est complexe\footnote{Elle est écrite en notation polonaise inversée.}.
 
-\end{anedocte}
+\end{plusloins}
 
 Enfin, à la fin du document, ou à tout autre endroit jugé utile, une (ou plusieurs) commande permettra d'afficher la bibliographie, qui reprendra les références citées\footnote{Il est aussi possible, si on le souhaite, d'ajouter une ou plusieurs références non citées.} dans le document, en les classant et en les affichant selon un style de bibliographie, lui aussi personalisable.
 

@@ -78,9 +78,9 @@ Pour ce faire, il devra redéfinir l'environnement \enviro{latin} par le code su
 \renewenvironment{latin}{\begin{hyphenrules}{latin}}{\end{hyphenrules}}
 \end{minted}
 
-\begin{anedocte}
+\begin{plusloins}
 La commande \csp{renewenvironnement} redéfinit un environnement, ici \enviro{latin}. Le deuxième argument de la commande indique ce qui se passe lors que l'on ouvre l'environnement, le troisième argument ce qui se passe lorsqu'on l'on ferme l'environnement. L'environnement \enviro{hyphenrules} indique un changement de règle de césures.
-\end{anedocte}
+\end{plusloins}
 
 
 \section{Saisir des textes en caractères non latins}\label{utf8}
@@ -119,11 +119,11 @@ C'est celle que vous utilisez depuis que vous lisez ce livre, si du moins vous a
 
 En un mot : Unicode dans sa variante UTF-8 est aujourd'hui la meilleure méthode pour écrire des fichiers mêlants plusieurs familles de caractères\footnote{L'auteur pense même que, étant donné la baisse des coûts de stockages et de transferts, on ne devrait plus utiliser que ce jeu de caractères, ce qui aurait pour mérite de permettre bien plus facilement à tous les peuples de s'exprimer dans leur langue. Malheureusement son expérience personnelle lui prouve que cela n'est pas encore toujours le cas.}.}
 
-\begin{anedocte}Le lecteur narquois fera remarquer que le même problème qu'avec la méthode de la police se pose : à savoir que chaque ordinateur de travail devrait implanter Unicode et UTF-8 chez lui. 
+\begin{plusloins}Le lecteur narquois fera remarquer que le même problème qu'avec la méthode de la police se pose : à savoir que chaque ordinateur de travail devrait implanter Unicode et UTF-8 chez lui. 
 
 L'auteur fera remarquer qu'aujourd'hui tout les ordinateurs possèdent en natif ces possibilités, et qu'il est possible très facilement de l'installer sur des ordinateurs un peu anciens. En outre, avec Unicode on stocke du sens, et non pas de la forme, ce qui permet une plus grande souplesse. 
 
-\end{anedocte}
+\end{plusloins}
 
 \subsection{Concrètement}
 
@@ -139,6 +139,6 @@ Pour reprendre notre cas, il suffit de dire à notre ordinateur que la touche A 
 Certaines langues s'écrivent de droite à gauche, d'autres de gauche à droite. On souhaiterait que les alignements de paragraphes, les positions des titres et d'autres éléments correspondent au sens de la langue. 
 Comment signaler cela à \LaTeX ? Le signalement des changements de langues suffit\ref{changerlang}.
 
-\begin{anedocte}
+\begin{plusloins}
 Pour ce qui concerne l'écriture en boustrophédon, on utilisera le package \package{bidi}. Celui-ci possède des  commandes qui permettent d'indiquer des changements de sens. 
-\end{anedocte}
+\end{plusloins}
