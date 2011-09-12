@@ -15,7 +15,7 @@ Pour comprendre comment personnaliser l'affichage bibliographique, il est néces
 \item Lorsqu'on appelle une commande de citation, du type \cs{PREFXIcite}, cette commande va appeler :
 	\begin{itemize}
 		\item Des macros bibliographiques, chargées d'afficher l'argument \arg{prenote} ou \arg{postnote}, ou encore de gérer les citations répétées. Les macros bibliographiques sont des types particuliers de commandes, propres au package \package{biblatex}. 
-		\item Un driver\footnote{Bien que le terme \enquote{driver} ne soit pas français, nous l'utilisons car il est utilisé dans les commandes internes de BibLaTeX} bibliographique. Un driver correspond à un type d'entrée (@article, @book etc.), et se charge d'afficher les champs de l'entrée dans le bon ordre. Pour ce faire, un driver appelle :
+		\item Un driver\footnote{Bien que le terme \enquote{driver} ne soit pas français, nous l'utilisons car il est utilisé dans les commandes internes de BibLaTeX} bibliographique. Un driver correspond à un type d'entrée (\type{article}, \type{book} etc.), et se charge d'afficher les champs de l'entrée dans le bon ordre. Pour ce faire, un driver appelle :
 		\begin{itemize}
 			\item Des commandes de séparations d'unités bibliographiques, que nous avons vu plus haut.
 			\item Des macros bibliographiques. Ces macros bibliographiques appellent elles-même :
@@ -87,7 +87,7 @@ Nous supposons que nous vous utilisez les styles de la famille \forme{verbose}. 
 Dedans vous pouvez  repérer les lignes suivantes :
 \inputminted{exemples/biblio/styles2/driverbook.tex}
 
-Il s'agit d'un driver bibliographique expliquant comment afficher les entrées de type @book. Ce driver fait appel à des macros bibliographiques (les commandes \cs{usebibmacro}). Ces macros sont communes à plusieurs drivers, ce qui permet d'avoir une certaine uniformité de style (par exemple, afin que les noms d'auteurs s'affichent systématiquement de la même façon).
+Il s'agit d'un driver bibliographique expliquant comment afficher les entrées de type \type{book}. Ce driver fait appel à des macros bibliographiques (les commandes \cs{usebibmacro}). Ces macros sont communes à plusieurs drivers, ce qui permet d'avoir une certaine uniformité de style (par exemple, afin que les noms d'auteurs s'affichent systématiquement de la même façon).
 
 Dans le lot des macros appelées, on constate l'appel à la macro \bibmacro{publisher+location+date}, via la commande
 

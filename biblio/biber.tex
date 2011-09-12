@@ -40,7 +40,7 @@ Vous dupliquez ainsi les données sur le colloque (titre, éditeur etc.). Si par
 
 \inputminted{exemples/biblio/biber/crossref.bib}
 
-En toute logique la compilation avec BibTeX devrait attribuer la valeur du champ \champ{title} de l'entrée \verb|principale| aux champs \champ{booktitle} des entrées \verb|clef1| et \verb|clef2|, puisqu'il s'agit d'entrée de type \verb|@inproceedings| héritant d'entrée \verb|@proceedings|. 
+En toute logique la compilation avec BibTeX devrait attribuer la valeur du champ \champ{title} de l'entrée \verb|principale| aux champs \champ{booktitle} des entrées \verb|clef1| et \verb|clef2|, puisqu'il s'agit d'entrée de type \type{inproceedings} héritant d'entrée \type{proceedings}. 
 
 Il n'en est rien : \package{BibTeX} procède à des héritages simples : il attribue les valeurs \enquote{mères} \champ{title} aux champs \champ{title} des fils. Ceci oblige donc à dupliquer les valeurs\footnote{Certain logiciel de gestion bibliographique le font pour vous. Toutefois, cela alourdit le fichier. En outre il s'agit de contourner un limitation technique de BibTeX, plutôt que de remédier à cette limitation.}.
 
@@ -83,7 +83,7 @@ Il suffit d'utiliser dans le préambule la commande ;
 \end{minted}
 
 \begin{description}
-\item[entrée mère]désigne le type d'entrée mère : \verb|@book|, \verb|@proceedings| etc. Le symbole * désigne n'importe quel type d'entrée
+\item[entrée mère]désigne le type d'entrée mère : \type{book}, \type{proceedings} etc. Le symbole * désigne n'importe quel type d'entrée
 \item[entrée fille]désigne le type d'entrée fille. Là aussi le symbole * désigne n'importe quel type d'entrée
 \item[règles] désigne un certain nombre de règles d'héritages, sous forme de commandes.
 \end{description}
@@ -138,7 +138,7 @@ Il n'existe pas de champ spécifiquement prévu pour indiquer la division de sou
 
 \end{enumerate}
 
-Le choix d'une entrée de type \verb|@book| pour la clef \verb|DeDoctChrIIviii18-20| à la place d'une entrée @inbook se justifie dans la mesure où notre entrée ne possède pas de titre propre.
+Le choix d'une entrée de type \type{book} pour la clef \verb|DeDoctChrIIviii18-20| à la place d'une entrée \type{inbook} se justifie dans la mesure où notre entrée ne possède pas de titre propre.
 
 Évidemment le choix de ce champ devrait, idéalement, être discuté en accord avec l'éditeur. De toute façon, il est relativement facile si le choix ne convient pas de changer en série les entrées.
 \end{plusloins}

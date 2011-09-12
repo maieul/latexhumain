@@ -194,7 +194,7 @@ clefN = {valeurN}%
 
 Nous allons maintenant prendre un peu d'anticipation sur le prochaine chapitre.
 Vous avez certainement constaté que les styles de la famille \forme{verbose-trad} utilisent des abréviations latines comme \emph{op. cit.}.
-Ces abréviations sont les abréviations universitaires courantes. Toutefois en ce qui concerne l'abréviation \emph{op. cit.} \package{BibLaTeX} l'utilise indistinctement pour tout les types d'entrées, y compris pour les entrées de type @article, alors même qu'on pourrait s'attendre à une abréviation de type \emph{art. cit.}.
+Ces abréviations sont les abréviations universitaires courantes. Toutefois en ce qui concerne l'abréviation \emph{op. cit.} \package{BibLaTeX} l'utilise indistinctement pour tout les types d'entrées, y compris pour les entrées de type \type{article}, alors même qu'on pourrait s'attendre à une abréviation de type \emph{art. cit.}.
 
 Pour résoudre ce problème, il suffit de redéfinir la chaîne de langue qui définit \emph{op. cit.}, en lui attribuant une valeur différente selon le type d'entrée.  On va donc utiliser l'un des nombreux tests conditionnels disponibles dans \package{BibLaTeX}. Il s'agit de la commande :
 
