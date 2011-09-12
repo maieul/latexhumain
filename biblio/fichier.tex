@@ -46,7 +46,7 @@ Il pourra être affiché dans le fichier .pdf sous la forme :
 
 Un fichier \ext{bib} n'est rien d'autre qu'une \renvoi{logicielbiblio} série d'entrées de ce type. Cependant, comme il est assez aisé de \enquote{s'emmêler les pinceaux}, notamment dans les ouvertures et fermetures des accolades, il vaut la peine d'utiliser un logiciel de gestion de bibliographies, capable de gérer  des fichiers au formats \ext{bib}. Un certain nombre sont présentés en annexe. En outre ces logiciels permettent en générale des recherches croisés dans la base de donnée.
 
-La documentation de \package{BibLaTeX} contient l'ensemble des champs et des types possibles. Pour éviter de répéter ce manuel, nous vous présenterons les champs en les classant par catégorie. Mais auparavant, nous donnerons quelques conseils sur le choix de la clef et sur les différents types de catégories.
+La documentation de \package{biblatex} contient l'ensemble des champs et des types possibles. Pour éviter de répéter ce manuel, nous vous présenterons les champs en les classant par catégorie. Mais auparavant, nous donnerons quelques conseils sur le choix de la clef et sur les différents types de catégories.
 
 \section{Le choix de la clef}
 
@@ -195,7 +195,7 @@ Ces champs servent à désigner des personnes qui ont participé au processus de
    	\fielditem{translator} Traducteur(s). 		
 \end{fieldlist}
 
-Lorsque des champs possèdent des valeurs identiques (par exemples les champs \champ{publisher} et \champ{translator}), \package{BibLaTeX} va  fusionner ces champs lors de l'affichage. Prenons ainsi l'entrée suivante : 
+Lorsque des champs possèdent des valeurs identiques (par exemples les champs \champ{publisher} et \champ{translator}), \package{biblatex} va  fusionner ces champs lors de l'affichage. Prenons ainsi l'entrée suivante : 
 
 \inputminted{exemples/biblio/fichier/augustin_editeur.bib}
 
@@ -215,8 +215,8 @@ author = {Maïeul Rouquette and Enimie Rouquette}
 
 Un nom se caractérise en LaTeX par :
 \begin{description}
-	\item[Un ou plusieurs prénoms.]L'initiale doit être en majuscule, le reste en minuscule. Exemple : \forme{Albert}. Il vaut mieux mettre le prénom complet : on peut confier le travail de limitation à une minuscule  à \package{BibLaTex}\footnote{Il faut pour cela passer l'option \option{firstinits=true} lors du chargement du package.}.
-	\item[Un nom.]L'initiale doit être en majuscule, le reste en minuscule. Exemple : \forme{Londres} et non pas \forme{LONDRES}. \package{BibLaTex} se chargera le cas échéant de mettre en petites capitales.
+	\item[Un ou plusieurs prénoms.]L'initiale doit être en majuscule, le reste en minuscule. Exemple : \forme{Albert}. Il vaut mieux mettre le prénom complet : on peut confier le travail de limitation à une minuscule  à \package{biblatex}\footnote{Il faut pour cela passer l'option \option{firstinits=true} lors du chargement du package.}.
+	\item[Un nom.]L'initiale doit être en majuscule, le reste en minuscule. Exemple : \forme{Londres} et non pas \forme{LONDRES}. \package{biblatex} se chargera le cas échéant de mettre en petites capitales.
 	\item[Éventuellement une particule.]Elle doit être entièrement en minuscule. Par exemple : \forme{de}, \forme{von}.
 	\item[Éventuellement un suffixe] avec l'initiale en majuscule. Ce type de donnée est plutôt anglo-saxonne. Exemple : \forme{Junior}.
 \end{description}
@@ -243,7 +243,7 @@ Dans le premier cas, BibTeX considère que le dernier mot commençant par une ma
 De Gaulle, Charles
 \end{minted}
 
-Si je parle de Simone de Beauvoir, le \forme{de} étant une particule je peux utiliser la première syntaxe : dans ce cas BibLaTeX considère tout ce qui suit la particule comme constituant le nom :
+Si je parle de Simone de Beauvoir, le \forme{de} étant une particule je peux utiliser la première syntaxe : dans ce cas biblatex considère tout ce qui suit la particule comme constituant le nom :
 
 \begin{minted}{latex}
 Simone de Beauvoir
@@ -267,7 +267,7 @@ Un cas problématique est celui des auteurs anciens, où l'on écrit souvent le 
 Grégoire de Tour
 \end{minted}
 
-\package{BibLaTeX} va comprendre qu'il s'agit d'une personne prénommée \forme{Grégoire}, dont le nom est \forme{Tours} et la particule \forme{de}. Par conséquent il va l'afficher sous la forme \forme{Tours, Grégoire, de.}. Pour éviter ce problème, il suffit d'utiliser des accolades :
+\package{biblatex} va comprendre qu'il s'agit d'une personne prénommée \forme{Grégoire}, dont le nom est \forme{Tours} et la particule \forme{de}. Par conséquent il va l'afficher sous la forme \forme{Tours, Grégoire, de.}. Pour éviter ce problème, il suffit d'utiliser des accolades :
 
 \begin{minted}{latex}
 {Grégoire de Tour}
@@ -430,7 +430,7 @@ publisher ={Labor et Fides and Cerf}
 
 \subsection{Les champs d'identifications formels}
 
-Il peut être utile d'indiquer des informations comme l'ISBN etc. Voici les champs possibles\footcite[BibLaTeX imprimera ces champs par défaut, il est toutefois possible de ne pas les afficher en passant une option au chargement du package]{biblatex_isbn}. Nous signalons ici la liste de ces champs. Le lecteur curieux trouvera aisément des informations sur leurs significations.
+Il peut être utile d'indiquer des informations comme l'ISBN etc. Voici les champs possibles\footcite[biblatex imprimera ces champs par défaut, il est toutefois possible de ne pas les afficher en passant une option au chargement du package]{biblatex_isbn}. Nous signalons ici la liste de ces champs. Le lecteur curieux trouvera aisément des informations sur leurs significations.
 
 \begin{fieldlist}
 	\fielditem{eid} Identifiant électronique d'une entrée de type @article. 
@@ -454,4 +454,4 @@ Ces champs ne sont pas imprimés par défaut.
 	
 \end{fieldlist}
 
-Il existe d'autres champs : nous les présenterons en temps utile. Si le cœur vous en dit, vous pouvez toujours consulter le manuel de \package{BibLateX}\footcite{biblatex_champs}.
+Il existe d'autres champs : nous les présenterons en temps utile. Si le cœur vous en dit, vous pouvez toujours consulter le manuel de \package{biblatex}\footcite{biblatex_champs}.
