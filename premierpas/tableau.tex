@@ -2,29 +2,28 @@
 
 \begin{attention}
 La création de tableau en \LaTeX nécessite  une extrême rigueur. 
-
-C'est à nos yeux l'un des éléments les plus complexe de \LaTeX. C'est pourquoi nous ne ferons ici qu'un bref aperçu : on trouvera aisément des exemples plus détaillés dans d'autres ouvrages ou sur internet\footcite[On pourra consulter pour des fichiers assez didactiques :][]{bebert_tableaux}.
+C'est à nos yeux l'un des éléments les plus complexe de \LaTeX. C'est pourquoi nous ne ferons ici qu'un bref aperçu : on trouvera aisément des exemples plus détaillés dans d'autres ouvrages ou sur internet\footcite[On pourra consulter des fichiers assez didactiques :][]{bebert_tableaux}.
 
 \end{attention}
 
 \subsection{Syntaxe de base}
 
-La création d'un tableau simple se fait grâce à l'environnement \enviro{table}, d'après la syntaxe suivante :
+La création d'un tableau simple se fait grâce à l'environnement \enviro{tabular}, d'après la syntaxe suivante :
 
 \begin{minted}{latex}
-\begin{tabular}{type de colonnes}
+\begin{tabular}{<type de colonnes>}
 	Cellule & Cellule & Cellule \\
 	Cellule & Cellule & Cellulle \\
 \end{tabular}
 \end{minted}
 
-Le caractère \verb|&| marquent un changement de cellule. Les \verb|\\| marquent un changement de ligne.
+Le caractère \verb|&| marque un changement de cellule. Le \verb|\\| marque un changement de ligne.
 
 L'argument \arg{type de colonnes} de l'environnement \enviro{tabular} sert à préciser :
 \begin{enumerate}
 	\item Le nombre de cellules.
 	\item Le formatage du texte à l'intérieur des cellules.
-	\item Éventuellement les séparateurs verticaux de cellules.
+	\item Éventuellement les séparateurs verticaux des cellules.
 	
 \end{enumerate}
 
@@ -36,9 +35,8 @@ Il existe trois types possibles de colonnes,  qui précisent l'alignement des te
 	\item \verb|r| Alignement à droite.
 \end{itemize}
 
-Supposons que nous ayons un tableau à 3 colonnes. Nous souhaitons que les cellules de la première colonnes soient alignées à gauche, celles de la seconde centrées et celle de la dernière alignées à droite\footnote{Il s'agit ici d'une dérogation au principe de séparation de fond et de forme. Toutefois le lecteur l'ayant assimulé pourra aisément contourner cette dérogation et revenir dans le droit chemin}.  
-
-Il nous faudra alors écrire :
+Supposons que nous ayons un tableau à trois colonnes. Nous souhaitons que les cellules de la première colonnes soient alignées à gauche, celles de la seconde centrées et celles de la dernière alignées à droite\footnote{Il s'agit ici d'une dérogation au principe de séparation de fond et de forme. Toutefois le lecteur l'ayant assimulé pourra aisément contourner cette dérogation et revenir dans le droit chemin}.  
+Il nous faut  écrire :
 
 \inputminted{exemples/premierpas/nontextuels/tableau3colonnes.tex}
 
@@ -46,20 +44,30 @@ Il nous faudra alors écrire :
 \input{exemples/premierpas/nontextuels/tableau3colonnes}
 
 
-Par défaut, le tableau va prendre la largeur minimale nécessaire à son affichage. Toutefois il peut être pratique d'indiquer des tailles de colonnes : en particulier lorsque nos cellules contiennent des paragraphes.
+Par défaut, le tableau va prendre la largeur minimale nécessaire à son affichage. 
 
-Pour ce faire trois types supplémentaires de colonnes nous sont proposés par le package \package{array}\footnote{En réalité le premier argument ne nécessite pas le package}. Ces types, à la différences des précédents, déterminent une largeur de colonne. Ils nécessitent pour être utilisés de connaître les unités de mesure de LaTeX\renvoi{unite}. 
+On peut utiliser l'environnement \enviro{tabular*} qui propose un argument supplémentaire, correspondant à la largeur totale du tableau :
+
+\begin{minted}{latex}
+\begin{tabular*}{<largeur du tableau>}{<type de colonnes>}
+	Cellule & Cellule & Cellule \\
+	Cellule & Cellule & Cellulle \\
+\end{tabular}
+\end{minted}
+
+
+Toutefois il peut être pratique d'indiquer des tailles de colonnes : en particulier lorsque nos cellules contiennent des paragraphes.
+
+Pour ce faire trois types supplémentaires de colonne nous sont proposés par le package \package{array}\footnote{En réalité le premier type ne nécessite pas le package}. Ces types, à la différences des précédents, déterminent une largeur de colonne. Ils nécessitent pour être utilisés de connaître les unités de mesure de \LaTeX\renvoi{unite}. 
 
 Ces trois types de colonnes sont :
-\begin{itemize}
-	\item\verb|p{largeur}| : texte justifié. La plus haute ligne du texte se trouve sur la ligne de base.
-	\item\verb|m{largeur}| texte justifié. La ligne du milieu du texte se trouve sur la ligne de base.
-	\item \verb|b{largeur}| texte justifié. La plus basse ligne du texte se trouve sur la ligne de base.
-\end{itemize}
+\begin{description}
+	\item[\verb|p{largeur}|] texte justifié. La plus haute ligne du texte se trouve sur la ligne de base.
+	\item[\verb|m{largeur}|] texte justifié. La ligne du milieu du texte se trouve sur la ligne de base.
+	\item[\verb|b{largeur}|] texte justifié. La plus basse ligne du texte se trouve sur la ligne de base.
+\end{description}
 
-La \enquote{ligne de base} est une ligne spécifique, correspond, \emph{grosso-modo} au milieu d'une cellule.
-
-Exemple 
+La ligne de base est une ligne spécifique, correspondand, \emph{grosso-modo} au milieu d'une cellule. Exemple :
 
 \inputminted{exemples/premierpas/nontextuels/tableau3colonnesarray.tex}
 \input{exemples/premierpas/nontextuels/tableau3colonnesarray}
@@ -68,77 +76,66 @@ Exemple
 
 \begin{plusloins}
 
-Il est possible de créer ses propres types de colonnes. Afin par exemple d'avoir des types de colonnes avec une typographie particulière. Nous en parlons dans la section avancée de ce livre.
+Il est possible de créer ses propres types de colonne. Afin par exemple d'en avoir avec une typographie particulière. Consultez le manuel du package \package{array}\footcite{array_colonnes}.
 
+\end{plusloins}
+\begin{plusloins}
 On peut utiliser le package \package{slahshbox} afin d'avoir un cellule divisée en deux dans un sens diagonal, pour les tableaux à doubles entrées.
+\end{plusloins}
+\begin{plusloins}
+Le package \package{tabularx} propose un environnement \package{tabularx} permettant de calculer automatiquement la taille des colonnes.
 \end{plusloins}
 \subsubsection{Séparation des cellules}
 
-On peut tracer des filets de séparations des cellules : pour tracer un filet de séparation horizontal, il suffit d'utiliser la commande \cs{hline}. Pour un filet de séparation vertical, il faut mettre le caractère \verb+|+\footnote{Ce caractère, appelé \forme{pipe} ne doit pas être confondu avec un +l+.} entre les types de cellules.
+On peut tracer des filets de séparations des cellules : pour un filet  horizontal, il suffit d'utiliser la commande \cs{hline}. Pour un filet  vertical, il faut mettre le caractère \verb+|+\footnote{Ce caractère, appelé \forme{pipe} ne doit pas être confondu avec un +l+.} entre les types de cellules.
 
-On peut tracer des filets horizontaux plus petits en utilisant la commande \cs{cline}:
-
-\begin{minted}{latex}
-\cline{col1-col2}
-\end{minted}
-
-où \arg{col1} et \arg{col2} doivent être remplacés par les numéros de colonnes.
+On peut tracer des filets horizontaux plus petits en utilisant la commande \csp{cline}\verb|{<col1>-<col2>}|, où \arg{col1} et \arg{col2} doivent être remplacés par les numéros de colonnes.
 
 \inputminted{exemples/premierpas/nontextuels/tableauseparateur.tex}
 \input{exemples/premierpas/nontextuels/tableauseparateur}
 
 \subsubsection{Fusion de cellules}
 
-Il est possible de fusionner des cellules. Pour une fusion de colonnes, il faut utiliser la syntaxe suivante :
+Il est possible de fusionner des cellules. Pour une fusion de colonnes, il faut utiliser la commande suivante :
+\csp{multicolumn}\marg{nombcol}\marg{type}\marg{contenu}.
+
+\begin{description}
+
+\item[\arg{nombcol}] est le nombre de colonne à fusionner.
+\item[\arg{type}] est le type de colonne qui en résulte, selon la syntaxe vu plus haut.
+\item[\arg{contenu}] est le contenu de la ligne fusionné.
+\end{description}
+
+Pour une fusion de lignes, il faut charger le package \package{multirow}. Celui-ci propose une commande \cs{multirow} dont voici la syntaxe simplifiée\footcite[Simplifiée car nous ne présentons pas les arguments optionnels : nous renvoyons à la documentation :][]{} :
+\csp{multirow}\marg{lignes}\marg{largeur}\marg{contenu}.
 
 
-
-
-
-\begin{minted}{latex} 
-\multicolumn{nombcol}{type}{contenu}
-\end{minted}
-
-\begin{itemize}
-
-\item \arg{nombcol} est le nombre de colonne à fusionner.
-\item \arg{type} est le type de colonne qui en résulte, selon la syntaxe vu plus haut.
-\item \arg{contenu} est le contenu de la ligne fusionné.
-\end{itemize}
-
-Pour une fusion de lignes, il faut charger le package \package{multirow}. Celui-ci propose une commande \cs{multirow} dont voici la syntaxe simplifiée\footnote{Simplifiée car nous ne présentons pas les arguments optionnels : nous renvoyons à la documentation.}.
-
-
-\begin{minted}{latex}
-\multirow{lignes}{largeur}{contenu}
-\end{minted}
-
-\begin{itemize}
-\item \arg{lignes} est le nombre de lignes concernées par la fusion.
-\item \arg{largeur} est la largeur du texte. On peut mettre \verb|*| pour laisser \LaTeX{} s'en charger.
-\item \arg{contenu} est le contenu de la cellule issue de la fusion.
-\end{itemize}
+\begin{description}
+\item[\arg{lignes}] est le nombre de lignes concernées par la fusion.
+\item[\arg{largeur}] est la largeur du texte. On peut mettre \verb|*| pour laisser \LaTeX{} s'en charger.
+\item[\arg{contenu}] est le contenu de la cellule issue de la fusion.
+\end{description}
 
 \inputminted{exemples/premierpas/nontextuels/tableaufusion.tex}
 \input{exemples/premierpas/nontextuels/tableaufusion}
 
-On remarquera que les lignes dont une colonne a été fusionnée doivent contenir des cellules vides. La commande \cs{multirow} ne modifie pas la structure du tableau : elle indique simplement que le texte est sur plusieurs lignes.
+On remarquera les cellules vides correspondante aux anciennes cellules A2 et A3. La commande \cs{multirow} ne modifie pas la structure du tableau : elle indique simplement que le texte se situe sur plusieurs colonnes.
 
 \subsection{Long tableau}
 
-Si vous fabriquez ainsi un long tableau, vous constaterez que les cellules dépasse dans la marge inférieure, jusqu'à \enquote{sortir} de la page, au lieu, comme il semblerait logique, de continuer sur les pages suivantes.
+Si vous fabriquez ainsi un long tableau, vous constaterez que les cellules dépassent dans la marge inférieure, jusqu'à sortir de la page, au lieu, comme il semblerait logique, de continuer sur les pages suivantes.
 
-Pour éviter cela, il faut donc utiliser l'environnement \enviro{longtable} du package éponyme.
+Pour éviter cela, il faut donc utiliser l'environnement \enviro{longtable} du package éponyme\sindex[pkg]{longtable}.
 
 \begin{minted}{latex}
-…
 \usepackage{longtable}
 …
 \begin{longtable}{types colonnes}
 …
 \end{longtable}
+\end{minted}
 
-La syntaxe d'un environnement \enviro{longtable} est identique à celle d'un environnement \enviro{tabular}. Toutefois le package propose deux  commandes supplémentaires pour préciser les en-têtes et pieds de tableau, qui seront répétés sur chaque pages. Ces commandes sont, respectivement, \cs{endhead} et \cs{endfoot}. Il existe aussi aussi une commande \cs{endfirsthead} pour préciser l'en-tête sur spécifique à la première page du tableau et une commande \cs{endlastfoot} pour préciser le pied de tableau spécifique à la dernière page du tableau.
+La syntaxe d'un environnement \enviro{longtable} est identique à celle d'un environnement \enviro{tabular}. Toutefois le package propose deux  commandes supplémentaires pour préciser les en-têtes et pieds de tableau, qui sont répétés sur chaque pages. Ces commandes sont, respectivement, \csp{endhead} et \csp{endfoot}. Il existe aussi aussi une commande \csp{endfirsthead} pour préciser l'en-tête  spécifique à la première page du tableau et une commande \csp{endlastfoot} pour préciser le pied  spécifique à la dernière page du tableau.
 
 Ces quatre commandes sont optionnelles, elles  doivent s'utiliser en début de tableau : il faut placer les éléments correspondants \emph{avant} chacune des commandes, de la manière suivante :
 
@@ -156,52 +153,46 @@ Cellules de corps de tableau.
 \end{longtable}
 \end{minted}
 
-Un élément important avec \enviro{longtable} est \emph{la nécessité de compiler deux fois le fichier \ext{tex}}. 
+\begin{attention}
+Un élément important avec \enviro{longtable} est la nécessité de compiler deux fois le fichier \ext{tex}. 
 
-En effet, \XeLaTeX{}\footnote{Comme d'ailleurs \LaTeX{}.} n'arrive pas à déterminer la taille des colonnes à la première compilation : il procède à un calcul page par page. Cependant il stocke la taille maximale des colonnes dans un fichier temporaire\footnote{Un fichier portant l'extension \ext{aux}.}. Lors de la seconde compilation, il se sert de ce fichier temporaire pour indiquer la taille des colonnes sur chacune des pages.
-
+En effet, \XeLaTeX{} --- Comme d'ailleurs \LaTeX{} --- n'arrive pas à déterminer la taille des colonnes à la première compilation : il procède à un calcul page par page. Cependant il stocke la taille maximale des colonnes dans un fichier temporaire, portant l'extension \ext{aux}. Lors de la seconde compilation, il se sert de ce fichier temporaire pour indiquer la taille des colonnes sur chacune des pages.
+\end{attention}
 \subsection{Création depuis un fichier \ext{csv}}
 
 Évidemment la syntaxe des tableaux est assez compliquée et risque d'entraîner des erreurs. Il est toutefois possible d'utiliser un fichier au format \ext{csv}, que n'importe quel tableur est capable de produire. Il faut pour cela utiliser le package \package{csvtools}
 
 Le format \ext{csv} est un format standard de données tabulaires. Malheureusement il ne dispose ni de mise en forme ni de possibilité de fusion de cellule.
 
-\begin{plusloins}Une solution peut être alors d'utiliser la macro Calc2LaTeX pour le logiciel OpenOffice.org, mais nous n'avons pas testé cette macro.
+\begin{plusloins}Une solution peut être alors d'utiliser la macro Calc2LaTeX pour le logiciel OpenOffice.org, mais nous n'avons l'avons pas testée.
 \end{plusloins}
 
 
 
 Toutefois pour des données simples, comme par exemple un tableau statistiques, il suffit amplement. 
-Il vous faut donc exporter votre tableau au format csv. La première ligne correspondant à l'entête. Certains logiciels d'export au format svn ne laisse pas le choix quant aux séparateurs de champs. Dans ce cas, il faut utiliser la commande \cs{setcsvseparator} pour définir les champs. Par exemple, si le séparateur est un point-virgule :
+Il vous faut donc exporter votre tableau au format CSV, en choisissant la virgule comme séparateur de champs. La première ligne correspondant à l'entête. Certains logiciels d'export au format CSV ne laissent pas le choix quant aux séparateurs de champs. Dans ce cas, il faut utiliser la commande \csp{setcsvseparator}\marg{separateur} pour définir les champs. Ainsi si le séparateur est un point-virgule : 
+\cs{setcsvseparator}\verb|{;}|.
 
-\begin{minted}{latex}
-\setcsvseparator{;}
-\end{minted}
 Il est possible de créer à partir d'un fichier \ext{csv} un environnement \enviro{tabular} ou\enviro{longtable}.
 
 
 
 Le premier se crée  avec la commande
+\csp{CSVtotabular}\marg{fichier}\marg{type col.}\marg{premiere}\marg{milieu}\marg{dernier}.
 
-\begin{minted}{latex}
-\CSVtotabular{fichier}{type de colonnes}{premiere}{milieu}{dernier}
-\end{minted}
+Le second avec la commande
+\csp{CSVtolongtable}\marg{fichier}\marg{type col.}\marg{premiere}\marg{milieu}\marg{dernier}.
 
-le second avec la commande
-
-\begin{minted}{latex}
-\CSVtolongtable{fichier}{type de colonnes}{premiere}{milieu}{dernier}
-\end{minted}
 
 \begin{description}
-\item[fichier]est le nom du fichier \ext{.csv}. La méthode pour indiquer le chemin du fichier est la même que habituelle.\renvoi{chemin}
-\item[alignement] indique les alignements de colonnes, comme vu précédemment\renvoi{typecolonnes}.
-\item[premiere] indique le contenu de la première ligne (dans le tableau que vous allez généré).
-\item[milieu] indique le contenu des lignes du milieu.
-\item[dernier] indique le contenu de la dernière ligne.
+\item[\arg{fichier}]est le nom du fichier \ext{csv}. La méthode pour indiquer le chemin du fichier est la même que d'habitude.\renvoi{chemin}
+\item[\arg{type col.}] indique les alignements de colonne, comme vus précédemment\renvoi{typecolonnes}.
+\item[\arg{premiere}] indique le contenu de la première ligne du  tableau que vous allez généré.
+\item[\arg{milieu}] indique le contenu des lignes du milieu.
+\item[\arg{dernier}] indique le contenu de la dernière ligne.
 \end{description}
 
-Pour les arguments 
+On utilise la commande \csp{insertbyname}\marg{nom} pour insérer le contenu de la colonne \arg{nom}.
 
 Exemple avec le fichier \fichier{csv.csv} :
 
@@ -212,7 +203,7 @@ Exemple avec le fichier \fichier{csv.csv} :
 
 Le résultat est le tableau \ref{csvtolongtable}\renvoi{csvtolongtable}.
 
-\begin{table}[p]
+\begin{table}[h]
 \setcsvseparator{;}
 \input{exemples/premierpas/nontextuels/csvtolongtable}
 \caption{Exemple d'utilisation de la commande \cs{csvtolongtable}}
@@ -220,14 +211,10 @@ Le résultat est le tableau \ref{csvtolongtable}\renvoi{csvtolongtable}.
 \end{table}
 
 
-\begin{plusloins}Pour afficher un graphique statistique, nous recommandons d'utiliser le package \package{TikZ}\renvoi{TikZ}. Toutefois la maitrîse de cet outils peut être relativement complexe. C'est pourquoi nous listons ici quelques packages utiles : 
+\begin{plusloins}
+Pour afficher un graphique statistique, nous recommandons d'utiliser le package \package{TikZ}\renvoi{TikZ}. Toutefois la maîtrise de cet outils peut être relativement complexe. C'est pourquoi nous listons ici quelques packages utiles : 
 \begin{itemize}
-\item Le \package{csvtools} possède une fonction pour tracer un diagramme circulaire à partir d'un fichier \ext{csv}. 
-\item Le package \package{datatools} proposent un certain nombre de graphiques statistiques. Il nécéssite d'enregistrer les donnés selon une forme liée au package. Nous renvoyons à sa documentation.
+\item Le package \package{csvpie} propose une fonction pour tracer un diagramme circulaire à partir d'un fichier \ext{csv}\footcite[Sa documentation se trouve dans celle du package \package{csvtools} :][]{csvtools_pie}. 
+\item Le package \package{datatool} proposent un certain nombre de graphiques statistiques. Il nécessite d'enregistrer les données selon une forme liée au package. Nous renvoyons à sa documentation\footnote{datatool}.
 \end{itemize}
-
-À noter qu'il existe un package (non testé) \package{calctable} qui permet de faire des calculs dans un tableau \LaTeX, par exemple pour afficher automatiquement la somme d'une colonne.
-
-
-
 \end{plusloins}

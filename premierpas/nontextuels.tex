@@ -1,79 +1,76 @@
 \chapter{Insérer des éléments non textuels}
 
 \begin{prealable}
-	Dans ce chapitre nous allons examiner comment insérer des éléments qui ne font pas parties du flux du texte : images, graphismes, tableaux de données.
+	Dans ce chapitre nous allons examiner comment insérer des éléments qui ne font pas parti du flux du texte : images, graphismes, tableaux de données.
 \end{prealable}
 
 \section{Insérer des images}
 
-Les images insérables avec Xe\LaTeX doivent être au format JPEG (extension \ext{jpg}) ou PNG (extension \ext{png}) ou PDF (extension \ext{jpg}). Il est nécessaire d'utiliser le package \package{graphicx}
+Les images insérables avec \XeLaTeX sont au format JPEG (extension~\ext{jpg}) ou PNG (extension~\ext{png}) ou PDF (extension~\ext{jpg}). Il est nécessaire d'utiliser le package \package{graphicx}.
 
-\begin{minted}{latex}
-\usepackage{graphicx}
+
+L'insertion d'une image se fait de la manière suivante : \csp{includegraphics}\arg{param. opti.}\marg{chemin de l'image}
 \end{minted}
 
-L'insertion d'une image se fait de la manière suivante :
-\begin{minted}{latex}
-\includegraphics[param. opti.]{chemin de l'image}
-\end{minted}
+Le chemin de l'image s'indique de la même manière que le chemin des fichiers inclus.\renvoi{chemin}
 
-Le chemin de l'image s'indique de la même manière que le chemin des fichiers inclus, vu plus haut.\renvoi{chemin}
+Les principaux paramètres optionnels sont les suivants\footcite[Pour les autres, on consulter][]{graphicx_options} :
 
-Les paramètres optionnels peuvent être les suivants :
-
-\begin{longtable}{l||l|l}
+\begin{longtable}{|l|l|l|}
+	\hline
 	Paramètres & Signification & Exemple	\\
 	\hline
 	\endhead
-	width		& Largeur 	& \verb|width=10cm| 	\\
+	\hline
+	\endfoot
+	angle		& Angle exprimé en degré. Un nombre positif indique une rotation anti-horaire, un nombre négatif une rotation horaire. 	& \verb|angle=90| \\
 	height		& Hauteur	& \verb|height=10cm|	 \\
-	scale		& Redimension proportionelle & \verb|scale=0.5|\\
-	
+	scale		& Redimension proportionnelle & \verb|scale=0.5|\\
+	width		& Largeur 	& \verb|width=10cm| 	\\
 \end{longtable}
 
 \begin{plusloins}
-Le centimètre n'est pas la seule  unité de mesure disponible en \LaTeX. Nous en parlons en annexe de ce livre.
+Le centimètre n'est pas la seule  unité de mesure disponible en \LaTeX. Nous en parlons en annexe de ce livre.\ref{unite}
+\end{plusloins}
+
+\begin{plusloins}
+Le package \package{graphicx} propose des nombreux outils pour manipuler graphiquement du contenu, textuel ou non. Consultez le manuel\footcite{graphicx}.
 \end{plusloins}
 
 \begin{attention}
 	Évidemment, il est plus correct d'insérer une légende sous une image. Nous expliquons comment faire plus loin.\renvoi{legende}
 \end{attention}
 
-\section{Insertion de graphisme et de schémas}
+\section{Insérer des graphismes et des schémas}
 
-On peut vouloir insérer divers type de graphisme ou de schémas : graphismes statistiques, arbres généalogiques, arbres de familles de manuscrits etc.
-
+On peut vouloir insérer divers type de graphisme ou de schémas : graphique statistique, arbre généalogique, \emph{stemma codicum} etc.
 Deux solutions s'offrent à nous :
 \begin{enumerate}
 \item Utiliser un logiciel externe qui exporterait le graphisme dans une image, qu'on insérerait comme n'importe quelle image.
-\item Utiliser les possibilités de \LaTeX et du paquet \package{TikZ}.\label{TikZ}
+\item Utiliser les possibilités de \LaTeX et du package\package{TikZ}.\label{TikZ}
 \end{enumerate}
 
-La première solution paraît de prime abord plus simple, puisqu'elle ne nécessite pas d'apprendre des nouveaux éléments en \LaTeX. Toutefois elle nécessite de gérer plus de fichiers\footnote{Prenons un graphisme généré par un tableur : il faudra conserver la feuille du tableur plus l'image du graphisme généré par celui-ci.}. En outre, les images exportés par ces logiciels étant bien souvent de type bitmap et non pas vectorielle%
-\footnote{Il existe deux manières en informatiques de coder une image : en codant point par point (image bitmap) ou bien en codant simplement les formes, par exemple des cercles ou des segments (images vectorielle). La première méthode est adaptée à des images complexes, comme par exemple une photos,  le seconde méthode est conseillée pour les images \enquote{simple} tel que les graphisme. La méthode vectorielle possède l'avantage d'être plus facilement redimensionnable  sans perte de qualité et de permettre aisément la sélection de texte.},
-on perd la possibilité de sélectionner dans le PDF généré par LaTeX les textes, et on risque d'avoir des problèmes de redimensionnement.
+La première solution paraît de prime abord plus simple, puisqu'elle ne nécessite pas d'apprendre des nouveaux éléments en \LaTeX. Toutefois elle nécessite de gérer plus de fichiers\footnote{Prenons un graphisme généré par un tableur : il faudra conserver la feuille du tableur plus l'image du graphisme généré par celui-ci.}. En outre, les images exportées par ces logiciels étant bien souvent de type bitmap et non pas vectoriel%
+\footnote{Il existe deux manières en informatiques de coder une image : en codant point par point (image bitmap) ou bien en codant simplement les formes, par exemple des cercles ou des segments (image vectorielle). La première méthode est adaptée à des images complexes, comme les photographies,  le seconde méthode est conseillée pour les images \enquote{simples} telles que les graphismes. La méthode vectorielle possède l'avantage d'offrir une image plus facilement redimensionnable  sans perte de qualité et de permettre aisément la sélection de texte.},
+on perd la possibilité de sélectionner dans le PDF généré par \LaTeX les textes, et on risque d'avoir des problèmes de redimensionnement.
 
 Nous allons donc ici vous présenter une possibilité du \package{TikZ} : la représentation d'une famille de manuscrits. 
 
-Nous avons choisi cette exemple car il est relativement simple, tout en étant fréquent en sciences humaines. Mais \package{TikZ} permet de faire bien plus, comme par exemple de produire des diagrammes statistiques : nous renvoyons à d'autres ouvrages pour en savoir plus\footcites[Outre le manuel on pourra lire][]{tikzimpatient}[on pourra également consulter le site ][]{tikzexample}.
+Nous avons choisi cet exemple car il est assez simple, tout en étant fréquent en sciences humaines. Mais \package{TikZ} permet de faire bien plus, comme produire des diagrammes statistiques : nous renvoyons à d'autres ouvrages pour en savoir plus\footcites[Outre le manuel][]{tikz}[on pourra lire][]{tikzimpatient}[on pourra également consulter le site ][]{tikzexample}.
 Ce package possède une syntaxe spécifique. 
 
 \begin{attention}
-	Bien que le package s'appelle \package{TikZ}, il faut dans le préambule l'appeler \emph{sans majuscules}.
-	\begin{minted}{latex}
-	\usepackage{tikz}
-	\end{minted} 
+	Bien que le package s'appelle \package{TikZ}, il faut dans le préambule l'appeler \emph{sans majuscules} : \cs{usepackage}\verb+{tikz}+.
+ 
 \end{attention}
 
 
-\subsection{Arbre représentant des familles de manuscrits}
-
-Notre exemple est volontairement simple. Nous disposons de six familles de manuscrits d'un même texte. La  famille A a engendré les familles B, C, D. Les familles E et F pour leurs parts sont issus de la famille D. 
+Notre exemple est volontairement simple. Nous disposons de six familles de manuscrits d'un même texte. La  famille A a engendré les familles B, C, D. Les familles E et F pour leurs parts sont issues de la famille D. 
 
 Le code est le suivant 
 \inputminted{exemples/premierpas/nontextuels/genealogie.tex}[linenos=true]
 
-Ce qui donne le résultat de la figure\ref{figure:genealogie}\renvoi{figure:genealogie}. \begin{figure}[hp]
+Ce qui donne le résultat de la figure~\ref{figure:genealogie}\renvoi{figure:genealogie}. \begin{figure}[hp]
 \centering
 \input{exemples/premierpas/nontextuels/genealogie}
 \caption{Exemple de généalogie}
@@ -82,19 +79,18 @@ Ce qui donne le résultat de la figure\ref{figure:genealogie}\renvoi{figure:gene
 Analysons le code :
 
 \begin{description}
-\item[Ligne 1]l'environnement \enviro{tikzpicture} est l'environnement utilisé pour insérer une figure TikZ. Il peut recevoir de nombreux arguments pour modifier certains aspects, tels que épaisseurs par défaut des lignes, tailles du texte, orientation du schéma. Nous renvoyons à la documentation.
-\item[Ligne 2] un nœud TikZ, matérialisé ici par le commande \cs{node} est un bloc de texte. On pourrait passer des options à cette commande, afin de modifier certains aspects (par exemple afficher un contour au texte).
+\item[Ligne 1] l'environnement \enviro{tikzpicture} est l'environnement utilisé pour insérer une figure TikZ. Il peut recevoir de nombreux arguments pour modifier certains aspects, tels que l'épaisseur par défaut des lignes, la taille du texte, l'orientation du schéma. Nous renvoyons à la documentation.
+\item[Ligne 2] un nœud TikZ, matérialisé  par le commande \csp{node}, est un bloc de texte. On pourrait passer des options à cette commande, afin de modifier certains aspects comme la taille du texte.
 \item[Lignes 3 et 4] \verb|child| désigne ici une opération : associer un fils au nœud précédent. Ce fils est lui même un nœud (\verb|node|)
-\item[Lignes 5 à 12]même chose que précédemment, sauf que le nœud D se voit attribuer des fils (E et F). Notez le nombre d'accolade et leurs imbrications : c'est ce qui permet à \package{TikZ} de construire correctement la généalogie.
-\item[Ligne 13] le point-virgule est important.
-Il est obligatoire après chaque commande \package{TikZ} (ici \cs{node}).
-\item[Ligne 14] fin de graphisme \package{TikZ}
+\item[Lignes 5 à 12]même chose que précédemment, sauf que le nœud D se voit attribuer des fils (E et F). Notez le nombre d'accolades et leurs imbrications : c'est ce qui permet à \package{TikZ} de construire correctement le \emph{stemma}.
+\item[Ligne 13] le point-virgule est obligatoire après chaque commande \package{TikZ} (ici \cs{node}).
+\item[Ligne 14] fin du graphisme \package{TikZ}.
 \end{description}
 
-Évidemment un tel code est relativement complexe. C'est pourquoi nous conseillons de commenter attentivement le code\footnote{Pour des raisons de place nous ne l'avons pas fait ici} et de prêter extrêmement attention  aux accolades. Par ailleurs nous recommandons de mettre chaque graphisme \package{TikZ} dans un fichier séparé.
+Évidemment un tel code est relativement complexe. C'est pourquoi nous conseillons de le commenter attentivement\footnote{Pour des raisons de place nous ne l'avons pas fait ici.} et de prêter extrêmement attention  aux accolades. Par ailleurs nous recommandons de mettre chaque graphisme \package{TikZ} dans un fichier séparé.
 
 
-Notre arbre généalogique est relativement simple : il n'y a pas de consanguinité. Si cela avait été le cas la construction aurait été plus complexe : on n'aurait pas pu utiliser les opérations de types \verb|child| et il aurait fallu positionner précisément les éléments en utilisant un système de coordonnée.
+Notre \emph{stemma} est relativement simple : il n'y a pas de \enquote{consanguinité}. Si cela avait été le cas la construction aurait été plus complexe : on n'aurait pas pu utiliser les opérations de types \verb|child| et il aurait fallu positionner précisément les éléments en utilisant un système de coordonnée.
 
 
 
@@ -103,82 +99,85 @@ Notre arbre généalogique est relativement simple : il n'y a pas de consanguini
 \section[La notion de flottants]{Où insérer les éléments non textuels ? : la notion de flottants}
 \label{legende}
 Nous avons vu comment insérer des éléments non textuels. Mais vous constaterez rapidement que la mise en forme n'est pas toujours des meilleurs, l'élément s'insérant dans le texte à l'endroit précis où il a été appelé, ce qui peut entraîner des espaces blancs disgracieux.
-
 En outre, ces éléments non textuels disposent habituellement d'une légende.
 
-Pour résoudre ces deux problèmes --- positionnement esthétique et légende --- \LaTeX utilise la notion de flottant. \emph{Un flottant est donc un élément non textuel que LaTeX essaie d'insérer au meilleur endroit du point de vue de l'esthétique et qui dispose (éventuellement) d'une légende.}
+Pour résoudre ces deux problèmes --- positionnement esthétique et légende --- \LaTeX utilise la notion de flottant. Un flottant est donc un élément non textuel que LaTeX essaie d'insérer au meilleur endroit du point de vue de l'esthétique et qui dispose (éventuellement) d'une légende.
 
 Il existe deux types principaux de flottant :
 \begin{itemize}
-	\item Les figures.
-	\item Les tableaux.
+	\item Les figures, générées par l'environnement \enviro{figure}.
+	\item Les tableaux, générées par l'environnement \enviro{table}.
 \end{itemize}
 
 La syntaxe pour insérer le premier est la suivante :
 
 \begin{minted}{latex}
-\begin{figure}[paramètre de placement]
+\begin{figure}[<paramètre de placement>]
 	Insertion de la figure ou de l'image suivant les codes montrés plus haut.
-	\caption{Légende}
+	\caption{<Légende>}
 \end{figure} 
 \end{minted}
 
 Celle pour insérer le second est la suivante :
 \begin{minted}{latex}
-\begin{table}[paramètre de placement]
+\begin{table}[<paramètre de placement>]
 	Insertion d'un tableau suivant le codes montrés plus haut.
-	\caption{Légende}
+	\caption{<Légende>}
 \end{table} 
 \end{minted}
 
-Si la commande \cs{caption} est insérée au dessus de la figure, de l'image ou du table, la légende sera située au dessus de l'élément et non en dessous. Il est possible, mais déconseillée, de ne pas mettre de légende.
+Si la commande \cs{caption} est insérée au-dessus de la figure, de l'image ou du tableau, la légende sera située au dessus de l'élément et non en-dessous. Il est possible, mais déconseillée, de ne pas mettre de légende.
 
 Un exemple de flottant se situe  dans ce chapitre : la figure \ref{figure:genealogie}\renvoi{figure:genealogie}.
 \begin{attention}
-	On pourrait vouloir changer les intitulés comme \emph{figure} et \emph{tableau}. Tout ceci est possible, nous en parlerons plus loin dans le chapitre consacrée aux chaînes de langue.\renvoi{i18n}.
+	On pourrait vouloir changer les intitulés comme \emph{figure} et \emph{tableau}. Tout ceci est possible, nous en parlons plus loin, dans le chapitre consacré aux chaînes de langue.\renvoi{i18n}
 	
 	De même on pourrait souhaiter renvoyer automatiquement vers le numéro et la page d'une figure : nous en parlons dans le chapitre consacré à la navigation à l'intérieur d'un document.\renvoi{label}
 \end{attention}
 
-À noter que, comme les titres, la commande \cs{caption} peut recevoir un argument optionnel qui comptera pour titre dans la table des figures ou la table des tableaux :\renvoi{tablefigure}
+À noter que, comme les titres, la commande \csp{caption} peut recevoir un argument optionnel qui compte pour titre dans la table des figures ou la table des tableaux :\renvoi{tablefigure}
+\cs{caption}\oarg{Légende pour la table}\marg{Légende}.
 
-\begin{minted}{latex}
-\caption[Légende pour la table]{Légende}
-\end{minted}
 
 \begin{plusloins}
 
-Il peut-être utile de centrer le contenu du flottant. Il s'agit ici d'une exception au principe de séparation du fond de la forme. Pour procéder à ce centrage, il faut utiliser la commande \cs{centering}.
+Il peut être utile de centrer le contenu du flottant. Il s'agit ici d'une exception au principe de séparation du fond de la forme. Pour procéder à ce centrage, il faut utiliser la commande \csp{centering}.
 
 \begin{minted}{latex}
-\begin{figure}[paramètre de placement]
+\begin{figure}[<paramètre de placement>]
 	\centering
 	Insertion de la figure ou de l'image suivant les codes montrés plus haut.
-	\caption{Légende}
+	\caption{<Légende>}
 \end{figure} 
 \end{minted}
 
 
-Pour personaliser les styles des légendes, la méthode la plus simple reste encore d'utiliser le package \package{caption}. Nous renvoyons à la documentation.
-Pour utiliser une légende en dehors d'un flottant, on peut utiliser le package \package{ccaption}, qui permet d'autres choses encore.
+Pour personnaliser les styles des légendes, la méthode la plus simple reste encore d'utiliser le package \package{caption}\footcite{caption}. Nous renvoyons à la documentation.
+Pour utiliser une légende en dehors d'un flottant, on peut utiliser le package \package{ccaption}\footcite{ccaption}, qui permet d'autres choses encore.
 
-Il peut aussi arriver qu'on souhaite avoir deux élèments flottant en vis-à-vis (sur la page gauche et sur la page droite). On peut dans ce cas se servir du package \package{dpfloat}.
+Il peut aussi arriver qu'on souhaite avoir deux éléments flottants en vis-à-vis, sur la page gauche et sur la page droite. On peut dans ce cas se servir du package \package{dpfloat}\foocite{dpfloat}.
 
-Le package \package{endfloat} permet, quant à lui, de placer systèmatiquement les flottants à la fin du travail.
+Le package \package{endfloat}\footcite{endfloat} permet, quant à lui, de placer systématiquement les flottants à la fin du travail.
 
-On peut vouloir avoir des flottants orientés dans un autre sens que celui de la page. On utilisera pour ce faire le package \package{rotfloat}.
+On peut vouloir avoir des flottants orientés dans un autre sens que celui de la page. On utilisera pour ce faire le package \package{rotfloat}\footcite{rotfloat}.
+
+Il est possible d'insérer au sein d'une figure des sous-figures, chacune d'entre elles disposant d'une légende, en plus de la légende principal.
+Pour ce faire il faut utiliser le  \package{subcaption}\footcite{subcaption}.
 \end{plusloins}
 
 
 
 \subsection{Choix de l'emplacement du flottant}
 
-Le paramètre de placement indique à \LaTeX comment placer idéalement les flottants. Ce sont des paramètres indicatifs que le compilateur essaiera autant que possible de suivre, sans pour autant être contraint. Ces valeurs sont les suivantes :
+Le \arg{paramètre de placement} indique à \LaTeX comment placer idéalement les flottants. Il s'agit d'un paramètre indicatif que le compilateur essaie autant que possible de suivre, sans pour autant être contraint. Les valeurs sont les suivantes :
 
-\begin{longtable}{l|l}
+\begin{longtable}{|l|l|}
+	\hline
 	Valeur & Signification	\\
 	\hline
 	\endhead
+	\hline
+	\endfoot
 	h 	& À l'emplacement de l'appel au flottant 	\\
 	t 	& En haut d'une page				\\
 	b 	& En bas d'une page				\\
@@ -186,26 +185,14 @@ Le paramètre de placement indique à \LaTeX comment placer idéalement les flot
 \end{longtable}
 
 
-Si le système des flottants permet généralement de conserver une mise en page correcte tout en n'éloignant pas trop l'élément de son emplacement, il arrive parfois qu'il l'éloignement soit trop important.
+Si le système des flottants permet généralement de conserver une mise en page correcte tout en n'éloignant pas trop l'élément de son emplacement, il arrive parfois que l'éloignement soit trop important.
 
-Pour remédier à ce problème, on pourra utiliser la commande \cs{FloatBarrier} du paquet \package{placeins}. 
-Tout les flottants appelés précédemment seront systématiquement placés avant cette commande.
+Pour remédier à ce problème, on peut utiliser la commande \csp{FloatBarrier} du paquet \package{placeins}\footcite{placeins}. 
+Tout les flottants appelés avant la commande sont placées avant celle-ci.
 
-\subsection{Sous-figure}
 
-Il est possible d'insérer au sein d'une figure des sous-figures, chacune d'entre elles disposant d'une légende, en plus de la légende principal.
-Pour ce faire il faut utiliser le paquet \package{subfig}.
 
-La syntaxe est la suivante :  
-\begin{minted}{latex}
-\begin{figure}[paramètre de placement]
-	\subfloat[Légende 1]{Code de la figure 1}
-	\subfloat[Légende 2]{Code de la figure 2}
-	…
-	\subfloat[Légende N]{Code de la figure N}
-	\caption{Légende principale}
-\end{figure} 
-\end{minted}
+
 
 
 	
