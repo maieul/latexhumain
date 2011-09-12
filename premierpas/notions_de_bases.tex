@@ -33,7 +33,7 @@ Il existe en standard plusieurs classes de documents : citons \classe{book}, pou
 Tout document \LaTeX doit commencer par une déclaration de classe, avant toutes autres lignes. La syntaxe est la suivante : \cs{documentclass}\oarg{options}\marg{classe}
 
 \begin{attention}
-Dans la suite de ce livre, tout texte situé entre crochets (\meta{ainsi}), doit être remplacé dans votre fichier \ext{tex} par une valeur textuelle.
+Dans la suite de ce livre, tout texte situé entre crochets (\arg{ainsi}), doit être remplacé dans votre fichier \ext{tex} par une valeur textuelle.
 \end{attention}
 
 Les options viennent spécifier certaines propriétés de la classe. Dans notre exemple, nous précisons que la taille de la police du texte courant doit être de 12~pt et que le format du papier est A4. Vous pouvez indiquer plusieurs options, en les séparant par des virgules. \label{optionsclasse}. 
@@ -219,7 +219,7 @@ Il nous reste à définir une dernière notion de base : celle d'environnement .
 Un environnement  est une portion de document ayant une signification spécifique et qui par conséquent subit un traitement spécifique. Par exemple, pour indiquer une citation, une liste etc. Nous découvrirons au fur et à mesure  des environnements. 
 
 
-On marque le début d'un environnement  \meta{nom} par la commande \csp{begin}\marg{nom} et on le termine par la commande \csp{end}\marg{nom}.
+On marque le début d'un environnement  \arg{nom} par la commande \csp{begin}\marg{nom} et on le termine par la commande \csp{end}\marg{nom}.
 
 \begin{minted}{latex}
 \end{nom}
