@@ -1,63 +1,63 @@
 \chapter{Mettre en sens son document (1) : premiers pas}
 
 \begin{prealable}
-	Nous allons maintenant voir comment signaler \emph{mettre en sens}\footnote{Cette expression est de nous.} notre document, c'est à dire comment donner du sens, de la signification, à nos textes.
+	Nous allons maintenant voir comment \emph{mettre en sens} notre document, c'est à dire comment indiquer  la signification de nos textes.
 \end{prealable}
 
 \section{Mettre en forme n'est pas mettre en sens}\label{sensforme}
 
-Lorsque nous lisons un livre, tout les éléments ne sont pas présentés de la même manière : certains sont en gras, d'autres en italiques, en souligné, en couleurs, etc. 
+Lorsque nous lisons un livre, tout les éléments ne sont pas présentés de la même manière : certains sont en gras, d'autres en italique, en souligné, en couleur, etc. 
 
 Tout ceci constitue la \emph{mise en forme} du texte. Si notre livre est bien conçu, ces changements de forme renvoient à des changements de signification : l'italique peut indiquer un titre d'ouvrage ou bien une citation ou une simple insistance, le gras peut indiquer une notion ou une définition ou toute autre signification.
 
 On le voit, la \emph{mise en forme} diffère de la \emph{mise en sens}. Cette dernière est idéalement faite par l'auteur du travail, tandis que l'éditeur s'occupe normalement de la mise en forme et de la mise en page.
 
-C'est d'ailleurs ce qui se passait auparavant quand les auteurs proposaient encore des textes manuscrits à leurs éditeurs : ils indiquait les éléments à mettre en sens par des signes, mise en sens que l'éditeur transformait en mise en forme.
+C'est d'ailleurs ce qui se passait auparavant quand les auteurs proposaient encore des textes manuscrits à leurs éditeurs : ils indiquaient les éléments à mettre en sens par des signes, mise en sens que l'éditeur transformait en mise en forme\footnote{Dans un traitement de texte de type WYSIWYG, cette distinction se fait normalement à l'aide des styles. Bien souvent malheureusement les utilisateurs ne savent pas s'en servir.}.
 
-Dans \LaTeX, le principe est le même : il existe des commandes de mise en sens qui sont ensuite transformées en commande en mise en forme. Mieux : on peut définir ses propres commandes de mise en sens. L'intérêt est relativement évident : pouvoir changer rapidement de mise en forme pour un ensemble de données mise en sens.
+Dans \LaTeX, le principe est le même : il existe des commandes de mise en sens qui sont ensuite transformées en commande de mise en forme. Mieux : on peut définir ses propres commandes de mise en sens. L'intérêt est  évident : pouvoir changer rapidement de mise en forme pour un ensemble de données mises en sens.
 
 Un exemple sera plus parlant. Supposons que j'écrive un livre d'introduction à l'histoire du christianisme antique. Ce livre cite divers auteurs. Je souhaite mettre en valeur ces auteurs, et pour ce faire décide de les mettre en petites capitales.
+
 Donc, à chaque fois que je cite un auteur, j'indique que je souhaite avoir son nom en petite capitale.
-\footnote{Dans un traitement de texte de type WYSIWYG, cette distinction se fait normalement à l'aide des styles. Bien souvent malheureusement les utilisateurs ne savent pas s'en servir.}
 Vient le moment où j'imprime mon livre, et je me rend compte que le choix des petites capitales n'est pas le plus pertinent, mais qu'il vaudrait mieux mettre des gras. Il me reste alors à repérer toutes les petites capitales dans mon texte, à vérifier qu'il s'agit bien de petites capitales indiquant un nom d'auteur et à les remplacer par du gras.
 
-En revanche, si à la place de signaler une mise en petite capitale, j'avais simplement signalé qu'il s'agit d'un nom d'auteur -- par exemple en écrivant : \cs{auteur}\verb|{Tertullien}| -- je n'aurais qu'une seule ligne à changer pour indiquer que je souhaite avoir mes noms d'auteur en gras. Mieux : je pourrais créer très simplement un index de mes auteurs\renvoi{indexauteur}.
+En revanche, si à la place de signaler une mise en petite capitale, je signale simplement  qu'il s'agit d'un nom d'auteur --- par exemple en écrivant : \cs{auteur}\verb|{Tertullien}| --- je n'aurais qu'une seule ligne à changer pour indiquer que je souhaite avoir mes noms d'auteur en gras. Mieux : je pourrais créer très simplement un index de mes auteurs\renvoi{indexauteur}.
 
-LaTeX propose quelques commandes simples de mise en sens  : par exemple celle que nous avons vu plus haut pour indiquer les nouveaux de titres\renvoi{niveautitre}.
+LaTeX propose quelques commandes simples de mise en sens  : par exemple celles que nous avons vues plus haut pour indiquer les niveaux de titre\renvoi{niveautitre}.
 
-Nous allons ici présenter quelques autres commandes et environnements de mise en sens. Dans le chapitre suivant, nous citerons les commandes et environnements de mise en sens spécifique aux citations. Dans un troisième chapitre, nous présenterons la manière de créer ses propres commandes et environnements, et nous présenterons alors la manière de mettre en forme.
+Nous allons ici présenter quelques autres commandes et environnements de mise en sens. Dans le chapitre suivant, nous indiquerons des commandes et environnements de mise en sens spécifiques aux citations\renvoi{citertexte}. Dans un troisième chapitre, nous présenterons la manière de créer ses propres commandes\renvoi{creercommandes}, et nous présenterons alors la manière de mettre en forme.
 
 \section{Commandes de mise en sens}
 
 \subsection{Mise en valeur d'un texte}
 
-On peut ponctuellement vouloir mettre en valeur un morceau de son écrit. Pour ce faire il existe la commande \cs{emph}\footnote{\forme{emph} comme \footnote{emphase}.}
+On peut ponctuellement vouloir mettre en valeur un morceau de son écrit. Pour ce faire il existe la commande \cs{emph}\marg{texte en emphase}.
 
 Exemple :
 
 \begin{minted}{latex}
-Le quatrième siècle voit la naissance d'une Église impériale et par conséquent \emph{le basculement vers un christianisme de masse}, ce qui aura des impacts sur l'ecclésiologie, la théologie et la liturgie.
+Le quatrième siècle voit la naissance d'une Église impériale
+et par conséquent \emph{le basculement vers un christianisme de masse},
+ce qui aura des impacts sur l'ecclésiologie, la théologie et la liturgie.
 \end{minted}
 
-Concrètement, cela se traduira par un italique. 
+Concrètement cela se traduit par un italique. 
 
 \begin{quotation}
 Le quatrième siècle voit la naissance d'une Église impériale et par conséquent \emph{le basculement vers un christianisme de masse}, ce qui aura des impacts sur l'ecclésiologie, la théologie et la liturgie.
 \end{quotation}
 
-Toutefois, à la différence d'une commande qui indiquerait directement de mettre en italique, cette commande pourrait, si on voulait, donner un résultat différent (par exemple, une mise en couleur). 
+Toutefois, à la différence d'une commande qui indiquerait directement de mettre en italique, cette commande pourrait, si on voulait, donner un résultat différent, par exemple, une mise en couleur. 
 
-Une autre propriété intéressante est la gestion des imbrications : par défaut une commande \cs{emph} à l'intérieur d'une autre commande \cs{emph} donnera un texte en caractères droits.
+Une autre propriété intéressante est la gestion des imbrications : par défaut une commande \cs{emph} à l'intérieur d'une autre commande \cs{emph} produit un texte en caractères droits.
 
 \subsection{Le paratexte : notes de bas de page et de marges}
 
-\LaTeX propose deux commandes pour indiquer des paratextes\footnote{La question des apparats critiques mise à part, question que nous traiterons plus loin} : pour des notes de bas de page et de marge. Ces commandes sont respectivement \cs{footnote} et \cs{marginpar}.
+\LaTeX propose deux commandes pour indiquer des paratextes\footnote{La question des apparats critiques mise à part, question que nous traiterons plus loin} : pour des notes de bas de page et de marge, la position de ces dernières dépendant du caractère recto ou verso de la page. Ces commandes sont, respectivement, \cs{footnote} et \cs{marginpar}.
 
 \begin{minted}{latex}
-	Lorem\footnote{Une note de bas de page.} ipsum dolor amat. Aliquam lectus orci, adipiscing et, sodales ac, feugiat non, lacus. Ut dictum velit nec est. 
-	
-	Quisque posuere, purus sit amet malesuada blandit, sapien sapien auctor arcu, sed pulvinar felis mi sollicitudin tortor. Maecenas volutpat, nisl et dignissim pharetra, urna lectus ultrices est, vel pretium pede turpis id velit. Aliquam sagittis\marginpar{Annotation marginale} magna in felis egestas rutrum. Proin wisi libero, vestibulum eget, pulvinar nec, suscipit ut, mi.
-	
+Lorem\footnote{Une note de bas de page.} ipsum dolor amat.
+Aliquam sagittis\marginpar{Annotation marginale} magna in felis egestas rutrum.
 \end{minted}
 
 \begin{attention}
@@ -70,17 +70,17 @@ Une autre propriété intéressante est la gestion des imbrications : par défau
 \end{attention}
 
 \begin{anedocte}
-	Certains préfèrent mettre des notes de fin de texte. Bien que nous n'aimions guère ce choix, nous signalons qu'il est possible de produire des notes de fin de texte à l'aide du package \package{endnotes}.
+	Certains préfèrent mettre des notes de fin de texte. Bien que nous n'approuvons guère ce choix, nous signalons qu'il est possible d'en produire à l'aide du package \package{endnotes}.
 \end{anedocte}
 
 \subsection{Listes}
 
-\LaTeX propose trois types de listes : les listes numérotées, les listes non numérotées et les listes de descriptions.
+\LaTeX propose trois types de listes : les listes numérotées, les listes non numérotées et les listes de description.
 
 \subsubsection{Les listes numérotées}
 
 Une liste numérotée est un environnement \enviro{enumerate}.
-Chaque élément de la liste est marqué par la commande \cs{item}.
+Chaque élément de la liste est marqué par la commande \csp{item}.
 
 \begin{minted}{latex}
 \begin{enumerate}
@@ -91,7 +91,7 @@ Chaque élément de la liste est marqué par la commande \cs{item}.
 \end{minted}
 
 \begin{quotation}
-\begin{enumerate}
+\noindent\begin{enumerate}
 	\item Premier élément
 	\item Second élément
 	\item Troisième élément
@@ -99,7 +99,7 @@ Chaque élément de la liste est marqué par la commande \cs{item}.
 \end{quotation}
 
 \begin{anedocte}
-Il existe un package \package{etaremune} qui permet d'avoir un environnement  \enviro{etaremune} pour avoir des listes numérotées à l'envers (avec le plus grand nombre en début de liste).
+Il existe un package \package{etaremune} qui propose un environnement  \enviro{etaremune} pour obtenir une liste numérotée à l'envers, avec le plus grand numéro en début de liste.
 
 \end{anedocte}
 \subsubsection{Les listes non numérotées}
@@ -115,34 +115,37 @@ Chaque élément de la liste est marqué par la commande \cs{item}.
 \end{itemize}
 \end{minted}
 
-\begin{itemize}
+\begin{quotation}
+\noindent\begin{itemize}
 	\item Un élément
 	\item Un autre
 	\item Encore un autre
 \end{itemize}
+\end{quotation}
 
 \subsubsection{Les listes de descriptions}
 
-Une liste de descriptions assigne des valeurs une à une. Une telle liste peut être utile pour des lexiques, des glossaires, des chronologies etc. Pour chaque couple, la première valeur est passée comme argument à la commande \cs{item}. Les listes de définitions sont des environnements \enviro{description}.
+Une liste de descriptions fait correspondre une à une des valeurs. Une telle liste peut être utile pour des lexiques, des glossaires, des chronologies etc. Pour chaque couple, la première valeur est passée comme argument à la commande \cs{item}. Les listes de définitions sont des environnements \enviro{description}.
 
 
 \begin{minted}{latex}
 \begin{description}
-	\item[-722] Chute de Samarie
-	\item[-597] Première chute de Jérusalem
-	\item[-587] Seconde chute de Jérusalem
+	\item[325]Concile de Nicée.
+	\item[381]Concile de Constantinople.
+	\item[431]Concile d'Éphèse.
 \end{description}
 \end{minted}
-
-\begin{description}
-	\item[-722] Chute de Samarie
-	\item[-597] Première chute de Jérusalem
-	\item[-587] Seconde chute de Jérusalem
+\begin{quotation}
+\noindent\begin{description}
+	\item[325]Concile de Nicée}.
+	\item[381]Concile de Constantinople.
+	\item[431]Concile d'Éphèse.
 \end{description}
+\end{quotation}
 
 \subsection{Imbrication des listes}
 
-Il est possible d'imbriquer des listes, quelques soient leurs types. On ne peut, par défaut, avoir plus de quatre niveaux d'imbrications.
+Il est possible d'imbriquer des listes, quelques soient leurs types. On ne peut, par défaut, avoir plus de quatre niveaux d'imbrication.
 
 \begin{minted}{latex}
 \begin{itemize}
@@ -154,8 +157,8 @@ Il est possible d'imbriquer des listes, quelques soient leurs types. On ne peut,
 	\iteem Un autre élément de premier niveau
 \end{itemize}
 \end{minted}
-
-\begin{itemize}
+\begin{quotation}
+\noindent\begin{itemize}
 	\item Un élément de premier niveau
 	\begin{enumerate}
 			\item Premier sous élément
@@ -163,7 +166,8 @@ Il est possible d'imbriquer des listes, quelques soient leurs types. On ne peut,
 	\end{enumerate}
 	\item Un autre élément de premier niveau
 \end{itemize}
+\end{quotation}
 
-\subsection{Personalisation des listes}
-
-Il peut arriver d'avoir besoin de personnaliser l'aspect des listes, ou bien encore de devoir arrêter une numérotation de liste pour la reprendre plus loin. Bertrand Masson à fait un excellent tutoriel sur la manière d'utiliser le packages \package{enumitem} pour arriver à ces fins\footcite{bebert_liste}. 
+\begin{anedocte}
+Il peut arriver d'avoir besoin de personnaliser l'aspect des listes, ou bien encore de devoir arrêter une numérotation de liste pour la reprendre plus loin. Bertrand Masson a écrit un excellent tutoriel sur la manière d'utiliser le packages \package{enumitem} pour arriver à ces fins\footcite{bebert_liste}. 
+\end{anedocte}
