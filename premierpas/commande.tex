@@ -1,37 +1,34 @@
 \chapter{Mettre en sens (3) : créer ses propres commandes}\label{creercommandes}
 
 \begin{prealable}
-Nous avons parlé longuement de l'intérêt de séparer mise en sens et mise en forme.\renvoi{mef}.
-Nous avons indiquer que la meilleur manière pour ce faire était de créer des commandes de mise en sens, qui elle-même appelleront des commandes de mise en forme.
+Nous avons parlé longuement de l'intérêt de séparer mise en sens et mise en forme\renvoi{sensforme}.
+Nous avons indiqué que la meilleure manière pour ce faire était de créer des commandes de mise en sens, qui elles-même appelleraient des commandes de mise en forme.
 
-Voyons maintenant comment créer ces commandes personalisées.
+Voyons maintenant comment créer ces commandes personnalisées.
 \end{prealable}
 
 \section{Création d'une commande personnalisée}
 
-Reprenons notre exemple : nous voulons créer une commande personnalisée servant à indiquer que nous parlons d'un auteur : \cs{auteur}\marg{nom}.
+Nous souhaitons créer une commande personnalisée servant à indiquer que nous parlons d'un auteur : \csp{auteur}\marg{nom}.
 
-Notre commande se décompose en plusieurs parties : son nom (ici \contenuarg{auteur}) et ses arguments (ici, un seul \arg{nom}).
+Notre commande se décompose en plusieurs parties : son nom, ici \contenuarg{auteur}, et ses arguments, ici un seul : \arg{nom}.
 
-Une commande LaTeX peut prendre jusqu'à 9 arguments, ce qui est en général bien suffisant. Si nous notons N le nombre d'arguments, la syntaxe de la déclaration d'une nouvelle commande est là suivante :
-
-\begin{minted}{latex}
-\newcommand{\nomcommande}[N]{code}
-\end{minted}
+Une commande LaTeX peut prendre jusqu'à 9 arguments, ce qui est en général bien suffisant. Si nous notons \arg{N} le nombre d'arguments, la syntaxe de la déclaration d'une nouvelle commande est là suivante :
+\csp{newcommand}\verb|{\|\arg{nomcommande}\verb|}|\oarg{N}\marg{code}.
 
 \begin{attention}
-	Les noms de commandes ne doivent contenir que des caractères alpha-numériques\footnote{Les 26 lettres et les dix chiffres.} non accentués. 
+	Les noms de commandes ne doivent contenir que des caractères alpha-numériques latins non accentués, c'est à dire les vingt-six lettres de l'alphabet latin et les dix chiffres arabes. 
 	
 	Les noms sont sensibles à la casse : \verb|\a| est différent de \verb|\A|.
 \end{attention}
-À l'intérieur de la partie \arg{code}, on pourra  :
+À l'intérieur de la partie \arg{code}, on peut  :
 \begin{itemize}
 	\item Mettre du texte.
 	\item Utiliser des commandes de mise en forme ou de mise en sens.
-	\item Appeler les arguments passés en utilisant la syntaxe \#x, où x représente le rang de l'argument.
+	\item Appeler les arguments passés en utilisant la syntaxe \verb|#x|, où \verb|x| représente le rang de l'argument.
 \end{itemize}
 
-Prenons toujours notre cas d'une commande pour indiquer les noms. Pour le début, nous souhaitons simplement que les noms d'auteur soient suivis d'un astérix (*).
+Prenons toujours notre cas d'une commande pour indiquer les noms. Pour le début, nous souhaitons simplement que les noms d'auteur soient suivis d'un astérique (*).
 
 \begin{minted}{latex}
 \newcommand{\auteur}[1]{#1*}
@@ -41,6 +38,7 @@ mais tertullianiste.
 
 \newcommand{\auteur}[1]{#1*}
 
+Ce qui nous donne
 \begin{quotation}
 Il est bien connu que \auteur{Tertullien} n'était pas montaniste mais tertullianiste.
 \end{quotation}
@@ -53,8 +51,7 @@ On pourrait souhaiter passer en second argument des informations complémentaire
 \begin{minted}{latex}
 \newcommand{\auteur}[2]{#1* (#2)}
 Il est bien connu que \auteur{Tertullien}{150 ? - 220 ?}
-n'était pas montaniste
-mais tertullianiste.
+n'était pas montaniste mais tertullianiste.
 \end{minted}
 
 \renewcommand{\auteur}[2]{#1* (#2)}
@@ -67,9 +64,9 @@ n'était pas montaniste mais tertullianiste.
 \begin{plusloins}
 Le lecteur attentif se rappellera \renvoi{syntaxecommande} qu'il est possible d'avoir des commandes avec des arguments optionnels. Il souhaitera sans doute en créer lui même.
 
-Si \LaTeX prévoit bien en standard un mécanisme pour permettre cela, le mécanisme est relativement peu souple. 
+Si \LaTeX prévoit bien en standard un mécanisme pour permettre cela, celui-ci est  peu souple. 
 
-Nous conseillons donc de ce tourner vers le package \package{xargs} et \package{ifthenelse} afin de pouvoir faire des tests à l'intérieur d'une déclaration de commande.
+Nous conseillons donc de ce tourner vers les packages \package{xargs} et \package{ifthenelse}.
 
 Mais tout ceci dépasserait le cadre de cette ouvrage.
 \end{plusloins}
@@ -94,24 +91,23 @@ Nous décrirons plus loin dans ce chapitre un ensemble de commande de mise en fo
 	
 	Il est donc recommandée de discuter au préalable avec son éditeur, et surtout de lui indiquer qu'un balisage sous forme de commande doit, normalement, lui faciliter la tâche.
 	
-	Gageons qu'avec le développement  de \LaTeX dans le monde des sciences humaines les éditeurs rechignent de moins en moins à accepter ce format.
 	
-	Nous recommandons par ailleurs de regrouper toutes ses déclarations de commandes dans un fichier unique, appelés via une commande \cs{include}.
+	Nous recommandons par ailleurs de regrouper toutes ses déclarations de commandes dans un fichier unique, appelé via une commande \cs{input}.\renvoi{input}
 	
 	Il est également possible de créer son propre package, pour des commandes utilisées fréquemment dans plusieurs projets\footcite[Ceci dépasserais le cadre de cet ouvrage : je renvois à d'autres documents. Par exemples][]{creer_sty}.
 \end{attention}
 
 
 \begin{plusloins}\label{commentaireredac}
-On peut ainsi très facilement créer une commande \cs{commentaire} servant pour indiquer des commentaires personnels au cour de la rédaction, afin de les avoir sous soi lors d'une relecture papier.
-
+On peut ainsi très facilement créer une commande \cs{commentaire} servant pour indiquer des commentaires personnels au cour de la rédaction, afin de les avoir sous les yeux lors d'une relecture papier.
 Par exemple :
 
 \begin{minted}{latex}
 \newcommand{\commentaire}[1]{\marginpar{#1}}
 \end{minted}
 
-Lors de l'impression finale, il suffira de changer cette commande par :
+Lors de l'impression finale, il suffit de changer cette commande par :
+
 \begin{minted}{latex}
 \newcommand{\commentaire}[1]{}
 \end{minted}
@@ -120,11 +116,9 @@ Lors de l'impression finale, il suffira de changer cette commande par :
 
 \subsection{Code d'une commande sur plusieurs lignes}\label{commandepourcent}
 
-Jusqu'ici nos commandes étaient relativement simples. Mais il peut arriver que leur code se complexifie. Nous souhaiterons alors l'avoir sur plusieurs lignes.
+Jusqu'ici nos commandes étaient relativement simples. Mais il peut arriver que leur code se complexifie. On souhaiterait alors l'avoir sur plusieurs lignes.
 
-C'est tout à fait possible, mais il faut simplement mettre  un signe pourcentage (\%) à la fin de chaque ligne, sous peine d'avoir  des espaces intempestifs.
-
-Exemple sans  \% :
+C'est tout à fait possible, mais il faut simplement mettre  un signe pourcentage (\%) à la fin de chaque ligne, sous peine d'avoir  des espaces intempestives. Exemple sans  \% :
 
 \begin{minted}{latex}
 \newcommand{\auteur}[2]{
@@ -141,9 +135,8 @@ Il est bien connu que \auteur{Tertullien}{150 ? - 220 ?}
 n'était pas montaniste mais tertullianiste.
 \end{quotation}
 
-On constate un espace en trop avant et après la mention de l'auteur\footnote{Pour les besoins de l'explication, nous avons souligné cet espace.}.
-
-En revanche, si on met des \% 
+On constate une espace en trop avant et après la mention de l'auteur, que nous avons soulignée pour les besoins de l'explication.
+En revanche, si on met des \% :
 
 \begin{minted}{latex}
 \newcommand{\auteur}[2]{%
@@ -163,27 +156,25 @@ n'était pas montaniste mais tertullianiste.
 On ne constate pas d'espace intempestifs.
 
 
-\subsection[Étoiler newcommand]{Étoiler \cs{newcommand}}
+\subsection{Étoiler \csnoidx{newcommand}}\sindex[cs]{#1@\oldcs{#1}}
 
-La création des commandes sous \LaTeX est une fonctionnalité très puissante, mais potentiellement dangereuse.
-
-Supposons la commande suivante :
+La création des commandes sous \LaTeX est une fonctionnalité très puissante, mais potentiellement dangereuse. Prenons la commande suivante :
 
 \begin{minted}{latex}
 \newcommand{\auteur}[1]{\textsc{#1}*}
 \end{minted}
 
-Imaginons que je l'appelle en oubliant de fermer mon accolade :
+Imaginons que nous l'appelions en oubliant de fermer notre accolade :
 
 \begin{minted}{latex}
 Il est bien connu que \auteur{Tertullien n'était pas montaniste mais tertullianiste.
 \end{minted}
 
-Que va-t-il se passer ? \LaTeX va comprendre que l'ensemble de la fin du texte est un argument de la commande, ce qui empêchera le compilateur de bien fonctionner, et vous n'obtiendrez rien.
+Que va-t-il se passer ? \LaTeX comprend que l'ensemble de la fin du texte est un argument de la commande, ce qui empêche le compilateur de bien fonctionner  et nous n'obtiendrons rien, ou alors un résultat incorrect.
 
-Pour limiter ces soucis, \LaTeX propose de définir des commandes courtes, dont les arguments ne dépasseront pas la longueur d'un paragraphe. En cas d'oublis de fermeture de parenthèses, \LaTeX arrêtera automatiquement l'argument à la fin d'un paragraphe.
+Pour limiter ces soucis, \LaTeX propose de définir des commandes courtes, dont les arguments ne dépassent pas la longueur d'un paragraphe. En cas d'oubli de fermeture de parenthèses, \LaTeX arrête automatiquement l'argument à la fin du paragraphe.
 
-Pour définir ces commandes courtes, il suffit d'utiliser la commande{newcommand*}.
+Pour définir ces commandes courtes, il suffit d'utiliser la \csp{newcommand*}.
 
 \begin{minted}{latex}
 \newcommand*{\auteur}[1]{\textsc{#1}*}
@@ -192,13 +183,13 @@ Pour définir ces commandes courtes, il suffit d'utiliser la commande{newcommand
 \subsection{Espace après les commandes sans argument}
 
 
-Il est possible de définir des commandes sans aucun argument. Prenons la commande suivante, qui permet d'obtenir rapidement la forme \forme{\cf}
+Il est possible de définir des commandes sans aucun argument. Prenons une commande personalisée \cps{cf}, qui permet d'obtenir rapidement la forme \forme{\cf}
 
 \begin{minted}{latex}
 \newcommand{\cf}[0]{\emph{cf.}}
 \end{minted}
 
-Comme notre commande n'a pas d'argument, il est nécessaire, lorsque nous l'appelons, de la séparer du texte qui suit par un espace, afin que \LaTeX sache où s'arrête la commande : 
+Comme notre commande ne prend pas d'argument, il est nécessaire, lorsque nous l'appelons, de la séparer du texte qui suit par un espace, afin que \LaTeX sache où s'arrête la commande : 
 
 \begin{minted}{latex}
 Ceci est très intéressant \cf cela.
@@ -210,7 +201,7 @@ Mais dans ce cas, l'espace disparaît lors de la compilation :
 Ceci est très intéressant \cf cela.
 \end{quotation}
 
-La solution consiste à utiliser dans la définition de commande la commande \cs{xspace} du package éponyme. Cette commande permet de gérer automatiquement les espaces qui suivent l'appel à une commande, en tenant compte de la typographie.
+La solution consiste à utiliser dans la définition de commande la commande \cs{xspace} du package éponyme\sindex[pkg]{xspace}. Elle permet de gérer automatiquement les espaces qui suivent l'appel à une commande, en tenant compte de la typographie.
 
 \begin{minted}{latex}
 \newcommand{\cf}[0]{\emph{cf.}\xspace}
@@ -226,70 +217,85 @@ Ceci est très intéressant \cf cela.
 
 \section{Commandes de mise en forme\label{mef}}
 
-Nous listons ici les principales commandes de mise en forme. Pour des besoins avancées, on trouvera aisément de la documentation sur internet.
+Nous listons ici les principales commandes de mise en forme. Pour des besoins avancées, on trouvera aisément de la documentation sur internet. En ce qui concerne les questions d'espacement, un chapitre spécifique leur est dédié\renvoi{espacement}.
 
 \subsection{Taille des caractères}\label{taille}
 
 Il est possible de définir de manière absolue la taille des caractères en indiquant le nombre de points. Toutefois la meilleur méthode est de le définir d'après la taille de base, et d'utiliser les commandes ci-dessous. La taille obtenue dépendra de la taille de base définie lors de l'appel au préambule\renvoi{preambule}.
 
-\begin{longtable}{l|l}
+\begin{longtable}{|l|l|}
+	  \hline
 	 Commande 				&	Effet 								\\
  	 \hline
 	 \endhead
-	
-	 \cs{tiny} 			& 	\tiny{abcdefghijklmnopqrstuvwxyz} 			\\
-	 \cs{scriptsize} 		& 	\scriptsize{abcdefghijklmnopqrstuvwxyz} 		\\
-	 \cs{footnotesize} 	& 	\footnotesize{abcdefghijklmnopqrstuvwxyz}		\\
-	 \cs{small}			&	\small{abcdefghijklmnopqrstuvwxyz}			\\
-	 \cs{normalsize}		& 	\normalsize{abcdefghijklmnopqrstuvwxyz}		\\
-	 \cs{large}			&	\large{abcdefghijklmnopqrstuvwxyz}			\\
-	 \cs{Large}			& 	\Large{abcdefghijklmnopqrstuvwxyz}			\\
-	 \cs{LARGE}		& 	\LARGE{abcdefghijklmnopqrstuvwxyz}			\\
-	 \cs{huge}			& 	\huge{abcdefghijklmnopqrstuvwxyz}			\\
-	 \cs{Huge}			&	\Huge{abcdefghijklmnopqrstuvwxyz}			\\
-\end{longtable}
-
-\subsection{Style de caractères}
-
-Voici une liste non exhaustive de commandes utiles pour personnaliser les styles de caractères.
-
-
-\begin{longtable}{l|l}
-	Commande				& Effet 								\\
 	\hline
-	\cs{textit}			& \textit{Italique}							\\
-	\cs{emph}			& \emph{Texte en emphase}					\\
-	\cs{textbf}			&  \textbf{Gras}							\\
-	\cs{textsc}			& \textsc{Petites capitales}					\\
-	\cs{underline}		& \textsc{Souligné}	 (à éviter)				\\
-	\cs{textsuperscript}	&  \textsuperscript{Exposant}					\\
-	\endhead
-	
+	\endfoot
+	 \csp{tiny} 			& 	\tiny abcdefghijklmnopqrstuvwxyz  			\\
+	 \csp{scriptsize} 		& 	\scriptsize abcdefghijklmnopqrstuvwxyz  		\\
+	 \csp{footnotesize} 	& 	\footnotesize abcdefghijklmnopqrstuvwxyz 		\\
+	 \csp{small}			&	\small abcdefghijklmnopqrstuvwxyz 			\\
+	 \csp{normalsize}		& 	\normalsize abcdefghijklmnopqrstuvwxyz 		\\
+	 \csp{large}			&	\large abcdefghijklmnopqrstuvwxyz 			\\
+	 \csp{Large}			& 	\Large abcdefghijklmnopqrstuvwxyz 			\\
+	 \csp{LARGE}		& 	\LARGE abcdefghijklmnopqrstuvwxyz 			\\
+	 \csp{huge}			& 	\huge abcdefghijklmnopqrstuvwxyz 			\\
+	 \csp{Huge}			&	\Huge abcdefghijklmnopqrstuvwxyz 			\\
 \end{longtable}
 
-\subsection{Couleur}
+Ces commandes ont toutefois un comportement particulier : ce sont des commandes dites \enquote{à bascule}\renvoi{bascule}. À la différence de la plupart des commandes, elles ne prennent pas d'argument. Elles doivent être utilisées entres accolades, le texte dont la taille change étant inséré après la commande, dans les accolades.
 
-Les couleurs ne sont pas gérées nativement dans \LaTeX. Il faut passer par le package \package{color} ou le package \package{xcolor}. Ils proposent tout les deux une commande \cs{textcolor}
-
+Ainsi :
 \begin{minted}{latex}
-
-\textcolor{nom de la couleur}{texte à mettre en couleur}}.
+{\large Texte plus gros}
 \end{minted}
 
+Et non pas :
+\begin{minted}{latex}
+\large{s}
+\end{minted}
+\subsection{Style de caractères}
 
-La différence tient principalement au nombre de color disponible par défauts et à la facilité à en définir des nouvelles, mais aussi à la facilité d'appliquer des couleurs à d'autres éléments que le texte\footnote{Par exemple les lignes de tableaux.}. Nous ne présenterons ici que le package \package{xcolor}, de manière succincte. Nous renvoyons vers la documentation pour des usages avancées.
+Voici une liste non exhaustive de commandes utiles pour personnaliser les styles de caractère.
+
+
+\begin{longtable}{|l|l|}
+	\hline
+	Commande				& Effet \\								\\
+	\hline
+	\endhead
+	\hline
+	\endfoot
+	\csp{textit}			& \textit{Italique}							\\
+	\csp{emph}			& \emph{Texte en emphase}					\\
+	\csp{textbf}			&  \textbf{Gras}							\\
+	\csp{textsc}			& \textsc{Petites capitales}					\\
+	\csp{underline}		& \textsc{Souligné}	 (à éviter)				\\
+	\csp{textsuperscript}	&  \textsuperscript{Exposant}					\\
+	\csp{textsubscript}		& \textsubscript{Index} (nécessite le package \package{subscript}) \\
+\end{longtable}
+
+\subsection{Couleurs}
+
+Les couleurs ne sont pas gérées nativement dans \LaTeX. Il faut passer par le package \package{color} ou le package \package{xcolor}. Ils proposent tout les deux une commande \csp{textcolor}\marg{nom de la couleur}\marg{texte en couleur}.
+
+
+
+La différence tient principalement au nombre de couleurs disponibles par défaut et à la facilité à en définir des nouvelles, mais aussi à la possibilité d'appliquer des couleurs à d'autres éléments que le texte. Nous ne présentons ici que le package \package{xcolor}, de manière succincte. Nous renvoyons à la documentation pour des usages avancés.
 
 \subsubsection{Couleurs standards}
-Celui-ci présente les couleurs de bases suivantes : 
+Le package \package{xcolor} propose les couleurs de bases suivantes : 
 
 % Définition de la fonction de modélisation des couleurs
 \newcommand{\exemplecouleur}[1]{#1 & \fcolorbox{black}{#1}{~} \\}
 % Fin de la définition
 
-\begin{longtable}{l|l}
+\begin{longtable}{|l|l|}
+	\hline
 	Nom de la couleur 		& Couleur 								\\
 	\hline
 	\endhead
+	\hline
+	\endfoot
 	\exemplecouleur{black}
 	\exemplecouleur{blue}
 	\exemplecouleur{brown}
@@ -314,22 +320,19 @@ Celui-ci présente les couleurs de bases suivantes :
 
 \subsubsection{Couleurs supplémentaires}
 
-On peut passage les arguments \arg{dvipsnames}, \arg{svgnames} ou \package{x11names} lors de l'appel au package \package{xcolor}, chacune de ces arguments fournissant un jeu de couleur. Ne pouvant lister toutes ces couleurs dans cette ouvrage, nous renvoyons à la documentation de \package{xcolor}\footcite{xcolor_jeu}.
+On peut passage les options \option{dvipsnames}, \option{svgnames} ou \option{x11names} lors de l'appel au package \package{xcolor}, chacune fournissant un jeu de couleur. Ne pouvant lister toutes ces couleurs dans cette ouvrage, nous renvoyons à la documentation de \package{xcolor}\footcite{xcolor_jeu}.
 
 \subsubsection{Définir ses propres couleurs}
 
-Il est possible de définir ses propres couleurs. Il faut pour se faire utiliser \cs{definecolor}, selon la syntaxe suivante :
+Il est possible de définir ses propres couleurs. Il faut pour se faire utiliser \csp{definecolor}, selon la syntaxe suivante : \cs{definecolor}\marg{nom}\marg{methode}\mar{definition}.
 
-\begin{minted}{latex}
-\definecolor{nom}{methode}{definition}
-\end{minted}
 
-Les couleurs peuvent être définies principalement de plusieurs manières\footnote{On consultera n'importe quelle livre scientifique sur les couleurs pour plus de détails. On peut également consulter la documentation du package{xcolor}.}
+Les couleurs peuvent être définies de plusieurs manières\footnote{On consultera n'importe quelle livre scientifique sur les couleurs pour plus de détails. On peut également consulter la documentation du package{xcolor}.} Les deux principales sont\footcite[Il existe aussi la méthode de définition par la longueur d'onde pour les couleurs de l'arc en ciel, par pourcentage de gris pour les différents niveaux de gris, ainsi que par teinte, saturation et luminosité, mais ceci nécessiterait un cours de physique lumineuse. Pour  les personnes intéressées par les détails, consulter][]{xcolor_methode} :
 \begin{itemize}
-\item Par méthode additive en additionnant du rouge, du vert et du bleu (comme sur un écran d'ordinateur).
-\item Par méthode soustractive en superposant du cyan, du magenta, du jaune et du noir (comme sur une imprimante couleur).
+\item La méthode additive en additionnant du rouge, du vert et du bleu (comme sur un écran d'ordinateur).
+\item La méthode soustractive en superposant du cyan, du magenta, du jaune et du noir (comme sur une imprimante couleur).
 \end{itemize}
-Nous ne présenterons que les deux premières méthodes\footcite[Il existe aussi la méthode de définition par la longueur d'onde pour les couleurs de l'arc en ciel, par pourcentage de gris pour les différents niveaux de gris, ainsi que par teinte, saturation et luminosité, mais ceci nécessiterait un cours de physique lumineuse. Pour  les personnes intéressés par les détails, consulter][]{xcolor_methode}.
+
 
 Les deux méthodes nécessitent de donner une valeur comprise entre 0 (inclus) et 1 (inclus) à chacun des composants\footcite[On pourra trouver une série de code couleur sur le site][]{codecouleur}.
 
@@ -337,7 +340,6 @@ Les deux méthodes nécessitent de donner une valeur comprise entre 0 (inclus) e
 
 
 Prenons par exemple la définition de la couleur \textcolor{rougebourgogne}{rouge bourgogne}\footnote{Avec Anne Sylvestre les auteurs proclament fièrement \enquote{Que Bordeaux me pardonne, j’appartiens au Bourgogne} \parencite{romaneconti}.}.
-
 On peut la définir de la manière suivante en méthode additive :
 \begin{minted}{latex}
 \definecolor{rougebourgogne}{rgb}{0.41,0.05,0.05}
@@ -348,20 +350,14 @@ Ou bien en méthode soustractive\footnote{Idéalement le choix de  la méthode d
 \definecolor{rougebourgogne}{cmyk}{0,0.88,0.88,0.58}
 \end{minted}
 
-Enfin signalons la méthode HTML qui offre l'avantage d'avoir de nombreux site internet qui donnent les codes couleurs HTML\footnote{En réalité la méthode HTML est une méthode additive avec des valeurs comprises entre 0 et 255, notées en hexadécimal.}.
+Enfin signalons la méthode HTML qui offre l'avantage d'avoir de nombreux site internet indiquant les codes couleur HTML\footnote{En réalité la méthode HTML est une méthode additive avec des valeurs comprises entre 0 et 255, notées en hexadécimal.}.
 
-La même couleur se définirait ainsi :
+La même couleur se définit ainsi :
 
 \begin{minted}{latex}
 \definecolor{rougebourgogne}{HTML}{6B0D0D}
 \end{minted}
 
-
-
-\begin{attention}
-	Nous l'avons déjà dit : les problèmes de couleurs sont en général extrêmement complexe. Nous ne présentons ici qu'un aperçu. D'une manière générale, on évitera d'utiliser des couleurs dans un texte. Toutefois notre présentation servira plus tard, lorsqu'on nous aborderons la manière de faire des schémas en LaTeX.
-	
-\end{attention}
 
 
 
