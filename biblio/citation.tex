@@ -51,9 +51,9 @@ Il est possible d'appeler plusieurs fichiers bibliographiques. Nous le déconsei
 
 \section{Citation d'un élément bibliographique}
 
-L'ensemble des commandes de citation ont la syntaxe suivante : \csp{\meta{PREFIX}cite}\oarg{prenote}\oarg{postnote}\marg{clef}.
+L'ensemble des commandes de citation ont la syntaxe suivante : \csp{\meta{prefix}cite}\oarg{prenote}\oarg{postnote}\marg{clef}.
 
-\meta{PREFIX} indique où doit apparaître la référence : directement dans le texte, entre parenthèses, en note de bas page etc.
+\meta{prefix} indique où doit apparaître la référence : directement dans le texte, entre parenthèses, en note de bas page etc.
 
 Par exemple, nous souhaitons citer  un livre de Victor Saxer que nous avons entré de cette manière dans la base de donnée :
 
@@ -193,7 +193,7 @@ On peut contourner ce problème par la solution des sous-entrées bibliographiqu
 \begin{plusloins}
 Pour les œuvres en plusieurs volumes, il existe les commandes \csp{volvcite}, \csp{pvolcite}, \csp{fvolcite}, \csp{avolcite} correspondantes, aux commandes respectives \cs{cite}, \cs{parencite}, \cs{footcite}, \cs{autocite}.
 
-La syntaxe est la suivante : \csp{\meta{PREFIX}cite}\oarg{prenote}\marg{volume}\oarg{page}\marg{clef}.
+La syntaxe est la suivante : \csp{\meta{prefix}cite}\oarg{prenote}\marg{volume}\oarg{page}\marg{clef}.
 \end{plusloins}
 
 \subsubsection{Type de pagination}
@@ -213,7 +213,7 @@ On peut préciser le type de pagination possible : pagine-t-on en pages, en colo
 
 \section{Citation de plusieurs œuvres}\label{citemultiple}
 
-Il est possible de citer plusieurs œuvres d'une traite : pour cela, on utilise une commande dont la syntaxe de base est : \csp{\meta{PREFIX}cites}\oarg{prenote}\oarg{postnote}\marg{clef}\oarg{prenote}\oarg{postenote}\marg{clef} …
+Il est possible de citer plusieurs œuvres d'une traite : pour cela, on utilise une commande dont la syntaxe de base est : \csp{\meta{prefix}cites}\oarg{prenote}\oarg{postnote}\marg{clef}\oarg{prenote}\oarg{postenote}\marg{clef} …
 
 Il est possible de citer autant d'œuvres que souhaité. Chaque élément cité a droit à son argument \arg{prenote} et \arg{postnote}, qui s'utilisent de la même manière que pour les citations simples.
 Voici un exemple d'utilisation : 
@@ -229,7 +229,7 @@ Voici un exemple d'utilisation :
 Il est possible de préciser un texte à afficher avant la liste des des références, ainsi qu'un texte à afficher après.
 
 \begin{minted}{latex}
-\<PREFIX>cites(Texte avant)(Texte après){Saxer1980}{Junod1992}
+\<prefix>cites(Texte avant)(Texte après){Saxer1980}{Junod1992}
 \end{minted}
 
 Les séparateurs de citations sont par défaut des points-virgule. Il est possible de les modifier globalement, nous en parlons plus loin.\renvoi{multicitedelim}
