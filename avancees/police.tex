@@ -135,7 +135,7 @@ La valeur d'un compteur peut s'afficher grâce à la commande \cs{thecompteur}. 
 \thesection
 \end{minted}
 
-Vous constatez qu'à la compilation apparaît le numéro du chapitre, tel qu'il apparaît dans l'entête, et le numéro de section, tel qu'il apparaît dans le titre. Ici par exemple nous obtenons :
+Vous constatez qu'à la compilation apparaît le numéro du chapitre, tel qu'il apparaît dans l'en-tête, et le numéro de section, tel qu'il apparaît dans le titre. Ici par exemple nous obtenons :
 
 
 \begin{itemize}
@@ -248,7 +248,7 @@ Si on cherche dans le fichier \fichier{book.cls} la commande \cs{chapter}, on tr
                     \secdef\@chapter\@schapter}
 \end{minted}
 
-Deux éléments nous intéressent : la ligne 2 \cs{thispagestyle}\verb|{plain}|. On comprend ainsi la raison pour laquelle les  pages de début de chapitre n'ont pas les numéros de de page au même endroit que les autres : le style de cette page est \forme{plain} et non pas \forme{heading}, comme pour les autres pages. \renvoi{styleentetes}. Par conséquent, si on souhaite que les pages de titre aient les mêmes entêtes et pieds de page que les pages standards, il faut redéfinir la commande \cs{chapter}.\label{entetechapter}.\label{chapitrepagestyle}
+Deux éléments nous intéressent : la ligne 2 \cs{thispagestyle}\verb|{plain}|. On comprend ainsi la raison pour laquelle les  pages de début de chapitre n'ont pas les numéros de de page au même endroit que les autres : le style de cette page est \forme{plain} et non pas \forme{heading}, comme pour les autres pages. \renvoi{styleentetes}. Par conséquent, si on souhaite que les pages de titre aient les mêmes en-têtes et pieds de page que les pages standards, il faut redéfinir la commande \cs{chapter}.\label{entetechapter}.\label{chapitrepagestyle}
 
 \begin{minted}{latex}
 \makeatletter

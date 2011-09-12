@@ -60,7 +60,7 @@ Imaginons que je souhaite que le titre de la bibliographie soit de niveau \cs{su
 
 Analysons ce code :
 \begin{enumerate}
-\item Le premier argument correspond au nom de l'entête de bibliographie (du titre de bibliographie). L'entête nommé \forme{bibliography} est celui utilisé par défaut. Mais on pourrait très bien définir un entête \forme{toto}, il suffirait alors de passer un argument \arg{heading} à la commande \cs{printbibliography}.
+\item Le premier argument correspond au nom de l'en-tête de bibliographie (du titre de bibliographie). L'en-tête nommé \forme{bibliography} est celui utilisé par défaut. Mais on pourrait très bien définir un en-tête \forme{toto}, il suffirait alors de passer un argument \arg{heading} à la commande \cs{printbibliography}.
 
 \begin{minted}{latex}
 \defbibheading{toto}[\bibname]{\subsection{#1}}
@@ -68,7 +68,7 @@ Analysons ce code :
 \end{minted}
 
 \item Le second argument, ici \cs{bibname} correspond au titre par défaut. Dans notre cas, la commande \cs{bibname} renvoie simplement la valeur \forme{Bibliographie}.
-\item Le troisième argument contient le code qui sera appelé pour créer l'entête d'une bibliographie. Ici on déclare qu'on passe le titre (le \verb|#1|) à une commande \cs{subsection}.
+\item Le troisième argument contient le code qui sera appelé pour créer l'en-tête d'une bibliographie. Ici on déclare qu'on passe le titre (le \verb|#1|) à une commande \cs{subsection}.
 \end{enumerate}
 
 
