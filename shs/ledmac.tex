@@ -1,23 +1,77 @@
-\chapter{Édition critique et bilingue : les packages \package{ledmac} et \package{ledpar}}\label{ledmac}
+\chapter{Édition critique et bilingue : les packages \package{ledmac} et \package{ledpar}}
+\label{ledmac}
+
+
+attention > version donnée par la textLive 2011 n'est pas la bonne: il faut mettre à jour  (aller sur site du ctan)
 
 \section{Faire une édition critique avec \package{ledmac}}
 
 \subsection{Numéroter un texte}
 
-\cs{beginnumbering} 
-\cs{endnumbering}
->encadre le texte à numéroter
+Le texte dont on veut numéroter les lignes est encadré entre les commandes \cs{beginnumbering} et \cs{endnumbering}. Il faut ensuite faire une distinction entre les textes en prose et les textes en vers. 
 
-\cs{pstart}
-\cs{pend}
-> début et fin de la numérotation. A l'intérieur de begin et endnumbering,  on peut interrompre puis reprendre là numérotation où on l'avait interrompu : seul les passage entre pstart et pend sont numérotés.
+\subsubsection{Numéroter un texte en prose}
 
-la do dit qu'il faut à chaque paragraphe remettere pstart/pend , et qu'on peut empêcher cette inconvénient en créant un groupe et avec la commande autopar. Pourtant marche très bien sur plusieurs paragarphes à la suit sans passer par cette commande.. à voir!
+On débute la numérotation, au sein de cet environnement numbering, avec la commande \cs{pstart} et on la termine avec la commande \cs{pend}. Le texte contenu entre ces deux commande est mis dans une \enquote{boite}. A l'intérieur de \cs{beginnumbering} et de \cs{endnumbering},  on peut interrompre puis reprendre là numérotation où on l'avait interrompu comme dans l'exemple suivant:
+
+\begin{minted}{latex}
+\beginnumbering
+\pstart %commencer la numérotation
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit ?
+Morbi commodo ; ipsum sed pharetra gravida !
+Nullam sit amet enim. Suspendisse id : velit vitae ligula.
+Aliquam erat volutpat.
+
+Sed quis velit. Nulla facilisi. Nulla libero. 
+Quisque facilisis erat a dui. 
+Nam malesuada ornare dolor.
+Cras gravida, diam sit amet rhoncus ornare, 
+erat  elit consectetuer erat, id egestas pede nibh eget odio.
+\pend %terminer la numérotation
+\endnumbering
+\end{minted}
+
+On obtiens ainsi : 
+
+\begin{minipage}{10cm}
+\beginnumbering
+\pstart %commencer la numérotation
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit ?
+Morbi commodo ; ipsum sed pharetra gravida !
+Nullam sit amet enim. Suspendisse id : velit vitae ligula. 
+Aliquam erat volutpat.\pend
+
+Sed quis velit. Nulla facilisi. Nulla libero. 
+ Quisque facilisis erat a dui. % onreprend la numérotation
+Nam malesuada ornare dolor.
+Cras gravida, diam sit amet rhoncus ornare, 
+erat  elit consectetuer erat, id egestas pede nibh eget odio.
+\pend
+\endnumbering
+\end{minipage}
+
+%la doc dit qu'il faut à chaque paragraphe remettere pstart/pend , et qu'on peut empêcher cette inconvénient en créant un groupe et avec la commande autopar. Pourtant marche très bien sur plusieurs paragarphes à la suit sans passer par cette commande.. à voir!
+
+Si l'on veut interrompre puis reprendre la numérotation où on l'a interrompu, il suffit de faire deux \enquote{boites} encadrée entre \cs{pstart} et \cs{pend}:  tout ce qui sera entre ces deux boites ne sera pas numéroté.
+
+\subsubsection{\package{ledmac} et les vers}
 
 
-Ledmac numérote par défaut toutes les 5 lignes. On eut changer cela:
+\subsubsection{Aller plus loin}
+Comme on peut le voir dans les exemples précédants, Ledmac numérote par défaut toutes une ligne sur cinq. On peut changer cela très simplement avec les commande suivantes:
 \cs{firstlinenum}\marg{nbre} et \cs{linenumincrement}\marg{nbre}.
-firstlinenum: la première ligne à être numérotée ; linenumincrement: définit la fréquence avec laquelle les lignes seront numérotés. ex: \cs{linenumincrement}\marg{1} \cs{firstlinenum}\marg{1} : toutes les lignes seront numérotées en commençant par la première. 
+L'argument \arg{nbre} de la commande \cs{firstlinenum} indique quelle est  la première ligne qui sera numérotée ; l'argument \arg{nbre} de la commande \cs{linenumincrement} définit la fréquence avec laquelle les lignes seront numérotés.On place ces commande après \cs{beginnumbering}. Ainsi, si l'on veut numéroter toutes les lignes en commençant par la première, il faut mettre \cs{linenumincrement}\marg{1} et \cs{firstlinenum}\marg{1} 
+
+
+
+
+-faire des "sous-numérotation
+> avec \cs{firstsublinenum} 
+et \cs{sublinenumincrement}
+
+changer le numéro des lignes
+
+-où apparissent les numéro des ligne et comment
 
 Un moyen pour ne pas encombrer la mémoire qd texte trop long : faire de plus petites sections numérotées. Mais si on met endnumbering ,  avec beginnumbering on recommencera la numérotation à zéro.  Utiliser à la place pausenumbering - resumenumbering > avec resume numbering la nmérotation reprend où elle s'était arrêté. Si on utilise ces commande essentiellement pour des question de mémoire conseil de faire une commande exprès: \verb|\newcommand{\memorybreak}{\pausenumbering\resumenumbering}|> plus qu'à mettre memorybreak de temps en temps dans le texte ..
 
@@ -25,12 +79,56 @@ Un moyen pour ne pas encombrer la mémoire qd texte trop long : faire de plus pe
 Possible aussi de changer l'endroit où apparit le numéro de page (par défaut ds la marge de gauche): \cs{linenummargin}\marg{arg}, dt les arguments peuvent être left, right, inner, ou outer
 
 \cs{startsub} \cs{endsub} > ligne numérotés 10.1, 10.2, 10.3,.. et non 10, 11, 12 
-\setline{⟨num⟩} and \advanceline{⟨num⟩} > modifier le numéro d'une ligne 
+\cs{setline}\marg{num} and \cs{advanceline}\marg{num} > modifier le numéro d'une ligne 
 \cs{skipnumbering} > ne pas prendre en compte dans la numérotation telle ligne
 On peut aussi changer façon dont apparaissent es numéro des lignes (voir doc)
 
 
 \subsection{L'apparat critique}
+
+Notes de bas de page se présentent de cette façon:  \cs{Afootnote}\marg{texte}. Il y en a 5 type: de A à E
+.Idem 5 type de notes de fin, de \cs{Aendnote} à \cs{Eendnote}.
+>ces notes appellent un lemme : le mot du texte qui apparaîtra ds la  note de bas de page. On fait une note de cette façon: \cs{edtext}\marg{lemme}\marg{commande}
+Exemple: 
+\begin{minted}{latex}
+\beginnumbering 
+\firstlinenum{1}
+\linenumincrement{1}
+
+ \pstart 
+
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit ?
+Morbi commodo ; ipsum sed pharetra gravida !
+Nullam sit amet enim. Suspendisse id : velit vitae ligula.
+Aliquam erat volutpat.
+
+Sed quis velit. Nulla facilisi. Nulla libero. 
+Quisque facilisis erat a dui. 
+Nam malesuada ornare dolor.
+Cras gravida, diam sit amet rhoncus ornare, 
+erat  elit consectetuer erat, id egestas pede nibh eget odio.
+\pend
+\endnumbering
+\end{minted}
+
+l'argument \arg{lemme} est repris dans la note de bas de page + indication de des lignes où il se trouve 
+Quand le lemme est sur plsuieur ligne, comme ici, trop long de le mettre en entier dans le bas de page > On utilise alors la commande \cs{edtext}\marg{le lemme trop long}\{\cs{lemma}\marg{le lemme raccourci}\cs{Bfootnote\marg{la note}}\}
+
+\begin{minted}{latex}
+\beginnumbering 
+\firstlinenum{1}
+\linenumincrement{1}
+\firstsublinenum{1} 
+\sublinenumincrement{1}
+ \pstart 
+ \noindent
+En effet autrefois \edtext{un puissant sage, roi illustre}{\Afootnote{Salomon}},\\
+a sur un tel sujet prononcé ces paroles :\\
+\edtext{« La vie éternelle est située à Sa droite,\\
+et la gloire, la grandeur, la fortune à Sa gauche »}{\lemma{La vie \dots\ gauche}{\Bfootnote{\textit{Pr}, 3, 16 : \enquote{Longitudo dierum in dextera eius [sapientia] / Et in sinistra illius diuitiae et gloria }}}}.
+\pend \endnumbering
+\end{minted}
+≠ \cs{footnoteA} (jusqu'à C) >notes normales
 
 
 
