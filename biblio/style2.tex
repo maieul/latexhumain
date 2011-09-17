@@ -148,14 +148,26 @@ On peut déclarer des nouveaux alias de champ via la commande \csp{DeclareFieldA
 Un des éléments gênants des styles bibliographiques standards de la famille verbose est leur manière de gérer les abréviations universitaires de type \emph{op. cit.} En effet, les styles indiquent les \emph{op. cit.} après avoir affiché l'auteur et le titre. Par exemple :
 
 \begin{quotation}
+\cite{Urner1952}
+
 \cite{Saxer1980}
 
-…
+
+\cite{Urner1952}
 
 \cite{Saxer1980}
 \end{quotation}
 
 Si nous n'avons qu'une seule entrée dont Victor Saxer est l'auteur, cela est assez inutile. On pourrait avoir une version abrégée sous la forme :
+
+% Changeons %
+\renewbibmacro*{cite:title}{\usebibmacro{cite:full}}
+% Changeons
+
+\begin{quotation}
+\cite{Urner1952}
+
+\cite{Saxer1980}
 
 % Changeons %
 \renewbibmacro*{cite:title}{%
@@ -165,7 +177,9 @@ Si nous n'avons qu'une seule entrée dont Victor Saxer est l'auteur, cela est as
     \bibstring[\mkibid]{opcit}}}
 % Changeons
 
-\begin{quotation}
+
+\cite{Urner1952}
+
 \cite{Saxer1980}
 \end{quotation}
 
