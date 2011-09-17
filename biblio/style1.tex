@@ -146,7 +146,7 @@ La commande \csp{parentext} met entre parenthèse un texte passé en argument. O
 	
 	Une fois ce fichier ouvert, repérons la ligne qui commence par
 \csp{DeclareBibliographyStrings}
-	\end{minted}
+
 	
 	Cette ligne est suivie d'autres, qui ont la forme :
 	
@@ -194,7 +194,7 @@ clefN = {valeurN}%
 \begin{plusloins}
 On pourrait redéfinir les chaînes de langue consacrées aux abréviations universitaires de type \emph{op. cit.} pour les avoir en italique. 
 
-Il y a une solution plus simple\label{mkibidem}. En effet, \package{biblatex} passe ces chaînes de langue dans une commande \csp{mkibidem}\marg{chaine} avant de les afficher.
+Il y a une solution plus simple\label{mkibid}. En effet, \package{biblatex} passe ces chaînes de langue dans une commande \csp{mkibidem}\marg{chaine} avant de les afficher.
 
 Il nous suffit dont de redéfinir cette commande :
 \begin{minted}{latex}
