@@ -2,11 +2,11 @@
 
 	\begin{prealable}
 	
-	Vous savez désormais utiliser les commandes de citations. Toutefois, vous pourriez souhaiter modifier la manière dont les citations s'affichent :  changer l'ordre des champs, les séparateurs, les textes du type \forme{dans}.
+	Vous savez désormais utiliser les commandes de citation. Toutefois, vous pourriez souhaiter modifier la manière dont les références s'affichent :  changer l'ordre des champs, les séparateurs, les textes du type \forme{dans}.
 	
-	Ces deux chapitres vous indiquerez les principes généraux pour le faire. Étant donné l'ampleur du sujet, deux chapitres ne sont pas de trop. Par ailleurs, ils n'ont pas pour vocation de tout présenter sur le sujet, mais simplement les principes de base. On se reportera au manuel de \package{BibLaTeX} pour aller plus loin.
+	Ces deux chapitres vous indiqueront les principes généraux pour le faire. Ils n'ont pas pour vocation de tout présenter sur le sujet, mais simplement les principes de base. On se reportera au manuel de \package{biblateX} pour aller plus loin.
 	
-	Le premier de ce chapitre vous présentera les techniques les plus simples, celle qui ne nécessite pas de fouiller le styles bibliographiques standards. 
+	Le premier de ce chapitre vous présentera les techniques les plus simples, celles qui ne nécessitent pas de fouiller le styles bibliographiques standards. 
 	
 	
 	\end{prealable}
@@ -14,9 +14,7 @@
 	
 \section{Séparateurs d'unité de sens}
 	
-Prenons un problème courant. Vous aurez constaté que, par défaut, les différents champs d'une référence bibliographique sont séparés par des points.
-
-	On obtient par exemple :
+Prenons un problème courant. Vous avez constaté que, par défaut, les différents champs d'une référence bibliographique sont séparés par des points. On obtient par exemple :
 	
 	\renewcommand{\newunitpunct}[0]{\adddot\addspace} 
 	
@@ -34,49 +32,48 @@ alors que le règles françaises voudraient que l'on ait :
 	
 À l'intérieur d'une référence bibliographique, BibLaTex distingue des unités de sens\footnote{À vrai dire il existe des unités plus vastes, appelés blocs. Mais ces unités servent pour des réglages avancés de l'affichage de la bibliographie finale.}. Ici : l'auteur, le titre, l'adresse, l'éditeur, l'année. 
 
-	Ces unités sont séparés par des signes de ponctuations. Ces séparateurs sont définis par la commande \cs{newunitpunct}.
+	Ces unités sont séparées par des signes de ponctuation. Les séparateurs sont définis par la commande \csp{newunitpunct}.
 	
-	Il suffit donc de redéfinir la commande. Pour cela il suffit de mettre dans le préambule\footnote{Cela n'est pas strictement nécessaire, mais c'est une bonne méthode que de mettre l'ensemble des commandes de personnalisations de styles dans le préambule. Nous conseillons de mettre toutes les commandes de personnalisation des styles bibliographiques dans un seul fichier, appelé dans le préambule.} : 
+	Il suffit donc de redéfinir la commande en mettant dans le préambule\footnote{Cela n'est pas strictement nécessaire, mais c'est une bonne méthode que de mettre l'ensemble des commandes de personnalisation de style dans le préambule. Nous conseillons de les regrouper en un seul fichier, appelé dans le préambule.} : 
 		
 	\begin{minted}{latex}
 \renewcommand{\newunitpunct}[0]{,}
 	\end{minted}
+\begin{plusloins}
+		Nous n'avons par parlé jusqu'à présent de la commande \csp{renewcommand}. Celle-ci est identique à la commande \cs{newcommand} à la différence qu'elle permet de redéfinir une commande déjà existante.
+		\end{plusloins}
 	
 	Cette solution semble fonctionner. Mais elle pose un problème : les styles définissent des unités de sens sans se poser la question de savoir si ces unités sont vides ou pas.
-	
 	Prenons l'entrée suivante :
 	
 		
 	\inputminted{exemples/biblio/style1/afrique.bib}
 	
-	On obtiendra le résultat suivant :
-	
+	On obtient le résultat suivant :
+	\renewcommand{\newunitpunct}[0]{,}
 	\begin{quotation}
 		\cite{BrefHippone}
 	\end{quotation}
 	
 	La virgule entre les deux points et \emph{Concilia Africae} s'explique parce qu'une unité a été créée, unité qui doit contenir normalement la valeur du champ \champ{Bookauthor}.
 	
-	Pour éviter ce problème, il ne faut pas mettre directement dans la définition de la commande \cs{newunitpunct} les signes de ponctuation. Il faut utiliser les commandes de ponctuation\footcite[Listées dans][]{biblatex_ponctuation}. En effet, ces commandes afficheront la ponctuation uniquement si l'unité qui précède a bien un contenu\footnote{Par ailleurs, elle suppriment les espaces multiples qui précédent.}.\label{commandeponctuation}
-	
-	Il faut donc mettre dans notre cas :
+	Pour éviter ce problème, il  faut ne pas mettre directement dans la définition de la commande \cs{newunitpunct} les signes de ponctuation mais utiliser à la place les commandes de ponctuation\footcite[Listées dans][]{biblatex_ponctuation}. En effet, ces commandes affichent la ponctuation uniquement si l'unité qui précède a bien un contenu\footnote{Par ailleurs, elle suppriment les espaces multiples qui précédent.}.\label{commandeponctuation}
+	Ainsi dans notre cas :
 	
 	\begin{minted}{latex}
 \renewcommand{\newunitpunct}[0]{\addcomma\addspace}
 	\end{minted}
 	
-	\begin{plusloins}
-		Nous n'avons par parlé jusqu'à présent de la commande \cs{renewcommand}. Celle-ci est identique à la commande \cs{newcommand} à la différence qu'elle permet de redéfinir une commande déjà existante.
-	\end{plusloins}
+\renewcommand{\newunitpunct}[0]{\addcomma\addspace}
 	
 	
 \subsection{Une séparateur spécifique à deux unités}
 	
-	On pourrait vouloir qu'entre deux unités spécifiques, par exemple entre le titre et le sous titre, le séparateur ne soit pas le même qu'entre les autres unités.	Vous aurez sans doute constaté que c'est d'ailleurs le cas pour le style verbose : l'adresse et l'édition sont séparés par des deux-points.
+	On peut vouloir qu'entre deux unités spécifiques, par exemple entre le titre et le sous titre, le séparateur ne soit pas le même qu'entre les autres unités.	Vous avez sans doute constaté que c'est d'ailleurs le cas pour le style \forme{verbose} : l'adresse et l'éditeur sont séparées par des deux-points.
 	
 	Deux cas existent :
 		\begin{enumerate}
-			\item \package{BibLaTeX} a prévu une commande spécifique pour notre type d'unité. C'est le cas pour le séparateur avant le sous titre\footcite[Ces commandes sont peu nombreuse : on les trouvera dans]{biblatex_hooks}. Il suffit dans ce cas de redéfinir la commande. Par exemple nous souhaitons avoir des deux-points entre le titre et le sous titre. Il nous suffit de faire :
+			\item Le package \package{biblatex} a prévu une commande spécifique pour notre type d'unité. C'est le cas pour le séparateur avant le sous titre\footcite[Ces commandes sont peu nombreuse : on les trouvera dans][]{biblatex_hooks}. Il suffit dans ce cas de redéfinir la commande. Par exemple nous souhaitons avoir des deux-points entre le titre et le sous titre. Il nous suffit d'indique :
 			\begin{minted}{latex}
 \renewcommand{\subtitlepunct}[0]{\addspace\addcolon\addspace}
 			\end{minted}
@@ -96,7 +93,7 @@ Lorsque nous utilisons une commande de citation multiple\renvoi{citemultiple}, l
 \cites{Saxer1980}{Junod1992}
 \end{quotation}
 
-On peut là aussi modifier le séparateur en rédefinissant la commande \cs{multicitedelim}. Par exemple pour avoir une virgule :
+On peut là aussi modifier le séparateur en rédefinissant la commande \csp{multicitedelim}. Par exemple pour avoir une virgule :
 
 \begin{minted}{latex}
 \renewcommand{\multicitedelim}[0]{\addcomma\addspace}
@@ -104,7 +101,7 @@ On peut là aussi modifier le séparateur en rédefinissant la commande \cs{mult
 
 \section{Styles de certains blocs}
 
-La ponctuation n'est pas le seul point où \package{BibLaTeX} propose des points d'entrés pour des modifications spécifiques. Certaines parties des références bibliographiques disposent également de la possibilité d'avoir des réglages grâce à des commande spécifiques\footcite{biblatex_hooks}. Prenons par exemple la particule d'un auteur.
+La ponctuation n'est pas le seul endroit où \package{biblatex} propose des points d'entrée pour des modifications spécifiques. Certaines parties des références bibliographiques disposent également de la possibilité d'être configurées grâce à des commande particulières\footcite{biblatex_hooks}. Prenons par exemple la particule d'un auteur.
 	
 	\begin{quotation}
 	\cite{BeauvoirSexe}
@@ -124,7 +121,7 @@ Voire pour être encore plus correct :
 \renewcommand{\mkbibnameprefix}[1]{\parentext{#1}}
 	\end{minted}
 
-La commande \cs{parentext} mettant entre parenthèse un texte passé en argument. On obtient le résultat souhaité : 
+La commande \csp{parentext} met entre parenthèse un texte passé en argument. On obtient le résultat souhaité : 
 
 	\begin{quotation}
 	\cite{BeauvoirSexe}
@@ -132,7 +129,7 @@ La commande \cs{parentext} mettant entre parenthèse un texte passé en argument
 
 \section{Chaînes de langues}\label{i18nchaines}
 	
-	Les chaînes de langues sont ces morceaux de textes figés mais qui dépendent de la langue. Prenons une entrée de type article, lorsque nous la citons, nous obtenons.
+	Les chaînes de langues sont ces morceaux de textes figés mais qui dépendent de la langue. Prenons une entrée de type \type{article}, lorsque nous la citons, nous obtenons.
 	
 	 
 	 
@@ -142,35 +139,39 @@ La commande \cs{parentext} mettant entre parenthèse un texte passé en argument
 	
 	La chaîne \forme{dans} sépare le titre de l'article et le nom de la revue. Si nous rédigions en anglais, nous aurions \forme{in} à la place.  
 	
-	Il peut justement nous arriver de vouloir changer ces chaînes de langues, par exemple pour avoir la forme \forme{in}, qui est un terme latin souvent utilisé dans les bibliographies. Une chaîne de langues associe à une clef invariable une valeur qui change selon la langue.
 	
-	Les styles bibliographiques possèdent des chaînes de langues par défaut, qu'il est possible de remplacer au cas par cas. Pour ce faire, ils nous faut toutefois connaître les clefs. Il nous faut donc ouvrir le fichier de langue \fichier{french.lbx}. Pour repérer ce fichier, voir notre explication en annexe.\renvoi{trouverfichier}.
+	Il peut justement nous arriver de vouloir changer ces chaînes de langues, par exemple pour avoir la forme \forme{in} qui est un terme latin souvent utilisé dans les bibliographies.  Une chaîne de langues associe à une clef invariable une valeur qui change selon la langue.
+	
+	Les styles bibliographiques possèdent des chaînes de langues par défaut, qu'il est possible de remplacer au cas par cas. Pour ce faire, il nous faut toutefois connaître les clefs en ouvrant le fichier de langue \fichier{french.lbx}. Pour repérer ce fichier, voir notre explication en annexe.\renvoi{trouverfichier}
 	
 	Une fois ce fichier ouvert, repérons la ligne qui commence par
-	
-	\begin{minted}{latex}
-\DeclareBibliographyStrings{
+\csp{DeclareBibliographyStrings}
 	\end{minted}
 	
-	Cette ligne est suivie d'autres lignes sous la forme :
+	Cette ligne est suivie d'autres, qui ont la forme :
 	
 	\begin{minted}{latex}
 clef	= {{chaîne longue}{chaîne courte}}|
 	\end{minted}
 	
 	\begin{plusloins}
-	Chaque chaîne de langue est disponible en version longue ou courte. On peut passer une option lors de l'appel du package \package{biblatex} pour décider d'utiliser les versions longues.
+	Chaque chaîne de langue est disponible en version longue ou courte. On peut passer une option lors de l'appel au package \package{biblatex} pour décider d'utiliser les versions longues.
 	
 	\begin{minted}{latex}
 \usepackage[abbreviate=false]{biblatex}
 	\end{minted}
 	
-	 Toutefois quand on redéfinit une chaîne de langue, on ne lui accorde qu'une seule version.
+	 Toutefois quand on redéfinit une chaîne de langue, on ne lui attribue qu'une seule version.
 	
 	\end{plusloins}
-	Il nous faut donc repérer la clef correspondante à notre chaîne \enquote{dans}. Très rapidement nous trouvons qu'il s'agit de la chaine \verb|in|.
 	
-	Une fois  notre clef repérée, il est facile de lui attribuer une nouvelle valeur\footnote{Cette valeur sera utilisée que l'on choisisse le mode abrégé ou non.}, grâce à la commande \cs{DefineBibliographyStrings{lang}{chaînes}}, qu'il faut placer dans le préambule du fichier\footnote{Il ne faut surtout pas modifier les fichiers standards : on perdrait les modifications à chaque mise à jour.}.
+	Il nous faut donc repérer la clef correspondante à notre chaîne \enquote{dans}. Très rapidement nous découvrons qu'il s'agit de la chaine \verb|in|.
+	
+	Une fois  notre clef repérée, il est facile de lui attribuer une nouvelle valeur, grâce à la commande \csp{DefineBibliographyStrings}\marg{lang}\marg{chaînes}, qu'il faut placer dans le préambule du fichier.
+	
+	\begin{attention}
+	Il ne faut surtout pas modifier les fichiers standards : on perdrait les modifications à chaque mise à jour.
+	\end{attention}
 	
 	\begin{minted}{latex}
 \DefineBibliographyStrings{french}{%
@@ -178,9 +179,9 @@ clef	= {{chaîne longue}{chaîne courte}}|
 }
 	\end{minted}
 	
-	Constatons qu'on peut utiliser dans une chaîne de langue des commandes \LaTeX. Si notre chaîne contient des signes de ponctuations, il faut utiliser les commandes de ponctuation mentionnées plus haut.Less \% à la fin de chaque ligne, sont ici pour éviter les espacement intempestifs.\renvoi{commandepourcent}
+	On peut utiliser dans une chaîne de langue des commandes \LaTeX. Si notre chaîne contient des signes de ponctuation, il faut utiliser les commandes de ponctuation mentionnées plus haut. Les \% à la fin de chaque ligne sont là pour éviter les espaces intempestifs.\renvoi{commandepourcent}
 	
-	Si nous souhaitons redéfinir plusieurs chaînes de langue, il faut séparer chaque définition par une virgule :
+	Si nous souhaitons redéfinir plusieurs chaînes de langue, il nous faut séparer chaque définition par une virgule :
 	
 	\begin{minted}{latex}
 \DefineBibliographyStrings{french}{%
@@ -193,31 +194,37 @@ clefN = {valeurN}%
 \subsection{Introduction au tests conditionnels}\label{opcit}
 
 Nous allons maintenant prendre un peu d'anticipation sur le prochaine chapitre.
-Vous avez certainement constaté que les styles de la famille \forme{verbose-trad} utilisent des abréviations latines comme \emph{op. cit.}.
-Ces abréviations sont les abréviations universitaires courantes. Toutefois en ce qui concerne l'abréviation \emph{op. cit.} \package{BibLaTeX} l'utilise indistinctement pour tout les types d'entrées, y compris pour les entrées de type \type{article}, alors même qu'on pourrait s'attendre à une abréviation de type \emph{art. cit.}.
+Vous savez  que les styles de la famille \forme{verbose-trad} utilisent des abréviations latines comme \emph{op. cit.}
+Ces abréviations sont les abréviations universitaires courantes. Toutefois en ce qui concerne\emph{op. cit.} \package{biblatex} l'utilise indistinctement pour tout les types d'entrées, y compris pour les entrées de type \type{article}, alors même qu'on pourrait s'attendre à une abréviation comme \emph{art. cit.}
 
-Pour résoudre ce problème, il suffit de redéfinir la chaîne de langue qui définit \emph{op. cit.}, en lui attribuant une valeur différente selon le type d'entrée.  On va donc utiliser l'un des nombreux tests conditionnels disponibles dans \package{BibLaTeX}. Il s'agit de la commande :
+Pour résoudre ce problème il suffit de redéfinir la chaîne de langue qui définit \emph{op. cit.}, en lui attribuant une valeur différente selon le type d'entrée.  On va donc utiliser l'un des nombreux tests conditionnels disponibles dans \package{biblatex}. Il s'agit de la commande : \csp{iffieldequalstr}\marg{champ}\marg{texte}\marg{sioui}\marg{sinon}.
 
-\begin{minted}{latex}
-\iffieldequalstr{champ}{texte}{sioui}{sinon}
-\end{minted}
+Cette commande ne peut s'utiliser que dans certaines parties d'un fichier \LaTeX : dans les commandes de définition de styles bibliographiques et  dans celles de définition d'un chaîne de langue. 
+Elle vérifie que le champ \arg{champ}	de l'entrée bibliographique citée correspond à l'argument \arg{texte}: si c'est le cas, elle retourne l'argument \arg{sioui}, et sinon elle retourne l'argument \arg{sinon}.
 
-Cette commande ne peut s'utiliser que dans certaines parties d'un fichier \LaTeX : dans les commandes de définitions de styles bibliographiques, y compris dans celles de définition d'un chaîne de langue. 
-Elle vérifie que le champ \arg{champ}	de l'entrée bibliographique citée correspond à l'argument \arg{texte} : si c'est le cas, elle retourne l'argument \arg{sioui}, et sinon elle retourne l'argument \arg{sinon}.
-
-Ici nous allons tester le pseudo-champ\footnote{\forme{Pseudo} car il ne se situe pas réellement comme un champ dans l'entrée bibliographique.} \champ{entrytype}, qui correspond au type d'entrée sans le @. Nous allons donc vérifier s'il s'agit d'une entrée de type article : si c'est le cas nous donnerons à la chaîne de langue la valeur  \forme{art. cit.},  dans le cas contraire nous donnerons la valeur \emph{op. cit.}.
-
-Ce qui donne : 
+Ici nous testons le pseudo-champ\footnote{\forme{Pseudo} car il ne se situe pas réellement comme un champ dans l'entrée bibliographique.}\champ{entrytype}, qui correspond au type d'entrée sans le @. Nous vérifions  s'il s'agit d'une entrée de type article : si c'est le cas nous donnons à la chaîne de langue la valeur  \forme{\emph{art. cit.}},  dans le cas contraire nous donnerons la valeur \forme{\emph{op. cit.}}.
+Au final cela donne : 
 
 \begin{minted}{latex}
 \DefineBibliographyStrings{french}{%
 	opcit = \iffieldequalstr{entrytype}{article}%
-	{\emph{art\adddotspacecit}\adddot}%
-	{op\adddotspacecit\adddot}%
+	{art\adddotspace cit\adddot}%
+	{op\adddotspacecit cit\adddot}%
 }
 \end{minted}
 
-On remarquera l'utilisation des commandes de ponctuations, comme signalé plus haut.\renvoi{commandeponctuation}
+On remarquera l'utilisation des commandes de ponctuation, comme signalé plus haut.\renvoi{commandeponctuation}
 
+\begin{plusloin}
+Il est possible dans une définition de chaîne de langue d'utiliser n'importe quel type de commande \LaTeX. On peut donc utiliser la commande \cs{emph} pour que nos abréviations soient en italiques (ou en romain dans un texte en italique).
+
+\DefineBibliographyStrings{french}{%
+	opcit = \iffieldequalstr{entrytype}{article}%
+	{\emph{art\adddotspace cit\adddot}}%
+	{\emph{op\adddotspacecit cit\adddot}}%
+}
+\end{minted}
+
+\end{plusloin}
 
 	
