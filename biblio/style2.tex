@@ -1,23 +1,23 @@
 \chapter{Modifier les styles bibliographiques (2)}
 
 \begin{prealable}
-	Nous avons vu que BibLaTeX propose un certain nombres de commandes pour personnaliser rapidement les styles bibliographiques. Toutefois toutes ces commandes ne suffisent pas nécessairement pour des personnalisation avancées. 
-	Ainsi la possibilité de choisir l'ordre d'affichage des champs, par exemple, nécessite d'aller plus loin dans la compréhension des styles bibliographiques de de \package{BibLaTeX}.
+	Nous avons vu que BibLaTeX propose un certain nombres de commandes pour personnaliser rapidement les styles bibliographiques. Toutefois  ces commandes ne suffisent pas pour des personnalisation avancées. 
+	Ainsi la possibilité de choisir l'ordre d'affichage des champs, par exemple, nécessite d'aller plus loin dans la compréhension des styles bibliographiques de de \package{biblatex}.
 \end{prealable}
 
 
 
-\section{Que se passe-t-il lorsqu'on utilise une commande \cs{cite} ?}
+\section{Que se passe-t-il lorsqu'on utilise une commande \cs{\meta{prefix}cite} ?}
 
-Pour comprendre comment personnaliser l'affichage bibliographique, il est nécessaire de comprendre sommairement ce qui passe lorsqu'on utilise une commande de citation. 
+Pour comprendre comment personnaliser l'affichage bibliographique, il est nécessaire de connaître sommairement ce qui passe lorsqu'on utilise une commande de citation. 
 
-\begin{itemize}
-\item Lorsqu'on appelle une commande de citation, du type \cs{PREFXIcite}, cette commande va appeler :
+
+Lorsqu'on appelle une commande de citation, du type \cs{\meta{prefix}cite}, cette commande va appeler :
 	\begin{itemize}
-		\item Des macros bibliographiques, chargées d'afficher l'argument \arg{prenote} ou \arg{postnote}, ou encore de gérer les citations répétées. Les macros bibliographiques sont des types particuliers de commandes, propres au package \package{biblatex}. 
-		\item Un driver\footnote{Bien que le terme \enquote{driver} ne soit pas français, nous l'utilisons car il est utilisé dans les commandes internes de BibLaTeX} bibliographique. Un driver correspond à un type d'entrée (\type{article}, \type{book} etc.), et se charge d'afficher les champs de l'entrée dans le bon ordre. Pour ce faire, un driver appelle :
+		\item Des macros bibliographiques, chargées d'afficher l'argument \arg{prenote} ou \arg{postnote}, ou encore de gérer les citations répétées. Les macros bibliographiques sont des types particuliers de commande, propres au package \package{biblatex}. 
+		\item Un driver\footnote{Bien que le terme \enquote{driver} ne soit pas français, nous l'utilisons car il est utilisé dans les commandes internes de BibLaTeX} bibliographique. Un driver correspond à un type d'entrée (\type{article}, \type{book} etc.), et se charge d'afficher les champs de l'entrée dans le bon ordre. Pour ce faire, un il appelle :
 		\begin{itemize}
-			\item Des commandes de séparations d'unités bibliographiques, que nous avons vu plus haut.
+			\item Des commandes de séparations d'unités bibliographiques, que nous avons vu plus haut.\renvoi{unitebiblio}
 			\item Des macros bibliographiques. Ces macros bibliographiques appellent elles-même :
 			\begin{itemize}
 				\item des commandes d'impression de champs bibliographiques;
@@ -27,9 +27,8 @@ Pour comprendre comment personnaliser l'affichage bibliographique, il est néces
 		\end{itemize}
 		
 	\end{itemize}
-\end{itemize}
 
-Ceci peut se résumer par le schéma \ref{schema_styles_biblios} (p. \pageref{schema_styles_biblios}). 
+Ceci peut se résumer par le schéma \ref{schema_styles_biblios}.\renvoi{schema_styles_biblios} 
 
 \begin{figure}[ht]
 \include{schemas/stylesbiblio}
@@ -71,48 +70,46 @@ On pourrait souhaiter avoir l'éditeur avant l'adresse, comme ceci :
 
 
 
-La première chose à faire va donc être de repérer quelle macro bibliographique modifier. Pour cela, il faut repérer les fichiers de définition des styles bibliographiques. Il en existe plusieurs :
+La première chose à faire va donc être de repérer quelle macro bibliographique modifier. Pour cela, il faut trouver les fichiers de définition des styles bibliographiques\renvoi{trouverfichier}. Il en existe plusieurs :
 
 \begin{itemize}
 \item Fichier \ext{def} qui définit les styles invariants, quel que soit le style de bibliographie ou de citation choisi.
-\item Fichiers \ext{cbx} qui définissent les styles utilisés lors de l'utilisation des commandes \cs{PREFIXcite}.
+\item Fichiers \ext{cbx} qui définissent les styles utilisés lors de l'utilisation des commandes \cs{\meta{prefix}cite}.
 \item Fichiers \ext{bbx} qui définissent les styles utilisés lors de l'appel à la commande \cs{printbibliography}.
 \end{itemize}
 
-Certains fichiers s'appellent mutuellement : ainsi les fichiers \ext{bbx} contiennent les drivers bibliographiques. Ils sont donc appelés par les fichiers \ext{cbx}. Ces appels mutuels entre fichiers permettent de garantir une uniformité entre les styles bibliographiques lors de l'utilisation de \cs{PREFIXcite} et lors de l'utilisation de \cs{printbibliography}.
+Certains fichiers s'appellent mutuellement : ainsi les fichiers \ext{bbx} contiennent les drivers bibliographiques. Ils sont donc appelés par les fichiers \ext{cbx}. Ces appels mutuels entre fichiers permettent de garantir une uniformité entre les styles bibliographiques lors de l'utilisation de \cs{\meta{prefix}cite} et lors de l'utilisation de \cs{printbibliography}.
 
-Nous supposons que nous vous utilisez les styles de la famille \forme{verbose}. En consultant les journaux de compilation et en ouvrant les fichiers standards, vous pouvez aisément remonter au fichier \fichier{standard.bbx}, qui contient les drivers bibliographiques de cette famille.\renvoi{trouverfichier}
+Nous supposons que  vous utilisez les styles de la famille \forme{verbose}. En consultant les journaux de compilation et en ouvrant les fichiers standards, vous pouvez aisément remonter au fichier \fichier{standard.bbx}, qui contient les drivers bibliographiques de cette famille.\renvoi{trouverfichier}
 
 
 Dedans vous pouvez  repérer les lignes suivantes :
 \inputminted{exemples/biblio/styles2/driverbook.tex}
 
-Il s'agit d'un driver bibliographique expliquant comment afficher les entrées de type \type{book}. Ce driver fait appel à des macros bibliographiques (les commandes \cs{usebibmacro}). Ces macros sont communes à plusieurs drivers, ce qui permet d'avoir une certaine uniformité de style (par exemple, afin que les noms d'auteurs s'affichent systématiquement de la même façon).
+Il s'agit d'un driver bibliographique expliquant comment afficher les entrées de type \type{book}. Ce driver fait appel à des macros bibliographiques, les commandes \csp{usebibmacro}. Ces macros sont communes à plusieurs drivers, ce qui permet d'avoir une certaine uniformité de style, par exemple, afin que les noms d'auteurs s'affichent systématiquement de la même façon.
 
-Dans le lot des macros appelées, on constate l'appel à la macro \bibmacro{publisher+location+date}, via la commande
-
-\begin{minted}{latex}
-\usebibmacro{publisher+location+date}
-\end{minted}
+Dans le lot des macros appelées, on constate l'appel à la macro \bibmacro{publisher+location+date}, via 
+\csp{usebibmacro}\verb|{publisher+location+date}|.
 
 En fouillant un peu le même fichier, on repère l'endroit où la macro est définie :
 
 \inputminted{exemples/biblio/styles2/publisher+location+date.tex}[linenos]
 
-Nous allons commenter succinctement ces lignes, avant d'expliquer comment faire pour inverser l'ordre des deux champs (mais normalement, en lisant nos commentaires, vous devriez comprendre tout de suite). 
+Nous allons commenter succinctement ces lignes, avant d'expliquer comment faire pour inverser l'ordre des deux champs. 
 
 \begin{description}
-\item[Ligne 1]La commande \cs{newbibmacro*} indique qu'on déclare une nouvelle macro bibliographique, ici \bibmacro{publisher+location+date}. Pour indiquer qu'on redéfinit une macro déjà existant, il faut utiliser dans le préambule\footnote{Où ailleurs dans le fichier \ext{tex} mais en tout cas pas dans les fichiers standards.} la commande \cs{renewbibmacro*}. La définition de la macro se trouve dans les accolades qui suivent.
-\item[Ligne2]La commande \cs{printlist} indique qu'on affiche un champ qui pourrait se présenter sous forme de liste, c'est à dire où le mot clef \forme{and} à un sens. Ici il s'agit du champ \champ{location}. \item[Ligne 3]La commande \cs{iflistundef} test la valeur d'un champ qui pourrait être une liste, ici le champ \champ{publisher}. Si ce champ est vide, il exécute le contenu de la première accolade (ligne 4), sinon celui de la seconde (ligne 5).
-\item[Ligne 4]Si donc le champ \champ{publisher} est vide, on crée une nouvelle unité bibliographique (\cs{setunit*})\label{unitepersonalisee} séparée de la précédente par une virgule suivie d'une espace (\cs{addcomma}\cs{space}).
-\item[Ligne 5]Si le champ \champ{publisher} n'est pas vide, alors on crée une nouvelle unité bibliographique, séparée de la suivante par deux-points suivi d'une espace (\cs{addcolon}\cs{space}).
-\item[Ligne 6]On imprime le champ \champ{publisher}.
-\item[Ligne 7]On crée une nouvelle unité bibliographique, séparée de la précédente par une virgule suivie d'un espace. À noter que le champ \champ{publisher} étant vide, on n'aura qu'une seule virgule : nous renvoyons à nos explication antérieure sur les commandes de ponctuation.\renvoi{commandeponctuation}
-\item[Ligne 8]On appelle une macro qui se chargera de l'affichage de la date.
-\item[Ligne 9]On crée une nouvelle unité bibliographique. Le signe séparateur sera celui définie par la commande \cs{newunitpunct}, vue plus haut.
+\item[Ligne 1] La commande \csp{newbibmacro*} indique qu'on déclare une nouvelle macro bibliographique, ici \bibmacro{publisher+location+date}. Pour indiquer qu'on redéfinit une macro déjà existant, il faut utiliser dans le préambule\footnote{Où ailleurs dans le fichier \ext{tex} mais en tout cas pas dans les fichiers standards.} la commande \csp{renewbibmacro*}. La définition de la macro se trouve dans les accolades qui suivent.
+\item[Ligne2] La commande \csp{printlist} indique qu'on affiche un champ qui pourrait se présenter sous forme de liste, c'est à dire où le mot clef \forme{and} a un sens. Ici il s'agit du champ \champ{location}.
+\item[Ligne 3] La commande \csp{iflistundef} teste la valeur d'un champ qui pourrait être une liste, ici le champ \champ{publisher}. Si ce champ est vide, il exécute le contenu de la première accolade (ligne 4), sinon celui de la seconde (ligne 5).
+\item[Ligne 4] Si donc le champ \champ{publisher} est vide, on crée une nouvelle unité bibliographique (\cs{setunit*})\label{unitepersonalisee} séparée de la précédente par une virgule suivie d'une espace (\cs{addcomma}\cs{space}).\renvoi{commandeponctuation}
+\item[Ligne 5] Si le champ \champ{publisher} n'est pas vide, alors on crée une nouvelle unité bibliographique, séparée de la suivante par deux-points suivis d'une espace (\cs{addcolon}\cs{space}).
+\item[Ligne 6] On imprime le champ \champ{publisher}.
+\item[Ligne 7] On crée une nouvelle unité bibliographique, séparée de la précédente par une virgule suivie d'un espace. À noter que le champ \champ{publisher} étant vide, on n'a qu'une seule virgule : nous renvoyons à nos explication antérieure sur les commandes de ponctuation.\renvoi{commandeponctuation}
+\item[Ligne 8] On appelle une macro qui se charge de l'affichage de la date.
+\item[Ligne 9] On crée une nouvelle unité bibliographique. Le signe séparateur est défini par la commande \cs{newunitpunct}, vue plus haut.\renvoi{newunitpunct}
 \end{description}
 
-Pour inverser l'ordre de nos champs, il suffit donc de redéfinir une macro en inversant l'ordre d'impression des champs. Au passage, on ne veut plus des deux points comme séparateurs, ce qui nous permet de supprimer un test conditionnel.
+Pour inverser l'ordre de nos champs, il suffit donc de redéfinir la macro en inversant l'ordre d'impression des champs. Au passage, on ne veut plus des deux points comme séparateurs, ce qui nous permet de supprimer un test conditionnel.
 
 
 \begin{minted}{latex}
@@ -135,7 +132,7 @@ Prêtez bien attention aux \% de fin de lignes : les oublier signifie risquer d'
 
 \begin{plusloins}
 
-Il  existe d'autres commandes que \cs{printfield} pour imprimer des champs : \cs{printname} pour imprimer un champ contenant des noms de personne, et \cs{printfield} pour imprime un champ ne nécessitant pas de mise en forme particulière.
+Il  existe d'autres commandes que \cs{printlist} pour imprimer des champs : \csp{printname} pour imprimer un champ contenant des noms de personne, et \csp{printfield} pour imprimer un champ ne nécessitant pas de mise en forme particulière.
 
 Pour mieux comprendre quand utiliser l'une ou l'autre de ces commandes, le mieux est de regarder les fichiers standards.
 
@@ -143,18 +140,12 @@ Pour mieux comprendre quand utiliser l'une ou l'autre de ces commandes, le mieux
 \begin{plusloins}
 Si vous utilisez le champ \champ{address} à la place du champ \champ{location}, sachez que le premier est considéré comme un alias du second : autrement dit utiliser \champ{address} revient à utiliser \champ{location}.
 
-On peut déclarer des nouveaux alias de champ via la commande 
-
-\begin{minted}{latex}
-\DeclareFieldAlias{alias}{original}
-\end{minted}
-
-Mais normalement vous ne devriez pas avoir à utiliser cette commande.
+On peut déclarer des nouveaux alias de champ via la commande \csp{DeclareFieldAlias}\marg{alias}\marg{original}.
 \end{plusloins}
 
 \section{Autres exemples : des véritables \emph{op. cit.}}
 
-Un des éléments gênants des styles bibliographiques standards de la famille verbose est leur manière de gérer les abréviations universitaires de type \emph{op. cit.}. En effet, les styles indiquent les \emph{op. cit.} après avoir affiché l'auteur et le titre. Par exemple :
+Un des éléments gênants des styles bibliographiques standards de la famille verbose est leur manière de gérer les abréviations universitaires de type \emph{op. cit.} En effet, les styles indiquent les \emph{op. cit.} après avoir affiché l'auteur et le titre. Par exemple :
 
 \begin{quotation}
 \cite{Saxer1980}
@@ -186,7 +177,7 @@ Si nous n'avons qu'une seule entrée dont Victor Saxer est l'auteur, cela est as
     \bibstring[\mkibid]{opcit}}}
 % Rétablissons
 
-Pour ce faire, nous allons modifier les styles de \emph{BibLaTeX}, en utilisant la commande \cs{ifsingletitle{oui}{non}}. Cette commande vérifie si une entrée est la seule attribuée à son auteur, et renvoie \arg{oui} si c'est le cas, \arg{non} sinon. 
+Pour ce faire, nous allons modifier les styles de \emph{biblatex}, en utilisant la commande \csp{ifsingletitle}\marg{sioui}{sinon}. Cette commande vérifie si une entrée est la seule attribuée à son auteur, et renvoie \arg{sioui} si c'est le cas, \arg{sinon} sinon. 
 
 Pour la faire fonctionner, il faut utiliser Biber\renvoi{biber}, et passer l'option \option{singletitle=true} au chargement de \package{biblatex}.
 
@@ -204,17 +195,21 @@ On repère rapidement qu'elle se trouve dans une macro \bibmacro{cite:title}.
 Procédons à l'analyse :
 
 \begin{description}
-\item[Ligne 1]le nom de la macro est \bibmacro{cite:title}.
-\item[Ligne 2]la commande \cs{printtext} sert à deux chose : à mettre directement un texte en s'assurant que BibLaTeX gère la ponctuation ou bien à assembler plusieurs champs dans un seul bloc typographique. Ici, nous avons affaire au second usage. L'argument \arg{bibhyperlink} signifie que \package{BibLaTeX} va s'occuper de mettre un lien hypertexte à l'intérieur du document PDF.
-\item[Ligne 3]la commande \cs{printfield} imprime un champ. Ici le pseudo-champ \champ{labeltitle} : celui-ci renvoie la valeur du champ \champ{shortitle} s'il est définie, sinon celle de \champ{title}.\renvoi{shortfields}. Il l'affiche selon le format \arg{citetitle}\footcite[On pourrait si on voulait définir une autre manière d'afficher ce champ grâce à la commande \cs{DeclareFieldFormat}. Voir][]{biblatex_formating}.
-\item[Ligne 4]nouvelle unité bibliographique, dont le séparateur est défini par la commande \cs{nametitledelim}.
-\item[Ligne 5]la commande \cs{bibstring} sert à appeler une chaîne de langue, ici \verb|opcit|. Le premier argument \arg{\cs{mkibid}} sert à indiquer que la chaîne de langue est passée à la commande \cs{mibid} avant d'être affichée.
+\item[Ligne 1] le nom de la macro est \bibmacro{cite:title}.
+\item[Ligne 2] la commande \cs{printtext} sert à deux chose : à mettre directement un texte en s'assurant que \emph{biblatex} gère la ponctuation ou bien à assembler plusieurs champs dans un seul bloc typographique. Ici, nous avons affaire au second usage. Le \contenuarg{bibhyperlink} signifie que \package{biblatex} va s'occuper de mettre un lien hypertexte à l'intérieur du document PDF.
+\item[Ligne 3]la commande \cs{printfield} imprime un champ. Ici le pseudo-champ \champ{labeltitle} : celui-ci renvoie la valeur du champ \champ{shortitle} s'il est défini, sinon celle de \champ{title}.\renvoi{shortfields}. Il l'affiche selon le format \contenuarg{citetitle}\footcite[On pourrait si on voulait définir une autre manière d'afficher ce champ grâce à la commande \csp{DeclareFieldFormat}. Voir][]{biblatex_formating}.
+\item[Ligne 4]nouvelle unité bibliographique, dont le séparateur est défini par la commande \csp{nametitledelim}.
+\item[Ligne 5]la commande \csp{bibstring} sert à appeler une chaîne de langue, ici \verb|opcit|. Le premier argument, dont la valeur est ici \contenuarg{\cs{mkibid}}, indique que la chaîne de langue est passée à la commande \csp{mkibid} avant d'être affichée. Cette commande, qu'on pourrait remplacer par une autre, permet à \package{biblatex} d'afficher le  \emph{op. cit.} si besoin.
 \end{description}
 
-La ligne qui nous intéresse est donc la ligne 3 : il faudrait conditionner l'affichage du champ titre : si il n'y a qu'une seule œuvre pour l'auteur courant, on peut ne pas l'afficher. Il suffit de redéclarer la macro, en insérant le test conditionnel :
+La ligne qui nous intéresse est donc la ligne 3 : il faut conditionner l'affichage du champ titre : si il n'y a qu'une seule œuvre pour l'auteur courant, on peut ne pas l'afficher. Il suffit de redéclarer la macro, en insérant le test conditionnel :
 
 \begin{english}%en attendant que ce bug soit résolu
 \inputminted{exemples/biblio/styles2/singletitle.tex}
 \end{english}
+
+\begin{plusloins}
+Les éditeurs et gérant de revues peuvent très bien définir leurs propres fichiers \ext{cbx} et \ext{bbx} pour obtenir un ensemble cohérent de styles. Ces fichiers, qui contiennent drivers et macros bibliographiques doivent commencer par certaines commandes : nous renvoyons à la documentation de \emph{biblatex}\footcite{biblatex_fichiers}.
+\end{plusloins}
 
 

@@ -12,7 +12,7 @@
 	\end{prealable}
 	
 	
-\section{Séparateurs d'unité de sens}
+\section{Séparateurs d'unité de sens}\label{unitebiblio}
 	
 Prenons un problème courant. Vous avez constaté que, par défaut, les différents champs d'une référence bibliographique sont séparés par des points. On obtient par exemple :
 	
@@ -32,7 +32,7 @@ alors que le règles françaises voudraient que l'on ait :
 	
 À l'intérieur d'une référence bibliographique, BibLaTex distingue des unités de sens\footnote{À vrai dire il existe des unités plus vastes, appelés blocs. Mais ces unités servent pour des réglages avancés de l'affichage de la bibliographie finale.}. Ici : l'auteur, le titre, l'adresse, l'éditeur, l'année. 
 
-	Ces unités sont séparées par des signes de ponctuation. Les séparateurs sont définis par la commande \csp{newunitpunct}.
+	Ces unités sont séparées par des signes de ponctuation. Les séparateurs sont définis par la commande \csp{newunitpunct}.\label{newunitpunct}
 	
 	Il suffit donc de redéfinir la commande en mettant dans le préambule\footnote{Cela n'est pas strictement nécessaire, mais c'est une bonne méthode que de mettre l'ensemble des commandes de personnalisation de style dans le préambule. Nous conseillons de les regrouper en un seul fichier, appelé dans le préambule.} : 
 		
