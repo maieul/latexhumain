@@ -190,7 +190,18 @@ clef2 = {valeur2},%
 clefN = {valeurN}%
 }
 	\end{minted}
-	
+
+\begin{plusloins}
+On pourrait redéfinir les chaînes de langue consacrées aux abréviations universitaires de type \emph{op. cit.} pour les avoir en italique. 
+
+Il y a une solution plus simple\label{mkibidem}. En effet, \package{biblatex} passe ces chaînes de langue dans une commande \csp{mkibidem}\marg{chaine} avant de les afficher.
+
+Il nous suffit dont de redéfinir cette commande :
+\begin{minted}{latex}
+\renewcommand{\mkibid}[1]{\emph{#1}}
+\end{minted}
+\end{plusloins}
+
 \subsection{Introduction au tests conditionnels}\label{opcit}
 
 Nous allons maintenant prendre un peu d'anticipation sur le prochaine chapitre.
@@ -215,16 +226,6 @@ Au final cela donne :
 
 On remarquera l'utilisation des commandes de ponctuation, comme signalé plus haut.\renvoi{commandeponctuation}
 
-\begin{plusloin}
-Il est possible dans une définition de chaîne de langue d'utiliser n'importe quel type de commande \LaTeX. On peut donc utiliser la commande \cs{emph} pour que nos abréviations soient en italiques (ou en romain dans un texte en italique).
 
-\DefineBibliographyStrings{french}{%
-	opcit = \iffieldequalstr{entrytype}{article}%
-	{\emph{art\adddotspace cit\adddot}}%
-	{\emph{op\adddotspacecit cit\adddot}}%
-}
-\end{minted}
-
-\end{plusloin}
 
 	
