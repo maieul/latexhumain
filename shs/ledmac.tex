@@ -1,6 +1,4 @@
-\chapter{Édition critique et bilingue : les packages \packagenoidx{ledmac}\sindex[pkg]{ledmac} et \packagenoidx{ledpar}\sindex[pkg]{lepar}}
-\label{ledmac}
-\sindex[pkg]{verse}
+
 
 attention > version donnée par la textLive 2011 n'est pas la bonne: il faut mettre à jour  (aller sur site du ctan)
 
@@ -8,12 +6,12 @@ attention > version donnée par la textLive 2011 n'est pas la bonne: il faut met
 
 \subsection{Numéroter un texte}
 
-Le texte dont on veut numéroter les lignes est encadré entre les commandes \cs{beginnumbering} et \cs{endnumbering}. Il faut ensuite faire une distinction entre les textes en prose et les textes en vers. 
+Le texte dont on veut numéroter les lignes est encadré entre les commandes \cs{beginnumbering} et \cs{endnumbering}. Mais il faut ensuite faire une distinction entre les textes en prose et les textes en vers. 
 
 \subsubsection{Numéroter un texte en prose}
 
 
-On débute la numérotation, au sein de cet environnement numbering, avec la commande \cs{pstart} et on la termine avec la commande \cs{pend} (le texte contenu entre ces deux commande est mis dans une \enquote{boite}), comme dans l'exemple suivant:
+On débute la numérotation des lignes, au sein de cet environnement numbering, avec la commande \cs{pstart} et on la termine avec la commande \cs{pend} (le texte contenu entre ces deux commandes est mis dans une \enquote{boite}), comme dans l'exemple suivant:
 
 \begin{minted}{latex}
 \beginnumbering
@@ -32,7 +30,7 @@ erat  elit consectetuer erat, id egestas pede nibh eget odio.
 \endnumbering
 \end{minted}
 
-On obtiens ainsi : 
+On obtiens ainsi : \bigbreak
 
 \begin{minipage}{10cm}
 \beginnumbering
@@ -40,7 +38,8 @@ On obtiens ainsi :
 Lorem ipsum dolor sit amet, consectetuer adipiscing elit ?
 Morbi commodo ; ipsum sed pharetra gravida !
 Nullam sit amet enim. Suspendisse id : velit vitae ligula. 
-Aliquam erat volutpat.\pend
+Aliquam erat volutpat.
+
 
 Sed quis velit. Nulla facilisi. Nulla libero. 
  Quisque facilisis erat a dui. % onreprend la numérotation
@@ -50,17 +49,19 @@ erat  elit consectetuer erat, id egestas pede nibh eget odio.
 \pend
 \endnumbering
 \end{minipage}
-
+\bigbreak
 %la doc dit qu'il faut à chaque paragraphe remettere pstart/pend , et qu'on peut empêcher cette inconvénient en créant un groupe et avec la commande autopar. Pourtant marche très bien sur plusieurs paragarphes à la suit sans passer par cette commande.. à voir!
 
-Si l'on veut interrompre puis reprendre la numérotation où on l'a interrompu, il suffit de faire deux \enquote{boites} encadrée entre \cs{pstart} et \cs{pend}:  tout ce qui sera entre ces deux boites ne sera pas numéroté.
+Si l'on veut interrompre puis reprendre la numérotation, il suffit de faire deux \enquote{boites} encadrées chacune entre un  \cs{pstart} et un \cs{pend}:  tout ce qui sera entre ces deux boites ne sera pas numéroté.
 
 \subsubsection{\package{ledmac} et les vers}
 
-La  numérotation dans les textes en prose ne se fait pas de la même façon. Les commandes \cs{pstart} et \cs{pend}. A la place, on découpe son texte en strophes (\enquote{stanza}). Pour commencer la numérotation, on met donc la commande \cs{stanza}. Chaque vers se termine par un & , et le dernier vers de la strophe par \cs{&}.  Mais il faut aussi indiquer l'indentation de chaque vers de la strophe (faute de quoi on obtiens le message \enquote{Missing number}). On utilise pour cela la commande \cs{setstanzaindents}\marg{$n_1 n_2 n_x$}. L'argument \arg{$n_1$} indique l'indentation du rejet si le vers est trop long pour tenir sur une seule ligne; \arg{$n_1$} correspond au premier vers, \arg{$n_2$} au deuxième et ainsi de suite.
+La  numérotation dans les textes en vers est un peu plus complexe. Les commandes \cs{pstart} et \cs{pend} disparaissent. A la place, on découpe son texte en strophes (\enquote{stanza}). Pour commencer la numérotation, on met donc la commande \cs{stanza}. Chaque vers se termine par un \ampersand , et le dernier vers de la strophe par \cs{\ampersand}.  
+
+Il faut indiquer l'indentation de chaque vers de la strophe (faute de quoi on obtient le message \enquote{Missing number}), grâce à la commande \cs{setstanzaindents}\marg{$n_0, n_1, n_2, n_x$}. L'argument \arg{$n_0$} indique l'indentation du rejet si le vers est trop long pour tenir sur une seule ligne; \arg{$n_1$} correspond au premier vers, \arg{$n_2$} au deuxième et ainsi de suite.
 
 
-exemple: 
+
 
 \begin{minted}{latex}
 \beginnumbering
@@ -90,13 +91,38 @@ Berlin brust auf.\&
 \endnumbering
 \end{minted}
 
+donne ainsi: 
+
+\beginnumbering
+\setstanzaindents{0,0,4,0,0,0,2,2,2,8}
+\let\endstanzaextra=\bigbreak
+\stanza
+Berlin setz an.&
+Es speien die Geschäfte&
+die wackern Knaben und die Mädchen aus.&
+Jetz kommt der Feierabend --- aber defte!&
+Wir springen nur noch eben resch nach Haus.&
+Die großen Fraun sind ganz auf neu gemalen.&
+Wer wird heut abend wohl dem Zimt bezahlen?&
+Sie lächeln lieb. Das Auto summt heran.&
+Berlin setz an.\&
+
+\stanza
+Berlin brummt auf.&
+Wo ich die Paare anseh:&
+Hier wird ein harter Dienst straff absolviert.&
+Ein Riesenrummel von Grünau bis Wannsee ---&
+und alles tadellos organisiert.&
+Um jeden Schnapstich fühlst du es bestätigt:&
+Marie stark Geld --- heute wird das Ding getätigt!&
+Die Spesen fest. Planmäßig der Verlauf ---&
+Berlin brust auf.\&
+\endnumbering
+
 (berliner abend, kurt tuchovsky)
 
-La commande
-\cs{\endstanzaextra} permet d'ajouter quelque chose à la fin de chaque strophe.
-Dans l'exemple qui précède, on a ainsi mis 
-\verb|\let\endstanzaextra=\bigbreak|: cela permet d'avoir 
- un espace vertical entre chaque  strophes.
+La commande\cs{endstanzaextra} permet d'ajouter quelque chose à la fin de chaque strophe.
+Dans l'exemple qui précède, l'espace vertical entre chaque  stropheest ainsi obtenu par la ligne \verb|\let\endstanzaextra=\bigbreak|
  
 (on peut ajouter bcp de chose: voir le manuel)
 les nouvelles commande de maïeul > pour avoir le crochet
@@ -105,14 +131,14 @@ si on ne fait que des vers sans indentation> 0 partout (ex: faire des "stanza" d
 
 \subsubsection{Aller plus loin}
 
-Comme on peut le voir dans les exemples précédents, Ledmac numérote par défaut  une ligne sur cinq. On peut changer cela très simplement avec les commande suivantes:
+Comme on peut le voir dans les exemples précédents, Ledmac numérote par défaut  une ligne sur cinq. On peut changer cela très simplement avec les commandes suivantes:
 \cs{firstlinenum}\marg{nbre} et \cs{linenumincrement}\marg{nbre}.
-L'argument \arg{nbre} de la commande \cs{firstlinenum} indique quelle est  la première ligne qui sera numérotée ; l'argument \arg{nbre} de la commande \cs{linenumincrement} définit la fréquence avec laquelle les lignes seront numérotés. On place ces commande après \cs{beginnumbering}. 
+L'argument \arg{nbre} de la commande \cs{firstlinenum} indique quelle est  la première ligne qui sera numérotée ; celui de la commande \cs{linenumincrement} définit la fréquence avec laquelle les lignes seront numérotés. On place ces commande après \cs{beginnumbering}. 
 
 Ainsi, si l'on veut numéroter toutes les lignes en commençant par la première, il faut mettre \cs{linenumincrement}\marg{1} et \cs{firstlinenum}\marg{1} 
 
 
-
+\bigbreak
 
 -faire des "sous-numérotation
 > avec \cs{firstsublinenum} 
@@ -139,32 +165,37 @@ On peut aussi changer façon dont apparaissent es numéro des lignes (voir doc)
 
 \subsection{L'apparat critique}
 
-Notes de bas de page se présentent de cette façon:  \cs{Afootnote}\marg{texte}. Il y en a 5 type: de A à E
+Les notes de bas de page se présentent de cette façon:  \cs{Afootnote}\marg{texte}. Il y en a 5 types, de \cs{Afootnote} à \cs{Efootnote}
 
 
->ces notes appellent un lemme : le mot du texte qui apparaîtra ds la  note de bas de page. On fait une note de cette façon: \cs{edtext}\marg{lemme}\marg{commande} (l'argument \arg{commande} contient l'appel à la note: \cs{Afootnote}, \cs{Bfootnote}, etc.
-l'argument \arg{lemme} est la partie du texte annoté qui est reprise dans la note de bas de page, précédée du numéro de la ou des lignes correspondantes. 
+Ce type de notes appellent un \enquote{lemme}, c'est-à-dire une partie du texte annoté qui doit reprise dans la note de bas de page, précédée du numéro de la ou des lignes correspondantes. 
 
-Il est aussi possible d'utiliser  des  notes de bas de page "normales", appelées par un numéro dans le texte. Il y en a cinq sortes  possibles: de \cs{footnoteA} à \cs{footnoteB}.
+La note de bas de page est appelée de la façon suivante:  \cs{edtext}\marg{lemme}\marg{commande}. L'argument \arg{commande} contient l'appel à la note: \cs{Afootnote}, \cs{Bfootnote}.
 
-Lorsque ce \enqute{lemme} est trop grand, on peut choisir quel lemme on veut voir imprimé. On utilise pour cela la commande suivante: 
+Il est aussi possible d'utiliser  des  notes de bas de page \enquote{normales}, appelées par un numéro dans le texte. Il y en a là aussi cinq sortes: de \cs{footnoteA} à \cs{footnoteB}.
+
+Dans les notes de type \cs{Afootnotes}\dots, lorsque ce \enquote{lemme} est trop grand, on peut choisir de l'abbréger. On utilise pour cela la commande suivante: 
 \cs{edtext}\marg{le lemme trop long}\{\cs{lemma}\marg{le lemme raccourci}\cs{Bfootnote\marg{la note}}\}. 
 
 \begin{plusloins}
 Il est aussi possible de mettre des notes de fin. Là encore, cinq sortes possibles:  de \cs{Aendnote} à \cs{Eendnote}.
 \end{plusloins}
 
-Dans l'exemple suivant, j'ai utilisé deux types de notes avec lemme (dont une où j'ai mis un lemme \enquote{raccourci}),et  un type de note sans lemme:
+Dans l'exemple suivant, nous avons utilisé deux types de notes avec lemme (dont une où j'ai mis un lemme \enquote{raccourci}), et  un type de note sans lemme:
 
 
 \begin{minted}{latex}
 \setstanzaindents{0,0,1,0,1,0,1,0,1}
 \stanza
-Quando erit illa dies, cum nostrum intrabis in \edtext{ortum}{\Afootnote{hortum, \textit{F}}},&
+Quando erit illa dies, cum nostrum intrabis in \edtext{ortum}
+{\Afootnote{hortum, \textit{F}}},&
  Atque leges nostras ungue libente rosas?\footnoteA{In exilio}&
-Et tua magna sitis mage seu \edtext{mage crescere}{\Afootnote{mage se accrescere \textit{G}}} gliscet,&
+Et tua magna sitis mage seu \edtext{mage crescere}
+{\Afootnote{mage se accrescere \textit{G}}} gliscet,&
  Dum quod semper amas, carmine plenus eris.&
-\edtext{Si qua istis fuerint, ut erunt, uitiosa camenis}{\lemma{Si \dots camenis}\Bfootnote{\textit{Ov. Trist. IV},1 Si qua meis fuerint, ut erunt, vitiosa libellis, parce}},&
+\edtext{Si qua istis fuerint, ut erunt, uitiosa camenis}
+{\lemma{Si \dots camenis}\Bfootnote{\textit{Ov. Trist. IV},
+1 Si qua meis fuerint, ut erunt, vitiosa libellis, parce}},&
  Parce, precor : scriptor non mihi doctus inest.&
 Quaeso, tuum nobis fidum transmitte ministrum,&
  Qui tua grata mihi perferat orsa, uale.\&
@@ -172,6 +203,7 @@ Quaeso, tuum nobis fidum transmitte ministrum,&
 
 On obtiens alors ceci: 
 
+\bigbreak
 
 \begin{minipage}{\textwidth}
 \beginnumbering 
@@ -198,14 +230,14 @@ Il faut compiler deux fois pour obtenir le numéro des lignes dans l'apparat cri
 
 
 
-Il est conseillé de clarifier tout cela en créant ses propres commandes, par exemple en indiquant dans son préambule: 
+Il est conseillé de s'aider en changeant le nom des types de notes, en indiquant par exemple dans son préambule: 
 
-\verb|\let\variantes=\Afootnote| \\
+\noindent \verb|\let\variantes=\Afootnote| \\
 \verb|\let\citations=\Bfootnote| \\
 \verb|\let\eclaircissements=\footnoteA| \\
 Et ainsi de suite\dots 
 
-On peut créer des commandes pour simplifier plus encore  (et surtout clarifier) la rédaction d'un apparat critique; par exemple:
+Mais il est plus conseillé de créer des commandes personnelles pour simplifier plus encore  (et surtout clarifier) la rédaction d'un apparat critique; par exemple:
 
 \begin{minted}{latex}
 \usepackage{ifthen, xargs}
@@ -235,6 +267,8 @@ Différence entre colonnes et pages:
 \subsubsection{Textes sur deux colonnes}
 \subsubsection{Textes sur deux pages}
 \subsection{Aller plus loin}
+
+
 (Bof! trouver autre titre)
 
 doper la mémoire>maxchunks. ou multiplier les \cs{Columns} ou \cs{Pages}
