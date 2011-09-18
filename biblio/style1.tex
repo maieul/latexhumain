@@ -4,7 +4,7 @@
 	
 	Vous savez désormais utiliser les commandes de citation. Toutefois, vous pourriez souhaiter modifier la manière dont les références s'affichent :  changer l'ordre des champs, les séparateurs, les textes du type \forme{dans}.
 	
-	Ces deux chapitres vous indiqueront les principes généraux pour le faire. Ils n'ont pas pour vocation de tout présenter sur le sujet, mais simplement les principes de base. On se reportera au manuel de \package{biblateX} pour aller plus loin.
+	Ces deux chapitres vous indiqueront les principes généraux pour le faire. Ils n'ont pas pour vocation de tout présenter sur le sujet, mais simplement les principes de base. On se reportera au manuel de \package{biblatex} pour aller plus loin.
 	
 	Le premier de ce chapitre vous présentera les techniques les plus simples, celles qui ne nécessitent pas de fouiller le styles bibliographiques standards. 
 	
@@ -30,7 +30,7 @@ alors que le règles françaises voudraient que l'on ait :
 	\cite{Urner1952}
 	\end{quotation}
 	
-À l'intérieur d'une référence bibliographique, BibLaTex distingue des unités de sens\footnote{À vrai dire il existe des unités plus vastes, appelés blocs. Mais ces unités servent pour des réglages avancés de l'affichage de la bibliographie finale.}. Ici : l'auteur, le titre, l'adresse, l'éditeur, l'année. 
+À l'intérieur d'une référence bibliographique, biblatex distingue des unités de sens\footnote{À vrai dire il existe des unités plus vastes, appelés blocs. Mais ces unités servent pour des réglages avancés de l'affichage de la bibliographie finale.}. Ici : l'auteur, le titre, l'adresse, l'éditeur, l'année. 
 
 	Ces unités sont séparées par des signes de ponctuation. Les séparateurs sont définis par la commande \csp{newunitpunct}.\label{newunitpunct}
 	
@@ -54,31 +54,31 @@ alors que le règles françaises voudraient que l'on ait :
 	\begin{quotation}
 		\cite{BrefHippone}
 	\end{quotation}
+	\renewcommand{\newunitpunct}[0]{\addcomma\addspace}
 	
 	La virgule entre les deux points et \emph{Concilia Africae} s'explique parce qu'une unité a été créée, unité qui doit contenir normalement la valeur du champ \champ{Bookauthor}.
 	
-	Pour éviter ce problème, il  faut ne pas mettre directement dans la définition de la commande \cs{newunitpunct} les signes de ponctuation mais utiliser à la place les commandes de ponctuation\footcite[Listées dans][]{biblatex_ponctuation}. En effet, ces commandes affichent la ponctuation uniquement si l'unité qui précède a bien un contenu\footnote{Par ailleurs, elle suppriment les espaces multiples qui précédent.}.\label{commandeponctuation}
+	Pour éviter ce problème, il  faut ne pas mettre directement dans la définition de la commande \cs{newunitpunct} les signes de ponctuation mais utiliser à la place les commandes de ponctuation\footcite[Listées dans][]{biblatex_ponctuation}. En effet, ces commandes affichent la ponctuation uniquement si l'unité qui précède a bien un contenu\footnote{Par ailleurs, elles suppriment les espaces multiples qui précédent.}.\label{commandeponctuation}
 	Ainsi dans notre cas :
 	
 	\begin{minted}{latex}
 \renewcommand{\newunitpunct}[0]{\addcomma\addspace}
 	\end{minted}
 	
-\renewcommand{\newunitpunct}[0]{\addcomma\addspace}
+
 	
-	
-\subsection{Une séparateur spécifique à deux unités}
+\subsection{Un séparateur spécifique à deux unités}
 	
 	On peut vouloir qu'entre deux unités spécifiques, par exemple entre le titre et le sous titre, le séparateur ne soit pas le même qu'entre les autres unités.	Vous avez sans doute constaté que c'est d'ailleurs le cas pour le style \forme{verbose} : l'adresse et l'éditeur sont séparées par des deux-points.
 	
 	Deux cas existent :
 		\begin{enumerate}
-			\item Le package \package{biblatex} a prévu une commande spécifique pour notre type d'unité. C'est le cas pour le séparateur avant le sous titre\footcite[Ces commandes sont peu nombreuse : on les trouvera dans][]{biblatex_hooks}. Il suffit dans ce cas de redéfinir la commande. Par exemple nous souhaitons avoir des deux-points entre le titre et le sous titre. Il nous suffit d'indique :
+			\item Le package \package{biblatex} a prévu une commande spécifique pour notre type d'unité. C'est le cas pour le séparateur avant le sous titre\footcite[Ces commandes sont peu nombreuses : on les trouvera dans][]{biblatex_hooks}. Il suffit dans ce cas de redéfinir la commande. Par exemple nous souhaitons avoir des deux-points entre le titre et le sous titre. Il nous suffit d'indique :
 			\begin{minted}{latex}
 \renewcommand{\subtitlepunct}[0]{\addspace\addcolon\addspace}
 			\end{minted}
 			
-			\item \package{BibLaTeX} n'a pas prévu de commande spécifique pour notre type d'unité. Dans ce cas, le problème est plus complexe et nécessite des notions que nous n'avons pas encore abordées. C'est pourquoi nous renvoyons au prochain chapitre.\renvoi{unitepersonalisee}
+			\item Le package n'a pas prévu de commande spécifique pour notre type d'unité. Dans ce cas, le problème est plus complexe et nécessite des notions que nous n'avons pas encore abordées. C'est pourquoi nous renvoyons au prochain chapitre.\renvoi{unitepersonalisee}
 		\end{enumerate}
 		
 \section{Séparateur de références multiples}\label{multicitedelim}
@@ -108,6 +108,9 @@ La ponctuation n'est pas le seul endroit où \package{biblatex} propose des poin
 	\end{quotation}
 	
 	\renewcommand{\mkbibnameprefix}[1]{\parentext{#1}}
+	% On modifie
+	\renewbibmacro*{cite:ibid}{\usebibmacro{cite:full}}
+
 	
 Il est parfois d'usage de mettre la particule entre parenthèse. Pour ce faire, il suffit de redéfinir la commande \cs{mkbibnameprefix}. Cette commande prend un argument, qui est la particule. Ainsi pour la mettre automatiquement entre parenthèse, il suffit d'écrire.
 	
@@ -126,6 +129,14 @@ La commande \csp{parentext} met entre parenthèse un texte passé en argument. O
 	\begin{quotation}
 	\cite{BeauvoirSexe}
 	\end{quotation}
+% On rétablis
+\renewbibmacro*{cite:ibid}{%
+  \printtext{%
+    \bibhyperlink{cite\csuse{cbx@lastcite@\thefield{entrykey}}}{%
+      \bibstring[\mkibid]{ibidem}}}%
+  \ifloccit
+    {\global\toggletrue{cbx:loccit}}
+    {}}
 
 \section{Chaînes de langues}\label{i18nchaines}
 	
@@ -204,9 +215,9 @@ Il nous suffit dont de redéfinir cette commande :
 
 \subsection{Introduction au tests conditionnels}\label{opcit}
 
-Nous allons maintenant prendre un peu d'anticipation sur le prochaine chapitre.
+Nous allons maintenant prendre un peu d'anticipation sur le prochain chapitre.
 Vous savez  que les styles de la famille \forme{verbose-trad} utilisent des abréviations latines comme \emph{op. cit.}
-Ces abréviations sont les abréviations universitaires courantes. Toutefois en ce qui concerne\emph{op. cit.} \package{biblatex} l'utilise indistinctement pour tout les types d'entrées, y compris pour les entrées de type \type{article}, alors même qu'on pourrait s'attendre à une abréviation comme \emph{art. cit.}
+Ces abréviations sont les abréviations universitaires courantes. Toutefois en ce qui concerne \emph{op. cit.} \package{biblatex} l'utilise indistinctement pour tout les types d'entrées, y compris pour les entrées de type \type{article}, alors même qu'on pourrait s'attendre à une abréviation comme \emph{art. cit.}
 
 Pour résoudre ce problème il suffit de redéfinir la chaîne de langue qui définit \emph{op. cit.}, en lui attribuant une valeur différente selon le type d'entrée.  On va donc utiliser l'un des nombreux tests conditionnels disponibles dans \package{biblatex}. Il s'agit de la commande : \csp{iffieldequalstr}\marg{champ}\marg{texte}\marg{sioui}\marg{sinon}.
 
