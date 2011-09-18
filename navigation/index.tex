@@ -1,9 +1,8 @@
-
-\chapter{Faire un index}
+\chapter{Index}
 
 \begin{prealable}
 
-Dans ce chapitre nous verrons comment faire des index\footnote{Je remercie ma sœur Enimie pour l'avoir rédigé en grande partie.}.
+Dans ce chapitre nous verrons comment faire un ou plusieurs index\footnote{Je remercie ma sœur Enimie pour l'avoir rédigé en grande partie.}.
 
 \end{prealable}
 
@@ -14,7 +13,7 @@ Dans ce chapitre nous verrons comment faire des index\footnote{Je remercie ma s�
 \subsection{Principe de base}
 
 
-Pour indexer un document, il faut utiliser le package \package{makeidx}. Dans le préambule il faut placer la commande \cs{makeindex} pour que \LaTeX{} puisse créer un index.
+Pour indexer un document, il faut utiliser le package \package{makeidx} et placer  dans le préambule la commande \csp{makeindex}.
 
 \begin{minted}{latex}
 \usepackage{makeidx}
@@ -25,9 +24,9 @@ Pour indexer un document, il faut utiliser le package \package{makeidx}. Dans le
 
 
 
-On indexe son document avec  la commande \cs{index}\marg{entrée}. L'entrée apparaîtra dans l'index sous la forme indiquée par l'argument \emph{entrée}, suivit du numéro de la page où cette commande est placée dans le texte. 
+On indexe son document avec  la commande \csp{index}\marg{entrée}\label{cmdindex}. L'entrée apparaît dans l'index sous la forme indiquée par l'argument \arg{entrée}, suivit du numéro de la page où cette commande est placée dans le texte. 
 
-Dans l'exemple qui suit, l'index comportera ainsi cinq entrées: \enquote{Charlemagne}, \enquote{Adrien}, \enquote{Tassilon}, \enquote{Formose} et \enquote{Damase}:
+Dans l'exemple qui suit\footcite{eginhard}, l'index comporte ainsi cinq entrées: \enquote{Charlemagne}, \enquote{Adrien}, \enquote{Tassilon}, \enquote{Formose} et \enquote{Damase}:
 %Changer l'exemple.
 
 \begin{minted}[linenos]{latex}
@@ -50,8 +49,8 @@ Il vaut mieux accoler la commande \cs{index}\marg{entrée} directement au  mot �
 
 \end{attention}
 
-%% Ne faudrait-il pas créer un environnement mettre "Remarque"? qui irait mieux que anecdote par ex pour certains endroits plutôt que "Anecdote" ou attention? Ici, par exemple( ou ds le chapitre notion de base, sur babel)
-L'indexation d'un texte n'est pas automatique: il faut placer \cs{index} à chaque endroit  que l'on veut référencer. Pour éviter d'oublier, dans cette démarche fastidieuse, de référencer certaines occurrences, on  peut bien sûr créer une commande  spécifique.
+
+L'indexation d'un texte n'est pas automatique: il faut placer \cs{index} à chaque endroit  que l'on veut référencer. On  peut bien sûr créer une commande  spécifique pour combiner avec d'autres actions.
 
 Ainsi, pour indexer automatiquement tous les noms propres d'un texte, déclarons la commande suivante:\label{indexauteur}
 \begin{minted}{latex}
@@ -59,48 +58,39 @@ Ainsi, pour indexer automatiquement tous les noms propres d'un texte, déclarons
 \end{minted}
 \renewcommand\auteur[2]{#1~\textsc{#2}\xspace}
 
-Il suffira ensuite, au cours de la rédaction de son texte, de taper par exemple \cs{auteur}\verb|{Victor}{Hugo}| pour obtenir \enquote{\auteur{Victor}{Hugo}} dans le cours de son texte, indexé sous l'entrée \enquote{Hugo, Victor}.
+Il suffit ensuite, au cours de la rédaction de son texte, de taper par exemple \cs{auteur}\verb|{Victor}{Hugo}| pour obtenir \enquote{\auteur{Victor}{Hugo}} dans le cours de son texte, indexé sous l'entrée \enquote{Hugo, Victor}.
 
 
 \subsubsection{Générer l'index}
 
-Si notre fichier principal s'appel \fichier{exemple.tex}, lors de la première compilation, la commande \cs{makeindex} indique à \LaTeX{} de créer un fichier de type \fichier{exemple.idx}, contenant la liste de toutes les entrées que l'on a placées. 
+Si notre fichier principal s'appelle \fichier{exemple.tex}, lors de la première compilation, la commande \cs{makeindex} indique à \LaTeX{} de créer un fichier de type \fichier{exemple.idx}, contenant la liste de toutes les entrées que l'on a placées. 
  
- %Chaque entrée se présente de la manière suivante:\\
-%\verb+\indexentry{nom de l'entrée}{numéro de la page}+.
 
 
 
-On compile ensuite le document en ligne de commande 
+
+On compile ensuite le document avec le programme MakeIndex, soit  en ligne de commande\renvoi{terminal}  soit via l'éditeur de texte, si celui le propose.
 
 \begin{minted}{bash}
 makeindex exemple.idx
 \end{minted}
 
 Il est possible de ne pas indiquer l'extension \ext{idx}.
-\LaTeX{} génère alors un fichier \fichier{exemple.ilg} qui contient les message de compilation de l'index, et un fichier \fichier{exemple.ind} qui contient l'index formaté% et se présente ainsi:
+
+\LaTeX{} génère alors un fichier \fichier{exemple.ilg} qui contient les message de compilation de l'index, et un fichier \fichier{exemple.ind} qui contient l'index formaté.
 
 
-%\begin{minted}{latex}
-%\begin{theindex}
-%
-%  \item entrée,4
-%  \item autre entrée, 5--7
-%  \item troisième entrée, 3, 8	
-
-%\end{theindex} 
-%
-%\end{minted}
-
-Il suffit alors de compiler à nouveau le document principal pour y intégrer son index, qui apparaîtra à l'emplacement que l'on aura indiqué par la commande \cs{printindex}.
 
 
-%essayer de faire marcher showidx
+Il suffit alors de compiler à nouveau le document principal pour y intégrer son index, qui apparaît à l'emplacement que l'on a indiqué par la commande \csp{printindex}.
 
-\subsection{Aller plus loin}
+\begin{plusloins}
+On pourrait souhaiter avoir notre index dans la table des matières. Nous indiquons sur notre blog une solution, un collègue indique également en réaction sa solution, qui consiste à passer par le package \package{imakeidx}\footcite{indextoc}.
+\end{plusloins}
+\subsection{Allons plus loin}
 \subsubsection{Créer des subdivisions}
 
-Il est possible, avec \package{MakeIndex},  de créer des subdivisions et des subsubdivisons  pour chaque entrée de l'index. La subdivision se crée de la manière suivante : \cs{index}\marg{entrée!sous-entrée}. La sous-sous-entrée, logiquement, se crée ainsi: \cs{index}\marg{entrée!sous-entrée!sous-sous-entrée}. \package{MakeIndex} ne permet cependant que ces trois niveaux d'indexation.
+Il est possible, avec \package{MakeIndex},  de créer des subdivisions et des subsubdivisons  pour chaque entrée de l'index. La subdivision se crée de la manière suivante : \begin{english}\cs{index}\verb|{|\meta{entrée}\verb|!|\meta{sous-entrée}\verb|}|\end{english}. La sous-sous-entrée, logiquement, se crée ainsi: \begin{english}\cs{index}\verb|{|\meta{entrée}\verb|!|\meta{sous-entrée}\verb|!\meta{sous-sous-entrée}\verb|}|\end{english}. MakeIndex ne permet cependant que ces trois niveaux d'indexation.
 
 On peut ainsi référencer autrement notre premier exemple, en créant les entrées \enquote{Evêques} et \enquote{Ducs} que l'on subdivise:
 
@@ -136,12 +126,12 @@ Evêques \\
 
 
 Bien entendu, on pourrait encore rajouter une subdivision, en distinguant par exemple \enquote{Clercs} et \enquote{Laïcs}, et dans la première catégorie en distinguant \enquote{Evêques} et \enquote{Papes}. 
-%Montrer le résultat?
+
 
  
 \subsubsection{Faire des références croisées}
 
-Pour qu'une entrée dans l'index renvoie à une autre entrée, on utilise la commande  \cs{index}\marg{entrée|see{entrée à laquelle on renvoie}}. Ainsi, la commande \cs{index}\verb+{Tassilon|see{Ducs}+ donnera dans l'index:
+Pour qu'une entrée dans l'index renvoie à une autre entrée, on utilise la commande  \cs{index}\verb|{|\meta{entrée}\verb+|see+\meta{entrée à laquelle on renvoie}\verb|}|. Ainsi,  \cs{index}\verb+{Tassilon|see{Ducs}}+ donne dans l'index:
 
 \begin{quotation}
 Tassilon, voir Ducs
@@ -149,15 +139,12 @@ Tassilon, voir Ducs
 La traduction de \emph{see} change selon la langue indiquée comme \cs{setmainlanguage}. \renvoi{french}
 
 
-%Si on met  \index{nom propre|see{nom générique}} dans le corps du texte, marche sans problème. En revanche si on veut semi automatiser l'indexation pour certains nom  en définissant une nouvelle commandande  type \newcommand\Nom{\index{nom propre|see{nom générique}}Nom\xspace}, on va avoir dans l'index: nom propre, voir nom générique, voir nom générique, voir nom générique,.. (répété autant de fois que \Nom apparaît ds le document. 
-% Bidouillage qui marche: définir la commande \newcommande\Nom{\index{nom générique}Nom\xspace} puis ailleurs une seule fois indiquer \index{nom propre|see{nom générique}.
-%Pas sûre que ce soit utile de l'indiquer: si on emploi la commande |see c'est pour des cas particuliers: on ne va pas en faire une commande automatique.
 
   
 
 \subsubsection{Créer des entrées sur plusieurs pages}
 
-Si l'on veut référencer dans l'index non pas un mot mais un passage, il faut placer la commande \cs{index}\marg{entrée(} au début du passage à indexer et la commande  \cs{index}\marg{entrée)} à la fin. Si le passage commence à la page x et se termine à la page y, on aura ainsi indiqué dans l'index: 
+Si l'on veut référencer dans l'index non pas un mot mais un passage, il faut placer la commande \cs{index}\verb|{|\meta{entrée}\verb|(}| au début du passage à indexer et la commande  \cs{index}\verb|{|\meta{entrée}\verb|)}| à la fin. Si le passage commence à la page x et se termine à la page y, on obtient dans l'index: 
 
 \begin{quotation}
 entrée x-y
@@ -166,9 +153,9 @@ entrée x-y
 
 \subsubsection{Entrées formatées}
 
-Makeindex ne gère pas correctement les accents indiquées dans la commande \cs{index} : il classe les mots commençant par un accent à la fin de l'index. La syntaxe \cs{index}\marg{entrée@entrée formatée} permet de résoudre ce problème. Ainsi, si l'on veut créer une entrée \enquote{écrivains}, qui soit triée à \enquote{e}, il faut taper \cs{index}\verb|{ecrivains@écrivains}|.
+Makeindex ne gère pas correctement les accents indiquées dans la commande \cs{index} : il classe les mots commençant par un accent à la fin de l'index. La syntaxe \cs{index}\verb|{|\meta{entrée}\verb|@|\meta{entrée formatée}\verb+}+ permet de résoudre ce problème. Ainsi, si l'on veut créer une entrée \enquote{écrivains}, qui soit triée à \enquote{e}, il faut insérer \cs{index}\verb|{ecrivains@écrivains}|.
 
-La commande \cs{index}\marg{entrée@entrée formatée} permet donc de classer une entrée là où l'on veut dans l'index. Pour faire apparaître dans l'index, par exemple, les empereurs romains dans l'ordre chronologique et non dans l'ordre alphabétique, on peut utiliser les commandes suivantes:
+La commande cs{index}\verb|{|\meta{entrée}\verb|@|\meta{entrée formatée}\verb+}+ permet donc de classer une entrée là où l'on veut dans l'index. Pour faire apparaître dans l'index, par exemple, les empereurs romains dans l'ordre chronologique et non dans l'ordre alphabétique, on peut utiliser les commandes suivantes:
 
 \begin{minted}{latex}
 \index{Empereurs!empereur1@Auguste}
@@ -177,65 +164,58 @@ La commande \cs{index}\marg{entrée@entrée formatée} permet donc de classer un
 et ainsi de suite. 
 \end{minted}
 
-On obtiendra alors
+On obtient alors
 \begin{quotation}
 \begin{tabbing}
 \hspace{0,5cm} \= \kill
 Empereurs\\
 \> Auguste, x\\
-\> Tibère, z\\
-\> Claude, y \\
+\> Tibère, y\\
+\> Claude, z \\
 
 \end{tabbing}
 \end{quotation}
 
-Cette commande est aussi utile pour mettre en évidence une entrée dans l'index en modifiant son aspect. En mettant \cs{index}\marg{entrée@\textbf{entrée formatée}}, l'entrée apparaît en gras dans l'index. Ceci est valable pour toutes les commandes modifiant la fonte. Modifions ainsi comme suit la commande \cs{auteur} que l'on a crée:
+Cette syntaxe est aussi utile pour mettre en évidence une entrée dans l'index en modifiant son aspect. En mettant \cs{index}\verb|{\meta{entrée}\verb|@\textbf{|meta{entrée formatée}\verb|}}|, l'entrée apparaît en gras dans l'index. Ceci est valable pour toutes les commandes modifiant la fonte. Modifions ainsi comme suit la commande \cs{auteur} que l'on a créée précédemment :\renvoi{indexauteur}
 
 \begin{minted}{latex}
 \newcommand\auteur[2]{#1~\textsc{#2}\index{#2 #1@\textsc{#2}, #1}\xspace}
 \end{minted}
 
-Désormais, taper \cs{auteur}\verb|{Victor}{Hugo}| permettra d'obtenir \textsc{Hugo},~Victor dans l'index.
+Désormais, frapper \cs{auteur}\verb|{Victor}{Hugo}| permet d'obtenir \enquote{\textsc{Hugo},~Victor} dans l'index.
  
  
-%To put a !, @, or | character in an index entry, quote it by preceding the character with a ". More precisely, any a character is said to be quoted if it follows an unquoted " that is not part of a \" command. A quoted !, @, or | character is treated like an ordinary character rather than having its usual meaning. The " preceding a quoted character is deleted before the entries are alphabetized. 
- 
+
 \subsubsection{Formater le numéro des pages}
 
-Il peut arriver, lorsqu'une entrée est très souvent représentée dans un texte indexé, que l'on veuille mettre en valeur une de ses occurrences, en faisant apparaître dans l'index le numéro de la page où elle se situe en gras: on utilise alors la commande \cs{index}\marg{entrée|textbf}. 
+Il peut arriver lorsqu'une entrée est très souvent représentée dans un texte indexé que l'on veuille mettre en valeur une de ses occurrences, en faisant apparaître, dans l'index, le numéro de la page où elle se situe en gras: on utilise alors la commande \cs{index}\verb|{|\meta{entrée}\verb+|textbf}+. 
 
-De même, pour faire apparaître le numéro de la page en italique va-t-on utiliser la commande \cs{index}\marg{entrée|textit}.
+De même, pour faire apparaître le numéro de la page en italique va-t-on utiliser la commande \cs{index}\cs{index}\verb|{|\meta{entrée}\verb+|textit}+.
 
 \begin{attention}
 Il s'agit bien de \verb+|textbf+, non de \verb+|\textbf+
-
 \end{attention}
 
 
 
-%+ protéger un index fragile, "customiser" son index
-%Recall that special characters like \ may appear in the argument of an \index command only if that command is not itself contained in the argument of another command. This is most likely to be a problem when indexing items in a footnote. Even in this case, robust commands can be placed in the “@” part of an entry, as in \index{gnu@{\it gnu}}, and fragile commands can be used if protected with the \protect command.3
+\begin{plusloins}
+Si vous utilisez le package \package{hyperref}, vous constatez que celui-ci insère des liens hypertextes vers les pages au sein de l'index. Toutefois si une de ces pages est formatée, le lien disparaît. Nous expliquons sur notre site comment éviter ce problème\footnote{indexhypergras}.
+\end{plusloins}
 
 
 
 \section{\packagenoidx{SplitIndex}, ou comment faire plusieurs index}\sindex[pkg]{SplitIndex} \label{splitindex}
 
-\begin{prealable}
-Nous supposons que vous avez appris à vous servir de \package{MakeIndex} avant d'apprendre à utiliser \package{SplitIndex}, car les principes de base sont les mêmes.
-\end{prealable}
 
-Le package se charge en remplaçant la commande \cs{usepackage}\verb|{makeindex}| par \cs{usepackage}\verb|{splitidx}| tout en gardant ensuite \cs{makeindex} dans le préambule, ou bien en mettant simplement  \cs{usepackage}\verb|[makeindex]{splitidx}|.
+Le package se charge en remplaçant \cs{usepackage}\verb|{makeindex}| par \cs{usepackage}\verb|{splitidx}| tout en gardant ensuite \cs{makeindex} dans le préambule, ou bien en mettant simplement  \cs{usepackage}\verb|[makeindex]{splitidx}|.
 
 \subsection{Définir ses index}
 
-Le package \package{SplitIndex} permet de faire plusieurs index pour un même document. La première étape consiste à définir ces index. On les déclare dans le préambule par la commande 
-\begin{minted}{latex}
-\newindex[Nom de l'index]{abbréviation}
-\end{minted}
+Le package \package{SplitIndex} permet de faire plusieurs index pour un même document. La première étape consiste à définir ces index. On les déclare dans le préambule par la commande \csp{newindex}\oarg{Nom de l'index}\marg{abbréviation}.
 
-L'argument entre crochet est le nom de l'index tel qu'il apparaîtra quand vous aurez compilé votre document. L'argument entre accolades doit être assez court, puisque c'est avec lui que vous indiquerez à quel index appartient chaque entrée que vous indéxez dans votre document.
 
-% cf les noms des fichiers: chaque index donne lieu à un fichier.idx et un .ind (à dev?) dont le nom est sous la forme: monfichier-abbréviation.idx. Ex: monfichier-idx.idx et monfichier-idx.npr. 
+L'argument facultatif est le nom de l'index tel qu'il apparaît après la compilation du document. L'argument obligatoire doit être assez court, puisque c'est avec lui que vous indiquez à quel index appartient chaque entrée indexée dans votre document.
+
 
 Ainsi, pour faire un index des noms propres et un index général, on peut déclarer:
 \begin{minted}{latex}
@@ -244,12 +224,12 @@ Ainsi, pour faire un index des noms propres et un index général, on peut décl
 \end{minted}
 
 \subsection{Indexer son texte}
-Une fois que les index sont déclarés, il faut passer à l'indexation proprement dite. Le principe est similaire à ce que nous avons déjà vu pour le package \package{makeindex}.
-Mais au lieu de \cs{index}\marg{entrée}, on utilisera \cs{sindex}\oarg{abbréviation}\marg{entrée} (notez que c'est bien \cs{sindex}, non \cs{index}). 
+Une fois  les index déclarés, il faut passer à l'indexation proprement dite. Le principe est similaire à celui que nous avons déjà vu pour le package \package{makeindex}\renvoi{cmdindex}.
+Mais au lieu de \cs{index}\marg{entrée}, on utilise \csp{sindex}\oarg{abbréviation}\marg{entrée}. 
 
 \begin{plusloins}
 
-Toutes les entrées indiquées non par \cs{sindex} mais par \cs{index} seront automatiquement \enquote{rangées} dans un index général (dont le nom abbrégé est idx)
+Toutes les entrées indiquées non par \cs{sindex} mais par \cs{index} sont automatiquement placées dans un index général, dont le nom abrégé est idx.
 
 \end{plusloins}
 On peut ainsi indexer notre texte d'Eginhard de la façon suivante:
@@ -265,18 +245,24 @@ Damase\sindex[npr]{Damase}(…)\sindex[idx]{Charles et la papauté|}.
 
 \end{minted}
 
+Après la compilation avec \XeLaTeX il faut compiler le fichier \ext{idx} avant SplitIndex. En générale, la seule solution est de passer par la ligne de commande\renvoi{terminal} :
+
+\begin{minted}{bash}
+splitindex exemple.idx
+\end{minted}
 
 \subsection{Imprimer les index}
 
-Pour imprimer l'index \forme{nom}, il suffit d'utiliser la commande \cs{printindex} en lui passant le nom abregé de l'index en argument. Ainsi pour imprimer l'index de noms propres:
+Pour imprimer un index, il suffit d'utiliser la commande \cs{printindex} en lui passant le nom abrégé de l'index en argument. Ainsi pour imprimer l'index de noms propres:
 
 \begin{minted}{latex}
 \printindex[npr]
 \end{minted}
 
 Pour imprimer l'ensemble des index, il faut utiliser la commande \cs{printindex*}.
+Par défaut, les index ont un titre de niveau \cs{chapter} dans la classe \classe{book} et de niveau \cs{section} dans la classe \classe{article}.
 
-Par défaut, les index ont un titre de niveau \cs{chapter} dans la classe \classe{book} et de niveau \cs{section} dans la classe \section{article}. Il est possible d'imprimer les index avec un titre de niveau immédiatement inférieur, pour par exemple regrouper l'ensemble des index dans un chapitre, divisé en section. Il faut utiliser dans ce cas la commande \cs{printsubindex} (ou \cs{printsubindex} pour tous les imprimer.
+ Il est possible d'imprimer les index avec un titre de niveau immédiatement inférieur, pour par exemple regrouper l'ensemble des index dans un chapitre, divisé en section. Il faut utiliser dans ce cas la commande \csp{printsubindex}, ou \csp{printsubindex*} pour tous les imprimer.
 
 Par exemple :
 
@@ -285,45 +271,158 @@ Par exemple :
 \printsubindex*
 \end{minted}
 
+\section{Indexer ses sources}
 
 
-\input{navigation/index-source}
+Nous allons maintenant voir comment utiliser les possibilités de \package{biblatex} et de \package{splitindex} pour établir un index des sources primaires.
 
-\section{Ajouter l'index dans la table des matières}
+Pour comprendre cette section, vous devez vous être familiarisé avec les indications sur les macros bibliographiques\renvoi{macrobiblio} .
 
-On peut souhaiter que notre index soit indiqué dans la table des matières. On pourrait utiliser la commande \cs{addcontentsline} de la manière suivante :
 
-\begin{minted}{latex}
-\printindex
-\addcontentsline{toc}{chapter}{index}
-\end{minted}
 
-Seulement voilà : si notre index fait plus d'une page, sont entrée dans le sommaire ne sera pas situé au bon endroit. À contrario, si nous mettons
+\subsection{Premier essai}
+
+La documentation de \package{biblatex}\footcite{biblatex_options} nous informe qu'il existe  au chargement du package une option \option{indexing} qui permet d'indexer automatiquement les références bibliographiques. Comme nous ne souhaitons indexer que lors des appels aux commandes \cs{\meta{prefix}cite}  ---  non pas lors de l'appel à la commande \cs{printbibliography} --- nous attribuons la valeur \option{cite} à cette option. 
 
 \begin{minted}{latex}
-\addcontentsline{toc}{chapter}{index}
-\printindex
+\usepackage[indexing=cite]{biblatex}
 \end{minted}
 
-alors le problème d'un décalage existe aussi, puisque l'index va systématiquement commencer sur une page de droite. Il peut donc y avoir un saut de page entre la commande \cs{addcontentsline} et la commande{printindex}. 
+Étant donné qu'il faut à la fois interpréter le fichier \ext{bib} et faire un index, nous devons procéder aux compilations dans l'ordre suivant :
 
-La solution est d'indiquer à \LaTeX d'utiliser une page paire --- de droite dans une écriture de gauche à droite ---  avant d'utiliser la commande \addcontentsline. Cela se fait en utilisant la commande \cs{cleardoublepage}
+\begin{enumerate}
+\item Compilation avec \XeLaTeX.
+\item Compilation avec Biber (ou BibTeX).
+\item Compilation avec \XeLaTeX pour que les données bibliographiques soit intégrées dans l'index.
+\item Compilation avec Makeindex pour transformer le fichier \ext{idx} en \ext{ind}.
+\item Compilation avec \XeLaTeX pour finir d'intégrer l'index dans le fichier \ext{pdf}
+\end{enumerate}
+
+On constate cependant deux problèmes : 
+\begin{enumerate}
+\item La bibliographie se trouve mêlées aux autres entrées de l'index.
+\item Plus grave : aux lieux d'avoir des entrées sous la forme : \begin{english}\verb|Auteur!Titre|\end{english}, nous avons des entrées pour les auteurs et des entrées pour les sources.
+\end{enumerate}
+
+En outre nous aimerions :
+\begin{enumerate}
+\item Limiter l'indexation aux sources primaires.
+\item Indexer aussi, comme troisième niveau d'index, le champ \champ{titleaddon} qui nous sert pour les division de source. \renvoi{divisionsource}
+\end{enumerate}
+
+\subsection{Création d'un index spécifique}
+
+Pour créer un index spécifique aux sources, rien de particulier : il suffit d'utiliser \package{splitindex} et la commande \cs{newindex} :
+\begin{minted}{latex}
+\newindex[Index des sources]{sources}
+\end{minted}
+
+\subsection{Modifications des macros de \packagenoidx{biblatex}}\sindex[pkg]{biblatex}
+
+Nous avons donc notre index spécifique. Mais encore faut-il que nous disions  à \package{biblatex} d'y écrire son index. Pour ce faire nous allons d'abord redéfinir la macro \bibmacro{citeindex} qui est appelée à chaque commande \cs{\meta{prefix}cite}.
+
+\inputminted{exemples/navigation/index-source/citeindex.tex}
+
+\begin{description}
+\item[ligne 2] la commande \cs{ifciteindex} vérifier que l'option \option{indexing} de \package{biblatex} est bien égale à \verb|true| ou bien à \verb|cite|, si tel est le cas ce qui suit entre accolades est exécuté.
+\item[ligne 3] nous indexons le champ \champ{author}.  Nous utilisons le format d'indexation \verb|sources|.
+\item[ligne4] nous indexons le champ \champ{indextitle}. Si ce champ est vide \package{biblatex} utilise à la place le champ \champ{title}. Nous utilisons le format d'indexation \verb|sources|.
+\item[ligne 5] nous indexons le champ \champ{titleaddon}. Nous utilisons le format d'indexation \verb|sources|.
+\item[ligne 6] nous indexons la valeur \verb|---| dans le fichier \fichier{xxx-source.idx}. Cette valeur sert plus tard lors de l'exécution d'un script écrit dans le langage Python.\renvoi{python}. En effet, une des limitations de \package{biblatex} est qu'il ne peut indexer qu'un seul champ à la fois, et n'est pas capable, pour le moment, de produire des entrées d'index du type \begin{english}\cs{index}\verb|{|\meta{Champ1}\verb|!|\meta{Champ2}\verb+!+\meta{Champ3}\verb+}+\end{english}. 
+
+Pour contourner cela, nous avons conçu un script qui concatène dans le fichier \ext{idx} trois indexations en une seule indexation. Pour que ce script ne concatène pas ensemble des indexations qui ne doivent pas être concaténée, nous écrivons des fausses indexations sous la forme \verb|---|, qui servent de point de repère au script.
+\end{description}
+
+\subsection{Fomat d'indexation \packagenoidx{biblatex}}\sindex[pkg]{biblatex}
+
+Nous avons dit que nous utilisions les format d'indexation \forme{source}. Un format d'indexation \package{biblatex}  est simplement une description de l'opération que \package{biblatex} effectue lorsqu'il doit indexer un champ. 
+
+Il nous faut donc définir ce format grâce aux commandes \csp{DeclareIndexNameFormat} et \csp{\DeclareIndexFieldFormat}.
+
+\subsubsection{Indexation des noms}
+
+\begin{english}
+\begin{minted}[linenos]{latex}
+\DeclareIndexNameFormat{sources}{%
+  \usebibmacro{index:name}{\sindex[sources]}{#1}{#3}{#5}{#7}
+  }
+\end{minted}
+\end{english}
+
+Nous disons en première ligne que nous déclarions un format d'indexation \verb|sources| pour les noms propres. Dans la ligne suivante, nous déclarons ce que nous faisons : nous appelons une macro \bibmacro{index:name}. 
+
+Cette macro est déjà définie par \package{biblatex}. Elle reçoit plusieurs argument. Le première argument est la commande à exécuter : ici \cs{sindex}\verb|[sources]|, qui permet d'indexer dans l'index \verb|source| défini plus haut. Les autres arguments sont repris des codes de \package{biblatex} est désigne les différentes parties du nom à indexer\footcite[Nous renvoyons le lecteur à la documentation de \package{biblatex} : ][]{biblatex_formats}.
+
+
+\subsubsection{Indexation des autres champs}
 
 \begin{minted}{latex}
-\cleardoublepage
-\addcontentsline{toc}{chapter}{index}
-\printindex
+\DeclareIndexFieldFormat{sources}{%
+  \ifcurrentfield{indextitle}{\sindex[sources]{#1@\emph{#1}}}%
+  {\sindex[sources]{#1}}%
+  }
 \end{minted}
 
-En outre, le signet PDF produit par le package \package{hyperref}\renvoi{hyperref} se trouvera décalé. Pour éviter cela, il faut utiliser la commande \cs{phantomsection} avant la commande \cs{addcontentsline}. Ce qui nous donne donc au final :
+La commande \cs{DeclareIndexFieldFormat} sert à déclarer la manière d'indexer le champs qui ne sont ni des listes ni des noms. La valeur \verb|#1| correspond à la valeur du champ à indexer. En deuxième ligne, nous vérifions grâce à la commande \csp{ifcurrentfield}, que le champ à indexer à est \champ{indextitle} : si c'est le cas, nous l'indexons dans l'index \verb|source| en mettant l'emphase sur le titre pour l'affichage final. Sinon, nous l'indexons simplement dans l'index \verb|source|.
+
+\subsection{Compilation et concaténation des index}
+
+
+Après la  compilation \XeLaTeX, nous obtenons un fichier \fichier{xxx.idx}. Si vous l'ouvrez vous constatez que nous avons des entrées sous la forme : 
 
 \begin{minted}{latex}
-\cleardoublepage
-\phantomsection
-\addcontentsline{toc}{chapter}{index}
-\printindex
+\indexentry[sources]{Author}{page}
+\indexentry[sources]{Titleindex@\emph  {Titleindex}}{page}
+\indexentry[sources]{Titleaddon}{page}
+\indexentry[sources]{---}{page}
 \end{minted}
+
+Nous souhaitons remplacé ces entrées par des entrées sous la forme 
+
+\begin{minted}{latex}
+\indexentry[sources]{Author@Author!Titleindex@\emph  {Titleindex}!Titleaddon@Titleaddon}{page}
+\end{minted}
+
+L'auteur de ces lignes a développé un script permettant d'automatiser cette transformation. Par ailleurs ce script modifie également l'ordre des tri pour tenir compte des accents.
+
+Pour utiliser ce script, il vous faut :\label{python}
+\begin{itemize}
+\item Avoir le logiciel Python installé sur votre ordinateur. Ce logiciel est installé en standard sous Mac Os X et sur la plupart des distributions Linux, mais pas sous Windows\footcite{python_windows}.
+\item Télécharger le script sur le site de l'auteur à la l'adresse suivante : \url{http://geekographie.maieul.net/57}.
+\item Mettre ce fichier dans le répertoire du fichier \ext{idx}. 
+\item L'ouvrir et modifier la ligne 8 en remplaçant \verb|xxx.idx| par le nom du fichier à concaténer.
+\item En ligne de commande\renvoi{terminal} se rendre dans le  répertoire, puis taper l'entrée : \verb|python index.py|.
+\end{itemize}
+
+
+Après cette concaténation nous devons compiler en ligne de commande, enfin de séparer les différents index :
+\begin{minted}{bash}
+splitindex xxx
+\end{minted}
+
+
+\subsection{Raffinement}
+
+Nous souhaitons n'indexer que les sources primaires. La solution la plus simple est d'utiliser dans le fichier \ext{bib} un champ personnalisé \champ{usera}. Le package \package{biblatex} permet en effet à l'utilisateur d'utiliser librement un certain nombre de champ\footcite[La liste de ces champs est fournie dans][]{biblatex_custom_fields}.  Dans ce champ, mettre 1 si l'entrée est une source primaire, 2 si l'entrée est une source secondaire.
+
+Il nous suffit de modifier la macro \bibmacro{citeindex}, en introduisant un test (ligne 2) sur la valeur du champ \champ{usera}, grâce à la commande \csp{iffieldequalstr}.
+\inputminted{exemples/navigation/index-source/citeindex-usera.tex}
+
+\subsection{Résumé des diverses compilations}
+
+Pour obtenir un index des sources primaires, une fois tout les fichiers mis en place, il nous faut donc procéder dans le terminal aux opérations suivantes :
+\begin{enumerate}
+\item \verb|xelatex xxx.tex|
+\item \verb|biber xxx|
+\item \verb|xelatex xxx.tex|\footnote{Si un sommaire se situe en début d'ouvrage, il peut être nécéssaire de compiler plusieurs fois.}
+\item \verb|python index.py|
+\item \verb|splitindex xxx|
+\item \verb|xelatex xxx|
+\end{enumerate}
 
 \begin{plusloins}
-Évidemment le même technique pourrait être utilisé pour indiquer l'emplacement de la table des matières … dans la table des matières !
+Évidemment, l'ensemble de ces opérations peut être fastidieuse à se souvenir, à refaire etc. C'est pourquoi il est conseillé pour les personnes travaillant sous Linux et Mac Os X d'utiliser un programme nommé make\footnote{Pour les utilisateurs de Windows, il est possible, moyennant certaines techniques, d'installer ce programme.}. 
+
+L'idée du programme make est de décrire dans un fichier les opérations nécessaires au passage d'un ensemble de fichier a vers un fichier b. Le programme make exécute ces opérations uniquement si les fichiers a ont été modifiés. En outre make permet de faire des tests pour éviter de compiler deux fois si cela n'est pas utile. Notre livre n'est pas assez long pour expliquer comment se servir de make. Nous renvoyons à d'autres travaux\footcite[On pourra consulter, par exemple :][]{makefile}.
 \end{plusloins}
+

@@ -14,7 +14,7 @@ Pour comprendre comment personnaliser l'affichage bibliographique, il est néces
 
 Lorsqu'on appelle une commande de citation, du type \cs{\meta{prefix}cite}, cette commande va appeler :
 	\begin{itemize}
-		\item Des macros bibliographiques, chargées d'afficher l'argument \arg{prenote} ou \arg{postnote}, ou encore de gérer les citations répétées. Les macros bibliographiques sont des types particuliers de commande, propres au package \package{biblatex}. 
+		\item Des macros bibliographiques, chargées d'afficher l'argument \arg{prenote} ou \arg{postnote}, ou encore de gérer les citations répétées. Les macros bibliographiques sont des types particuliers de commande, propres au package \package{biblatex}.\label{macrobiblio} 
 		\item Un driver\footnote{Bien que le terme \enquote{driver} ne soit pas français, nous l'utilisons car il est utilisé dans les commandes internes de BibLaTeX} bibliographique. Un driver correspond à un type d'entrée (\type{article}, \type{book} etc.), et se charge d'afficher les champs de l'entrée dans le bon ordre. Pour ce faire, un il appelle :
 		\begin{itemize}
 			\item Des commandes de séparations d'unités bibliographiques, que nous avons vu plus haut.\renvoi{unitebiblio}
