@@ -2,13 +2,13 @@
 
 \begin{prealable}
 Dans ce court chapitre nous allons nous intéresser à la manière d'opérer des renvois à l'intérieur d'un document.
-Il s'agit de permettre d'afficher des textes du type : \enquote{Nous renvoyons au chapitre N. page P.}
+Il s'agit de permettre d'afficher des textes du type : \enquote{Nous renvoyons au chapitre~N. page~P.}
 \end{prealable}
 
 \section{Étiqueter des  emplacements : la commande \cs{label}}
 
 Pour permettre de faire des renvois internes, il est nécessaire de placer des \enquote{étiquettes} aux endroits vers lesquels on souhaite renvoyer.
-Cet étiquetage  se fait avec la commande \cs{label{etiquette}}.
+Cet étiquetage  se fait avec la commande \csp{label}\marg{etiquette}.
 
 \begin{plusloins}
 Lors de la relecture, il peut être intéressant d'avoir les étiquettes affichées en marge. On utilisera pour ce faire le package \package{showlabels}.
@@ -17,47 +17,46 @@ Lors de la relecture, il peut être intéressant d'avoir les étiquettes affich�
 \section{Se servir des étiquettes}
 
 Après avoir avoir placé des étiquettes, on peut y renvoyer. 
-Il suffit de placer des commandes de renvois aux endroits souhaités. 
-Toutefois il est nécessaire de compiler deux fois avec \XeLaTeX{}.
-À la première compilation,   \XeLaTeX{}%
+Il suffit d'insérer une commande de renvoi à l'endroit souhaité. 
+Toutefois il est nécessaire de compiler deux fois avec \XeLaTeX.
+À la première compilation,   \XeLaTeX
 note les emplacements des étiquettes dans un fichier. À la seconde compilation, il lit ce fichier afin de procéder aux renvois. 
 
 \begin{attention}
 	Si vous modifiez votre texte, il faudra de nouveau compiler deux fois. En effet, les numéros de pages, de titres, de légendes etc. peuvent avoir changé. Il faut donc  que \XeLaTeX{} les apprenne à nouveau. En résumé, pour avoir un document correct il faut :
 	\begin{enumerate}
 		\item Compiler avec \XeLaTeX{};
-		\item Compiler avec BibTeX afin d'interpréter le fichier \ext{bib};
+		\item Compiler avec BibTeX ou Biber afin d'incorporer les références bibliographiques;
 		\item Compiler avec \XeLaTeX{};
-		\item Compiler avec \XeLaTeX{} (car l'ajout des références bibliographiques a pu modifié le positionnement des étiquettes).
+		\item Re-compiler avec \XeLaTeX{}, car l'ajout des références bibliographiques a pu modifié le positionnement des étiquettes.
 	\end{enumerate}
 	
-	Tout ceci peut paraître bien compliqué et risque d'entraîner des oublis. C'est pourquoi les journaux de compilations, ces lignes de textes qui apparaissent lors de la compilation avec \XeLaTeX{}, disent dans les dernières lignes s'il est nécessaire de compiler, et avec quel logiciel.
+	Tout ceci peut paraître bien compliqué et risque d'entraîner des oublis. C'est pourquoi les journaux de compilations, ces lignes de textes qui apparaissent lors de la compilation avec \XeLaTeX{} et sont stockées dans un fichier \ext{log}, disent dans leurs dernières lignes s'il est nécessaire de compiler, et avec quel logiciel.
 \end{attention}
 
 \subsection{Renvoyer à une page}
 
-Pour renvoyer au numéro de page correspondant à l'étiquette \arg{etiquette} il suffit d'utiliser la commande \cs{pageref}\marg{etiquette}.
+Pour renvoyer au numéro de page correspondant à l'étiquette \arg{etiquette} il suffit d'utiliser la commande \csp{pageref}\marg{etiquette}.
 
 \begin{minted}{latex}
 blabla \label{etiquette}
 …
-
-Nous renvoyons à la page  \pageref{etiquette}.
+Nous renvoyons à la page~\pageref{etiquette}.
 \end{minted}
 
 \subsection{Renvoyer à un numéro de section}
 
-Pour renvoyer à un numéro de section, il suffit d'utiliser la commande \cs{ref}.
+Pour renvoyer à un numéro de section, il suffit d'utiliser la commande \csp{ref}.
 
 \begin{minted}{latex}
 \section{Section} \label{etiquette}
 …
-Nous renvoyons à la section  \ref{etiquette}.
+Nous renvoyons à la section~\ref{etiquette}.
 \end{minted}
  
 \subsection{Renvoyer à un titre de section}\label{renvoititre}
 
-Pour renvoyer à un titre de section, il suffit d'utiliser la commande \cs{nameref}.
+Pour renvoyer à un titre de section, il suffit d'utiliser la commande \csp{nameref}.
 
 \begin{minted}{latex}
 \section{Section} \label{etiquette}
@@ -65,14 +64,14 @@ Pour renvoyer à un titre de section, il suffit d'utiliser la commande \cs{namer
 Nous renvoyons à la section  \enquote{\nameref{etiquette}}.
 \end{minted}
 
-Toutefois cette commande n'est pas disponible en standard : elle est proposée par le package \package{hyperref}. Il faut donc charger ce package dans le préambule. Nous documentons plus loin quelques fonctionnalité de ce package\renvoi{hyperref}.
+Toutefois cette commande n'est pas disponible en standard : elle est proposée par le package \package{hyperref}. Il faut donc charger ce package dans le préambule. Nous documentons plus loin quelques fonctionnalités de ce package\renvoi{hyperref}.
 
 
 \section{Où placer la commande \cs{label} ?}
 
-Pour le moment, nous avons vu des renvois vers des sections, mais le système de renvois est beaucoup plus souple.
+Pour le moment, nous avons vu que des renvois vers des sections, mais le système de renvois est beaucoup plus souple.
 
-Une étiquette permet de renvoyer à tout élément numéroté, comme un titre, une note de base de page, une légende de flottant. Elle peut aussi renvoyer à un endroit précis, uniquement pour la page.
+Une étiquette permet de renvoyer à tout élément numéroté, comme un titre, une note de base de page, une légende de flottant. Elle peut aussi renvoyer à un endroit précis en indiquant la page.
 
 \begin{itemize}
 \item Si l'étiquette \cs{label} est placée \emph{dans}  une commande  d'élément numéroté, elle renvoie à cette élément. Par exemple, pour renvoyer à une figure \renvoi{legende} :
@@ -83,20 +82,21 @@ Une étiquette permet de renvoyer à tout élément numéroté, comme un titre, 
 \end{figure} 
 …
 
-Nous renvoyons à la figure \ref{figure} situé page \pageref{figure}.
+Nous renvoyons à la figure~\ref{figure} situé page~\pageref{figure}.
 \end{minted}
-\item Si la commande est placée ailleurs, elle renvoie à la page courante \emph{et à la section courante}\footnote{En réalité il est possible de placer \emph{immédiatement} après un élément numéroté pour y renvoyer, mais cela ne s'applique pas aux notes de bas de pages.}.
+\item Si la commande est placée ailleurs, elle renvoie à la page courante et à la section courante\footnote{En réalité il est possible de placer immédiatement après un élément numéroté pour y renvoyer, mais cela ne s'applique pas aux notes de bas de pages.}.
 \end{itemize}
 
 \section{Comment nommer ses étiquettes ?}
 
-Vous êtes bien sûr libre de trouver votre propre système de nommage d'étiquette. Toutefois il est d'avoir quelque chose de la forme : \contenuarg{type:nom}, où \contenuarg{forme} désigne le type d'élément vers lequel on renvoie.
+Vous êtes bien sûr libre de trouver votre propre système de dénomination des étiquettes. Toutefois il est conseillé d'avoir quelque chose de la forme : \begin{english}\meta{contenu}:\meta{nom}|\end{english}, où \contenuarg{forme} désigne le type d'élément vers lequel on renvoie.
 
 Exemples :
-
+\begin{english}
 \begin{minted}{latex}
 \footnote{Blabla \label{note:nom}}
 \section{Titre \label{section:nom}}
 \end{minted}
+\end{english}
 
 
