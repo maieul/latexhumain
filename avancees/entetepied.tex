@@ -1,4 +1,4 @@
-\chapter{Personnaliser en-tête et pieds de pages}\label{entete}
+\chapter{Personnaliser en-têtes et pieds de page}\label{entete}
 
 \begin{prealable}
 Nous allons voir comment personnaliser les en-têtes et pieds de page à l'aide du package \package{fancyhdr}.
@@ -7,57 +7,50 @@ Nous allons voir comment personnaliser les en-têtes et pieds de page à l'aide 
 
 \section{Utiliser l'un des styles standards}\label{stylesentete}
 
-\LaTeX propose quatre styles standards de pages, définissant le contenu des en-tête et pieds de page. Pour indiquer à \LaTeX d'utiliser l'un de ces styles, il suffit d'utiliser la commande \cs{pagestyle}
-\begin{minted}{latex}
-\pagestyle{nom_du_style}
-\end{minted} 
+\LaTeX propose quatre styles standards de page, définissant le contenu des en-tête et pieds de page. Pour indiquer à \LaTeX d'utiliser l'un de ces styles, il suffit d'utiliser la commande \csp{pagestyle}\marg{style}.
 
-On peut également modifier le style d'une page en particulière grâce à la commande \cs{thispagestyle}.
 
-\begin{minted}{latex}
-\thispagestyle{nom_du_style}
-\end{minted} 
+On peut également modifier le style d'une page en particulière grâce à la commande \csp{thispagestyle}\marg{style}.
 
 Ces styles sont :
 \begin{description}
-\item[empty]: pas d'en-tête ni de pied de page.
-\item[plain]: pas d'en-tête mais pieds de pages contenant le numéro de page en centré. C'est le style correspondant aux pages de début de chapitre. \renvoi{chapitrepagestyle}
-\item[heading]: pas de pied, en-têtes contenant titre du chapitre, de la section ou de la sous-section et le numéro de page. C'est le style par défaut. \label{styleentetes}
-\item[myheading]: similaire au précédent, mais l'en-tête peut-être personnalisé\footcite[Nous tenons cette information du][\pno~222, qui ne précise pas comment faire]{latex_companion}.
+\item[empty] pas d'en-tête ni de pied de page.
+\item[plain] pas d'en-tête mais pied de page contenant le numéro de page en centré. C'est le style correspondant aux pages de début de chapitre. \renvoi{chapitrepagestyle}
+\item[heading] pas de pied, en-tête contenant titre du chapitre, de la section ou de la sous-section et le numéro de page. C'est le style par défaut. \label{styleentetes}
+\item[myheading] similaire au précédent, mais l'en-tête peut-être personnalisé\footcite[Nous tenons cette information du][\pno~222, qui ne précise pas comment faire]{latex_companion}.
 \end{description}
 
 
 
-On voit vite les limites de ces styles. Ainsi, comment faire pour avoir à la fois les titres en en-tête et les numéros de pages en pieds de pages ? Comment indiquer son nom ou la date en pied de page ?
+On voit vite les limites de ces styles. Ainsi, comment faire pour avoir à la fois les titres en en-tête et les numéros de page en pied de page ? Comment indiquer son nom ou la date en pied de page ?
 
 \section{Premiers exemples avec \packagenoidx{fancyhdr}}\sindex[pkg]{fancyhdr}
 
-\package{Fancyhdr} propose son propre styles, mais qu'il est aisé de personnaliser via des commandes spécifiques. Pour faire fonctionner \package{fancyhdr} il suffit d'écrire les lignes suivantes dans le préambule :
+Le \package{fancyhdr} propose son propre style, qu'il est aisé de personnaliser via des commandes spécifiques. Pour faire fonctionner \package{fancyhdr} il suffit d'écrire les lignes suivantes dans le préambule :
 \begin{minted}{latex}
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \end{minted}
 
 \begin{plusloins}
-Les pages de début de chapitre appliquent automatiquement le style \forme{plain}. Pour désactiver cette activation, il faut modifier le commande \cs{chapter}. Nous en parlons plus loins. \renvoi{entetechapter}
+Les pages de début de chapitre appliquent automatiquement le style \forme{plain}. Pour désactiver cette activation, il faut modifier le commande \cs{chapter}. Nous en parlons dans un autre chapitre. \renvoi{entetechapter}
 \end{plusloins}
 
 
 Une fois ceci fait, il est possible d'utiliser les six commandes de \package{fancyhdr} servant à définir le contenu des en-têtes et pieds de pages :
 
 \begin{description}
-\item[\cs{lhead}]prend comme argument le contenu de la partie gauche de l'en-tête, justifiée à gauche.
-\item[\cs{chead}]prend comme argument la partie centrale de l'en-tête, centrée.
-\item[\cs{rhead}]prend comme argument la partie droite de l'en-tête, justifiée à droite.
-\item[\cs{lfoot}]prend comme argument la partie gauche de l'en-tête, justifiée à gauche.
-\item[\cs{cfoot}]prend comme argument la partie centrale de l'en-tête, centrée.
-\item[\cs{rfoot}]prend comme argument la partie droite de l'entêtre, justifiée à droite.
+\item[\csp{lhead}] reçoit comme argument le contenu de la partie gauche de l'en-tête, justifiée à gauche.
+\item[\csp{chead}] reçoit comme argument la partie centrale de l'en-tête, centrée.
+\item[\csp{rhead}] reçoit comme argument la partie droite de l'en-tête, justifiée à droite.
+\item[\csp{lfoot}] reçoit comme argument la partie gauche de l'en-tête, justifiée à gauche.
+\item[\csp{cfoot}] reçoit comme argument la partie centrale de l'en-tête, centrée.
+\item[\csp{rfoot}] reçoit comme argument la partie droite de l'en-tête, justifiée à droite.
 \end{description}
 
 
-\rev{comment mettre exemple minipage ?} 
 
-Supposons que nous souhaitons afficher le numéro de page, en pied de page centré, en indiquant également le nombre total de page. Nous allons utiliser le package \package{totpages} qui nous permet, après deux compilation\footnote{ou plus si le nombre de page varie entre les compilations} d'obtenir le numéro de la dernière page.
+Supposons que nous souhaitons afficher le numéro de page, en pied de page centré, en indiquant également le nombre total de pages. Nous allons utiliser le package \package{totpages} qui nous permet, après deux compilation, ou plus si le nombre de pages varie entre les compilations, d'obtenir le nombre total de pages.
 \begin{minted}{latex}
 \usepackage{fancyhdr}
 \pagestyle{fancy}
@@ -65,28 +58,30 @@ Supposons que nous souhaitons afficher le numéro de page, en pied de page centr
 \cfoot{{\thepage} / \ref{TotPages}}}
 \end{minted}
 
+
+
 La commande \cs{thepage} indique la valeur du compteur \compteur{page}\renvoi{compteur}, correspondant au numéro de page.
 
-
+Vous pouvez constater le résultat sur cette page.\thispagestyle{fancy}\cfoot{{\thepage} / \ref{TotPages}}}
 
 \section{Pages recto-verso et alternance gauche-droite}
 
-Lorsqu'un travail est imprimé en recto-verso, on peut souhaiter que l'en-tête / le pied de page gauche des pages impaires corresponde à l'en-tête / le pied de page droite des pages paires et vice-versa.
+Lorsqu'un travail est imprimé en recto-verso, on peut souhaiter que l'en-tête et le pied de page gauches des pages impaires correspondent à l'en-tête et au pied de page droites des pages paires et \emph{vice-versa}.
 
-\package{fancyhdr} a prévu ce cas. Il définit deux commandes : 
-\begin{minted}{latex}
-\fancyhead[position]{texte d'en-tête}
-\fancyfoot[position]{texte de pied de page}
-\end{minted}
+Le package \package{fancyhdr} a prévu ce cas. Il propose deux commandes : 
+\begin{itemize}
+\item \csp{fancyhead}\oarg{position}\marg{texte d'en-tête}
+\item \csp{fancyfoot}\oarg{position}\marg{texte de pied de page}
+\end{itemize}
 
 L'argument \arg{position} peut prendre une ou plusieurs des valeurs suivantes :
-\begin{enumerate}
-\item[C]centre
-\item[LO]gauche des pages paires (= intérieur des pages de droite, si on écrit de gauche à droite).
-\item[RO]droite des pages paires (= extérieur des pages de droite, si on écrit de gauche à droite).
-\item[LE]gauche des pages impaires (= extérieur des pages  de gauche, si on écrit de gauche à droite).
-\item[RE]droite des pages impaires (= intérieur des pages de gauche, si on écrit de gauche à droite).
-\end{enumerate}
+\begin{description}
+\item[C] centre
+\item[LO] gauche des pages paires (= intérieur des pages de droite, si on écrit de gauche à droite).
+\item[RO] droite des pages paires (= extérieur des pages de droite, si on écrit de gauche à droite).
+\item[LE] gauche des pages impaires (= extérieur des pages  de gauche, si on écrit de gauche à droite).
+\item[RE] droite des pages impaires (= intérieur des pages de gauche, si on écrit de gauche à droite).
+\end{description}
 
 Ainsi pour mettre le numéro de page à l'extérieur du pied de page, il suffit d'écrire :
 
@@ -94,27 +89,26 @@ Ainsi pour mettre le numéro de page à l'extérieur du pied de page, il suffit 
 \fancyfoot[LE,RO]{\thepage}
 \end{minted}
 
-Évidemment, si on dit à \LaTeX de générer un fichier à destination d'une impression monoface\renvoi{rectoverso}, celui-ci considère qu'il n'y a que des pages recto.
+Évidemment, si on dit à \LaTeX de générer un fichier à destination d'une impression monoface\renvoi{rectoverso}, il considère qu'il n'y a que des pages recto.
 
 \section{Titres dans l'en-tête : le mécanisme des marqueurs}
 
-Lorsqu'on utilise le style de page \arg{fancy}, on supprime automatiquement les styles par défaut, qui contenait notamment les titres de chapitre et de section. On peut vouloir les restaurer, voire les modifier. Pour ce faire il est nécéssaire de comprendre les mécanisme des marqueurs de \LaTeX. 
+Lorsqu'on utilise le style de page \arg{fancy}, on supprime automatiquement les styles par défaut, qui contiennent notamment les titres de chapitre et de section. On peut vouloir les restaurer, voire les modifier. Pour ce faire il est nécessaire de comprendre les mécanisme des marqueurs de \LaTeX. 
 
-Le principe de base est simple : des commandes de marquage vont stocker en mémoire des marqueurs. Lesdits marqueurs seront appelés par d'autres commandes. Ces commandes sont  deux : \cs{leftmark} et \cs{rightmark}.
+Le principe de base est simple : des commandes de marquage vont stocker en mémoire des marqueurs. Lesdits marqueurs sont appelés par d'autres commandes. 
 
-Les deux commandes de marquage sont \cs{markboth} et \cs{markright} :
-
-\begin{minted}{latex}
-\markboth{marqueur gauche}{marqueur droit}
-\markright{marqueur droit}
-\end{minted}
-
+Les deux commandes de marquage sont :
 \begin{itemize}
-\item \cs{leftmark} retourne le premier argument de la dernière commande \cs{markboth}.
-\item \cs{rightmark} retourne l'argument \arg{marqueur droit} de la première commande \cs{markright} ou \cs{markboth} \emph{si l'une de ces commandes est présente sur la page en cour}. En revanche, si la page en cours ne contient pas l'une de ces commandes, alors \cs{rightmark} retourne l'argument \arg{marqueur droit} de la dernière commande \cs{markright} ou \cs{markboth} utilisé.
+\item \csp{markboth}\marg{marqueur gauche}\marg{marqueur droit}
+\item \csp{markright}\marg{marqueur droit}
 \end{itemize}
 
-Concrètement dans la classe \classe{book}, ces commandes sont appelées par les commandes \cs{chapter} et \cs{section} via les commandes \cs{chaptermark} et \cs{sectionmark}. 
+\begin{itemize}
+\item \cs{leftmark} retourne l'argument \arg{marqueur gauche} de la dernière commande \cs{markboth}.
+\item \cs{rightmark} retourne l'argument \arg{marqueur droit} de la première commande \cs{markright} ou \cs{markboth}  située sur la page courante. En revanche, si la page en cours ne contient pas l'une de ces commandes, alors \cs{rightmark} retourne l'argument \arg{marqueur droit} de la dernière commande \cs{markright} ou \cs{markboth} utilisée.
+\end{itemize}
+
+Concrètement dans la classe \classe{book}, les commandes  \cs{marboth} et \csp{markrightø sont appelées par les commandes \cs{chapter} et \cs{section} via les commandes \csp{chaptermark} et \csp{sectionmark}. 
 
 \subsection{Appeler les marqueurs dans les style fancy}
 
@@ -126,9 +120,15 @@ Pour rétablir la présentation originelle, il nous faut insérer les commandes 
 \fancyhead[LO]{\rightmark}
 \end{minted}
 
+Avec ceci, nous obtenons à nouveau le titre de chapitre à gauche et le titre de section à droite.
+
+\begin{attention}
+Les en-têtes et pieds de page sont calculés par \LaTeX \emph{après} le reste de la page. C'est pourquoi on obtient dans l'en-tête le contenu de la dernière section de la page.
+\end{attention}
+
 \subsection{Redéfinir les commandes \cs{chaptermark} et \cs{sectionmark}}
 
-Supposons désormais que vous ne souhaitez voir le titre de section dans les en-tête. Le plus simple est alors de redéfinir la commande \cs{sectionmark}, pour la rendre nulle :
+Supposons désormais que vous ne souhaitez plus voir le titre de section dans les en-tête. Le plus simple est alors de redéfinir la commande \cs{sectionmark}, pour la rendre nulle :
 
 \begin{minted}{latex}
 \renewcommand{\sectionmark}[1]{}
@@ -144,17 +144,17 @@ Notez bien que nous indiquons que la commande \cs{sectionmark} prend un argument
 \renewcommand{\chaptermark}[1]{\markboth {\MakeUppercase{\thechapter #1}}{}}
 \end{minted}
 
+
 \begin{plusloins}
-Si vous vous amusez à fouiller le fichier \fichier{book.cls}, vous verrez que la commande \cs{chaptermark} est définie deux fois. En réalité, la définition est conditionné par l'option de classe \option{twoside} ou \option{oneside}.
+Si vous vous amusez à fouiller le fichier \fichier{book.cls}, vous verrez que la commande \cs{chaptermark} est définie deux fois. En réalité, la définition est conditionnée par l'option de classe \option{twoside} ou \option{oneside}.\renvoi{nbsides}
 \end{plusloins}
 \section{Filet d'en-tête et pied de page}
 
-\package{fancyhdr} inclus un filet entre le corps du texte et l'en-tête. Il est possible de modifier l'épaisseur de ce filet ainsi que de rajouter un filet avant le  pied de page.
+Le package \package{fancyhdr} inclus un filet entre le corps du texte et l'en-tête. Il est possible de modifier l'épaisseur de ce filet ainsi que de rajouter un filet avant le  pied de page.
 
 Pour ce faire, il suffit de redéfinir les commandes \cs{headrulewidth} et \cs{footrulewidth}, qui doivent renvoyer une longueur\renvoi{unite}.
-Par exemple, pour indiquer de ne pas mettre de filet en dessous de l'en-tête mais d'un mettre un de 0.05 mm un au dessus du pied de page, il suffit de mettre 
+Par exemple, pour indiquer de ne pas mettre de filet en dessous de l'en-tête mais d'un mettre un de 0,05 mm au  dessus du pied de page, il suffit d'écrire : 
 \begin{minted}{latex}
 \renewcommand{\headrulewidth}[0]{0pt}
-\renewcommand{\footrulewidth}[0]{0.05px}
-
+\renewcommand{\footrulewidth}[0]{0.05mm}
 \end{minted}
