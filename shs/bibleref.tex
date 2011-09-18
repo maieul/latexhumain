@@ -10,34 +10,36 @@ C'est pourquoi on peut utiliser le package \package{bibleref} et sa traduction \
 
 \section{Chargement du package et options}
 
-Pour que nos références bibliques soient en français, il suffit simplement d'appeler le package \package{bibleref-french}. Celui-ci se chargera d'appeler le package \package{bibleref}.
+Pour que nos références bibliques soient en français, il suffit simplement d'appeler le package \package{bibleref-french}. Celui-ci charge alors le package \package{bibleref}.
 
 
 \begin{minted}{latex}
-\usepackage{bibleref}
+\usepackage{bibleref-french}
 \end{minted}
 
 \subsection{Forme catholique ou protestante}
-Le livre que les protestants appellent \forme{Esaïe} est appelé \forme{Isaïe} chez les catholiques. Pour choisir la forme protestante, il suffit de passer l'option \option{protestants} à l'appel du package. Le package se chargera d'uniformiser.
+Le livre que les protestants appellent \forme{Esaïe} est appelé \forme{Isaïe} chez les catholiques. Pour choisir la forme protestante, il suffit de passer l'option \option{protestant} à l'appel du package. Le package uniformise les références.
 
 \begin{minted}{latex}
-\usepackage[protestants]{bibleref}
+\usepackage[protestant]{bibleref}
 \end{minted}
 
 \subsection{Styles de références}
 
-Les éditions de la bible divergent parfois quant à la manière d'afficher une référence biblique. En outre, les références peuvent s'afficher tantôt en version abrégée, tantôt en version complète. C'est pourquoi il existe  plusieurs styles de références bibliques. 
+Les éditions de la Bible divergent parfois quant à la manière d'afficher une référence biblique. En outre, les références peuvent s'afficher tantôt en version abrégée, tantôt en version complète. C'est pourquoi il existe  plusieurs styles de références bibliques. 
 
-On choisit son style par la commande \cs{biblerefstyle}, qu'il est conseillé de mettre en préambule.
-\begin{minted}{latex}
-\biblerefstyle{style}
-\end{minted}
+On choisit son style par la commande \csp{biblerefstyle}\marg{style}, qu'il est conseillé de mettre en préambule.
+
 
 La liste des styles est présentée dans le tableau ci-dessous : 
 
-\begin{longtable}{lp{0.5\textwidth}}
-\bfseries Style & \bfseries Ex\\
+\begin{longtable}{|l|p{0.5\textwidth}|}
+\hline
+Style & Exemple\\
+\hline
 \endhead
+\hline
+\endfoot
 default & \biblerefstyle{default}\bibleverse{IICor}(12:1-5,7) ; \bibleverse{Qo}(1:3)(2:5) ; \bibleverse{Is}(10:)\\
 jerusalem & \biblerefstyle{jerusalem}\bibleverse{IICor}(12:1-5,7) ; \bibleverse{Qo}(1:3)(2:5) ; \bibleverse{Is}(10:)\\
 colombe & \biblerefstyle{colombe}\bibleverse{IICor}(12:1-5,7) ; \bibleverse{Qo}(1:3)(2:5) ; \bibleverse{Is}(10:)\\
@@ -50,15 +52,19 @@ text & \biblerefstyle{text}\bibleverse{IICor}(12:1-5,7) ; \bibleverse{Qo}(1:3)(2
 \end{longtable}
 
 En l'absence de style précisé, c'est le style \forme{default} qui l'emporte.
-
-Il est évidemment possible de créer ses propres styles : nous renvoyons au manuel pour en savoir plus\footcite{bibleref-styles}.
+Il est évidemment possible de créer ses propres styles : nous renvoyons au manuel de \package{bibleref} pour en savoir plus\footcite{bibleref-styles}.
 
 
 \section{Référencer un passage biblique}
 
-La syntaxe pour référence un passage biblique varie selon que l'on suite référencer un livre en entier, un chapitre, certains versets. Voici l'ensemble des syntaxes disponibles\footnote{Je ne fais ici que reprendre le manuel.}
+La syntaxe pour référencer un passage biblique varie selon que l'on souhaite référencer un livre en entier, un chapitre ou certains versets seulement. Voici l'ensemble des syntaxes disponibles\footnote{Nous ne faisons ici que reprendre le manuel.}
 
-\begin{longtable}{ll}
+\begin{longtable}{|l|l|}
+Syntaxe & Résultat \\
+\hline
+\endhead
+\hline
+\endfoot
 \begin{english}\verb|\bibleverse{Ex}|\end{english} & \bibleverse{Ex}\\
 \begin{english}\verb|\bibleverse{Ex}(20:)|\end{english} & \bibleverse{Exodus}(20:)\\
 \begin{english}\verb|\bibleverse{Ex}(20:17)|\end{english} & \bibleverse{Exod}(20:17)\\
@@ -72,9 +78,15 @@ La syntaxe pour référence un passage biblique varie selon que l'on suite réf�
 \begin{english}\verb|\bibleverse{Lc}(1,4-5,8:)|\end{english} &\bibleverse{Luke}(1,4-5,8:)
 \end{longtable}
 
-Voici la liste des abréviations de livres.
+Voici la liste des abréviations de livre.
 
-\begin{longtable}{ll}
+\begin{longtable}{|l|l|}
+\hline
+Abréviation & Livre
+\hline
+\endhead
+\hline
+\endfoot
 Gn	&	Genèse\\
 Ex	&	Exode\\
 Lv	&	Lévitique\\
@@ -159,7 +171,7 @@ Les livres proposées correspondent au canon catholique. On peut ajouter d'autre
 
 \section{Indexer une référence}
 
-On peut remplacer la commande \cs{bibleverse} par la commande \cs{ibibleverse}. Celle-ci indexe une référence biblique, en plus de l'afficher.
+On peut remplacer la commande \cs{bibleverse} par la commande \cs{ibibleverse}. Celle-ci en plus d'afficher une référence biblique l'indexe.
 
 \subsection{Un index à part}
 
@@ -178,7 +190,7 @@ Il faut ensuite redéfinir la commande \cs{biblerefindex} de la manière suivant
 
 Et à l'endroit où l'on souhaite afficher cet index :
 \begin{minted}{latex}
-\printindex
+\printindex[bible]
 \end{minted}
 
 \section{Espaces insécables}
@@ -187,8 +199,8 @@ Le package \package{bibleref-french} prévoit d'insérer des espaces insécables
 \begin{enumerate}
 \item Entre le nombre et le nom quand le nom d’un livre contient un nombre ;
 \item Entre le nom du livre et le numéro de chapitre ;
-\item Après un tiret demi-cadratin (–) dans un intervalle de versets.
-\item Après les virgules de séparations.
+\item Après un tiret demi-cadratin (–) dans un intervalle de versets ; 
+\item Après les virgules de séparation.
 \end{enumerate}
 
 Si beaucoup de références sont indiquées, cela peut amener à des fins de lignes dépassante.
