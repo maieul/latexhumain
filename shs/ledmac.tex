@@ -87,18 +87,26 @@ Berlin brust auf.&
 \endnumbering
 \end{minted}
 
+(berliner abend, kurt tuchovsky)
 
+La commande
 \cs{\endstanzaextra} permet d'ajouter quelque chose à la fin de chaque strophe.
-Ex, comme ici: 
-\verb|\let\endstanzaextra=\bigbreak| > ajoute un grand espace entre les strophes
+Dans l'exemple qui précède, on a ainsi mis 
+\verb|\let\endstanzaextra=\bigbreak|: cela permet d'avoir 
+ un espace vertical entre chaque  strophes.
+ 
 (on peut ajouter bcp de chose: voir le manuel)
 les nouvelles commande de maïeul > pour avoir le crochet
 
+si on ne fait que des vers sans indentation> 0 partout (ex: faire des "stanza" de 10 vers .. ) S'il y a moins de vers qu'indiqué dans stanzaindents, pas grave.
 
 \subsubsection{Aller plus loin}
-Comme on peut le voir dans les exemples précédants, Ledmac numérote par défaut toutes une ligne sur cinq. On peut changer cela très simplement avec les commande suivantes:
+
+Comme on peut le voir dans les exemples précédents, Ledmac numérote par défaut  une ligne sur cinq. On peut changer cela très simplement avec les commande suivantes:
 \cs{firstlinenum}\marg{nbre} et \cs{linenumincrement}\marg{nbre}.
-L'argument \arg{nbre} de la commande \cs{firstlinenum} indique quelle est  la première ligne qui sera numérotée ; l'argument \arg{nbre} de la commande \cs{linenumincrement} définit la fréquence avec laquelle les lignes seront numérotés.On place ces commande après \cs{beginnumbering}. Ainsi, si l'on veut numéroter toutes les lignes en commençant par la première, il faut mettre \cs{linenumincrement}\marg{1} et \cs{firstlinenum}\marg{1} 
+L'argument \arg{nbre} de la commande \cs{firstlinenum} indique quelle est  la première ligne qui sera numérotée ; l'argument \arg{nbre} de la commande \cs{linenumincrement} définit la fréquence avec laquelle les lignes seront numérotés. On place ces commande après \cs{beginnumbering}. 
+
+Ainsi, si l'on veut numéroter toutes les lignes en commençant par la première, il faut mettre \cs{linenumincrement}\marg{1} et \cs{firstlinenum}\marg{1} 
 
 
 
@@ -108,8 +116,11 @@ L'argument \arg{nbre} de la commande \cs{firstlinenum} indique quelle est  la pr
 et \cs{sublinenumincrement}
 
 changer le numéro des lignes
-
--où apparissent les numéro des ligne et comment
+\cs{setline}\marg{num} and \cs{advanceline}\marg{num} > modifier le numéro d'une ligne 
+setline> la ligne d'après> + 1.
+\cs{skipnumbering} > ne pas prendre en compte dans la numérotation telle ligne
+-
+où apparissent les numéro des ligne et comment
 
 Un moyen pour ne pas encombrer la mémoire qd texte trop long : faire de plus petites sections numérotées. Mais si on met endnumbering ,  avec beginnumbering on recommencera la numérotation à zéro.  Utiliser à la place pausenumbering - resumenumbering > avec resume numbering la nmérotation reprend où elle s'était arrêté. Si on utilise ces commande essentiellement pour des question de mémoire conseil de faire une commande exprès: \verb|\newcommand{\memorybreak}{\pausenumbering\resumenumbering}|> plus qu'à mettre memorybreak de temps en temps dans le texte ..
 
@@ -117,56 +128,84 @@ Un moyen pour ne pas encombrer la mémoire qd texte trop long : faire de plus pe
 Possible aussi de changer l'endroit où apparit le numéro de page (par défaut ds la marge de gauche): \cs{linenummargin}\marg{arg}, dt les arguments peuvent être left, right, inner, ou outer
 
 \cs{startsub} \cs{endsub} > ligne numérotés 10.1, 10.2, 10.3,.. et non 10, 11, 12 
-\cs{setline}\marg{num} and \cs{advanceline}\marg{num} > modifier le numéro d'une ligne 
-\cs{skipnumbering} > ne pas prendre en compte dans la numérotation telle ligne
+
 On peut aussi changer façon dont apparaissent es numéro des lignes (voir doc)
+
 
 
 \subsection{L'apparat critique}
 
 Notes de bas de page se présentent de cette façon:  \cs{Afootnote}\marg{texte}. Il y en a 5 type: de A à E
-.Idem 5 type de notes de fin, de \cs{Aendnote} à \cs{Eendnote}.
->ces notes appellent un lemme : le mot du texte qui apparaîtra ds la  note de bas de page. On fait une note de cette façon: \cs{edtext}\marg{lemme}\marg{commande}
-Exemple: 
+
+
+>ces notes appellent un lemme : le mot du texte qui apparaîtra ds la  note de bas de page. On fait une note de cette façon: \cs{edtext}\marg{lemme}\marg{commande} (l'argument \arg{commande} contient l'appel à la note: \cs{Afootnote}, \cs{Bfootnote}, etc.
+l'argument \arg{lemme} est la partie du texte annoté qui est reprise dans la note de bas de page, précédée du numéro de la ou des lignes correspondantes. 
+
+Il est aussi possible d'utiliser  des  notes de bas de page "normales", appelées par un numéro dans le texte. Il y en a cinq sortes  possibles: de \cs{footnoteA} à \cs{footnoteB}.
+
+Lorsque ce \enqute{lemme} est trop grand, on peut choisir quel lemme on veut voir imprimé. On utilise pour cela la commande suivante: 
+\cs{edtext}\marg{le lemme trop long}\{\cs{lemma}\marg{le lemme raccourci}\cs{Bfootnote\marg{la note}}\}. 
+
+\begin{plusloins}
+Il est aussi possible de mettre des notes de fin. Là encore, cinq sortes possibles:  de \cs{Aendnote} à \cs{Eendnote}.
+\end{plusloins}
+
+Dans l'exemple suivant, j'ai utilisé deux types de notes avec lemme (dont une où j'ai mis un lemme \enquote{raccourci}),et  un type de note sans lemme:
+
+
 \begin{minted}{latex}
+\setstanzaindents{0,0,1,0,1,0,1,0,1}
+\stanza
+Quando erit illa dies, cum nostrum intrabis in \edtext{ortum}{\Afootnote{hortum, \textit{F}}},&
+ Atque leges nostras ungue libente rosas?\footnoteA{In exilio}&
+Et tua magna sitis mage seu \edtext{mage crescere}{\Afootnote{mage se accrescere \textit{G}}} gliscet,&
+ Dum quod semper amas, carmine plenus eris.&
+\edtext{Si qua istis fuerint, ut erunt, uitiosa camenis}{\lemma{Si \dots camenis}\Bfootnote{\textit{Ov. Trist. IV},1 Si qua meis fuerint, ut erunt, vitiosa libellis, parce}},&
+ Parce, precor : scriptor non mihi doctus inest.&
+Quaeso, tuum nobis fidum transmitte ministrum,&
+ Qui tua grata mihi perferat orsa, uale.\&
+\end{minted}
+
+On obtiens alors ceci: 
+
+
+\begin{minipage}{\textwidth}
 \beginnumbering 
-\firstlinenum{1}
-\linenumincrement{1}
-
- \pstart 
-
-Lorem ipsum dolor sit amet, consectetuer adipiscing elit ?
-Morbi commodo ; ipsum sed pharetra gravida !
-Nullam sit amet enim. Suspendisse id : velit vitae ligula.
-Aliquam erat volutpat.
-
-Sed quis velit. Nulla facilisi. Nulla libero. 
-Quisque facilisis erat a dui. 
-Nam malesuada ornare dolor.
-Cras gravida, diam sit amet rhoncus ornare, 
-erat  elit consectetuer erat, id egestas pede nibh eget odio.
-\pend
+\setlinenum{224}
+\firstlinenum{225}
+\linenumincrement{5}
+\setstanzaindents{0,0,1,0,1,0,1,0,1}
+\stanza
+Quando erit illa dies, cum nostrum intrabis in \edtext{ortum}{\Afootnote{hortum, \textit{F}}},&
+ Atque leges nostras ungue libente rosas?\footnoteA{In exilio}&
+Et tua magna sitis mage seu \edtext{mage crescere}{\Afootnote{mage se accrescere \textit{G}}} gliscet,&
+ Dum quod semper amas, carmine plenus eris.&
+\edtext{Si qua istis fuerint, ut erunt, uitiosa camenis}{\lemma{Si \dots camenis}\Bfootnote{\textit{Ov. Trist. IV},1 Si qua meis fuerint, ut erunt, vitiosa libellis}},&
+ Parce, precor : scriptor non mihi doctus inest.&
+Quaeso, tuum nobis fidum transmitte ministrum,&
+ Qui tua grata mihi perferat orsa, uale.\&
 \endnumbering
-\end{minted}
+\end{minipage}
+\bigbreak
 
-l'argument \arg{lemme} est repris dans la note de bas de page + indication de des lignes où il se trouve 
-Quand le lemme est sur plsuieur ligne, comme ici, trop long de le mettre en entier dans le bas de page > On utilise alors la commande \cs{edtext}\marg{le lemme trop long}\{\cs{lemma}\marg{le lemme raccourci}\cs{Bfootnote\marg{la note}}\}
+\begin{attention}
+Il faut compiler deux fois pour obtenir le numéro des lignes dans l'apparat critique.
+\end{attention}
 
-\begin{minted}{latex}
-\beginnumbering 
-\firstlinenum{1}
-\linenumincrement{1}
-\firstsublinenum{1} 
-\sublinenumincrement{1}
- \pstart 
- \noindent
-En effet autrefois \edtext{un puissant sage, roi illustre}{\Afootnote{Salomon}},\\
-a sur un tel sujet prononcé ces paroles :\\
-\edtext{« La vie éternelle est située à Sa droite,\\
-et la gloire, la grandeur, la fortune à Sa gauche »}{\lemma{La vie \dots\ gauche}{\Bfootnote{\textit{Pr}, 3, 16 : \enquote{Longitudo dierum in dextera eius [sapientia] / Et in sinistra illius diuitiae et gloria }}}}.
-\pend \endnumbering
-\end{minted}
-≠ \cs{footnoteA} (jusqu'à C) >notes normales
+
+
+Il est conseillé de clarifier tout cela en créant ses propres commandes, par exemple en indiquant dans son préambule: 
+
+\verb|\let\variantes=\Afootnote| \\
+\verb|\let\citations=\Bfootnote| \\
+\verb|\let\eclaircissements=\footnoteA| \\
+
+Et ainsi de suite\dots 
+
+
+
+
+
 
 
 
