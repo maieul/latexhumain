@@ -1,41 +1,48 @@
-\subsection{Formater son index}
+\chapter{Formater son index}
 
+\begin{prealable}
 La mise en forme par défaut de l'index n'est pas très satisfaisante. On peut heureusement la modifier pour rendre l'index plus lisible.
+\end{prealable}
 
-
-\subsubsection{Comment faire}
+\section{Comment faire}
 Les commandes pour formater l'index sont à placer dans un fichier \fichier{monstyle.ist} que vous devez créer vous-même.
 
 \begin{attention}
-Pensez à placer ce fichier à un endroit où \LaTeX peut le trouver, par exemple dans le dossier courant. \renvoi{repcourant}
+Pensez à placer ce fichier à un endroit où \LaTeX peut le trouver, par exemple à côté du fichier principal.
 \end{attention}
 
-Il faut ensuite taper dans le terminal :
+Il faut ensuite compiler en ligne de commande suivante la syntaxe :\renvoi{terminal}
 \begin{minted}{bash}
 makeindex -s monstyle.ist monfichier.idx
 \end{minted}
 
-L'option -s indique à \package{makeindex}  qu'il doit utiliser le fichier de style \fichier{monstyle.ist} .
+Ou si vous utilisez \package{splitindex}\renvoi{splitindex}.
 
-\subsubsection{Quelques commandes}
+\begin{minted}{bash}
+splitindex -s monstyle.ist monfichier.idx
+\end{minted}
 
-Je vais donner ici quelques exemples de commandes que l'on peut mettre dans son fichier \fichier{monstyle.ist}. 
+L'option -s indique à \package{makeindex}  qu'il doit utiliser le fichier de style \fichier{monstyle.ist}.
+
+\section{Quelques commandes}
+
+Nous allons ici quelques exemples de commandes que l'on peut mettre dans son fichier \fichier{monstyle.ist}. 
 
 \begin{attention}
 Dans le fichier de style\ext{ist}, on n'écrit pas en \LaTeX{} mais en \TeX . Les commandes sont ainsi encadrées par des guillemets anglais \verb|"| . La barre contre-oblique, quant à elle, n'est prise en compte que si elle est précédée d'une autre contre-oblique.
 \end{attention}
 
-Le manuel de \package{makeindex} que l'on peut lire en tapant dans le terminal \verb+man makeindex+ nous indique que, pour modifier ce qui est inséré entre le premier niveau d'item (l'entrée) - ou niveau 0 -  et le ou les numéros de pages, on utilise l'option \verb|delim_0| ; de même, pour définir ce qui est inséré entre le deuxième niveau d'item (la sous-entrée) - ou niveau 1, on utilise l'option \verb+delim_1+, et l'option \verb| delim_2| pour les sous-sous-entrées - ou niveau 2 d'itemisation. Le choix par défaut est une virgule suivit d'un blanc : \verb|", "|
+Le manuel de la commande MakeIndex que l'on peut lire en frappant dans le terminal \verb+man makeindex+\renvoi{terminal} --- et que l'on peut quitter en frappant la lettre  \verb|q| --- nous indique que, pour modifier ce qui est inséré entre le premier niveau d'item (l'entrée) --- ou niveau 0 --- et le ou les numéros de page, on utilise l'option \verb|delim_0| ; de même, pour définir ce qui est inséré entre le deuxième niveau d'item (la sous-entrée) --- ou niveau 1, on utilise l'option \verb+delim_1+, et l'option \verb| delim_2| pour les sous-sous-entrées --- ou niveau 2 d'itemisation. Le choix par défaut est une virgule suivit d'un blanc : \verb|", "|
 
-Ainsi, si je veux que le numéro de la page soit justifié à droite, et non simplement séparé de l'entrée par une virgule et un blanc, je dois indiquer dans mon fichier de style les lignes suivantes:
+Ainsi, si nous désirons que le numéro de la page soit justifié à droite, et non simplement séparé de l'entrée par une virgule et un blanc, nous devons utiliser la commande \csp{hfill}\renvoi{hfill} que nous indiquons dans notre fichier de style par les lignes suivantes:
 
 \begin{minted}{latex}
-delim_0 "\\hfill"
-delim_1 "\\hfill"
-delim_2 "\\hfill"
+delim_0 "\\hfill "
+delim_1 "\\hfill "
+delim_2 "\\hfill "
 \end{minted}
 
-J'obtiens donc : 
+Nous obtenons donc 
 
 \begin{quotation}
 \begin{tabbing}
@@ -53,44 +60,47 @@ Evêques \\
 \end{tabbing}
 \end{quotation}
 
-Si je préfère une ligne de points, il faudra logiquement remplacer \verb|"\\hfill"| par \verb+"\\dotfill"+
+Si nous préférons une ligne de points, il faut logiquement remplacer \verb|"|\textbackslash\cs{hfill}\verb| "| par \verb|"|\textbackslash\cs{dottfill}\verb| "|
 
+\begin{attention}
+Les espaces situés entre les commandes et les guillemets fermants sont indispensables. En effet, en l'absence de ces espaces, MakeIndex accole dans le fichier \ext{ind} généré les commandes aux numéros de page, ce qui empêche la second compilation avec \LaTeX, puisque celui si se retrouve face à des commandes inconnus, du style \cs{hfill1}.
+\end{attention}
 
-Si l'on continue la lecture du manuel, on apprend aussi comment faire apparaître \enquote{sq.} (ou ce que l'on voudra) quand une même entrée est indexée dans trois pages ou plus à la suite. Il suffit d'indiquer \verb+suffix_3p "~sq."+
+Si l'on continue la lecture du manuel, on apprend aussi comment faire apparaître \enquote{sq.}, ou ce que l'on veut, quand une même entrée est indexée dans trois pages ou plus à la suite. Il suffit d'indiquer \verb+suffix_3p "~sq."+
 
 Voyons maintenant comment l'on peut insérer les lettres de l'alphabet entre les groupes d'entrées. Cette manipulation permet de rendre plus lisible un index un peu long. 
 
 Le manuel indique que l'option par défaut \verb+headings_flag 0+ ne met pas de séparateurs entre les groupes, que l'option \verb+headings_flag 1+ permet d'obtenir des lettres majuscules comme séparateur, et l'option  \verb+headings_flag -1+ des lettres minuscules.
 
-Définissons ensuite la manière dont vont apparaître ces lettres. On utilise la commande \verb| heading_prefix  |. Supposons que je veuille faire apparaître ces lettres-séparatrices en gras. Je n'oublie pas que l'on code en \TeX … J'écris donc :
+Définissons ensuite la manière dont vont apparaître ces lettres. On utilise la commande \verb|heading_prefix|. Supposons que nous voulions faire apparaître ces lettres séparatrices en gras. N'oublions pas que l'on code en \TeX … Nous écrivons donc :
 
 \begin{minted}{tex}
-heading_prefix "\\bf"
+heading_prefix "{\\bf "
 \end{minted} 
 
-Si je veux qu'elles apparaissent en italique, j'écris \verb| "\\it" |… (on utilise \verb+ \bf + et \verb+ \it + , qui sont des commandes \TeX, et non \verb+ \textbf + et \verb+ \textit +).
+Si nous voulons qu'elles apparaissent en italique, nous écrivons \verb|"|\textbackslash\cs{it}\verb|"| (on utilise \csp{bf} et \csp{it}, qui sont des commandes \TeX, et non \cs{textbf} \cs{textit}).
 
-Je peux de même changer la taille des lettres-séparatices en ajoutant \verb| \\large | ou \verb| \\Large|, et ainsi de suite. 
+Nous  pouvons de même changer la taille des lettres séparatrices en ajoutant \textbackslash\cs{large} ou \cs\textbackslash{Large}, et ainsi de suite. \renvoi{taille}
 
-Mais j'ai ouvert une accolade… il me faut la refermer:
+Mais nous avons ouvert une accolade… il nous faut la refermer:
 
 \begin{minted}{latex}
-\verb| heading_suffix "}\\nopagebreak\n" | 
+heading_suffix " }\\nopagebreak\n " 
 \end{minted}
 
-\verb|\\nopagebreak| évite qu'une lettre-séparatrice se retrouve seule en fin de page. 
+\textbackslash\cs{\nopagebreak} évite qu'une lettre-séparatrice se retrouve seule en fin de page. Le \verb|\n| est une petite coquetterie pour permettre d'avoir, dans notre fichier \ext{ind}, un retour à la ligne après \cs{\nopagebreak}.
 
 
 
-Ce n'est pas fini. Mes lettres sont actuellement justifiées à gauche, comme les entrées de l'index. Je voudrais qu'elles soient centrées: 
+Ce n'est pas fini. Nos lettres sont actuellement justifiées à gauche, comme les entrées de l'index. Nous voudrions qu'elles soient centrées: 
 
 \begin{minted}{latex}
 headings_flag 1
-heading_prefix "\\bf\\large\\hfill" 
-heading_suffix "hfill}\\nopagebreak\n" 
+heading_prefix " {\\bf\\large\\hfill " 
+heading_suffix " \\hfill}\\nopagebreak\n " 
 \end{minted}
 
-Les deux \verb|\\hfill| étirent, pour le premier, l'espace avant la lettre vers la droite, et pour le second l'expace suivant la lettre vers la gauche -- voilà mes lettres centrées.
+Les deux \textbackslash\csp{hfill} étirent, pour le premier, l'espace avant la lettre vers la droite, et pour le second l'espace suivant la lettre vers la gauche -- voilà nos lettres centrées.
 
 \begin{quotation}
 \begin{tabbing}
@@ -118,10 +128,22 @@ Evêques \\
 \end{quotation}
 
 
-Si je préfère qu'elles soient simplement légèrement décalées vers la droite, je peux utiliser, à la place de \verb| \\hfill |, \verb| \\hspace*{-1ex} |  qui rajoute à gauche un espace de la taille d'un -x. \renvoi{unite}\renvoi{espace}
+Si nous préférons qu'elles soient simplement légèrement décalées vers la droite, nous pouvons utiliser, à la place de \textbackslash\cs{hfill}, \textbackslash\cs{hspace*}\verb|{1ex}| qui rajoute à gauche un espace de la taille d'un x. \renvoi{unite}\renvoi{espace}
 
 
-Quand on a compris ce système, il est alors assez simple de formater à sa guise l'index. C'est pourquoi, pour les autres options, je renvoie ici à la lecture du manuel\footcite[On pourra aussi consulter][]{frama_index}. 
+Quand on a compris ce système, il est alors assez simple de formater à sa guise l'index. C'est pourquoi, pour les autres options, nous renvoyons ici à la lecture du manuel\footcite[On pourra aussi consulter][]{frama_index}. 
+
+Voici tout de même, à titre indicatif, le fichier final :
+
+\begin{minted}{latex}
+headings_flag 1
+suffix_3p "~sq."
+heading_prefix "{\\bf\\large\\hspace*{1ex} " 
+heading_suffix " }\\nopagebreak\n" 
+delim_0 "\\dotfill "
+delim_1 "\\dotfill "
+delim_2 "\\dotfill "
+\end{minted}
 
 
 
