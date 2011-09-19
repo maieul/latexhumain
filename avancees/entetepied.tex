@@ -55,14 +55,14 @@ Supposons que nous souhaitons afficher le numéro de page, en pied de page centr
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \usepackage{totpages}
-\cfoot{{\thepage} / \ref{TotPages}}}
+\cfoot{{\thepage} / \ref{TotPages}}
 \end{minted}
 
 
 
 La commande \cs{thepage} indique la valeur du compteur \compteur{page}\renvoi{compteur}, correspondant au numéro de page.
 
-Vous pouvez constater le résultat sur cette page.\thispagestyle{fancy}\cfoot{{\thepage} / \ref{TotPages}}}
+Vous pouvez constater le résultat sur cette page.\thispagestyle{fancy}\cfoot{{\thepage} / \ref{TotPages}} \renewcommand{\headrulewidth}{0pt}
 
 \section{Pages recto-verso et alternance gauche-droite}
 
@@ -108,7 +108,7 @@ Les deux commandes de marquage sont :
 \item \cs{rightmark} retourne l'argument \arg{marqueur droit} de la première commande \cs{markright} ou \cs{markboth}  située sur la page courante. En revanche, si la page en cours ne contient pas l'une de ces commandes, alors \cs{rightmark} retourne l'argument \arg{marqueur droit} de la dernière commande \cs{markright} ou \cs{markboth} utilisée.
 \end{itemize}
 
-Concrètement dans la classe \classe{book}, les commandes  \cs{marboth} et \csp{markrightø sont appelées par les commandes \cs{chapter} et \cs{section} via les commandes \csp{chaptermark} et \csp{sectionmark}. 
+Concrètement dans la classe \classe{book}, les commandes  \cs{marboth} et \csp{markright} sont appelées par les commandes \cs{chapter} et \cs{section} via les commandes \csp{chaptermark} et \csp{sectionmark}. 
 
 \subsection{Appeler les marqueurs dans les style fancy}
 
