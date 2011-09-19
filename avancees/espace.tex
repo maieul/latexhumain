@@ -1,19 +1,18 @@
-\chapter{Espacements, traits et autres élèments de mise en page}\label{espacement}
+\chapter{Espacement, trait et autres élèments de mise en page}\label{espacement}
 
 \begin{prealable}
 Dans ce chapitre, nous allons voir quelques commandes permettant de modifier la mise en page.
 Rappelons que normalement, il ne faut pas utiliser ces commandes tels quels, mais les imbriquer dans des commandes de mise en sens.\renvoi{sensforme}
 
 Il ne s'agit ici que d'une très courte introduction : d'autres ouvrages en parlent mieux que nous\footcites(En particulier)(){frama}{latex_graphic_companion}.
-
-En ce qui concerne les unités de longueurs, nous renvoyons à l'\ref{unite}.\renvoi{unite}
+En ce qui concerne les unités de longueurs, nous renvoyons à l'annexe\ref{unite}.\renvoi{unite}
 \end{prealable}
 
 \section{Espacements}\label{espace}
 
-On peut produire un espace horizontal par la commande \cs{hspace}\marg{longueur}. Si on utilise \cs{hspace*}, la fin de ligne n'arrête pas l'espace.
+On peut produire un espace horizontal par la commande \csp{hspace}\marg{longueur}. Si on utilise \csp{hspace*}, la fin de ligne n'arrête pas l'espace.
 
-Un espace vertical se produit par \cs{vspace}\marg{longueur}. Si on utilise \cs{vspace*}, le changement de page n'affecte pas  l'espace, qui continue sur la page suivante. Toutefois, l'auteur a pu constater qu'une telle commande pose parfois des problèmes de mise en page du paragraphe qui la prècède.
+Un espace vertical se produit par \csp{vspace}\marg{longueur}. Si on utilise \csp{vspace*}, le changement de page n'affecte pas  l'espace, qui continue sur la page suivante. Toutefois, nous avons pu pu constater qu'une telle commande pose parfois des problèmes de mise en page du paragraphe qui la précède.
 
 
 
@@ -23,12 +22,12 @@ Pour redéfinir des paramètres tels que l'espacement vertical entre deux paragr
 
 Nous avons vu que pour l'interligne, il valait mieux utiliser le package \package{setspace}\renvoi{interligne}. Il nous reste donc deux longueurs : l'indentation initiale du paragraphe et l'espace entre les paragraphes. Ces longueurs sont \cs{parindent} et \cs{parskip}.
 
-Pour les redéfinir, il faut utiliser la commande \cs{setlength}\marg{longueur}\marg{valeur}. Par exemple pour redéfinir la longueur de l'indentation à 3 cadratins :
+Pour les redéfinir, on utilise la commande \csp{setlength}\marg{longueur}\marg{valeur}. Par exemple pour redéfinir la longueur de l'indentation à 3 cadratins :
 \begin{minted}{latex}
 \setlength{\parindent}{3ex}
 \end{minted}
 
-On peut aussi utiliser \cs{addtolength}\marg{longueur}\marg{valeur}, qui additionne \arg{valeur} à la longueur déjà existante.
+On peut aussi utiliser \csp{addtolength}\marg{longueur}\marg{valeur}, qui additionne \arg{valeur} à la longueur déjà existante.
 
 Ainsi pour ajouter 1 pt à l'espacement entre deux paragraphes :
 
@@ -36,17 +35,18 @@ Ainsi pour ajouter 1 pt à l'espacement entre deux paragraphes :
 \addtolength{\parskip}{1pt}
 \end{minted}
 
-Ces redéfinitions doivent se pratiquer \emph{après} le préambule, car elle ne s'appliquent qu'au groupe logique où elle surviennent, un groupe logique correspondant soit à un environnement, soit à un espace délimité par \verb|{}|.
+Ces redéfinitions doivent se pratiquer \emph{après} le préambule, car elle ne s'appliquent qu'au groupe logique où elle surviennent, un groupe logique correspondant soit à un environnement, soit à un espace délimité par une paire d'accolades.
 
 \begin{plusloins}
-On peut supprimer l'indentation d'un paragraphe précis en le commençant par la commande \cs{noindent}.
+On peut supprimer l'indentation d'un paragraphe précis en le commençant par la commande \csp{noindent}.
 \end{plusloins}
-\section{marges}
 
-Bien qu'il ne soit pas conseillé de le faire, on peut redéfinir les marges avec le package \package{geometry}. Lors du chargement du package, on peut passer les arguments suivants
+\section{Marges}
+
+Bien qu'il ne soit pas conseillé de le faire, on peut redéfinir les marges avec le package \package{geometry}. Lors du chargement du package, on dispose des options suivantes :
 \begin{description}
 \item[lmargin]pour la marge gauche sur une impression une face, pour la marge intérieure sur une impression deux faces.
-\item[rmargin]pour la marge droite sur une impression une face, pour la marge extérieure sur une impression deux faces.\footnote{Il est conseillé, pour une impression double face d'avoir une marge intérieur équivalente à 2/3 de la marge extérieure. C'est en tout cas le réglage par défaut.}
+\item[rmargin]pour la marge droite sur une impression une face, pour la marge extérieure sur une impression deux faces\footnote{Il est conseillé, pour une impression double face d'avoir une marge intérieur équivalente à $2/3$ de la marge extérieure. C'est en tout cas le réglage par défaut.}.
 \item[tmargin]pour la marge du haut.
 \item[bmargin]pour la marge du bas.
 \end{description}
@@ -57,9 +57,9 @@ Ainsi pour une impression avec seulement 1 cm de marge --- ce qui n'est pas à c
 \usepackage[lmargin=1cm,rmargin=1cm,tmargin=1cm,bmargin=1cm]{geometry}
 \end{minted}
 
-On peut aussi modifier temporairement les règlages, pour une ou plusieur page, via la commande \cs{newgeometry}\marg{reglages}. On restaure les réglages initiaux ensuite via la commande \cs{restoregeometry}.
+On peut aussi modifier temporairement les réglages, pour une ou plusieurs page, via la commande \csp{newgeometry}\marg{reglages}. On restaure ensuite les réglages initiaux  via la commande \csp{restoregeometry}.
 
-Par exemple pour avoir une page sans marge, on fera :
+Par exemple pour avoir une page sans marge, on écrira :
 
 \begin{minted}{latex}
 \newgeometry{lmargin=0cm,rmargin=0cm,tmargin=0cm,bmargin=0cm}
@@ -69,15 +69,15 @@ Une page avec une marge nulle.
 
 \end{minted}
 
-Le package \package{geometry} possède de nombreuses autres fonctionalités : nous renvoyons à sa documentation.
+Le package \package{geometry} possède de nombreuses autres fonctionnalité : nous renvoyons à sa documentation\footcite{geometry}.
 
 \section{Textes en retrait}
 
-On pourrait souhaiter un environnement qui produirait du texte en retrait, semblable à l'environnement \enviro{quotation}. Par exemple un environnement \enviro{exemple} qui serait en retrait de 5 ex.
+On peut souhaiter avoir un environnement qui produit du texte en retrait, semblable à l'environnement \enviro{quotation}. Par exemple un environnement \enviro{exemple} avec en retrait de 5~ex.
 
-Si nous fouillons dans le fichier \fichier{book.cls}\renvoi{trouverfichier}, nous trouvons que l'environnement quotation est définie de la manière suivante :
+Si nous fouillons dans le fichier \fichier{book.cls}\renvoi{trouverfichier}, nous trouvons que l'environnement quotation est définie de la manière suivante\footnote{Ligne 486, au 19 septembre 2011.} :
 
-\begin{minted}{latex}
+\begin{minted}[linenos]{latex}
 \newenvironment{quotation}
                {\list{}{\listparindent 1.5em%
                         \itemindent    \listparindent
@@ -87,22 +87,22 @@ Si nous fouillons dans le fichier \fichier{book.cls}\renvoi{trouverfichier}, nou
                {\endlist}
 \end{minted}
 
-Que nous pouvons analyser de la manière suivante :
+Que nous pouvons analyser ainsi:
 \begin{description}
-\item[ligne 2 à 5]code executé en début d'environnement.
-\item[ligne 7]code executé en fin d'environnement. Nous fermons un environnement de type \enviro{list}\footnote{Bien qu'effectivement, il ne s'agisse pas d'une liste !}.
-\item[ligne 2]la commande \cs{list}\marg{itemdefaut}\marg{réglages typographiques} ouvre un environnement \enviro{list}. Le premier argument correspond à ce qu'y est affiché par la commande \cs{item} en l'absence d'argument optionnel. Comme dans \enviro{quotation} on n'utilise pas \cs{item}, ce premier argument est nul. Le second argument contient des commandes paramètrants la mise en forme. La première, \cs{listparindent} indique l'indentation des paragraphes à l'intérieur de la liste : ici 1.5em.
-\item[ligne 3]la seconde commande \cs{itemindent} indique l'indentation du premier élèment de chaque \cs{item}, ici \cs{itemindent} se voit attribuer la valeur \cs{listparindent}.
-\item[ligne 4]la marge de droite de notre liste (\cs{rightmargin}) se voit attribuer la même valeur que la marge de gauche (\cs{leftmargin}). Cette valeur a été définie auparavent dans le fichier \fichier{book.cls}.
-\item[ligne 5]la longueur séparant deux paragraphes au sein de la liste (\cs{parsep}) est fixée à Opt \cs{z@}, mais peut s'étendre (\cs{@plus}) jusqu'à 1pt \cs{p@}).\renvoi{elastique}. Le premier argument de la commande \cs{list} finit ici.
-\item[ligne 7]une liste ne peut pas fonctionner sans commande \cs{item}. C'est pourquoi elle est appelé ici. Pour éviter des ennuis, on indique que le texte de cet \cs{item} est nul, via la commande \cs{relax} qui est une commande qui sert à ne rien faire alors que \TeX attend quelquechose.
+\item[ligne 2 à 5] code exécuté en début d'environnement.
+\item[ligne 7] code exécuté en fin d'environnement. Nous fermons un environnement de type \enviro{list} --- bien qu'effectivement, il ne s'agit pas d'une liste !.
+\item[ligne 2] la commande \cs{list}\marg{itemdefaut}\marg{réglages typographiques} ouvre un environnement \enviro{list}. Le premier argument correspond à ce qu'y est affiché par la commande \cs{item} en l'absence d'argument optionnel. Comme dans \enviro{quotation} on n'utilise pas \cs{item}, ce premier argument est nul. Le second argument contient des commandes réglant la mise en forme. La première, \cs{listparindent} indique l'indentation des paragraphes à l'intérieur de la liste : ici 1,5~em.
+\item[ligne 3] la seconde commande, \cs{itemindent}, indique l'indentation du premier élément de chaque \cs{item}, ici \cs{itemindent} se voit attribuer la valeur de \cs{listparindent}.
+\item[ligne 4] la marge de droite de notre liste (\cs{rightmargin}) se voit attribuer la même valeur que la marge de gauche (\cs{leftmargin}). Cette valeur a été définie auparavant dans le fichier \fichier{book.cls}.
+\item[ligne 5]la longueur séparant deux paragraphes au sein de la liste (\cs{parsep}) est fixée à 0~pt \cs{z@}, mais peut s'étendre (\cs{@plus}) jusqu'à 1~pt \cs{p@}).\renvoi{elastique} Le second argument de la commande \cs{list} finit ici.
+\item[ligne 7]une liste ne peut pas fonctionner sans commande \cs{item}. C'est pourquoi elle est appelée ici. Pour éviter des ennuis, on indique que le texte de cet \cs{item} est nul, via la commande \cs{relax} qui est une commande qui sert à ne rien faire alors que \TeX attend un contenu.
 \end{description}
 
 Voici pour l'analyse. Maintenant, nous voulons notre environnement \enviro{exemple}, avec :
 \begin{itemize}
-\item Une marge gauche plus forte,de 3 cadratin (3 ex).
-\item Une marge droite de l'ordre de 1 cadratin (1 ex). 
-\item Un text en italique.
+\item Une marge gauche plus forte, de 3 cadratin (3 ex).
+\item Une marge droite de 1 cadratin (1 ex). 
+\item Un texte en italique.
 \end{itemize}
 
 Nous allons pour cela insérer dans le deuxième argument de la commande \cs{list} les lignes suivantes :
@@ -120,8 +120,8 @@ Ce qui nous donne au final :
                {\list{}{\listparindent 1.5em%
                         \itemindent    \listparindent
                         \leftmargin 3ex
-		    			\rightmargin 1ex
-		     			\itshape
+		    \rightmargin 1ex
+		    \itshape
                         \parsep        \z@ \@plus\p@}%
                 \item\relax}
                {\endlist}
@@ -129,26 +129,33 @@ Ce qui nous donne au final :
 \end{minted}
 
 \begin{plusloins}
-Pour des textes encadrés ou sur fond coloré, on pourra utiliser le package \package{framed} et/ou bien le package \package{fancybox}\footcites[On peut également consulter][qui regorge d'exemple pratique de \enquote{mise en boîte}]{frama}[on consultera en particulier][]{frama_boites}. 
+Pour des textes encadrés ou sur fond coloré, on pourra utiliser le package \package{framed} et~/~ou le package \package{fancybox}\footcites[On peut également consulter][qui regorge d'exemple pratique de \enquote{mise en boîte}]{frama}[on consultera en particulier][]{frama_boites}. 
 \end{plusloins}
 
 \section{Trait horizontal}\label{filets}
 
 On peut tracer un trait horizontal avec la commande \cs{rule}\oarg{profondeur}\marg{longueur}\marg{épaisseur}, ou \arg{profondeur} correspond à l'écart entre le trait et le bas de la ligne de texte.
 
-On peut aussi utiliser les commandes \cs{hrulefill} et \cs{dotfill} qui permettent de tracer respectivement des lignes et des points, en \enquote{comprimant} le texte qui suit, c'est à dire en étant au maximum la longueur de la ligne ou de la suite de point.
+On peut aussi utiliser les commandes \csp{hrulefill} et \csp{dotfill} qui permettent de tracer respectivement des lignes et des points, en \enquote{comprimant} le texte qui suit, c'est à dire en étant au maximum la longueur de la ligne ou de la suite de point. On dispose également de la commande \csp{hfill} qui permet de comprimer le texte qui suit, sans afficher de caractère.
 
 Exemple :
 \begin{minted}{latex}
+\hfill	Du texte comprimé.
+
 \hrulefill Du texte comprimé.
 
 \dotfill Du texte comprimé.
 \end{minted}
 
+\begin{quotation}
+\hfill Du texte comprimé
 
 \hrulefill Du texte comprimé.
 
 \dotfill Du texte comprimé.
+\end{quotation}
 
 Pour des traits plus complexes, par exemple en diagonal ou en pointillés, on se reportera au package \package{epic} ou, selon le cas, à \package{TikZ}. 
+
+
 
