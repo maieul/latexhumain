@@ -93,7 +93,9 @@ Ainsi pour mettre le numéro de page à l'extérieur du pied de page, il suffit 
 
 \section{Titres dans l'en-tête : le mécanisme des marqueurs}
 
-Lorsqu'on utilise le style de page \arg{fancy}, on supprime automatiquement les styles par défaut, qui contiennent notamment les titres de chapitre et de section. On peut vouloir les restaurer, voire les modifier. Pour ce faire il est nécessaire de comprendre les mécanisme des marqueurs de \LaTeX. 
+Dans la classe \classe{book}, les en-têtes contiennent par défaut les titres de chapitre sur la page de gauche et de section sur la page de droite. En utilisant le style \verb|fancy], on insère automatiquement les titres de chapitre dans le côté interne et ceux de section du côté externe. 
+
+Si on utilise \package{fancyhdr} pour ne personnaliser que le pied, on peut souhaiter vouloir présentation  originelle. Pour ce faire il est nécessaire de comprendre les mécanisme des marqueurs de \LaTeX. 
 
 Le principe de base est simple : des commandes de marquage vont stocker en mémoire des marqueurs. Lesdits marqueurs sont appelés par d'autres commandes. 
 
