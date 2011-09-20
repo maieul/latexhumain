@@ -3,58 +3,61 @@
 \begin{prealable}
 La plupart des éditeurs de textes spécialisés en LaTeX  proposent un bouton pour mettre en œuvre les principales commandes de compilation :  XeLaTeX, MakeIndex, BibTeX.
 
-Toutefois très rapidement il devient nécessaire de pouvoir faire plus : par exemple si l’on utilise le package \package{splitindex}, il faut pouvoir  executer la commande \verb|splitindex|.
+Toutefois très rapidement il devient nécessaire de pouvoir faire plus : par exemple si l’on utilise le package \package{splitindex}, il faut pouvoir  exécuter la commande \verb|splitindex|.
 
 Pour ce faire on utilise le terminal du système d'exploitation, qui permet d'executer directement ces commandes. Voici une breve introduction à son utilisation dans le cadre d'un usage de \XeLaTeX.
 \end{prealable}
 
-\section{La notion de repertoire courant}\label{repcourant}
+\section{La notion de répertoire courant}\label{repcourant}
 
-Ce qu'on appelle \forme{repertoire courant} correspond à l'emplacement où l'on se situe dans l'arborescence des fichiers de l'ordinateur. Quand on veut utiliser les lignes de commande pour se servir de \XeLaTeX, la première chose à faire est de changer le repertoire courant pour se rendre dans le dossier dans lequel se situe les fichiers à compiler.
+Ce qu'on appelle \forme{répertoire courant} correspond à l'emplacement où l'on se situe dans l'arborescence des fichiers de l'ordinateur. Quand on veut utiliser les lignes de commande pour se servir de \XeLaTeX, la première chose à faire est de changer le répertoire courant pour se rendre dans le dossier dans lequel se situe les fichiers à compiler.
 
 \section{Mac OS X et Linux}
 
 Sur Mac OS X, le terminal se situe dans le dossier \forme{Utilitaires} du dossier \forme{Applications}. Sur Linux -> compléter.
 
-Le repertoire courant est généralement indiqué à gauche de la ligne, le symbole  \~  représentant le dossier de départ. Pour lister son contenu, frapper \verb|ls|. Pour valider une commande, il faut frapper sur la touche \verb|Entrée|.
+Le répertoire courant est généralement indiqué à gauche de la ligne, le symbole  |~|  représentant le dossier de départ. Pour lister son contenu, frapper \verb|ls|. Pour valider une commande, il faut frapper sur la touche \verb|Entrée|.
 
-Pour vous déplacer dans un répertoire, il suffit de taper la commande
+Pour vous déplacer dans un répertoire, il suffit de frapper la commande
 \verb|cd| suivie du dossier où vous souhaitez vous rendre.
 
-Ainsi la commande \verb|cd projet-latex| vous fera pénétrer dans le
+Ainsi la commande \verb|cd projet-latex| vous fait pénétrer dans le
 répertoire \verb|projet-latex|, ce que vous pouvez vérifier avec la
-commande \verb|dir|. Pour vous déplacer dans un répertoire parent, tapez
-simplement \verb|cd ..|.
+commande \verb|dir|. Pour vous déplacer dans un répertoire parent, frappez
+simplement \verb|cd ..|
 
 Lorsque vous êtes dans le répertoire où vous souhaitez exécuter une
 commande, vous pouvez la lancer de la même manière :
 
 \begin{minted}{bash}
 xelatex nomdufichieràcompiler.tex
+bibler nomduficheràcompiler
+makeindex nomdufichieràcompiler
+etc.
 \end{minted}
 
 \section{Windows}
 Sous Windows, le terminal s'appelle \enquote{Invite de commandes}. Le langage
-est différent de celui que l'on trouve chez les systèmes de type Unix comme
-Linux et Mac OS X. On trouvera cependant quelques similarités.
+est différent de celui que l'on trouve dans les systèmes de type Unix comme
+Linux et Mac OS X. On trouve cependant quelques similarités.
 
 Pour démarrer une invite de commande, pressez simultanément la touche \verb|Windows| de votre
-clavier et la touche \verb|R|. Dans l'invite qui s'ouvre tapez \verb|cmd| puis
+clavier et la touche \verb|R|. Dans l'invite qui s'ouvre frappez \verb|cmd| puis
 \verb|Entrée|. Vous voilà face à une console.
 
-Toute commande, une fois tapée, est validée par une pression sur la touche \verb|Entrée|.
+Toute commande, une fois frappée, est validée par une pression sur la touche \verb|Entrée|.
 
 Le répertoire courant est indiqué à gauche du curseur clignotant.
 La commande \verb|dir| vous indique ce qui se trouve dans le répertoire
 courant.
 
-Pour vous déplacer dans un répertoire, il suffit de taper la commande
+Pour vous déplacer dans un répertoire, il suffit de frapper la commande
 \verb|cd| suivie du dossier où vous souhaitez vous rendre.
 
-Ainsi la commande \verb|cd projet-latex| vous fera pénétrer dans le
+Ainsi la commande \verb|cd projet-latex| vous fait pénétrer dans le
 répertoire \verb|projet-latex|, ce que vous pouvez vérifier avec la
-commande \verb|dir|. Pour vous déplacer dans un répertoire parent, tapez
-simplement \verb|cd ..|.
+commande \verb|dir|. Pour vous déplacer dans un répertoire parent, frappez
+simplement \verb|cd ..|
 
 Lorsque vous êtes dans le répertoire où vous souhaitez exécuter une
 commande, vous pouvez la lancer de la même manière :
@@ -65,11 +68,11 @@ xelatex nomdufichieràcompiler.tex
 
 \section{Trouver les fichiers standards}\label{trouverfichier}
 
-Pour pouvoir personaliser le comportement standard de \LaTeX ou d'un package (par exemple les styles de \package{biblatex}, il est en général nécéssaire de regarder les fichiers standards pour redefinir telle ou telle commande (ou macro bibliographique). 
+Pour pouvoir personaliser le comportement standard de \LaTeX ou d'un package, par exemple les styles de \package{biblatex}, il est en général nécessaire de regarder les fichiers standards pour redefinir telle ou telle commande ou macro bibliographique. 
 
-Pour ce faire, il faut trouver leurs emplacements. Dans le fichier \ext{log} produit lors de la compilation est listé l'ensemble des fichiers chargés par le compilateurs. Il est général aisé de connaître le nom du fichier : il s'agit souvent de celui du package ou de la classe. Une recherche dans le fichier permet donc de trouver le chemin, par exemple : 
+Pour ce faire, il faut trouver leurs emplacements. Dans le fichier \ext{log} produit lors de la compilation est listé l'ensemble des fichiers chargés par le compilateur. Il est général aisé de connaître le nom du fichier : il s'agit souvent de celui du package ou de la classe. Une recherche dans le fichier permet donc de trouver le chemin, par exemple : 
 
-\verb|/usr/local/texlive/2010/texmf-dist/tex/latex/biblatex/cbx/verbose-trad2.cbx|.
+\verb|/usr/local/texlive/2011/texmf-dist/tex/latex/biblatex/cbx/verbose-trad2.cbx|.
 
 En général les fichiers se trouvent dans des répertoires invisibles via l'interface standard du système d'exploitation. Pour les ouvrir, il faut donc utiliser la ligne de commande, et frapper 
 \begin{description}
