@@ -10,7 +10,7 @@ LABEL_NON_DEFINI    = "(Reference .* undefined)"
 
 all:principal.pdf
 
-%.pdf: %.tex ./annexes/* ./annexes/install/* ./biblio/* ./biblio_fichiers/* ./exemples/*/*/* ./preambule/* ./navigation/* preliminaires/* premierpas/* schemas/* shs/*
+%.pdf: %.tex ./annexes/*  ./biblio/* ./biblio_fichiers/* ./exemples/*/*/* ./preambule/* ./navigation/* preliminaires/* premierpas/* schemas/* shs/*
 	@echo "Compilation XELATEX"
 	@$(XELATEX) $<
 	@echo "Compilation Biber"
