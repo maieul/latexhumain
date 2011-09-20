@@ -17,6 +17,13 @@ Pour que nos références bibliques soient en français, il suffit simplement d'
 \usepackage{bibleref-french}
 \end{minted}
 
+\begin{attention}
+Au cours de la rédaction de ce livre, ce package a été amélioré. Nous documentons certaines de ces améliorations. 
+
+Veuillez donc à avoir la dernière version du package, en procèdant, si besoin, à une mise à jour.\renvoi{maj}
+
+\end{attention}
+
 \subsection{Forme catholique ou protestante}
 Le livre que les protestants appellent \forme{Esaïe} est appelé \forme{Isaïe} chez les catholiques. Pour choisir la forme protestante, il suffit de passer l'option \option{protestant} à l'appel du package. Le package uniformise les références.
 
@@ -172,6 +179,30 @@ Les livres proposées correspondent au canon catholique. On peut ajouter d'autre
 \section{Indexer une référence}
 
 On peut remplacer la commande \cs{bibleverse} par la commande \cs{ibibleverse}. Celle-ci en plus d'afficher une référence biblique l'indexe.
+
+\subsection[Tri dans l'index]{Tri dans l'index\footnote{Ce passage reprend, pour l'essentiel, la documentation du package, dont nous l'auteur.}}
+
+Vous pouvez constatez que l'ordre de tri dans l'index n'est par défaut pas très bon. Par exemple, livres numérotés sont classés à la lettre `i'. 
+
+Le package fournit des options pour un meilleur tri\footcite[Pour l'Ancien Testament les protestants suivent le canon juif pour son contenu mais utilisent l'ordre du canon catholique, voir][]{canons}. Au chargement du package, vous pouvez choisir l'une de ces options :
+ \begin{description}
+ \item[indexalphac] les livres sont triés par ordre alphabétique, suivant les noms catholiques.
+\item[indexalphap] les livres sont triés par ordre alphabétique, suivant les noms protestants.
+\item[indexLXX]les livres sont triés dans l'ordre des bibles chrétiennes classiques, pour l'Ancien Testament  selon la Septante. Anciens et Nouveau Testaments ne sont pas séparés.
+\item[indextestamentsL] les livres sont triés dans l'ordre des bibles chrétiennes classiques, pour l'Ancien Testament  selon la Septante. Ancien et Nouveau Testaments forment deux sections.
+\item[indexTOB] les livres sont triés dans l'ordre des bibles catholiques classiques, \emph{Traduction Œcuméniques de la Bible}, pour l'Ancien Testament  selon la bible hébraïque, suivie des deutérocanoniques. Anciens et Nouveau Testaments ne sont pas séparés.
+\item[indextestamentsT] les livres sont triés dans l'ordre de la \emph{Traduction Œcuméniques de la Bible}, pour l'Ancien Testament  selon la bible hébraïque, suivie des deutérocanoniques. Ancien et Nouveau Testaments forment deux sections.
+\item[indexBHS] les livres de la biblique hébraïque sont triés selon les bibles hébraïques classiques. La Torah, les Nebiim et les Ketouvim sont dans la même section. Les deutérocanoniques et les Livres du Nouveau Testament ne sont pas triés.
+\item[indexTanak] les livres de la biblique hébraïque sont triés selon les bibles hébraïques classiques. La Torah, les Nebiim et les Ketouvim sont dans trois sections distinctes. Les deutérocanoniques et les Livres du Nouveau Testament ne sont pas triés.
+\end{description}
+
+Pour les options \verb|indexTOB| et \verb|indextestamentsT|, le livre d'Esther est considéré dans sa version hébraïque, et est donc rangé parmis les  écrits.
+
+Ainsi pour trier selon l'ordre de la TOB : 
+\begin{minted}{latex}
+\usepackage[indexTOB]{bibleref-french}
+\end{minted}
+
 
 \subsection{Un index à part}
 
