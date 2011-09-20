@@ -1,19 +1,23 @@
 \chapter{Unités de mesure en \LaTeX{}}\label{unite}
 
 \begin{prealable}
-	Nous expliquerons ici les principales unités de mesure en \LaTeX{}, mais aussi les manières d'indiquer des tailles relativement à une autre mesure : par exemple indiquer que nous souhaitons avoir une demie fois la longueur de la ligne.
+	Nous expliquons ici les principales unités de mesure en \LaTeX{}, mais aussi les manières d'indiquer des tailles relatives à une autre taille : par exemple indiquer que nous souhaitons avoir la moitié de la longueur de la ligne.
 \end{prealable}
 
 \section{Unités de mesure}
 
 \LaTeX{} étant d'origine anglophone, le séparateur des décimales doit être un point et non pas une virgule. Ainsi pour préciser une taille de 1,5 cm, il faut écrire : \verb|1.5cm| et non pas \verb|1,5cm|.
+
 Les unités de mesures peuvent être divisées en deux catégories : unités absolues et unités relatives à la taille  de la police courante. Nous ne présentons ici que les unités les plus courantes.
 
 
 
-\begin{longtable}{llp{15em}}
+\begin{longtable}{|llp{15em}|}
+	\hline
 	Unité & Nom & Explication \\
 	\endhead
+	\hline
+	\endfoot
 	\multicolumn{3}{c}{\emph{Unités absolues}} \\
 	pt & Point typographique pica & Unité de base des mesures typographiques dans les système anglo-saxons. C'est celle qui est utilisée dans quasiment tout les logiciels. Correspond approximativement à 0,35 mm. \\
 	mm & millimètre &  \\
@@ -35,11 +39,15 @@ Ainsi pour un tableau avec deux colonnes correspondant à la moitié de la large
 
 Voici les principales commandes de longueur :
 
-\begin{longtable}{lp{15em}}
+\begin{longtable}{|lp{15em}|}
+	\hline
 	Commande & Explication \\
+	\hline
 	\endhead
+	\hline
+	\endfoot
 	\cs{baselineskip} & Distance entre le bas d'une ligne et celui de la ligne suivante. \\
-	\cs{linewidth} & Largeur d'une ligne. Dans certains environnement (par exemple \enviro{quotation}) les lignes sont plus courtes (ou plus longues) que dans le texte principal. \\
+	\cs{linewidth} & Largeur d'une ligne. Dans certains environnement (par exemple \enviro{quotation}) les lignes n'ont pas la même longueur que dans le texte principal. \\
 	\cs{textheight}& Hauteur maximale du texte dans une page. Correspond \emph{grosso-modo} à la longueur entre la marge haute et la marge basse. \\
 	\cs{textwith} & Largeur maximale de texte dans une page. Correspond \emph{grosso-modo} à la longueur entre la marge gauche et la marge droite.  \\
 	 \cs{parindent} & Longueur de l'indentation du paragraphe. \\
@@ -49,14 +57,14 @@ Voici les principales commandes de longueur :
 
 \section{Elasticité}\label{elastique}
 
-Il est possible de définir une certaine élasticité pour les longueurs, qui permet de s'adapter à l'espace disponible et aux contraintes de mise en page\footnote{Par exemple concernant les veuves et orphelins}. Pour ce faire, on utilise les mot clefs \verb|minus| et \verb|plus|.
-Ainsi si je souhaite afficher un espace blanc \renvoi{espace} vertical d'une longueur comprise entre 1cm et 3 cm, mais tournant idéalement autour de 2.5 cm, j'écris :
+Il est possible de définir une certaine élasticité pour les longueurs, qui permet de s'adapter à l'espace disponible et aux contraintes de mise en page\footnote{Par exemple concernant les veuves et orphelines.}. Pour ce faire, on utilise les mot clefs \verb|minus| et \verb|plus|.
+Ainsi si nous souhaite afficher un espace blanc \renvoi{espace} vertical d'une longueur comprise entre 1~cm et 3~cm, mais tournant idéalement autour de 2,5~cm, nous écrivons :
 
 \begin{minted}{latex}
-\vspace{2.5cm minus 1.5cm plus 2.5}
+\vspace{2.5cm minus 1.5cm plus 0.5cm}
 \end{minted}
 
 Cette syntaxe est utilisé dans les commandes de définitions des en-têtes de section, sous une forme légèrement différente : \cs{@plus} et \cs{@minus} ne sont que des alias \LaTeX des mot clefs \TeX \verb|plus| et \verb|minus|.\renvoi{apparencetitre}
 
-Plus globalement, avec une syntaxe de longueur de type \verb|a minus b plus c| la longueur finale \verb|m| sera telle que $ a - b \leq m \leq a + c $.  
+Plus globalement, avec une syntaxe de longueur sous la forme \verb|a minus b plus c| la longueur finale \verb|m| est telle que $ a - b \leq m \leq a + c $.  
 
