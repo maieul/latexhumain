@@ -1,28 +1,126 @@
 \chapter {Installer \LaTeX{}}\label{install}
 
 \begin{prealable}
-	Avant de pouvoir se servir de \LaTeX{} (\XeLaTeX) il faut l'installer. Voici comment faire pour les systèmes d'exploitations courants.
+	Avant de pouvoir se servir de \LaTeX{} (\XeLaTeX) il faut l'installer. Voici comment faire pour les systèmes d'exploitation courants.
 \end{prealable}
 
 \section{La notion de distribution}
 
 En général, on n'installe pas \LaTeX{} tout seul, on installe une distribution \LaTeX{}. Une distribution est un ensemble de fichiers comprenant :
 \begin{itemize}
-\item Les logiciels \TeX, \LaTeX, et généralement \XeLaTeX, mais aussi d'autres logiciels qui appartiennent à la  \forme{famille \TeX}\footnote{L'expression est de nous. Pour prendre une analogie avec les logiciels connus, quand vous installez Microsoft Office, vous installez non seulement Word, Excel et Powerpoint, mais aussi des logiciels utiles à ces derniers, par exemples pour tracer des organigrammes.}, que nous verrons en temps voulu.
-\item Des fichiers permettant d'étendre les possibilités de \LaTeX, appelées packages et classes.
+\item Les logiciels \TeX, \LaTeX, et généralement \XeLaTeX, mais aussi d'autres logiciels qui appartiennent à la  \forme{famille \TeX\footnote{Pour prendre une analogie avec les logiciels connus, quand vous installez Microsoft Office, vous installez non seulement Word, Excel et Powerpoint, mais aussi des logiciels utiles à ces derniers, par exemples pour tracer des organigrammes.}}, que nous verrons en temps voulu.
+\item Des fichiers permettant d'étendre les possibilités de \LaTeX, appelés packages et classes.
 \item De la documentation sur ces fichiers.
 \end{itemize}
 
-Il existe deux distributions courantes : TeXLive, qui se veut portable et est très adaptée à pour MacOS X et Linux, et MikTeX pour Windows uniquement. L'objet de ce chapitre est donc d'expliquer comment installer ces distributions.
+Il existe deux distributions courantes : TeXLive, qui se veut portable et est très adaptée  pour MacOS X et Linux, et MikTeX pour Windows uniquement. L'objet de ce chapitre est donc d'expliquer comment installer ces distributions.
 
-\input{annexes/install/mac}
-\input{annexes/install/linux}
-\input{annexes/install/windows}
+\section{Installer TeXLive sous Mac Os X}
+
+La méthode la plus simple consiste à installer MacTeX\footnote{\url{http://www.tug.org/mactex/}}. Celle-ci comprend non seulement une version de TeXLive pour Mac, mais aussi des logiciels pour faciliter la rédaction avec \LaTeX{}.
+
+Pour l'installer, il suffit de télécharger le fichier d'installation sur le site, en page d'accueil. Il s'agit d'un fichier \ext{zip}, qu'il faut le cas échéant décompresser. Dedans se situe un fichier \ext{mpkg} : un double clic dessus suffit à lancer le logiciel d'installation. Il vaut mieux conserver les réglages standards d'installation.
+
+Une fois l'installation effectuée, vous pouvez vous rendre dans le dossier \forme{TeX} du dossier \forme{Applications} de votre Mac.
+
+Ce dossier comprend plusieurs applications :
+\begin{description}
+\item[BibDesk] qui est un logiciel pour gérer les fichiers bibliographiques au format BibTex.\renvoi{bddbiblio}
+\item[Excalibur] qui est un logiciel de correction orthographique prévu pour reconnaître les commandes \LaTeX{}. Nous ignorons sa qualité, ne l'ayant pas essayé.
+\item[LaTeXit] qui est un logiciel pour rédiger encore plus facilement des équations en \LaTeX{} et les exporter vers divers logiciels. Comme ce livre est l'un des rares sur \LaTeX{} à ne pas expliquer comment faire des équations avec, nous ne nous étendrons pas.
+\item[TeXLive Utility] qui sert à mettre à jour les différents modules de \LaTeX{} : classe, packages etc. Nous en parlons plus loin. \renvoi{majosX}
+\item[TeXworks et TeXShop] qui sont deux éditeurs de textes prévus pour \LaTeX. Choissisez l'un d'entre eux pour commencer avec \LaTeX{}.\renvoi{commencer}
+\end{description}
+
+\subsection{Les caractères \LaTeX sous Mac Os X}\label{claviermac}
+
+Les claviers Apple n'indiquent pas directement les caractères spéciaux disponibles. Voici comment frapper la plupart des caractères nécessaires à l'utilisation de \LaTeX.
+
+\begin{longtable}{|ll|}
+\hline
+Caractère & Frappe
+\hline
+\endhead
+\hline
+\verb+\+ & ⌥ + ⇧ + / \\
+\verb+{+ & ⌥ + (\\
+\verb+}+ & ⌥ + )\\
+\verb+[+ & ⌥ + ⇧ + ( \\
+\verb+]+ & ⌥ + ⇧ + ) \\
+\verb+|+ & ⌥ + ⇧ + L  \\
+\endfoot
+\end{longtable}
+\section{Installer TeX Live sous GNU/Linux}
+
+Il y a plusieurs manières de procéder pour installer TexLive sur une distribution GNU/Linux. Il est possible de télécharger l'installateur pour GNU/Linux depuis le site de TeX Live, mais la procédure d'installation de TeX Live est alors complexe, tout comme la mise à jour. Nous ne détaillerons donc pas cette procédure d'installation.
+
+La meilleure façon de procéder est en effet de recourir au gestionnaire de paquets de votre distribution. C'est l'approche que nous allons documenter pour les distributions GNU/Linux grand public les plus usitées, car la mise à jour de tous les paquets de TeX Live en est facilitée : ils sont mis à jour en même temps que les logiciels de votre distribution GNU/Linux.
+
+Pour l'installation complète telle que présentée ci-dessous, il faut prévoir environ trois gigaoctets d'espace libre en comptant la taille des paquets téléchargés et leur place installée.
+
+\subsection{Debian et ses dérivés}
+
+Il est très facile d'installer la distribution TeX Live avec Debian, Ubuntu et ses dérivés, ou bien Linux Mint. Il vous suffit d'ouvrir le gestionnaire de paquet \emph{Synaptic}, de chercher le paquet  \verb|texlive-full|, et de l'installer en acceptant toutes ses dépendances.
+
+\subsection{Les distributions basées sur les paquets RPM}
+
+\subsubsection{Mageia et Mandriva}
+
+Ces deux systèmes sont très proches, par conséquent les instructions pour l'une valent pour l'autre. Il faut dans un premier temps ouvrir le \emph{centre de contrôle}. Il suffit alors de cliquer sur le bouton \emph{Installer et désinstaller des logiciels}, puis de chercher le paquet \verb|texlive| et appliquer les changements. 
+
+\subsubsection{OpenSUSE}
+
+Le processus est similaire. Ouvrez l'application \emph{Installer des logiciels}, puis cherchez les paquets \verb|texlive|, \verb|texlive-xetex|, et \verb|texlive-fonts-extra|. Appliquez alors les changements.
+
+\subsubsection{Fedora}
+
+Sous Fedora, ouvrez l'application \emph{Ajouter/supprimer des logiciels}. Cliquez dans la colonne de gauche sur la catégorie \forme{Éditeurs}, puis sélectionnez les paquets \verb|texlive| et \verb|texlive-texmf-latex|. Appliquez les changements et acceptez les dépendances.
+
+\section{MiKTeX sous Windows}
+
+
+Les systèmes Windows diffèrent considérablement des systèmes GNU/Linux et Mac OS X. Par conséquent, s'il est possible de faire une installation manuelle de la distribution TeX Live sous Windows, la procédure est fastidieuse et complexe.
+
+C'est pourquoi nous nous tournerons vers une distribution consacrée exclusivement à Windows, qui automatise les tâches d'installation de la distribution \LaTeX{} et permet de gérer son installation en se conformant aux pratiques qui ont cours sur ce système. Cette distribution a pour nom MiKTeX. Son installateur est très complet: en plus d'une distribution \LaTeX{}, il installe aussi un logiciel graphique de mise à jour des paquets et un éditeur de texte.
+
+\subsection{Installation}
+
+Il faut se rendre sur la page de téléchargement de la distribution : \url{http://miktex.org/2.9/setup}. Choisissez le fichier \emph{Net Installer}, et non le \emph{Basic Installer}.
+
+\begin{attention}
+Vous remarquerez de les installateurs sont fournis pour les versions dites respectivement 32 bits et 64 bits de Windows. Si vous ne connaissez pas ces termes, veillez à choisir la version \emph{32 bits}. Cette dernière peut en effet s'exécuter sur les deux types de plate-formes, tandis que la réciproque n'est pas vraie. Si vous savez que vous disposez d'un système en 64 bits, vous pouvez choisir sans crainte l'installateur qui y correspond.
+\end{attention}
+
+Une fois l'installateur téléchargé sur votre ordinateur, un double clic lance la procédure. Il faut d'abord accepter la licence du logiciel. Puis choisissez \enquote{Download MiKTeX}, et à l'écran suivant, \enquote{Basic MiKTeX}.
+
+Il vous est demandé de choisir une source de téléchargement. Préférez une source proche de votre domicile, donc pour un utilisateur habitant dans le nord de la France, les serveurs français, anglais ou allemands font amplement l'affaire.
+
+À l'étape suivante il vous est demandé de choisir un répertoire de téléchargement. Choisissez de préférence un dossier qui se trouve dans \enquote{Mes Documents}, comme par exemple \begin{english}\verb|C:\Documents and Settings\Votreutilisateur\Mes documents\miktex|\end{english}. Lorsque vous avez achevé cette étape, l'installateur télécharge tout les composants dont il a besoin, vous averti qu'il a terminé son travail, puis s'arrête.
+
+Lancez-le alors une seconde fois. Mais au lieu de choisir \enquote{Download MiKTeX}, choisissez à présent \enquote{Install MiKTeX}, puis de nouveau \enquote{Basic MiKTeX}. Préférez alors une installation en tant qu'administrateur, pour tous les utilisateurs de l'ordinateur. Puis sélectionnez le dossier qui contient les composants ; dans notre exemple précédent, il s'agissait de \begin{english}\verb|C:\Documents and Settings\Votreutilisateur\Mes documents\miktex|\end{english}.
+
+Conservez les choix par défaut sur les deux écrans suivants: ils sont corrects. Vous pouvez achever le processus.
+
+
+
+
+
+
 
 \section{Mettre à jour les packages}
 
-La plupart des packages sont listés sur le site \url{http://www.ctan.org/tex-archive/} qui sert de dépôt pour tout les projets tournant autour de \TeX et \LaTeX. C'est sur les serveurs du CTAN (\forme{Comprehensive TeX Archive Network}). Les logiciels de mise à jour des packages vont, en général, les chercher là bas.
+La plupart des packages sont listés sur le site \url{http://www.ctan.org/tex-archive/} qui sert de dépôt pour tout les projets tournant autour de \TeX et \LaTeX. C'est sur les serveurs du CTAN (\forme{Comprehensive TeX Archive Network}). que les logiciels de mise à jour des packages vont, en général, les chercher.
 
-\subsection{Sous Mac OS X}
+\subsection{Sous Mac OS X}\label{majosX}
 
-Pour mettre à jour les packages, le plus simple est d'utiliser le logiciel \forme{TeX Live Utility}, livré avec MacTeX. Une fois le logiciel ouvert, il suffit de taper le nom du package de choisir l'onglet \forme{Manage Updates}, puis de selectionner le package à mettre à jour --- s'il ne s'affiche pas, c'est qu'il est à jour --- avant de cliquer sur \forme{Update}. À noter qu'on peut aussi utiliser l'onglet \forme{Manage Packages} pour gérer l'installation de nouveaux packages.
+Pour mettre à jour les packages, le plus simple est d'utiliser le logiciel \forme{TeX Live Utility}, livré avec MacTeX. Une fois le logiciel ouvert, il suffit  de choisir l'onglet \forme{Manage Updates}, puis de sélectionner le package à mettre à jour --- s'il ne s'affiche pas, c'est qu'il est à jour --- avant de cliquer sur \forme{Update}. À noter qu'on peut aussi utiliser l'onglet \forme{Manage Packages} pour gérer l'installation de nouveaux packages.
+
+\subsection{Sous Linux}
+
+La mise à jour des packages de TeXLive avec le même outils que la mise à jour des composants logiciels de votre ordinateur.
+
+\subsection{Sous Windows}
+
+Dans le menu Démarrer, vous trouvez une section nommée fort justement MiKTeX, suivie d'un numéro de version. Dans cette section, vous trouvez notamment une sous-section consacrée à la \enquote{Maintenance} – Répondant au doux nom de Maintenance (Admin) –, dans laquelle vous avez accès à deux outils utiles: le gestionnaire de mises à jour de packages (Updates), et le gestionnaire d'installation de nouveaux packages (Package Manager).
+
+Remarquez que la plupart du temps, vous n'aurez pas besoin d'installer explicitement un nouveau package. En effet, au moment de la compilation, MiKTeX détecte que vous sollicitez un composant qui n'est pas présent sur votre système et vous propose de l'installer.
