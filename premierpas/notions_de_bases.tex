@@ -122,9 +122,8 @@ Ici la commande \csp{maketitle} affiche les informations tel que le titre, la da
 
 Une commande peut prendre des arguments, certains facultatifs, d'autres obligatoires. Ces arguments  modifient son comportement.
 
+
 La syntaxe d'une commande est :\cs{nom}\oarg{opt1}\oarg{…}\oarg{optn}\marg{obl1}\marg{…}\marg{obln} \label{syntaxecommande}
-
-
 
 Entre crochets sont indiqués les arguments optionnels, entre accolades les arguments obligatoires.
 
@@ -174,7 +173,7 @@ Nous l'avons dit \LaTeX produit une mise en page et une typographie plus correct
 \begin{attention}
 Les espaces avant les signes de ponctuation double sont une spécificité de la typographie française. Il ne sont généralement pas présent dans les autres langues. C'est pourquoi, si vous écrivez dans une autre langue que celle de Molière, il ne faut pas mettre ces espaces. À vous donc de choisir si vous les mettez ou pas dans votre fichier source, sachant que \LaTeX les insérera pour vous le cas échéant, mais ne les supprimera pas dans les langues autres que le français.
 \end{attention}
-En revanche \emph{il est obligatoire de mettre une espace après chaque signe de ponctuation}. Pour ce qui est des points de suspensions, il est mieux de ne pas frapper trois points à la suite, mais d'utiliser la commande \cs{ldots} qui espacera correctement les points\footnote{Il est tout à fait possible de configurer l'éditeur de texte pour qu'il remplace automatiquement trois points à la suite par cette commande}.
+En revanche \emph{il est obligatoire de mettre une espace après chaque signe de ponctuation}. Pour ce qui est des points de suspensions, il est mieux de ne pas frapper trois points à la suite, mais d'utiliser la commande \cs{ldots} qui espacera correctement les points\footnote{Il est tout à fait possible de configurer l'éditeur de texte pour qu'il remplace automatiquement trois points à la suite par cette commande.}.
 
 En ce qui concerne les guillemets, une partie sera consacré plus tard à l'art et la manière de faire des citations en \LaTeX.\renvoi{guillemets} Nous n'en parlons donc pas maintenant.
 
@@ -184,7 +183,7 @@ Signalons également trois types de tirets\label{tirets} :
 \begin{itemize}
 \item \verb|-| qui produit un tiret simple (-), utilisé pour les mots composés ;
 \item \verb|--| qui produit un tiret demi-cadratin (--), en théorie à utiliser pour séparer une plage de nombre ;
-\item \verb|---| qui produit un tiret cadratin (---), pour des incises\footnote{Certains éditeurs préférent utiliser des tirets demi-cadratins.}.
+\item \verb|---| qui produit un tiret cadratin (---), pour des incises\footnote{Certains éditeurs préfèrent utiliser des tirets demi-cadratins.}.
 \end{itemize}
  
 Enfin, il est parfois utile d'insérer une espace insécable, pour éviter que deux mots se trouvent séparés par un retour à la ligne, par exemple entre un nom de souverain et son numéro de règne : \enquote{Jean~\textsc{xxiii}}.  L'espace insécable est produit par le caractère \verb|~|.
