@@ -19,7 +19,7 @@ all:principal.pdf
 	@echo "Compilation XELATEX 2"
 	
 	@$(XELATEX) $<
-	for ((i = 3 ; i < 10 ; i++)) ; \
+	for ((i = 3 ; i < 6 ; i++)) ; \
 	do \
 	if egrep -i -q  $(RERUN) $*.log ; \
 		then \
