@@ -169,10 +169,10 @@ Vous connaissez donc les règles de bases de la rédaction d'un texte en \LaTeX.
 
 Nous l'avons dit \LaTeX produit une mise en page et une typographie plus correcte qu'un logiciel de type WYSIWYG. Pour autant, il est nécessaire de lui fournir un code correct, afin qu'il puisse déterminer comment typographier.
 
-\LaTeX produit automatiquement  une espace fine devant les signes de ponctuations double, principalement \verb|!:;?| principalement, comme il se doit en bonne typographie fran\c caise\footnote{Une espace fine est une espace plus petit qu'une espace normale.}. Toutefois, nous recommandons d'insérer des espaces dans le fichier \ext{tex} avant ces signes de ponctuation double, pour le confort de lecture.
+\LaTeX produit automatiquement  une espace fine devant les signes de ponctuation double, principalement \verb|!:;?| principalement, comme il se doit en bonne typographie fran\c caise\footnote{Une espace fine est une espace plus petit qu'une espace normale.}. Toutefois, nous recommandons d'insérer des espaces dans le fichier \ext{tex} avant ces signes de ponctuation double, pour le confort de lecture.
 
 \begin{attention}
-Les espaces avant les signes de ponctuation double sont une spécificité de la typographie française. Il ne sont généralement pas présent dans les autres langues. C'est pourquoi, si vous écrivez dans une autre langue que celle de Molière, il ne faut pas mettre ces espaces.
+Les espaces avant les signes de ponctuation double sont une spécificité de la typographie française. Il ne sont généralement pas présent dans les autres langues. C'est pourquoi, si vous écrivez dans une autre langue que celle de Molière, il ne faut pas mettre ces espaces. À vous donc de choisir si vous les mettez ou pas dans votre fichier source, sachant que \LaTeX les insérera pour vous le cas échéant, mais ne les supprimera pas dans les langues autres que le français.
 \end{attention}
 En revanche \emph{il est obligatoire de mettre une espace après chaque signe de ponctuation}. Pour ce qui est des points de suspensions, il est mieux de ne pas frapper trois points à la suite, mais d'utiliser la commande \cs{ldots} qui espacera correctement les points\footnote{Il est tout à fait possible de configurer l'éditeur de texte pour qu'il remplace automatiquement trois points à la suite par cette commande}.
 
