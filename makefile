@@ -23,7 +23,7 @@ all:principal.pdf
 	do \
 	if egrep -i -q  $(RERUN) $*.log ; \
 		then \
-			splitindex -s latex-humain.ist $* ; \
+			splitindex -m "makeindex -s latex-humain.ist" $*.idx ; \
 			echo "Compilation XELATEX" $$i; \
 			$(XELATEX) $< ; \
 		fi \

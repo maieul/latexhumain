@@ -1,4 +1,4 @@
-\chapter{Formater son index}\label{styleindex}
+-m\chapter{Formater son index}\label{styleindex}
 
 \begin{prealable}
 La mise en forme par défaut de l'index n'est pas très satisfaisante. On peut heureusement la modifier pour rendre l'index plus lisible.
@@ -19,7 +19,7 @@ makeindex -s monstyle.ist monfichier.idx
 Ou si vous utilisez \package{splitindex}\renvoi{splitindex}.
 
 \begin{minted}{bash}
-splitindex -s monstyle.ist monfichier.idx
+splitindex -m "makindex -s monstyle.ist" monfichier.idx
 \end{minted}
 
 L'option -s indique à \package{makeindex}  qu'il doit utiliser le fichier de style \fichier{monstyle.ist}.
