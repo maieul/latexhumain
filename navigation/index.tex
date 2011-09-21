@@ -92,7 +92,7 @@ On peut également vouloir modifier la présentation de l'index : nous en parlon
 \subsection{Allons plus loin}
 \subsubsection{Créer des subdivisions}
 
-Il est possible, avec \package{MakeIndex},  de créer des subdivisions et des subsubdivisons  pour chaque entrée de l'index. La subdivision se crée de la manière suivante : \begin{english}\cs{index}\verb|{|\meta{entrée}\verb|!|\meta{sous-entrée}\verb|}|\end{english}. La sous-sous-entrée, logiquement, se crée ainsi: \begin{english}\cs{index}\verb|{|\meta{entrée}\verb|!|\meta{sous-entrée}\verb|!\meta{sous-sous-entrée}\verb|}|\end{english}. MakeIndex ne permet cependant que ces trois niveaux d'indexation.
+Il est possible, avec \package{MakeIndex},  de créer des subdivisions et des subsubdivisons  pour chaque entrée de l'index. La subdivision se crée de la manière suivante : \begin{english}\cs{index}\verb|{|\meta{entrée}\verb|!|\meta{sous-entrée}\verb|}|\end{english}. La sous-sous-entrée, logiquement, se crée ainsi: \begin{english}\cs{index}\verb|{|\meta{entrée}\verb|!|\meta{sous-entrée}\verb|!|\meta{sous-sous-entrée}\verb|}|\end{english}. MakeIndex ne permet cependant que ces trois niveaux d'indexation.
 
 On peut ainsi référencer autrement notre premier exemple, en créant les entrées \enquote{Evêques} et \enquote{Ducs} que l'on subdivise:
 
@@ -178,7 +178,7 @@ Empereurs\\
 \end{tabbing}
 \end{quotation}
 
-Cette syntaxe est aussi utile pour mettre en évidence une entrée dans l'index en modifiant son aspect. En mettant \cs{index}\verb|{\meta{entrée}\verb|@\textbf{|meta{entrée formatée}\verb|}}|, l'entrée apparaît en gras dans l'index. Ceci est valable pour toutes les commandes modifiant la fonte. Modifions ainsi comme suit la commande \cs{auteur} que l'on a créée précédemment :\renvoi{indexauteur}
+Cette syntaxe est aussi utile pour mettre en évidence une entrée dans l'index en modifiant son aspect. En mettant \cs{index}\verb|{|\meta{entrée}\verb|@\textbf{|meta{entrée formatée}\verb|}}|, l'entrée apparaît en gras dans l'index. Ceci est valable pour toutes les commandes modifiant la fonte. Modifions ainsi comme suit la commande \cs{auteur} que l'on a créée précédemment :\renvoi{indexauteur}
 
 \begin{minted}{latex}
 \newcommand\auteur[2]{#1~\textsc{#2}\index{#2 #1@\textsc{#2}, #1}\xspace}
@@ -339,7 +339,7 @@ Pour contourner cela, nous avons conçu un script qui concatène dans le fichier
 
 Nous avons dit que nous utilisions les format d'indexation \forme{source}. Un format d'indexation \package{biblatex}  est simplement une description de l'opération que \package{biblatex} effectue lorsqu'il doit indexer un champ. 
 
-Il nous faut donc définir ce format grâce aux commandes \csp{DeclareIndexNameFormat} et \csp{\DeclareIndexFieldFormat}.
+Il nous faut donc définir ce format grâce aux commandes \csp{DeclareIndexNameFormat} et \csp{DeclareIndexFieldFormat}.
 
 \subsubsection{Indexation des noms}
 

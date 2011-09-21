@@ -156,7 +156,7 @@ n'était pas montaniste mais tertullianiste.
 On ne constate pas d'espace intempestifs.
 
 
-\subsection{Étoiler \csnoidx{newcommand}}\sindex[cs]{#1@\oldcs{#1}}
+\subsection{Étoiler \oldcs{newcommand}}\sindex[cs]{#1@\oldcs{#1}}
 
 La création des commandes sous \LaTeX est une fonctionnalité très puissante, mais potentiellement dangereuse. Prenons la commande suivante :
 
@@ -183,7 +183,7 @@ Pour définir ces commandes courtes, il suffit d'utiliser la \csp{newcommand*}.
 \subsection{Espace après les commandes sans argument}
 
 
-Il est possible de définir des commandes sans aucun argument. Prenons une commande personalisée \cps{cf}, qui permet d'obtenir rapidement la forme \forme{\cf}
+Il est possible de définir des commandes sans aucun argument. Prenons une commande personalisée \csp{cf}, qui permet d'obtenir rapidement la forme \forme{\cf}
 
 \begin{minted}{latex}
 \newcommand{\cf}[0]{\emph{cf.}}
@@ -324,7 +324,7 @@ On peut passage les options \option{dvipsnames}, \option{svgnames} ou \option{x1
 
 \subsubsection{Définir ses propres couleurs}
 
-Il est possible de définir ses propres couleurs. Il faut pour se faire utiliser \csp{definecolor}, selon la syntaxe suivante : \cs{definecolor}\marg{nom}\marg{methode}\mar{definition}.
+Il est possible de définir ses propres couleurs. Il faut pour se faire utiliser \csp{definecolor}, selon la syntaxe suivante : \cs{definecolor}\marg{nom}\marg{methode}\marg{definition}.
 
 
 Les couleurs peuvent être définies de plusieurs manières\footnote{On consultera n'importe quelle livre scientifique sur les couleurs pour plus de détails. On peut également consulter la documentation du package{xcolor}.} Les deux principales sont\footcite[Il existe aussi la méthode de définition par la longueur d'onde pour les couleurs de l'arc en ciel, par pourcentage de gris pour les différents niveaux de gris, ainsi que par teinte, saturation et luminosité, mais ceci nécessiterait un cours de physique lumineuse. Pour  les personnes intéressées par les détails, consulter][]{xcolor_methode} :

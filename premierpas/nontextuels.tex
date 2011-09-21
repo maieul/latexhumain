@@ -10,7 +10,6 @@ Les images insérables avec \XeLaTeX sont au format JPEG (extension~\ext{jpg}) o
 
 
 L'insertion d'une image se fait de la manière suivante : \csp{includegraphics}\arg{param. opti.}\marg{chemin de l'image}
-\end{minted}
 
 Le chemin de l'image s'indique de la même manière que le chemin des fichiers inclus.\renvoi{chemin}
 
@@ -158,9 +157,9 @@ Pour ce faire trois types supplémentaires de colonne nous sont proposés par le
 
 Ces trois types de colonnes sont :
 \begin{description}
-	\item[\verb|p{largeur}|] texte justifié. La plus haute ligne du texte se trouve sur la ligne de base.
-	\item[\verb|m{largeur}|] texte justifié. La ligne du milieu du texte se trouve sur la ligne de base.
-	\item[\verb|b{largeur}|] texte justifié. La plus basse ligne du texte se trouve sur la ligne de base.
+	\item[p\marg{largeur}] texte justifié. La plus haute ligne du texte se trouve sur la ligne de base.
+	\item[m\marg{largeur}] texte justifié. La ligne du milieu du texte se trouve sur la ligne de base.
+	\item[b\marg{largeur}] texte justifié. La plus basse ligne du texte se trouve sur la ligne de base.
 \end{description}
 
 La ligne de base est une ligne spécifique, correspondand, \emph{grosso-modo} au milieu d'une cellule. Exemple :
@@ -375,7 +374,7 @@ Il peut être utile de centrer le contenu du flottant. Il s'agit ici d'une excep
 Pour personnaliser les styles des légendes, la méthode la plus simple reste encore d'utiliser le package \package{caption}\footcite{caption}. Nous renvoyons à la documentation.
 Pour utiliser une légende en dehors d'un flottant, on peut utiliser le package \package{ccaption}\footcite{ccaption}, qui permet d'autres choses encore.
 
-Il peut aussi arriver qu'on souhaite avoir deux éléments flottants en vis-à-vis, sur la page gauche et sur la page droite. On peut dans ce cas se servir du package \package{dpfloat}\foocite{dpfloat}.
+Il peut aussi arriver qu'on souhaite avoir deux éléments flottants en vis-à-vis, sur la page gauche et sur la page droite. On peut dans ce cas se servir du package \package{dpfloat}\footcite{dpfloat}.
 
 Le package \package{endfloat}\footcite{endfloat} permet, quant à lui, de placer systématiquement les flottants à la fin du travail.
 
