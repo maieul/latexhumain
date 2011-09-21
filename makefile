@@ -36,4 +36,5 @@ all:principal.pdf
 	@egrep -i $(LABEL_MULTIPLE) $*.log || echo "Pas de label multiple"
 	@egrep -i $(LABEL_NON_DEFINI) $*.log || echo "Pas de label indéfini"
 clean:
-	@rm -f */*.aux *.aux *.log *.out *.toc  *.pdf *idx *ind *run.xml *blg *bbl *bcf *ilg
+	@rm -f *.log *.out *.toc  *.pdf *idx *ind *run.xml *blg *bbl *bcf *ilg
+	@find -name '*\.aux' -exec rm -f {} \;
