@@ -1,5 +1,9 @@
 
 
+\chapter{Faire une édition critique avec \package{ledmac} et \package{ledpac}}
+
+
+
 attention > version donnée par la textLive 2011 n'est pas la bonne: il faut mettre à jour  (aller sur site du ctan)
 
 \section{Faire une édition critique avec \package{ledmac}}
@@ -256,22 +260,136 @@ Cette commande est un peu plus complexe parce qu'elle fait appel aux packages \p
 
 
 
-\section{Mettre deux textes en vis-à-vis: le \packagenoidx{ledpar}\sindex[pkg]{ledpar}}
-\prealable{Le package \package{ledpar}, qui sert à mettre un texte et sa traduction en vis-à-vis, fonctionne avec \package{ledmac}. Tout ce qui concerne l'apparat critique et la numérotation dnas \package{ledmac} est ainsi valable ici aussi. Nous considérons donc, pour éviter les redites, que vous avez lu ce qui précède}
+
+
+\section{Mettre deux textes en vis-à-vis: le package \packagenoidx{ledpar}\sindex[pkg]{ledpar}}
+
+\prealable{
+Le package \package{ledpar}, qui sert à mettre un texte et sa traduction en vis-à-vis, fonctionne avec \package{ledmac}. Tout ce qui concerne l'apparat critique et la numérotation dans \package{ledmac} est ainsi valable ici aussi. Nous considérons donc, pour éviter les redites, que vous avez lu ce qui précède.}
 
 \subsection{Principes}
 
--encadrement texte ds environnements leftside et dans rightside
--que dans texte numéroté
-Différence entre colonnes et pages: 
-\subsubsection{Textes sur deux colonnes}
-\subsubsection{Textes sur deux pages}
-\subsection{Aller plus loin}
+\pakage{ledmac} permet d'obtenir très facilement deux textes en vis-à-vis; c'est donc un package particulièrement utile lorsque l'on veut faire de l'édition bilingue.
+
+Son principe de base est simple: on place des textes numérotés (inscrits entre \cs{beginnumbering} et \cs{endnumbering}) dans les environnements \enviro{Leftside} pour le texte de gauche,  \enviro{Rightside} pour le texte de droite.
+
+\package{ledmac} fait correspondre en vis-à-vis chaque \enquote{boite} d'un texte à la boite correspondante de l'autre texte. Pour la poésie,  chaque vers  (terminé par \ampersand ), est une boite;  en prose, les boites sont délimitées par  \cs{pstart} et un \cs{pend}.  Il est recommandé, en prose, de mettre chaque paragraphe dans une boite, pour obtenir une synchronisation la plus fine possible --- donc de débuter chaque paragraphe par \cs{pstart} et de finir par \cs{pend}. 
+
+
+\package{ledmac} peut mettre les textes sur deux colonnes ou sur deux pages en vis-à-vis (dans ce cas-là, le texte de gauche est toujours imprimé, bien sûr, sur une page paire).
+On utilise, dans le premier cas, l'environnement \enviro{pairs}, et l'environnement \enviro{pages} dans le second.
+
+Les commandes \cs{Columns} ou \cs{Pages}, selon qu'on soit dans l'environnement \enviro{pairs} ou \enviro{pages}, indiquent à \latex qu'il faut imprimer les boites jusqu'ici gardées en mémoire. 
+
+
+
+\bigbreak
+
+Résumons!
+
+Pour mettre deux textes en vis-à-vis sur deux colonnes, on utilise le code suivant: 
+
+\begin{minted}{latex}
+
+\begin{pages}  % On indique qu'on veut des textes en vis-à-vis sur deux pages
+\begin{Leftside} % Texte de la page de gauche
+ \beginnumbering % On débute la numérotation
+ \pstart % Ici, on est en prose: donc \pstart et \pend
+ 
+Le texte dans une langue 
+ 
+ \pend
+ \endnumbering  % Fin de la numérotation
+ \end{Leftside} % On en a fini avec le texte de gauche 
+ 
+ \begin{Rightside}  % Et on recommence la même chose avec le texte de droite
+ \beginnumbering
+ \pstart
+ 
+ Le texte dans une autre langue
+ 
+ \pend
+ \endnumbering
+ \end{Rightside} 
+ \Pages
+
+  \end{pages} % Fin la composition en parallèle.
+\end{minted}
+
+
+On obtient parfois le message d'erreur \enquote{Too many \cs{pstart} without printing}. Pas de panique! Cela signifie qu'il y a trop de boites en mémoire: \latex  doit en imprimer quelques-unes avant de pouvoir continuer.  Il y a deux solutions possible à cela.
+
+La première solution consiste à  augmenter le nombre de boites que \package{ledpar} peut garder en mémoire, en mettant dans le préambule la commande \cs{maxchunks}\marg{nbre}, où \arg{nbre} est le nombre de boites en mémoire. Par défaut, ce nombre est de dix. Il suffit donc de l'augmenter  pour qu'il soit égal ou supérieur au nombre de boites de son  texte.
+
+
+Avec la deuxième solution (que l'on peut d'ailleurs coupler avec la première), on  coupe son texte en plusieurs grands ensembles de boites (c'est-à-dire en plusieurs environnements \enviro{Leftside} et \enviro{Rightside}, se terminant chacun par \cs{Columns} ou \cs{Pages}).  Cette solution est préférable pour les longs textes. Les divisions internes du textes se reflètent alors dans les environnements \enviro{Leftside} et \enviro{Rightside}.   Mais si l'on met simplement :
+
+\begin{minted}{latex}
+\begin{pages}  
+	\begin{Leftside}  \beginnumbering 
+La première partie du texte en langue originale
+	\endnumbering  \end{Leftside} 
+ 
+	\begin{Rightside} \beginnumbering
+La traduction de la première partie
+	\endnumbering \end{Rightside} 
+ \Pages
+ 
+	\begin{Leftside} \beginnumbering  
+La deuxième partie du texte 
+	\endnumbering  \end{Leftside} 
+ 
+	\begin{Rightside}  \beginnumbering
+La traduction de la deuxième partie
+	\endnumbering \end{Rightside} 
+ \Pages
+
+  \end{pages}
+\end{minted}
+
+on se retrouve avec une numérotation qui recommence à zéro pour la deuxième partie du texte. 
+
+La commande \cs{memorydump} permet de résoudre ce problème. Elle équivaut en fait à un \cs{endnumbering} immédiatement suivit d'un \cs{beginnumbering}. Il faut donc mettre: 
+
+\begin{minted}{latex}
+\begin{pages}  
+	\begin{Leftside}  \beginnumbering 
+La première partie du texte en langue originale
+ \end{Leftside} % On n'a pas mis \endnumbering ici!...
+ 
+\begin{Rightside} \beginnumbering
+La traduction de la première partie
+ \end{Rightside} % et là non plus...
+ \Pages
+ 
+	\begin{Leftside} \memorydump % et, ici, pas de \beginnumbering..  
+La deuxième partie du texte 
+	\endnumbering  \end{Leftside}
+	
+	\begin{Rightside}  \memorydump %...car \memorydump s'en charge!
+La traduction de la deuxième partie
+	\endnumbering \end{Rightside}   %ne pas oublier de mettre 
+% tout de même \endnumbering quand on arrive à la fin ..
+ 
+ \Pages
+
+  \end{pages}
+\end{minted}
+
+Ainsi, la numérotation du texte se fait en continue entre la première partie et la deuxième partie.
+
+
+
+
+
+
+
+\subsection{Personnaliser}
 
 
 (Bof! trouver autre titre)
 
-doper la mémoire>maxchunks. ou multiplier les \cs{Columns} ou \cs{Pages}
+
 
 on peut changer la séparatiosn entre les colonnes
 
