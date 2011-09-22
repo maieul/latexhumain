@@ -61,10 +61,10 @@
 \newcommand{\renvoi}[1]{\marginpar{p. \pageref{#1}}}
 
 \newcommand{\rev}[1]{\marginpar{#1}}
-% Redefinir les commandes de minted
+
 \let\oldinputminted\inputminted
 \renewcommand{\inputminted}[1]{%
-\oldinputminted[linenos]{latex}{#1}%
+\oldinputminted[linenos,frame=leftline,framesep=0.5em]{latex}{#1}%
 }
 
 \newcommand{\type}[1]{%
