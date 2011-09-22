@@ -57,4 +57,10 @@
      \vspace{\itemsep}}}
   {\endlist}
  \makeatother
+ 
+\definecolor{shadecolor}{gray}{0.9}
+\let\oldquotation\quotation
+\let\endoldquotation\endquotation
+\renewcommand{\quotation}{\oldquotation\item\relax\shaded}
+\renewcommand{\endquotation}{\endshaded\endoldquotation}
 
