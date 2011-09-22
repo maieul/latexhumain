@@ -112,7 +112,7 @@ Nous allons commenter succinctement ces lignes, avant d'expliquer comment faire 
 Pour inverser l'ordre de nos champs, il suffit donc de redéfinir la macro en inversant l'ordre d'impression des champs. Au passage, on ne veut plus des deux points comme séparateurs, ce qui nous permet de supprimer un test conditionnel.
 
 
-\begin{minted}{latex}
+\begin{latexcode}
 \renewbibmacro*{publisher+location+date}{%
   \printlist{publisher}%
     \setunit*{\addcomma\space}%
@@ -120,7 +120,7 @@ Pour inverser l'ordre de nos champs, il suffit donc de redéfinir la macro en in
   \setunit*{\addcomma\space}%
   \usebibmacro{date}%
   \newunit}
-\end{minted}
+\end{latexcode}
 
 
 \input{exemples/biblio/styles2/publisher+location+date}	% Remettre les champs dans le bon ordre.
@@ -195,9 +195,9 @@ Pour ce faire, nous allons modifier les styles de \emph{biblatex}, en utilisant 
 
 Pour la faire fonctionner, il faut utiliser Biber\renvoi{biber}, et passer l'option \option{singletitle=true} au chargement de \package{biblatex}.
 
-\begin{minted}{latex}
+\begin{latexcode}
 \usepackage[singletitle=true,...]{biblatex}
-\end{minted}
+\end{latexcode}
 
 Une fois ceci fait, il est nécessaire de savoir où appliquer cette commande. Commençons par fouiller le fichier \ext{cbx}, puisqu'il s'agit d'un style pour une commande \cs{PREFIXcite}. Recherchons l'expression \forme{opcit} qui correspond à la chaîne de langue qui renvoie \forme{op. cit.} (voir chapitre précédent).\renvoi{opcit}.
 

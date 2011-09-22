@@ -67,7 +67,7 @@ Ce package possède une syntaxe spécifique.
 Notre exemple est volontairement simple. Nous disposons de six familles de manuscrits d'un même texte. La  famille A a engendré les familles B, C, D. Les familles E et F pour leurs parts sont issues de la famille D. 
 
 Le code est le suivant 
-\inputminted{exemples/premierpas/nontextuels/genealogie.tex}[linenos=true]
+\inputminted{exemples/premierpas/nontextuels/genealogie.tex}
 
 Ce qui donne le résultat de la figure~\ref{figure:genealogie}\renvoi{figure:genealogie}. \begin{figure}[hp]
 \centering
@@ -105,12 +105,12 @@ C'est à nos yeux l'un des éléments les plus complexe de \LaTeX. C'est pourquo
 
 La création d'un tableau simple se fait grâce à l'environnement \enviro{tabular}, d'après la syntaxe suivante :
 
-\begin{minted}{latex}
+\begin{latexcode}
 \begin{tabular}{<type de colonnes>}
 	Cellule & Cellule & Cellule \\
 	Cellule & Cellule & Cellulle \\
 \end{tabular}
-\end{minted}
+\end{latexcode}
 
 Le caractère \verb|&| marque un changement de cellule. Le \verb|\\| marque un changement de ligne.
 
@@ -143,12 +143,12 @@ Par défaut, le tableau va prendre la largeur minimale nécessaire à son affich
 
 On peut utiliser l'environnement \enviro{tabular*} qui propose un argument supplémentaire, correspondant à la largeur totale du tableau :
 
-\begin{minted}{latex}
+\begin{latexcode}
 \begin{tabular*}{<largeur du tableau>}{<type de colonnes>}
 	Cellule & Cellule & Cellule \\
 	Cellule & Cellule & Cellulle \\
 \end{tabular}
-\end{minted}
+\end{latexcode}
 
 
 Toutefois il peut être pratique d'indiquer des tailles de colonnes : en particulier lorsque nos cellules contiennent des paragraphes.
@@ -222,19 +222,19 @@ Si vous fabriquez ainsi un long tableau, vous constaterez que les cellules dépa
 
 Pour éviter cela, il faut donc utiliser l'environnement \enviro{longtable} du package éponyme\sindex[pkg]{longtable}.
 
-\begin{minted}{latex}
+\begin{latexcode}
 \usepackage{longtable}
 …
 \begin{longtable}{types colonnes}
 …
 \end{longtable}
-\end{minted}
+\end{latexcode}
 
 La syntaxe d'un environnement \enviro{longtable} est identique à celle d'un environnement \enviro{tabular}. Toutefois le package propose deux  commandes supplémentaires pour préciser les en-têtes et pieds de tableau, qui sont répétés sur chaque pages. Ces commandes sont, respectivement, \csp{endhead} et \csp{endfoot}. Il existe aussi aussi une commande \csp{endfirsthead} pour préciser l'en-tête  spécifique à la première page du tableau et une commande \csp{endlastfoot} pour préciser le pied  spécifique à la dernière page du tableau.
 
 Ces quatre commandes sont optionnelles, elles  doivent s'utiliser en début de tableau : il faut placer les éléments correspondants \emph{avant} chacune des commandes, de la manière suivante :
 
-\begin{minted}{latex}
+\begin{latexcode}
 \begin{longtable}{types colonnes}
 Cellules d'en-tête.
 \endhead
@@ -246,7 +246,7 @@ Cellules de pied pour la dernière page.
 \endlastfoot
 Cellules de corps de tableau.
 \end{longtable}
-\end{minted}
+\end{latexcode}
 
 \begin{attention}
 Un élément important avec \enviro{longtable} est la nécessité de compiler deux fois le fichier \ext{tex}. 
@@ -330,20 +330,20 @@ Il existe deux types principaux de flottant :
 
 La syntaxe pour insérer le premier est la suivante :
 
-\begin{minted}{latex}
+\begin{latexcode}
 \begin{figure}[<paramètre de placement>]
 	Insertion de la figure ou de l'image suivant les codes montrés plus haut.
 	\caption{<Légende>}
 \end{figure} 
-\end{minted}
+\end{latexcode}
 
 Celle pour insérer le second est la suivante :
-\begin{minted}{latex}
+\begin{latexcode}
 \begin{table}[<paramètre de placement>]
 	Insertion d'un tableau suivant le codes montrés plus haut.
 	\caption{<Légende>}
 \end{table} 
-\end{minted}
+\end{latexcode}
 
 Si la commande \cs{caption} est insérée au-dessus de la figure, de l'image ou du tableau, la légende sera située au dessus de l'élément et non en-dessous. Il est possible, mais déconseillée, de ne pas mettre de légende.
 
@@ -362,13 +362,13 @@ Un exemple de flottant se situe  dans ce chapitre : la figure \ref{figure:geneal
 
 Il peut être utile de centrer le contenu du flottant. Il s'agit ici d'une exception au principe de séparation du fond de la forme. Pour procéder à ce centrage, il faut utiliser la commande \csp{centering}.
 
-\begin{minted}{latex}
+\begin{latexcode}
 \begin{figure}[<paramètre de placement>]
 	\centering
 	Insertion de la figure ou de l'image suivant les codes montrés plus haut.
 	\caption{<Légende>}
 \end{figure} 
-\end{minted}
+\end{latexcode}
 
 
 Pour personnaliser les styles des légendes, la méthode la plus simple reste encore d'utiliser le package \package{caption}\footcite{caption}. Nous renvoyons à la documentation.

@@ -18,11 +18,11 @@ Le package \package{fontspec} propose de définir une police pour chaque famille
 
 Nous avons indiqués dans notre préambule que nous souhaitons les utiliser :
 
-\begin{minted}{latex}
+\begin{latexcode}
 \setmainfont[Mapping=tex-text]{Linux Libertine}
 \setsansfont[Mapping=tex-text]{Linux Biolinum}
 \setmonofont[Scale=0.75]{DejaVu  Sans Mono}
-\end{minted}
+\end{latexcode}
 
 La commande \cs{setmainfont} sert à définir la police avec empattement (corps du texte), \cs{setsansfont} celle sans empattement et \cs{setmonofont} la police à espacement fixe. L'argument optionnel peut prendre un certain nombre de paramètres pour la police. 
 
@@ -48,14 +48,14 @@ Si donc vous souhaitez définir une autre taille d'interligne, vous pouvez essay
 
 Les trois commandes qui nous intéressent sont \cs{singlespacing}, \cs{onehalfspacing} et \cs{doublespacing}. Ces commandes s'utilisent de la manière suivante :
 
-\begin{minted}{latex}
+\begin{latexcode}
 \doublespacing
 Ce texte est en interligne double.
 \onehalfspacing
 Ce texte est en interligne 1,5.
 \singlespacing
 Ce texte est en interligne simple. 
-\end{minted}
+\end{latexcode}
 
 Tant qu'aucune commande de changement d'interligne n'est utilisée, le texte reste dans l'interligne courante. 
 
@@ -73,7 +73,7 @@ Il est donc recommandé de mettre la commande \cs{onehalfspacing} en tout début
 
 Le package \package{setspace} propose également trois environnements qui permettent de limiter la portée d'un changement d'interligne. 
 
-\begin{minted}{latex}
+\begin{latexcode}
 \begin{singlespace}
 Texte avec un interligne simple
 \end{singlespace}
@@ -83,31 +83,31 @@ Texte avec un interligne 1,5.
 \begin{doublespace}
 Texte avec un interligne double.
 \end{doublespace}
-\end{minted}
+\end{latexcode}
 
 \subsection[Rédéfinir un environnement : quotation]{(Re)définir un environnement : exemple avec l'environnement \enviro{quotation}}
 
 En général, les citations ont un interlignage plus réduit que le corps du texte. Ainsi, la tentation serait grande, pour un document en interligne 1,5 de frapper ceci :
 
-\begin{minted}{latex}
+\begin{latexcode}
 \begin{singlespace}
 \begin{quotation}
 Une citation assez longue.
 \end{quotation}
 \end{singlespace}
-\end{minted}
+\end{latexcode}
 
 Une telle méthode viole le principe de séparation de fond et de forme. En outre elle multiplie les lignes de code. Il serait plus sage de redéfinir l'environnement \enviro{quotation}. Voici comment faire simplement\footcite[Nous nous somme basés sur la classe \classe{bredele} :][]{bredele}. Nous avons déjà vu plus haut un exemple de redéfinition d'environnement, pour l'environnement \enviro{latin}\renvoi{redefinirlatin}. 
 
 Ici il s'agit non seulement de redéfinir l'environnement, mais aussi de réutiliser les propriétés de l'ancien environnement. On procède en insérant ce code en début de document, dans le préambule :
 
-\begin{minted}[linenos]{latex}
+\begin{latexcode}
 \let\oldquotation\quotation
 \let\endoldquotation\endquotation
 \renewenvironment{quotation}
 	{\begin{oldquotation}\singlespace}
         {\end{oldquotation}}
-\end{minted}
+\end{latexcode}
 
 Commentaires : 
 
@@ -126,12 +126,12 @@ En créant ces deux commandes \cs{oldquotation} et \cs{endoldquotation} nous avo
 
 \begin{plusloins}
 Si vous avez compris nos propos sur les commandes de début et de fin d'environnement, vous pouvez vous rendre compte que nous aurions pu obtenir le même résultat avec :
-\begin{minted}{latex}
+\begin{latexcode}
 \let\oldquotation\quotation
 \let\endoldquotation\endquotation
 \renewcommand{\quotation}{\oldquotation\singlespace}
 \renewcommand{\endquotation}{\endoldquotation}
-\end{minted}
+\end{latexcode}
 \end{plusloins}
 
 \section{Personnaliser les titres}
@@ -140,9 +140,9 @@ Si vous avez compris nos propos sur les commandes de début et de fin d'environn
 Nous avons abordé plus haut la notion de compteur. À chaque niveau de titre, \LaTeX associe un compteur \compteur{niveau}. Ainsi le compteur associé au niveau de titre \cs{chapter} est \compteur{chapter}.\renvoi{tocdepth}
 
 La valeur d'un compteur peut s'afficher grâce à la commande \cs{thecompteur}. Ainsi, si vous écrivez 
-\begin{minted}{latex}
+\begin{latexcode}
 \thechapter : \thesection
-\end{minted}
+\end{latexcode}
 
 Vous constatez qu'à la compilation apparaît le numéro du chapitre, tel qu'il apparaît dans l'en-tête, et le numéro de section, tel qu'il apparaît dans le titre. Ici par exemple nous obtenons :
 
@@ -154,10 +154,10 @@ Vous constatez qu'à la compilation apparaît le numéro du chapitre, tel qu'il 
 
 Puisque les compteurs s'affichent à l'aide d'une commande, il est aisée de redéfinir ses commandes. Si vous fouillez le fichier \fichier{book.cls}\renvoi{trouverfichier}, vous pouvez constatez\footnote{Lignes 287-288, à la date où nous écrivons.}, les deux (re)définitions de commande suivantes :
 
-\begin{minted}[linenos]{latex}
+\begin{latexcode}
 \renewcommand \thechapter {\@arabic\c@chapter}
 \renewcommand \thesection {\thechapter.\@arabic\c@section}
-\end{minted}
+\end{latexcode}
 
 \begin{description}
 \item[Ligne 1]la commande \csp{c@chapter} retourne la valeur --- entière, par définition --- du compteur \compteur{chapter}. Cette valeur ne peut pas être affichée directement, elle doit être au préalable formatée par la commande \csp{@arabic}, qui l'affiche sous forme de chiffres arabes.
@@ -172,10 +172,10 @@ Supposons maintenant que nous souhaitons deux choses :
 
 Il nous suffit de redéfinir ainsi ces commandes :
 
-\begin{minted}{latex}
+\begin{latexcode}
 \renewcommand \thechapter {\@Roman\c@chapter}
 \renewcommand \thesection {\thechapter.\@arabic\c@section)~}
-\end{minted} 
+\end{latexcode} 
 
 \label{makeatletter}Si vous écrivez ces lignes dans votre préambule, vous n'arrivez pas à compiler. Cela tient à une raison simple : les commandes contenant le caractère @ ne peuvent pas être  utilisées dans un fichier \ext{tex}, mais uniquement dans les fichiers de définition de classe (\ext{cls}) ou de package (\ext{sty}).
 
@@ -183,12 +183,12 @@ Pour pouvoir les utiliser dans un fichier \ext{tex}, il faut les entourer des co
 
 Ce qui nous donne : 
 
-\begin{minted}{latex}
+\begin{latexcode}
 \makeatletter
 \renewcommand \thechapter {\@Roman\c@chapter}
 \renewcommand \thesection {\thechapter.\@arabic\c@section)}
 \makeatother
-\end{minted}
+\end{latexcode}
 
 % Ici on redéfinit temporairement 
 
@@ -221,12 +221,12 @@ Nous parlons plus loin de la manière de manipuler les compteurs.\renvoi{manipco
 
 Pour personnaliser l'apparence des titres, le mieux est de regarder ce que nous proposent les classes standards. Prenons le cas de la classe \classe{book}, définie dans le fichier \fichier{book.cls}.\renvoi{trouverfichier} En cherchant un peu, nous trouvons\footnote{L. 414 à la date du 19 septembre 2011.} :
 
-\begin{minted}[linenos]{latex}
+\begin{latexcode}
 \newcommand\section{\@startsection {section}{1}{\z@}%
                                    {-3.5ex \@plus -1ex \@minus -.2ex}%
                                    {2.3ex \@plus.2ex}%
                                    {\normalfont\Large\bfseries}}
-\end{minted}
+\end{latexcode}
 
 Commentons ces quelques lignes :
 
@@ -240,14 +240,14 @@ Commentons ces quelques lignes :
 
 Supposons maintenant que nous souhaitons avoir notre titre en en italique et en police sans empattement. Il nous suffit de redéfinir notre commande \cs{section}, en entourant notre définition de \cs{makeatletter} et \cs{makeatother}.\renvoi{makeatletter}
 
-\begin{minted}{latex}
+\begin{latexcode}
 \makeatletter
 \renewcommand\section{\@startsection {section}{1}{\z@}%
                                    {-3.5ex \@plus -1ex \@minus -.2ex}%
                                    {2.3ex \@plus.2ex}%
                                    {\sffamily\Large\it}}
 \makeatother
-\end{minted}
+\end{latexcode}
 
 La commande \cs{ssfamily} produit une bascule vers la police sans empattement définie par \cs{setsansfont}, tandis que \cs{it} produit une bascule vers un texte en italique.
 
@@ -255,24 +255,24 @@ La commande \cs{ssfamily} produit une bascule vers la police sans empattement d�
 
 Si on cherche dans le fichier \fichier{book.cls} la commande \cs{chapter}, on trouve\footnote{L. 360 et suivantes, à la date du 6 août 2011.} :
 
-\begin{minted}[linenos]{latex}
+\begin{latexcode}
 \newcommand\chapter{\if@openright\cleardoublepage\else\clearpage\fi
                     \thispagestyle{plain}%
                     \global\@topnum\z@
                     \@afterindentfalse
                     \secdef\@chapter\@schapter}
-\end{minted}
+\end{latexcode}
 
 Deux éléments nous intéressent : la ligne 2 \cs{thispagestyle}\verb|{plain}|. On comprend ainsi la raison pour laquelle les  pages de début de chapitre n'ont pas les numéros de  page au même endroit que les autres : le style de cette page est \forme{plain} et non pas \forme{heading}, comme pour les autres pages.\renvoi{styleentetes}Par conséquent, si on souhaite que les pages de titre aient les mêmes en-têtes et pieds de page que les pages standards, il faut redéfinir la commande \cs{chapter}.\label{entetechapter}.\label{chapitrepagestyle}
 
-\begin{minted}{latex}
+\begin{latexcode}
 \makeatletter
 \renewcommand\chapter{\if@openright\cleardoublepage\else\clearpage\fi
                     \global\@topnum\z@
                     \@afterindentfalse
                     \secdef\@chapter\@schapter}
 \makeatother
-\end{minted}
+\end{latexcode}
 
 Le second élément intéressant est la dernière ligne. La commande \cs{secdef} renvoie vers \csp{@chapter} si nous utilisons \cs{chapter} et vers \csp{@schapter} si nous utilisons \cs{chapter*}.
 
@@ -286,7 +286,7 @@ En effet la définition est faite en \TeX et non pas en \LaTeX. Pour nos propos,
 
 Intéressons nous à la commande \cs{@makechapterhead}\footnote{Ligne 386, à la date du 19 septembre 2011.}.
 
-\begin{minted}[linenos]{latex}
+\begin{latexcode}
 \def\@makechapterhead#1{%
   \vspace*{50\p@}%
   {\parindent \z@ \raggedright \normalfont
@@ -301,7 +301,7 @@ Intéressons nous à la commande \cs{@makechapterhead}\footnote{Ligne 386, à la
     \Huge \bfseries #1\par\nobreak
     \vskip 40\p@
   }}
-\end{minted}
+\end{latexcode}
 
 Analysons là :
 
@@ -335,7 +335,7 @@ Pour ce faire, nous allons reprendre le code existant et le copier coller dans n
 
 Cela nous donne au final :
 
-\begin{minted}[linenos]{latex}
+\begin{latexcode}
 \makeatletter
 \def\@makechapterhead#1{%
   \vspace*{50\p@}%
@@ -353,7 +353,7 @@ Cela nous donne au final :
     \vskip 40\p@
   }}
 \makeatother
-\end{minted}
+\end{latexcode}
 
 Évidemment, il faudrait appliquer le même type de modifications sur la commande \cs{makeschapterhead}. On pourrait aussi s'amuser à modifier ce qui est produit par \cs{part}. Pour ce faire, il faut, pareillement, fouiller le fichier \cs{book.cls}.
 
@@ -370,17 +370,17 @@ Il est possible de créer son propre compteur grâce à la commande \cs{newcount
 La commande  \cs{@addtoreset}\marg{compteur}\marg{compteur2}  permet d'appliquer cette règle sur un compteur déjà existant.
 
 Ainsi, dans le fichier \fichier{book.cls}, vous remarquerez la ligne suivante\footnote{L. 718, à la date du 24 août 2011}  :
-\begin{minted}{latex}
+\begin{latexcode}
 \@addtoreset{footnote}{chapter}
-\end{minted} 
+\end{latexcode} 
 
 Ce qui signifie que le compteur  \compteur{footnote}, qui correspond à la numérotation des notes de bas de page, est réinitialisé à chaque nouveau chapitre numéroté. 
 
 Si nous souhaitons annuler cette commande, pour avoir des notes de bas de page en numérotation continue, il nous faut utiliser le package \package{remreset} et sa commande \csp{@removefromreset}, qui annule un réglage de réinitialisation.
 
-\begin{minted}{latex}
+\begin{latexcode}
 \usepackage{remreset}
 \makeatletter
 \@removefromreset{footnote}{chapter}
 \makeatother
-\end{minted}
+\end{latexcode}

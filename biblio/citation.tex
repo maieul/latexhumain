@@ -30,9 +30,9 @@ On comprend ici l'un des grands intérêts de \LaTeX : plus de perte de temps à
 
 Voici donc comment doit se faire l'appel au package si nous choisissons le style de citation \verb|verbose-trad-2|.
 
-\begin{minted}{latex}
+\begin{latexcode}
 \usepackage[citestyle=verbose-trad2]{biblatex}
-\end{minted}
+\end{latexcode}
 
 Pour les sciences humaines, nous recommandons les styles de la famille verbose.
 
@@ -74,9 +74,9 @@ Mais on peut aussi choisir la commande \csp{autocite}. Le mode de citation (note
 
 Supposons que nous souhaitons afficher, avant notre référence, un texte. Par exemple : \enquote{Voir également}. On utilise l'argument optionnel \arg{prenote}.
 
-\begin{minted}{latex}
+\begin{latexcode}
 Blabla \autocite[Voir également][]{Saxer1980} blablabla.
-\end{minted}
+\end{latexcode}
 
 \begin{quotation}
 Blabla \cite[Voir également][]{Saxer1980} blablabla.
@@ -86,10 +86,10 @@ Blabla \cite[Voir également][]{Saxer1980} blablabla.
 
 On peut également souhaiter afficher quelque chose après la référence. On utilise dans ce cas l'argument \arg{postnote}.
 
-\begin{minted}{latex}
+\begin{latexcode}
 Blabla \autocite[Voir également][qui porte sur un
 sujet similaire.]{Saxer1980} blabla
-\end{minted}
+\end{latexcode}
 
 \begin{quotation}
 
@@ -105,27 +105,27 @@ Si on utilise l'argument \arg{prenote}, il est obligatoire d'indiquer un argumen
 L'argument \arg{postnote} peut servir à indiquer les pages précises de notre ouvrage\footcite[On consultera pour plus de détails : ][]{biblatex_pages}. Il suffit pour cela qu'il contienne une valeur de type numérique, en chiffres arabes ou romains, ou bien une séquence de valeurs numériques.
 
 Par exemple pour citer la page 25 : 
-\begin{minted}{latex}
+\begin{latexcode}
 \footcite[25]{Saxer1980}
-\end{minted}
+\end{latexcode}
 
  Pour citer les pages 25 à 35 :
 
-\begin{minted}{latex}
+\begin{latexcode}
 \autocite[25-35]{Saxer1980}
-\end{minted}
+\end{latexcode}
 
 Ou encore les pages 25 et 35:
 
-\begin{minted}{latex}
+\begin{latexcode}
 \autocite[35 \& 25]{Saxer1980}
-\end{minted}
+\end{latexcode}
 
 Toutefois, nous pouvons vouloir citer la page précise et mettre autre chose dans l'argument \arg{postnote} : pour ce faire,  utilisons la commande \csp{pno}, pour que \package{biblatex} insère lui même le \forme{p.} :
 
-\begin{minted}{latex}
+\begin{latexcode}
 \autocite[\pno~22 avec lequel nous sommes en désaccord.]{Saxer1980}
-\end{minted}
+\end{latexcode}
 
 \begin{quotation}
 	\parencite[\pno~22 avec lequel nous sommes en désaccord.]{Saxer1980}
@@ -142,9 +142,9 @@ Un problème se pose lorsqu'il y a déjà un champ \champ{pages} de rempli : on 
 
 Et appelons là avec le code suivant :
 
-\begin{minted}{latex}
+\begin{latexcode}
 \cite[p. 24]{Junod1992}
-\end{minted}
+\end{latexcode}
 
 on obtient ce résultat :
 
@@ -156,9 +156,9 @@ on obtient ce résultat :
 
 Pour éviter cela, si on utilise un style de type verbose, il faut passer une option lors de l'appel au package \option{citepages=omit}
 
-\begin{minted}{latex}
+\begin{latexcode}
 \usepackage[citestyle=verbose,citepages=omit]{biblatex}
-\end{minted}
+\end{latexcode}
 
 Désormais écrire \cs{cite}\verb|[24]{Junod1992}|
 affiche correctement :
@@ -169,9 +169,9 @@ affiche correctement :
 
 En revanche, un problème demeure si on souhaite insérer du texte dans l'argument \arg{postnote} après le numéro de page.
 
-\begin{minted}{latex}
+\begin{latexcode}
 \cite[\pno~24, passage au demeurant fort intéressant.]{Junod1992}
-\end{minted}
+\end{latexcode}
 
 \begin{quotation}
 \cite[\pno~24, passage au demeurant fort intéressant.]{Junod1992}
@@ -180,9 +180,9 @@ En revanche, un problème demeure si on souhaite insérer du texte dans l'argume
 Comme vous pouvez le constatez, le champ \champ{pages} continue à être affiché. Il s'agit d'un bug. En attendant qu'il soit corrigé\footnote{L'auteur de ces lignes à demander à l'auteur de \package{biblatex} de le faire, mais celui-ci croule sous les demandes de corrections et améliorations.}, nous ne trouvons pas d'autre solution que de le contourner en indiquant le texte qui suit la référence en dehors de l'argument \arg{postnote}. 
 
 Dans le cas d'une citation en note de bas de page, on doit donc écrire :
-\begin{minted}{latex}
+\begin{latexcode}
 \footnote{\cite[24]{Junod1992}, passage au demeurant fort intéressant.}
-\end{minted}
+\end{latexcode}
 
 \begin{attention}
 Pour les sources anciennes, on aimerait pouvoir indiquer non seulement la pagination dans l'édition contemporaine mais aussi la division de source (livre, chapitre, paragraphe etc.). Malheureusement \package{biblatex} ne propose d'indiquer qu'un élément variable lors de l'utilisation d'une commande de citation.
@@ -218,9 +218,9 @@ Il est possible de citer plusieurs œuvres d'une traite : pour cela, on utilise 
 Il est possible de citer autant d'œuvres que souhaité. Chaque élément cité a droit à son argument \arg{prenote} et \arg{postnote}, qui s'utilisent de la même manière que pour les citations simples.
 Voici un exemple d'utilisation : 
 
-\begin{minted}{latex}
+\begin{latexcode}
 \autocites{Saxer1980}{Junod1992}
-\end{minted}
+\end{latexcode}
 
 \begin{quotation}
 \cites{Saxer1980}{Junod1992}
@@ -228,17 +228,17 @@ Voici un exemple d'utilisation :
 
 Il est possible de préciser un texte à afficher avant la liste des des références, ainsi qu'un texte à afficher après.
 
-\begin{minted}{latex}
+\begin{latexcode}
 \<prefix>cites(Texte avant)(Texte après){Saxer1980}{Junod1992}
-\end{minted}
+\end{latexcode}
 
 Les séparateurs de citations sont par défaut des points-virgule. Il est possible de les modifier globalement, nous en parlons plus loin.\renvoi{multicitedelim}
 
 Toutefois, si un argument \arg{postnote} d'un élément de la commande de citation multiple finit par un signe de ponctuation, alors le point-virgule n'apparaît pas entre cet élément et le suivant :
 
-\begin{minted}{latex}
+\begin{latexcode}
 \autocites[on consultera également :]{Saxer1980}{Junod1992}
-\end{minted}
+\end{latexcode}
 
 Donne :
 

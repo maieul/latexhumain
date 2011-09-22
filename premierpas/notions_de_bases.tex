@@ -58,11 +58,11 @@ Nous en préciserons d'autres au fur et à mesure de l'ouvrage, lorsque les noti
 \subsection{L'appel aux packages}
 
 Voyons les trois lignes suivantes : 
-\begin{minted}[linenos,firstnumber=2]{latex}
+\begin{latexcode*}{linenos,firstnumber=2}
 \usepackage{fontspec}
 \usepackage{xunicode}
 \usepackage{polyglossia}
-\end{minted}
+\end{latexcode*}
 
 Il s'agit, comme vous auriez pu le deviner, d'appel à des packages\footnote{Nous avons fait volontairement le choix de ne pas traduire ce terme, pour éviter des confusions.}. Un package est un ensemble de fichiers qui ajoutent des fonctionnalités à \LaTeX, c'est l'équivalent d'un plugin sous Firefox. 
 
@@ -100,12 +100,12 @@ Enfin, rien de ce qui se trouve après \cs{end}\verb|{document}| n'est analysé 
 
 \subsection{Titre, auteur et date : la notion de commande}\label{notioncommande}
 
-\begin{minted}[linenos,firstnumber=8]{latex}
+\begin{latexcode*}{linenos,firstnumber=8}
 \title{Un titre d'ouvrage}
 \author{Le nom de son auteur}
 \date{Une date}
 \maketitle
-\end{minted}
+\end{latexcode*}
 
 Les trois premières de ces lignes définissent respectivement le titre\sindex[cs]{title@\oldcs{title}|hyperpagetextbf}, l'auteur\sindex[cs]{author@\oldcs{author}|hyperpagetextbf} et la date\sindex[cs]{date@\oldcs{date}|hyperpagetextbf} du travail. En ce qui concerne cette dernière, ne pas l'indiquer revient à indiquer  celle du jour de la compilation.
 
@@ -140,7 +140,7 @@ La grande force de \LaTeX est justement de permettre d'utiliser des commandes af
 Regardez maintenant les lignes suivantes et leurs résultats à la compilation .
 
 
-\begin{minted}[linenos,firstnumber=13]{latex}
+\begin{latexcode*}{linenos,firstnumber=13}
 Lorem ipsum dolor sit amet, consectetuer adipiscing elit ?
 Morbi commodo ; ipsum sed pharetra gravida !
 Nullam sit amet enim. Suspendisse id : velit vitae ligula.
@@ -151,7 +151,7 @@ Quisque facilisis erat a dui.
 Nam malesuada ornare dolor.
 Cras gravida, diam sit amet rhoncus ornare, 
 erat      elit consectetuer erat, id egestas pede nibh eget odio.
-\end{minted}
+\end{latexcode*}
 
 
 Nous pouvons constater plusieurs choses.
@@ -225,23 +225,21 @@ Un environnement  est une portion de document ayant une signification spécifiqu
 
 On marque le début d'un environnement  \arg{nom} par la commande \csp{begin}\marg{nom} et on le termine par la commande \csp{end}\marg{nom}.
 
-\begin{minted}{latex}
-\end{nom}
-\end{minted}
+
 
 
 Dans la classe \classe{article} il existe un environnement utile : \enviro{abstract}. On place dans cette environnement un résumé de l'article :
 
-\begin{minted}{latex}
+\begin{latexcode}
 \begin{abstract}
 Écrivons ici un résumé de l'article. 
 \end{abstract}
-\end{minted}
+\end{latexcode}
 
 
 Il est possible d'imbriquer des environnements :
 
-\begin{minted}{latex}
+\begin{latexcode}
 \begin{1}
 blabla blab
 \begin{2}
@@ -249,13 +247,13 @@ blabl blab
 \end{2}
 blabl
 \end{1}
-\end{minted}
+\end{latexcode}
 
 
 En revanche il n'est pas possible de superposer des environnements : ainsi le code suivant ne fonctionne pas et produit une erreur lors de la compilation.
 
 
-\begin{minted}{latex}
+\begin{latexcode}
 \begin{1}
 blabla blab
 \begin{2}
@@ -263,7 +261,7 @@ blabl blab
 \end{1}
 blabl
 \end{2}
-\end{minted}
+\end{latexcode}
 
 \subsection{Conclusion}
 

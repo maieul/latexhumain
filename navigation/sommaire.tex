@@ -35,10 +35,10 @@ Dans notre cas, le compteur \compteur{tocdepth} n'est pas automatiquement modifi
 
 Le niveau \cs{subsubsection} a comme numéro 3. Pour afficher dans la table des matières tous les niveaux de titres jusqu'au niveau \cs{subsubsection} inclus, il faut donc affecter la valeur 3 à  \compteur{tocdepth}. Pour ce faire il faut utiliser la commande \csp{setcounter} :
 
-\begin{minted}{latex}
+\begin{latexcode}
 \setcounter{tocdepth}{3}
 \tableofcontents
-\end{minted}
+\end{latexcode}
 
 \section[Table des matières ou sommaire ?]{Table des matières ou sommaire ? les chaînes de langues de polyglossia}
 
@@ -52,15 +52,15 @@ Notre chaîne de langue est donc \cs{contentsname}.
 
 Pour  redéfinir une chaîne de langue, il suffit d'écrire, de préférence dans le préambule :
 
-\begin{minted}{latex}
+\begin{latexcode}
 \gappto\captionsfrench{\renewcommand{<\chaine>}{Valeur}}
-\end{minted}
+\end{latexcode}
 
 Dans le cas présent, cela donne :
 
-\begin{minted}{latex}
+\begin{latexcode}
 \gappto\captionsfrench{\renewcommand{\contentsname}{Sommaire}}
-\end{minted}
+\end{latexcode}
 
 
 
@@ -94,9 +94,9 @@ Pour ce faire, il suffit d'utiliser le package \package{shorttoc}. Celui-ci déf
 
 Typiquement pour un sommaire qui ne reprendrait que les niveaux de section et de chapitre, il suffit d'écrire :
 
-\begin{minted}{latex}
+\begin{latexcode}
 \shorttoc{Sommaire}{0}
-\end{minted}
+\end{latexcode}
 
 
 
@@ -105,20 +105,20 @@ Typiquement pour un sommaire qui ne reprendrait que les niveaux de section et de
 
 Il peut aussi arriver qu'on souhaite indiquer un sommaire au début de chaque chapitre. Il faut dans ce cas utiliser le package \package{minitoc} en lui passant l'option \option{french}. On peut ensuite activer les mini-sommaire grâce à la commande \csp{dominitoc}
 
-\begin{minted}{latex}
+\begin{latexcode}
 \usepackage{minitoc}{french}
 \dominitoc
-\end{minted}
+\end{latexcode}
 
 Pour afficher les mini-sommaires, il suffit d'utiliser la commande \cs{minitoc} aux endroits voulu, par exemple après chaque titre de chapitre.
 
-\begin{minted}{latex}
+\begin{latexcode}
 \chapter{A}
 \minitoc
 …
 \chapter{B}
 \minitoc
-\end{minted}
+\end{latexcode}
 
 \begin{attention}
 Le package ne peut calculer correctement les sommaires que si la commande \cs{tableofcontents} est utilisée. Si vous souhaitez n'afficher que des mini-sommaires mais pas de table générale des matières --- ce qui est une idée assez étrange --- vous pouvez utiliser  la commande \csp{faketableofcontents} à la place de \cs{tableofcontents}.
@@ -126,7 +126,7 @@ Le package ne peut calculer correctement les sommaires que si la commande \cs{ta
 
 Pour afficher des mini-sommaires par partie, il faut utiliser la commande \cs{parttoc}. Par exemple :
 
-\begin{minted}{latex}
+\begin{latexcode}
 \part{A}
 \parttoc
 \chapter{1}
@@ -135,7 +135,7 @@ Pour afficher des mini-sommaires par partie, il faut utiliser la commande \cs{pa
 \part{B}
 \parttoc
 …
-\end{minted}
+\end{latexcode}
 
 
 Le package \package{minitoc} est très complexe : il permet par exemple choisir aisément les styles du sommaire. Nous renvoyons au manuel pour plus de détail\footcites{minitoc}[en particulier][]{minitoc_typesetting}.
@@ -154,11 +154,11 @@ Pour générer des signets correspondant au plan du travail il suffit simplement
 
 Un problème se pose lorsqu'on utilise un titre non numéroté\renvoi{titresansnumero}. En dépit de l'utilisation de la commande \cs{addcontentsline}, ce titre n'est pas ajouté dans la liste des signets. Pour corriger cela, il faut faire précéder cette commande de \csp{phantomsection}.
 
-\begin{minted}{latex}
+\begin{latexcode}
 \phantomsection
 \addcontentsline{toc}{chapter}{Introduction}
 \chapter*{Introduction}
-\end{minted}
+\end{latexcode}
 
 \subsection{Réglage des liens}
 Par défaut, \package{hyperref} entoure en rouge les liens hypertextes. Ces cadres rouges n'apparaîssent pas, normalement, à l'impression.
@@ -171,13 +171,13 @@ Mais on peut cependant vouloir les faire disparaître à l'écran aussi. Pour ce
 
 Pour ce faire, nous allons utiliser la commande \csp{hypersetup} dans le préambule. La commande prend comme argument des paramètres du package, séparés par des virgules.
 Pour notre cas ceci suffit
-\begin{minted}{latex}
+\begin{latexcode}
 \hypersetup{colorlinks=true,
 citecolor=black,
 filecolor=black,
 linkcolor=black,
 urlcolor=black,
-\end{minted}
+\end{latexcode}
 
 \verb|colorlinks=true| indique nous colorons les liens au lieu de les entourer. Pour \package{hyperref} il existe plusieurs types de liens dont la couleur est configurable. Ici nous indiquons de mettre en noir les types de liens suivants  :\begin{itemize}
 \item la couleur des liens de renvois d'une référence bibliographique abrégée à la référence complète ;

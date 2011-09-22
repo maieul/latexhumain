@@ -32,9 +32,9 @@ Nous allons donc utiliser le package \package{csquotes} qui propose des commande
 
 Le package propose une première commande utile : \cs{enquote}\marg{citation}, qui sert pour les citations en ligne.
 
-\begin{minted}{latex}
+\begin{latexcode}
 Comme le dit très justement xxx : \enquote{Lorsque yyy déclare \enquote{zzz} il ne déclare rien du tout}.
-\end{minted}
+\end{latexcode}
 
 
 \begin{quotation}
@@ -44,9 +44,9 @@ Comme le dit très justement xxx : \enquote{Lorsque yyy déclare \enquote{zzz} i
 
 Nous constatons que \package{csquotes} s'occupe automatiquement de choisir les bons guillemets. Par défaut on ne peut imbriquer que deux niveaux de citation. Toutefois une option du package permet d'avoir plus de niveaux de citation. Par exemple pour en avoir 3 : 
 
-\begin{minted}{latex}
+\begin{latexcode}
 \usepackage[maxlevel=3]{csquotes}
-\end{minted}
+\end{latexcode}
 
 Le package propose d'autres options et commandes : consultez le manuel\footcite{csquotes}.
 
@@ -59,7 +59,7 @@ LaTeX propose en standard trois environnements pour citer dans un bloc séparé.
 
 Il est prévu pour des courtes citations d'un paragraphe.
 
-\begin{minted}{latex}
+\begin{latexcode}
 \begin{quote}
 Le corps de Pierre gît à Rome, disent les hommes,
 le corps de Paul gît à Rome, le corps de Laurent aussi,
@@ -67,7 +67,7 @@ les corps d'autres martyrs y gisent,
 mais Rome est misérable,
 elle est dévastée, affligée, saccagée, incendiée.
 \end{quote}
-\end{minted}
+\end{latexcode}
 
 
 	\begin{quote}
@@ -78,7 +78,7 @@ elle est dévastée, affligée, saccagée, incendiée.
 
 Il est prévu pour des citations plus longues.
 
-\begin{minted}{latex}
+\begin{latexcode}
 \begin{quotation}
 Que rien exceptées les écritures canoniques ne soit lu en église sous le nom d’écritures divines.
 
@@ -100,7 +100,7 @@ Que l’Église d'outre-mer soit consultée pour la confirmation de ce canon.
 De plus, qu'il soit permis de lire les passions des martyrs,
 lorsqu'on célèbre leurs anniversaires
 \end{quotation}
-\end{minted}
+\end{latexcode}
 
 	\begin{quotation}
 Que rien exceptées les écritures canoniques ne soit lu en église sous le nom d’écritures divines.
@@ -138,7 +138,7 @@ définit la fréquence avec laquelle les vers sont numérotés.
 
 
 Citons pour  exemple un poème entier, dont les vers sont numérotés, de façon assez traditionnelle, une fois sur cinq. En frappant ceci:
-\begin{minted}{latex}
+\begin{latexcode}
 \begin{verse}
 \poemlines{5}
 
@@ -158,7 +158,7 @@ Et, quand j'arriverai, je mettrai sur ta tombe\\
 Un bouquet de houx vert et de bruyère en fleur.
 
 \end{verse}
-\end{minted}
+\end{latexcode}
 
 on obtient cela :
 
@@ -189,7 +189,7 @@ On utilise pour cela la commande \csp{setverselinenums}\marg{premier vers}\marg{
 Avec \cs{setverselinenums}\marg{12}\marg{12}, le premier vers cité sera le premier numéroté.
 
 Ne citant que la troisième strophe, par exemple, il faut frapper :
-\begin{minted}{latex}
+\begin{latexcode}
 \begin{verse}
 \poemlines{5}
 \setverselinenums{9}{10}
@@ -201,7 +201,7 @@ Et, quand j'arriverai, je mettrai sur ta tombe\\
 Un bouquet de houx vert et de bruyère en fleur.
 
 \end{verse}
-\end{minted}
+\end{latexcode}
 
 pour obtenir, correctement numéroté, 
 
@@ -219,15 +219,15 @@ Un bouquet de houx vert et de bruyère en fleur.
 
 \begin{plusloins}
 Dans la typographie française, il est d'usage de mettre un crochet droit [ au début d'un rejet. Ni l'environnement ni le package \package{verse} ne suivent cette règle. Pour obtenir le crochet droit, il faut indiquer charger le package  \package{gmverse} en lui passant l'option \option{squarebr} :
-\begin{minted}{latex}
+\begin{latexcode}
 \usepackage}[squarebr]{gmverse}
-\end{minted}
+\end{latexcode}
 Puis insérer, une fois commencé l'environnement \enviro{verse}, la commande \csp{versehangrightsquare}.
 \end{plusloins}
 
 Le package \package{verse} permet aussi d'indenter de façon très souple une strophe. On indique avec la commande \csp{indentpattern}\marg{$n_1 n_2 n_x$} l'indentation de chaque vers contenu dans la strophe encadrée dans l'environnement \enviro{patverse}: \arg{$n_1$} correspond au premier vers, \arg{$n_2$} au deuxième et ainsi de suite. Le premier vers n'est jamais indenté, mais il suffit de le faire précéder de \csp{vin}. Avec le code suivant :
 
-\begin{minted}{latex}
+\begin{latexcode}
 \begin{verse} 
 \poemlines{1}
 \indentpattern{010110} 
@@ -241,7 +241,7 @@ Le package \package{verse} permet aussi d'indenter de façon très souple une st
 
 \end{patverse}  
 \end{verse}
-\end{minted}
+\end{latexcode}
 
 on obtient donc:
   
@@ -271,7 +271,7 @@ Le package \package{csquotes} proposent deux commandes spécifiques pour signale
 
 La commande \csp{textelp}\arg{texte} signale un texte tronqué. L'argument \arg{texte} est inséré après la troncature, entre crochets (par défaut) ; pour ne rien insérer, le laisser vide.
 
-\begin{minted}{latex}
+\begin{latexcode}
 \begin{quotation}
 Que rien exceptées les écritures canoniques ne soit lu
 en église sous le nom d’écritures divines.
@@ -282,7 +282,7 @@ Que l’Église d'outre-mer soit consultée pour la confirmation de ce canon.
 De plus, qu'il soit permis de lire les passions des martyrs,
 lorsqu'on célèbre leurs anniversaires.
 \end{quotation}
-\end{minted}
+\end{latexcode}
 
 	\begin{quotation}
 	Que rien exceptées les écritures canoniques ne soit lu en église sous le nom d’écritures divines.
@@ -300,12 +300,12 @@ On peut décider de la manière dont la troncature et l'ajout sont signalés : c
 \subsection{Citation modifiée}
 
 Pour signaler une modification dans une citation, on utilise  \csp{textins}\marg{texte modifié}.
-\begin{minted}{latex}
+\begin{latexcode}
 \begin{quotation}
 Comme le disait très justement xxx : \enquote{Lorsque yyy \textins{a déclaré}
 \enquote{zzz} il \textins{n'a rien déclaré} du tout}.
 \end{quotation}
-\end{minted}
+\end{latexcode}
 
 \begin{quotation}
 	Comme le disait très justement xxx : \enquote{Lorsque yyy \textins{a déclaré} \enquote{zzz} il \textins{n'a rien déclaré} du tout}.

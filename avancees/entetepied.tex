@@ -27,10 +27,10 @@ On voit vite les limites de ces styles. Ainsi, comment faire pour avoir à la fo
 \section{Premiers exemples avec \packagenoidx{fancyhdr}}\sindex[pkg]{fancyhdr}
 
 Le \package{fancyhdr} propose son propre style, qu'il est aisé de personnaliser via des commandes spécifiques. Pour faire fonctionner \package{fancyhdr} il suffit d'écrire les lignes suivantes dans le préambule :
-\begin{minted}{latex}
+\begin{latexcode}
 \usepackage{fancyhdr}
 \pagestyle{fancy}
-\end{minted}
+\end{latexcode}
 
 \begin{plusloins}
 Les pages de début de chapitre appliquent automatiquement le style \forme{plain}. Pour désactiver cette activation, il faut modifier le commande \cs{chapter}. Nous en parlons dans un autre chapitre. \renvoi{entetechapter}
@@ -51,12 +51,12 @@ Une fois ceci fait, il est possible d'utiliser les six commandes de \package{fan
 
 
 Supposons que nous souhaitons afficher le numéro de page, en pied de page centré, en indiquant également le nombre total de pages. Nous allons utiliser le package \package{totpages} qui nous permet, après deux compilation, ou plus si le nombre de pages varie entre les compilations, d'obtenir le nombre total de pages.
-\begin{minted}{latex}
+\begin{latexcode}
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \usepackage{totpages}
 \cfoot{{\thepage} / \ref{TotPages}}
-\end{minted}
+\end{latexcode}
 
 
 
@@ -85,9 +85,9 @@ L'argument \arg{position} peut prendre une ou plusieurs des valeurs suivantes :
 
 Ainsi pour mettre le numéro de page à l'extérieur du pied de page, il suffit d'écrire :
 
-\begin{minted}{latex}
+\begin{latexcode}
 \fancyfoot[LE,RO]{\thepage}
-\end{minted}
+\end{latexcode}
 
 Évidemment, si on dit à \LaTeX de générer un fichier à destination d'une impression monoface\renvoi{rectoverso}, il considère qu'il n'y a que des pages recto.
 
@@ -116,11 +116,11 @@ Concrètement dans la classe \classe{book}, les commandes  \cs{marboth} et \csp{
 
 Pour rétablir la présentation originelle, il nous faut insérer les commandes \cs{leftmark} et {rightmark} dans nos commandes \cs{fancyhead}.
 
-\begin{minted}{latex}
+\begin{latexcode}
 \fancyhead[LE,RO]{}
 \fancyhead[RE]{\leftmark}
 \fancyhead[LO]{\rightmark}
-\end{minted}
+\end{latexcode}
 
 Avec ceci, nous obtenons à nouveau le titre de chapitre à gauche et le titre de section à droite.
 
@@ -132,9 +132,9 @@ Les en-têtes et pieds de page sont calculés par \LaTeX \emph{après} le reste 
 
 Supposons désormais que vous ne souhaitez plus voir le titre de section dans les en-tête. Le plus simple est alors de redéfinir la commande \cs{sectionmark}, pour la rendre nulle :
 
-\begin{minted}{latex}
+\begin{latexcode}
 \renewcommand{\sectionmark}[1]{}
-\end{minted}
+\end{latexcode}
 
 \begin{attention}
 Notez bien que nous indiquons que la commande \cs{sectionmark} prend un argument, alors même que nous ne nous en servons pas. Mais lorsque la classe \classe{book} appelle cette commande, elle lui passe bien un argument, qui est le titre de la section.
@@ -142,9 +142,9 @@ Notez bien que nous indiquons que la commande \cs{sectionmark} prend un argument
 
 Étant donné que vous n'affichez plus que le titre du chapitre, il est peut-être inutile de préciser qu'il s'agit d'un chapitre. Il nous faut alors redéfinir la commande \cs{chaptermark}. Par exemple, sous la forme suivante :
 
-\begin{minted}{latex}
+\begin{latexcode}
 \renewcommand{\chaptermark}[1]{\markboth {\MakeUppercase{\thechapter #1}}{}}
-\end{minted}
+\end{latexcode}
 
 
 \begin{plusloins}
@@ -156,7 +156,7 @@ Le package \package{fancyhdr} inclus un filet entre le corps du texte et l'en-t�
 
 Pour ce faire, il suffit de redéfinir les commandes \cs{headrulewidth} et \cs{footrulewidth}, qui doivent renvoyer une longueur\renvoi{unite}.
 Par exemple, pour indiquer de ne pas mettre de filet en dessous de l'en-tête mais d'un mettre un de 0,05 mm au  dessus du pied de page, il suffit d'écrire : 
-\begin{minted}{latex}
+\begin{latexcode}
 \renewcommand{\headrulewidth}[0]{0pt}
 \renewcommand{\footrulewidth}[0]{0.05mm}
-\end{minted}
+\end{latexcode}

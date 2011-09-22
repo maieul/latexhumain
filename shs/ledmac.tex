@@ -17,7 +17,7 @@ Le texte dont on veut numéroter les lignes est encadré entre les commandes \cs
 
 On débute la numérotation des lignes, au sein de cet environnement numbering, avec la commande \cs{pstart} et on la termine avec la commande \cs{pend} (le texte contenu entre ces deux commandes est mis dans une \enquote{boite}), comme dans l'exemple suivant:
 
-\begin{minted}{latex}
+\begin{latexcode*}
 \beginnumbering
 \pstart %commencer la numérotation
 Lorem ipsum dolor sit amet, consectetuer adipiscing elit ?
@@ -32,7 +32,7 @@ Cras gravida, diam sit amet rhoncus ornare,
 erat  elit consectetuer erat, id egestas pede nibh eget odio.
 \pend %terminer la numérotation
 \endnumbering
-\end{minted}
+\end{latexcode*}
 
 On obtiens ainsi : \bigbreak
 
@@ -67,7 +67,7 @@ Il faut indiquer l'indentation de chaque vers de la strophe (faute de quoi on ob
 
 
 
-\begin{minted}{latex}
+\begin{latexcode*}
 \beginnumbering
 \setstanzaindents{0,0,4,0,0,0,2,2,2,8}
 \let\endstanzaextra=\bigbreak
@@ -93,7 +93,7 @@ Marie stark Geld --- heute wird das Ding getätigt!&
 Die Spesen fest. Planmäßig der Verlauf ---&
 Berlin brust auf.\&
 \endnumbering
-\end{minted}
+\end{latexcode*}
 
 donne ainsi: 
 
@@ -188,7 +188,7 @@ Il est aussi possible de mettre des notes de fin. Là encore, cinq sortes possib
 Dans l'exemple suivant, nous avons utilisé deux types de notes avec lemme (dont une où j'ai mis un lemme \enquote{raccourci}), et  un type de note sans lemme:
 
 
-\begin{minted}{latex}
+\begin{latexcode*}
 \setstanzaindents{0,0,1,0,1,0,1,0,1}
 \stanza
 Quando erit illa dies, cum nostrum intrabis in \edtext{ortum}
@@ -203,7 +203,7 @@ Et tua magna sitis mage seu \edtext{mage crescere}
  Parce, precor : scriptor non mihi doctus inest.&
 Quaeso, tuum nobis fidum transmitte ministrum,&
  Qui tua grata mihi perferat orsa, uale.\&
-\end{minted}
+\end{latexcode*}
 
 On obtiens alors ceci: 
 
@@ -243,12 +243,12 @@ Et ainsi de suite\dots
 
 Mais il est plus conseillé de créer des commandes personnelles pour simplifier plus encore  (et surtout clarifier) la rédaction d'un apparat critique; par exemple:
 
-\begin{minted}{latex}
+\begin{latexcode*}
 \usepackage{ifthen, xargs}
 \newcommandx*\variantes[3][2]{\edtext{#1}{%
 	\ifthenelse{\equal{#2}{}}{}{\lemma{#2}}
 \Afootnote{#3}}}
-\end{minted}
+\end{latexcode*}
 
 Cette commande est un peu plus complexe parce qu'elle fait appel aux packages \packagenoidx{xargs}\sindex[pkg]{xargs} et \packagenoidx{ifthen}\sindex[pkg]{ifthen}. Le premier argument est le lemme; le deuxième argument, optionnel (ce qu'indique, dans la commande, l'argument [2]), contient le lemme raccourci; enfin le dernier argument contient l'annotation. La commande peut donc se résumer ainsi : \cs{variantes}\marg{lemme}\oarg{lemme plus court}\marg{annotation} : ce qui est, il faut le reconnaître, plus simplement utilisable que \cs{edtext}\marg{le lemme trop long}\{\cs{lemma}\marg{le lemme raccourci}\cs{Bfootnote\marg{la note}}\}
 
@@ -289,7 +289,7 @@ Résumons!
 
 Pour mettre deux textes en vis-à-vis sur deux colonnes, on utilise le code suivant: 
 
-\begin{minted}{latex}
+\begin{latexcode*}
 
 \begin{pages}  % On indique qu'on veut des textes en vis-à-vis sur deux pages
 \begin{Leftside} % Texte de la page de gauche
@@ -314,7 +314,7 @@ Le texte dans une langue
  \Pages
 
   \end{pages} % Fin la composition en parallèle.
-\end{minted}
+\end{latexcode*}
 
 
 On obtient parfois le message d'erreur \enquote{Too many \cs{pstart} without printing}. Pas de panique! Cela signifie qu'il y a trop de boites en mémoire: \latex  doit en imprimer quelques-unes avant de pouvoir continuer.  Il y a deux solutions possible à cela.
@@ -324,7 +324,7 @@ La première solution consiste à  augmenter le nombre de boites que \package{le
 
 Avec la deuxième solution (que l'on peut d'ailleurs coupler avec la première), on  coupe son texte en plusieurs grands ensembles de boites (c'est-à-dire en plusieurs environnements \enviro{Leftside} et \enviro{Rightside}, se terminant chacun par \cs{Columns} ou \cs{Pages}).  Cette solution est préférable pour les longs textes. Les divisions internes du textes se reflètent alors dans les environnements \enviro{Leftside} et \enviro{Rightside}.   Mais si l'on met simplement :
 
-\begin{minted}{latex}
+\begin{latexcode*}
 \begin{pages}  
 	\begin{Leftside}  \beginnumbering 
 La première partie du texte en langue originale
@@ -345,13 +345,13 @@ La traduction de la deuxième partie
  \Pages
 
   \end{pages}
-\end{minted}
+\end{latexcode*}
 
 on se retrouve avec une numérotation qui recommence à zéro pour la deuxième partie du texte. 
 
 La commande \cs{memorydump} permet de résoudre ce problème. Elle équivaut en fait à un \cs{endnumbering} immédiatement suivit d'un \cs{beginnumbering}. Il faut donc mettre: 
 
-\begin{minted}{latex}
+\begin{latexcode*}
 \begin{pages}  
 	\begin{Leftside}  \beginnumbering 
 La première partie du texte en langue originale
@@ -374,7 +374,7 @@ La traduction de la deuxième partie
  \Pages
 
   \end{pages}
-\end{minted}
+\end{latexcode*}
 
 Ainsi, la numérotation du texte se fait en continue entre la première partie et la deuxième partie.
 

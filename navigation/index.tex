@@ -15,10 +15,10 @@ Dans ce chapitre nous verrons comment faire un ou plusieurs index\footnote{Je re
 
 Pour indexer un document, il faut utiliser le package \package{makeidx} et placer  dans le préambule la commande \csp{makeindex}.
 
-\begin{minted}{latex}
+\begin{latexcode}
 \usepackage{makeidx}
 \makeindex
-\end{minted}
+\end{latexcode}
 
 \subsubsection{Indexer son document}
 
@@ -29,7 +29,7 @@ On indexe son document avec  la commande \csp{index}\marg{entrée}\label{cmdinde
 Dans l'exemple qui suit\footcite{eginhard}, l'index comporte ainsi cinq entrées: \enquote{Charlemagne}, \enquote{Adrien}, \enquote{Tassilon}, \enquote{Formose} et \enquote{Damase}:
 %Changer l'exemple.
 
-\begin{minted}[linenos]{latex}
+\begin{latexcode}
 
 Tandis que Charle\index{Charlemagne} était à Rome, il convint
 avec le pape Adrien\index{Adrien} qu’ils enverraient de concert
@@ -38,7 +38,7 @@ Les hommes choisis et envoyés dans cette ambassade furent, de
 la part du pape, les évêques Formose\index{Formose} et 
 Damase\index{Damase}(…).\footcite{eginhard}
 
-\end{minted}
+\end{latexcode}
 
 
 
@@ -53,9 +53,9 @@ Il vaut mieux accoler la commande \cs{index}\marg{entrée} directement au  mot �
 L'indexation d'un texte n'est pas automatique: il faut placer \cs{index} à chaque endroit  que l'on veut référencer. On  peut bien sûr créer une commande  spécifique pour combiner avec d'autres actions.
 
 Ainsi, pour indexer automatiquement tous les noms propres d'un texte, déclarons la commande suivante:\label{indexauteur}
-\begin{minted}{latex}
+\begin{latexcode}
 \newcommand\auteur[2]{#1~\textsc{#2}\index{#2, #1}\xspace}
-\end{minted}
+\end{latexcode}
 \renewcommand\auteur[2]{#1~\textsc{#2}\xspace}
 
 Il suffit ensuite, au cours de la rédaction de son texte, de taper par exemple \cs{auteur}\verb|{Victor}{Hugo}| pour obtenir \enquote{\auteur{Victor}{Hugo}} dans le cours de son texte, indexé sous l'entrée \enquote{Hugo, Victor}.
@@ -71,9 +71,9 @@ Si notre fichier principal s'appelle \fichier{exemple.tex}, lors de la première
 
 On compile ensuite le document avec le programme MakeIndex, soit  en ligne de commande\renvoi{terminal}  soit via l'éditeur de texte, si celui le propose.
 
-\begin{minted}{bash}
+\begin{bashcode}
 makeindex exemple.idx
-\end{minted}
+\end{bashcode*}
 
 Il est possible de ne pas indiquer l'extension \ext{idx}.
 
@@ -96,7 +96,7 @@ Il est possible, avec \package{MakeIndex},  de créer des subdivisions et des su
 
 On peut ainsi référencer autrement notre premier exemple, en créant les entrées \enquote{Evêques} et \enquote{Ducs} que l'on subdivise:
 
-\begin{minted}[linenos]{latex}
+\begin{latexcode}
 
 Tandis que Charle\index{Charlemagne} était à Rome, il convint 
 avec le pape Adrien\index{Adrien} qu’ils enverraient de concert 
@@ -105,9 +105,10 @@ Les hommes choisis et envoyés dans cette ambassade furent, de la
 part du pape, les évêques Formose\index{Evêques!Formose}
 et Damase\index{Evêques!Damase}(…).\footcite{eginhard}
 
-\end{minted}
+\end{latexcode}
 
-Supposons que ce texte soit à la page 5; on obtiendra ainsi dans l'index:
+
+Supposons que ce texte soit à la page 5; on obtient ainsi dans l'index:
 \begin{quotation}
 \begin{tabbing}
 \hspace{0,5cm}  \= \kill
@@ -159,12 +160,12 @@ Makeindex ne gère pas correctement les accents indiquées dans la commande \cs{
 
 La commande cs{index}\verb|{|\meta{entrée}\verb|@|\meta{entrée formatée}\verb+}+ permet donc de classer une entrée là où l'on veut dans l'index. Pour faire apparaître dans l'index, par exemple, les empereurs romains dans l'ordre chronologique et non dans l'ordre alphabétique, on peut utiliser les commandes suivantes:
 
-\begin{minted}{latex}
+\begin{latexcode}
 \index{Empereurs!empereur1@Auguste}
 \index{Empereurs!empereur2@Tibère}
 \index{Empereurs!empereur3@Claude}
 et ainsi de suite. 
-\end{minted}
+\end{latexcode}
 
 On obtient alors
 \begin{quotation}
@@ -180,9 +181,9 @@ Empereurs\\
 
 Cette syntaxe est aussi utile pour mettre en évidence une entrée dans l'index en modifiant son aspect. En mettant \cs{index}\verb|{|\meta{entrée}\verb|@\textbf{|meta{entrée formatée}\verb|}}|, l'entrée apparaît en gras dans l'index. Ceci est valable pour toutes les commandes modifiant la fonte. Modifions ainsi comme suit la commande \cs{auteur} que l'on a créée précédemment :\renvoi{indexauteur}
 
-\begin{minted}{latex}
+\begin{latexcode}
 \newcommand\auteur[2]{#1~\textsc{#2}\index{#2 #1@\textsc{#2}, #1}\xspace}
-\end{minted}
+\end{latexcode}
 
 Désormais, frapper \cs{auteur}\verb|{Victor}{Hugo}| permet d'obtenir \enquote{\textsc{Hugo},~Victor} dans l'index.
  
@@ -220,10 +221,10 @@ L'argument facultatif est le nom de l'index tel qu'il apparaît après la compil
 
 
 Ainsi, pour faire un index des noms propres et un index général, on peut déclarer:
-\begin{minted}{latex}
+\begin{latexcode}
 \newindex[Index général]{idx}
 \newindex[Noms propres]{npr}
-\end{minted}
+\end{latexcode}
 
 \subsection{Indexer son texte}
 Une fois  les index déclarés, il faut passer à l'indexation proprement dite. Le principe est similaire à celui que nous avons déjà vu pour le package \package{makeindex}\renvoi{cmdindex}.
@@ -236,7 +237,7 @@ Toutes les entrées indiquées non par \cs{sindex} mais par \cs{index} sont auto
 \end{plusloins}
 On peut ainsi indexer notre texte d'Eginhard de la façon suivante:
 
-\begin{minted}[linenos]{latex}
+\begin{latexcode}
 
 \sindex[idx]{Charles et la papauté|(}Tandis que Charle\sindex[npr]{Charlemagne} était à Rome, il convint
 avec le pape Adrien\sindex[npr]{Adrien} qu’ils enverraient de concert
@@ -245,21 +246,21 @@ Les hommes choisis et envoyés dans cette ambassade furent, de
 la part du pape, les évêques Formose\sindex[npr]{Formose} et 
 Damase\sindex[npr]{Damase}(…)\sindex[idx]{Charles et la papauté|}.
 
-\end{minted}
+\end{latexcode}
 
 Après la compilation avec \XeLaTeX il faut compiler le fichier \ext{idx} avant SplitIndex. En générale, la seule solution est de passer par la ligne de commande\renvoi{terminal} :
 
-\begin{minted}{bash}
+\begin{bashcode}
 splitindex exemple.idx
-\end{minted}
+\end{bashcode}
 
 \subsection{Imprimer les index}
 
 Pour imprimer un index, il suffit d'utiliser la commande \cs{printindex} en lui passant le nom abrégé de l'index en argument. Ainsi pour imprimer l'index de noms propres:
 
-\begin{minted}{latex}
+\begin{latexcode}
 \printindex[npr]
-\end{minted}
+\end{latexcode}
 
 Pour imprimer l'ensemble des index, il faut utiliser la commande \cs{printindex*}.
 Par défaut, les index ont un titre de niveau \cs{chapter} dans la classe \classe{book} et de niveau \cs{section} dans la classe \classe{article}.
@@ -268,10 +269,10 @@ Par défaut, les index ont un titre de niveau \cs{chapter} dans la classe \class
 
 Par exemple :
 
-\begin{minted}{latex}
+\begin{latexcode}
 \chapter{Index}
 \printsubindex*
-\end{minted}
+\end{latexcode}
 
 \section{Indexer ses sources}
 
@@ -286,9 +287,9 @@ Pour comprendre cette section, vous devez vous être familiarisé avec les indic
 
 La documentation de \package{biblatex}\footcite{biblatex_options} nous informe qu'il existe  au chargement du package une option \option{indexing} qui permet d'indexer automatiquement les références bibliographiques. Comme nous ne souhaitons indexer que lors des appels aux commandes \cs{\meta{prefix}cite}  ---  non pas lors de l'appel à la commande \cs{printbibliography} --- nous attribuons la valeur \option{cite} à cette option. 
 
-\begin{minted}{latex}
+\begin{latexcode}
 \usepackage[indexing=cite]{biblatex}
-\end{minted}
+\end{latexcode}
 
 Étant donné qu'il faut à la fois interpréter le fichier \ext{bib} et faire un index, nous devons procéder aux compilations dans l'ordre suivant :
 
@@ -315,9 +316,9 @@ En outre nous aimerions :
 \subsection{Création d'un index spécifique}
 
 Pour créer un index spécifique aux sources, rien de particulier : il suffit d'utiliser \package{splitindex} et la commande \cs{newindex} :
-\begin{minted}{latex}
+\begin{latexcode}
 \newindex[Index des sources]{sources}
-\end{minted}
+\end{latexcode}
 
 \subsection{Modifications des macros de \packagenoidx{biblatex}}\sindex[pkg]{biblatex}
 
@@ -344,11 +345,11 @@ Il nous faut donc définir ce format grâce aux commandes \csp{DeclareIndexNameF
 \subsubsection{Indexation des noms}
 
 \begin{english}
-\begin{minted}[linenos]{latex}
+\begin{latexcode}
 \DeclareIndexNameFormat{sources}{%
   \usebibmacro{index:name}{\sindex[sources]}{#1}{#3}{#5}{#7}
   }
-\end{minted}
+\end{latexcode}
 \end{english}
 
 Nous disons en première ligne que nous déclarions un format d'indexation \verb|sources| pour les noms propres. Dans la ligne suivante, nous déclarons ce que nous faisons : nous appelons une macro \bibmacro{index:name}. 
@@ -358,12 +359,12 @@ Cette macro est déjà définie par \package{biblatex}. Elle reçoit plusieurs a
 
 \subsubsection{Indexation des autres champs}
 
-\begin{minted}{latex}
+\begin{latexcode}
 \DeclareIndexFieldFormat{sources}{%
   \ifcurrentfield{indextitle}{\sindex[sources]{#1@\emph{#1}}}%
   {\sindex[sources]{#1}}%
   }
-\end{minted}
+\end{latexcode}
 
 La commande \cs{DeclareIndexFieldFormat} sert à déclarer la manière d'indexer le champs qui ne sont ni des listes ni des noms. La valeur \verb|#1| correspond à la valeur du champ à indexer. En deuxième ligne, nous vérifions grâce à la commande \csp{ifcurrentfield}, que le champ à indexer à est \champ{indextitle} : si c'est le cas, nous l'indexons dans l'index \verb|source| en mettant l'emphase sur le titre pour l'affichage final. Sinon, nous l'indexons simplement dans l'index \verb|source|.
 
@@ -372,18 +373,18 @@ La commande \cs{DeclareIndexFieldFormat} sert à déclarer la manière d'indexer
 
 Après la  compilation \XeLaTeX, nous obtenons un fichier \fichier{xxx.idx}. Si vous l'ouvrez vous constatez que nous avons des entrées sous la forme : 
 
-\begin{minted}{latex}
+\begin{latexcode}
 \indexentry[sources]{Author}{page}
 \indexentry[sources]{Titleindex@\emph  {Titleindex}}{page}
 \indexentry[sources]{Titleaddon}{page}
 \indexentry[sources]{---}{page}
-\end{minted}
+\end{latexcode}
 
 Nous souhaitons remplacé ces entrées par des entrées sous la forme 
 
-\begin{minted}{latex}
+\begin{latexcode}
 \indexentry[sources]{Author@Author!Titleindex@\emph  {Titleindex}!Titleaddon@Titleaddon}{page}
-\end{minted}
+\end{latexcode}
 
 L'auteur de ces lignes a développé un script permettant d'automatiser cette transformation. Par ailleurs ce script modifie également l'ordre des tri pour tenir compte des accents.
 
@@ -398,9 +399,9 @@ Pour utiliser ce script, il vous faut :\label{python}
 
 
 Après cette concaténation nous devons compiler en ligne de commande, enfin de séparer les différents index :
-\begin{minted}{bash}
+\begin{bashcode}
 splitindex xxx
-\end{minted}
+\end{bashcode}
 
 
 \subsection{Raffinement}

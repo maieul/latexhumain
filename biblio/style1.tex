@@ -36,9 +36,10 @@ alors que le règles françaises voudraient que l'on ait :
 	
 	Il suffit donc de redéfinir la commande en mettant dans le préambule\footnote{Cela n'est pas strictement nécessaire, mais c'est une bonne méthode que de mettre l'ensemble des commandes de personnalisation de style dans le préambule. Nous conseillons de les regrouper en un seul fichier, appelé dans le préambule.} : 
 		
-	\begin{minted}{latex}
+	\begin{latexcode}
 \renewcommand{\newunitpunct}[0]{,}
-	\end{minted}
+	\end{latexcode}
+
 \begin{plusloins}
 		Nous n'avons par parlé jusqu'à présent de la commande \csp{renewcommand}. Celle-ci est identique à la commande \cs{newcommand} à la différence qu'elle permet de redéfinir une commande déjà existante.
 		\end{plusloins}
@@ -61,9 +62,9 @@ alors que le règles françaises voudraient que l'on ait :
 	Pour éviter ce problème, il  faut ne pas mettre directement dans la définition de la commande \cs{newunitpunct} les signes de ponctuation mais utiliser à la place les commandes de ponctuation\footcite[Listées dans][]{biblatex_ponctuation}. En effet, ces commandes affichent la ponctuation uniquement si l'unité qui précède a bien un contenu\footnote{Par ailleurs, elles suppriment les espaces multiples qui précédent.}.\label{commandeponctuation}
 	Ainsi dans notre cas :
 	
-	\begin{minted}{latex}
+	\begin{latexcode}
 \renewcommand{\newunitpunct}[0]{\addcomma\addspace}
-	\end{minted}
+	\end{latexcode}
 	
 
 	
@@ -74,9 +75,10 @@ alors que le règles françaises voudraient que l'on ait :
 	Deux cas existent :
 		\begin{enumerate}
 			\item Le package \package{biblatex} a prévu une commande spécifique pour notre type d'unité. C'est le cas pour le séparateur avant le sous titre\footcite[Ces commandes sont peu nombreuses : on les trouvera dans][]{biblatex_hooks}. Il suffit dans ce cas de redéfinir la commande. Par exemple nous souhaitons avoir des deux-points entre le titre et le sous titre. Il nous suffit d'indique :
-			\begin{minted}{latex}
+			\begin{latexcode}
 \renewcommand{\subtitlepunct}[0]{\addspace\addcolon\addspace}
-			\end{minted}
+			\end{latexcode}
+
 			
 			\item Le package n'a pas prévu de commande spécifique pour notre type d'unité. Dans ce cas, le problème est plus complexe et nécessite des notions que nous n'avons pas encore abordées. C'est pourquoi nous renvoyons au prochain chapitre.\renvoi{unitepersonalisee}
 		\end{enumerate}
@@ -85,9 +87,10 @@ alors que le règles françaises voudraient que l'on ait :
 
 Lorsque nous utilisons une commande de citation multiple\renvoi{citemultiple}, les séparateurs par défaut sont des points-virgules :
 
-\begin{minted}{latex}
+\begin{latexcode}
 \autocites{Saxer1980}{Junod1992}
-\end{minted}
+\end{latexcode}
+
 
 \begin{quotation}
 \cites{Saxer1980}{Junod1992}
@@ -95,9 +98,10 @@ Lorsque nous utilisons une commande de citation multiple\renvoi{citemultiple}, l
 
 On peut là aussi modifier le séparateur en rédefinissant la commande \csp{multicitedelim}. Par exemple pour avoir une virgule :
 
-\begin{minted}{latex}
+\begin{latexcode}
 \renewcommand{\multicitedelim}[0]{\addcomma\addspace}
-\end{minted}
+\end{latexcode}
+
 
 \section{Styles de certains blocs}
 
@@ -114,15 +118,17 @@ La ponctuation n'est pas le seul endroit où \package{biblatex} propose des poin
 	
 Il est parfois d'usage de mettre la particule entre parenthèse. Pour ce faire, il suffit de redéfinir la commande \cs{mkbibnameprefix}. Cette commande prend un argument, qui est la particule. Ainsi pour la mettre automatiquement entre parenthèse, il suffit d'écrire.
 	
-	\begin{minted}{latex}
+	\begin{latexcode}
 \renewcommand{\mkbibnameprefix}[1]{(#1)}
-	\end{minted}
+	\end{latexcode}
+
 	
 Voire pour être encore plus correct :
 	
-	\begin{minted}{latex}
+	\begin{latexcode}
 \renewcommand{\mkbibnameprefix}[1]{\parentext{#1}}
-	\end{minted}
+	\end{latexcode}
+
 
 La commande \csp{parentext} met entre parenthèse un texte passé en argument. On obtient le résultat souhaité : 
 
@@ -161,16 +167,18 @@ La commande \csp{parentext} met entre parenthèse un texte passé en argument. O
 	
 	Cette ligne est suivie d'autres, qui ont la forme :
 	
-	\begin{minted}{latex}
+	\begin{latexcode}
 clef	= {{chaîne longue}{chaîne courte}}|
-	\end{minted}
+	\end{latexcode}
+
 	
 	\begin{plusloins}
 	Chaque chaîne de langue est disponible en version longue ou courte. On peut passer une option lors de l'appel au package \package{biblatex} pour décider d'utiliser les versions longues.
 	
-	\begin{minted}{latex}
+	\begin{latexcode}
 \usepackage[abbreviate=false]{biblatex}
-	\end{minted}
+	\end{latexcode}
+
 	
 	 Toutefois quand on redéfinit une chaîne de langue, on ne lui attribue qu'une seule version.
 	
@@ -184,23 +192,25 @@ clef	= {{chaîne longue}{chaîne courte}}|
 	Il ne faut surtout pas modifier les fichiers standards : on perdrait les modifications à chaque mise à jour.
 	\end{attention}
 	
-	\begin{minted}{latex}
+	\begin{latexcode}
 \DefineBibliographyStrings{french}{%
 	in = {\emph{in}}%
 }
-	\end{minted}
+	\end{latexcode}
+
 	
 	On peut utiliser dans une chaîne de langue des commandes \LaTeX. Si notre chaîne contient des signes de ponctuation, il faut utiliser les commandes de ponctuation mentionnées plus haut. Les \% à la fin de chaque ligne sont là pour éviter les espaces intempestifs.\renvoi{commandepourcent}
 	
 	Si nous souhaitons redéfinir plusieurs chaînes de langue, il nous faut séparer chaque définition par une virgule :
 	
-	\begin{minted}{latex}
+	\begin{latexcode}
 \DefineBibliographyStrings{french}{%
 clef1 = {valeur1},%
 clef2 = {valeur2},%
 clefN = {valeurN}%
 }
-	\end{minted}
+	\end{latexcode}
+
 
 \begin{plusloins}
 On pourrait redéfinir les chaînes de langue consacrées aux abréviations universitaires de type \emph{op. cit.} pour les avoir en italique. 
@@ -208,9 +218,10 @@ On pourrait redéfinir les chaînes de langue consacrées aux abréviations univ
 Il y a une solution plus simple\label{mkibid}. En effet, \package{biblatex} passe ces chaînes de langue dans une commande \csp{mkibidem}\marg{chaine} avant de les afficher.
 
 Il nous suffit dont de redéfinir cette commande :
-\begin{minted}{latex}
+\begin{latexcode}
 \renewcommand{\mkibid}[1]{\emph{#1}}
-\end{minted}
+\end{latexcode}
+
 \end{plusloins}
 
 \subsection{Introduction au tests conditionnels}\label{opcit}
@@ -227,13 +238,14 @@ Elle vérifie que le champ \arg{champ}	de l'entrée bibliographique citée corre
 Ici nous testons le pseudo-champ\footnote{\forme{Pseudo} car il ne se situe pas réellement comme un champ dans l'entrée bibliographique.}\champ{entrytype}, qui correspond au type d'entrée sans le @. Nous vérifions  s'il s'agit d'une entrée de type article : si c'est le cas nous donnons à la chaîne de langue la valeur  \forme{\emph{art. cit.}},  dans le cas contraire nous donnerons la valeur \forme{\emph{op. cit.}}.
 Au final cela donne : 
 
-\begin{minted}{latex}
+\begin{latexcode}
 \DefineBibliographyStrings{french}{%
 	opcit = \iffieldequalstr{entrytype}{article}%
 	{art\adddotspace cit\adddot}%
 	{op\adddotspacecit cit\adddot}%
 }
-\end{minted}
+\end{latexcode}
+
 
 On remarquera l'utilisation des commandes de ponctuation, comme signalé plus haut.\renvoi{commandeponctuation}
 

@@ -38,31 +38,31 @@ note les emplacements des étiquettes dans un fichier. À la seconde compilation
 
 Pour renvoyer au numéro de page correspondant à l'étiquette \arg{etiquette} il suffit d'utiliser la commande \csp{pageref}\marg{etiquette}.
 
-\begin{minted}{latex}
+\begin{latexcode}
 blabla \label{etiquette}
 …
 Nous renvoyons à la page~\pageref{etiquette}.
-\end{minted}
+\end{latexcode}
 
 \subsection{Renvoyer à un numéro de section}
 
 Pour renvoyer à un numéro de section, il suffit d'utiliser la commande \csp{ref}.
 
-\begin{minted}{latex}
+\begin{latexcode}
 \section{Section} \label{etiquette}
 …
 Nous renvoyons à la section~\ref{etiquette}.
-\end{minted}
+\end{latexcode}
  
 \subsection{Renvoyer à un titre de section}\label{renvoititre}
 
 Pour renvoyer à un titre de section, il suffit d'utiliser la commande \csp{nameref}.
 
-\begin{minted}{latex}
+\begin{latexcode}
 \section{Section} \label{etiquette}
 …
 Nous renvoyons à la section  \enquote{\nameref{etiquette}}.
-\end{minted}
+\end{latexcode}
 
 Toutefois cette commande n'est pas disponible en standard : elle est proposée par le package \package{hyperref}. Il faut donc charger ce package dans le préambule. Nous documentons plus loin quelques fonctionnalités de ce package\renvoi{hyperref}.
 
@@ -75,7 +75,7 @@ Une étiquette permet de renvoyer à tout élément numéroté, comme un titre, 
 
 \begin{itemize}
 \item Si l'étiquette \cs{label} est placée \emph{dans}  une commande  d'élément numéroté, elle renvoie à cette élément. Par exemple, pour renvoyer à une figure \renvoi{legende} :
-\begin{minted}{latex}
+\begin{latexcode}
 \begin{figure}[paramètre de placement]
 	Insertion de la figure
 	\caption{Légende\label{figure}}
@@ -83,7 +83,7 @@ Une étiquette permet de renvoyer à tout élément numéroté, comme un titre, 
 …
 
 Nous renvoyons à la figure~\ref{figure} situé page~\pageref{figure}.
-\end{minted}
+\end{latexcode}
 \item Si la commande est placée ailleurs, elle renvoie à la page courante et à la section courante\footnote{En réalité il est possible de placer immédiatement après un élément numéroté pour y renvoyer, mais cela ne s'applique pas aux notes de bas de pages.}.
 \end{itemize}
 
@@ -93,10 +93,10 @@ Vous êtes bien sûr libre de trouver votre propre système de dénomination des
 
 Exemples :
 \begin{english}
-\begin{minted}{latex}
+\begin{latexcode}
 \footnote{Blabla \label{note:nom}}
 \section{Titre \label{section:nom}}
-\end{minted}
+\end{latexcode}
 \end{english}
 
 

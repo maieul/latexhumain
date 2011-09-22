@@ -12,15 +12,15 @@ Pensez à placer ce fichier à un endroit où \LaTeX peut le trouver, par exempl
 \end{attention}
 
 Il faut ensuite compiler en ligne de commande suivante la syntaxe :\renvoi{terminal}
-\begin{minted}{bash}
+\begin{bashcode}
 makeindex -s monstyle.ist monfichier.idx
-\end{minted}
+\end{bashcode}
 
 Ou si vous utilisez \package{splitindex}\renvoi{splitindex}.
 
-\begin{minted}{bash}
+\begin{bashcode}
 splitindex -m "makindex -s monstyle.ist" monfichier.idx
-\end{minted}
+\end{bashcode}
 
 L'option -s indique à \package{makeindex}  qu'il doit utiliser le fichier de style \fichier{monstyle.ist}.
 
@@ -32,15 +32,15 @@ Nous allons ici quelques exemples de commandes que l'on peut mettre dans son fic
 Dans le fichier de style\ext{ist}, on n'écrit pas en \LaTeX{} mais en \TeX . Les commandes sont ainsi encadrées par des guillemets anglais \verb|"| . La barre contre-oblique, quant à elle, n'est prise en compte que si elle est précédée d'une autre contre-oblique.
 \end{attention}
 
-Le manuel de la commande MakeIndex\footnote{Que l'on peut lire en frappant dans le terminal \verb+man makeindex+\renvoi{terminal} --- et que l'on peut quitter en frappant la lettre  \verb|q|, ou, si on utilise Windows, qu'on peut consulter à cette adresse \url{http://www.fiveanddime.net/man-pages/makeindex.1.html}.} --- nous indique que, pour modifier ce qui est inséré entre le premier niveau d'item (l'entrée) --- ou niveau 0 --- et le ou les numéros de page, on utilise l'option \verb|delim_0| ; de même, pour définir ce qui est inséré entre le deuxième niveau d'item (la sous-entrée) --- ou niveau 1, on utilise l'option \verb+delim_1+, et l'option \verb| delim_2| pour les sous-sous-entrées --- ou niveau 2 d'itemisation. Le choix par défaut est une virgule suivit d'un blanc : \verb|", "|
+Le manuel de la commande MakeIndex --- que l'on peut lire en frappant dans le terminal \verb+man makeindex+\renvoi{terminal} et que l'on peut quitter en frappant la lettre  \verb|q|, ou, si on utilise Windows, qu'on peut consulter à cette adresse \url{http://www.fiveanddime.net/man-pages/makeindex.1.html}. --- nous indique que, pour modifier ce qui est inséré entre le premier niveau d'item (l'entrée) --- ou niveau 0 --- et le ou les numéros de page, on utilise l'option \verb|delim_0| ; de même, pour définir ce qui est inséré entre le deuxième niveau d'item (la sous-entrée) --- ou niveau 1, on utilise l'option \verb+delim_1+, et l'option \verb| delim_2| pour les sous-sous-entrées --- ou niveau 2 d'itemisation. Le choix par défaut est une virgule suivit d'un blanc : \verb|", "|
 
 Ainsi, si nous désirons que le numéro de la page soit justifié à droite, et non simplement séparé de l'entrée par une virgule et un blanc, nous devons utiliser la commande \csp{hfill}\renvoi{hfill} que nous indiquons dans notre fichier de style par les lignes suivantes:
 
-\begin{minted}{latex}
+\begin{latexcode}
 delim_0 "\\hfill "
 delim_1 "\\hfill "
 delim_2 "\\hfill "
-\end{minted}
+\end{latexcode}
 
 Nous obtenons donc 
 
@@ -74,9 +74,9 @@ Le manuel indique que l'option par défaut \verb+headings_flag 0+ ne met pas de 
 
 Définissons ensuite la manière dont vont apparaître ces lettres. On utilise la commande \verb|heading_prefix|. Supposons que nous voulions faire apparaître ces lettres séparatrices en gras. N'oublions pas que l'on code en \TeX … Nous écrivons donc :
 
-\begin{minted}{tex}
+\begin{latexcode}
 heading_prefix "{\\bf "
-\end{minted} 
+\end{latexcode} 
 
 Si nous voulons qu'elles apparaissent en italique, nous écrivons \verb|"|\textbackslash\cs{it}\verb|"| (on utilise \csp{bf} et \csp{it}, qui sont des commandes \TeX, et non \cs{textbf} \cs{textit}).
 
@@ -84,9 +84,9 @@ Nous  pouvons de même changer la taille des lettres séparatrices en ajoutant \
 
 Mais nous avons ouvert une accolade… il nous faut la refermer:
 
-\begin{minted}{latex}
+\begin{latexcode}
 heading_suffix " }\\nopagebreak\n " 
-\end{minted}
+\end{latexcode}
 
 \textbackslash\cs{nopagebreak} évite qu'une lettre-séparatrice se retrouve seule en fin de page. Le \verb|\n| est une petite coquetterie pour permettre d'avoir, dans notre fichier \ext{ind}, un retour à la ligne après \cs{nopagebreak}.
 
@@ -94,11 +94,11 @@ heading_suffix " }\\nopagebreak\n "
 
 Ce n'est pas fini. Nos lettres sont actuellement justifiées à gauche, comme les entrées de l'index. Nous voudrions qu'elles soient centrées: 
 
-\begin{minted}{latex}
+\begin{latexcode}
 headings_flag 1
 heading_prefix " {\\bf\\large\\hfill " 
 heading_suffix " \\hfill}\\nopagebreak\n " 
-\end{minted}
+\end{latexcode}
 
 Les deux \textbackslash\csp{hfill} étirent, pour le premier, l'espace avant la lettre vers la droite, et pour le second l'espace suivant la lettre vers la gauche -- voilà nos lettres centrées.
 
@@ -135,7 +135,7 @@ Quand on a compris ce système, il est alors assez simple de formater à sa guis
 
 Voici tout de même, à titre indicatif, le fichier final :
 
-\begin{minted}{latex}
+\begin{latexcode}
 headings_flag 1
 suffix_3p "~sq."
 heading_prefix "{\\bf\\large\\hspace*{1ex} " 
@@ -143,7 +143,7 @@ heading_suffix " }\\nopagebreak\n"
 delim_0 "\\dotfill "
 delim_1 "\\dotfill "
 delim_2 "\\dotfill "
-\end{minted}
+\end{latexcode}
 
 
 

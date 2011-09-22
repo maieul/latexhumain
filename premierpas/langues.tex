@@ -53,19 +53,19 @@ On peut le faire par une commande
 \csp{text\meta{codelang}}\oarg{options}\marg{texte dans une
 autre langue} par exemple : 
 
-\begin{minted}{latex}
+\begin{latexcode}
 \textgreek[variant=ancient]{Ἐν ἀρχῇ ἦν ὁ λόγος}
-\end{minted}
+\end{latexcode}
 
 \subsubsection{Par un environnement}
 
 Pour des textes plus longs, il peut être intéressant d'utiliser plutôt un environnement \enviro{codelang}:
 
-\begin{minted}{latex}
+\begin{latexcode}
 \begin[options]{codelang}
 texte dans une autre langue
 \end{codelang}
-\end{minted}
+\end{latexcode}
 
 \subsection{Le problème du latin}\label{redefinirlatin}
 
@@ -74,9 +74,9 @@ Pourtant il pourrait vouloir utiliser cet environnement ou cette commande, afin 
 
 Pour ce faire, il devra redéfinir l'environnement \enviro{latin} par le code suivant :
 
-\begin{minted}{latex}
+\begin{latexcode}
 \renewenvironment{latin}{\begin{hyphenrules}{latin}}{\end{hyphenrules}}
-\end{minted}
+\end{latexcode}
 
 \begin{plusloins}
 La commande \csp{renewenvironnement} redéfinit un environnement, ici \enviro{latin}. Le deuxième argument de la commande indique ce qui se passe lors que l'on ouvre l'environnement, le troisième argument ce qui se passe lorsqu'on l'on ferme l'environnement. L'environnement \enviro{hyphenrules} indique un changement de règle de césures.

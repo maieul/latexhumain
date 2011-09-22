@@ -13,9 +13,9 @@ C'est pourquoi on peut utiliser le package \package{bibleref} et sa traduction \
 Pour que nos références bibliques soient en français, il suffit simplement d'appeler le package \package{bibleref-french}. Celui-ci charge alors le package \package{bibleref}.
 
 
-\begin{minted}{latex}
+\begin{latexcode}
 \usepackage{bibleref-french}
-\end{minted}
+\end{latexcode}
 
 \begin{attention}
 Au cours de la rédaction de ce livre, ce package a été amélioré. Nous documentons certaines de ces améliorations. 
@@ -27,9 +27,9 @@ Veillez donc à avoir la dernière version du package, en procèdant, si besoin,
 \subsection{Forme catholique ou protestante}
 Le livre que les protestants appellent \forme{Esaïe} est appelé \forme{Isaïe} chez les catholiques. Pour choisir la forme protestante, il suffit de passer l'option \option{protestant} à l'appel du package. Le package uniformise les références.
 
-\begin{minted}{latex}
+\begin{latexcode}
 \usepackage[protestant]{bibleref}
-\end{minted}
+\end{latexcode}
 
 \subsection{Styles de références}
 
@@ -37,9 +37,9 @@ Les éditions de la Bible divergent parfois quant à la manière d'afficher une 
 
 On choisit son style par la commande \csp{biblerefstyle}\marg{style}, qu'il est conseillé de mettre en préambule, ou bien par une option de package :
 
-\begin{minted}{latex}
+\begin{latexcode}
 \usepackage[<style>]{bibleref-}
-\end{minted}
+\end{latexcode}
 
 
 La liste des styles est présentée dans le tableau ci-dessous : 
@@ -206,9 +206,9 @@ Le package fournit des options pour un meilleur tri\footcite[Pour l'Ancien Testa
 Pour les options \verb|indexTOB| et \verb|indextestamentsT|, le livre d'Esther est considéré dans sa version hébraïque, et est donc rangé parmis les  écrits.
 
 Ainsi pour trier selon l'ordre de la TOB : 
-\begin{minted}{latex}
+\begin{latexcode}
 \usepackage[indexTOB]{bibleref-french}
-\end{minted}
+\end{latexcode}
 
 
 \subsection{Un index à part}
@@ -217,19 +217,19 @@ Par défaut, les références sont indexées dans l'index principal. Il est tout
 
 Pour ce faire, avec \package{splitindex}\renvoi{splitindex}, il faut d'abord déclarer un nouvel index.
 
-\begin{minted}{latex}
+\begin{latexcode}
 \newindex[Index des références bibliques]{bible}
-\end{minted}
+\end{latexcode}
 
 Il faut ensuite redéfinir la commande \cs{biblerefindex} de la manière suivante :
-\begin{minted}{latex}
+\begin{latexcode}
 \renewcommand{\biblerefindex}[0]{\sindex[sources]}
-\end{minted}
+\end{latexcode}
 
 Et à l'endroit où l'on souhaite afficher cet index :
-\begin{minted}{latex}
+\begin{latexcode}
 \printindex[bible]
-\end{minted}
+\end{latexcode}
 
 \section{Espaces insécables}
 

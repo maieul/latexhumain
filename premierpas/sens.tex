@@ -35,11 +35,11 @@ On peut ponctuellement vouloir mettre en valeur un morceau de son écrit. Pour c
 
 Exemple :
 
-\begin{minted}{latex}
+\begin{latexcode}
 Le quatrième siècle voit la naissance d'une Église impériale
 et par conséquent \emph{le basculement vers un christianisme de masse},
 ce qui aura des impacts sur l'ecclésiologie, la théologie et la liturgie.
-\end{minted}
+\end{latexcode}
 
 Concrètement cela se traduit par un italique. 
 
@@ -55,10 +55,10 @@ Une autre propriété intéressante est la gestion des imbrications : par défau
 
 \LaTeX propose deux commandes pour indiquer des paratextes\footnote{La question des apparats critiques mise à part, question que nous traiterons plus loin} : pour des notes de bas de page et de marge, la position de ces dernières dépendant du caractère recto ou verso de la page. Ces commandes sont, respectivement, \cs{footnote} et \cs{marginpar}.
 
-\begin{minted}{latex}
+\begin{latexcode}
 Lorem\footnote{Une note de bas de page.} ipsum dolor amat.
 Aliquam sagittis\marginpar{Annotation marginale} magna in felis egestas rutrum.
-\end{minted}
+\end{latexcode}
 
 \begin{attention}
 	On serait tenté d'utiliser cette commande pour citer en note de bas de page une référence bibliographique. Il existe en fait une commande spécifique, que nous étudierons en tant voulu.\renvoi{footcite}
@@ -82,13 +82,13 @@ Aliquam sagittis\marginpar{Annotation marginale} magna in felis egestas rutrum.
 Une liste numérotée est un environnement \enviro{enumerate}.
 Chaque élément de la liste est marqué par la commande \csp{item}.
 
-\begin{minted}{latex}
+\begin{latexcode}
 \begin{enumerate}
 	\item Premier élément
 	\item Second élément
 	\item Troisième élément
 \end{enumerate}
-\end{minted}
+\end{latexcode}
 
 \begin{quotation}
 \noindent\begin{enumerate}
@@ -107,13 +107,13 @@ Il existe un package \package{etaremune} qui propose un environnement  \enviro{e
 Une liste non-numérotée est un environnement \enviro{itemize}.
 Chaque élément de la liste est marqué par la commande \cs{item}.
 
-\begin{minted}{latex}
+\begin{latexcode}
 \begin{itemize}
 	\item Un élément
 	\item Un autre
 	\item Encore un autre
 \end{itemize}
-\end{minted}
+\end{latexcode}
 
 \begin{quotation}
 \noindent\begin{itemize}
@@ -128,13 +128,13 @@ Chaque élément de la liste est marqué par la commande \cs{item}.
 Une liste de descriptions fait correspondre une à une des valeurs. Une telle liste peut être utile pour des lexiques, des glossaires, des chronologies etc. Pour chaque couple, la première valeur est passée comme argument à la commande \cs{item}. Les listes de définitions sont des environnements \enviro{description}.
 
 
-\begin{minted}{latex}
+\begin{latexcode}
 \begin{description}
 	\item[325]Concile de Nicée.
 	\item[381]Concile de Constantinople.
 	\item[431]Concile d'Éphèse.
 \end{description}
-\end{minted}
+\end{latexcode}
 \begin{quotation}
 \noindent\begin{description}
 	\item[325]Concile de Nicée.
@@ -147,7 +147,7 @@ Une liste de descriptions fait correspondre une à une des valeurs. Une telle li
 
 Il est possible d'imbriquer des listes, quelques soient leurs types. On ne peut, par défaut, avoir plus de quatre niveaux d'imbrication.
 
-\begin{minted}{latex}
+\begin{latexcode}
 \begin{itemize}
 	\item Un élément de premier niveau
 	\begin{enumerate}
@@ -156,7 +156,7 @@ Il est possible d'imbriquer des listes, quelques soient leurs types. On ne peut,
 	\end{enumerate}
 	\iteem Un autre élément de premier niveau
 \end{itemize}
-\end{minted}
+\end{latexcode}
 \begin{quotation}
 \noindent\begin{itemize}
 	\item Un élément de premier niveau
