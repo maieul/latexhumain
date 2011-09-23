@@ -11,8 +11,10 @@
 \DeclareDataInheritance{*}{*}{
 	\noinherit{keywords}
 }
+\DeclareFieldFormat{pages}{\mkpageprefix[pagination]{#1}}
 \DefineBibliographyStrings{french}{byeditor		= \iffieldequalstr{usera}{1}{{éd\adddot}}{{dir\adddotspace}}}
 \DeclareBibliographyAlias{url}{online}
+\DeclareFieldAlias{bookpagination}{pagination}
 \renewcommand{\newunitpunct}[0]{\addcomma\addspace}
 
 \renewcommand{\subtitlepunct}[0]{\addspace\addcolon\addspace}
