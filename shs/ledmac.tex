@@ -1,16 +1,22 @@
+\chapter{Faire une édition critique avec \packagenoidx{ledmac} et \packagenoidx{ledpac}}\sindex[pkg]{ledpar}\sindex[pkg]{ledmac} \label{ledmac}
 
 
-\chapter{Faire une édition critique avec \package{ledmac} et \package{ledpac}}
+\begin{prealable}
+Nous allons aborder ici deux packages particulièrement utiles en sciences humaines : \package{ledmac} pour faire des éditions critiques et \package{ledpar} pour éditer un texte et sa traduction en parallèle, le second package nécessitant le premier.
+\end{prealable}
+
+\begin{attention}
+Ces packages ont été améliorés durant la rédaction de ce livre. Veillez à les mettre à jour.\renvoi{maj}
+Dans le gestionnaire de packages, vous ne trouverez qu'une entrée pour  \package{ledmac} et non pas pour \package{ledpar}.  Toutefois, en mettant à jour \package{ledmac} vous mettez aussi à jour  \package{ledpar}.
+\end{attention}
 
 
-
-attention > version donnée par la textLive 2011 n'est pas la bonne: il faut mettre à jour  (aller sur site du ctan)
 
 \section{Faire une édition critique avec \package{ledmac}}
 
 \subsection{Numéroter un texte}
 
-Le texte dont on veut numéroter les lignes est encadré entre les commandes \cs{beginnumbering} et \cs{endnumbering}. Mais il faut ensuite faire une distinction entre les textes en prose et les textes en vers. 
+La première fonctionnalité utile de \package{ledmac} est  de permettre  de numéroter un texte, en l'entourant des commandes \csp{beginnumbering} et \csp{endnumbering}. L'indication des changements de numéro varie selon que le texte est prose ou vers.
 
 \subsubsection{Numéroter un texte en prose}
 
