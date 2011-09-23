@@ -9,29 +9,29 @@
 	}
 \makeatletter
 \newenvironment{plusloins}[0]{
+
 	\list{\includegraphics[width=1.3em]{images/pieds.png}}{\listparindent 1.5em%
+                        \footnotesize
                         \itemindent    \listparindent%
                         \rightmargin   \leftmargin%
                         \labelsep 0.2em%
                         \parsep        \z@ \@plus\p@}%
-                \item\relax%
-	\footnotesize%
+              \item\relax%
 	}%
-	{%
-	\normalsize%
+	{
 	\endlist%
 	}
 \newenvironment{attention}[0]{
+
 	\list{\rotatebox{90}{\includegraphics[height=1.3em]{images/eclair.png}}}{\listparindent 1.5em%
+                        \footnotesize%
                         \itemindent    \listparindent%
                         \rightmargin   \leftmargin%
                         \labelsep 0.2em%
                         \parsep       \z@ \@plus\p@}%
                 \item\relax%
-	\footnotesize
 	}%
-	{%
-	\normalsize%
+	{
 	\endlist%
 	}
 
