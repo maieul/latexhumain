@@ -1,5 +1,8 @@
 \chapter{Indiquer des références}
 
+\renewbibmacro{cite:ibid}{\usebibmacro{cite:full}} % On modifie, pour ne pas avoir des ibidem à tout bout de champs
+
+
 \begin{prealable}
 Nous avons vu plus haut les différentes manières de citer un texte dans \renvoi{citertexte} le corps du travail. Nous avons également vu comment remplir une base de données bibliographique\renvoi{bddbiblio}.
 
@@ -263,4 +266,14 @@ Si vous utilisez le style verbose, vous pouvez vouloir choisir la forme abrégé
 \end{fieldlist}
 
 La commande \csp{printshorthands} permet d'imprimer la liste des abréviations.
+
+% On rétablis la gestion des ibidems
+
+\renewbibmacro*{cite:ibid}{%
+  \printtext{%
+    \bibhyperlink{cite\csuse{cbx@lastcite@\thefield{entrykey}}}{%
+      \bibstring[\mkibid]{ibidem}}}%
+  \ifloccit
+    {\global\toggletrue{cbx:loccit}}
+    {}}
 

@@ -1,5 +1,7 @@
 \chapter{Modifier les styles bibliographiques (2)}
 
+\renewbibmacro{cite:ibid}{\usebibmacro{cite:full}} % On modifie, pour ne pas avoir des ibidem à tout bout de champs
+
 \begin{prealable}
     Nous avons vu que BibLaTeX propose un certain nombres de commandes pour personnaliser rapidement les styles bibliographiques. Toutefois  ces commandes ne suffisent pas pour des personnalisation avancées. 
     Ainsi la possibilité de choisir l'ordre d'affichage des champs, par exemple, nécessite d'aller plus loin dans la compréhension des styles bibliographiques de de \package{biblatex}.
@@ -225,5 +227,15 @@ La ligne qui nous intéresse est donc la ligne 3 : il faut conditionner l'affich
 \begin{plusloins}
 Les éditeurs et gérant de revues peuvent très bien définir leurs propres fichiers \ext{cbx} et \ext{bbx} pour obtenir un ensemble cohérent de styles. Ces fichiers, qui contiennent drivers et macros bibliographiques doivent commencer par certaines commandes : nous renvoyons à la documentation de \emph{biblatex}\footcite{biblatex_fichiers}.
 \end{plusloins}
+
+% On rétablis la gestion des ibidems
+
+\renewbibmacro*{cite:ibid}{%
+  \printtext{%
+    \bibhyperlink{cite\csuse{cbx@lastcite@\thefield{entrykey}}}{%
+      \bibstring[\mkibid]{ibidem}}}%
+  \ifloccit
+    {\global\toggletrue{cbx:loccit}}
+    {}}
 
 
