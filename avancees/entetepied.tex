@@ -27,6 +27,7 @@ On voit vite les limites de ces styles. Ainsi, comment faire pour avoir à la fo
 \section{Premiers exemples avec \packagenoidx{fancyhdr}}\sindex[pkg]{fancyhdr}
 
 Le \package{fancyhdr} propose son propre style, qu'il est aisé de personnaliser via des commandes spécifiques. Pour faire fonctionner \package{fancyhdr} il suffit d'écrire les lignes suivantes dans le préambule :
+
 \begin{latexcode}
 \usepackage{fancyhdr}
 \pagestyle{fancy}
@@ -51,6 +52,7 @@ Une fois ceci fait, il est possible d'utiliser les six commandes de \package{fan
 
 
 Supposons que nous souhaitons afficher le numéro de page, en pied de page centré, en indiquant également le nombre total de pages. Nous allons utiliser le package \package{totpages} qui nous permet, après deux compilation, ou plus si le nombre de pages varie entre les compilations, d'obtenir le nombre total de pages.
+
 \begin{latexcode}
 \usepackage{fancyhdr}
 \pagestyle{fancy}
@@ -156,6 +158,7 @@ Le package \package{fancyhdr} inclus un filet entre le corps du texte et l'en-t�
 
 Pour ce faire, il suffit de redéfinir les commandes \cs{headrulewidth} et \cs{footrulewidth}, qui doivent renvoyer une longueur\renvoi{unite}.
 Par exemple, pour indiquer de ne pas mettre de filet en dessous de l'en-tête mais d'un mettre un de 0,05 mm au  dessus du pied de page, il suffit d'écrire : 
+
 \begin{latexcode}
 \renewcommand{\headrulewidth}[0]{0pt}
 \renewcommand{\footrulewidth}[0]{0.05mm}

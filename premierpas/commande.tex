@@ -252,9 +252,11 @@ Ainsi :
 \end{latexcode}
 
 Et non pas :
+
 \begin{latexcode}
 \large{s}
 \end{latexcode}
+
 \subsection{Style de caractères}
 
 Voici une liste non exhaustive de commandes utiles pour personnaliser les styles de caractère.
@@ -343,11 +345,13 @@ Les deux méthodes nécessitent de donner une valeur comprise entre 0 (inclus) e
 
 Prenons par exemple la définition de la couleur \textcolor{rougebourgogne}{rouge bourgogne}\footnote{Avec Anne Sylvestre les auteurs proclament fièrement \enquote{Que Bordeaux me pardonne, j’appartiens au Bourgogne} \parencite{romaneconti}.}.
 On peut la définir de la manière suivante en méthode additive :
+
 \begin{latexcode}
 \definecolor{rougebourgogne}{rgb}{0.41,0.05,0.05}
 \end{latexcode}
 
 Ou bien en méthode soustractive\footnote{Idéalement le choix de  la méthode devrait relever du support de destination. Mais le package \package{xcolors} propose des système de conversion d'une méthode à l'autre.}de la manière suivante :
+
 \begin{latexcode}
 \definecolor{rougebourgogne}{cmyk}{0,0.88,0.88,0.58}
 \end{latexcode}

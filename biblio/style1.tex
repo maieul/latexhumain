@@ -74,7 +74,8 @@ alors que le règles françaises voudraient que l'on ait :
     
     Deux cas existent :
         \begin{enumerate}
-            \item Le package \package{biblatex} a prévu une commande spécifique pour notre type d'unité. C'est le cas pour le séparateur avant le sous titre\footcite[Ces commandes sont peu nombreuses : on les trouvera dans][]{biblatex_hooks}. Il suffit dans ce cas de redéfinir la commande. Par exemple nous souhaitons avoir des deux-points entre le titre et le sous titre. Il nous suffit d'indique :
+            \item Le package \package{biblatex} a prévu une commande spécifique pour notre type d'unité. C'est le cas pour le séparateur avant le sous titre\footcite[Ces commandes sont peu nombreuses : on les trouvera dans][]{biblatex_hooks}. Il suffit dans ce cas de redéfinir la commande. Par exemple nous souhaitons avoir des deux-points entre le titre et le sous titre. Il nous suffit d'indiquer :
+            
             \begin{latexcode}
 \renewcommand{\subtitlepunct}[0]{\addspace\addcolon\addspace}
             \end{latexcode}
@@ -219,6 +220,7 @@ On pourrait redéfinir les chaînes de langue consacrées aux abréviations univ
 Il y a une solution plus simple\label{mkibid}. En effet, \package{biblatex} passe ces chaînes de langue dans une commande \csp{mkibidem}\marg{chaine} avant de les afficher.
 
 Il nous suffit dont de redéfinir cette commande :
+
 \begin{latexcode}
 \renewcommand{\mkibid}[1]{\emph{#1}}
 \end{latexcode}

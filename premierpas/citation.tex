@@ -141,6 +141,7 @@ définit la fréquence avec laquelle les vers sont numérotés.
 
 
 Citons pour  exemple un poème entier, dont les vers sont numérotés, de façon assez traditionnelle, une fois sur cinq. En frappant ceci:
+
 \begin{latexcode}
 \begin{verse}
 \poemlines{5}
@@ -192,6 +193,7 @@ On utilise pour cela la commande \csp{setverselinenums}\marg{premier vers}\marg{
 Avec \cs{setverselinenums}\marg{12}\marg{12}, le premier vers cité sera le premier numéroté.
 
 Ne citant que la troisième strophe, par exemple, il faut frapper :
+
 \begin{latexcode}
 \begin{verse}
 \poemlines{5}
@@ -222,9 +224,11 @@ Un bouquet de houx vert et de bruyère en fleur.
 
 \begin{plusloins}
 Dans la typographie française, il est d'usage de mettre un crochet droit [ au début d'un rejet. Ni l'environnement ni le package \package{verse} ne suivent cette règle. Pour obtenir le crochet droit, il faut indiquer charger le package  \package{gmverse} en lui passant l'option \option{squarebr} :
+
 \begin{latexcode}
 \usepackage}[squarebr]{gmverse}
 \end{latexcode}
+
 Puis insérer, une fois commencé l'environnement \enviro{verse}, la commande \csp{versehangrightsquare}.
 \end{plusloins}
 
@@ -303,6 +307,7 @@ On peut décider de la manière dont la troncature et l'ajout sont signalés : c
 \subsection{Citation modifiée}
 
 Pour signaler une modification dans une citation, on utilise  \csp{textins}\marg{texte modifié}.
+
 \begin{latexcode}
 \begin{quotation}
 Comme le disait très justement xxx : \enquote{Lorsque yyy \textins{a déclaré}

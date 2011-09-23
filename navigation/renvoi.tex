@@ -75,6 +75,7 @@ Une étiquette permet de renvoyer à tout élément numéroté, comme un titre, 
 
 \begin{itemize}
 \item Si l'étiquette \cs{label} est placée \emph{dans}  une commande  d'élément numéroté, elle renvoie à cette élément. Par exemple, pour renvoyer à une figure \renvoi{legende} :
+
 \begin{latexcode}
 \begin{figure}[paramètre de placement]
     Insertion de la figure
@@ -84,6 +85,7 @@ Une étiquette permet de renvoyer à tout élément numéroté, comme un titre, 
 
 Nous renvoyons à la figure~\ref{figure} situé page~\pageref{figure}.
 \end{latexcode}
+
 \item Si la commande est placée ailleurs, elle renvoie à la page courante et à la section courante\footnote{En réalité il est possible de placer immédiatement après un élément numéroté pour y renvoyer, mais cela ne s'applique pas aux notes de bas de pages.}.
 \end{itemize}
 
@@ -92,6 +94,7 @@ Nous renvoyons à la figure~\ref{figure} situé page~\pageref{figure}.
 Vous êtes bien sûr libre de trouver votre propre système de dénomination des étiquettes. Toutefois il est conseillé d'avoir quelque chose de la forme : \begin{english}\meta{contenu}:\meta{nom}|\end{english}, où \contenuarg{forme} désigne le type d'élément vers lequel on renvoie.
 
 Exemples :
+
 \begin{english}
 \begin{latexcode}
 \footnote{Blabla \label{note:nom}}

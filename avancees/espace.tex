@@ -23,6 +23,7 @@ Pour redéfinir des paramètres tels que l'espacement vertical entre deux paragr
 Nous avons vu que pour l'interligne, il valait mieux utiliser le package \package{setspace}\renvoi{interligne}. Il nous reste donc deux longueurs : l'indentation initiale du paragraphe et l'espace entre les paragraphes. Ces longueurs sont \cs{parindent} et \cs{parskip}.
 
 Pour les redéfinir, on utilise la commande \csp{setlength}\marg{longueur}\marg{valeur}. Par exemple pour redéfinir la longueur de l'indentation à 3 cadratins :
+
 \begin{latexcode}
 \setlength{\parindent}{3ex}
 \end{latexcode}
@@ -66,7 +67,6 @@ Par exemple pour avoir une page sans marge, on écrira :
 Une page avec une marge nulle.
 \newpage
 \restoregeometry
-
 \end{latexcode}
 
 Le package \package{geometry} possède de nombreuses autres fonctionnalité : nous renvoyons à sa documentation\footcite{geometry}.
@@ -106,6 +106,7 @@ Voici pour l'analyse. Maintenant, nous voulons notre environnement \enviro{exemp
 \end{itemize}
 
 Nous allons pour cela insérer dans le deuxième argument de la commande \cs{list} les lignes suivantes :
+
 \begin{latexcode}
 \leftmargin 3ex
 \rightmargin 1ex
@@ -139,6 +140,7 @@ On peut tracer un trait horizontal avec la commande \csp{rule}\oarg{profondeur}\
 On peut aussi utiliser les commandes \csp{hrulefill} et \csp{dotfill} qui permettent de tracer respectivement des lignes et des points, en \enquote{comprimant} le texte qui suit, c'est à dire en étant au maximum la longueur de la ligne ou de la suite de point. On dispose également de la commande \csp{hfill}\label{hfill} qui permet de comprimer le texte qui suit, sans afficher de caractère.
 
 Exemple :
+
 \begin{latexcode}
 \hfill Du texte comprimé.
 

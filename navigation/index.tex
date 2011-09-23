@@ -30,14 +30,12 @@ Dans l'exemple qui suit\footcite{eginhard}, l'index comporte ainsi cinq entrées
 %Changer l'exemple.
 
 \begin{latexcode}
-
 Tandis que Charle\index{Charlemagne} était à Rome, il convint
 avec le pape Adrien\index{Adrien} qu’ils enverraient de concert
 des ambassadeurs à Tassilon, duc de Bavière\index{Tassilon}(...)
 Les hommes choisis et envoyés dans cette ambassade furent, de 
 la part du pape, les évêques Formose\index{Formose} et 
 Damase\index{Damase}(…).\footcite{eginhard}
-
 \end{latexcode}
 
 
@@ -53,9 +51,11 @@ Il vaut mieux accoler la commande \cs{index}\marg{entrée} directement au  mot �
 L'indexation d'un texte n'est pas automatique: il faut placer \cs{index} à chaque endroit  que l'on veut référencer. On  peut bien sûr créer une commande  spécifique pour combiner avec d'autres actions.
 
 Ainsi, pour indexer automatiquement tous les noms propres d'un texte, déclarons la commande suivante:\label{indexauteur}
+
 \begin{latexcode}
 \newcommand\auteur[2]{#1~\textsc{#2}\index{#2, #1}\xspace}
 \end{latexcode}
+
 \renewcommand\auteur[2]{#1~\textsc{#2}\xspace}
 
 Il suffit ensuite, au cours de la rédaction de son texte, de taper par exemple \cs{auteur}\verb|{Victor}{Hugo}| pour obtenir \enquote{\auteur{Victor}{Hugo}} dans le cours de son texte, indexé sous l'entrée \enquote{Hugo, Victor}.
@@ -97,14 +97,12 @@ Il est possible, avec \package{MakeIndex},  de créer des subdivisions et des su
 On peut ainsi référencer autrement notre premier exemple, en créant les entrées \enquote{Evêques} et \enquote{Ducs} que l'on subdivise:
 
 \begin{latexcode}
-
 Tandis que Charle\index{Charlemagne} était à Rome, il convint 
 avec le pape Adrien\index{Adrien} qu’ils enverraient de concert 
 des ambassadeurs à Tassilon, duc de Bavière\index{Ducs!Tassilon}.
 Les hommes choisis et envoyés dans cette ambassade furent, de la 
 part du pape, les évêques Formose\index{Evêques!Formose}
 et Damase\index{Evêques!Damase}(…).\footcite{eginhard}
-
 \end{latexcode}
 
 
@@ -222,6 +220,7 @@ L'argument facultatif est le nom de l'index tel qu'il apparaît après la compil
 
 
 Ainsi, pour faire un index des noms propres et un index général, on peut déclarer:
+
 \begin{latexcode}
 \newindex[Index général]{idx}
 \newindex[Noms propres]{npr}
@@ -239,14 +238,12 @@ Toutes les entrées indiquées non par \cs{sindex} mais par \cs{index} sont auto
 On peut ainsi indexer notre texte d'Eginhard de la façon suivante:
 
 \begin{latexcode}
-
 \sindex[idx]{Charles et la papauté|(}Tandis que Charle\sindex[npr]{Charlemagne} était à Rome, il convint
 avec le pape Adrien\sindex[npr]{Adrien} qu’ils enverraient de concert
 des ambassadeurs à Tassilon, duc de Bavière\sindex[npr]{Tassilon}(...)
 Les hommes choisis et envoyés dans cette ambassade furent, de 
 la part du pape, les évêques Formose\sindex[npr]{Formose} et 
 Damase\sindex[npr]{Damase}(…)\sindex[idx]{Charles et la papauté|}.
-
 \end{latexcode}
 
 Après la compilation avec \XeLaTeX il faut compiler le fichier \ext{idx} avant SplitIndex. En générale, la seule solution est de passer par la ligne de commande\renvoi{terminal} :
@@ -317,6 +314,7 @@ En outre nous aimerions :
 \subsection{Création d'un index spécifique}
 
 Pour créer un index spécifique aux sources, rien de particulier : il suffit d'utiliser \package{splitindex} et la commande \cs{newindex} :
+
 \begin{latexcode}
 \newindex[Index des sources]{sources}
 \end{latexcode}
@@ -400,6 +398,7 @@ Pour utiliser ce script, il vous faut :\label{python}
 
 
 Après cette concaténation nous devons compiler en ligne de commande, enfin de séparer les différents index :
+
 \begin{bashcode}
 splitindex xxx
 \end{bashcode}

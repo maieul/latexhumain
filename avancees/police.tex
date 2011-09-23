@@ -126,12 +126,14 @@ En créant ces deux commandes \csp{oldquotation} et \csp{endoldquotation} nous a
 
 \begin{plusloins}
 Si vous avez compris nos propos sur les commandes de début et de fin d'environnement, vous pouvez vous rendre compte que nous aurions pu obtenir le même résultat avec :
+
 \begin{latexcode}
 \let\oldquotation\quotation
 \let\endoldquotation\endquotation
 \renewcommand{\quotation}{\oldquotation\singlespace}
 \renewcommand{\endquotation}{\endoldquotation}
 \end{latexcode}
+
 \end{plusloins}
 
 \section{Personnaliser les titres}
@@ -139,7 +141,8 @@ Si vous avez compris nos propos sur les commandes de début et de fin d'environn
 \subsection{Redéfinir la numérotation}\label{apparencecompteur}
 Nous avons abordé plus haut la notion de compteur. À chaque niveau de titre, \LaTeX associe un compteur \compteur{niveau}. Ainsi le compteur associé au niveau de titre \cs{chapter} est \compteur{chapter}.\renvoi{tocdepth}
 
-La valeur d'un compteur peut s'afficher grâce à la commande \csp{the\meta{compteur}}. Ainsi, si vous écrivez 
+La valeur d'un compteur peut s'afficher grâce à la commande \csp{the\meta{compteur}}. Ainsi, si vous écrivez :
+ 
 \begin{latexcode}
 \thechapter : \thesection
 \end{latexcode}
@@ -370,6 +373,7 @@ Il est possible de créer son propre compteur grâce à la commande \csp{newcoun
 La commande  \cs{@addtoreset}\marg{compteur}\marg{compteur2}  permet d'appliquer cette règle sur un compteur déjà existant.
 
 Ainsi, dans le fichier \fichier{book.cls}, vous remarquerez la ligne suivante\footnote{L. 718, à la date du 24 août 2011}  :
+
 \begin{latexcode}
 \@addtoreset{footnote}{chapter}
 \end{latexcode} 

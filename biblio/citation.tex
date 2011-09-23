@@ -104,6 +104,7 @@ Si on utilise l'argument \arg{prenote}, il est obligatoire d'indiquer un argumen
 L'argument \arg{postnote} peut servir à indiquer les pages précises de notre ouvrage\footcite[On consultera pour plus de détails : ][]{biblatex_pages}. Il suffit pour cela qu'il contienne une valeur de type numérique, en chiffres arabes ou romains, ou bien une séquence de valeurs numériques.
 
 Par exemple pour citer la page 25 : 
+
 \begin{latexcode}
 \footcite[25]{Saxer1980}
 \end{latexcode}
@@ -179,6 +180,7 @@ En revanche, un problème demeure si on souhaite insérer du texte dans l'argume
 Comme vous pouvez le constatez, le champ \champ{pages} continue à être affiché. Il s'agit d'un bug. En attendant qu'il soit corrigé\footnote{L'auteur de ces lignes à demander à l'auteur de \package{biblatex} de le faire, mais celui-ci croule sous les demandes de corrections et améliorations.}, nous ne trouvons pas d'autre solution que de le contourner en indiquant le texte qui suit la référence en dehors de l'argument \arg{postnote}. 
 
 Dans le cas d'une citation en note de bas de page, on doit donc écrire :
+
 \begin{latexcode}
 \footnote{\cite[24]{Junod1992}, passage au demeurant fort intéressant.}
 \end{latexcode}

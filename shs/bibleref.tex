@@ -206,6 +206,7 @@ Le package fournit des options pour un meilleur tri\footcite[Pour l'Ancien Testa
 Pour les options \verb|indexTOB| et \verb|indextestamentsT|, le livre d'Esther est considéré dans sa version hébraïque, et est donc rangé parmis les  écrits.
 
 Ainsi pour trier selon l'ordre de la TOB : 
+
 \begin{latexcode}
 \usepackage[indexTOB]{bibleref-french}
 \end{latexcode}
@@ -222,11 +223,13 @@ Pour ce faire, avec \package{splitindex}\renvoi{splitindex}, il faut d'abord dé
 \end{latexcode}
 
 Il faut ensuite redéfinir la commande \csp{biblerefindex} de la manière suivante :
+
 \begin{latexcode}
 \renewcommand{\biblerefindex}[0]{\sindex[sources]}
 \end{latexcode}
 
 Et à l'endroit où l'on souhaite afficher cet index :
+
 \begin{latexcode}
 \printindex[bible]
 \end{latexcode}

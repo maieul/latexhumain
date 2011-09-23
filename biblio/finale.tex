@@ -21,7 +21,6 @@ Ainsi, lors de l'appel au package \package{biblatex}, il suffit d'écrire :
 
 \begin{latexcode}
 \usepackage[bibstyle=verbose,...]{biblatex}
-
 \end{latexcode}
 
 \section{Diviser une bibliographie}
@@ -73,7 +72,8 @@ Analysons ce code :
 
 
 Avec une telle méthode, il est aisé de trier une bibliographie en sources primaires et sources secondaires. Il suffit d'attribuer une valeur au champ \champ{entrysubtype} des entrées bibliographiques, en la faisant varier selon qu'il s'agisse d'une source primaire ou d'une source secondaire.
-Par exemple
+Par exemple :
+
 \begin{latexcode}
 \defbibheading{bibliography}[\bibname]{\subsection{#1}}
 \chapter{Bibliographie}
@@ -83,7 +83,6 @@ Par exemple
 \section{Littérature secondaire}
 \printbibliography[subtype=outil,title=Outils]
 \printbibliography[subtype=etude,title=Études]
-
 \end{latexcode}
 
 
@@ -164,6 +163,7 @@ Toutefois, on peut parfois vouloir que  la valeur utilisée pour le tri ne soit 
 En effet, le  le nombre \forme{237} n'est pas reconnu, mais seulement le caractère {2}, puis le caractère \forme{3} etc. C'est pourquoi \enquote{Lettre 237} est situé avant \enquote{Lettre 64}, 2 se situant avant 6.
 
 Pour contourner ce problème, on peut utiliser le champ \champ{sorttitle}. Celui-ci n'est affiché mais prend la priorité sur le le champ \champ{title} pour ce qui concerne le tri dans la bibliographie finale.  Voici ce que donne nos deux entrées :
+
 \begin{latexcode}
 @book{AugustinEpi64,
     Author = {Augustin},
