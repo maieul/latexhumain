@@ -1,7 +1,7 @@
 \chapter{Insérer des éléments non textuels}
 
 \begin{prealable}
-	Dans ce chapitre nous allons examiner comment insérer des éléments qui ne font pas parti du flux du texte : images, graphismes, tableaux de données.
+    Dans ce chapitre nous allons examiner comment insérer des éléments qui ne font pas parti du flux du texte : images, graphismes, tableaux de données.
 \end{prealable}
 
 \section{Insérer des images}
@@ -16,16 +16,16 @@ Le chemin de l'image s'indique de la même manière que le chemin des fichiers i
 Les principaux paramètres optionnels sont les suivants\footcite[Pour les autres, on consulter][]{graphicx_options} :
 
 \begin{longtable}{|l|l|l|}
-	\hline
-	Paramètres & Signification & Exemple	\\
-	\hline
-	\endhead
-	\hline
-	\endfoot
-	angle		& Angle exprimé en degré. Un nombre positif indique une rotation anti-horaire, un nombre négatif une rotation horaire. 	& \verb|angle=90| \\
-	height		& Hauteur	& \verb|height=10cm|	 \\
-	scale		& Redimension proportionnelle & \verb|scale=0.5|\\
-	width		& Largeur 	& \verb|width=10cm| 	\\
+    \hline
+    Paramètres & Signification & Exemple    \\
+    \hline
+    \endhead
+    \hline
+    \endfoot
+    angle        & Angle exprimé en degré. Un nombre positif indique une rotation anti-horaire, un nombre négatif une rotation horaire.     & \verb|angle=90| \\
+    height        & Hauteur    & \verb|height=10cm|     \\
+    scale        & Redimension proportionnelle & \verb|scale=0.5|\\
+    width        & Largeur     & \verb|width=10cm|     \\
 \end{longtable}
 
 \begin{plusloins}
@@ -37,7 +37,7 @@ Le package \package{graphicx} propose des nombreux outils pour manipuler graphiq
 \end{plusloins}
 
 \begin{attention}
-	Évidemment, il est plus correct d'insérer une légende sous une image. Nous expliquons comment faire plus loin.\renvoi{legende}
+    Évidemment, il est plus correct d'insérer une légende sous une image. Nous expliquons comment faire plus loin.\renvoi{legende}
 \end{attention}
 
 \section{Insérer des graphismes et des schémas}
@@ -59,7 +59,7 @@ Nous avons choisi cet exemple car il est assez simple, tout en étant fréquent 
 Ce package possède une syntaxe spécifique. 
 
 \begin{attention}
-	Bien que le package s'appelle \package{TikZ}, il faut dans le préambule l'appeler \emph{sans majuscules} : \cs{usepackage}\verb+{tikz}+.
+    Bien que le package s'appelle \package{TikZ}, il faut dans le préambule l'appeler \emph{sans majuscules} : \cs{usepackage}\verb+{tikz}+.
  
 \end{attention}
 
@@ -73,7 +73,7 @@ Ce qui donne le résultat de la figure~\ref{figure:genealogie}\renvoi{figure:gen
 \centering
 \input{exemples/premierpas/nontextuels/genealogie}
 \caption{Exemple de généalogie}
-\label{figure:genealogie}	
+\label{figure:genealogie}    
 \end{figure}
 Analysons le code :
 
@@ -107,8 +107,8 @@ La création d'un tableau simple se fait grâce à l'environnement \enviro{tabul
 
 \begin{latexcode}
 \begin{tabular}{<type de colonnes>}
-	Cellule & Cellule & Cellule \\
-	Cellule & Cellule & Cellulle \\
+    Cellule & Cellule & Cellule \\
+    Cellule & Cellule & Cellulle \\
 \end{tabular}
 \end{latexcode}
 
@@ -116,18 +116,18 @@ Le caractère \verb|&| marque un changement de cellule. Le \verb|\\| marque un c
 
 L'argument \arg{type de colonnes} de l'environnement \enviro{tabular} sert à préciser :
 \begin{enumerate}
-	\item Le nombre de cellules.
-	\item Le formatage du texte à l'intérieur des cellules.
-	\item Éventuellement les séparateurs verticaux des cellules.
-	
+    \item Le nombre de cellules.
+    \item Le formatage du texte à l'intérieur des cellules.
+    \item Éventuellement les séparateurs verticaux des cellules.
+    
 \end{enumerate}
 
 Il existe trois types possibles de colonnes,  qui précisent l'alignement des textes : \label{typecolonnes}
 
 \begin{itemize}
-	\item \verb|l| Alignement à gauche.
-	\item \verb|c| Centré.
-	\item \verb|r| Alignement à droite.
+    \item \verb|l| Alignement à gauche.
+    \item \verb|c| Centré.
+    \item \verb|r| Alignement à droite.
 \end{itemize}
 
 Supposons que nous ayons un tableau à trois colonnes. Nous souhaitons que les cellules de la première colonnes soient alignées à gauche, celles de la seconde centrées et celles de la dernière alignées à droite\footnote{Il s'agit ici d'une dérogation au principe de séparation de fond et de forme. Toutefois le lecteur l'ayant assimulé pourra aisément contourner cette dérogation et revenir dans le droit chemin}.  
@@ -145,8 +145,8 @@ On peut utiliser l'environnement \enviro{tabular*} qui propose un argument suppl
 
 \begin{latexcode}
 \begin{tabular*}{<largeur du tableau>}{<type de colonnes>}
-	Cellule & Cellule & Cellule \\
-	Cellule & Cellule & Cellulle \\
+    Cellule & Cellule & Cellule \\
+    Cellule & Cellule & Cellulle \\
 \end{tabular}
 \end{latexcode}
 
@@ -157,9 +157,9 @@ Pour ce faire trois types supplémentaires de colonne nous sont proposés par le
 
 Ces trois types de colonnes sont :
 \begin{description}
-	\item[p\marg{largeur}] texte justifié. La plus haute ligne du texte se trouve sur la ligne de base.
-	\item[m\marg{largeur}] texte justifié. La ligne du milieu du texte se trouve sur la ligne de base.
-	\item[b\marg{largeur}] texte justifié. La plus basse ligne du texte se trouve sur la ligne de base.
+    \item[p\marg{largeur}] texte justifié. La plus haute ligne du texte se trouve sur la ligne de base.
+    \item[m\marg{largeur}] texte justifié. La ligne du milieu du texte se trouve sur la ligne de base.
+    \item[b\marg{largeur}] texte justifié. La plus basse ligne du texte se trouve sur la ligne de base.
 \end{description}
 
 La ligne de base est une ligne spécifique, correspondand, \emph{grosso-modo} au milieu d'une cellule. Exemple :
@@ -324,24 +324,24 @@ Pour résoudre ces deux problèmes --- positionnement esthétique et légende --
 
 Il existe deux types principaux de flottant :
 \begin{itemize}
-	\item Les figures, générées par l'environnement \enviro{figure}.
-	\item Les tableaux, générées par l'environnement \enviro{table}.
+    \item Les figures, générées par l'environnement \enviro{figure}.
+    \item Les tableaux, générées par l'environnement \enviro{table}.
 \end{itemize}
 
 La syntaxe pour insérer le premier est la suivante :
 
 \begin{latexcode}
 \begin{figure}[<paramètre de placement>]
-	Insertion de la figure ou de l'image suivant les codes montrés plus haut.
-	\caption{<Légende>}
+    Insertion de la figure ou de l'image suivant les codes montrés plus haut.
+    \caption{<Légende>}
 \end{figure} 
 \end{latexcode}
 
 Celle pour insérer le second est la suivante :
 \begin{latexcode}
 \begin{table}[<paramètre de placement>]
-	Insertion d'un tableau suivant le codes montrés plus haut.
-	\caption{<Légende>}
+    Insertion d'un tableau suivant le codes montrés plus haut.
+    \caption{<Légende>}
 \end{table} 
 \end{latexcode}
 
@@ -349,9 +349,9 @@ Si la commande \cs{caption} est insérée au-dessus de la figure, de l'image ou 
 
 Un exemple de flottant se situe  dans ce chapitre : la figure \ref{figure:genealogie}\renvoi{figure:genealogie}.
 \begin{attention}
-	On pourrait vouloir changer les intitulés comme \emph{figure} et \emph{tableau}. Tout ceci est possible, nous en parlons plus loin, dans le chapitre consacré aux chaînes de langue.\renvoi{i18n}
-	
-	De même on pourrait souhaiter renvoyer automatiquement vers le numéro et la page d'une figure : nous en parlons dans le chapitre consacré à la navigation à l'intérieur d'un document.\renvoi{label}
+    On pourrait vouloir changer les intitulés comme \emph{figure} et \emph{tableau}. Tout ceci est possible, nous en parlons plus loin, dans le chapitre consacré aux chaînes de langue.\renvoi{i18n}
+    
+    De même on pourrait souhaiter renvoyer automatiquement vers le numéro et la page d'une figure : nous en parlons dans le chapitre consacré à la navigation à l'intérieur d'un document.\renvoi{label}
 \end{attention}
 
 À noter que, comme les titres, la commande \csp{caption} peut recevoir un argument optionnel qui compte pour titre dans la table des figures ou la table des tableaux :\renvoi{tablefigure}
@@ -364,9 +364,9 @@ Il peut être utile de centrer le contenu du flottant. Il s'agit ici d'une excep
 
 \begin{latexcode}
 \begin{figure}[<paramètre de placement>]
-	\centering
-	Insertion de la figure ou de l'image suivant les codes montrés plus haut.
-	\caption{<Légende>}
+    \centering
+    Insertion de la figure ou de l'image suivant les codes montrés plus haut.
+    \caption{<Légende>}
 \end{figure} 
 \end{latexcode}
 
@@ -391,16 +391,16 @@ Pour ce faire il faut utiliser le  \package{subcaption}\footcite{subcaption}.
 Le \arg{paramètre de placement} indique à \LaTeX comment placer idéalement les flottants. Il s'agit d'un paramètre indicatif que le compilateur essaie autant que possible de suivre, sans pour autant être contraint. Les valeurs sont les suivantes :
 
 \begin{longtable}{|l|l|}
-	\hline
-	Valeur & Signification	\\
-	\hline
-	\endhead
-	\hline
-	\endfoot
-	h 	& À l'emplacement de l'appel au flottant 	\\
-	t 	& En haut d'une page				\\
-	b 	& En bas d'une page				\\
-	p 	& Sur une page dédiée aux flottants		\\
+    \hline
+    Valeur & Signification    \\
+    \hline
+    \endhead
+    \hline
+    \endfoot
+    h     & À l'emplacement de l'appel au flottant     \\
+    t     & En haut d'une page                \\
+    b     & En bas d'une page                \\
+    p     & Sur une page dédiée aux flottants        \\
 \end{longtable}
 
 
@@ -414,4 +414,4 @@ Tout les flottants appelés avant la commande sont placées avant celle-ci.
 
 
 
-	
+    

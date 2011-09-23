@@ -246,7 +246,7 @@ Mais il est plus conseillé de créer des commandes personnelles pour simplifier
 \begin{latexcode*}
 \usepackage{ifthen, xargs}
 \newcommandx*\variantes[3][2]{\edtext{#1}{%
-	\ifthenelse{\equal{#2}{}}{}{\lemma{#2}}
+    \ifthenelse{\equal{#2}{}}{}{\lemma{#2}}
 \Afootnote{#3}}}
 \end{latexcode*}
 
@@ -326,22 +326,22 @@ Avec la deuxième solution (que l'on peut d'ailleurs coupler avec la première),
 
 \begin{latexcode*}
 \begin{pages}  
-	\begin{Leftside}  \beginnumbering 
+    \begin{Leftside}  \beginnumbering 
 La première partie du texte en langue originale
-	\endnumbering  \end{Leftside} 
+    \endnumbering  \end{Leftside} 
  
-	\begin{Rightside} \beginnumbering
+    \begin{Rightside} \beginnumbering
 La traduction de la première partie
-	\endnumbering \end{Rightside} 
+    \endnumbering \end{Rightside} 
  \Pages
  
-	\begin{Leftside} \beginnumbering  
+    \begin{Leftside} \beginnumbering  
 La deuxième partie du texte 
-	\endnumbering  \end{Leftside} 
+    \endnumbering  \end{Leftside} 
  
-	\begin{Rightside}  \beginnumbering
+    \begin{Rightside}  \beginnumbering
 La traduction de la deuxième partie
-	\endnumbering \end{Rightside} 
+    \endnumbering \end{Rightside} 
  \Pages
 
   \end{pages}
@@ -353,7 +353,7 @@ La commande \cs{memorydump} permet de résoudre ce problème. Elle équivaut en 
 
 \begin{latexcode*}
 \begin{pages}  
-	\begin{Leftside}  \beginnumbering 
+    \begin{Leftside}  \beginnumbering 
 La première partie du texte en langue originale
  \end{Leftside} % On n'a pas mis \endnumbering ici!...
  
@@ -362,13 +362,13 @@ La traduction de la première partie
  \end{Rightside} % et là non plus...
  \Pages
  
-	\begin{Leftside} \memorydump % et, ici, pas de \beginnumbering..  
+    \begin{Leftside} \memorydump % et, ici, pas de \beginnumbering..  
 La deuxième partie du texte 
-	\endnumbering  \end{Leftside}
-	
-	\begin{Rightside}  \memorydump %...car \memorydump s'en charge!
+    \endnumbering  \end{Leftside}
+    
+    \begin{Rightside}  \memorydump %...car \memorydump s'en charge!
 La traduction de la deuxième partie
-	\endnumbering \end{Rightside}   %ne pas oublier de mettre 
+    \endnumbering \end{Rightside}   %ne pas oublier de mettre 
 % tout de même \endnumbering quand on arrive à la fin ..
  
  \Pages

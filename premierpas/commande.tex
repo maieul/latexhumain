@@ -17,15 +17,15 @@ Une commande LaTeX peut prendre jusqu'à 9 arguments, ce qui est en général bi
 \csp{newcommand}\verb|{\|\arg{nomcommande}\verb|}|\oarg{N}\marg{code}.
 
 \begin{attention}
-	Les noms de commandes ne doivent contenir que des caractères alpha-numériques latins non accentués, c'est à dire les vingt-six lettres de l'alphabet latin et les dix chiffres arabes. 
-	
-	Les noms sont sensibles à la casse : \verb|\a| est différent de \verb|\A|.
+    Les noms de commandes ne doivent contenir que des caractères alpha-numériques latins non accentués, c'est à dire les vingt-six lettres de l'alphabet latin et les dix chiffres arabes. 
+    
+    Les noms sont sensibles à la casse : \verb|\a| est différent de \verb|\A|.
 \end{attention}
 À l'intérieur de la partie \arg{code}, on peut  :
 \begin{itemize}
-	\item Mettre du texte.
-	\item Utiliser des commandes de mise en forme ou de mise en sens.
-	\item Appeler les arguments passés en utilisant la syntaxe \verb|#x|, où \verb|x| représente le rang de l'argument.
+    \item Mettre du texte.
+    \item Utiliser des commandes de mise en forme ou de mise en sens.
+    \item Appeler les arguments passés en utilisant la syntaxe \verb|#x|, où \verb|x| représente le rang de l'argument.
 \end{itemize}
 
 Prenons toujours notre cas d'une commande pour indiquer les noms. Pour le début, nous souhaitons simplement que les noms d'auteur soient suivis d'un astérique (*).
@@ -87,14 +87,14 @@ n'était pas montaniste mais tertullianiste.
 Nous décrirons plus loin dans ce chapitre un ensemble de commande de mise en forme\renvoi{mef}.
 
 \begin{attention}
-	Si la possibilité de créer ses propres commandes est une grande force de \LaTeX, cela ne fait pas toujours la joie des éditeurs. 
-	
-	Il est donc recommandée de discuter au préalable avec son éditeur, et surtout de lui indiquer qu'un balisage sous forme de commande doit, normalement, lui faciliter la tâche.
-	
-	
-	Nous recommandons par ailleurs de regrouper toutes ses déclarations de commandes dans un fichier unique, appelé via une commande \cs{input}.\renvoi{input}
-	
-	Il est également possible de créer son propre package, pour des commandes utilisées fréquemment dans plusieurs projets\footcite[Ceci dépasserais le cadre de cet ouvrage : je renvois à d'autres documents. Par exemples][]{creer_sty}.
+    Si la possibilité de créer ses propres commandes est une grande force de \LaTeX, cela ne fait pas toujours la joie des éditeurs. 
+    
+    Il est donc recommandée de discuter au préalable avec son éditeur, et surtout de lui indiquer qu'un balisage sous forme de commande doit, normalement, lui faciliter la tâche.
+    
+    
+    Nous recommandons par ailleurs de regrouper toutes ses déclarations de commandes dans un fichier unique, appelé via une commande \cs{input}.\renvoi{input}
+    
+    Il est également possible de créer son propre package, pour des commandes utilisées fréquemment dans plusieurs projets\footcite[Ceci dépasserais le cadre de cet ouvrage : je renvois à d'autres documents. Par exemples][]{creer_sty}.
 \end{attention}
 
 
@@ -122,12 +122,12 @@ C'est tout à fait possible, mais il faut simplement mettre  un signe pourcentag
 
 \begin{latexcode}
 \newcommand{\auteur}[2]{
-	\textsc{#1}*(#2)
-	}
+    \textsc{#1}*(#2)
+    }
 \end{latexcode}
 
 \renewcommand{\auteur}[2]{\underline{ }%
-	\textsc{#1}*(#2)\underline{ }%
+    \textsc{#1}*(#2)\underline{ }%
 }
 
 \begin{quotation}
@@ -140,12 +140,12 @@ En revanche, si on met des \% :
 
 \begin{latexcode}
 \newcommand{\auteur}[2]{%
-	\textsc{#1} *(#2)%
-	}
+    \textsc{#1} *(#2)%
+    }
 \end{latexcode}
 
 \renewcommand{\auteur}[2]{%
-	\textsc{#1}* (#2)%
+    \textsc{#1}* (#2)%
 }
 
 \begin{quotation}
@@ -224,22 +224,22 @@ Nous listons ici les principales commandes de mise en forme. Pour des besoins av
 Il est possible de définir de manière absolue la taille des caractères en indiquant le nombre de points. Toutefois la meilleur méthode est de le définir d'après la taille de base, et d'utiliser les commandes ci-dessous. La taille obtenue dépendra de la taille de base définie lors de l'appel au préambule\renvoi{preambule}.
 
 \begin{longtable}{|l|l|}
-	  \hline
-	 Commande 				&	Effet 								\\
- 	 \hline
-	 \endhead
-	\hline
-	\endfoot
-	 \csp{tiny} 			& 	\tiny abcdefghijklmnopqrstuvwxyz  			\\
-	 \csp{scriptsize} 		& 	\scriptsize abcdefghijklmnopqrstuvwxyz  		\\
-	 \csp{footnotesize} 	& 	\footnotesize abcdefghijklmnopqrstuvwxyz 		\\
-	 \csp{small}			&	\small abcdefghijklmnopqrstuvwxyz 			\\
-	 \csp{normalsize}		& 	\normalsize abcdefghijklmnopqrstuvwxyz 		\\
-	 \csp{large}			&	\large abcdefghijklmnopqrstuvwxyz 			\\
-	 \csp{Large}			& 	\Large abcdefghijklmnopqrstuvwxyz 			\\
-	 \csp{LARGE}		& 	\LARGE abcdefghijklmnopqrstuvwxyz 			\\
-	 \csp{huge}			& 	\huge abcdefghijklmnopqrstuvwxyz 			\\
-	 \csp{Huge}			&	\Huge abcdefghijklmnopqrstuvwxyz 			\\
+      \hline
+     Commande                 &    Effet                                 \\
+      \hline
+     \endhead
+    \hline
+    \endfoot
+     \csp{tiny}             &     \tiny abcdefghijklmnopqrstuvwxyz              \\
+     \csp{scriptsize}         &     \scriptsize abcdefghijklmnopqrstuvwxyz          \\
+     \csp{footnotesize}     &     \footnotesize abcdefghijklmnopqrstuvwxyz         \\
+     \csp{small}            &    \small abcdefghijklmnopqrstuvwxyz             \\
+     \csp{normalsize}        &     \normalsize abcdefghijklmnopqrstuvwxyz         \\
+     \csp{large}            &    \large abcdefghijklmnopqrstuvwxyz             \\
+     \csp{Large}            &     \Large abcdefghijklmnopqrstuvwxyz             \\
+     \csp{LARGE}        &     \LARGE abcdefghijklmnopqrstuvwxyz             \\
+     \csp{huge}            &     \huge abcdefghijklmnopqrstuvwxyz             \\
+     \csp{Huge}            &    \Huge abcdefghijklmnopqrstuvwxyz             \\
 \end{longtable}
 
 \label{commandesdetaille}Ces commandes ont toutefois un comportement particulier : ce sont des commandes dites \enquote{à bascule}\renvoi{bascule}. À la différence de la plupart des commandes, elles ne prennent pas d'argument. Elles doivent être utilisées entres accolades, le texte dont la taille change étant inséré après la commande, dans les accolades.
@@ -259,19 +259,19 @@ Voici une liste non exhaustive de commandes utiles pour personnaliser les styles
 
 
 \begin{longtable}{|l|l|}
-	\hline
-	Commande				& Effet \\								\\
-	\hline
-	\endhead
-	\hline
-	\endfoot
-	\csp{textit}			& \textit{Italique}							\\
-	\csp{emph}			& \emph{Texte en emphase}					\\
-	\csp{textbf}			&  \textbf{Gras}							\\
-	\csp{textsc}			& \textsc{Petites capitales}					\\
-	\csp{underline}		& \textsc{Souligné}	 (à éviter)				\\
-	\csp{textsuperscript}	&  \textsuperscript{Exposant}					\\
-	\csp{textsubscript}		& \textsubscript{Index} (nécessite le package \package{subscript}) \\
+    \hline
+    Commande                & Effet \\                                \\
+    \hline
+    \endhead
+    \hline
+    \endfoot
+    \csp{textit}            & \textit{Italique}                            \\
+    \csp{emph}            & \emph{Texte en emphase}                    \\
+    \csp{textbf}            &  \textbf{Gras}                            \\
+    \csp{textsc}            & \textsc{Petites capitales}                    \\
+    \csp{underline}        & \textsc{Souligné}     (à éviter)                \\
+    \csp{textsuperscript}    &  \textsuperscript{Exposant}                    \\
+    \csp{textsubscript}        & \textsubscript{Index} (nécessite le package \package{subscript}) \\
 \end{longtable}
 
 \subsection{Couleurs}
@@ -290,32 +290,32 @@ Le package \package{xcolor} propose les couleurs de bases suivantes :
 % Fin de la définition
 
 \begin{longtable}{|l|l|}
-	\hline
-	Nom de la couleur 		& Couleur 								\\
-	\hline
-	\endhead
-	\hline
-	\endfoot
-	\exemplecouleur{black}
-	\exemplecouleur{blue}
-	\exemplecouleur{brown}
-	\exemplecouleur{cyan}
-	\exemplecouleur{darkgray}
-	\exemplecouleur{gray}
-	\exemplecouleur{green}
-	\exemplecouleur{lightgray}
-	\exemplecouleur{lime}
-	\exemplecouleur{magenta}
-	\exemplecouleur{olive}
-	\exemplecouleur{orange}
-	\exemplecouleur{pink}
-	\exemplecouleur{purple}
-	\exemplecouleur{red}
-	\exemplecouleur{teal}
-	\exemplecouleur{violet}
-	\exemplecouleur{white}
-	\exemplecouleur{yellow}
-	
+    \hline
+    Nom de la couleur         & Couleur                                 \\
+    \hline
+    \endhead
+    \hline
+    \endfoot
+    \exemplecouleur{black}
+    \exemplecouleur{blue}
+    \exemplecouleur{brown}
+    \exemplecouleur{cyan}
+    \exemplecouleur{darkgray}
+    \exemplecouleur{gray}
+    \exemplecouleur{green}
+    \exemplecouleur{lightgray}
+    \exemplecouleur{lime}
+    \exemplecouleur{magenta}
+    \exemplecouleur{olive}
+    \exemplecouleur{orange}
+    \exemplecouleur{pink}
+    \exemplecouleur{purple}
+    \exemplecouleur{red}
+    \exemplecouleur{teal}
+    \exemplecouleur{violet}
+    \exemplecouleur{white}
+    \exemplecouleur{yellow}
+    
 \end{longtable}
 
 \subsubsection{Couleurs supplémentaires}

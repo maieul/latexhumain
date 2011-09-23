@@ -1,8 +1,8 @@
 \chapter{Modifier les styles bibliographiques (2)}
 
 \begin{prealable}
-	Nous avons vu que BibLaTeX propose un certain nombres de commandes pour personnaliser rapidement les styles bibliographiques. Toutefois  ces commandes ne suffisent pas pour des personnalisation avancées. 
-	Ainsi la possibilité de choisir l'ordre d'affichage des champs, par exemple, nécessite d'aller plus loin dans la compréhension des styles bibliographiques de de \package{biblatex}.
+    Nous avons vu que BibLaTeX propose un certain nombres de commandes pour personnaliser rapidement les styles bibliographiques. Toutefois  ces commandes ne suffisent pas pour des personnalisation avancées. 
+    Ainsi la possibilité de choisir l'ordre d'affichage des champs, par exemple, nécessite d'aller plus loin dans la compréhension des styles bibliographiques de de \package{biblatex}.
 \end{prealable}
 
 
@@ -13,20 +13,20 @@ Pour comprendre comment personnaliser l'affichage bibliographique, il est néces
 
 
 Lorsqu'on appelle une commande de citation, du type \cs{\meta{prefix}cite}, cette commande va appeler :
-	\begin{itemize}
-		\item Des macros bibliographiques, chargées d'afficher l'argument \arg{prenote} ou \arg{postnote}, ou encore de gérer les citations répétées. Les macros bibliographiques sont des types particuliers de commande, propres au package \package{biblatex}.\label{macrobiblio} 
-		\item Un driver\footnote{Bien que le terme \enquote{driver} ne soit pas français, nous l'utilisons car il est utilisé dans les commandes internes de BibLaTeX} bibliographique. Un driver correspond à un type d'entrée (\type{article}, \type{book} etc.), et se charge d'afficher les champs de l'entrée dans le bon ordre. Pour ce faire, un il appelle :
-		\begin{itemize}
-			\item Des commandes de séparations d'unités bibliographiques, que nous avons vu plus haut.\renvoi{unitebiblio}
-			\item Des macros bibliographiques. Ces macros bibliographiques appellent elles-même :
-			\begin{itemize}
-				\item des commandes d'impression de champs bibliographiques;
-				\item éventuellement d'autres macros bibliographiques;
-				\item des chaînes de langues.
-			\end{itemize}
-		\end{itemize}
-		
-	\end{itemize}
+    \begin{itemize}
+        \item Des macros bibliographiques, chargées d'afficher l'argument \arg{prenote} ou \arg{postnote}, ou encore de gérer les citations répétées. Les macros bibliographiques sont des types particuliers de commande, propres au package \package{biblatex}.\label{macrobiblio} 
+        \item Un driver\footnote{Bien que le terme \enquote{driver} ne soit pas français, nous l'utilisons car il est utilisé dans les commandes internes de BibLaTeX} bibliographique. Un driver correspond à un type d'entrée (\type{article}, \type{book} etc.), et se charge d'afficher les champs de l'entrée dans le bon ordre. Pour ce faire, un il appelle :
+        \begin{itemize}
+            \item Des commandes de séparations d'unités bibliographiques, que nous avons vu plus haut.\renvoi{unitebiblio}
+            \item Des macros bibliographiques. Ces macros bibliographiques appellent elles-même :
+            \begin{itemize}
+                \item des commandes d'impression de champs bibliographiques;
+                \item éventuellement d'autres macros bibliographiques;
+                \item des chaînes de langues.
+            \end{itemize}
+        \end{itemize}
+        
+    \end{itemize}
 
 Ceci peut se résumer par le schéma \ref{schemastylesbiblios}.\renvoi{schemastylesbiblios} 
 
@@ -123,7 +123,7 @@ Pour inverser l'ordre de nos champs, il suffit donc de redéfinir la macro en in
 \end{latexcode}
 
 
-\input{exemples/biblio/styles2/publisher+location+date}	% Remettre les champs dans le bon ordre.
+\input{exemples/biblio/styles2/publisher+location+date}    % Remettre les champs dans le bon ordre.
 
 
 

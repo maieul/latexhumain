@@ -23,15 +23,15 @@ Toutefois il est nécessaire de compiler deux fois avec \XeLaTeX.
 note les emplacements des étiquettes dans un fichier. À la seconde compilation, il lit ce fichier afin de procéder aux renvois. 
 
 \begin{attention}
-	Si vous modifiez votre texte, il faudra de nouveau compiler deux fois. En effet, les numéros de pages, de titres, de légendes etc. peuvent avoir changé. Il faut donc  que \XeLaTeX{} les apprenne à nouveau. En résumé, pour avoir un document correct il faut :
-	\begin{enumerate}
-		\item Compiler avec \XeLaTeX{};
-		\item Compiler avec BibTeX ou Biber afin d'incorporer les références bibliographiques;
-		\item Compiler avec \XeLaTeX{};
-		\item Re-compiler avec \XeLaTeX{}, car l'ajout des références bibliographiques a pu modifié le positionnement des étiquettes.
-	\end{enumerate}
-	
-	Tout ceci peut paraître bien compliqué et risque d'entraîner des oublis. C'est pourquoi les journaux de compilations, ces lignes de textes qui apparaissent lors de la compilation avec \XeLaTeX{} et sont stockées dans un fichier \ext{log}, disent dans leurs dernières lignes s'il est nécessaire de compiler, et avec quel logiciel.
+    Si vous modifiez votre texte, il faudra de nouveau compiler deux fois. En effet, les numéros de pages, de titres, de légendes etc. peuvent avoir changé. Il faut donc  que \XeLaTeX{} les apprenne à nouveau. En résumé, pour avoir un document correct il faut :
+    \begin{enumerate}
+        \item Compiler avec \XeLaTeX{};
+        \item Compiler avec BibTeX ou Biber afin d'incorporer les références bibliographiques;
+        \item Compiler avec \XeLaTeX{};
+        \item Re-compiler avec \XeLaTeX{}, car l'ajout des références bibliographiques a pu modifié le positionnement des étiquettes.
+    \end{enumerate}
+    
+    Tout ceci peut paraître bien compliqué et risque d'entraîner des oublis. C'est pourquoi les journaux de compilations, ces lignes de textes qui apparaissent lors de la compilation avec \XeLaTeX{} et sont stockées dans un fichier \ext{log}, disent dans leurs dernières lignes s'il est nécessaire de compiler, et avec quel logiciel.
 \end{attention}
 
 \subsection{Renvoyer à une page}
@@ -77,8 +77,8 @@ Une étiquette permet de renvoyer à tout élément numéroté, comme un titre, 
 \item Si l'étiquette \cs{label} est placée \emph{dans}  une commande  d'élément numéroté, elle renvoie à cette élément. Par exemple, pour renvoyer à une figure \renvoi{legende} :
 \begin{latexcode}
 \begin{figure}[paramètre de placement]
-	Insertion de la figure
-	\caption{Légende\label{figure}}
+    Insertion de la figure
+    \caption{Légende\label{figure}}
 \end{figure} 
 …
 

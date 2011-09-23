@@ -14,22 +14,22 @@ Le titre court est facultatif, comme l'indique le fait qu'il soit entre crochets
 
 
 
- 	\begin{longtable}{|l||l|l|}
-	\hline 	
- 	Commande				& Sens 						& Numéro de niveau 	\\
- 	\hline
-	\endhead
-	\hline
-	\endfoot
- 	\csp{part}			& Titre de partie 			& -1	 \\
- 	\csp{chapter} 		& Titre de chapitre 		& 0 	 	 \\
-	\csp{section}			& Titre de section  		& 1			\\
-	\csp{subsection}		& Titre de sous-section 	& 2			\\
-	\csp{subsubsection}	& Titre de sous-sous-section& 3			\\
-	\csp{paragraph}		& Titre de paragraphe 		&4			\\
+     \begin{longtable}{|l||l|l|}
+    \hline     
+     Commande                & Sens                         & Numéro de niveau     \\
+     \hline
+    \endhead
+    \hline
+    \endfoot
+     \csp{part}            & Titre de partie             & -1     \\
+     \csp{chapter}         & Titre de chapitre         & 0           \\
+    \csp{section}            & Titre de section          & 1            \\
+    \csp{subsection}        & Titre de sous-section     & 2            \\
+    \csp{subsubsection}    & Titre de sous-sous-section& 3            \\
+    \csp{paragraph}        & Titre de paragraphe         &4            \\
 
-	\csp{subparagraph}		& Titre de sous-paragraphe 	& 5			\\
-	\end{longtable}
+    \csp{subparagraph}        & Titre de sous-paragraphe     & 5            \\
+    \end{longtable}
 
 
 
@@ -48,8 +48,8 @@ Par défaut, tout les titres sont automatiquement numérotés\footnote{Nous verr
 Toutefois un titre non numéroté ne sera pas ajouté à la table des matières\renvoi{toc}. Pour contourner ce problème, il faut utiliser la commande 
 \csp{addcontentsline}\verb|{toc}|\marg{1}\marg{2} où : \label{addcontentsline}
 \begin{description}
-	\item[\arg{1}] est le type de titre ;
-	\item[\arg{2}] est le texte du titre ;
+    \item[\arg{1}] est le type de titre ;
+    \item[\arg{2}] est le texte du titre ;
 \end{description}
 
 Un exemple sera plus parlant :
@@ -84,8 +84,8 @@ Concrètement comment fait-on ?
 \item Les fichiers \enquote{fils} ne doivent contenir aucun appel de classe.
 \item Ils sont inclus dans le fichier \enquote{père} par l'une des commandes suivantes :
 \begin{itemize}
-	\item \csp{include}\marg{chemin-du-fichier}|, qui entraîne systématiquement un saut de page.
-	\item \csp{input}\marg{chemin-du-fichier}|, qui n'entraîne pas de saut de page.\label{input}
+    \item \csp{include}\marg{chemin-du-fichier}|, qui entraîne systématiquement un saut de page.
+    \item \csp{input}\marg{chemin-du-fichier}|, qui n'entraîne pas de saut de page.\label{input}
 \end{itemize}
 \end{enumerate}
 
