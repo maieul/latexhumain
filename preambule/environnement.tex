@@ -59,8 +59,13 @@
  \makeatother
  
 \definecolor{shadecolor}{gray}{0.9}
-\let\oldquotation\quotation
-\let\endoldquotation\endquotation
-\renewcommand{\quotation}{\oldquotation\item\relax\shaded}
-\renewcommand{\endquotation}{\endshaded\endoldquotation}
+\makeatletter
+\renewenvironment{quotation}
+               {\list{}{\listparindent 1.5em%
+                        \itemindent    \listparindent
+                        \rightmargin   \leftmargin
+                        \parsep        \z@ \@plus\p@}%
+                \begin{shaded}\item\relax}
+               {\end{shaded}\endlist}
+\makeatother
 
