@@ -214,6 +214,18 @@ On peut préciser le type de pagination possible : pagine-t-on en pages, en colo
 \item[none] la pagination est libre.
 \end{description}
 
+Le champ  \champ{pagination} sert lorsqu'on indique un numéro de page avec l'argument \arg{postnote}. En revanche si on laisse le contenu du champ \champ{pages}, il est sans effet. Il faut dans ce cas mettre la même valeur dans le champ \champ{bookpagination}.
+
+\begin{plusloin}
+On peut éviter de dupliquer l'information en insérant la ligne suivante en début de fichier \ext{tex} :
+
+\begin{minted}{latex}
+\DeclareFieldFormat{pages}{\mkpageprefix[pagination]{#1}}
+\end{minted}
+
+La commande \csp{DeclareFieldFormat} indique la manière d'afficher le champ \champ{pages} : en passant son contenu (\verb|#1|) à une fonction \csp{mkpageprefix}, à qui on indique d'utiliser le champ \champ{pagination} pour afficher le préfix de page\footcite[Voir][]{biblatex_formating}.
+
+\end{plusloin}
 
 \section{Citation de plusieurs œuvres}\label{citemultiple}
 
