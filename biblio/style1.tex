@@ -116,7 +116,7 @@ La ponctuation n'est pas le seul endroit où \package{biblatex} propose des poin
 	\renewbibmacro*{cite:ibid}{\usebibmacro{cite:full}}
 
 	
-Il est parfois d'usage de mettre la particule entre parenthèse. Pour ce faire, il suffit de redéfinir la commande \cs{mkbibnameprefix}. Cette commande prend un argument, qui est la particule. Ainsi pour la mettre automatiquement entre parenthèse, il suffit d'écrire.
+Il est parfois d'usage de mettre la particule entre parenthèse. Pour ce faire, il suffit de redéfinir la commande \csp{mkbibnameprefix}. Cette commande prend un argument, qui est la particule. Ainsi pour la mettre automatiquement entre parenthèse, il suffit d'écrire.
 	
 	\begin{latexcode}
 \renewcommand{\mkbibnameprefix}[1]{(#1)}

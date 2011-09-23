@@ -256,7 +256,7 @@ splitindex exemple.idx
 
 \subsection{Imprimer les index}
 
-Pour imprimer un index, il suffit d'utiliser la commande \cs{printindex} en lui passant le nom abrégé de l'index en argument. Ainsi pour imprimer l'index de noms propres:
+Pour imprimer un index, il suffit d'utiliser la commande \csp{printindex*} en lui passant le nom abrégé de l'index en argument. Ainsi pour imprimer l'index de noms propres:
 
 \begin{latexcode}
 \printindex[npr]
@@ -327,7 +327,7 @@ Nous avons donc notre index spécifique. Mais encore faut-il que nous disions  �
 \inputminted{exemples/navigation/index-source/citeindex.tex}
 
 \begin{description}
-\item[ligne 2] la commande \cs{ifciteindex} vérifier que l'option \option{indexing} de \package{biblatex} est bien égale à \verb|true| ou bien à \verb|cite|, si tel est le cas ce qui suit entre accolades est exécuté.
+\item[ligne 2] la commande \csp{ifciteindex} vérifier que l'option \option{indexing} de \package{biblatex} est bien égale à \verb|true| ou bien à \verb|cite|, si tel est le cas ce qui suit entre accolades est exécuté.
 \item[ligne 3] nous indexons le champ \champ{author}.  Nous utilisons le format d'indexation \verb|sources|.
 \item[ligne4] nous indexons le champ \champ{indextitle}. Si ce champ est vide \package{biblatex} utilise à la place le champ \champ{title}. Nous utilisons le format d'indexation \verb|sources|.
 \item[ligne 5] nous indexons le champ \champ{titleaddon}. Nous utilisons le format d'indexation \verb|sources|.

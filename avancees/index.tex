@@ -1,4 +1,4 @@
--m\chapter{Formater son index}\label{styleindex}
+\chapter{Formater son index}\label{styleindex}
 
 \begin{prealable}
 La mise en forme par défaut de l'index n'est pas très satisfaisante. On peut heureusement la modifier pour rendre l'index plus lisible.
@@ -60,10 +60,10 @@ Evêques \\
 \end{tabbing}
 \end{quotation}
 
-Si nous préférons une ligne de points, il faut logiquement remplacer \verb|"|\textbackslash\cs{hfill}\verb| "| par \verb|"|\textbackslash\cs{dottfill}\verb| "|
+Si nous préférons une ligne de points, il faut logiquement remplacer \verb|"|\textbackslash\cs{hfill}\verb| "| par \verb|"|\textbackslash\cs{dotfill}\verb| "|
 
 \begin{attention}
-Les espaces situés entre les commandes et les guillemets fermants sont indispensables. En effet, en l'absence de ces espaces, MakeIndex accole dans le fichier \ext{ind} généré les commandes aux numéros de page, ce qui empêche la second compilation avec \LaTeX, puisque celui si se retrouve face à des commandes inconnus, du style \cs{hfill1}.
+Les espaces situés entre les commandes et les guillemets fermants sont indispensables. En effet, en l'absence de ces espaces, MakeIndex accole dans le fichier \ext{ind} généré les commandes aux numéros de page, ce qui empêche la second compilation avec \LaTeX, puisque celui si se retrouve face à des commandes inconnus, du style \csp{hfill1}.
 \end{attention}
 
 Si l'on continue la lecture du manuel, on apprend aussi comment faire apparaître \enquote{sq.}, ou ce que l'on veut, quand une même entrée est indexée dans trois pages ou plus à la suite. Il suffit d'indiquer \verb+suffix_3p "~sq."+
@@ -80,7 +80,7 @@ heading_prefix "{\\bf "
 
 Si nous voulons qu'elles apparaissent en italique, nous écrivons \verb|"|\textbackslash\cs{it}\verb|"| (on utilise \csp{bf} et \csp{it}, qui sont des commandes \TeX, et non \cs{textbf} \cs{textit}).
 
-Nous  pouvons de même changer la taille des lettres séparatrices en ajoutant \textbackslash\cs{large} ou \cs\textbackslash{Large}, et ainsi de suite. \renvoi{taille}
+Nous  pouvons de même changer la taille des lettres séparatrices en ajoutant \textbackslash\cs{large} ou \textbackslash\cs{Large}, et ainsi de suite. \renvoi{taille}
 
 Mais nous avons ouvert une accolade… il nous faut la refermer:
 
@@ -88,7 +88,7 @@ Mais nous avons ouvert une accolade… il nous faut la refermer:
 heading_suffix " }\\nopagebreak\n " 
 \end{latexcode}
 
-\textbackslash\cs{nopagebreak} évite qu'une lettre-séparatrice se retrouve seule en fin de page. Le \verb|\n| est une petite coquetterie pour permettre d'avoir, dans notre fichier \ext{ind}, un retour à la ligne après \cs{nopagebreak}.
+\textbackslash\csp{nopagebreak} évite qu'une lettre-séparatrice se retrouve seule en fin de page. Le \verb|\n| est une petite coquetterie pour permettre d'avoir, dans notre fichier \ext{ind}, un retour à la ligne après \csp{nopagebreak}.
 
 
 

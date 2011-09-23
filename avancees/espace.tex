@@ -91,11 +91,11 @@ Que nous pouvons analyser ainsi:
 \begin{description}
 \item[ligne 2 à 5] code exécuté en début d'environnement.
 \item[ligne 7] code exécuté en fin d'environnement. Nous fermons un environnement de type \enviro{list} --- bien qu'effectivement, il ne s'agit pas d'une liste !.
-\item[ligne 2] la commande \cs{list}\marg{itemdefaut}\marg{réglages typographiques} ouvre un environnement \enviro{list}. Le premier argument correspond à ce qu'y est affiché par la commande \cs{item} en l'absence d'argument optionnel. Comme dans \enviro{quotation} on n'utilise pas \cs{item}, ce premier argument est nul. Le second argument contient des commandes réglant la mise en forme. La première, \cs{listparindent} indique l'indentation des paragraphes à l'intérieur de la liste : ici 1,5~em.
-\item[ligne 3] la seconde commande, \cs{itemindent}, indique l'indentation du premier élément de chaque \cs{item}, ici \cs{itemindent} se voit attribuer la valeur de \cs{listparindent}.
-\item[ligne 4] la marge de droite de notre liste (\cs{rightmargin}) se voit attribuer la même valeur que la marge de gauche (\cs{leftmargin}). Cette valeur a été définie auparavant dans le fichier \fichier{book.cls}.
-\item[ligne 5]la longueur séparant deux paragraphes au sein de la liste (\cs{parsep}) est fixée à 0~pt \cs{z@}, mais peut s'étendre (\cs{@plus}) jusqu'à 1~pt \cs{p@}).\renvoi{elastique} Le second argument de la commande \cs{list} finit ici.
-\item[ligne 7]une liste ne peut pas fonctionner sans commande \cs{item}. C'est pourquoi elle est appelée ici. Pour éviter des ennuis, on indique que le texte de cet \cs{item} est nul, via la commande \cs{relax} qui est une commande qui sert à ne rien faire alors que \TeX attend un contenu.
+\item[ligne 2] la commande \csp{list}\marg{itemdefaut}\marg{réglages typographiques} ouvre un environnement \enviro{list}. Le premier argument correspond à ce qu'y est affiché par la commande \cs{item} en l'absence d'argument optionnel. Comme dans \enviro{quotation} on n'utilise pas \cs{item}, ce premier argument est nul. Le second argument contient des commandes réglant la mise en forme. La première, \csp{listparindent} indique l'indentation des paragraphes à l'intérieur de la liste : ici 1,5~em.
+\item[ligne 3] la seconde commande, \csp{itemindent}, indique l'indentation du premier élément de chaque \cs{item}, ici \csp{itemindent} se voit attribuer la valeur de \csp{listparindent}.
+\item[ligne 4] la marge de droite de notre liste (\csp{rightmargin}) se voit attribuer la même valeur que la marge de gauche (\csp{leftmargin}). Cette valeur a été définie auparavant dans le fichier \fichier{book.cls}.
+\item[ligne 5]la longueur séparant deux paragraphes au sein de la liste (\csp{parsep}) est fixée à 0~pt \cs{z@}, mais peut s'étendre (\cs{@plus}) jusqu'à 1~pt \cs{p@}).\renvoi{elastique} Le second argument de la commande \cs{list} finit ici.
+\item[ligne 7]une liste ne peut pas fonctionner sans commande \cs{item}. C'est pourquoi elle est appelée ici. Pour éviter des ennuis, on indique que le texte de cet \cs{item} est nul, via la commande \csp{relax} qui est une commande qui sert à ne rien faire alors que \TeX attend un contenu.
 \end{description}
 
 Voici pour l'analyse. Maintenant, nous voulons notre environnement \enviro{exemple}, avec :
@@ -134,7 +134,7 @@ Pour des textes encadrés ou sur fond coloré, on pourra utiliser le package \pa
 
 \section{Trait horizontal}\label{filets}
 
-On peut tracer un trait horizontal avec la commande \cs{rule}\oarg{profondeur}\marg{longueur}\marg{épaisseur}, ou \arg{profondeur} correspond à l'écart entre le trait et le bas de la ligne de texte.
+On peut tracer un trait horizontal avec la commande \csp{rule}\oarg{profondeur}\marg{longueur}\marg{épaisseur}, ou \arg{profondeur} correspond à l'écart entre le trait et le bas de la ligne de texte.
 
 On peut aussi utiliser les commandes \csp{hrulefill} et \csp{dotfill} qui permettent de tracer respectivement des lignes et des points, en \enquote{comprimant} le texte qui suit, c'est à dire en étant au maximum la longueur de la ligne ou de la suite de point. On dispose également de la commande \csp{hfill}\label{hfill} qui permet de comprimer le texte qui suit, sans afficher de caractère.
 

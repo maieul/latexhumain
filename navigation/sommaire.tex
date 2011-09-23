@@ -69,7 +69,7 @@ La commande \csp{def} permet de créer des nouvelles commandes. Toutefois à la 
 
 Définir des commandes en \TeX{} par rapport à les définir en \LaTeX{} permet plus de souplesse. Mais cela demande plus de maîtrise technique pour éviter divers problèmes, comme par exemple des erreurs de compilation. C'est pourquoi nous n'en parlons pas dans ce livre, sauf ponctuellement.
 
-Les commandes \TeX{} peuvent contenir des \enquote{sous-commandes}. Ici par exemple, la commande \cs{captionfrench} contient la sous-commande \cs{contentsname}. Nous utilisons la commande \TeX{} \csp{gappto} pour injecter une sous-commande dans une commande déjà définie.
+Les commandes \TeX{} peuvent contenir des \enquote{sous-commandes}. Ici par exemple, la commande \cs{captionsfrench} contient la sous-commande \cs{contentsname}. Nous utilisons la commande \TeX{} \csp{gappto} pour injecter une sous-commande dans une commande déjà définie.
 
 La commande \cs{gappto} n'est une commande standard ni de \TeX ni de \LaTeX. Elle est définie par le package \package{etoolbox}, qui est lui même appelé par \package{polyglossia}.
 \end{plusloins}
@@ -110,7 +110,7 @@ Il peut aussi arriver qu'on souhaite indiquer un sommaire au début de chaque ch
 \dominitoc
 \end{latexcode}
 
-Pour afficher les mini-sommaires, il suffit d'utiliser la commande \cs{minitoc} aux endroits voulu, par exemple après chaque titre de chapitre.
+Pour afficher les mini-sommaires, il suffit d'utiliser la commande \csp{minitoc} aux endroits voulu, par exemple après chaque titre de chapitre.
 
 \begin{latexcode}
 \chapter{A}
@@ -124,7 +124,7 @@ Pour afficher les mini-sommaires, il suffit d'utiliser la commande \cs{minitoc} 
 Le package ne peut calculer correctement les sommaires que si la commande \cs{tableofcontents} est utilisée. Si vous souhaitez n'afficher que des mini-sommaires mais pas de table générale des matières --- ce qui est une idée assez étrange --- vous pouvez utiliser  la commande \csp{faketableofcontents} à la place de \cs{tableofcontents}.
 \end{attention}
 
-Pour afficher des mini-sommaires par partie, il faut utiliser la commande \cs{parttoc}. Par exemple :
+Pour afficher des mini-sommaires par partie, il faut utiliser la commande \csp{parttoc}. Par exemple :
 
 \begin{latexcode}
 \part{A}

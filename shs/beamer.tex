@@ -18,7 +18,7 @@ Le PDF résultant de la compilation d'un fichier Beamer peut être affiché sous
 
 Le reste du préambule contient le même contenu qu'un fichier \ext{tex} classique : appels aux packages, définitions d'éventuelles commandes etc.
 
-Toutefois il est possible de définir la manière dont les diapositives vont s'afficher, en utilisant dans le préambule la commande \cs{usetheme}. Par exemple pour utiliser le thème \forme{Darmstadt} :
+Toutefois il est possible de définir la manière dont les diapositives vont s'afficher, en utilisant dans le préambule la commande \csp{usetheme}. Par exemple pour utiliser le thème \forme{Darmstadt} :
 
 \begin{latexcode}
 \usetheme{Darmstadt}
@@ -40,7 +40,7 @@ Par exemple :
 \end{frame}
 \end{latexcode}
 
-À noter que l'environnement  \enviro{frame} peut être remplacé par la commande éponyme\sindex[cs]{frame@oldcs{frame}|hyperpagetextbf} :
+À noter que l'environnement  \enviro{frame} peut être remplacé par la commande éponyme\sindex[cs]{frame@\oldcs{frame}|hyperpagetextbf} :
 
 \begin{latexcode}
 \frame{
@@ -119,9 +119,9 @@ Il est possible de mettre en valeur certains éléments de plusieurs manières. 
 
 L'apparence des blocs dépend du thème choisi.
 
-\subsection{La commande \cs{alert}}
+\subsection{La commande \csnoidx{alert}}
 
-La commande \cs{alert} sert à mettre en valeur une partie d'un texte. Elle peut recevoir une spécification de couche. Cela est très utile pour indiquer à l'auditoire le sujet dont on parle. 
+La commande \csp{alert} sert à mettre en valeur une partie d'un texte. Elle peut recevoir une spécification de couche. Cela est très utile pour indiquer à l'auditoire le sujet dont on parle. 
 
 \begin{latexcode}
 \begin{frame}
@@ -142,7 +142,7 @@ Le package \package{spot} permet des mises en valeurs sous forme de tache lumine
 
 Il peut être utile pour le conférencier d'avoir, en plus des diapositives, des notes pour lui servir d'aide-mémoire au cours de son exposé.
 
-Pour ce faire il suffit d'utiliser la commande \cs{note} dans une diapositive.
+Pour ce faire il suffit d'utiliser la commande \csp{note} dans une diapositive.
 
 \begin{latexcode}
 \begin{frame}
@@ -152,7 +152,7 @@ Le contenu proprement dit de la diapositive.
 \end{frame}
 \end{latexcode}
 
-On peut afficher plusieurs notes sous forme de liste en passant  à la commande \cs{note} un argument optionnel ayant pour valeur \contenuarg{item}.
+On peut afficher plusieurs notes sous forme de liste en passant  à la commande \csp{note} un argument optionnel ayant pour valeur \contenuarg{item}.
 
 \begin{latexcode}
 \begin{frame}
@@ -166,7 +166,7 @@ Le contenu proprement dit de la diapositive.
 
 Les notes n'apparaissent pas sur la diapositive, mais sont reportées après, dans une page spéciale du fichier PDF. Cela n'est pas très pratique : on souhaiterait avoir d'une part les diapositives, d'autre part les notes. 
 
-Pour ce faire il suffit d'utiliser dans le préambule la commande \cs{setbeameroption} avec le bon argument.
+Pour ce faire il suffit d'utiliser dans le préambule la commande \csp{setbeameroption} avec le bon argument.
 
 \begin{latexcode}
 \setbeameroption{hide notes}

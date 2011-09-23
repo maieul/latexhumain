@@ -67,7 +67,7 @@ Analysons ce code :
 \printbibliography[heading=toto]
 \end{latexcode}
 
-\item Le second argument, ici \cs{bibname} correspond au titre par défaut. Dans notre cas, la commande \cs{bibname} renvoie simplement la valeur \forme{Bibliographie}.
+\item Le second argument, ici \csp{bibname} correspond au titre par défaut. Dans notre cas, la commande \csp{bibname} renvoie simplement la valeur \forme{Bibliographie}.
 \item Le troisième argument contient le code qui est appelé pour créer l'en-tête d'une bibliographie. Ici on déclare qu'on passe le titre (le contenu de \verb|#1|) à une commande \cs{subsection}.
 \end{enumerate}
 
@@ -119,7 +119,7 @@ On peut aussi vouloir afficher une bibliographie correspondant à une partie du 
 
 La méthode la plus simple est de passer une option \option{refsegment} lors de l'appel au package \package{biblatex}. La valeur de cet argument peut-être \forme{part}, \forme{chapter}, \forme{section}, \forme{subsection}, qui indique à quelle niveau de titre commencer une nouvelle section bibliographique\footcite[Il est toutefois possible de créer des sections bibliographiques autrement que suivant les niveaux de titre, voir :][]{biblatex_segment}.
 
-Chaque segment bibliographique possède un numéro compris entre 0 et N. On peut connaître celui du segment courant grâce à la commande \cs{therefsegment}.
+Chaque segment bibliographique possède un numéro compris entre 0 et N. On peut connaître celui du segment courant grâce à la commande \csp{therefsegment}.
 
 On peut ainsi afficher à la fin de chaque chapitre un bibliographie du chapitre :
 
@@ -146,7 +146,7 @@ On peut ainsi afficher à la fin de chaque chapitre un bibliographie du chapitre
 \section{Ajout de références non citées}
 
 On peut vouloir ajouter dans une bibliographie des références qui n'ont pas été explicitement citées. Il faut pour ce faire utiliser la commande \csp{nocite}\verb|{|\meta{clef1}\verb|,|\meta{clef2}\verb|,…}|.
-Pour ajouter l'ensemble des références d'un fichier \ext{bib} il suffit d'écrire : \cs{nocite}\verb|{*}|.
+Pour ajouter l'ensemble des références d'un fichier \ext{bib} il suffit d'écrire : \csp{nocite}\verb|{*}|.
 
 \section{Tri à l'intérieur d'une bibliographie}
 

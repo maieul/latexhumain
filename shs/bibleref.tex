@@ -35,10 +35,10 @@ Le livre que les protestants appellent \forme{Esaïe} est appelé \forme{Isaïe}
 
 Les éditions de la Bible divergent parfois quant à la manière d'afficher une référence biblique. En outre, les références peuvent s'afficher tantôt en version abrégée, tantôt en version complète. C'est pourquoi il existe  plusieurs styles de références bibliques. 
 
-On choisit son style par la commande \csp{biblerefstyle}\marg{style}, qu'il est conseillé de mettre en préambule, ou bien par une option de package :
+On choisit son style par la commande \cs{biblerefstyle}\marg{style}, qu'il est conseillé de mettre en préambule, ou bien par une option de package :
 
 \begin{latexcode}
-\usepackage[<style>]{bibleref-}
+\usepackage[<style>]{bibleref}
 \end{latexcode}
 
 
@@ -221,7 +221,7 @@ Pour ce faire, avec \package{splitindex}\renvoi{splitindex}, il faut d'abord dé
 \newindex[Index des références bibliques]{bible}
 \end{latexcode}
 
-Il faut ensuite redéfinir la commande \cs{biblerefindex} de la manière suivante :
+Il faut ensuite redéfinir la commande \csp{biblerefindex} de la manière suivante :
 \begin{latexcode}
 \renewcommand{\biblerefindex}[0]{\sindex[sources]}
 \end{latexcode}
@@ -242,5 +242,5 @@ Le package \package{bibleref-french} prévoit d'insérer des espaces insécables
 \end{enumerate}
 
 Si beaucoup de références sont indiquées, cela peut amener à des fins de lignes dépassante.
-Pour éviter cela, on peut autoriser temporairement la coupure des espaces entre un livre et un numéro de chapitre. La commande \cs{BRallowhypbch} marque le début de l'autorisation ; \cs{BRforbidhypbch} en marque la fin.
+Pour éviter cela, on peut autoriser temporairement la coupure des espaces entre un livre et un numéro de chapitre. La commande \csp{BRallowhypbch} marque le début de l'autorisation ; \csp{BRforbidhypbch} en marque la fin.
 
