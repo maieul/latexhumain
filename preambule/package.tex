@@ -1,49 +1,43 @@
 \usepackage{fontspec}
 \usepackage{xunicode}
 \usepackage{polyglossia}
-%\usepackage[french]{babel}
 \setmainlanguage{french}
 \setotherlanguage{english}
 \setotherlanguage[variant=ancient]{greek}
-\usepackage{minted}
+\usepackage{minted}				%Pour les exemples de code colorés
 
 \usepackage[singletitle=true,citestyle=verbose-trad2,bibstyle=verbose,backend=biber,citepages=omit]{biblatex}
-\setmainfont[Mapping=tex-text,Ligatures=Common]{Linux Libertine O}
-\setsansfont[Mapping=tex-text,Ligatures=Common]{Linux Biolinum O}
-\setmonofont[Scale=0.75]{DejaVu  Sans Mono}
 
-\usepackage{placeins}%Pour que les flottants ne flottent pas trop
-\usepackage{verse}
-\usepackage{multicol}
-\usepackage[makeindex]{splitidx}
-\usepackage{ltxdockit} % Pour documenter les commandes et les arguments. En fait je modifie une partie du code.
 
-\usepackage{ifthen}
-\usepackage{xargs}
-\usepackage{xspace}
-\usepackage{xcolor}
-\usepackage{csquotes}
-\usepackage{longtable}
-\usepackage{hyperref}
+\usepackage{placeins}				%Pour que les flottants ne flottent pas trop
+\usepackage{verse}					%Pour les vers
+\usepackage{multicol}				%Pour une gestion avancées de plusieurs colonnes, pour l'index
+\usepackage[makeindex]{splitidx}		%Pour plusieurs index
+\usepackage{ltxdockit} 				% Pour documenter les commandes et les arguments. En fait je modifie une partie du code.
+
+\usepackage{ifthen}				% Pour des test conditionnels
+\usepackage{xargs}				% Pour des arguments optionnels
+\usepackage{xspace}				% Pour la gestion des espaces
+\usepackage{xcolor}				% Pour les couleurs
+\usepackage{csquotes}				% Pour les guillemets
+\usepackage{longtable}				% Pour les tableaux longs
+\usepackage{hyperref}				% Pour les liens hypertextes
 \hypersetup{colorlinks=true, citecolor=black, filecolor=black, linkcolor=black, urlcolor=black, bookmarks=true,pdftitle={XeLaTeX pour les sciences humaines}, pdfauthor={Maïeul ROUQUETTE}, pdfcreator={PdfLaTeX}}
-%\usepackage[landscape,a4paper]{geometry}
-\usepackage{tikz}
-\usetikzlibrary{shapes}
-\usepackage{array}
-\usepackage{multirow}
-% Bibleref
-\usepackage{framed}
-\usepackage{fancyhdr}
-\usepackage{bidi} % nécessaire pour la command \XeLaTeX
-\usepackage{csvtools}
-\usepackage{graphicx}
-\usepackage{subscript}
+\usepackage{tikz}					% Pour les dessins
+	\usetikzlibrary{shapes}
+\usepackage{array}					% Pour les types de colonne sup.
+\usepackage{multirow}				% Pour les fusion de lignes
+\usepackage{framed}				% Pour les fond grisés
+\usepackage{fancyhdr}				% Pour les entetes et pied
+\usepackage{bidi}					% Pour les commandes \XeTeX et \XeLaTeX
+\usepackage{csvtools}				% Pour intérpreter des fichiers cvs
+\usepackage{graphicx}				% Pour insérer des images
+\usepackage{subscript}				% Pour insérer des textes en index
 
-\usepackage{bibleref-french}
-\usepackage{enumitem}
+\usepackage{bibleref-french}			% Pour les citations bibliques
+\usepackage{enumitem}				% Pour les styles de listes
 
-\usepackage{ledmac, ledpar}
-\biblerefstyle{jerusalem}
+\usepackage{ledmac, ledpar}			% Pour l'édition critiques
 
-\usepackage{totpages}
+\usepackage{totpages}				% Pour le nb total de pages
 
