@@ -2,6 +2,11 @@
 \renewenvironment{theindex}
                {
                \section{\indexname}%
+               \ifthenelse{\equal{\indexshortcut}{cs}}{
+               
+               	\input{annexes/preambuleindexcs}
+               
+               }{}%
                \begin{multicols}{2}
                 \parindent\z@
                 \parskip\z@ \@plus .3\p@\relax
