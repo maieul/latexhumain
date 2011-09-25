@@ -15,9 +15,10 @@ all:principal.pdf
 	@$(XELATEX) $<
 	@echo "Compilation Biber"
 	@$(BIBER) $*
-	
+	splitindex -m "makeindex -s latex-humain.ist" $*.idx ; \
 	@echo "Compilation XELATEX 2"
-	
+
+
 	@$(XELATEX) $<
 	for ((i = 3 ; i < 6 ; i++)) ; \
 	do \
