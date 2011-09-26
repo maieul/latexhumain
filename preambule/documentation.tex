@@ -43,3 +43,7 @@
 	\meta{#1}%
 }
 \newcommand{\contenuarg}[1]{{\ttfamily#1}}
+
+\let\oldtextbackslash\textbackslash
+
+\renewcommand{\textbackslash}[0]{{\ttfamily\oldtextbackslash}}
