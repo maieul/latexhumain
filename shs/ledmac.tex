@@ -60,6 +60,7 @@ erat  elit consectetuer erat, id egestas pede nibh eget odio.
 \endnumbering
 \end{minipage}
 \bigbreak
+
 %la doc dit qu'il faut à chaque paragraphe remettere pstart/pend , et qu'on peut empêcher cette inconvénient en créant un groupe et avec la commande autopar. Pourtant marche très bien sur plusieurs paragarphes à la suit sans passer par cette commande.. à voir!
 
 Si l'on veut interrompre puis reprendre la numérotation, il suffit de faire deux \enquote{boites} encadrées chacune entre un  \cs{pstart} et un \cs{pend}:  tout ce qui sera entre ces deux boites ne sera pas numéroté.
@@ -126,10 +127,10 @@ und alles tadellos organisiert.&
 Um jeden Schnapstich fühlst du es bestätigt:&
 Marie stark Geld --- heute wird das Ding getätigt!&
 Die Spesen fest. Planmäßig der Verlauf ---&
-Berlin brust auf.\&
+Berlin brust auf.\& \footcite{tucholsky}
 \endnumbering
 
-(berliner abend, kurt tuchovsky)
+
 
 La commande\cs{endstanzaextra} permet d'ajouter quelque chose à la fin de chaque strophe.
 Dans l'exemple qui précède, l'espace vertical entre chaque  stropheest ainsi obtenu par la ligne \verb|\let\endstanzaextra=\bigbreak|
@@ -231,7 +232,7 @@ Et tua magna sitis mage seu \edtext{mage crescere}{\Afootnote{mage se accrescere
 Quaeso, tuum nobis fidum transmitte ministrum,&
  Qui tua grata mihi perferat orsa, uale.\&
 \endnumbering
-\end{minipage}
+\end{minipage} \footcite{theodulf}
 \bigbreak
 
 \begin{attention}
