@@ -1,4 +1,4 @@
-\chapter{Faire une édition critique avec \packagenoidx{ledmac} et \packagenoidx{ledpac}}\sindex[pkg]{ledpar}\sindex[pkg]{ledmac} \label{ledmac}
+\chapter{Faire une édition critique avec \packagenoidx{ledmac} et \packagenoidx{ledpar}} \sindex[pkg]{ledpar}\sindex[pkg]{ledmac} \label{ledmac}
 
 
 \begin{prealable}
@@ -12,7 +12,7 @@ Dans le gestionnaire de packages, vous ne trouverez qu'une entrée pour  \packag
 
 
 
-\section{Faire une édition critique avec \package{ledmac}}
+\section{Faire une édition critique avec \packagenoidx{ledmac}}\sindex[pkg]{ledmac}
 
 \subsection{Numéroter un texte}
 
@@ -269,14 +269,14 @@ Cette commande est un peu plus complexe parce qu'elle fait appel aux packages \p
 
 
 
-\section{Mettre deux textes en vis-à-vis: le package \packagenoidx{ledpar}\sindex[pkg]{ledpar}}
+\section{Mettre deux textes en vis-à-vis: le package \packagenoidx{ledpar}}\sindex[pkg]{ledpar}
 
 \prealable{
 Le package \package{ledpar}, qui sert à mettre un texte et sa traduction en vis-à-vis, fonctionne avec \package{ledmac}. Tout ce qui concerne l'apparat critique et la numérotation dans \package{ledmac} est ainsi valable ici aussi. Nous considérons donc, pour éviter les redites, que vous avez lu ce qui précède.}
 
 \subsection{Principes}
 
-\pakage{ledmac} permet d'obtenir très facilement deux textes en vis-à-vis; c'est donc un package particulièrement utile lorsque l'on veut faire de l'édition bilingue.
+\package{ledmac} permet d'obtenir très facilement deux textes en vis-à-vis; c'est donc un package particulièrement utile lorsque l'on veut faire de l'édition bilingue.
 
 Son principe de base est simple: on place des textes numérotés (inscrits entre \cs{beginnumbering} et \cs{endnumbering}) dans les environnements \enviro{Leftside} pour le texte de gauche,  \enviro{Rightside} pour le texte de droite.
 
@@ -286,7 +286,7 @@ Son principe de base est simple: on place des textes numérotés (inscrits entre
 \package{ledmac} peut mettre les textes sur deux colonnes ou sur deux pages en vis-à-vis (dans ce cas-là, le texte de gauche est toujours imprimé, bien sûr, sur une page paire).
 On utilise, dans le premier cas, l'environnement \enviro{pairs}, et l'environnement \enviro{pages} dans le second.
 
-Les commandes \cs{Columns} ou \cs{Pages}, selon qu'on soit dans l'environnement \enviro{pairs} ou \enviro{pages}, indiquent à \latex qu'il faut imprimer les boites jusqu'ici gardées en mémoire. 
+Les commandes \cs{Columns} ou \cs{Pages}, selon qu'on soit dans l'environnement \enviro{pairs} ou \enviro{pages}, indiquent à \LaTeX qu'il faut imprimer les boites jusqu'ici gardées en mémoire. 
 
 
 
@@ -324,7 +324,7 @@ Le texte dans une langue
 \end{latexcode}
 
 
-On obtient parfois le message d'erreur \enquote{Too many \cs{pstart} without printing}. Pas de panique! Cela signifie qu'il y a trop de boites en mémoire: \latex  doit en imprimer quelques-unes avant de pouvoir continuer.  Il y a deux solutions possible à cela.
+On obtient parfois le message d'erreur \enquote{Too many \cs{pstart} without printing}. Pas de panique! Cela signifie qu'il y a trop de boites en mémoire: \LaTeX  doit en imprimer quelques-unes avant de pouvoir continuer.  Il y a deux solutions possible à cela.
 
 La première solution consiste à  augmenter le nombre de boites que \package{ledpar} peut garder en mémoire, en mettant dans le préambule la commande \cs{maxchunks}\marg{nbre}, où \arg{nbre} est le nombre de boites en mémoire. Par défaut, ce nombre est de dix. Il suffit donc de l'augmenter  pour qu'il soit égal ou supérieur au nombre de boites de son  texte.
 
@@ -402,8 +402,8 @@ on peut changer la séparatiosn entre les colonnes
 
 la nouvelle commande pour empêcher les blancs
 
-les "flags": Its default definition is: \newcommand*{\Rlineflag}{R} This may be useful for parallel columns but for parallel pages it might be more appropriate to redefine it as:
-\renewcommand*{\Rlineflag}{}.
+%les "flags": Its default definition is: \newcommand*{\Rlineflag}{R} This may be useful for parallel columns but for parallel pages it might be more appropriate to redefine it as:
+%\renewcommand*{\Rlineflag}{}.
 
 The initial lan- guage selected for the right text is the babel package’s default. Also, it is the last \selectlanguage in a side that controls the language used in any notes for that
 side when they get printed. If you are using multilingual notes then it is probably safest to explicitly specify the language(s) for each note rather than relying on the language selection for the side. The right side language is also applied to the right side line numbers.
