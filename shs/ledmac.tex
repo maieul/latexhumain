@@ -135,8 +135,16 @@ Berlin brust auf.\& \footcite{tucholsky}
 La commande\cs{endstanzaextra} permet d'ajouter quelque chose à la fin de chaque strophe.
 Dans l'exemple qui précède, l'espace vertical entre chaque  stropheest ainsi obtenu par la ligne \verb|\let\endstanzaextra=\bigbreak|
  
-(on peut ajouter bcp de chose: voir le manuel)
-les nouvelles commande de maïeul > pour avoir le crochet
+
+\begin{plusloins}
+Pour obtenir un crochet indiquant les rejets de vers, selon la typographie française traditionnelle, il faut redéfinir la commande \csp{hangingsymbol}.
+
+\begin{latexcode}
+\renewcommand{\hangingsymbol}{[\,}
+\end{latexcode}
+
+La commande \csp{,} sert à indiquer une espace fine insécable.
+\end{plusloins}
 
 si on ne fait que des vers sans indentation> 0 partout (ex: faire des "stanza" de 10 vers .. ) S'il y a moins de vers qu'indiqué dans stanzaindents, pas grave.
 
