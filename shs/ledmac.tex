@@ -16,12 +16,12 @@ Dans le gestionnaire de packages, vous ne trouverez qu'une entrée pour  \packag
 
 \subsection{Numéroter un texte}
 
-La première fonctionnalité utile de \package{ledmac} est  de permettre  de numéroter un texte, en l'entourant des commandes \csp{beginnumbering} et \csp{endnumbering}. L'indication des changements de numéro varie selon que le texte est prose ou vers.
+La première fonctionnalité utile de \package{ledmac} est  de permettre  de numéroter les lignes d'un texte, en l'entourant des commandes \csp{beginnumbering} et \csp{endnumbering}. L'indication des changements de numéro varie selon que le texte est prose ou vers.
 
 \subsubsection{Numéroter un texte en prose}
 
 
-On débute la numérotation des lignes, au sein de cet environnement numbering, avec la commande \cs{pstart} et on la termine avec la commande \cs{pend} (le texte contenu entre ces deux commandes est mis dans une \enquote{boite}), comme dans l'exemple suivant:
+On débute la numérotation des lignes, au sein de cet environnement numbering, avec la commande \csp{pstart} et on la termine avec la commande \csp{pend} comme dans l'exemple suivant:
 
 \begin{latexcode}
 \beginnumbering
@@ -42,7 +42,7 @@ erat  elit consectetuer erat, id egestas pede nibh eget odio.
 
 On obtiens ainsi : \bigbreak
 
-\begin{minipage}{10cm}
+\begin{minipage}{0.8\textwidth}
 \beginnumbering
 \pstart %commencer la numérotation
 Lorem ipsum dolor sit amet, consectetuer adipiscing elit ?
@@ -61,9 +61,28 @@ erat  elit consectetuer erat, id egestas pede nibh eget odio.
 \end{minipage}
 \bigbreak
 
-%la doc dit qu'il faut à chaque paragraphe remettere pstart/pend , et qu'on peut empêcher cette inconvénient en créant un groupe et avec la commande autopar. Pourtant marche très bien sur plusieurs paragarphes à la suit sans passer par cette commande.. à voir!
 
-Si l'on veut interrompre puis reprendre la numérotation, il suffit de faire deux \enquote{boites} encadrées chacune entre un  \cs{pstart} et un \cs{pend}:  tout ce qui sera entre ces deux boites ne sera pas numéroté.
+Le texte qui n'est pas situé entre \cs{pstart} et \cs{pend} n'est pas numéroté. Cela peut donc être utile pour interrompre temporairement la numérotation :
+
+\begin{latexcode}
+\beginnumbering
+\pstart %commencer la numérotation
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit ?
+Morbi commodo ; ipsum sed pharetra gravida !
+Nullam sit amet enim. Suspendisse id : velit vitae ligula.
+Aliquam erat volutpat.
+\pend
+
+Texte non numéroté
+
+\pstart Sed quis velit. Nulla facilisi. Nulla libero. 
+Quisque facilisis erat a dui. 
+Nam malesuada ornare dolor.
+Cras gravida, diam sit amet rhoncus ornare, 
+erat  elit consectetuer erat, id egestas pede nibh eget odio.
+\pend %terminer la numérotation
+\endnumbering
+\end{latexcode}
 
 \subsubsection{\package{ledmac} et les vers}
 
