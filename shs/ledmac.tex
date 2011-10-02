@@ -14,11 +14,11 @@ Dans le gestionnaire de packages, vous ne trouverez qu'une entrée pour  \packag
 
 \section{Faire une édition critique avec \packagenoidx{ledmac}}\sindex[pkg]{ledmac}
 
-\subsection{Numéroter un texte}
+\subsection{Numéroter les lignes d'un texte}
 
 La première fonctionnalité utile de \package{ledmac} est  de permettre  de numéroter les lignes d'un texte, en l'entourant des commandes \csp{beginnumbering} et \csp{endnumbering}. L'indication des changements de numéro varie selon que le texte est prose ou vers.
 
-\subsubsection{Numéroter un texte en prose}
+\subsubsection{Texte en prose}
 
 
 On débute la numérotation des lignes, au sein de cet environnement numbering, avec la commande \csp{pstart} et on la termine avec la commande \csp{pend} comme dans l'exemple suivant:
@@ -84,11 +84,11 @@ erat  elit consectetuer erat, id egestas pede nibh eget odio.
 \endnumbering
 \end{latexcode}
 
-\subsubsection{\package{ledmac} et les vers}
+\subsubsection{Texte en vers}
 
-La  numérotation dans les textes en vers est un peu plus complexe. Les commandes \cs{pstart} et \cs{pend} disparaissent. A la place, on découpe son texte en strophes (\enquote{stanza}). Pour commencer la numérotation, on met donc la commande \cs{stanza}. Chaque vers se termine par un \ampersand , et le dernier vers de la strophe par \cs{\ampersand}.  
+La  numérotation dans les textes en vers est un peu plus complexe. Les commandes \cs{pstart} et \cs{pend} disparaissent. Il faut à la place découper son texte en strophes (\enquote{stanza}). Pour commencer la numérotation, nous insérons donc la commande \cs{stanza}. Chaque vers se termine par un \ampersand, et le dernier vers de la strophe par \cs{\ampersand}.  
 
-Il faut indiquer l'indentation de chaque vers de la strophe (faute de quoi on obtient le message \enquote{Missing number}), grâce à la commande \cs{setstanzaindents}\marg{$n_0, n_1, n_2, n_x$}. L'argument \arg{$n_0$} indique l'indentation du rejet si le vers est trop long pour tenir sur une seule ligne; \arg{$n_1$} correspond au premier vers, \arg{$n_2$} au deuxième et ainsi de suite.
+Il faut indiquer l'indentation de chaque vers de la strophe --- faute de quoi on obtient le message \enquote{Missing number} --- grâce à la commande \cs{setstanzaindents}\marg{$n_0, n_1, n_2, n_x$}. L'argument \arg{$n_0$} indique l'indentation du rejet si le vers est trop long pour tenir sur une seule ligne; \arg{$n_1$} correspond au premier vers, \arg{$n_2$} au deuxième et ainsi de suite.
 
 
 
@@ -96,7 +96,7 @@ Il faut indiquer l'indentation de chaque vers de la strophe (faute de quoi on ob
 \begin{latexcode}
 \beginnumbering
 \setstanzaindents{0,0,4,0,0,0,2,2,2,8}
-\let\endstanzaextra=\bigbreak
+\renewcommand{\endstanzaextra}{\bigbreak}
 \stanza
 Berlin setz an.&
 Es speien die Geschäfte&
@@ -125,7 +125,7 @@ donne ainsi:
 
 \beginnumbering
 \setstanzaindents{0,0,4,0,0,0,2,2,2,8}
-\let\endstanzaextra=\bigbreak
+\renewcommand{\endstanzaextra}{\bigbreak}
 \stanza
 Berlin setz an.&
 Es speien die Geschäfte&
@@ -151,9 +151,9 @@ Berlin brust auf.\& \footcite{tucholsky}
 
 
 
-La commande\cs{endstanzaextra} permet d'ajouter quelque chose à la fin de chaque strophe.
-Dans l'exemple qui précède, l'espace vertical entre chaque  stropheest ainsi obtenu par la ligne \verb|\let\endstanzaextra=\bigbreak|
- 
+La commande\csp{endstanzaextra} permet d'ajouter un contenu à la fin de chaque strophe.
+Dans l'exemple qui précède, l'espace vertical entre chaque  strophe est ainsi obtenu par la ligne 
+\cs{renewcommand}\verb={=\cs{endstanzaextra}\verb=}{=\csp{bigbreak}\verb=}=. La commande\csp{bigbreak}  insère un espace vertical. 
 
 \begin{plusloins}
 Pour obtenir un crochet indiquant les rejets de vers, selon la typographie française traditionnelle, il faut redéfinir la commande \csp{hangingsymbol}.
@@ -165,7 +165,9 @@ Pour obtenir un crochet indiquant les rejets de vers, selon la typographie fran�
 La commande \csp{,} sert à indiquer une espace fine insécable.
 \end{plusloins}
 
-si on ne fait que des vers sans indentation> 0 partout (ex: faire des "stanza" de 10 vers .. ) S'il y a moins de vers qu'indiqué dans stanzaindents, pas grave.
+Si vos vers ne possèdent pas d'indentation, mettez \verb=0= partout dans la commande \cs{stanzaindents}, sauf pour l'indentation de rejet. S'il y a moins de vers qu'indiqué dans \{csstanzaindents}, cela n'est pas problématique, l'inverse en revanche produit une erreur de compilation.
+
+
 
 \subsubsection{Aller plus loin}
 
