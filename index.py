@@ -12,8 +12,6 @@ regexp = "(\\\\hyperpage{(?P<id>[0-9]+)}, \\\\hyperpagetextbf{(?P=id)})"
 for ligne in lecture:
    
     resultat = re.findall(regexp,ligne)
-    print ligne
-    print resultat
     if len(resultat) == 1:
         sortie.append(ligne.replace('\hyperpage{'+resultat[0][1]+'}, ',''))
     else:
