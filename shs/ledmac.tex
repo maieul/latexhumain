@@ -169,26 +169,29 @@ Si vos vers ne possèdent pas d'indentation, mettez \verb=0= partout dans la com
 
 
 
-\subsubsection{Aller plus loin}
+\subsection{Aller plus loin}
 
-Comme on peut le voir dans les exemples précédents, Ledmac numérote par défaut  une ligne sur cinq. On peut changer cela très simplement avec les commandes suivantes:
+
+
+\subsubsection{Fréquence de numérotation des lignes}
+
+Comme on peut le voir dans les exemples précédents, par défaut \cs{ledmac} numérote  une ligne sur cinq. On peut changer cela très simplement avec les commandes suivantes:
 \cs{firstlinenum}\marg{nbre} et \cs{linenumincrement}\marg{nbre}.
+
 L'argument \arg{nbre} de la commande \cs{firstlinenum} indique quelle est  la première ligne qui sera numérotée ; celui de la commande \cs{linenumincrement} définit la fréquence avec laquelle les lignes seront numérotés. On place ces commande après \cs{beginnumbering}. 
 
-Ainsi, si l'on veut numéroter toutes les lignes en commençant par la première, il faut mettre \cs{linenumincrement}\marg{1} et \cs{firstlinenum}\marg{1} 
+Ainsi, si l'on veut numéroter toutes les lignes en commençant par la première, il faut mettre \cs{linenumincrement}\marg{1} et \cs{firstlinenum}\marg{1}. 
 
 
-\bigbreak
 
--faire des "sous-numérotation
-> avec \cs{firstsublinenum} 
-et \cs{sublinenumincrement}
 
-changer le numéro des lignes
-\cs{setline}\marg{num} and \cs{advanceline}\marg{num} > modifier le numéro d'une ligne 
-setline> (la ligne d'après> + 1..)
-\cs{skipnumbering} > ne pas prendre en compte dans la numérotation telle ligne
+\subsubsection{Changer le numéro de certaines lignes}
 
+La commande \cs{setline}\marg{num} permet de changer le numéro d'une ligne. Les lignes suivantes sont numérotées continuent la numérotation à partir de ce nombre ; \cs{advanceline}\marg{num} permet d'ajouter \arg{num} au numéro de la ligne.
+
+La commande \cs{skipnumbering} permet de ne pas prendre en compte la ligne courante dans la numérotation.
+
+\subsubsection{Style et position des numéros de ligne}
 - où apparissent les numéro des ligne et comment: %\leftlinenum \rightlinenum \linenumsep \linenumberstyle \sublinenumberstyle
 
 
