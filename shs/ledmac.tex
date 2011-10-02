@@ -100,7 +100,7 @@ Il faut indiquer l'indentation de chaque vers de la strophe --- faute de quoi on
 \begin{latexcode}
 \beginnumbering
 \setstanzaindents{0,0,4,0,0,0,2,2,2,8}
-\renewcommand{\endstanzaextra}{\bigbreak}
+\let\endstanzaextra\bigbreak
 \stanza
 Berlin setz an.&
 Es speien die Geschäfte&
@@ -129,7 +129,7 @@ donne ainsi:
 
 \beginnumbering
 \setstanzaindents{0,0,4,0,0,0,2,2,2,8}
-\renewcommand{\endstanzaextra}{\bigbreak}
+\let\endstanzaextra\bigbreak
 \stanza
 Berlin setz an.&
 Es speien die Geschäfte&
@@ -157,7 +157,7 @@ Berlin brust auf.\& \footcite{tucholsky}
 
 La commande\csp{endstanzaextra} permet d'ajouter un contenu à la fin de chaque strophe.
 Dans l'exemple qui précède, l'espace vertical entre chaque  strophe est ainsi obtenu par la ligne 
-\cs{renewcommand}\verb={=\cs{endstanzaextra}\verb=}{=\csp{bigbreak}\verb=}=. La commande\csp{bigbreak}  insère un espace vertical. 
+\cs{let}\cs{endstanzaextra}\cs{bigbreak}. La commande\csp{bigbreak}  insère un espace vertical. 
 
 \begin{plusloins}
 Pour obtenir un crochet indiquant les rejets de vers, selon la typographie française traditionnelle, il faut redéfinir la commande \csp{hangingsymbol}.
