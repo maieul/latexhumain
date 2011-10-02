@@ -16,7 +16,7 @@ all:principal.pdf
 	@echo "Compilation Biber"
 	@$(BIBER) $*
 	splitindex -m "makeindex -s latex-humain.ist" $*.idx 
-	python2 index.py 
+	python index.py 
 	@echo "Compilation XELATEX 2"
 
 
