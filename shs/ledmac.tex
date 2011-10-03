@@ -406,6 +406,16 @@ Le texte dans une langue
   \end{pages} % Fin la composition en parallèle.
 \end{latexcode}
 
+\begin{attention}
+Si l'un des textes n'est pas dans la langue principale du document, il faut préciser le changement de langue\renvoi{langue} \emph{à l'intérieur} de l'environnement \enviro{Leftside} ou {Rightside}.
+
+\begin{latexcode}
+\begin{Leftside}
+\begin{<langue>}
+\end{<langue>}
+\end{Leftside}
+\end{latexcode}
+\end{attention}
 
 On obtient parfois le message d'erreur \enquote{Too many \cs{pstart} without printing}. Pas de panique ! Cela signifie qu'il y a trop de boîtes en mémoire: \LaTeX  doit en imprimer quelques-unes avant de pouvoir continuer.  Il y a deux solutions possible à ce problème.
 
