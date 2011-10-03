@@ -224,8 +224,12 @@ Comme on peut le voir dans les exemples précédents, par défaut \cs{ledmac} nu
 
 L'argument \arg{nbre} de la commande \cs{firstlinenum} indique quelle est  la première ligne qui sera numérotée ; celui de la commande \cs{linenumincrement} définit la fréquence avec laquelle les lignes seront numérotés. On place ces commande après \cs{beginnumbering}. 
 
-Ainsi, si l'on veut numéroter toutes les lignes en commençant par la première, il faut mettre \cs{linenumincrement}\marg{1} et \cs{firstlinenum}\marg{1}. 
+Ainsi, si l'on veut numéroter toutes les lignes en commençant par la première, il faut mettre :
 
+\begin{latexcode}
+\linenumincrement{1}
+\firstlinenum{1}
+\end{latexcode}
 
 
 
@@ -234,6 +238,21 @@ Ainsi, si l'on veut numéroter toutes les lignes en commençant par la première
 La commande \cs{setline}\marg{num} permet de changer le numéro d'une ligne. Les lignes suivantes sont numérotées continuent la numérotation à partir de ce nombre ; \cs{advanceline}\marg{num} permet d'ajouter \arg{num} au numéro de la ligne.
 
 La commande \cs{skipnumbering} permet de ne pas prendre en compte la ligne courante dans la numérotation.
+
+\subsubsection{Sous-numéro}
+
+Il est possible d'indiquer que des lignes sont des \enquote{sous-lignes} c'est à dire de stopper temporairement la numérotation et de commencer une sous-numérotation.
+
+On commence la sous-numérotation par \csp{startsub} et on la finit par \csp{ensub}.
+Si la première commande se situe au milieu d'une ligne, la sous-numérotation commence à la ligne suivante.
+
+Les commandes \cs{subfirstlinenum}\marg{nbre} et \cs{sublinenumincrement}\marg{nbre} permettent de régler la première sous-ligne numérotée et la fréquence de sous-numérotation.
+
+\inputminted{exemples/shs/ledmac/subline.tex}
+
+\begin{minipage}{0.8\textwidth}
+\input{exemples/shs/ledmac/subline.tex}
+\end{minipage}
 
 \subsubsection{Style et position des numéros de ligne}
 - où apparissent les numéro des ligne et comment: %\leftlinenum \rightlinenum \linenumsep \linenumberstyle \sublinenumberstyle
@@ -297,8 +316,6 @@ Nous obtenons ceci:
 
 \begin{minipage}{0.8\textwidth}
 \beginnumbering 
-\setlinenum{224}
-\firstlinenum{225}
 \linenumincrement{5}
 \setstanzaindents{0,0,1,0,1,0,1,0,1}
 \stanza
