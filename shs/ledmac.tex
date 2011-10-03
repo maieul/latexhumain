@@ -253,7 +253,11 @@ Dans les notes de type \cs{Afootnote}\dots, lorsque le \enquote{lemme} est trop 
 
 \begin{plusloins}
 Il est aussi possible de mettre des notes de fin. Là encore, cinq sortes possibles:  de \csp{Aendnote} à \csp{Eendnote}.
-\end{plusloins}
+
+La commande \cs{marginpar} ne fonctionne pas dans les textes numérotés. Pour compenser cela, le package propose les commandes \csp{ledleftnote}\marg{note} et \csp{ledrightnote}\marg{note} pour des notes de marge gauche et droite.
+
+Il existe aussi une commande \csp{ledsidenote}\marg{note} qui insère par défaut la note dans la marge de droite, mais \csp{sidenotemargin}\verb={left}= permet de dire de l'insérer à gauche.
+\end{plusloins} 
 
 Dans l'exemple suivant, nous avons utilisé deux types de notes avec lemme, dont l'une où nous avons mis un lemme \enquote{raccourci}), et  un type de note sans lemme:
 
