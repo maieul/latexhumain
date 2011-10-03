@@ -478,19 +478,44 @@ Si vous utilisez la commande \cs{numberpstarttrue}\renvoi{numberpstarttrue} pour
 
 
 
-\subsection{Personnaliser}
+\subsection{Affiner la présentation}
 
 
-(Bof! trouver autre titre)
+\subsubsection{Vers de longueurs inégales}
+
+Si des vers sur des pages parallèles prennent un nombre de lignes inégales, par exemple si le vers de gauche fait deux lignes et celui de droite n'en fait qu'une, alors \package{ledpar} introduit un blanc après le vers le plus long.
+
+Il est possible de dire à \package{ledpar} de ne pas introduire ce blanc, mais de produire un léger décalage des vers, décalage rattrapé à chaque changement de pages. Pour ce faire, il faut passer l'option \option{shiftedverses} au chargement du package.
+
+\begin{latexcode}
+\usepackage[shiftedverses]{ledpar}
+\end{latexcode}
+ 
+ \subsubsection{Tailles et séparateurs des colonnes}
+
+Par défaut, les colonnes font 45\% d'une largeur normale de texte. On peut modifier ce réglage en redéfinissant les longueurs \csp{Lcolwidth} et \csp{Rcolwidth} respectivement pour la colonne gauche et droite. On utilise pour ce faire la commande \cs{setlength}\renvoi{setlength}\renvoi{longueurrelative}. Par exemple pour avoir 47\% de la largeur normale d'un texte.
+
+\begin{latexcode}
+\setlength{\Lcolwidth}{0.47\textwidth}
+\setlength{\Rcolwidth}{0.47\textwidth}
+\end{latexcode}
+
+De même on peut définir un filet de séparation grâce à la longueur \csp{columnrulewidth}\renvoi{unite}.
+
+\begin{latexcode}
+\setlength{columnrulewidth}{0.4pt}
+\end{latexcode}
+
+\begin{latexcode}
+\end{latexcode}
+
+\subsubsection{Numérotation des lignes de droites}
+
+Par défaut, les lignes de droites sont suivies d'un \forme{R}, correspondant au terme \cs{Right}. Pour obtenir à la place un \forme{D}, il sufiit de rédéfinir la commande \csp{Rlineflag} :
+
+\begin{latexcode}
+\renewcommand{\Rlineflag}{D}
+\end{latexcode}
 
 
 
-on peut changer la séparatiosn entre les colonnes
-
-la nouvelle commande pour empêcher les blancs
-
-%les "flags": Its default definition is: \newcommand*{\Rlineflag}{R} This may be useful for parallel columns but for parallel pages it might be more appropriate to redefine it as:
-%\renewcommand*{\Rlineflag}{}.
-
-The initial lan- guage selected for the right text is the babel package’s default. Also, it is the last \selectlanguage in a side that controls the language used in any notes for that
-side when they get printed. If you are using multilingual notes then it is probably safest to explicitly specify the language(s) for each note rather than relying on the language selection for the side. The right side language is also applied to the right side line numbers.
