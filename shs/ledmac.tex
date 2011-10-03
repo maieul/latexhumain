@@ -177,7 +177,7 @@ Si vos vers ne possèdent pas d'indentation, mettez \verb=0= partout dans la com
 
 \subsubsection{Numéroter les paragraphes}
 
-Il est possible d'insérer un nombre à chaque \cs{pstart} en utilisant la commande \csp{numberpstarttrue}, ce qui permet ainsi de numéroter les paragraphes. À chaque commande \cs{beginnumbering}, la numérotation recommence.
+Il est possible d'insérer un nombre à chaque \cs{pstart} en utilisant la commande \csp{numberpstarttrue}\label{numberpstarttrue}, ce qui permet ainsi de numéroter les paragraphes. À chaque commande \cs{beginnumbering}, la numérotation recommence.
 
 \begin{minipage}{0.8\textwidth}
 \numberpstartfalse
@@ -352,26 +352,26 @@ Les packages \package{ifthen} et \package{xargs} sont extrêmement utiles : nous
 
 \section{Mettre deux textes en vis-à-vis: le package \packagenoidx{ledpar}}\sindex[pkg]{ledpar}
 
-\prealable{
-Le package \package{ledpar}, qui sert à mettre un texte et sa traduction en vis-à-vis, fonctionne avec \package{ledmac}. Tout ce qui concerne l'apparat critique et la numérotation dans \package{ledmac} est ainsi valable ici aussi. Nous considérons donc, pour éviter les redites, que vous avez lu ce qui précède.}
+\begin{prealable}
+Le package \package{ledpar}, qui sert à mettre un texte et sa traduction en vis-à-vis, fonctionne avec \package{ledmac}. Tout ce qui concerne l'apparat critique et la numérotation dans \package{ledmac} est ainsi valable ici aussi. Nous considérons donc, pour éviter les redites, que vous avez lu ce qui précède.
+\end{prealable}
+
 
 \subsection{Principes}
 
-\package{ledmac} permet d'obtenir très facilement deux textes en vis-à-vis; c'est donc un package particulièrement utile lorsque l'on veut faire de l'édition bilingue.
+Le package \package{ledmac} permet d'obtenir très facilement deux textes en vis-à-vis; c'est donc un package particulièrement utile lorsque l'on veut faire de l'édition bilingue.
 
-Son principe de base est simple: on place des textes numérotés (inscrits entre \cs{beginnumbering} et \cs{endnumbering}) dans les environnements \enviro{Leftside} pour le texte de gauche,  \enviro{Rightside} pour le texte de droite.
+Son principe de base est simple: on place des textes numérotés --- inscrits entre \cs{beginnumbering} et \cs{endnumbering}  --- dans les environnements \enviro{Leftside} pour le texte de gauche,  \enviro{Rightside} pour le texte de droite.
 
-\package{ledmac} fait correspondre en vis-à-vis chaque \enquote{boite} d'un texte à la boite correspondante de l'autre texte. Pour la poésie,  chaque vers  (terminé par \ampersand ), est une boite;  en prose, les boites sont délimitées par  \cs{pstart} et un \cs{pend}.  Il est recommandé, en prose, de mettre chaque paragraphe dans une boite, pour obtenir une synchronisation la plus fine possible --- donc de débuter chaque paragraphe par \cs{pstart} et de finir par \cs{pend}. 
-
-
-\package{ledmac} peut mettre les textes sur deux colonnes ou sur deux pages en vis-à-vis (dans ce cas-là, le texte de gauche est toujours imprimé, bien sûr, sur une page paire).
-On utilise, dans le premier cas, l'environnement \enviro{pairs}, et l'environnement \enviro{pages} dans le second.
-
-Les commandes \cs{Columns} ou \cs{Pages}, selon qu'on soit dans l'environnement \enviro{pairs} ou \enviro{pages}, indiquent à \LaTeX qu'il faut imprimer les boites jusqu'ici gardées en mémoire. 
+\package{ledmac} fait correspondre en vis-à-vis chaque \enquote{boîte} d'un texte à la boîte correspondante de l'autre texte. Pour la poésie,  chaque vers  (terminé par \ampersand ), est une boîte;  en prose, les boîtes sont délimitées par  \cs{pstart} et un \cs{pend}.  Il est recommandé, en prose, de mettre chaque paragraphe dans une boîte, pour obtenir une synchronisation la plus fine possible --- donc de débuter chaque paragraphe par \cs{pstart} et de finir par \cs{pend}. 
 
 
+\package{ledmac} peut mettre les textes sur deux colonnes ou sur deux pages en vis-à-vis : bien sûr dans ce dernier  cas le texte de gauche est toujours imprimé sur une page paire.
+On utilise dans le premier cas l'environnement \enviro{pairs} ; l'environnement \enviro{pages} dans le second.
 
-\bigbreak
+Les commandes \cs{Columns} ou \cs{Pages}, selon qu'on soit dans l'environnement \enviro{pairs} ou \enviro{pages}, indiquent à \LaTeX  d'imprimer les boîtes jusqu'ici gardées en mémoire. 
+
+
 
 Résumons!
 
@@ -405,12 +405,14 @@ Le texte dans une langue
 \end{latexcode}
 
 
-On obtient parfois le message d'erreur \enquote{Too many \cs{pstart} without printing}. Pas de panique! Cela signifie qu'il y a trop de boites en mémoire: \LaTeX  doit en imprimer quelques-unes avant de pouvoir continuer.  Il y a deux solutions possible à cela.
+On obtient parfois le message d'erreur \enquote{Too many \cs{pstart} without printing}. Pas de panique ! Cela signifie qu'il y a trop de boîtes en mémoire: \LaTeX  doit en imprimer quelques-unes avant de pouvoir continuer.  Il y a deux solutions possible à ce problème.
 
-La première solution consiste à  augmenter le nombre de boites que \package{ledpar} peut garder en mémoire, en mettant dans le préambule la commande \cs{maxchunks}\marg{nbre}, où \arg{nbre} est le nombre de boites en mémoire. Par défaut, ce nombre est de dix. Il suffit donc de l'augmenter  pour qu'il soit égal ou supérieur au nombre de boites de son  texte.
+La première solution consiste à  augmenter le nombre de boîtes que \package{ledpar} peut garder en mémoire, en mettant dans le préambule la commande \cs{maxchunks}\marg{nbre}, où \arg{nbre} est le nombre de boîtes en mémoire. Par défaut, ce nombre est de dix. Il suffit donc de l'augmenter  pour qu'il soit égal ou supérieur au nombre de boîtes de son  texte. 
+
+Toutefois \TeX ne disposent pas d'une place illimité pour les boîtes, c'est pourquoi il est souvent préférable d'utiliser la seconde solution.
 
 
-Avec la deuxième solution (que l'on peut d'ailleurs coupler avec la première), on  coupe son texte en plusieurs grands ensembles de boites (c'est-à-dire en plusieurs environnements \enviro{Leftside} et \enviro{Rightside}, se terminant chacun par \cs{Columns} ou \cs{Pages}).  Cette solution est préférable pour les longs textes. Les divisions internes du textes se reflètent alors dans les environnements \enviro{Leftside} et \enviro{Rightside}.   Mais si l'on met simplement :
+Celle-ci, que l'on peut d'ailleurs coupler avec la première, consiste à  couper son texte en plusieurs grands ensembles de boîtes --- c'est-à-dire en plusieurs environnements \enviro{Leftside} et \enviro{Rightside}, se terminant chacun par \cs{Columns} ou \cs{Pages}.  Cette solution est préférable pour les longs textes. Les divisions internes du textes se reflètent alors dans les environnements \enviro{Leftside} et \enviro{Rightside}.   Mais si l'on met simplement :
 
 \begin{latexcode}
 \begin{pages}  
@@ -437,7 +439,7 @@ La traduction de la deuxième partie
 
 on se retrouve avec une numérotation qui recommence à zéro pour la deuxième partie du texte. 
 
-La commande \cs{memorydump} permet de résoudre ce problème. Elle équivaut en fait à un \cs{endnumbering} immédiatement suivit d'un \cs{beginnumbering}. Il faut donc mettre: 
+La commande \cs{memorydump} permet de résoudre ce problème. Elle équivaut en fait à un \cs{endnumbering} immédiatement suivit d'un \cs{beginnumbering}, mais sans réinitialisation. Il faut donc mettre: 
 
 \begin{latexcode}
 \begin{pages}  
@@ -467,7 +469,11 @@ La traduction de la deuxième partie
 Ainsi, la numérotation du texte se fait en continue entre la première partie et la deuxième partie.
 
 
+\begin{plusloins}
+Il est bien sûr possible de mettre en parallèle un texte en vers et sa traduction en prose. 
 
+Si vous utilisez la commande \cs{numberpstarttrue}\renvoi{numberpstarttrue} pour numéroter les \cs{pstart}s, sachez que la numérotation gauche et la numérotation droite fonctionnent avec deux compteurs différents : \compteur{pstartL} et \compteur{pstartR}.\renvoi{apparencecompteur}\renvoi{manipcompteurs}
+\end{plusloins}
 
 
 
