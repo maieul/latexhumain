@@ -158,7 +158,7 @@ Berlin brust auf.\& \footcite{tucholsky}
 La commande\csp{endstanzaextra} permet d'ajouter un contenu à la fin de chaque strophe.
 Dans l'exemple qui précède, l'espace vertical entre chaque  strophe est ainsi obtenu par la ligne 
 \cs{let}\cs{endstanzaextra}\cs{bigbreak}. La commande\csp{bigbreak}  insère un espace vertical. 
-
+ La commande \csp{let}\cs{cmd1}\cs{cmd2} est une commande \TeX qui  copie la commande \cs{cmd2} dans \cs{cmd1}.
 \begin{plusloins}
 Pour obtenir un crochet indiquant les rejets de vers, selon la typographie française traditionnelle, il faut redéfinir la commande \csp{hangingsymbol}.
 
@@ -239,23 +239,23 @@ On peut aussi changer façon dont apparaissent es numéro des lignes (voir doc)
 
 \subsection{L'apparat critique}
 
-Les notes de bas de page se présentent de cette façon:  \cs{Afootnote}\marg{texte}. Il y en a 5 types, de \cs{Afootnote} à \cs{Efootnote}
+Les notes de bas de page se présentent de cette façon:  \cs{Afootnote}\marg{texte}. Il y en existe cinq types, de \csp{Afootnote} à \csp{Efootnote}.
 
 
 Ce type de notes appellent un \enquote{lemme}, c'est-à-dire une partie du texte annoté qui doit reprise dans la note de bas de page, précédée du numéro de la ou des lignes correspondantes. 
 
-La note de bas de page est appelée de la façon suivante:  \cs{edtext}\marg{lemme}\marg{commande}. L'argument \arg{commande} contient l'appel à la note: \cs{Afootnote}, \cs{Bfootnote}.
+La note de bas de page est appelée de la façon suivante:  \csp{edtext}\marg{lemme}\marg{commande}. L'argument \arg{commande} contient l'appel à la note: \csp{Afootnote}, \csp{Bfootnote} etc.
 
-Il est aussi possible d'utiliser  des  notes de bas de page \enquote{normales}, appelées par un numéro dans le texte. Il y en a là aussi cinq sortes: de \cs{footnoteA} à \cs{footnoteB}.
+Il est aussi possible d'utiliser  des  notes de bas de page \enquote{normales}, appelées par un numéro dans le texte. Il  en existe là aussi cinq sortes: de \csp{footnoteA} à \csp{footnoteE}.
 
-Dans les notes de type \cs{Afootnotes}\dots, lorsque ce \enquote{lemme} est trop grand, on peut choisir de l'abbréger. On utilise pour cela la commande suivante: 
-\cs{edtext}\marg{le lemme trop long}\{\cs{lemma}\marg{le lemme raccourci}\cs{Bfootnote\marg{la note}}\}. 
+Dans les notes de type \cs{Afootnote}\dots, lorsque le \enquote{lemme} est trop grand, nous pouvons choisir de l'abréger. La syntaxe est la suivante: 
+\cs{edtext}\marg{le lemme trop long}\{\csp{lemma}\marg{le lemme raccourci}\cs{Bfootnote\marg{la note}}\}. 
 
 \begin{plusloins}
-Il est aussi possible de mettre des notes de fin. Là encore, cinq sortes possibles:  de \cs{Aendnote} à \cs{Eendnote}.
+Il est aussi possible de mettre des notes de fin. Là encore, cinq sortes possibles:  de \csp{Aendnote} à \csp{Eendnote}.
 \end{plusloins}
 
-Dans l'exemple suivant, nous avons utilisé deux types de notes avec lemme (dont une où j'ai mis un lemme \enquote{raccourci}), et  un type de note sans lemme:
+Dans l'exemple suivant, nous avons utilisé deux types de notes avec lemme, dont l'une où nous avons mis un lemme \enquote{raccourci}), et  un type de note sans lemme:
 
 
 \begin{latexcode}
@@ -275,11 +275,11 @@ Quaeso, tuum nobis fidum transmitte ministrum,&
  Qui tua grata mihi perferat orsa, uale.\&
 \end{latexcode}
 
-On obtiens alors ceci: 
+Nous obtenons ceci: 
 
-\bigbreak
 
-\begin{minipage}{\textwidth}
+
+\begin{minipage}{0.8\textwidth}
 \beginnumbering 
 \setlinenum{224}
 \firstlinenum{225}
@@ -305,25 +305,39 @@ Il faut compiler deux fois pour obtenir le numéro des lignes dans l'apparat cri
 
 
 Il est conseillé de s'aider en changeant le nom des types de notes, en indiquant par exemple dans son préambule: 
+\begin{latexcode}
+\let\variantes\Afootnote
+\let\citations\Bfootnote
+\let\eclaircissements\footnoteA
+Et ainsi de suite …
+\end{latexcode}
 
-\noindent \verb|\let\variantes=\Afootnote| \\
-\verb|\let\citations=\Bfootnote| \\
-\verb|\let\eclaircissements=\footnoteA| \\
-Et ainsi de suite\dots 
-
-Mais il est plus conseillé de créer des commandes personnelles pour simplifier plus encore  (et surtout clarifier) la rédaction d'un apparat critique; par exemple:
+Mais il est aussi conseillé de créer des commandes personnelles pour simplifier   --- et surtout clarifier --- plus encore la rédaction d'un apparat critique; par exemple:
 
 \begin{latexcode}
 \usepackage{ifthen, xargs}
-\newcommandx*\variantes[3][2]{\edtext{#1}{%
-    \ifthenelse{\equal{#2}{}}{}{\lemma{#2}}
-\Afootnote{#3}}}
+\newcommandx*{\variantes}[3][2]{%
+	\edtext{#1}{%
+    	\ifthenelse{\equal{#2}{}}{}{\lemma{#2}}%
+	\Afootnote{#3}}%
+	}
 \end{latexcode}
 
-Cette commande est un peu plus complexe parce qu'elle fait appel aux packages \packagenoidx{xargs}\sindex[pkg]{xargs} et \packagenoidx{ifthen}\sindex[pkg]{ifthen}. Le premier argument est le lemme; le deuxième argument, optionnel (ce qu'indique, dans la commande, l'argument [2]), contient le lemme raccourci; enfin le dernier argument contient l'annotation. La commande peut donc se résumer ainsi : \cs{variantes}\marg{lemme}\oarg{lemme plus court}\marg{annotation} : ce qui est, il faut le reconnaître, plus simplement utilisable que \cs{edtext}\marg{le lemme trop long}\{\cs{lemma}\marg{le lemme raccourci}\cs{Bfootnote\marg{la note}}\}
+Cette commande est un peu plus complexe parce qu'elle fait appel aux packages \package{xargs} et \packageno{ifthen}. 
+
+La commande \csp{newcommandx}, fournie par \package{newcommandx*} permet de créer une commande avec des arguments optionnels. Le premier argument est le lemme ; le deuxième argument, optionnel --- ce qu'indique  dans la commande, l'argument \verb=[2]= --- contient le lemme raccourci ; enfin le dernier argument contient l'annotation.
+
+Ligne 4, la commande \csp{ifthenelse}\arg{test}\arg{sioui}\arg{sinon} du package \package{ifthen} permet d'effectuer un test : ici nous regardons si le deuxième argument est vide (\csp{equal}\verb=\equal{#2}{}=) : si ce n'est pas le cas, alors on l'utilise pour une commande \cs{lemma}.
+
+ L'utilisation de la commande peut donc se résumer ainsi : \cs{variantes}\marg{lemme}\oarg{lemme plus court}\marg{annotation} : ce qui est, il faut le reconnaître, plus simplement utilisable que \cs{edtext}\marg{le lemme trop long}\{\cs{lemma}\marg{le lemme raccourci}\cs{Bfootnote\marg{la note}}\}
+
+\begin{plusloins}
+Les packages \package{ifthen} et \package{xargs} sont extrêmement utiles : nous ne pouvons détailler ici leurs utilisation. Nous renvoyons à leurs documentations\footcites{ifthen}{xargs}.
+\end{plusloins}
 
 
-(Mettre un renvoi pour xargs et ifthen)
+
+
 
  
 
