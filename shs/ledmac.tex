@@ -44,7 +44,7 @@ erat  elit consectetuer erat, id egestas pede nibh eget odio.
 \endnumbering
 \end{latexcode}
 
-On obtiens ainsi : \bigbreak
+On obtiens ainsi : 
 
 \begin{minipage}{0.8\textwidth}
 \beginnumbering
@@ -63,7 +63,7 @@ erat  elit consectetuer erat, id egestas pede nibh eget odio.
 \pend
 \endnumbering
 \end{minipage}
-\bigbreak
+
 
 
 Le texte qui n'est pas situé entre \cs{pstart} et \cs{pend} n'est pas numéroté. Cela peut donc être utile pour interrompre temporairement la numérotation :
@@ -175,7 +175,34 @@ Si vos vers ne possèdent pas d'indentation, mettez \verb=0= partout dans la com
 
 \subsection{Aller plus loin}
 
+\subsubsection{Numéroter les paragraphes}
 
+Il est possible d'insérer un nombre à chaque \cs{pstart} en utilisant la commande \csp{numberpstarttrue}, ce qui permet ainsi de numéroter les paragraphes. À chaque commande \cs{beginnumbering}, la numérotation recommence.
+
+\begin{minipage}{0.8\textwidth}
+\numberpstartfalse
+\beginnumbering
+\pstart %commencer la numérotation
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit ?
+Morbi commodo ; ipsum sed pharetra gravida !
+Nullam sit amet enim. Suspendisse id : velit vitae ligula. 
+Aliquam erat volutpat.
+
+
+Sed quis velit. Nulla facilisi. Nulla libero. 
+ Quisque facilisis erat a dui. % onreprend la numérotation
+Nam malesuada ornare dolor.
+Cras gravida, diam sit amet rhoncus ornare, 
+erat  elit consectetuer erat, id egestas pede nibh eget odio.
+\pend
+\endnumbering
+\end{minipage}
+
+Pour arrêter la numérotation,  utilisez la commande \csp{numberpstartfalse}.
+
+\begin{plusloins}
+La numérotation se fait à l'aide d'un compteur \compteur{pstart}. Nous expliquons plus loin ce qu'est un compteur, comment en modifier l'apparence et la valeur.\renvoi{apparencecompteur}\renvoi{manipcompteurs} Avec ces informations vous pourraient aisément changer la numérotation des \cs{pstart}s.
+\end{plusloins}
 
 \subsubsection{Fréquence de numérotation des lignes}
 
