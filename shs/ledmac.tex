@@ -90,12 +90,19 @@ erat  elit consectetuer erat, id egestas pede nibh eget odio.
 \endnumbering
 \end{latexcode}
 
+La numérotation recommence à chaque \cs{beginnumbering}.
+
+\begin{attention}
+Si votre sections numérotées sont très longues, il peu arriver d'avoir une erreur de compilation \forme{TeX capacity exceeded}. Une solution\footnote{Une autre solution serait de régler la configuration de \TeX pour lui allouer plus de mémoire.} est  d'utiliser de temps en temps dans le texte la commande \csp{pausenumbering} suivie de \csp{resumenumbering} au sein de  la section numérotée.
+
+Cette séquence de commandes correspond \emph{grosso-modo} à la séquence \cs{endnumbering}\cs{beginnumbering} mais sans recommencer la numérotation.
+\end{attention}
+
 \subsubsection{Texte en vers}
 
 La  numérotation dans les textes en vers est un peu plus complexe. Les commandes \cs{pstart} et \cs{pend} disparaissent. Il faut à la place découper son texte en strophes (\enquote{stanza}). Pour commencer la numérotation, nous insérons donc la commande \cs{stanza}. Chaque vers se termine par un \ampersand, et le dernier vers de la strophe par \cs{\ampersand}.  
 
 Il faut indiquer l'indentation de chaque vers de la strophe --- faute de quoi on obtient le message \enquote{Missing number} --- grâce à la commande \cs{setstanzaindents}\marg{$n_0, n_1, n_2, n_x$}. L'argument \arg{$n_0$} indique l'indentation du rejet si le vers est trop long pour tenir sur une seule ligne; \arg{$n_1$} correspond au premier vers, \arg{$n_2$} au deuxième et ainsi de suite.
-
 
 
 
@@ -232,7 +239,6 @@ La commande \cs{skipnumbering} permet de ne pas prendre en compte la ligne coura
 - où apparissent les numéro des ligne et comment: %\leftlinenum \rightlinenum \linenumsep \linenumberstyle \sublinenumberstyle
 
 
-Un moyen pour ne pas encombrer la mémoire qd texte trop long : faire de plus petites sections numérotées. Mais si on met endnumbering ,  avec beginnumbering on recommencera la numérotation à zéro.  Utiliser à la place pausenumbering - resumenumbering > avec resume numbering la nmérotation reprend où elle s'était arrêté. Si on utilise ces commande essentiellement pour des question de mémoire conseil de faire une commande exprès: \verb|\newcommand{\memorybreak}{\pausenumbering\resumenumbering}|> plus qu'à mettre memorybreak de temps en temps dans le texte ..
 
 \cs{lineation}\marg{arg} > \arg{page} > numérotation recommence à chaque page \arg{section} (par défut) : numérotation recommence à chaque section.
 Possible aussi de changer l'endroit où apparit le numéro de page (par défaut ds la marge de gauche): \cs{linenummargin}\marg{arg}, dt les arguments peuvent être left, right, inner, ou outer
@@ -245,10 +251,10 @@ On peut aussi changer façon dont apparaissent es numéro des lignes (voir doc)
 
 \subsection{L'apparat critique}
 
-Les notes de bas de page se présentent de cette façon:  \cs{Afootnote}\marg{texte}. Il y en existe cinq types, de \csp{Afootnote} à \csp{Efootnote}.
+Les notes de bas de page se présentent de cette façon:  \cs{Afootnote}\marg{texte}. Il en existe cinq types, de \csp{Afootnote} à \csp{Efootnote}.
 
 
-Ce type de notes appellent un \enquote{lemme}, c'est-à-dire une partie du texte annoté qui doit reprise dans la note de bas de page, précédée du numéro de la ou des lignes correspondantes. 
+Ce type de note appelle un \enquote{lemme}, c'est-à-dire une partie du texte annoté qui doit reprise dans la note de bas de page, précédée du numéro de la ou des lignes correspondantes. 
 
 La note de bas de page est appelée de la façon suivante:  \csp{edtext}\marg{lemme}\marg{commande}. L'argument \arg{commande} contient l'appel à la note: \csp{Afootnote}, \csp{Bfootnote} etc.
 
