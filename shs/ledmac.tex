@@ -90,7 +90,7 @@ erat  elit consectetuer erat, id egestas pede nibh eget odio.
 \endnumbering
 \end{latexcode}
 
-La numérotation recommence à chaque \cs{beginnumbering}.
+La numérotation recommence à chaque \cs{beginnumbering}. Il est toutefois possible d'indiquer de recommencer la numérotation  à chaque page \emph{via} la commande \csp{lineation}\verb={page}=.
 
 \begin{attention}
 Si votre sections numérotées sont très longues, il peu arriver d'avoir une erreur de compilation \forme{TeX capacity exceeded}. Une solution\footnote{Une autre solution serait de régler la configuration de \TeX pour lui allouer plus de mémoire.} est  d'utiliser de temps en temps dans le texte la commande \csp{pausenumbering} suivie de \csp{resumenumbering} au sein de  la section numérotée.
@@ -259,13 +259,8 @@ Les commandes \cs{subfirstlinenum}\marg{nbre} et \cs{sublinenumincrement}\marg{n
 
 
 
-\cs{lineation}\marg{arg} > \arg{page} > numérotation recommence à chaque page \arg{section} (par défut) : numérotation recommence à chaque section.
+
 Possible aussi de changer l'endroit où apparit le numéro de page (par défaut ds la marge de gauche): \cs{linenummargin}\marg{arg}, dt les arguments peuvent être left, right, inner, ou outer
-
-\cs{startsub} \cs{endsub} > ligne numérotés 10.1, 10.2, 10.3,.. et non 10, 11, 12 
-
-On peut aussi changer façon dont apparaissent es numéro des lignes (voir doc)
-
 
 
 \subsection{L'apparat critique}
