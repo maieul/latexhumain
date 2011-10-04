@@ -15,6 +15,8 @@ all:principal.pdf
 	@$(XELATEX) $<
 	@echo "Compilation Biber"
 	@$(BIBER) $*
+	sed -i -e 's/@/"@/g' principal.idx 
+	sed -i -e 's/"@\\oldcs/@\oldcs/' principal.idx 
 	splitindex -m "makeindex -s latex-humain.ist" $*.idx 
 	python post-index.py 
 	@echo "Compilation XELATEX 2"
@@ -25,6 +27,8 @@ all:principal.pdf
 	do \
 	if egrep -i -q  $(RERUN) $*.log ; \
 		then \
+			sed -i -e 's/@/"@/g' principal.idx ; \
+			sed -i -e 's/"@\\oldcs/@\oldcs/' principal.idx ; \
 			splitindex -m "makeindex -s latex-humain.ist" $*.idx ; \
 			python post-index.py ; \
 			echo "Compilation XELATEX" $$i; \
@@ -39,5 +43,5 @@ all:principal.pdf
 	@egrep -i $(LABEL_MULTIPLE) $*.log || echo "Pas de label multiple"
 	@egrep -i $(LABEL_NON_DEFINI) $*.log || echo "Pas de label indéfini"
 clean:
-	@rm -f *.log *.out *.toc  *.pdf *idx *ind *run.xml *blg *bbl *bcf *ilg
+	@rm -f *.log *.out *.toc *-e  *.pdf *idx *ind *run.xml *blg *bbl *bcf *ilg
 	@find -name '*\.aux' -exec rm -f {} \;
