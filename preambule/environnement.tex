@@ -39,14 +39,10 @@
 
 
 
-\newenvironment*{fieldlist}
-  {\begin{description}}%
-  {\end{description}}
-  \newcommand{\fielditem}[1]{\item[#1]}
  
-\let\endolddescription\enddescription
-\let\olddescription\description
-\renewenvironment{description}
+ 
+\newcommand{\fielditem}[1]{\item[#1]}
+\newenvironment{fieldlist}
   {\list{}{%
      \setlength{\labelwidth}{\marglistwidth}%
      \setlength{\labelsep}{\marglistsep}%
