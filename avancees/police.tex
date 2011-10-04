@@ -121,7 +121,7 @@ En créant ces deux commandes \csp{oldquotation} et \csp{endoldquotation} nous a
 \begin{description}
 \item[ligne 3]nous redéfinissons l'environnement \enviro{quotation}.
 \item[ligne 4]au début de cet environnement\renvoi{redefinirlatin}, nous ouvrons l'environnement \enviro{oldquotation} puis nous exécutons la commande \csp{singlespace}.
-\item[ligne 5]à la fin de l'environnement \enviro{quotation}, nous fermons l'environnement \enviro{oldquotation}. La commande \csp{singlespace} exécutée en début d'environnement étant situé dans un environnement, elle ne s'applique qu'au contenu de l'environnement \enviro{oldquotation}. C'est pourquoi il n'est pas nécessaire de l'annuler par une commande \cs{onehalfspace}. \renvoi{porteebascule}
+\item[ligne 5]à la fin de l'environnement \enviro{quotation}, nous fermons l'environnement \enviro{oldquotation}. La commande \csp{singlespace} exécutée en début d'environnement étant situé dans un environnement, elle ne s'applique qu'au contenu de l'environnement \enviro{oldquotation}. C'est pourquoi il n'est pas nécessaire de l'annuler par une commande \csp{onehalfspace}. \renvoi{porteebascule}
 \end{description}
 
 \begin{plusloins}
@@ -280,7 +280,7 @@ Deux éléments nous intéressent : la ligne 2 \cs{thispagestyle}\verb|{plain}|.
 
 Le second élément intéressant est la dernière ligne. La commande \csp{secdef} renvoie vers \csp{@chapter} si nous utilisons \cs{chapter} et vers \csp{@schapter} si nous utilisons \cs{chapter*}.
 
-En fouillant les codes des commandes \cs{@chapter} et \cs{@schapter} nous trouvons qu'elles appellent respectivement la commande \cs{@makechapterhead} et \cs{@makeschapterhead}.
+En fouillant les codes des commandes \cs{@chapter} et \cs{@schapter} nous trouvons qu'elles appellent respectivement la commande \csp{@makechapterhead} et \csp{@makeschapterhead}.
 
 \begin{plusloins}
 Vous constaterez que les commandes \cs{@chapter}, \cs{@schapter}, \cs{@makechapterhead} et \cs{@makeschapterhead} sont définies via la commande \cs{def} et non pas \cs{newcommand}. 
