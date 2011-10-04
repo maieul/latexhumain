@@ -40,22 +40,9 @@
 
 
 \newenvironment*{fieldlist}
-  {\list{}{%
-     \setlength{\labelwidth}{\marglistwidth}%
-     \setlength{\labelsep}{\marglistsep}%
-     \setlength{\leftmargin}{0pt}%
-     \renewcommand*{\makelabel}[1]{\hss\marglistfont##1}}%
-   \def\fielditem##1{%
-     \item[##1]%
-     \ltd@pdfbookmark{##1}{##1}%
-     %field (##2)\par\nobreak
-     \vspace{\itemsep}}%
-   \def\listitem##1##2{%
-     \item[##1]%
-     \ltd@pdfbookmark{##1}{##1}%
-     list (##2)\par\nobreak
-     \vspace{\itemsep}}}
-  {\endlist}
+  {\begin{description}}%
+  {\end{description}}
+  \newcommand{\fielditem}[1]{\item[#1]}
  \makeatother
  
 \definecolor{shadecolor}{gray}{0.9}
