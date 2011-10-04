@@ -43,10 +43,23 @@
   {\begin{description}}%
   {\end{description}}
   \newcommand{\fielditem}[1]{\item[#1]}
- \makeatother
+ 
+\let\endolddescription\enddescription
+\let\olddescription\description
+\renewenvironment{description}
+  {\list{}{%
+     \setlength{\labelwidth}{\marglistwidth}%
+     \setlength{\labelsep}{\marglistsep}%
+	\itemindent\z@
+     \setlength{\leftmargin}{1cm}%
+     \setlength{\rightmargin}{1cm}%
+     \renewcommand*{\makelabel}[1]{\marglistfont##1}}%
+  }
+  {\endlist}
+\makeatother
  
 \definecolor{shadecolor}{gray}{0.9}
-\makeatletter
+
 \renewenvironment{quotation}
                {\list{}{\listparindent 1.5em%
                         \itemindent    \listparindent
