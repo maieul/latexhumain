@@ -403,7 +403,7 @@ Pour mettre deux textes en vis-à-vis sur deux colonnes, on utilise le code suiv
 
 \begin{latexcode}
 
-\begin{pages}  % On indique qu'on veut des textes en vis-à-vis sur deux pages
+\begin{pages}  % On indique qu'on veut des textes en vis-à-vis
 \begin{Leftside} % Texte de la page de gauche
  \beginnumbering % On débute la numérotation
  \pstart % Ici, on est en prose: donc \pstart et \pend
@@ -414,7 +414,7 @@ Le texte dans une langue
  \endnumbering  % Fin de la numérotation
  \end{Leftside} % On en a fini avec le texte de gauche 
  
- \begin{Rightside}  % Et on recommence la même chose avec le texte de droite
+ \begin{Rightside}  % Et on recommence la même chose la droite
  \beginnumbering
  \pstart
  
@@ -486,13 +486,13 @@ La traduction de la première partie
  \end{Rightside} % et là non plus...
  \Pages
  
-    \begin{Leftside} \memorydump % et, ici, pas de \beginnumbering..  
+\begin{Leftside} \memorydump % et, ici, pas de \beginnumbering..  
 La deuxième partie du texte 
-    \endnumbering  \end{Leftside}
+\endnumbering  \end{Leftside}
     
-    \begin{Rightside}  \memorydump %...car \memorydump s'en charge!
+\begin{Rightside}  \memorydump %...car \memorydump s'en charge!
 La traduction de la deuxième partie
-    \endnumbering \end{Rightside}   %ne pas oublier de mettre 
+\endnumbering \end{Rightside}   %ne pas oublier de mettre 
 % tout de même \endnumbering quand on arrive à la fin ..
  
  \Pages

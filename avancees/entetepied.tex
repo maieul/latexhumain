@@ -145,7 +145,8 @@ Notez bien que nous indiquons que la commande \cs{sectionmark} prend un argument
 Étant donné que vous n'affichez plus que le titre du chapitre, il est peut-être inutile de préciser qu'il s'agit d'un chapitre. Il nous faut alors redéfinir la commande \cs{chaptermark}. Par exemple, sous la forme suivante :
 
 \begin{latexcode}
-\renewcommand{\chaptermark}[1]{\markboth {\MakeUppercase{\thechapter #1}}{}}
+\renewcommand{\chaptermark}[1]{\markboth {\MakeUppercase{%
+    \thechapter #1}}{}}
 \end{latexcode}
 
 

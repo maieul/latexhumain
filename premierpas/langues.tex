@@ -75,7 +75,8 @@ Pourtant il pourrait vouloir utiliser cet environnement ou cette commande, afin 
 Pour ce faire, il devra redéfinir l'environnement \enviro{latin} par le code suivant :
 
 \begin{latexcode}
-\renewenvironment{latin}{\begin{hyphenrules}{latin}}{\end{hyphenrules}}
+\renewenvironment{latin}{\begin{hyphenrules}{latin}}%
+{\end{hyphenrules}}
 \end{latexcode}
 
 \begin{plusloins}

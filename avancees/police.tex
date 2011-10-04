@@ -226,9 +226,9 @@ Pour personnaliser l'apparence des titres, le mieux est de regarder ce que nous 
 
 \begin{latexcode}
 \newcommand\section{\@startsection {section}{1}{\z@}%
-                                   {-3.5ex \@plus -1ex \@minus -.2ex}%
-                                   {2.3ex \@plus.2ex}%
-                                   {\normalfont\Large\bfseries}}
+                             {-3.5ex \@plus -1ex \@minus -.2ex}%
+                             {2.3ex \@plus.2ex}%
+                             {\normalfont\Large\bfseries}}
 \end{latexcode}
 
 Commentons ces quelques lignes :
@@ -246,9 +246,9 @@ Supposons maintenant que nous souhaitons avoir notre titre en en italique et en 
 \begin{latexcode}
 \makeatletter
 \renewcommand\section{\@startsection {section}{1}{\z@}%
-                                   {-3.5ex \@plus -1ex \@minus -.2ex}%
-                                   {2.3ex \@plus.2ex}%
-                                   {\sffamily\Large\it}}
+                             {-3.5ex \@plus -1ex \@minus -.2ex}%
+                             {2.3ex \@plus.2ex}%
+                             {\sffamily\Large\it}}
 \makeatother
 \end{latexcode}
 
@@ -270,7 +270,8 @@ Deux éléments nous intéressent : la ligne 2 \cs{thispagestyle}\verb|{plain}|.
 
 \begin{latexcode}
 \makeatletter
-\renewcommand\chapter{\if@openright\cleardoublepage\else\clearpage\fi
+\renewcommand\chapter{\if@openright\cleardoublepage%
+                    \else\clearpage\fi
                     \global\@topnum\z@
                     \@afterindentfalse
                     \secdef\@chapter\@schapter}
