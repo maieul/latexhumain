@@ -14,6 +14,7 @@ Nous souhaitons créer une commande personnalisée servant à indiquer que nous 
 Notre commande se décompose en plusieurs parties : son nom, ici \contenuarg{auteur}, et ses arguments, ici un seul : \arg{nom}.
 
 Une commande LaTeX peut prendre jusqu'à 9 arguments, ce qui est en général bien suffisant. Si nous notons \arg{N} le nombre d'arguments, la syntaxe de la déclaration d'une nouvelle commande est là suivante :
+
 \csp{newcommand}\verb|{\|\arg{nomcommande}\verb|}|\oarg{N}\marg{code}.
 
 \begin{attention}
@@ -168,7 +169,8 @@ La création des commandes sous \LaTeX est une fonctionnalité très puissante, 
 Imaginons que nous l'appelions en oubliant de fermer notre accolade :
 
 \begin{latexcode}
-Il est bien connu que \auteur{Tertullien n'était pas montaniste mais tertullianiste.
+Il est bien connu que \auteur{Tertullien n'était pas montaniste
+ mais tertullianiste.
 \end{latexcode}
 
 Que va-t-il se passer ? \LaTeX comprend que l'ensemble de la fin du texte est un argument de la commande, ce qui empêche le compilateur de bien fonctionner  et nous n'obtiendrons rien, ou alors un résultat incorrect.
@@ -328,7 +330,9 @@ On peut passage les options \option{dvipsnames}, \option{svgnames} ou \option{x1
 
 \subsubsection{Définir ses propres couleurs}
 
-Il est possible de définir ses propres couleurs. Il faut pour se faire utiliser \csp{definecolor}, selon la syntaxe suivante : \cs{definecolor}\marg{nom}\marg{methode}\marg{definition}.
+Il est possible de définir ses propres couleurs. Il faut pour se faire utiliser \csp{definecolor}, selon la syntaxe suivante : 
+
+\cs{definecolor}\marg{nom}\marg{methode}\marg{definition}
 
 
 Les couleurs peuvent être définies de plusieurs manières\footnote{On consultera n'importe quelle livre scientifique sur les couleurs pour plus de détails. On peut également consulter la documentation du package{xcolor}.} Les deux principales sont\footcite[Il existe aussi la méthode de définition par la longueur d'onde pour les couleurs de l'arc en ciel, par pourcentage de gris pour les différents niveaux de gris, ainsi que par teinte, saturation et luminosité, mais ceci nécessiterait un cours de physique lumineuse. Pour  les personnes intéressées par les détails, consulter][]{xcolor_methode} :

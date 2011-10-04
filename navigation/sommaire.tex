@@ -47,7 +47,10 @@ En France, une table des matière se situe en fin d'ouvrage, tandis qu'un sommai
 Nous avons déjà vu la notion de chaîne de langues pour la bibliographie.\renvoi{i18nchaines} Il s'agit ici  d'une idée similaire, mais pour le package \package{polyglossia}. La syntaxe est toutefois différenteé. Comme pour  toutes les chaînes de langue, il faut commencer par découvrir quelle est celle à modifier. Cela se passe dans le fichier \fichier{french.ldf}. Vous pouvez repérer une ligne contenant \cs{def}\csp{captionsfrench}\verb|{%|. 
 Cette ligne est suivie d'autres lignes sous la forme : \cs{def}\cs{\meta{chaine}}\marg{Valeur}. Et ce jusqu'à une accolade fermante.
 
-Pour notre cas, on peut aisément repérer la ligne contenant \cs{def}\csp{contentsname}\verb|{Table des matières}%|.
+Pour notre cas, on peut aisément repérer la ligne contenant :
+
+ \cs{def}\csp{contentsname}\verb|{Table des matières}%|
+
 Notre chaîne de langue est donc \cs{contentsname}.
 
 Pour  redéfinir une chaîne de langue, il suffit d'écrire, de préférence dans le préambule :

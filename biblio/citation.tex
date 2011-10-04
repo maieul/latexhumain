@@ -44,6 +44,7 @@ Pour les sciences humaines, nous recommandons les styles de la famille verbose.
 
 
 Pour que \LaTeX{} sache où chercher les références bibliographiques, il faut signaler  quel est le fichier \ext{bib} à utiliser, pour cela il suffit d'utiliser dans le préambule la commande suivante  :
+
 \csp{bibliography}\marg{chemin du fichier}.
 
 Le chemin du fichier s'indique de la même manière que n'importe quel chemin de fichier\renvoi{chemin}.
@@ -54,7 +55,9 @@ Il est possible d'appeler plusieurs fichiers bibliographiques. Nous le déconsei
 
 \section{Citation d'un élément bibliographique}
 
-L'ensemble des commandes de citation ont la syntaxe suivante : \csp{\meta{prefix}cite}\oarg{prenote}\oarg{postnote}\marg{clef}.
+L'ensemble des commandes de citation ont la syntaxe suivante : 
+
+\csp{\meta{prefix}cite}\oarg{prenote}\oarg{postnote}\marg{clef}.
 
 \meta{prefix} indique où doit apparaître la référence : directement dans le texte, entre parenthèses, en note de bas page etc.
 
@@ -229,7 +232,9 @@ La commande \csp{DeclareFieldFormat} indique la manière d'afficher le champ \ch
 
 \section{Citation de plusieurs œuvres}\label{citemultiple}
 
-Il est possible de citer plusieurs œuvres d'une traite : pour cela, on utilise une commande dont la syntaxe de base est : \csp{\meta{prefix}cites}\oarg{prenote}\oarg{postnote}\marg{clef}\oarg{prenote}\oarg{postnote}\marg{clef} …
+Il est possible de citer plusieurs œuvres d'une traite : pour cela, on utilise une commande dont la syntaxe de base est :
+
+ \csp{\meta{prefix}cites}\oarg{prenote}\oarg{postnote}\marg{clef}\oarg{prenote}\oarg{postnote}\marg{clef} …
 
 Il est possible de citer autant d'œuvres que souhaité. Chaque élément cité a droit à son argument \arg{prenote} et \arg{postnote}, qui s'utilisent de la même manière que pour les citations simples.
 Voici un exemple d'utilisation : 

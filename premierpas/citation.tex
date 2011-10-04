@@ -33,7 +33,9 @@ Nous allons donc utiliser le package \package{csquotes} qui propose des commande
 Le package propose une première commande utile : \csp{enquote}\marg{citation}, qui sert pour les citations en ligne.
 
 \begin{latexcode}
-Comme le dit très justement xxx : \enquote{Lorsque yyy déclare \enquote{zzz} il ne déclare rien du tout}.
+Comme le dit très justement xxx : 
+\enquote{Lorsque yyy déclare \enquote{zzz} 
+il ne déclare rien du tout}.
 \end{latexcode}
 
 
@@ -252,8 +254,7 @@ Le package \package{verse} permet aussi d'indenter de façon très souple une st
  Who ate some apples and died.  \\
  The apples fermented \\
  Inside the lamented \\
- And made cider inside her inside. 
-
+ And made cider inside her inside. \\
 \end{patverse}  
 \end{verse}
 \end{latexcode}
@@ -268,8 +269,7 @@ on obtient donc:
  Who ate some apples and died.  \\
  The apples fermented \\
  Inside the lamented \\
- And made cider inside her inside\footcite{EdwardLear}. 
-
+ And made cider inside her inside\footcite{EdwardLear}.\\ 
 \end{patverse}  \end{verse} 
  
  Si l'on a besoin de répéter une indentation tout le long d'un poème, on remplace \enviro{patverse} par \enviro{patverse*}. Donc pour citer un long extrait en hexamètre dactylique, plutôt que d'indiquer l'indentation pour chaque vers, il suffit  d'indiquer \cs{indentpattern}\verb|{01}| et d'insérer tout le poème  dans l'environnement \enviro{patverse*} pour avoir un vers sur deux indenté.

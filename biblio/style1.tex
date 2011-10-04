@@ -163,7 +163,8 @@ La commande \csp{parentext} met entre parenthèse un texte passé en argument. O
     
     Les styles bibliographiques possèdent des chaînes de langues par défaut, qu'il est possible de remplacer au cas par cas. Pour ce faire, il nous faut toutefois connaître les clefs en ouvrant le fichier de langue \fichier{french.lbx}. Pour repérer ce fichier, voir notre explication en annexe.\renvoi{trouverfichier}
     
-    Une fois ce fichier ouvert, repérons la ligne qui commence par
+    Une fois ce fichier ouvert, repérons la ligne qui commence par :
+    
 \csp{DeclareBibliographyStrings}
 
     
@@ -233,7 +234,9 @@ Nous allons maintenant prendre un peu d'anticipation sur le prochain chapitre.
 Vous savez  que les styles de la famille \forme{verbose-trad} utilisent des abréviations latines comme \emph{op. cit.}
 Ces abréviations sont les abréviations universitaires courantes. Toutefois en ce qui concerne \emph{op. cit.} \package{biblatex} l'utilise indistinctement pour tout les types d'entrées, y compris pour les entrées de type \type{article}, alors même qu'on pourrait s'attendre à une abréviation comme \emph{art. cit.}
 
-Pour résoudre ce problème il suffit de redéfinir la chaîne de langue qui définit \emph{op. cit.}, en lui attribuant une valeur différente selon le type d'entrée.  On va donc utiliser l'un des nombreux tests conditionnels disponibles dans \package{biblatex}. Il s'agit de la commande : \csp{iffieldequalstr}\marg{champ}\marg{texte}\marg{sioui}\marg{sinon}.
+Pour résoudre ce problème il suffit de redéfinir la chaîne de langue qui définit \emph{op. cit.}, en lui attribuant une valeur différente selon le type d'entrée.  On va donc utiliser l'un des nombreux tests conditionnels disponibles dans \package{biblatex}. 
+
+Il s'agit de la commande : \csp{iffieldequalstr}\marg{champ}\marg{texte}\marg{sioui}\marg{sinon}.
 
 Cette commande ne peut s'utiliser que dans certaines parties d'un fichier \LaTeX : dans les commandes de définition de styles bibliographiques et  dans celles de définition d'un chaîne de langue. 
 Elle vérifie que le champ \arg{champ}    de l'entrée bibliographique citée correspond à l'argument \arg{texte}: si c'est le cas, elle retourne l'argument \arg{sioui}, et sinon elle retourne l'argument \arg{sinon}.

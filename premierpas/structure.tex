@@ -1,4 +1,4 @@
-\chapter{Structurer son travail}
+ \chapter{Structurer son travail}
 \begin{prealable}
 Après avoir découvert les bases de \LaTeX{}, apprenons la manière de structurer son travail.
 \end{prealable}
@@ -45,8 +45,12 @@ Quelques remarques importantes :
 Par défaut, tout les titres sont automatiquement numérotés\footnote{Nous verrons plus loin comment changer la numérotation (p.~\pageref{apparencecompteur}).}. Il est possible d'avoir un titre non numéroté, en faisant suivre le nom de la commande d'un astérisque : \csp{chapter*}\marg{Un chapitre non numéroté}.
 
 
-Toutefois un titre non numéroté ne sera pas ajouté à la table des matières\renvoi{toc}. Pour contourner ce problème, il faut utiliser la commande 
+Toutefois un titre non numéroté ne sera pas ajouté à la table des matières\renvoi{toc}. 
+
+Pour contourner ce problème, il faut utiliser la commande :
+
 \csp{addcontentsline}\verb|{toc}|\marg{1}\marg{2} où : \label{addcontentsline}
+
 \begin{description}
     \item[\arg{1}] est le type de titre ;
     \item[\arg{2}] est le texte du titre ;

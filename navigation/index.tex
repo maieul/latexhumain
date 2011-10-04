@@ -229,6 +229,7 @@ Ainsi, pour faire un index des noms propres et un index général, on peut décl
 
 \subsection{Indexer son texte}
 Une fois  les index déclarés, il faut passer à l'indexation proprement dite. Le principe est similaire à celui que nous avons déjà vu pour le package \package{makeindex}\renvoi{cmdindex}.
+
 Mais au lieu de \cs{index}\marg{entrée}, on utilise \csp{sindex}\oarg{abbréviation}\marg{entrée}. 
 
 \begin{plusloins}
@@ -239,7 +240,8 @@ Toutes les entrées indiquées non par \cs{sindex} mais par \cs{index} sont auto
 On peut ainsi indexer notre texte d'Eginhard de la façon suivante:
 
 \begin{latexcode}
-\sindex[idx]{Charles et la papauté|(}Tandis que Charle\sindex[npr]{Charlemagne} était à Rome, il convint
+\sindex[idx]{Charles et la papauté|(}
+Tandis que Charle\sindex[npr]{Charlemagne} était à Rome, il convint
 avec le pape Adrien\sindex[npr]{Adrien} qu’ils enverraient de concert
 des ambassadeurs à Tassilon, duc de Bavière\sindex[npr]{Tassilon}
 \textelp{}
@@ -332,7 +334,7 @@ Nous avons donc notre index spécifique. Mais encore faut-il que nous disions  �
 \item[ligne 3] nous indexons le champ \champ{author}.  Nous utilisons le format d'indexation \verb|sources|.
 \item[ligne4] nous indexons le champ \champ{indextitle}. Si ce champ est vide \package{biblatex} utilise à la place le champ \champ{title}. Nous utilisons le format d'indexation \verb|sources|.
 \item[ligne 5] nous indexons le champ \champ{titleaddon}. Nous utilisons le format d'indexation \verb|sources|.
-\item[ligne 6] nous indexons la valeur \verb|---| dans le fichier \fichier{xxx-source.idx}. Cette valeur sert plus tard lors de l'exécution d'un script écrit dans le langage Python.\renvoi{python}. En effet, une des limitations de \package{biblatex} est qu'il ne peut indexer qu'un seul champ à la fois, et n'est pas capable, pour le moment, de produire des entrées d'index du type \begin{english}\cs{index}\verb|{|\meta{Champ1}\verb|!|\meta{Champ2}\verb+!+\meta{Champ3}\verb+}+\end{english}. 
+\item[ligne 6] nous indexons la valeur \verb|---| dans le fichier \fichier{xxx-source.idx}. Cette valeur sert plus tard lors de l'exécution d'un script écrit dans le langage Python.\renvoi{python}. En effet, une des limitations de \package{biblatex} est qu'il ne peut indexer qu'un seul champ à la fois, et n'est pas capable, pour le moment, de produire des entrées d'index à plusieurs niveaux. 
 
 Pour contourner cela, nous avons conçu un script qui concatène dans le fichier \ext{idx} trois indexations en une seule indexation. Pour que ce script ne concatène pas ensemble des indexations qui ne doivent pas être concaténée, nous écrivons des fausses indexations sous la forme \verb|---|, qui servent de point de repère au script.
 \end{description}
@@ -384,7 +386,8 @@ Après la  compilation \XeLaTeX, nous obtenons un fichier \fichier{xxx.idx}. Si 
 Nous souhaitons remplacé ces entrées par des entrées sous la forme 
 
 \begin{latexcode}
-\indexentry[sources]{Author@Author!Titleindex@\emph  {Titleindex}!Titleaddon@Titleaddon}{page}
+\indexentry[sources]{Author@Author!Titleindex@
+\emph  {Titleindex}!Titleaddon@Titleaddon}{page}
 \end{latexcode}
 
 L'auteur de ces lignes a développé un script permettant d'automatiser cette transformation. Par ailleurs ce script modifie également l'ordre des tri pour tenir compte des accents.
