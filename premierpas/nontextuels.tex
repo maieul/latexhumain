@@ -15,7 +15,7 @@ Le chemin de l'image s'indique de la même manière que le chemin des fichiers i
 
 Les principaux paramètres optionnels sont les suivants\footcite[Pour les autres, on consulter][]{graphicx_options} :
 
-\begin{longtable}{|l|l|l|}
+\begin{longtable}{|p{7em}|p{14em}|p{7em}|}
     \hline
     Paramètres & Signification & Exemple    \\
     \hline
@@ -162,7 +162,7 @@ Ces trois types de colonnes sont :
     \item[b\marg{largeur}] texte justifié. La plus basse ligne du texte se trouve sur la ligne de base.
 \end{description}
 
-La ligne de base est une ligne spécifique, correspondand, \emph{grosso-modo} au milieu d'une cellule. Exemple :
+La ligne de base est une ligne spécifique, correspondant, \emph{grosso-modo} au milieu d'une cellule. Exemple :
 
 \inputminted{exemples/premierpas/nontextuels/tableau3colonnesarray.tex}
 \input{exemples/premierpas/nontextuels/tableau3colonnesarray}
@@ -184,7 +184,7 @@ Le package \package{tabularx} propose un environnement \package{tabularx} permet
 
 On peut tracer des filets de séparations des cellules : pour un filet  horizontal, il suffit d'utiliser la commande \cs{hline}. Pour un filet  vertical, il faut mettre le caractère \verb+|+\footnote{Ce caractère, appelé \forme{pipe} ne doit pas être confondu avec un +l+.} entre les types de cellules.
 
-On peut tracer des filets horizontaux plus petits en utilisant la commande \csp{cline}\verb|{<col1>-<col2>}|, où \arg{col1} et \arg{col2} doivent être remplacés par les numéros de colonnes.
+On trace des filets horizontaux plus petits en utilisant la commande \csp{cline}\verb|{<col1>-<col2>}|, où \arg{col1} et \arg{col2} doivent être remplacés par les numéros de colonnes.
 
 \inputminted{exemples/premierpas/nontextuels/tableauseparateur.tex}
 \input{exemples/premierpas/nontextuels/tableauseparateur}
