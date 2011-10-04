@@ -16,7 +16,7 @@ all:principal.pdf
 	@echo "Compilation Biber"
 	@$(BIBER) $*
 	splitindex -m "makeindex -s latex-humain.ist" $*.idx 
-	python index.py 
+	python post-index.py 
 	@echo "Compilation XELATEX 2"
 
 
@@ -26,7 +26,7 @@ all:principal.pdf
 	if egrep -i -q  $(RERUN) $*.log ; \
 		then \
 			splitindex -m "makeindex -s latex-humain.ist" $*.idx ; \
-			python index.py ; \
+			python post-index.py ; \
 			echo "Compilation XELATEX" $$i; \
 			$(XELATEX) $< ; \
 		fi \
