@@ -178,7 +178,7 @@ Pour obtenir un crochet indiquant les rejets de vers, selon la typographie fran�
 La commande \csp{,} sert à indiquer une espace fine insécable.
 \end{plusloins}
 
-Si vos vers ne possèdent pas d'indentation, mettez \verb=0= partout dans la commande \cs{stanzaindents}, sauf pour l'indentation de rejet. S'il y a moins de vers qu'indiqué dans \{csstanzaindents}, cela n'est pas problématique, l'inverse en revanche produit une erreur de compilation.
+Si vos vers ne possèdent pas d'indentation, mettez \verb=0= partout dans la commande \cs{stanzaindents}, sauf pour l'indentation de rejet. S'il y a moins de vers qu'indiqué dans \cs{stanzaindents}, cela n'est pas problématique, l'inverse en revanche produit une erreur de compilation.
 
 
 
@@ -214,7 +214,7 @@ Si chaque \cs{pstart} correspond à un paragraphe, il est possible d'automatiser
 \end{plusloins}
 
 \begin{plusloins}
-La numérotation se fait à l'aide d'un compteur \compteur{pstart}. Nous expliquons plus loin ce qu'est un compteur, comment en modifier l'apparence et la valeur.\renvoi{apparencecompteur}\renvoi{manipcompteurs} Avec ces informations vous pourraient aisément changer la numérotation des \cs{pstart}s.
+La numérotation se fait à l'aide d'un compteur \compteur{pstart}. Nous expliquons plus loin ce qu'est un compteur, comment en modifier l'apparence et la valeur.\renvoi{apparencecompteur}\renvoi{manipcompteurs} Avec ces informations vous pourrez aisément changer la numérotation des \cs{pstart}s.
 \end{plusloins}
 
 \subsubsection{Fréquence de numérotation des lignes}
@@ -222,7 +222,8 @@ La numérotation se fait à l'aide d'un compteur \compteur{pstart}. Nous expliqu
 Comme on peut le voir dans les exemples précédents, par défaut \cs{ledmac} numérote  une ligne sur cinq. On peut changer cela très simplement avec les commandes suivantes:
 \cs{firstlinenum}\marg{nbre} et \cs{linenumincrement}\marg{nbre}.
 
-L'argument \arg{nbre} de la commande \cs{firstlinenum} indique quelle est  la première ligne qui sera numérotée ; celui de la commande \cs{linenumincrement} définit la fréquence avec laquelle les lignes seront numérotés. On place ces commande après \cs{beginnumbering}. 
+L'argument \arg{nbre} de la commande \cs{firstlinenum} indique quelle est  la première ligne qui sera numérotée 
+; celui de la commande \cs{linenumincrement} définit la fréquence avec laquelle les lignes seront numérotées. On place ces commandes après \cs{beginnumbering}. 
 
 Ainsi, si l'on veut numéroter toutes les lignes en commençant par la première, il faut mettre :
 
@@ -235,7 +236,7 @@ Ainsi, si l'on veut numéroter toutes les lignes en commençant par la première
 
 \subsubsection{Changer le numéro de certaines lignes}
 
-La commande \cs{setline}\marg{num} permet de changer le numéro d'une ligne. Les lignes suivantes sont numérotées continuent la numérotation à partir de ce nombre ; \cs{advanceline}\marg{num} permet d'ajouter \arg{num} au numéro de la ligne.
+La commande \cs{setline}\marg{num} permet de changer le numéro d'une ligne. La numérotation des lignes suivantes  continue à partir de ce nombre ; \cs{advanceline}\marg{num} permet d'ajouter \arg{num} au numéro de la ligne.
 
 La commande \cs{skipnumbering} permet de ne pas prendre en compte la ligne courante dans la numérotation.
 
@@ -265,7 +266,7 @@ Possible aussi de changer l'endroit où apparit le numéro de page (par défaut 
 
 \subsection{L'apparat critique}
 
-Les notes de bas de page se présentent de cette façon:  \cs{Afootnote}\marg{texte}. Il en existe cinq types, de \csp{Afootnote} à \csp{Efootnote}.
+Les notes de bas de page se présentent de cette façon:  \cs{Afootnote}\marg{texte}. Il en existe cinq sortes, de \csp{Afootnote} à \csp{Efootnote}.
 
 
 Ce type de note appelle un \enquote{lemme}, c'est-à-dire une partie du texte annoté qui doit reprise dans la note de bas de page, précédée du numéro de la ou des lignes correspondantes. 
@@ -443,10 +444,10 @@ On obtient parfois le message d'erreur \enquote{Too many \cs{pstart} without pri
 
 La première solution consiste à  augmenter le nombre de boîtes que \package{ledpar} peut garder en mémoire, en mettant dans le préambule la commande \cs{maxchunks}\marg{nbre}, où \arg{nbre} est le nombre de boîtes en mémoire. Par défaut, ce nombre est de dix. Il suffit donc de l'augmenter  pour qu'il soit égal ou supérieur au nombre de boîtes de son  texte. 
 
-Toutefois \TeX ne disposent pas d'une place illimité pour les boîtes, c'est pourquoi il est souvent préférable d'utiliser la seconde solution.
+Toutefois \TeX ne dispose pas d'une place illimité pour les boîtes, c'est pourquoi il est souvent préférable d'utiliser la seconde solution.
 
 
-Celle-ci, que l'on peut d'ailleurs coupler avec la première, consiste à  couper son texte en plusieurs grands ensembles de boîtes --- c'est-à-dire en plusieurs environnements \enviro{Leftside} et \enviro{Rightside}, se terminant chacun par \cs{Columns} ou \cs{Pages}.  Cette solution est préférable pour les longs textes. Les divisions internes du textes se reflètent alors dans les environnements \enviro{Leftside} et \enviro{Rightside}.   Mais si l'on met simplement :
+Celle-ci, que l'on peut d'ailleurs coupler avec la première, consiste à  couper son texte en plusieurs grands ensembles de boîtes --- c'est-à-dire en plusieurs environnements \enviro{Leftside} et \enviro{Rightside}, se terminant chacun par \cs{Columns} ou \cs{Pages}.  Cette solution est préférable pour les longs textes. Les divisions internes du texte se reflètent alors dans les environnements \enviro{Leftside} et \enviro{Rightside}.   Mais si l'on met simplement :
 
 \begin{latexcode}
 \begin{pages}  
@@ -545,7 +546,7 @@ De même on peut définir un filet de séparation grâce à la longueur \csp{col
 
 \subsubsection{Numérotation des lignes de droites}
 
-Par défaut, les lignes de droites sont suivies d'un \forme{R}, correspondant au terme \cs{Right}. Pour obtenir à la place un \forme{D}, il sufiit de rédéfinir la commande \csp{Rlineflag} :
+Par défaut, les lignes de droites sont suivies d'un \forme{R}, correspondant au terme \cs{Right}. Pour obtenir à la place un \forme{D}, il suffit de rédéfinir la commande \csp{Rlineflag} :
 
 \begin{latexcode}
 \renewcommand{\Rlineflag}{D}
