@@ -93,7 +93,7 @@ erat  elit consectetuer erat, id egestas pede nibh eget odio.
 La numérotation recommence à chaque \cs{beginnumbering}. Il est toutefois possible d'indiquer de recommencer la numérotation  à chaque page \emph{via} la commande \csp{lineation}\verb={page}=.
 
 \begin{attention}
-Si vos sections numérotées sont très longues, il peut arriver une erreur de compilation \forme{TeX capacity exceeded}. Il faut alors fractionner vos sections en utilisant de temps en temps la commande \csp{pausenumbering} suivie de \csp{resumenumbering} au sein de  la section numérotée\footnote{Une autre solution serait de régler la configuration de \TeX pour lui allouer plus de mémoire.}.
+Si vos sections numérotées sont très longues, il peut arriver une erreur de compilation \forme{TeX capacity exceeded}. Il faut alors fractionner vos sections en utilisant de temps en temps la commande \csp{pausenumbering} suivie de \csp{resumenumbering} au sein de  la section numérotée\footnote{Une autre solution serait de régler la configuration de \TeX pour lui allouer plus de mémoire.}. 
 
 Cette séquence de commandes correspond \emph{grosso-modo} à la séquence \cs{endnumbering}\cs{beginnumbering} mais sans recommencer la numérotation.
 \end{attention}
@@ -263,14 +263,14 @@ Les numéros des lignes apparaissent  par défaut dans la marge de gauche. On pe
 Il existe   cinq styles pour numéroter les lignes, que l'on sélectionne par la commande 
 \cs{linenumberstyle}\marg{style} (et, pour les sous-numérotations,\cs{sublinenumberstyle}{\marg{style}) . Le style par défaut est \arg{arabic}: les numéros des lignes sont en chiffres arabes. Les autres styles sont: \arg{Alph} (lettres majuscules), \arg{alph} (lettres minuscules), \arg{Roman} (chiffres romains majuscules) et \arg{roman} (chiffres romains minuscules). 
 
-\cs{linenumsep} représente la distance entre le texte et le numéro de la ligne (par défaut, un pica). Cette distance est donc modifiable par la commande \verb|\setlength{\linenumsep}\marg{distance}. On peut de la même façon modifier \cs{numlabfont}, qui indique la taille du numéro et qui est ainsi définit: \verb|\newcommand{\numlabfont}{\normalfont\scriptsize}|. On peut donc la redéfinir avec \cs{renewcommand}.
+\cs{linenumsep} représente la distance entre le texte et le numéro de la ligne\renvoi{unite} (par défaut, un pica). Cette distance est donc modifiable par la commande \verb|\setlength{\linenumsep}\marg{distance}|\renvoi{setlength}. On peut de la même façon modifier \cs{numlabfont}, qui indique la taille du numéro et qui est ainsi définit: \verb|\newcommand{\numlabfont}{\normalfont\scriptsize}|. On peut donc la redéfinir avec \cs{renewcommand}.
 
 \subsection{L'apparat critique}
 
 Les notes de bas de page se présentent de cette façon:  \cs{Afootnote}\marg{texte}. Il en existe cinq sortes, de \csp{Afootnote} à \csp{Efootnote}.
 
 
-Ce type de note appelle un \enquote{lemme}, c'est-à-dire une partie du texte annoté qui doit reprise dans la note de bas de page, précédée du numéro de la ou des lignes correspondantes. 
+Ce type de note appelle un \enquote{lemme}, c'est-à-dire une partie du texte annoté reprise dans la note de bas de page, précédée du numéro de la ou des lignes correspondantes. 
 
 La note de bas de page est appelée de la façon suivante:  \csp{edtext}\marg{lemme}\marg{commande}. L'argument \arg{commande} contient l'appel à la note: \csp{Afootnote}, \csp{Bfootnote} etc.
 
@@ -282,12 +282,12 @@ Dans les notes de type \cs{Afootnote}\dots, lorsque le \enquote{lemme} est trop 
 \begin{plusloins}
 Il est aussi possible de mettre des notes de fin. Là encore, cinq sortes possibles:  de \csp{Aendnote} à \csp{Eendnote}.
 
-La commande \cs{marginpar} ne fonctionne pas dans les textes numérotés. Pour compenser cela, le package propose les commandes \csp{ledleftnote}\marg{note} et \csp{ledrightnote}\marg{note} pour des notes de marge gauche et droite.
+La commande \cs{marginpar} ne fonctionne pas dans les textes numérotés. À la place, le package propose les commandes \csp{ledleftnote}\marg{note} et \csp{ledrightnote}\marg{note} pour des notes de marge gauche et droite.
 
 Il existe aussi une commande \csp{ledsidenote}\marg{note} qui insère par défaut la note dans la marge de droite, mais \csp{sidenotemargin}\verb={left}= permet de dire de l'insérer à gauche.
 \end{plusloins} 
 
-Dans l'exemple suivant, nous avons utilisé deux types de notes avec lemme, dont l'une où nous avons mis un lemme \enquote{raccourci}), et  un type de note sans lemme:
+Dans l'exemple suivant, nous avons utilisé deux types de notes avec lemme, dont l'une où nous avons mis un lemme \enquote{raccourci}, et  un type de note sans lemme:
 
 
 \begin{latexcode}
@@ -334,12 +334,12 @@ Il faut compiler deux fois pour obtenir le numéro des lignes dans l'apparat cri
 
 
 
-Il est conseillé de s'aider en changeant le nom des types de notes, en indiquant par exemple dans son préambule: 
+On peut, pour plus de facilité, changer le nom des types de notes, en indiquant par exemple dans son préambule: 
 \begin{latexcode}
 \let\variantes\Afootnote
 \let\citations\Bfootnote
 \let\eclaircissements\footnoteA
-Et ainsi de suite …
+Et ainsi de suite…
 \end{latexcode}
 
 Mais il est aussi conseillé de créer des commandes personnelles pour simplifier   --- et surtout clarifier --- plus encore la rédaction d'un apparat critique; par exemple:
@@ -355,14 +355,14 @@ Mais il est aussi conseillé de créer des commandes personnelles pour simplifie
 
 Cette commande est un peu plus complexe parce qu'elle fait appel aux packages \package{xargs} et \packageno{ifthen}. 
 
-La commande \csp{newcommandx}, fournie par \package{newcommandx*} permet de créer une commande avec des arguments optionnels. Le premier argument est le lemme ; le deuxième argument, optionnel --- ce qu'indique  dans la commande, l'argument \verb=[2]= --- contient le lemme raccourci ; enfin le dernier argument contient l'annotation.
+La commande \csp{newcommandx}, fournie par \package{newcommandx*} permet de créer une commande avec des arguments optionnels. Le premier argument est le lemme ; le deuxième argument, optionnel --- ce qu'indique,  dans la commande, l'argument \verb=[2]= --- contient le lemme raccourci ; enfin le dernier argument contient l'annotation.
 
 Ligne 4, la commande \csp{ifthenelse}\arg{test}\arg{sioui}\arg{sinon} du package \package{ifthen} permet d'effectuer un test : ici nous regardons si le deuxième argument est vide (\csp{equal}\verb=\equal{#2}{}=) : si ce n'est pas le cas, alors on l'utilise pour une commande \cs{lemma}.
 
  L'utilisation de la commande peut donc se résumer ainsi : \cs{variantes}\marg{lemme}\oarg{lemme plus court}\marg{annotation} : ce qui est, il faut le reconnaître, plus simplement utilisable que \cs{edtext}\marg{le lemme trop long}\{\cs{lemma}\marg{le lemme raccourci}\cs{Bfootnote\marg{la note}}\}
 
 \begin{plusloins}
-Les packages \package{ifthen} et \package{xargs} sont extrêmement utiles : nous ne pouvons détailler ici leurs utilisation. Nous renvoyons à leurs documentations\footcites{ifthen}{xargs}.
+Les packages \package{ifthen} et \package{xargs} sont extrêmement utiles, mais nous ne pouvons détailler ici leurs utilisation. Nous renvoyons à leurs documentations\footcites{ifthen}{xargs}.
 \end{plusloins}
 
 
@@ -389,7 +389,7 @@ Le package \package{ledmac} permet d'obtenir très facilement deux textes en vis
 
 Son principe de base est simple: on place des textes numérotés --- inscrits entre \cs{beginnumbering} et \cs{endnumbering}  --- dans les environnements \enviro{Leftside} pour le texte de gauche,  \enviro{Rightside} pour le texte de droite.
 
-\package{ledmac} fait correspondre en vis-à-vis chaque \enquote{boîte} d'un texte à la boîte correspondante de l'autre texte. Pour la poésie,  chaque vers  (terminé par \ampersand ), est une boîte;  en prose, les boîtes sont délimitées par  \cs{pstart} et un \cs{pend}.  Il est recommandé, en prose, de mettre chaque paragraphe dans une boîte, pour obtenir une synchronisation la plus fine possible --- donc de débuter chaque paragraphe par \cs{pstart} et de finir par \cs{pend}. 
+\package{ledmac} fait correspondre en vis-à-vis chaque \enquote{boîte} d'un texte à la boîte correspondante de l'autre texte (il faut donc qu'il y ait le même nombre de boites des deux côtés). Pour la poésie,  chaque vers  (terminé par \ampersand ), est une boîte;  en prose, les boîtes sont délimitées par  \cs{pstart} et  \cs{pend}.  Il est recommandé, en prose, de mettre chaque paragraphe dans une boîte, pour obtenir une synchronisation la plus fine possible --- donc de débuter chaque paragraphe par \cs{pstart} et de le finir par \cs{pend}. 
 
 
 \package{ledmac} peut mettre les textes sur deux colonnes ou sur deux pages en vis-à-vis : bien sûr dans ce dernier  cas le texte de gauche est toujours imprimé sur une page paire.
@@ -405,7 +405,7 @@ Pour mettre deux textes en vis-à-vis sur deux colonnes, on utilise le code suiv
 
 \begin{latexcode}
 
-\begin{pages}  % On indique qu'on veut des textes en vis-à-vis
+\begin{pages}  % On indique qu'on veut des textes en vis-à-vis sur deux pages
 \begin{Leftside} % Texte de la page de gauche
  \beginnumbering % On débute la numérotation
  \pstart % Ici, on est en prose: donc \pstart et \pend
@@ -441,7 +441,7 @@ Si l'un des textes n'est pas dans la langue principale du document, il faut pré
 \end{latexcode}
 \end{attention}
 
-On obtient parfois le message d'erreur \enquote{Too many \cs{pstart} without printing}. Pas de panique ! Cela signifie qu'il y a trop de boîtes en mémoire: \LaTeX  doit en imprimer quelques-unes avant de pouvoir continuer.  Il y a deux solutions possible à ce problème.
+On obtient parfois le message d'erreur \enquote{Too many \cs{pstart} without printing}. Pas de panique ! Cela signifie qu'il y a trop de boîtes en mémoire: \LaTeX  doit en imprimer quelques-unes avant de pouvoir continuer.  Il y a deux solutions possibles à ce problème.
 
 La première solution consiste à  augmenter le nombre de boîtes que \package{ledpar} peut garder en mémoire, en mettant dans le préambule la commande \cs{maxchunks}\marg{nbre}, où \arg{nbre} est le nombre de boîtes en mémoire. Par défaut, ce nombre est de dix. Il suffit donc de l'augmenter  pour qu'il soit égal ou supérieur au nombre de boîtes de son  texte. 
 
@@ -475,7 +475,7 @@ La traduction de la deuxième partie
 
 on se retrouve avec une numérotation qui recommence à zéro pour la deuxième partie du texte. 
 
-La commande \cs{memorydump} permet de résoudre ce problème. Elle équivaut en fait à un \cs{endnumbering} immédiatement suivit d'un \cs{beginnumbering}, mais sans réinitialisation. Il faut donc mettre: 
+La commande \cs{memorydump} permet de résoudre ce problème. Elle équivaut en fait à un \cs{pausenumbering} immédiatement suivit d'un \cs{resumenumbering}. Il faut donc mettre: 
 
 \begin{latexcode}
 \begin{pages}  
@@ -492,9 +492,9 @@ La traduction de la première partie
 La deuxième partie du texte 
 \endnumbering  \end{Leftside}
     
-\begin{Rightside}  \memorydump %...car \memorydump s'en charge!
+\begin{Rightside}  \memorydump %...car la numérotation continue!
 La traduction de la deuxième partie
-\endnumbering \end{Rightside}   %ne pas oublier de mettre 
+\endnumbering \end{Rightside}   % Ne pas oublier de mettre 
 % tout de même \endnumbering quand on arrive à la fin ..
  
  \Pages
@@ -529,14 +529,14 @@ Il est possible de dire à \package{ledpar} de ne pas introduire ce blanc, mais 
  
  \subsubsection{Tailles et séparateurs des colonnes}
 
-Par défaut, les colonnes font 45\% d'une largeur normale de texte. On peut modifier ce réglage en redéfinissant les longueurs \csp{Lcolwidth} et \csp{Rcolwidth} respectivement pour la colonne gauche et droite. On utilise pour ce faire la commande \cs{setlength}\renvoi{setlength}\renvoi{longueurrelative}. Par exemple pour avoir 47\% de la largeur normale d'un texte.
+Par défaut, les colonnes font 45\% d'une largeur normale de texte. On peut modifier ce réglage en redéfinissant les longueurs \csp{Lcolwidth} et \csp{Rcolwidth} respectivement pour la colonne gauche et droite. On utilise pour ce faire la commande \cs{setlength}\renvoi{setlength}\renvoi{longueurrelative}. Par exemple pour avoir 47\% de la largeur normale d'un texte, il faut mettre:
 
 \begin{latexcode}
 \setlength{\Lcolwidth}{0.47\textwidth}
 \setlength{\Rcolwidth}{0.47\textwidth}
 \end{latexcode}
 
-De même on peut définir un filet de séparation grâce à la longueur \csp{columnrulewidth}\renvoi{unite}.
+On peut de même définir un filet de séparation grâce à la longueur \csp{columnrulewidth}\renvoi{unite}.
 
 \begin{latexcode}
 \setlength{columnrulewidth}{0.4pt}
@@ -545,13 +545,18 @@ De même on peut définir un filet de séparation grâce à la longueur \csp{col
 \begin{latexcode}
 \end{latexcode}
 
-\subsubsection{Numérotation des lignes de droites}
+\subsubsection{Numérotation des lignes de droite}
 
-Par défaut, les lignes de droites sont suivies d'un \forme{R}, correspondant au terme \cs{Right}. Pour obtenir à la place un \forme{D}, il suffit de rédéfinir la commande \csp{Rlineflag} :
+Par défaut, les lignes de droite sont suivies d'un \forme{R}, correspondant au terme \cs{Right}. Pour obtenir à la place un \forme{D}, il suffit de redéfinir la commande \csp{Rlineflag} :
 
 \begin{latexcode}
 \renewcommand{\Rlineflag}{D}
 \end{latexcode}
 
+Si l'on ne veut rien, on met tout simplement :
 
+
+\begin{latexcode}
+\renewcommand{\Rlineflag}{D}
+\end{latexcode}
 
