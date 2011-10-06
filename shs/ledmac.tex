@@ -374,10 +374,10 @@ Mais il est aussi conseillé de créer des commandes personnelles pour simplifie
 \begin{latexcode}
 \usepackage{ifthen, xargs}
 \newcommandx*{\variantes}[3][2]{%
-	\edtext{#1}{%
-    	\ifthenelse{\equal{#2}{}}{}{\lemma{#2}}%
-	\Afootnote{#3}}%
-	}
+    \edtext{#1}{%
+        \ifthenelse{\equal{#2}{}}{}{\lemma{#2}}%
+    \Afootnote{#3}}%
+    }
 \end{latexcode}
 
 Cette commande est un peu plus complexe parce qu'elle fait appel aux packages \package{xargs} et \package{ifthen}. 
