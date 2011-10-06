@@ -55,6 +55,10 @@
 
  
 \definecolor{shadecolor}{gray}{0.9}
+\let\oldminipage\minipage
+\let\endoldminipage\endminipage
+
+\renewenvironment{minipage}[1]{\begin{quotation}\begin{oldminipage}{\linewidth}}{\end{oldminipage}\end{quotation}}
 
 \renewenvironment{quotation}
                {\list{}{\listparindent 1.5em%
