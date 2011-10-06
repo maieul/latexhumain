@@ -29,41 +29,12 @@ La première fonctionnalité utile de \package{ledmac} est  de permettre  de num
 
 La numérotation des lignes commence, entre ces deux commandes, avec la commande \csp{pstart} et se termine avec la commande \csp{pend} comme dans l'exemple suivant:
 
-\begin{latexcode}
-\beginnumbering
-\pstart %commencer la numérotation
-Lorem ipsum dolor sit amet, consectetuer adipiscing elit ?
-Morbi commodo ; ipsum sed pharetra gravida !
-Nullam sit amet enim. Suspendisse id : velit vitae ligula.
-Aliquam erat volutpat.
-
-Sed quis velit. Nulla facilisi. Nulla libero. 
-Quisque facilisis erat a dui. 
-Nam malesuada ornare dolor.
-Cras gravida, diam sit amet rhoncus ornare, 
-erat  elit consectetuer erat, id egestas pede nibh eget odio.
-\pend %terminer la numérotation
-\endnumbering
-\end{latexcode}
+\inputminted{exemples/shs/ledmac/prose.tex}
 
 Nous obtenons ainsi : 
 
 \begin{minipage}{0.8\textwidth}
-\beginnumbering
-\pstart %commencer la numérotation
-Lorem ipsum dolor sit amet, consectetuer adipiscing elit ?
-Morbi commodo ; ipsum sed pharetra gravida !
-Nullam sit amet enim. Suspendisse id : velit vitae ligula. 
-Aliquam erat volutpat.
-
-
-Sed quis velit. Nulla facilisi. Nulla libero. 
- Quisque facilisis erat a dui. % onreprend la numérotation
-Nam malesuada ornare dolor.
-Cras gravida, diam sit amet rhoncus ornare, 
-erat  elit consectetuer erat, id egestas pede nibh eget odio.
-\pend
-\endnumbering
+\input{exemples/shs/ledmac/prose.tex}
 \end{minipage}
 
 
@@ -106,61 +77,13 @@ Il faut indiquer l'indentation de chaque vers de la strophe --- faute de quoi on
 
 
 
-\begin{latexcode}
-\beginnumbering
-\setstanzaindents{0,0,4,0,0,0,2,2,2,8}
-\let\endstanzaextra\bigbreak
-\stanza
-Berlin setz an.&
-Es speien die Geschäfte&
-die wackern Knaben und die Mädchen aus.&
-Jetz kommt der Feierabend --- aber defte!&
-Wir springen nur noch eben resch nach Haus.&
-Die großen Fraun sind ganz auf neu gemalen.&
-Wer wird heut abend wohl dem Zimt bezahlen?&
-Sie lächeln lieb. Das Auto summt heran.&
-Berlin setz an.\&
-
-\stanza
-Berlin brummt auf.&
-Wo ich die Paare anseh:&
-Hier wird ein harter Dienst straff absolviert.&
-Ein Riesenrummel von Grünau bis Wannsee ---&
-und alles tadellos organisiert.&
-Um jeden Schnapstich fühlst du es bestätigt:&
-Marie stark Geld --- heute wird das Ding getätigt!&
-Die Spesen fest. Planmäßig der Verlauf ---&
-Berlin brust auf.\&
-\endnumbering
-\end{latexcode}
+\inputminted{exemples/shs/ledmac/vers.tex}
 
 donne ainsi\footcite{tucholsky}: 
 
-\beginnumbering
-\setstanzaindents{0,0,4,0,0,0,2,2,2,8}
-\let\endstanzaextra\bigbreak
-\stanza
-Berlin setz an.&
-Es speien die Geschäfte&
-die wackern Knaben und die Mädchen aus.&
-Jetz kommt der Feierabend --- aber defte!&
-Wir springen nur noch eben resch nach Haus.&
-Die großen Fraun sind ganz auf neu gemalen.&
-Wer wird heut abend wohl dem Zimt bezahlen?&
-Sie lächeln lieb. Das Auto summt heran.&
-Berlin setz an.\&
-
-\stanza
-Berlin brummt auf.&
-Wo ich die Paare anseh:&
-Hier wird ein harter Dienst straff absolviert.&
-Ein Riesenrummel von Grünau bis Wannsee ---&
-und alles tadellos organisiert.&
-Um jeden Schnapstich fühlst du es bestätigt:&
-Marie stark Geld --- heute wird das Ding getätigt!&
-Die Spesen fest. Planmäßig der Verlauf ---&
-Berlin brust auf.\& 
-\endnumbering
+\begin{minipage}{0}
+\input{exemples/shs/ledmac/vers.tex}
+\end{minipage}
 
 
 
@@ -317,41 +240,14 @@ Il existe aussi une commande \csp{ledsidenote}\marg{note} qui insère par défau
 Dans l'exemple suivant, nous avons utilisé deux types de notes avec lemme, dont l'une où nous avons mis un lemme \enquote{raccourci}, et  un type de note sans lemme:
 
 
-\begin{latexcode}
-\setstanzaindents{0,0,1,0,1,0,1,0,1}
-\stanza
-Quando erit illa dies, cum nostrum intrabis in \edtext{ortum}
-{\Afootnote{hortum, \textit{F}}},&
- Atque leges nostras ungue libente rosas?\footnoteA{In exilio}&
-Et tua magna sitis mage seu \edtext{mage crescere}
-{\Afootnote{mage se accrescere \textit{G}}} gliscet,&
- Dum quod semper amas, carmine plenus eris.&
-\edtext{Si qua istis fuerint, ut erunt, uitiosa camenis}
-{\lemma{Si \dots camenis}\Bfootnote{\textit{Ov. Trist. IV},
-1 Si qua meis fuerint, ut erunt, vitiosa libellis, parce}},&
- Parce, precor : scriptor non mihi doctus inest.&
-Quaeso, tuum nobis fidum transmitte ministrum,&
- Qui tua grata mihi perferat orsa, uale.\&
-\end{latexcode}
+\inputminted{exemples/shs/ledmac/critique.tex}
 
 Nous obtenons ceci\footcite{theodulf}: 
 
 
 
 \begin{minipage}{0.8\textwidth}
-\beginnumbering 
-\linenumincrement{5}
-\setstanzaindents{0,0,1,0,1,0,1,0,1}
-\stanza
-Quando erit illa dies, cum nostrum intrabis in \edtext{ortum}{\Afootnote{hortum, \textit{F}}},&
- Atque leges nostras ungue libente rosas?\footnoteA{In exilio}&
-Et tua magna sitis mage seu \edtext{mage crescere}{\Afootnote{mage se accrescere \textit{G}}} gliscet,&
- Dum quod semper amas, carmine plenus eris.&
-\edtext{Si qua istis fuerint, ut erunt, uitiosa camenis}{\lemma{Si \dots camenis}\Bfootnote{\textit{Ov. Trist. IV},1 Si qua meis fuerint, ut erunt, vitiosa libellis}},&
- Parce, precor : scriptor non mihi doctus inest.&
-Quaeso, tuum nobis fidum transmitte ministrum,&
- Qui tua grata mihi perferat orsa, uale.\&
-\endnumbering
+\inputminted{exemples/shs/ledmac/critique.tex}
 \end{minipage} 
 
 
