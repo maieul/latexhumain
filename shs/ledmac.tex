@@ -227,7 +227,8 @@ L'argument \arg{commande} contient l'appel à la note: \csp{Afootnote}, \csp{Bfo
 Il est aussi possible d'utiliser  des  notes de bas de page \enquote{normales}, appelées par un numéro dans le texte. Il  en existe là aussi cinq sortes: de \csp{footnoteA} à \csp{footnoteE}.
 
 Dans les notes de type \cs{Afootnote}\dots, lorsque le \enquote{lemme} est trop grand, nous pouvons choisir de l'abréger. La syntaxe est la suivante: 
-\cs{edtext}\marg{le lemme trop long}\{\csp{lemma}\marg{le lemme raccourci}\cs{Bfootnote\marg{la note}}\}. 
+
+\cs{edtext}\marg{le lemme trop long}\verb|{|\cs{lemma}\marg{le lemme raccourci}\cs{Bfootnote}\marg{la note}\verb|}|. 
 
 \begin{plusloins}
 Il est aussi possible de mettre des notes de fin. Là encore, cinq sortes possibles:  de \csp{Aendnote} à \csp{Eendnote}.
@@ -289,7 +290,7 @@ Ligne 4, la commande \csp{ifthenelse}\arg{test}\arg{sioui}\arg{sinon} du package
  
 Ce qui est  plus simplement utilisable que :
 
-\cs{edtext}\marg{le lemme trop long}\{\cs{lemma}\marg{le lemme raccourci}\cs{Bfootnote\marg{la note}}\}
+\cs{edtext}\marg{le lemme trop long}\verb|{|\cs{lemma}\marg{le lemme raccourci}\cs{Bfootnote}\marg{la note}\verb|}|
 
 \begin{plusloins}
 Les packages \package{ifthen} et \package{xargs} sont extrêmement utiles, mais nous ne pouvons détailler ici leurs utilisation. Nous renvoyons à leurs documentations\footcites{ifthen}{xargs}.
