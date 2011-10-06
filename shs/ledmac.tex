@@ -90,7 +90,7 @@ erat  elit consectetuer erat, id egestas pede nibh eget odio.
 \endnumbering
 \end{latexcode}
 
-La numérotation recommence à chaque \cs{beginnumbering}. Il est toutefois possible d'indiquer de recommencer la numérotation  à chaque page \emph{via} la commande \csp{lineation}\verb={page}=.
+La numérotation recommence à chaque \cs{beginnumbering}. Il est toutefois possible d'indiquer de recommencer la numérotation  à chaque page \emph{via} la commande \csp{lineation}\verb={page}=. \label{lineation}
 
 \begin{attention}
 Si vos sections numérotées sont très longues, il peut arriver une erreur de compilation \forme{TeX capacity exceeded}. Il faut alors fractionner vos sections en utilisant de temps en temps la commande \csp{pausenumbering} suivie de \csp{resumenumbering} au sein de  la section numérotée\footnote{Une autre solution serait de régler la configuration de \TeX pour lui allouer plus de mémoire.}. 
@@ -392,7 +392,7 @@ Son principe de base est simple: on place des textes numérotés --- inscrits en
 \package{ledmac} fait correspondre en vis-à-vis chaque \enquote{boîte} d'un texte à la boîte correspondante de l'autre texte (il faut donc qu'il y ait le même nombre de boites des deux côtés). Pour la poésie,  chaque vers  (terminé par \ampersand ), est une boîte;  en prose, les boîtes sont délimitées par  \cs{pstart} et  \cs{pend}.  Il est recommandé, en prose, de mettre chaque paragraphe dans une boîte, pour obtenir une synchronisation la plus fine possible --- donc de débuter chaque paragraphe par \cs{pstart} et de le finir par \cs{pend}. 
 
 
-\package{ledmac} peut mettre les textes sur deux colonnes ou sur deux pages en vis-à-vis : bien sûr dans ce dernier  cas le texte de gauche est toujours imprimé sur une page paire.
+Le package \package{ledpar} peut mettre les textes sur deux colonnes ou sur deux pages en vis-à-vis : bien sûr dans ce dernier  cas le texte de gauche est toujours imprimé sur une page paire.
 On utilise dans le premier cas l'environnement \enviro{pairs} ; l'environnement \enviro{pages} dans le second.
 
 Les commandes \cs{Columns} ou \cs{Pages}, selon qu'on soit dans l'environnement \enviro{pairs} ou \enviro{pages}, indiquent à \LaTeX  d'imprimer les boîtes jusqu'ici gardées en mémoire. 
@@ -439,6 +439,10 @@ Si l'un des textes n'est pas dans la langue principale du document, il faut pré
 \end{<langue>}
 \end{Leftside}
 \end{latexcode}
+\end{attention}
+
+\begin{attention}
+Comme avec \package{ledmac}\renvoi{lineation} la numérotation recommence à chaque \cs{beginnumbering}. Il est toutefois possible d'indiquer de recommencer la numérotation  à chaque page \emph{via} les commandes \cs{lineation} et \csp{lineationR}, qui ont la même syntaxe, vue plus haut. \renvoi{lineation}
 \end{attention}
 
 On obtient parfois le message d'erreur \enquote{Too many \cs{pstart} without printing}. Pas de panique ! Cela signifie qu'il y a trop de boîtes en mémoire: \LaTeX  doit en imprimer quelques-unes avant de pouvoir continuer.  Il y a deux solutions possibles à ce problème.
@@ -559,4 +563,7 @@ Si l'on ne veut rien, on met tout simplement :
 \begin{latexcode}
 \renewcommand{\Rlineflag}{D}
 \end{latexcode}
+
+
+
 
