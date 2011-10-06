@@ -258,12 +258,19 @@ Les commandes \cs{subfirstlinenum}\marg{nbre} et \cs{sublinenumincrement}\marg{n
 \subsubsection{Style et position des numéros de ligne}
 
 
-Les numéros des lignes apparaissent  par défaut dans la marge de gauche. On peut redéfinir cette position par  a commande \cs{linenummargin}\marg{arg}, dont les arguments peuvent être \arg{left} (par défaut), \arg{right}(numéros des lignes à droite), \arg{inner}(numéros dans la marge intérieure), ou \arg{outer}(numéro dans la marge extérieure).
+Les numéros des lignes apparaissent  par défaut dans la marge de gauche. On peut redéfinir cette position par  la commande \cs{linenummargin}\marg{arg}, dont les arguments peuvent être \arg{left} (par défaut), \arg{right}(numéros des lignes à droite), \arg{inner}(numéros dans la marge intérieure), ou \arg{outer}(numéro dans la marge extérieure).
 
 Il existe   cinq styles pour numéroter les lignes, que l'on sélectionne par la commande 
 \cs{linenumberstyle}\marg{style} (et, pour les sous-numérotations,\cs{sublinenumberstyle}{\marg{style}) . Le style par défaut est \arg{arabic}: les numéros des lignes sont en chiffres arabes. Les autres styles sont: \arg{Alph} (lettres majuscules), \arg{alph} (lettres minuscules), \arg{Roman} (chiffres romains majuscules) et \arg{roman} (chiffres romains minuscules). 
 
-\cs{linenumsep} représente la distance entre le texte et le numéro de la ligne\renvoi{unite} (par défaut, un pica). Cette distance est donc modifiable par la commande \verb|\setlength{\linenumsep}\marg{distance}|\renvoi{setlength}. On peut de la même façon modifier \cs{numlabfont}, qui indique la taille du numéro et qui est ainsi définit: \verb|\newcommand{\numlabfont}{\normalfont\scriptsize}|. On peut donc la redéfinir avec \cs{renewcommand}.
+\cs{linenumsep} représente la distance entre le texte et le numéro de la ligne\renvoi{unite}, par défaut, 1~pica. 
+
+Cette distance est donc modifiable par la commande \cs{setlength}\verb|{|\cs{linenumsep}\verb|}|\marg{distance}\renvoi{setlength}. 
+
+On peut de la même façon modifier \cs{numlabfont}, qui indique la taille du numéro et qui est ainsi définie:
+ \cs{newcommand}\verb|{|\cs{numlabfont}\verb|}{|\cs{normalfont}\cs{scriptsize}\verb|}|. 
+ 
+On peut donc la redéfinir avec \cs{renewcommand}.
 
 \subsection{L'apparat critique}
 
