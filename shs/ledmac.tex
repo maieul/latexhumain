@@ -295,7 +295,11 @@ Les notes de bas de page se présentent de cette façon:  \cs{Afootnote}\marg{te
 
 Ce type de note appelle un \enquote{lemme}, c'est-à-dire une partie du texte annoté reprise dans la note de bas de page, précédée du numéro de la ou des lignes correspondantes. 
 
-La note de bas de page est appelée de la façon suivante:  \csp{edtext}\marg{lemme}\marg{commande}. L'argument \arg{commande} contient l'appel à la note: \csp{Afootnote}, \csp{Bfootnote} etc.
+La note de bas de page est appelée de la façon suivante:  
+
+\csp{edtext}\marg{lemme}\marg{commande}. 
+
+L'argument \arg{commande} contient l'appel à la note: \csp{Afootnote}, \csp{Bfootnote} etc.
 
 Il est aussi possible d'utiliser  des  notes de bas de page \enquote{normales}, appelées par un numéro dans le texte. Il  en existe là aussi cinq sortes: de \csp{footnoteA} à \csp{footnoteE}.
 
@@ -382,7 +386,13 @@ La commande \csp{newcommandx}, fournie par \package{newcommandx*} permet de cré
 
 Ligne 4, la commande \csp{ifthenelse}\arg{test}\arg{sioui}\arg{sinon} du package \package{ifthen} permet d'effectuer un test : ici nous regardons si le deuxième argument est vide (\csp{equal}\verb=\equal{#2}{}=) : si ce n'est pas le cas, alors nous l'utilisons  comme argument d'une commande \cs{lemma}.
 
- L'utilisation de la commande peut donc se résumer ainsi : \cs{variantes}\marg{lemme}\oarg{lemme plus court}\marg{annotation} : ce qui est, il faut le reconnaître, plus simplement utilisable que \cs{edtext}\marg{le lemme trop long}\{\cs{lemma}\marg{le lemme raccourci}\cs{Bfootnote\marg{la note}}\}
+ L'utilisation de la commande peut donc se résumer ainsi : 
+ 
+ \cs{variantes}\marg{lemme}\oarg{lemme plus court}\marg{annotation}. 
+ 
+Ce qui est  plus simplement utilisable que :
+
+\cs{edtext}\marg{le lemme trop long}\{\cs{lemma}\marg{le lemme raccourci}\cs{Bfootnote\marg{la note}}\}
 
 \begin{plusloins}
 Les packages \package{ifthen} et \package{xargs} sont extrêmement utiles, mais nous ne pouvons détailler ici leurs utilisation. Nous renvoyons à leurs documentations\footcites{ifthen}{xargs}.
