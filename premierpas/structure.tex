@@ -84,8 +84,8 @@ Pourquoi procéder ainsi ?
 
 Concrètement, comment fait-on ?
 \begin{enumerate}
-\item Le fichier \enquote{père} doit systématiquement commencer par un appel de classe.
-\item Les fichiers \enquote{fils} ne doivent contenir aucun appel de classe.
+\item Le fichier \enquote{père} doit systématiquement commencer par un appel de classe, et contenir \cs{begin}\verb|{document}| et \cs{end}\verb|{document}|.
+\item Les fichiers \enquote{fils} ne doivent contenir aucun appel de classe, ni les commandes \cs{begin}\verb|{document}| et \cs{end}\verb|{document}|.
 \item Ils sont inclus dans le fichier \enquote{père} par l'une des commandes suivantes :
 \begin{itemize}
     \item \csp{include}\marg{chemin-du-fichier}, qui entraîne systématiquement un saut de page.
