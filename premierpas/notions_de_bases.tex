@@ -95,7 +95,7 @@ Vous trouverez aisément des informations à propos \package{babel} sur Internet
 
 \subsection{Le corps du document}
 
-Tout ce que nous avons vu jusqu'à présent, avant la commande \cs{begin}\verb|{document}|, fait partie de ce que l'on appelle le préambule du document.\label{preambule} Ce sont des informations qui n'apparaissent pas \emph{in extenso} dans le document final, mais qui sont utiles à sa composition, autrement dit des méta-données. Tout les packages que vous souhaitez utiliser sont à appeler dans le préambule.
+Tout ce que nous avons vu jusqu'à présent, avant la commande \cs{begin}\verb|{document}|, fait partie de ce que l'on appelle le préambule du document.\label{preambule} Ce sont des informations qui n'apparaissent pas dans le document final, mais qui sont utiles à sa composition, autrement dit des méta-données. Tout les packages que vous souhaitez utiliser sont à appeler dans le préambule.
 
 Tout ce qui se trouve entre la ligne \cs{begin}\verb|{document}| et \cs{end}\verb|{document}| constitue le corps du document, le contenu proprement dit de votre travail.
 
@@ -110,7 +110,7 @@ Enfin, rien de ce qui se trouve après \cs{end}\verb|{document}| n'est analysé 
 \maketitle
 \end{latexcode*}
 
-Les trois premières de ces lignes définissent respectivement le titre (\csp{title}), l'auteur (\csp{author}) et la date (\csp{date}) du travail. En ce qui concerne cette dernière, ne pas l'indiquer revient à indiquer  celle du jour de la compilation.
+Les trois premières de ces lignes définissent respectivement le titre (\csp{title}), l'auteur (\csp{author}) et la date (\csp{date}) du travail. En ce qui concerne cette dernière, ne pas l'indiquer revient à indiquer  celle du jour de la compilation, et il faut indiquer \cs{date}\verb|{}| pour qu'aucune date n'apparaisse.
 
 La dernière ligne affiche ces informations. Si votre document est de classe  \classe{book}, alors le compilateur les dispose sur une page à part. S'il est de classe  \classe{article}, il les affiche sans provoquer de saut de page.
 
@@ -220,7 +220,7 @@ En revanche, nous vous déconseillons de l'utiliser pour des notes personnelles 
 
 \subsection{La notion d'environnement }
 
-Nous avons vu jusqu'à maintenant les notions de  package, en-tête, commande. 
+Nous avons vu jusqu'à maintenant les notions de  package, préambule, commande. 
 Il nous reste à définir une dernière notion de base : celle d'environnement .
 
 Un environnement  est une portion de document ayant une signification spécifique et qui par conséquent subit un traitement spécifique. Par exemple, pour indiquer une citation, une liste, etc. Nous découvrirons au fur et à mesure  des environnements. 
