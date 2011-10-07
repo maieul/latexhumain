@@ -3,13 +3,13 @@
 \begin{prealable}
 Nous supposons que vous avez installé \LaTeX et un éditeur de texte spécialisé en \LaTeX. Voyez en annexe. \renvoi{install}\renvoi{logiciels}
 
-La première chose à faire est de vérifier que ce logiciel de traitement de texte enregistre bien en UTF-8\footnote{Le réglage se trouve en général dans les préférences du logiciel, dans une rubrique \emph{enregistrement} ou \emph{encodage} : consultez le manuel de votre logiciel le cas échéant.}. Nous reviendrons plus loin\renvoi{utf8} sur l'intérêt d'un tel encodage, sachez simplement que il permet d'utiliser des signes non latins\footnote{Cyrilliques, grecs, sanskrits, hébraïques etc. Et même extra-terrestres.}.
+La première chose à faire est de vérifier que ce logiciel de traitement de texte enregistre bien en UTF-8\footnote{Le réglage se trouve en général dans les préférences du logiciel, dans une rubrique \emph{enregistrement} ou \emph{encodage} : consultez le manuel de votre logiciel le cas échéant.}. Nous reviendrons plus loin\renvoi{utf8} sur l'intérêt d'un tel encodage, sachez simplement qu'il permet d'utiliser des signes non latins\footnote{Cyrilliques, grecs, sanskrits, hébraïques, etc. Et même extra-terrestres.}.
 
 \end{prealable}
 
 \section{Un premier document}
 
-Dans votre éditeur de texte, frappez le code suivant :\footnote{Comme nous l'avons expliqué en introduction (p.~\pageref{colorationsyntax}), la coloration que vous voyiez ici, si vous lisez la version informatique de ce livre, a un sens syntaxique : ne vous préoccupez pas de savoir comment cela apparaîtra dans votre éditeur, et ne pensez pas que cela apparaîtra ainsi une fois compilé.} puis cliquez sur le bouton de compilation avec \XeLaTeX \footnote{Sa position dépend de votre éditeur de texte. Pour le moment vous pouvez vous contenter de ce bouton, mais un jour vous devrez apprendre à faire quelques lignes de commandes : ne vous inquiétez pas, tout sera expliqué.} :
+Dans votre éditeur de texte, frappez le code suivant \footnote{Comme nous l'avons expliqué en introduction (p.~\pageref{colorationsyntax}), la coloration que vous voyez ici, si vous lisez la version informatique de ce livre, a un sens syntaxique : ne vous préoccupez pas si elle est différente dans votre éditeur, et ne pensez pas que votre texte apparaîtra ainsi une fois compilé.} puis cliquez sur le bouton de compilation avec \XeLaTeX \footnote{Sa position dépend de votre éditeur de texte. Pour le moment vous pouvez vous contenter de ce bouton, mais un jour vous devrez apprendre à faire quelques lignes de commandes : ne vous inquiétez pas, tout sera expliqué.} :
 
 \begin{attention}
 Si vous êtes sous Mac, les caractères nécessaires à l'utilisation de \LaTeX ne sont pas visibles directement sur votre clavier. Nous avons listé en annexe la manière de les frapper.\renvoi{claviermac}
@@ -22,14 +22,14 @@ Regardez le PDF obtenu :  afin de comprendre les principes de base de \LaTeX nou
 \section{Structure d'un document \LaTeX}
 
 \subsection{La classe du document}
-La première ligne \csp{documentclass}\verb|[12pt]{book}| déclare la classe du document, ici \classe{book}. Une classe correspond à un choix éditorial    --- mise en page et organisation générale du document. Le choix de la classe influence entre autre :
+La première ligne \csp{documentclass}\verb|[12pt]{book}| déclare la classe du document, ici \classe{book}. Une classe correspond à un choix éditorial    --- mise en page et organisation générale du document. Le choix de la classe influence entre autres :
 \begin{itemize}
 \item Le nombre de niveaux de titre disponibles.
 \item Les marges appliquées.
 \item Les en-têtes et pieds de page.
 \end{itemize}
 
-Il existe en standard plusieurs classes de documents : citons \classe{book}, pour rédiger un livre ; \classe{article} pour un article (si, si !) ; \classe{beamer} pour un présentation sous forme de diapositive à projeter. Dans cet ouvrage, nous aborderons essentiellement les deux premières, nous ferons également une brève présentation de \classe{beamer}\renvoi{beamer}.
+Il existe en standard plusieurs classes de documents : citons \classe{book}, pour rédiger un livre ; \classe{article} pour un article (si, si !) ; \classe{beamer} pour une présentation sous forme de diapositives à projeter. Dans cet ouvrage, nous aborderons essentiellement les deux premières, nous ferons également une brève présentation de \classe{beamer}\renvoi{beamer}.
 
 
 
@@ -41,7 +41,7 @@ Tout document \LaTeX doit commencer par une déclaration de classe, avant toutes
 Dans la suite de ce livre, tout texte situé entre crochets (\arg{ainsi}), doit être remplacé dans votre fichier \ext{tex} par une valeur textuelle.
 \end{attention}
 
-Les options viennent spécifier certaines propriétés de la classe. Dans notre exemple, nous précisons que la taille de la police du texte courant doit être de 12~pt et que le format du papier est A4. Vous pouvez indiquer plusieurs options, en les séparant par des virgules. \label{optionsclasse}. 
+Les options viennent spécifier certaines propriétés de la classe. Dans notre exemple, nous précisons que la taille de la police du texte courant doit être de 12~pt et que le format du papier est A4. Vous pouvez indiquer plusieurs options, en les séparant par des virgules. \label{optionsclasse}
 
 Voici quelques options disponibles et utiles en sciences humaines :
 
@@ -50,9 +50,9 @@ Voici quelques options disponibles et utiles en sciences humaines :
 \item[11pt] pour une police de base en 11 pt.
 \item[12pt] pour une police de base en 12 pt.
 \item[onecolumn] pour un texte sur une seule colonne. C'est le cas par défaut sur les classes citées.
-\item[twocolumn] pour un texte sur deux colonne.
+\item[twocolumn] pour un texte sur deux colonnes.
 \item[oneside] pour une impression en recto seulement. \label{nbsides}
-\item[twoside] pour une impression en recto-verso\footnote{Cette option et la précédente servent essentiellement pour les question de reliure. En effet, l'option \option{twoside} produit des marges gauches et droites de tailles différentes, la taille des marges dépendant du caractère recto ou verso de la page. En outre la numérotation des pages est inscrite à gauche et à droite  en alternance.}.\label{rectoverso}
+\item[twoside] pour une impression en recto-verso\footnote{Cette option et la précédente servent essentiellement pour les questions de reliure. En effet, l'option \option{twoside} produit des marges gauches et droites de tailles différentes, selon que la page est recto ou verso. En outre la numérotation des pages est inscrite à gauche et à droite  en alternance.}.\label{rectoverso}
 \end{description}
 
 Nous en préciserons d'autres au fur et à mesure de l'ouvrage, lorsque les notions requises auront été abordées.
@@ -71,12 +71,12 @@ Il s'agit, comme vous auriez pu le deviner, d'appel à des packages\footnote{Nou
 
 Le premier package est \package{fontspec}. Il est utile à \XeLaTeX  pour une typographie avancée, notamment pour disposer d'accents dans le document PDF produit. 
 
-Le second package est \package{xunicode}. Il permet de gérer l'unicode, autrement appelé UTF-8\footnote{En réalité UTF-8 n'est pas tout à fait Unicode, mais une implémentation de ce dernier. Toutefois, pour simplifier, nous assimilons les deux.}. Il nous permet d'utiliser des caractères non-latin dans le document \ext{tex}.\renvoi{utf8}
+Le second package est \package{xunicode}. Il permet de gérer l'unicode, autrement appelé UTF-8\footnote{En réalité UTF-8 n'est pas tout à fait Unicode, mais une implémentation de ce dernier. Toutefois, pour simplifier, nous assimilons les deux.}. Il nous permet d'utiliser des caractères non latins dans le document \ext{tex}.\renvoi{utf8}
 
 
-Le troisième, \package{polyglossia} permet de gérer facilement un document multilingue\renvoi{i18n} et les changements typographiques qu'un tel document implique.
+Le troisième, \package{polyglossia}, permet de gérer facilement un document multilingue\renvoi{i18n} et les changements typographiques qu'un tel document implique.
 
-C'est trois packages sont propres à \XeLaTeX  : ils ne fonctionnent pas avec \LaTeX.\ref{TeXLaTeX}
+Ces trois packages sont propres à \XeLaTeX  : ils ne fonctionnent pas avec \LaTeX.\ref{TeXLaTeX}.
 
 Certains packages peuvent recevoir des options qui modifieront leur comportement standard. La syntaxe est alors \csp{usepackage}\oarg{options}\marg{package}
 
@@ -84,10 +84,10 @@ Tout au long de cet ouvrage, nous aborderons divers packages.
 
 \subsection{Le fran\c cais, langue par défaut\label{french}}
 
-Tout de suite après, la ligne \csp{setmainlanguage}\verb|{french}| indique que nous utilisons comme langue principale du document le fran\c cais\renvoi{i18n}, et donc que le compositeur de texte devra prendre en compte la typographie fran\c caise. Cette ligne n'est compréhensible par le compilateur que parce que nous avons chargé \package{polyglossia} au préalable.
+Tout de suite après, la ligne \csp{setmainlanguage}\verb|{french}| indique que nous utilisons comme langue principale du document le fran\c cais\renvoi{i18n}, et  que le compositeur de texte devra   donc prendre en compte la typographie fran\c caise. Cette ligne n'est compréhensible par le compilateur que parce que nous avons chargé \package{polyglossia} au préalable.
 
 \begin{plusloins}
-Vous entendrez peut-être parler du package \package{babel}.Il est très souvent utilisé à la place de \package{polyglossia}, notamment parce qu'il est plus ancien. Toutefois, nous avons choisis pour notre part de nous limiter à \package{polyglossia}, puisque c'est lui que nous avons utilisé pour nos travaux et qu'il possède plus de fonctionalités, notamment pour les langues notées dans un alphabet non latin.
+Vous entendrez peut-être parler du package \package{babel}. Il est très souvent utilisé à la place de \package{polyglossia}, notamment parce qu'il est plus ancien. Toutefois, nous avons choisis pour notre part de nous limiter à \package{polyglossia}, puisque c'est lui que nous avons utilisé pour nos travaux et qu'il possède plus de fonctionalités, notamment pour les langues notées dans un alphabet non latin.
 
 Vous trouverez aisément des informations à propos \package{babel} sur Internet.
 
@@ -95,7 +95,7 @@ Vous trouverez aisément des informations à propos \package{babel} sur Internet
 
 \subsection{Le corps du document}
 
-Tout ce que nous avons vu jusqu'à maintenant faisait parti de ce qu'on appelle le préambule du document.\label{preambule} Ce sont des informations qui n'apparaissent pas \emph{in extenso} dans le document final, mais qui sont utiles à sa composition, autrement dit des méta-données. Tout les packages que vous souhaitez utiliser sont à appeler dans le préambule.
+Tout ce que nous avons vu jusqu'à présent, avant la commande \cs{begin}\verb|{document}|, fait partie de ce que l'on appelle le préambule du document.\label{preambule} Ce sont des informations qui n'apparaissent pas \emph{in extenso} dans le document final, mais qui sont utiles à sa composition, autrement dit des méta-données. Tout les packages que vous souhaitez utiliser sont à appeler dans le préambule.
 
 Tout ce qui se trouve entre la ligne \cs{begin}\verb|{document}| et \cs{end}\verb|{document}| constitue le corps du document, le contenu proprement dit de votre travail.
 
@@ -133,14 +133,14 @@ Entre crochets sont indiqués les arguments optionnels, entre accolades les argu
 
 L'ordre des arguments dépend de chaque commande, et les arguments optionnels ne sont pas systématiquement avant les arguments obligatoires : ils peuvent être après ou s'intercaler entre. Notez que certaines commandes peuvent ne pas prendre d'argument : c'est le cas ici de \cs{maketitle}.
 
-La grande force de \LaTeX est justement de permettre d'utiliser des commandes afin d'éviter de répéter des tâches fréquentes. C'est pourquoi nous apprendrons à définir nos propres commandes\renvoi{creercommandes}.
+La grande force de \LaTeX est justement l'utilisation de commandes afin d'éviter la répétition des tâches fréquentes. C'est pourquoi nous apprendrons à définir nos propres commandes\renvoi{creercommandes}.
 
 
 
 \subsection{Le corps du texte : la manière de rédiger}
 
 \subsubsection{Analyse de notre exemple}
-Regardez maintenant les lignes suivantes et leurs résultats à la compilation .
+Regardez maintenant les lignes suivantes et leur résultat à la compilation .
 
 
 \begin{latexcode*}{linenos,firstnumber=13}
@@ -160,7 +160,7 @@ erat      elit consectetuer erat, id egestas pede nibh eget odio.
 Nous pouvons constater plusieurs choses.
 \begin{itemize}
 \item Une ligne vide produit un changement de paragraphe. Plusieurs lignes vides produisent un seul changement de paragraphe.
-\item Un retour à la ligne en revanche se comporte comme une espace\footnote{En matière typographie, ce terme est féminin.}. C'est une grande différence avec les logiciels WYSIWYG, qui traduisent automatiquement un saut de paragraphe par un retour à la ligne.
+\item Un retour à la ligne en revanche se comporte comme une espace\footnote{En matière de typographie, ce terme est féminin.}. C'est une grande différence avec les logiciels WYSIWYG, qui traduisent automatiquement un saut de paragraphe par un retour à la ligne.
 \item Plusieurs espaces à la suite produisent une seule espace. 
 \end{itemize}
 
@@ -169,18 +169,18 @@ Vous connaissez donc les règles de bases de la rédaction d'un texte en \LaTeX.
 \subsubsection{Allons plus loin}
 
 
-Nous l'avons dit \LaTeX produit une mise en page et une typographie plus correcte qu'un logiciel de type WYSIWYG. Pour autant, il est nécessaire de lui fournir un code correct, afin qu'il puisse déterminer comment typographier.
+Nous l'avons dit, \LaTeX produit une mise en page et une typographie plus correctes qu'un logiciel de type WYSIWYG. Il est cependant nécessaire de lui fournir un code correct, afin qu'il puisse déterminer comment typographier.
 
-\LaTeX produit automatiquement  une espace fine devant les signes de ponctuation double, principalement \verb|!:;?| principalement, comme il se doit en bonne typographie fran\c caise\footnote{Une espace fine est une espace plus petit qu'une espace normale.}. Toutefois, nous recommandons d'insérer des espaces dans le fichier \ext{tex} avant ces signes de ponctuation double, pour le confort de lecture.
+\LaTeX produit automatiquement  une espace fine devant les signes de ponctuation double,\verb|!:;?| principalement, comme il se doit en bonne typographie fran\c caise\footnote{Une espace fine est une espace plus petite qu'une espace normale.}. Toutefois, nous recommandons d'insérer des espaces dans le fichier \ext{tex} avant ces signes de ponctuation double, pour le confort de lecture.
 
 \begin{attention}
-Les espaces avant les signes de ponctuation double sont une spécificité de la typographie française. Il ne sont généralement pas présent dans les autres langues. C'est pourquoi, si vous écrivez dans une autre langue que celle de Molière, il ne faut pas mettre ces espaces. À vous donc de choisir si vous les mettez ou pas dans votre fichier source, sachant que \LaTeX les insérera pour vous le cas échéant, mais ne les supprimera pas dans les langues autres que le français.
+Les espaces avant les signes de ponctuation double sont une spécificité de la typographie française. Il ne sont généralement pas présent dans les autres langues. C'est pourquoi, si vous écrivez dans une autre langue que celle de Molière, il ne faut pas mettre ces espaces. À vous donc de choisir si vous les mettez ou non dans votre fichier source, sachant que \LaTeX les insérera pour vous le cas échéant, mais ne les supprimera pas dans les langues autres que le français.
 \end{attention}
-En revanche \emph{il est obligatoire de mettre une espace après chaque signe de ponctuation}. Pour ce qui est des points de suspensions, il est mieux de ne pas frapper trois points à la suite, mais d'utiliser la commande \csp{ldots} qui espacera correctement les points\footnote{Il est tout à fait possible de configurer l'éditeur de texte pour qu'il remplace automatiquement trois points à la suite par cette commande.}.
+En revanche \emph{il est obligatoire de mettre une espace après chaque signe de ponctuation}. Pour ce qui est des points de suspension, il est mieux de ne pas frapper trois points à la suite, mais d'utiliser la commande \csp{ldots} qui espacera correctement les points\footnote{Il est tout à fait possible de configurer l'éditeur de texte pour qu'il remplace automatiquement trois points à la suite par cette commande.}.
 
-En ce qui concerne les guillemets, une partie sera consacré plus tard à l'art et la manière de faire des citations en \LaTeX.\renvoi{guillemets} Nous n'en parlons donc pas maintenant.
+En ce qui concerne les guillemets, une partie sera consacrée plus tard à l'art et la manière de faire des citations en \LaTeX.\renvoi{guillemets} Nous n'en parlons donc pas maintenant.
 
-Prêtons attention à certaines lettres ligaturées comme  \verb|œ| et  \verb|æ|. À la différence de la plupart des traitements de texte, \LaTeX ne remplace pas automatiquement les suites \verb|oe| et \verb|ae| par \verb|œ| ou \verb|æ|. Il faut donc frapper soit même ces caractères, ou configurer son éditeur pour qu'il effectue ce remplacement.
+Prêtons attention à certaines lettres ligaturées comme  \verb|œ| et  \verb|æ|. À la différence de la plupart des traitements de texte, \LaTeX ne remplace pas automatiquement les suites \verb|oe| et \verb|ae| par \verb|œ| ou \verb|æ|. Il faut donc frapper soi-même ces caractères, ou configurer son éditeur pour qu'il effectue ce remplacement.
 
 Signalons également trois types de tirets\label{tirets} :
 \begin{itemize}
@@ -193,7 +193,7 @@ Enfin, il est parfois utile d'insérer une espace insécable, pour éviter que d
 
 
 
-Par ailleurs, comme vous avez pu le constater, \LaTeX interprète de manière spécifique un certain nombre de caractères : \verb|\{}~|, à quoi nous ajoutons \verb|%_&$#^| \footnote{Nous ne verrons pas l'utilité \LaTeX  de tout ces caractères, certains servant essentiellement pour rédiger des formules mathématiques.}.
+Par ailleurs, comme vous avez pu le constater, \LaTeX interprète de manière spécifique un certain nombre de caractères : \verb|\{}~|, à quoi nous ajoutons \verb|%_&$#^| \footnote{Nous ne verrons pas l'utilité \LaTeX  de tout ces caractères, certains servant essentiellement à rédiger des formules mathématiques.}.
 
 Comment faire si nous désirons afficher un de ces caractères ? Il faut les faire précéder du caractère \verb|\|. Ainsi pour insérer le caractère \verb|%|, il faut écrire \verb|\%|. 
 
@@ -210,20 +210,20 @@ La ligne suivante est : \verb|%La fin du document|
 Il existe en \LaTeX une règle simple : tout ce qui se trouve à droite d'un signe \verb|%| est un commentaire.
 C'est à dire qu'il n'est pas interprété par le compilateur et n'apparaît donc pas dans le document final. 
 
-Nous conseillons d'utiliser les commentaires pour indiquer les grandes structure du documents et pour commenter les commandes que vous créez vous mêmes\renvoi{creercommandes}. 
+Nous conseillons d'utiliser les commentaires pour indiquer les grandes structure du document et pour commenter les commandes que vous créez vous-mêmes\renvoi{creercommandes}. 
 
 Vous pouvez aussi vous en servir, par exemple, pour faire un commentaire à usage personnel ligne à ligne d'un texte que vous traduisez.
 
-En revanche, nous vous déconseillons de l'utiliser pour des notes personnelles lors de la rédaction. Nous vous indiquerons plus loin \renvoi{commentaireredac} comment définir une commande  personnalisée afin de générer un fichier qui les affiche, pour un relecture, et une autre qui les masque, pour le document final.
+En revanche, nous vous déconseillons de l'utiliser pour des notes personnelles lors de la rédaction. Nous vous indiquerons plus loin \renvoi{commentaireredac} comment définir une commande  personnalisée afin de générer un fichier qui les affiche, pour une relecture, et une autre qui les masque, pour le document final.
 
 
 
-\subsection{La notion d'environnement environnement }
+\subsection{La notion d'environnement }
 
 Nous avons vu jusqu'à maintenant les notions de  package, en-tête, commande. 
 Il nous reste à définir une dernière notion de base : celle d'environnement .
 
-Un environnement  est une portion de document ayant une signification spécifique et qui par conséquent subit un traitement spécifique. Par exemple, pour indiquer une citation, une liste etc. Nous découvrirons au fur et à mesure  des environnements. 
+Un environnement  est une portion de document ayant une signification spécifique et qui par conséquent subit un traitement spécifique. Par exemple, pour indiquer une citation, une liste, etc. Nous découvrirons au fur et à mesure  des environnements. 
 
 
 On marque le début d'un environnement  \arg{nom} par la commande \csp{begin}\marg{nom} et on le termine par la commande \csp{end}\marg{nom}.
@@ -231,7 +231,7 @@ On marque le début d'un environnement  \arg{nom} par la commande \csp{begin}\ma
 
 
 
-Dans la classe \classe{article} il existe un environnement utile : \enviro{abstract}. On place dans cette environnement un résumé de l'article :
+Dans la classe \classe{article} il existe un environnement utile : \enviro{abstract}. On place dans cet environnement un résumé de l'article :
 
 \begin{latexcode}
 \begin{abstract}
@@ -268,6 +268,6 @@ blabl
 
 \subsection{Conclusion}
 
-Vous avez appris ici les principales notions de \LaTeX. Pour l'instant, cela doit sans doute paraître très floue : mais au fur et à mesure de votre lecture, vous comprendrez mieux\footnote{Enfin, nous espérons !}\ldots
+Vous avez appris ici les principales notions de \LaTeX. Pour l'instant, cela doit sans doute paraître très floue : mais au fur et à mesure de votre lecture, vous comprendrez mieux\footnote{Enfin, nous l'espérons !}\ldots
 
 
