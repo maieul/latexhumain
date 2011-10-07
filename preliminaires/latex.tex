@@ -23,7 +23,7 @@ Et c'est là un paradoxe : en effet, comme nous allons le voir, ces traitements 
 
 \subsection{Inconvénients des traitements de texte}
 
-Quand vous rédigez dans votre traitement de texte, comme par exemple Microsoft Word ou \hbox{Openoffice.org,} celui-ci exécute deux actions simultanées :
+Quand vous rédigez dans votre traitement de texte, comme par exemple Microsoft Word ou Openoffice.org, celui-ci exécute deux actions simultanées :
 
 \begin{itemize}
 \item D'une part il stocke dans un fichier la structure logique de votre travail : titres, paragraphes, notes de bas de page etc.
@@ -37,19 +37,19 @@ Cette combinaison de deux fonctions différentes dans les  traitements de texte 
 \begin{itemize}
 \item La nécessité d'afficher en temps réel le rendu physique du texte tout en conservant une vitesse élevée du logiciel a pour conséquence une baisse de la qualité typographique. Par exemple :
 	\begin{itemize}
-		\item Pour avoir un texte justifié à gauche et à droite, les traitements de texte font varier la taille des espaces entre les mots. Les variations sont parfois considérables, ce qui peut diminuer le confort de lecture. Pour éviter ce type d'ennui, les livres classiques coupent les mots en fin de ligne, ce qu'on appelle une césure\footnote{La césure ne se fait toutefois pas n'importe où : elle doit respecter des règles propres à chaque langue.}.
+		\item Pour avoir un texte justifié à gauche et à droite, les traitements de texte font varier la taille des espaces entre les mots. Les variations sont parfois considérables, ce qui peut diminuer le confort de lecture. Afin d'éviter ce type d'ennui, les livres classiques coupent les mots en fin de ligne, ce qu'on appelle une césure\footnote{La césure ne se fait toutefois pas n'importe où : elle doit respecter des règles propres à chaque langue.}.
 		\item Les blancs situés avant certains signes de ponctuation, comme par exemple les points d'exclamation, sont de  la même taille que les blancs séparant les mots, alors que les règles typographiques classiques prévoient des blancs plus petits.
 	\end{itemize}
 \item Le fait qu'un même logiciel s'occupe \emph{à la fois} de l'affichage et de la structure du texte incite à confondre les deux\footcite[L'auteur de ces lignes est moins sévère envers les traitements de texte que d'autres LaTeXiens : \cf][]{stupide}  :
 	\begin{itemize}
 		\item Une telle pratique pousse à se concentrer sur la forme plutôt que sur le fond et la structure\footcite[Toutefois en théorie la formation universitaire en sciences humaines incite à penser \emph{structure et sens d'abord}. Voir un débat sur le blog de l'auteur :][]{structurevsforme}. 
-		\item Les rédacteurs n'utilisent pas toujours la possibilité de séparer sens et forme grâce aux styles. Dans ce cas, lorsque l'on désire changer la forme d'un élément logique (comme  le titre d'un chapitre), on doit changer l'ensemble des endroits où cet élément logique est utilisé\footnote{Par exemple, pour une personne  qui n'aurait pas utilisé les styles pour désigner ses titres de chapitre, il faudra sélectionner \emph{l'ensemble des titres de chapitres} puis aller dans les menus de mise en forme, etc.}.
+		\item Les rédacteurs n'utilisent pas toujours la possibilité de séparer sens et forme grâce aux styles. Dans ce cas, lorsque l'on désire changer la forme d'un élément logique, comme  le titre d'un chapitre, on doit changer l'ensemble des endroits où cet élément logique est utilisé\footnote{Par exemple, pour une personne  qui n'aurait pas utilisé les styles pour désigner ses titres de chapitre, il faudra sélectionner \emph{l'ensemble des titres de chapitres} puis aller dans les menus de mise en forme, etc.}.
 	\end{itemize}
 
 \item Les lourds calculs informatiques nécessaires à la mise en forme en temps réel rendent les traitements de textes particulièrement lents comparativement à d'autres logiciels. Cette lenteur est souvent source d'énervement et de perte de concentration. En outre, ces logiciels exigent bien souvent du matériel récent.
 \end{itemize}
 
-Par ailleurs si les traitements de textes récents disposent d'outils de gestion de bibliographie, ceux-ci manquent en général de souplesse ; c'est pourquoi ils sont rarement utilisés\footnote{Il est toutefois possible de passer par des outils externes, tels que EndNote ou Zotero.}. Ainsi, nombreux sont les auteurs à écrire  leur bibliographie \enquote{à la main} en tapant directement : Nom de l'Auteur, \emph{Titre}, etc. En cas d'erreur, il faut donc corriger l'ensemble des endroits où l'œuvre est citée.
+Par ailleurs si les traitements de textes récents disposent d'outils de gestion de bibliographie, ceux-ci manquent en général de souplesse ; c'est pourquoi ils sont rarement utilisés\footnote{Il est toutefois possible de passer par des outils externes, tels que EndNote ou Zotero.}. Ainsi, nombreux sont les rédacteurs à écrire  leur bibliographie \enquote{à la main} en tapant directement : Nom de l'Auteur, \emph{Titre}, etc. En cas d'erreur, il faut donc corriger l'ensemble des endroits où l'œuvre est citée.
 
 \subsection{Avantages de \LaTeX{}}
 
@@ -66,7 +66,7 @@ Cette séparation permet :
 \item Une meilleure séparation du sens et de la forme puisque l'auteur donne uniquement des indications de sens.
 \end{itemize}
 
-En outre \LaTeX{} possède un système de gestion de la bibliographie extrêmement puissant. Il permet à l'auteur de séparer le contenu de sa bibliographie\footnote{Titres, auteurs etc.} de son affichage\footnote{Faut-il mettre des \emph{op. cit.}, et si oui où ? faut-il mettre uniquement les initiales des prénoms ou les prénoms en entier ? etc.}.
+En outre \LaTeX{} possède un système de gestion de la bibliographie extrêmement puissant qui permet à l'auteur de séparer le contenu de sa bibliographie\footnote{Titres, auteurs etc.} de son affichage\footnote{Faut-il mettre des \emph{op. cit.}, et si oui où ? faut-il mettre uniquement les initiales des prénoms ou les prénoms en entier ? etc.}.
 
 Cette séparation entre contenu de la bibliographie et affichage est utile non seulement aux auteurs mais aussi aux éditeurs. En effet, si l'auteur structure correctement sa base de données bibliographique,\renvoi{bddbiblio} l'éditeur peut adapter l'affichage de la bibliographie à ses propres règles : il lui suffit de créer des fichiers de styles bibliographiques suivant une syntaxe simple.
 
@@ -148,7 +148,7 @@ Enfin les utilisateurs de \LaTeX venant des sciences dites \enquote{dures}, pour
 
 \section{Comment lire ce livre}
 
-Cet ouvrage n'est pas un manuel sur \LaTeX{}. Il se veut plutôt une introduction et ne vise donc à présenter que les bases de \LaTeX{}. Une fois ces bases posées le lecteur-rédacteur devrait être en mesure de comprendre la logique de \LaTeX{} et par la suite être à même de trouver aisément les informations utiles à son projet.
+Cet ouvrage n'est pas un manuel sur \LaTeX{}. Il se veut plutôt une introduction et ne vise donc à présenter que les bases de \LaTeX{}. Une fois celles-ci posées le lecteur-rédacteur devrait être en mesure de comprendre la logique de \LaTeX{} et par la suite être à même de trouver aisément les informations utiles à son projet.
 
 Évidemment, ces bases ne sont pas les mêmes que celles proposées dans d'autres livres d'introduction à \LaTeX{}, généralement orientés vers les sciences dites dures. 
 C'est pourquoi vous n'y trouverez pas la manière d'insérer une équation. En revanche nous y détaillons divers éléments abordés souvent trop rapidement dans les autres introductions : ainsi les diverses façons de faire une citation, d'indiquer un changement de langue, la manière d'écrire dans un ou plusieurs alphabets non latins, etc.
