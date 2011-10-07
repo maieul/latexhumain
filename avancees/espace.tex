@@ -71,6 +71,14 @@ Une page avec une marge nulle.
 
 Le package \package{geometry} possède de nombreuses autres fonctionnalité : nous renvoyons à sa documentation\footcite{geometry}.
 
+\begin{attention}
+Si vous utilisez \package{geometry} et les notes de marge produites via \cs{marginpar}, vous pouvez constater que les pages de gauches (paires) n'affichent pas les notes. Le problème vient du fait que \package{geometry} redéfinit un certain nombre de longueurs. Pour afficher correctement les notes, il vous faut modifier la longueur \csp{marginparwidth}, en lui attribuant la même valeur que \csp{leftmargin}.
+
+\begin{latexcode}
+\setlength{\marginparwidth}{\leftmargin}
+\end{latexcode}
+\end{attention}
+
 \section{Textes en retrait}
 
 On peut souhaiter avoir un environnement qui produit du texte en retrait, semblable à l'environnement \enviro{quotation}. Par exemple un environnement \enviro{exemple} avec en retrait de 5~ex.
