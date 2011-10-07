@@ -13,12 +13,12 @@ Nous souhaitons créer une commande personnalisée servant à indiquer que nous 
 
 Notre commande se décompose en plusieurs parties : son nom, ici \contenuarg{auteur}, et ses arguments, ici un seul : \arg{nom}.
 
-Une commande LaTeX peut prendre jusqu'à 9 arguments, ce qui est en général bien suffisant. Si nous notons \arg{N} le nombre d'arguments, la syntaxe de la déclaration d'une nouvelle commande est là suivante :
+Une commande LaTeX peut prendre jusqu'à 9 arguments, ce qui est en général bien suffisant. Si nous notons \arg{N} le nombre d'arguments, la syntaxe de la déclaration d'une nouvelle commande est la suivante :
 
 \csp{newcommand}\verb|{\|\arg{nomcommande}\verb|}|\oarg{N}\marg{code}.
 
 \begin{attention}
-    Les noms de commandes ne doivent contenir que des caractères alpha-numériques latins non accentués, c'est à dire les vingt-six lettres de l'alphabet latin et les dix chiffres arabes. 
+    Les noms de commandes ne doivent contenir que des caractères alpha-numériques latins non accentués, c'est-à-dire les vingt-six lettres de l'alphabet latin et les dix chiffres arabes. 
     
     Les noms sont sensibles à la casse : \verb|\a| est différent de \verb|\A|.
 \end{attention}
@@ -48,7 +48,7 @@ Il est bien connu que \auteur{Tertullien} n'était pas montaniste mais tertullia
 
 \contenuarg{Tertullien} a été passé en premier argument. Il apparaîtra donc à la place du \#1 de la déclaration de commande.
 
-On pourrait souhaiter passer en second argument des informations complémentaire, comme les dates de vie.
+On pourrait souhaiter passer en second argument des informations complémentaires, comme les dates de vie.
 
 \begin{latexcode}
 \newcommand{\auteur}[2]{#1* (#2)}
@@ -70,10 +70,10 @@ Si \LaTeX prévoit bien en standard un mécanisme pour permettre cela, celui-ci 
 
 Nous conseillons donc de se tourner vers les packages \package{xargs} et \package{ifthenelse}\footcites{xargs}{ifthen}.
 
-Mais tout ceci dépasserait le cadre de cette ouvrage.
+Mais tout ceci dépasserait le cadre de cet ouvrage.
 \end{plusloins}
 
-Fort bien, mais comment faire pour mettre en forme ? Il faut pour cela utiliser une commande de mise en forme à l'intérieur de la déclaration de commande de mise en sens. Par exemple, pour mettre en petites capitales la commande est \cs{textsc}.
+Fort bien, mais comment faire pour mettre en forme ? Il faut  utiliser une commande de mise en forme à l'intérieur de la déclaration de commande de mise en sens. Par exemple, pour mettre en petites capitales la commande est \cs{textsc}.
 
 \begin{latexcode}
 \newcommand{\auteur}[2]{\textsc{#1}* (#2)}
@@ -86,22 +86,22 @@ Il est bien connu que \auteur{Tertullien}{150 ? - 220 ?}
 n'était pas montaniste mais tertullianiste.
 \end{quotation}
 
-Nous décrirons plus loin dans ce chapitre un ensemble de commande de mise en forme\renvoi{mef}.
+Nous décrirons plus loin dans ce chapitre un ensemble de commandes de mise en forme\renvoi{mef}.
 
 \begin{attention}
     Si la possibilité de créer ses propres commandes est une grande force de \LaTeX, cela ne fait pas toujours la joie des éditeurs. 
     
-    Il est donc recommandée de discuter au préalable avec son éditeur, et surtout de lui indiquer qu'un balisage sous forme de commande doit, normalement, lui faciliter la tâche.
+    Il est donc recommandé de discuter au préalable avec son éditeur, et surtout de lui indiquer qu'un balisage sous forme de commandes doit, normalement, lui faciliter la tâche.
     
     
     Nous recommandons par ailleurs de regrouper toutes ses déclarations de commandes dans un fichier unique, appelé via une commande \cs{input}.\renvoi{input}
     
-    Il est également possible de créer son propre package, pour des commandes utilisées fréquemment dans plusieurs projets\footcite[Ceci dépasserais le cadre de cet ouvrage : je renvois à d'autres documents. Par exemples][]{creer_sty}.
+    Il est également possible de créer son propre package, pour des commandes utilisées fréquemment dans plusieurs projets\footcite[Ceci dépasserait le cadre de cet ouvrage : je renvoie à d'autres documents. Par exemples][]{creer_sty}.
 \end{attention}
 
 
 \begin{plusloins}\label{commentaireredac}
-On peut ainsi très facilement créer une commande \csp{commentaire} servant pour indiquer des commentaires personnels au cour de la rédaction, afin de les avoir sous les yeux lors d'une relecture papier.
+On peut ainsi très facilement créer une commande \csp{commentaire} servant pour indiquer des commentaires personnels au cours de la rédaction, afin de les avoir sous les yeux lors d'une relecture papier.
 Par exemple :
 
 \begin{latexcode}
@@ -137,7 +137,7 @@ Il est bien connu que \auteur{Tertullien}{150 ? - 220 ?}
 n'était pas montaniste mais tertullianiste.
 \end{quotation}
 
-On constate une espace en trop avant et après la mention de l'auteur, que nous avons soulignée pour les besoins de l'explication.
+On constate une espace en trop avant et une après la mention de l'auteur, que nous avons soulignées pour les besoins de l'explication.
 En revanche, si on met des \% :
 
 \begin{latexcode}
@@ -155,7 +155,7 @@ Il est bien connu que \auteur{Tertullien}{150 ? - 220 ?}
 n'était pas montaniste mais tertullianiste.
 \end{quotation}
 
-On ne constate pas d'espace intempestifs.
+Il n'y a plus d'espaces intempestives.
 
 
 \subsection{Étoiler \oldcs{newcommand}}
@@ -192,13 +192,13 @@ Il est possible de définir des commandes sans aucun argument. Prenons une comma
 \newcommand{\cf}[0]{\emph{cf.}}
 \end{latexcode}
 
-Comme notre commande ne prend pas d'argument, il est nécessaire, lorsque nous l'appelons, de la séparer du texte qui suit par un espace, afin que \LaTeX sache où s'arrête la commande : 
+Comme notre commande ne prend pas d'argument, il est nécessaire, lorsque nous l'appelons, de la séparer du texte qui suit par uen espace, afin que \LaTeX sache où s'arrête la commande : 
 
 \begin{latexcode}
 Ceci est très intéressant \cf cela.
 \end{latexcode}
 
-Mais dans ce cas, l'espace disparaît lors de la compilation :
+Mais  l'espace disparaît lors de la compilation :
 
 \begin{quotation}
 Ceci est très intéressant \cf cela.
@@ -221,7 +221,7 @@ Ceci est très intéressant \cf cela.
 
 \section{Commandes de mise en forme\label{mef}}
 
-Nous listons ici les principales commandes de mise en forme. Pour des besoins avancées, on trouvera aisément de la documentation sur internet. En ce qui concerne les questions d'espacement, un chapitre spécifique leur est dédié\renvoi{espacement}.
+Nous listons ici les principales commandes de mise en forme. Pour des besoins avancés, on trouvera aisément de la documentation sur internet. En ce qui concerne les questions d'espacement, un chapitre spécifique leur est dédié\renvoi{espacement}.
 
 \subsection{Taille des caractères}\label{taille}
 
@@ -246,7 +246,7 @@ Il est possible de définir de manière absolue la taille des caractères en ind
      \csp{Huge}            &    \Huge abcdefghijklmnopqrst             \\
 \end{longtable}
 
-\label{commandesdetaille}Ces commandes ont toutefois un comportement particulier : ce sont des commandes dites \enquote{à bascule}\renvoi{bascule}. À la différence de la plupart des commandes, elles ne prennent pas d'argument. Elles doivent être utilisées entres accolades, le texte dont la taille change étant inséré après la commande, dans les accolades.
+\label{commandesdetaille}Ces commandes ont toutefois un comportement particulier : ce sont des commandes dites \enquote{à bascule}\renvoi{bascule}. À la différence de la plupart des commandes, elles ne prennent pas d'argument. Elles doivent être utilisées entre accolades, le texte dont la taille change étant inséré après la commande, dans les accolades.
 
 Ainsi :
 \begin{latexcode}
@@ -256,7 +256,7 @@ Ainsi :
 Et non pas :
 
 \begin{latexcode}
-\large{s}
+\large{Texte plus gros}
 \end{latexcode}
 
 \subsection{Style de caractères}
@@ -275,18 +275,18 @@ Voici une liste non exhaustive de commandes utiles pour personnaliser les styles
     \csp{emph}            & \emph{Texte en emphase}                    \\
     \csp{textbf}            &  \textbf{Gras}                            \\
     \csp{textsc}            & \textsc{Petites capitales}                    \\
-    \csp{underline}        & \textsc{Souligné}     (à éviter)                \\
+    \csp{underline}        & \underline{Souligné}     (à éviter)                \\
     \csp{textsuperscript}    &  \textsuperscript{Exposant}                    \\
     \csp{textsubscript}        & \textsubscript{Index} (nécessite le package \package{subscript}) \\
 \end{longtable}
 
 \subsection{Couleurs}
 
-Les couleurs ne sont pas gérées nativement dans \LaTeX. Il faut passer par le package \package{color} ou le package \package{xcolor}. Ils proposent tout les deux une commande \csp{textcolor}\marg{nom de la couleur}\marg{texte en couleur}.
+Les couleurs ne sont pas gérées nativement dans \LaTeX. Il faut passer par le package \package{color} ou le package \package{xcolor}. Ils proposent tous les deux une commande \csp{textcolor}\marg{nom de la couleur}\marg{texte en couleur}.
 
 
 
-La différence tient principalement au nombre de couleurs disponibles par défaut et à la facilité à en définir des nouvelles, mais aussi à la possibilité d'appliquer des couleurs à d'autres éléments que le texte. Nous ne présentons ici que le package \package{xcolor}, de manière succincte. Nous renvoyons à la documentation pour des usages avancés.
+La différence tient principalement au nombre de couleurs disponibles par défaut et à la facilité  d'en définir des nouvelles, mais aussi à la possibilité d'appliquer des couleurs à d'autres éléments que le texte. Nous ne présentons ici que le package \package{xcolor}, de manière succincte. Nous renvoyons à la documentation pour des usages avancés.
 
 \subsubsection{Couleurs standards}
 Le package \package{xcolor} propose les couleurs de bases suivantes : 
@@ -326,23 +326,23 @@ Le package \package{xcolor} propose les couleurs de bases suivantes :
 
 \subsubsection{Couleurs supplémentaires}
 
-On peut passage les options \option{dvipsnames}, \option{svgnames} ou \option{x11names} lors de l'appel au package \package{xcolor}, chacune fournissant un jeu de couleur. Ne pouvant lister toutes ces couleurs dans cette ouvrage, nous renvoyons à la documentation de \package{xcolor}\footcite{xcolor_jeu}.
+On peut passage les options \option{dvipsnames}, \option{svgnames} ou \option{x11names} lors de l'appel au package \package{xcolor}, chacune fournissant un jeu de couleurs. Ne pouvant lister toutes ces couleurs dans cet ouvrage, nous renvoyons à la documentation de \package{xcolor}\footcite{xcolor_jeu}.
 
 \subsubsection{Définir ses propres couleurs}
 
-Il est possible de définir ses propres couleurs. Il faut pour se faire utiliser \csp{definecolor}, selon la syntaxe suivante : 
+Il est possible de définir ses propres couleurs. Il faut  utiliser \csp{definecolor}, selon la syntaxe suivante : 
 
 \cs{definecolor}\marg{nom}\marg{methode}\marg{definition}
 
 
-Les couleurs peuvent être définies de plusieurs manières\footnote{On consultera n'importe quelle livre scientifique sur les couleurs pour plus de détails. On peut également consulter la documentation du package{xcolor}.} Les deux principales sont\footcite[Il existe aussi la méthode de définition par la longueur d'onde pour les couleurs de l'arc en ciel, par pourcentage de gris pour les différents niveaux de gris, ainsi que par teinte, saturation et luminosité, mais ceci nécessiterait un cours de physique lumineuse. Pour  les personnes intéressées par les détails, consulter][]{xcolor_methode} :
+Les couleurs peuvent être définies de plusieurs manières\footnote{On consultera n'importe quel livre scientifique sur les couleurs pour plus de détails. On peut également consulter la documentation du package \package{xcolor}.}. Les deux principales sont\footcite[Il existe aussi la méthode de définition par la longueur d'onde pour les couleurs de l'arc en ciel, par pourcentage de gris pour les différents niveaux de gris, ainsi que par teinte, saturation et luminosité, mais ceci nécessiterait un cours de physique lumineuse. Pour  les personnes intéressées par les détails, consulter][]{xcolor_methode} :
 \begin{itemize}
 \item La méthode additive en additionnant du rouge, du vert et du bleu (comme sur un écran d'ordinateur).
 \item La méthode soustractive en superposant du cyan, du magenta, du jaune et du noir (comme sur une imprimante couleur).
 \end{itemize}
 
 
-Les deux méthodes nécessitent de donner une valeur comprise entre 0 (inclus) et 1 (inclus) à chacun des composants\footcite[On pourra trouver une série de code couleur sur le site][]{codecouleur}.
+Dans les deux cas, il faut  donner une valeur comprise entre 0 (inclus) et 1 (inclus) à chacun des composants\footcite[On pourra trouver une série de code couleur sur le site][]{codecouleur}.
 
 \definecolor{rougebourgogne}{HTML}{6B0D0D}
 
@@ -354,13 +354,13 @@ On peut la définir de la manière suivante en méthode additive :
 \definecolor{rougebourgogne}{rgb}{0.41,0.05,0.05}
 \end{latexcode}
 
-Ou bien en méthode soustractive\footnote{Idéalement le choix de  la méthode devrait relever du support de destination. Mais le package \package{xcolors} propose des système de conversion d'une méthode à l'autre.}de la manière suivante :
+Ou bien en méthode soustractive\footnote{Idéalement le choix de  la méthode devrait relever du support de destination. Mais le package \package{xcolors} propose des systèmes de conversion d'une méthode à l'autre.}de la manière suivante :
 
 \begin{latexcode}
 \definecolor{rougebourgogne}{cmyk}{0,0.88,0.88,0.58}
 \end{latexcode}
 
-Enfin signalons la méthode HTML qui offre l'avantage d'avoir de nombreux site internet indiquant les codes couleur HTML\footnote{En réalité la méthode HTML est une méthode additive avec des valeurs comprises entre 0 et 255, notées en hexadécimal.}.
+Enfin signalons la méthode HTML qui offre l'avantage d'avoir de nombreux sites internet indiquant les codes couleur HTML\footnote{En réalité la méthode HTML est une méthode additive avec des valeurs comprises entre 0 et 255, notées en hexadécimal.}.
 
 La même couleur se définit ainsi :
 
