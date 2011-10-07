@@ -1,19 +1,19 @@
 \chapter{Insérer des éléments non textuels}
 
 \begin{prealable}
-    Dans ce chapitre nous allons examiner comment insérer des éléments qui ne font pas parti du flux du texte : images, graphismes, tableaux de données.
+    Dans ce chapitre nous allons examiner comment insérer des éléments qui ne font pas partie du flux du texte : images, graphismes, tableaux de données.
 \end{prealable}
 
 \section{Insérer des images}
 
-Les images insérables avec \XeLaTeX sont au format JPEG (extension~\ext{jpg}) ou PNG (extension~\ext{png}) ou PDF (extension~\ext{jpg}). Il est nécessaire d'utiliser le package \package{graphicx}.
+Les images insérables avec \XeLaTeX sont au format JPEG (extension~\ext{jpg}), PNG (extension~\ext{png}) ou PDF (extension~\ext{jpg}). Il est nécessaire d'utiliser le package \package{graphicx}.
 
 
-L'insertion d'une image se fait de la manière suivante : \csp{includegraphics}\arg{param. opti.}\marg{chemin de l'image}
+L'insertion d'une image se fait de la manière suivante : \csp{includegraphics}\oarg{param. opti.}\marg{chemin de l'image}
 
 Le chemin de l'image s'indique de la même manière que le chemin des fichiers inclus.\renvoi{chemin}
 
-Les principaux paramètres optionnels sont les suivants\footcite[Pour les autres, on consulter][]{graphicx_options} :
+Les principaux paramètres optionnels sont les suivants\footcite[Pour les autres, on consultera][]{graphicx_options} :
 
 \begin{longtable}{|p{7em}|p{14em}|p{7em}|}
     \hline
@@ -33,7 +33,7 @@ Le centimètre n'est pas la seule  unité de mesure disponible en \LaTeX. Nous e
 \end{plusloins}
 
 \begin{plusloins}
-Le package \package{graphicx} propose des nombreux outils pour manipuler graphiquement du contenu, textuel ou non. Consultez le manuel\footcite{graphicx}.
+Le package \package{graphicx} propose de nombreux outils pour manipuler graphiquement du contenu, textuel ou non. Consultez le manuel\footcite{graphicx}.
 \end{plusloins}
 
 \begin{attention}
@@ -42,20 +42,20 @@ Le package \package{graphicx} propose des nombreux outils pour manipuler graphiq
 
 \section{Insérer des graphismes et des schémas}
 
-On peut vouloir insérer divers type de graphisme ou de schémas : graphique statistique, arbre généalogique, \emph{stemma codicum} etc.
+On peut vouloir insérer divers types de graphismes ou de schémas : graphiques statistiques, arbres généalogiques, \emph{stemma codicum} etc.
 Deux solutions s'offrent à nous :
 \begin{enumerate}
 \item Utiliser un logiciel externe qui exporterait le graphisme dans une image, qu'on insérerait comme n'importe quelle image.
 \item Utiliser les possibilités de \LaTeX et du package\package{TikZ}.\label{TikZ}
 \end{enumerate}
 
-La première solution paraît de prime abord plus simple, puisqu'elle ne nécessite pas d'apprendre des nouveaux éléments en \LaTeX. Toutefois elle nécessite de gérer plus de fichiers\footnote{Prenons un graphisme généré par un tableur : il faudra conserver la feuille du tableur plus l'image du graphisme généré par celui-ci.}. En outre, les images exportées par ces logiciels étant bien souvent de type bitmap et non pas vectoriel%
-\footnote{Il existe deux manières en informatiques de coder une image : en codant point par point (image bitmap) ou bien en codant simplement les formes, par exemple des cercles ou des segments (image vectorielle). La première méthode est adaptée à des images complexes, comme les photographies,  le seconde méthode est conseillée pour les images \enquote{simples} telles que les graphismes. La méthode vectorielle possède l'avantage d'offrir une image plus facilement redimensionnable  sans perte de qualité et de permettre aisément la sélection de texte.},
+La première solution paraît de prime abord plus simple, puisqu'elle ne nécessite pas d'apprendre de nouveaux éléments en \LaTeX. Toutefois il faut avec elle gérer plus de fichiers\footnote{Prenons un graphisme généré par un tableur : il faudra conserver la feuille du tableur plus l'image du graphisme généré par celui-ci.}. En outre, les images exportées par ces logiciels étant bien souvent de type bitmap et  pas vectoriel%
+\footnote{Il existe deux manières en informatique de coder une image : en codant point par point (image bitmap) ou bien en codant simplement les formes, par exemple des cercles ou des segments (image vectorielle). La première méthode est adaptée à des images complexes, comme les photographies,  la seconde méthode est conseillée pour les images \enquote{simples} telles que les graphismes. La méthode vectorielle possède l'avantage d'offrir une image plus facilement redimensionnable  sans perte de qualité et de permettre aisément la sélection de texte.},
 on perd la possibilité de sélectionner dans le PDF généré par \LaTeX les textes, et on risque d'avoir des problèmes de redimensionnement.
 
-Nous allons donc ici vous présenter une possibilité du \package{TikZ} : la représentation d'une famille de manuscrits. 
+Nous allons donc ici vous présenter une des possibilités du \package{TikZ} : la représentation d'une famille de manuscrits. 
 
-Nous avons choisi cet exemple car il est assez simple, tout en étant fréquent en sciences humaines. Mais \package{TikZ} permet de faire bien plus, comme produire des diagrammes statistiques : nous renvoyons à d'autres ouvrages pour en savoir plus\footcites[Outre le manuel][]{tikz}[on pourra lire][]{tikzimpatient}[on pourra également consulter le site ][]{tikzexample}.
+Nous avons choisi cet exemple car il est assez simple, tout en étant fréquent en sciences humaines. Mais \package{TikZ} permet de faire bien plus, comme produire des diagrammes statistiques : nous renvoyons à d'autres ouvrages pour en savoir plus\footnote{Outre le manuel \cite{tikz}, on pourra lire \cites{tikzimpatient}[on pourra également consulter le site ][]{tikzexample}}.
 Ce package possède une syntaxe spécifique. 
 
 \begin{attention}
@@ -64,9 +64,9 @@ Ce package possède une syntaxe spécifique.
 \end{attention}
 
 
-Notre exemple est volontairement simple. Nous disposons de six familles de manuscrits d'un même texte. La  famille A a engendré les familles B, C, D. Les familles E et F pour leurs parts sont issues de la famille D. 
+Notre exemple est volontairement simple. Nous disposons de six familles de manuscrits d'un même texte. La  famille A a engendré les familles B, C, D. Les familles E et F pour leur part sont issues de la famille D. 
 
-Le code est le suivant 
+Le code est le suivant: 
 \inputminted{exemples/premierpas/nontextuels/genealogie.tex}
 
 Ce qui donne le résultat de la figure~\ref{figure:genealogie}\renvoi{figure:genealogie}. \begin{figure}[hp]
@@ -89,15 +89,15 @@ Analysons le code :
 Évidemment un tel code est relativement complexe. C'est pourquoi nous conseillons de le commenter attentivement\footnote{Pour des raisons de place nous ne l'avons pas fait ici.} et de prêter extrêmement attention  aux accolades. Par ailleurs nous recommandons de mettre chaque graphisme \package{TikZ} dans un fichier séparé.
 
 
-Notre \emph{stemma} est relativement simple : il n'y a pas de \enquote{consanguinité}. Si cela avait été le cas la construction aurait été plus complexe : on n'aurait pas pu utiliser les opérations de types \verb|child| et il aurait fallu positionner précisément les éléments en utilisant un système de coordonnée.
+Notre \emph{stemma} est relativement simple : il n'y a pas de \enquote{consanguinité}. Si cela avait été le cas la construction aurait été plus complexe : on n'aurait pas pu utiliser les opérations de types \verb|child| et il aurait fallu positionner précisément les éléments en utilisant un système de coordonnées.
 
 
 
-\section{Création de tableau}
+\section{Création de tableaux}
 
 \begin{attention}
-La création de tableau en \LaTeX nécessite  une extrême rigueur. 
-C'est à nos yeux l'un des éléments les plus complexe de \LaTeX. C'est pourquoi nous ne ferons ici qu'un bref aperçu : on trouvera aisément des exemples plus détaillés dans d'autres ouvrages ou sur internet\footcite[On pourra consulter des fichiers assez didactiques :][]{bebert_tableaux}.
+La création de tableaux en \LaTeX nécessite  une extrême rigueur. 
+C'est à nos yeux l'un des éléments les plus complexes de \LaTeX. C'est pourquoi nous ne ferons ici qu'un bref aperçu : on trouvera aisément des exemples plus détaillés dans d'autres ouvrages ou sur internet\footcite[On pourra consulter des fichiers assez didactiques :][]{bebert_tableaux}.
 
 \end{attention}
 
@@ -130,7 +130,7 @@ Il existe trois types possibles de colonnes,  qui précisent l'alignement des te
     \item \verb|r| Alignement à droite.
 \end{itemize}
 
-Supposons que nous ayons un tableau à trois colonnes. Nous souhaitons que les cellules de la première colonnes soient alignées à gauche, celles de la seconde centrées et celles de la dernière alignées à droite\footnote{Il s'agit ici d'une dérogation au principe de séparation de fond et de forme. Toutefois le lecteur l'ayant assimulé pourra aisément contourner cette dérogation et revenir dans le droit chemin}.  
+Supposons que nous ayons un tableau à trois colonnes. Nous souhaitons que les cellules de la première colonne soient alignées à gauche, celles de la seconde centrées et celles de la dernière alignées à droite\footnote{Il s'agit ici d'une dérogation au principe de séparation de fond et de forme. Toutefois le lecteur pourra aisément, lorsqu'il l'aura assimilée, contourner cette dérogation et revenir dans le droit chemin.}.  
 Il nous faut  écrire :
 
 \inputminted{exemples/premierpas/nontextuels/tableau3colonnes.tex}
@@ -153,7 +153,7 @@ On peut utiliser l'environnement \enviro{tabular*} qui propose un argument suppl
 
 Toutefois il peut être pratique d'indiquer des tailles de colonnes : en particulier lorsque nos cellules contiennent des paragraphes.
 
-Pour ce faire trois types supplémentaires de colonne nous sont proposés par le package \package{array}\footnote{En réalité le premier type ne nécessite pas le package}. Ces types, à la différences des précédents, déterminent une largeur de colonne. Ils nécessitent pour être utilisés de connaître les unités de mesure de \LaTeX\renvoi{unite}. 
+Pour ce faire trois types supplémentaires de colonnes nous sont proposés par le package \package{array}\footnote{En réalité le premier type ne nécessite pas que l'on charge le package.}. Ces types, à la différences des précédents, déterminent une largeur de colonne. Il faut pour les utiliser connaître  les unités de mesure de \LaTeX\renvoi{unite}. 
 
 Ces trois types de colonnes sont :
 \begin{description}
@@ -171,18 +171,18 @@ La ligne de base est une ligne spécifique, correspondant, \emph{grosso-modo} au
 
 \begin{plusloins}
 
-Il est possible de créer ses propres types de colonne. Afin par exemple d'en avoir avec une typographie particulière. Consultez le manuel du package \package{array}\footcite{array_colonnes}.
+Il est possible de créer ses propres types de colonnes, afin par exemple d'en avoir avec une typographie particulière. Consultez le manuel du package \package{array}\footcite{array_colonnes}.
 
 \end{plusloins}
 \begin{plusloins}
-On peut utiliser le package \package{slahshbox} afin d'avoir un cellule divisée en deux dans un sens diagonal, pour les tableaux à doubles entrées.
+On peut utiliser le package \package{slahshbox} afin d'avoir une cellule divisée en deux dans un sens diagonal, pour les tableaux à doubles entrées.
 \end{plusloins}
 \begin{plusloins}
 Le package \package{tabularx} propose un environnement \package{tabularx} permettant de calculer automatiquement la taille des colonnes.
 \end{plusloins}
 \subsubsection{Séparation des cellules}
 
-On peut tracer des filets de séparations des cellules : pour un filet  horizontal, il suffit d'utiliser la commande \csp{hline}. Pour un filet  vertical, il faut mettre le caractère \verb+|+\footnote{Ce caractère, appelé \forme{pipe} ne doit pas être confondu avec un +l+.} entre les types de cellules.
+On peut tracer des filets de séparation des cellules : pour un filet  horizontal, il suffit d'utiliser la commande \csp{hline}. Pour un filet  vertical, il faut mettre le caractère \verb+|+\footnote{Ce caractère, appelé \forme{pipe} ne doit pas être confondu avec un \verb+l+.} entre les types de cellules.
 
 On trace des filets horizontaux plus petits en utilisant la commande \csp{cline}\verb|{<col1>-<col2>}|, où \arg{col1} et \arg{col2} doivent être remplacés par les numéros de colonnes.
 
@@ -196,9 +196,9 @@ Il est possible de fusionner des cellules. Pour une fusion de colonnes, il faut 
 
 \begin{description}
 
-\item[\arg{nombcol}] est le nombre de colonne à fusionner.
-\item[\arg{type}] est le type de colonne qui en résulte, selon la syntaxe vu plus haut.
-\item[\arg{contenu}] est le contenu de la ligne fusionné.
+\item[\arg{nombcol}] est le nombre de colonnes à fusionner.
+\item[\arg{type}] est le type de colonne qui en résulte, selon la syntaxe vue plus haut.
+\item[\arg{contenu}] est le contenu de la ligne fusionnée.
 \end{description}
 
 Pour une fusion de lignes, il faut charger le package \package{multirow}. Celui-ci propose une commande \cs{multirow} dont voici la syntaxe simplifiée\footcite[Simplifiée car nous ne présentons pas les arguments optionnels : nous renvoyons à la documentation :][]{} :
@@ -214,7 +214,7 @@ Pour une fusion de lignes, il faut charger le package \package{multirow}. Celui-
 \inputminted{exemples/premierpas/nontextuels/tableaufusion.tex}
 \input{exemples/premierpas/nontextuels/tableaufusion}
 
-On remarquera les cellules vides correspondante aux anciennes cellules A2 et A3. La commande \cs{multirow} ne modifie pas la structure du tableau : elle indique simplement que le texte se situe sur plusieurs colonnes.
+On remarquera les cellules vides correspondant aux anciennes cellules A2 et A3. La commande \cs{multirow} ne modifie pas la structure du tableau : elle indique simplement que le texte se situe sur plusieurs colonnes.
 
 \subsection{Long tableau}
 
@@ -249,42 +249,42 @@ Cellules de corps de tableau.
 \end{latexcode}
 
 \begin{attention}
-Un élément important avec \enviro{longtable} est la nécessité de compiler deux fois le fichier \ext{tex}. 
+Avec \enviro{longtable}, il faut compiler deux fois le fichier \ext{tex}. 
 
-En effet, \XeLaTeX{} --- Comme d'ailleurs \LaTeX{} --- n'arrive pas à déterminer la taille des colonnes à la première compilation : il procède à un calcul page par page. Cependant il stocke la taille maximale des colonnes dans un fichier temporaire, portant l'extension \ext{aux}. Lors de la seconde compilation, il se sert de ce fichier temporaire pour indiquer la taille des colonnes sur chacune des pages.
+En effet, \XeLaTeX{} --- comme d'ailleurs \LaTeX{} --- n'arrive pas à déterminer la taille des colonnes à la première compilation : il procède à un calcul page par page. Cependant il stocke la taille maximale des colonnes dans un fichier temporaire, portant l'extension \ext{aux}. Lors de la seconde compilation, il se sert de ce fichier temporaire pour indiquer la taille des colonnes sur chacune des pages.
 \end{attention}
 \subsection{Création depuis un fichier \ext{csv}}
 
-Évidemment la syntaxe des tableaux est assez compliquée et risque d'entraîner des erreurs. Il est toutefois possible d'utiliser un fichier au format \ext{csv}, que n'importe quel tableur est capable de produire. Il faut pour cela utiliser le package \package{csvtools}
+Évidemment la syntaxe des tableaux est assez compliquée et risque d'entraîner des erreurs. Il est toutefois possible d'utiliser un fichier au format \ext{csv}, que n'importe quel tableur est capable de produire. Il faut pour cela utiliser le package \package{csvtools}.
 
-Le format \ext{csv} est un format standard de données tabulaires. Malheureusement il ne dispose ni de mise en forme ni de possibilité de fusion de cellule.
+Le format \ext{csv} est un format standard de données tabulaires. Malheureusement il ne dispose ni de mise en forme ni de possibilité de fusion de cellules.
 
-\begin{plusloins}Une solution peut être alors d'utiliser la macro Calc2LaTeX pour le logiciel OpenOffice.org, mais nous n'avons l'avons pas testée.
+\begin{plusloins}Une solution serait peut-être  d'utiliser la macro Calc2LaTeX pour le logiciel OpenOffice.org, mais nous n'avons l'avons pas testée.
 \end{plusloins}
 
 
 
 Toutefois pour des données simples, comme par exemple un tableau statistiques, il suffit amplement. 
-Il vous faut donc exporter votre tableau au format CSV, en choisissant la virgule comme séparateur de champs. La première ligne correspondant à l'en-tête. Certains logiciels d'export au format CSV ne laissent pas le choix quant aux séparateurs de champs. Dans ce cas, il faut utiliser la commande \csp{setcsvseparator}\marg{separateur} pour définir les champs. Ainsi si le séparateur est un point-virgule : 
+Il vous faut donc exporter votre tableau au format CSV, en choisissant la virgule comme séparateur de champs. La première ligne correspond à l'en-tête. Certains logiciels d'export au format CSV ne laissent pas le choix quant aux séparateurs de champs. Dans ce cas, il faut utiliser la commande \csp{setcsvseparator}\marg{separateur} pour définir les champs. Ainsi si le séparateur est un point-virgule : 
 \cs{setcsvseparator}\verb|{;}|.
 
-Il est possible de créer à partir d'un fichier \ext{csv} un environnement \enviro{tabular} ou\enviro{longtable}.
+Il est possible de créer à partir d'un fichier \ext{csv} un environnement \enviro{tabular} ou \enviro{longtable}.
 
 
 Le premier se crée  avec la commande
 \csp{CSVtotabular}\marg{fichier}\marg{type col.}\marg{premiere}\marg{milieu}\marg{dernier}.
 
 Le second se crée avec la commande
-\csp{CSVtolongtable}\marg{fichier}\marg{type col.}\marg{premiere}\marg{milieu}\marg{dernier}.
+\csp{CSVtolongtable}\marg{fichier}\marg{type col.}\marg{premiere}\marg{milieu}\marg{dernière}.
 
 
 
 \begin{description}
 \item[\arg{fichier}]est le nom du fichier \ext{csv}. La méthode pour indiquer le chemin du fichier est la même que d'habitude.\renvoi{chemin}
-\item[\arg{type col.}] indique les alignements de colonne, comme vus précédemment\renvoi{typecolonnes}.
-\item[\arg{premiere}] indique le contenu de la première ligne du  tableau que vous allez généré.
+\item[\arg{type col.}] indique les alignements de colonnes, comme vus précédemment\renvoi{typecolonnes}.
+\item[\arg{premiere}] indique le contenu de la première ligne du  tableau que vous allez générer.
 \item[\arg{milieu}] indique le contenu des lignes du milieu.
-\item[\arg{dernier}] indique le contenu de la dernière ligne.
+\item[\arg{dernière}] indique le contenu de la dernière ligne.
 \end{description}
 
 On utilise la commande \csp{insertbyname}\marg{nom} pour insérer le contenu de la colonne \arg{nom}.
@@ -310,25 +310,25 @@ Le résultat est le tableau \ref{csvtolongtable}\renvoi{csvtolongtable}.
 Pour afficher un graphique statistique, nous recommandons d'utiliser le package \package{TikZ}\renvoi{TikZ}. Toutefois la maîtrise de cet outils peut être relativement complexe. C'est pourquoi nous listons ici quelques packages utiles : 
 \begin{itemize}
 \item Le package \package{csvpie} propose une fonction pour tracer un diagramme circulaire à partir d'un fichier \ext{csv}\footcite[Sa documentation se trouve dans celle du package \package{csvtools} :][]{csvtools_pie}. 
-\item Le package \package{datatool} proposent un certain nombre de graphiques statistiques. Il nécessite d'enregistrer les données selon une forme liée au package. Nous renvoyons à sa documentation\footnote{datatool}.
+\item Le package \package{datatool} propose un certain nombre de graphiques statistiques. Il faut enregistrer les données selon une forme liée au package. Nous renvoyons à sa documentation\footnote{datatool}.
 \end{itemize}
 \end{plusloins}
 
 
-\section[La notion de flottants]{Où insérer les éléments non textuels ? : la notion de flottants}
+\section[La notion de flottants]{Où insérer les éléments non textuels ?  la notion de flottants}
 \label{legende}
-Nous avons vu comment insérer des éléments non textuels. Mais vous constaterez rapidement que la mise en forme n'est pas toujours des meilleurs, l'élément s'insérant dans le texte à l'endroit précis où il a été appelé, ce qui peut entraîner des espaces blancs disgracieux.
-En outre, ces éléments non textuels disposent habituellement d'une légende.
+Nous avons vu comment insérer des éléments non textuels. Mais vous constaterez rapidement que la mise en forme n'est pas toujours des meilleures, l'élément s'insérant dans le texte à l'endroit précis où il a été appelé, ce qui peut entraîner des espaces blancs disgracieux.
+En outre, ces éléments non textuels disposent habituellement d'une légende, que nous ne savons pas encore mettre.
 
 Pour résoudre ces deux problèmes --- positionnement esthétique et légende --- \LaTeX utilise la notion de flottant. Un flottant est donc un élément non textuel que LaTeX essaie d'insérer au meilleur endroit du point de vue de l'esthétique et qui dispose (éventuellement) d'une légende.
 
 Il existe deux types principaux de flottant :
 \begin{itemize}
     \item Les figures, générées par l'environnement \enviro{figure}.
-    \item Les tableaux, générées par l'environnement \enviro{table}.
+    \item Les tableaux, générés par l'environnement \enviro{table}.
 \end{itemize}
 
-La syntaxe pour insérer le premier est la suivante :
+La syntaxe pour insérer le premier type est la suivante :
 
 \begin{latexcode}
 \begin{figure}[<paramètre de placement>]
@@ -341,18 +341,18 @@ Celle pour insérer le second est la suivante :
 
 \begin{latexcode}
 \begin{table}[<paramètre de placement>]
-    Insertion d'un tableau suivant le codes montrés plus haut.
+    Insertion d'un tableau suivant les codes montrés plus haut.
     \caption{<Légende>}
 \end{table} 
 \end{latexcode}
 
-Si la commande \cs{caption} est insérée au-dessus de la figure, de l'image ou du tableau, la légende sera située au dessus de l'élément et non en-dessous. Il est possible, mais déconseillée, de ne pas mettre de légende.
+Si la commande \cs{caption} est insérée au-dessus de la figure, de l'image ou du tableau, la légende sera située au-dessus de l'élément et non en-dessous. Il est possible, mais déconseillé, de ne pas mettre de légende.
 
-Un exemple de flottant se situe  dans ce chapitre : la figure \ref{figure:genealogie}\renvoi{figure:genealogie}.
+Nous avons un exemple de flottant   dans ce chapitre : la figure \ref{figure:genealogie}\renvoi{figure:genealogie}.
 \begin{attention}
     On pourrait vouloir changer les intitulés comme \emph{figure} et \emph{tableau}. Tout ceci est possible, nous en parlons plus loin, dans le chapitre consacré aux chaînes de langue.\renvoi{i18n}
     
-    De même on pourrait souhaiter renvoyer automatiquement vers le numéro et la page d'une figure : nous en parlons dans le chapitre consacré à la navigation à l'intérieur d'un document.\renvoi{label}
+    De même on pourrait souhaiter renvoyer automatiquement au numéro et la page d'une figure : nous en parlons dans le chapitre consacré à la navigation à l'intérieur d'un document.\renvoi{label}
 \end{attention}
 
 À noter que, comme les titres, la commande \csp{caption} peut recevoir un argument optionnel qui compte pour titre dans la table des figures ou la table des tableaux :\renvoi{tablefigure}
@@ -361,7 +361,7 @@ Un exemple de flottant se situe  dans ce chapitre : la figure \ref{figure:geneal
 
 \begin{plusloins}
 
-Il peut être utile de centrer le contenu du flottant. Il s'agit ici d'une exception au principe de séparation du fond de la forme. Pour procéder à ce centrage, il faut utiliser la commande \csp{centering}.
+Il est parfois  utile de centrer le contenu du flottant. Il s'agit ici d'une exception au principe de séparation du fond de la forme. Pour procéder à ce centrage, il faut utiliser la commande \csp{centering}.
 
 \begin{latexcode}
 \begin{figure}[<paramètre de placement>]
@@ -372,17 +372,16 @@ Il peut être utile de centrer le contenu du flottant. Il s'agit ici d'une excep
 \end{latexcode}
 
 
-Pour personnaliser les styles des légendes, la méthode la plus simple reste encore d'utiliser le package \package{caption}\footcite{caption}. Nous renvoyons à la documentation.
+Pour personnaliser les styles des légendes, la méthode la plus simple reste encore d'utiliser le package \package{caption}. Nous renvoyons à la documentation\footcite{caption}.
 Pour utiliser une légende en dehors d'un flottant, on peut utiliser le package \package{ccaption}\footcite{ccaption}, qui permet d'autres choses encore.
 
-Il peut aussi arriver qu'on souhaite avoir deux éléments flottants en vis-à-vis, sur la page gauche et sur la page droite. On peut dans ce cas se servir du package \package{dpfloat}\footcite{dpfloat}.
+Si l'on souhaite avoir deux éléments flottants en vis-à-vis, sur la page gauche et sur la page droite, on peut  se servir du package \package{dpfloat}\footcite{dpfloat}.
 
 Le package \package{endfloat}\footcite{endfloat} permet, quant à lui, de placer systématiquement les flottants à la fin du travail.
 
-On peut vouloir avoir des flottants orientés dans un autre sens que celui de la page. On utilisera pour ce faire le package \package{rotfloat}\footcite{rotfloat}.
+Pour avoir des flottants orientés dans un autre sens que celui de la page, on utilisera pour ce faire le package \package{rotfloat}\footcite{rotfloat}.
 
-Il est possible d'insérer au sein d'une figure des sous-figures, chacune d'entre elles disposant d'une légende, en plus de la légende principal.
-Pour ce faire il faut utiliser le  \package{subcaption}\footcite{subcaption}.
+Il est possible d'insérer au sein d'une figure des sous-figures, chacune d'entre elles disposant d'une légende, en plus de la légende principal; il faut utiliser le  \package{subcaption}\footcite{subcaption}.
 \end{plusloins}
 
 
@@ -407,8 +406,8 @@ Le \arg{paramètre de placement} indique à \LaTeX comment placer idéalement le
 
 Si le système des flottants permet généralement de conserver une mise en page correcte tout en n'éloignant pas trop l'élément de son emplacement, il arrive parfois que l'éloignement soit trop important.
 
-Pour remédier à ce problème, on peut utiliser la commande \csp{FloatBarrier} du paquet \package{placeins}\footcite{placeins}. 
-Tout les flottants appelés avant la commande sont placées avant celle-ci.
+La commande \csp{FloatBarrier} du package \package{placeins} permet de remédier à ce problème\footcite{placeins}. 
+Tous les flottants appelés avant la commande sont placés avant celle-ci.
 
 
 
