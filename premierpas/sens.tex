@@ -14,18 +14,18 @@ On le voit, la \emph{mise en forme} diffère de la \emph{mise en sens}. Cette de
 
 C'est d'ailleurs ce qui se passait auparavant quand les auteurs proposaient encore des textes manuscrits à leurs éditeurs : ils indiquaient les éléments à mettre en sens par des signes, mise en sens que l'éditeur transformait en mise en forme\footnote{Dans un traitement de texte de type WYSIWYG, cette distinction se fait normalement à l'aide des styles. Bien souvent malheureusement les utilisateurs ne savent pas s'en servir.}.
 
-Dans \LaTeX, le principe est le même : il existe des commandes de mise en sens qui sont ensuite transformées en commande de mise en forme. Mieux : on peut définir ses propres commandes de mise en sens. L'intérêt est  évident : pouvoir changer rapidement de mise en forme pour un ensemble de données mises en sens.
+Dans \LaTeX, le principe est le même : il existe des commandes de mise en sens qui sont ensuite transformées en commandes de mise en forme. Mieux : on peut définir ses propres commandes de mise en sens. L'intérêt est  évident : pouvoir changer rapidement de mise en forme pour un ensemble de données mises en sens.
 
 Un exemple sera plus parlant. Supposons que j'écrive un livre d'introduction à l'histoire du christianisme antique. Ce livre cite divers auteurs. Je souhaite mettre en valeur ces auteurs, et pour ce faire décide de les mettre en petites capitales.
 
 Donc, à chaque fois que je cite un auteur, j'indique que je souhaite avoir son nom en petite capitale.
-Vient le moment où j'imprime mon livre, et je me rend compte que le choix des petites capitales n'est pas le plus pertinent, mais qu'il vaudrait mieux mettre des gras. Il me reste alors à repérer toutes les petites capitales dans mon texte, à vérifier qu'il s'agit bien de petites capitales indiquant un nom d'auteur et à les remplacer par du gras.
+Vient le moment où j'imprime mon livre, et je me rend compte que le choix des petites capitales n'est pas le plus pertinent, mais qu'il vaudrait mieux mettre du gras. Il ne me reste alors plus qu'à repérer toutes les petites capitales dans mon texte, à vérifier qu'il s'agit bien de petites capitales indiquant un nom d'auteur et à les remplacer par du gras --- travail fastidieux!
 
-En revanche, si à la place de signaler une mise en petite capitale, je signale simplement  qu'il s'agit d'un nom d'auteur --- par exemple en écrivant : \cs{auteur}\verb|{Tertullien}| --- je n'aurais qu'une seule ligne à changer pour indiquer que je souhaite avoir mes noms d'auteur en gras. Mieux : je pourrais créer très simplement un index de mes auteurs\renvoi{indexauteur}.
+En revanche, si au lieu de signaler à chaque occurrence qu'il faut des petites capitales, je signale simplement  qu'il s'agit d'un nom d'auteur --- par exemple en écrivant : \cs{auteur}\verb|{Tertullien}| --- je n'aurais qu'une seule ligne à changer pour indiquer que je souhaite avoir mes noms d'auteur en gras. Mieux : je pourrais créer très simplement un index de mes auteurs\renvoi{indexauteur}.
 
-LaTeX propose quelques commandes simples de mise en sens  : par exemple celles que nous avons vues plus haut pour indiquer les niveaux de titre\renvoi{niveautitre}.
+LaTeX propose quelques commandes simples de mise en sens  : par exemple celles que nous avons vues plus haut pour indiquer les niveaux de titres\renvoi{niveautitre}.
 
-Nous allons ici présenter quelques autres commandes et environnements de mise en sens. Dans le chapitre suivant, nous indiquerons des commandes et environnements de mise en sens spécifiques aux citations\renvoi{citertexte}. Dans un troisième chapitre, nous présenterons la manière de créer ses propres commandes\renvoi{creercommandes}, et nous présenterons alors la manière de mettre en forme.
+Nous allons ici présenter quelques autres commandes et environnements de mise en sens. Dans le chapitre suivant, nous indiquerons des commandes et environnements de mise en sens spécifiques aux citations\renvoi{citertexte}. Dans un troisième chapitre, nous expliquerons comment créer ses propres commandes\renvoi{creercommandes}, et nous présenterons alors la manière de mettre en forme.
 
 \section{Commandes de mise en sens}
 
@@ -49,13 +49,13 @@ Concrètement cela se traduit par un italique.
 Le quatrième siècle voit la naissance d'une Église impériale et par conséquent \emph{le basculement vers un christianisme de masse}, ce qui aura des impacts sur l'ecclésiologie, la théologie et la liturgie.
 \end{quotation}
 
-Toutefois, à la différence d'une commande qui indiquerait directement de mettre en italique, cette commande pourrait, si on voulait, donner un résultat différent, par exemple, une mise en couleur. 
+Toutefois, à la différence d'une commande qui indiquerait directement de mettre le texte en italique, cette commande pourrait, si on voulait, donner un résultat différent, par exemple mettre en couleur. 
 
 Une autre propriété intéressante est la gestion des imbrications : par défaut une commande \cs{emph} à l'intérieur d'une autre commande \cs{emph} produit un texte en caractères droits.
 
-\subsection{Le paratexte : notes de bas de page et de marges}
+\subsection{Le paratexte : notes de bas de page et de marge}
 
-\LaTeX propose deux commandes pour indiquer des paratextes\footnote{La question des apparats critiques mise à part, question que nous traiterons plus loin} : pour des notes de bas de page et de marge, la position de ces dernières dépendant du caractère recto ou verso de la page. Ces commandes sont, respectivement, \csp{footnote} et \cs{marginpar}.
+\LaTeX propose deux commandes pour indiquer des paratextes\footnote{La question des apparats critiques mise à part, question que nous traiterons plus loin.} : pour des notes de bas de page et des notes de marge (la position de ces dernières changeant, quand on est en recto-verso, selon que la page est paire ou impaire). Ces commandes sont, respectivement, \csp{footnote} et \cs{marginpar}.
 
 \begin{latexcode}
 Lorem\footnote{Une note de bas de page.} ipsum dolor amat.
@@ -63,7 +63,7 @@ Aliquam sagittis\marginpar{Annotation marginale} magna.
 \end{latexcode}
 
 \begin{attention}
-    On serait tenté d'utiliser cette commande pour citer en note de bas de page une référence bibliographique. Il existe en fait une commande spécifique, que nous étudierons en tant voulu.\renvoi{footcite}
+    On serait tenté d'utiliser cette commande pour citer en note de bas de page une référence bibliographique. Il existe en fait une commande spécifique, que nous étudierons en temps voulu.\renvoi{footcite}
 \end{attention}
 \begin{attention}
     Certaines mauvaises langues diront qu'il s'agit ici d'une mise en forme et non pas d'une mise en sens. Ils ont partiellement raison, dans la mesure où parfois distinguer la mise en forme de la mise en sens n'est pas évident.
@@ -87,7 +87,7 @@ Chaque élément de la liste est marqué par la commande \csp{item}.
 \begin{latexcode}
 \begin{enumerate}
     \item Premier élément
-    \item Second élément
+    \item Deuxième élément
     \item Troisième élément
 \end{enumerate}
 \end{latexcode}
@@ -95,7 +95,7 @@ Chaque élément de la liste est marqué par la commande \csp{item}.
 \begin{quotation}
 \noindent\begin{enumerate}
     \item Premier élément
-    \item Second élément
+    \item Deuxième élément
     \item Troisième élément
 \end{enumerate}
 \end{quotation}
@@ -127,7 +127,7 @@ Chaque élément de la liste est marqué par la commande \cs{item}.
 
 \subsubsection{Les listes de descriptions}
 
-Une liste de descriptions fait correspondre une à une des valeurs. Une telle liste peut être utile pour des lexiques, des glossaires, des chronologies etc. Pour chaque couple, la première valeur est passée comme argument à la commande \cs{item}. Les listes de définitions sont des environnements \enviro{description}.
+Une liste de descriptions fait correspondre une à une des valeurs. Une telle liste peut être utile pour des lexiques, des glossaires, des chronologies, etc. Pour chaque couple, la première valeur est passée comme argument à la commande \cs{item}. Les listes de définitions sont des environnements \enviro{description}.
 
 
 \begin{latexcode}
@@ -148,7 +148,7 @@ Une liste de descriptions fait correspondre une à une des valeurs. Une telle li
 
 \subsection{Imbrication des listes}
 
-Il est possible d'imbriquer des listes, quelques soient leurs types. On ne peut, par défaut, avoir plus de quatre niveaux d'imbrication.
+Il est possible d'imbriquer des listes, quels que soient leurs types. On ne peut, par défaut, avoir plus de quatre niveaux d'imbrication.
 
 \begin{latexcode}
 \begin{itemize}
@@ -157,7 +157,7 @@ Il est possible d'imbriquer des listes, quelques soient leurs types. On ne peut,
             \item Premier sous élément
             \item Second sous élément
     \end{enumerate}
-    \iteem Un autre élément de premier niveau
+    \item Un autre élément de premier niveau
 \end{itemize}
 \end{latexcode}
 
@@ -173,5 +173,5 @@ Il est possible d'imbriquer des listes, quelques soient leurs types. On ne peut,
 \end{quotation}
 
 \begin{plusloins}
-Il peut arriver d'avoir besoin de personnaliser l'aspect des listes, ou bien encore de devoir arrêter une numérotation de liste pour la reprendre plus loin. Bertrand Masson a écrit un excellent tutoriel sur la manière d'utiliser le packages \package{enumitem} pour arriver à ces fins\footcite{bebert_liste}. 
+On a parfois besoin de personnaliser l'aspect des listes, ou bien encore d'arrêter une numérotation de liste pour la reprendre plus loin. Bertrand Masson a écrit un excellent tutoriel sur la manière d'utiliser le package \package{enumitem} pour arriver à ces fins\footcite{bebert_liste}. 
 \end{plusloins}
