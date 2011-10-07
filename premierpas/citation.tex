@@ -3,7 +3,7 @@
 \begin{prealable}
 Nous évoquerons dans ce chapitre les citations \emph{explicites et textuelles}, c'est à dire celles où l'auteur du travail ne se contente pas de renvoyer à une source ou à une étude, mais cite des extraits de cette source.
 
-Une citation peut se faire de deux manières : dans le corps du propos, elle est alors normalement entourée de guillemets, ou bien dans un paragraphe spécifique : elle est alors généralement présentée avec des marqueurs typographiques particuliers : changement de la taille de police, de la marge etc.
+Une citation peut se faire de deux manières : dans le corps du propos, elle est alors normalement entourée de guillemets, ou bien dans un paragraphe spécifique. Elle est alors généralement présentée avec des marqueurs typographiques particuliers : changement de la taille de police, de la marge etc.
 
 Nous avions vu plus haut qu'il fallait séparer sens et forme. Nous allons donc présenter ici les commandes servant à marquer des citations.\renvoi{sensforme}
 
@@ -22,7 +22,7 @@ Les citations dans le corps d'un texte sont normalement entourées de guillemets
 \end{quotation}
 
 Les claviers disponibles sur nos ordinateurs ne disposent généralement en accès direct que des guillemets anglais\footnote{Une exception notable est la disposition de clavier Bépo.} : \verb|"|. 
-La plupart des logiciels WYSIWYG convertissent automatiquement ces guillemets en guillemets français. Rares sont les éditeurs de texte qui le proposent\footnote{C'est d'ailleurs à nos yeux une des raisons qui fait qu'un site internet d'un quotidien national dit \enquote{de référence} n'utilise pas de guillemet français sur sa page d'accueil (à la date du 10 avril 2011), les rédacteurs ne prenant pas le temps de taper les combinaisons complexes de touches nécessaires à la frappe de guillemets français}. 
+La plupart des logiciels WYSIWYG convertissent automatiquement ces guillemets en guillemets français. Rares sont les éditeurs de texte qui le proposent\footnote{C'est d'ailleurs à nos yeux une des raisons qui fait qu'un site internet d'un quotidien national dit \enquote{de référence} n'utilise pas de guillemets français sur sa page d'accueil (à la date du 10 avril 2011), les rédacteurs ne prenant pas le temps de taper les combinaisons complexes de touches nécessaires à la frappe de guillemets français.}. 
 
 En outre, en vertu du principe de séparation du sens et de la forme, évoqué plus haut\renvoi{sensforme}, il est plus pertinent d'utiliser une commande spécifique pour indiquer une citation dans le corps du texte.
 
@@ -30,7 +30,7 @@ Nous allons donc utiliser le package \package{csquotes} qui propose des commande
 
 
 
-Le package propose une première commande utile : \csp{enquote}\marg{citation}, qui sert pour les citations en ligne.
+Le package contient une première commande utile : \csp{enquote}\marg{citation}, qui sert pour les citations dans le corps du texte.
 
 \begin{latexcode}
 Comme le dit très justement xxx : 
@@ -105,7 +105,7 @@ Que l’Église d'outre-mer soit consultée
  pour la confirmation de ce canon.
 
 De plus, qu'il soit permis de lire les passions des martyrs,
-lorsqu'on célèbre leurs anniversaires
+lorsqu'on célèbre leurs anniversaires.
 \end{quotation}
 \end{latexcode}
 
@@ -146,7 +146,7 @@ L'environnement  \enviro{verse} permet de citer de façon rapide et simple des p
 Cet environnement est très limité: il ne permet pas de numéroter ni d'indenter les vers, ni encore de rajouter un titre. Si l'on est amené à citer fréquemment des vers, il vaut mieux appeler dans le préambule le package \package{verse}. La citation du poème se fait de la même manière.
 
 
-Avec ce package pour numéroter les vers cités il faut indiquer \csp{poemlines}\marg{nbr} :  \arg{nbr} 
+Avec ce package, pour numéroter les vers cités il faut indiquer \csp{poemlines}\marg{nbr} :  \arg{nbr} 
 définit la fréquence avec laquelle les vers sont numérotés. 
 
 
@@ -233,7 +233,7 @@ Un bouquet de houx vert et de bruyère en fleur.
 \end{verse}
 
 \begin{plusloins}
-Dans la typographie française, il est d'usage de mettre un crochet droit [ au début d'un rejet. Ni l'environnement ni le package \package{verse} ne suivent cette règle. Pour obtenir le crochet droit, il faut indiquer charger le package  \package{gmverse} en lui passant l'option \option{squarebr} :
+Dans la typographie française, il est d'usage de mettre un crochet droit [ au début d'un rejet. Ni l'environnement ni le package \package{verse} ne suivent cette règle. Pour obtenir le crochet droit, il faut charger le package  \package{gmverse} en lui passant l'option \option{squarebr} :
 
 \begin{latexcode}
 \usepackage}[squarebr]{gmverse}
@@ -272,7 +272,7 @@ on obtient donc:
  And made cider inside her inside\footcite{EdwardLear}.\\ 
 \end{patverse}  \end{verse} 
  
- Si l'on a besoin de répéter une indentation tout le long d'un poème, on remplace \enviro{patverse} par \enviro{patverse*}. Donc pour citer un long extrait en hexamètre dactylique, plutôt que d'indiquer l'indentation pour chaque vers, il suffit  d'indiquer \cs{indentpattern}\verb|{01}| et d'insérer tout le poème  dans l'environnement \enviro{patverse*} pour avoir un vers sur deux indenté.
+ Si l'on a besoin de répéter une indentation tout le long d'un poème, on remplace \enviro{patverse} par \enviro{patverse*}. Donc pour citer un long extrait en hexamètres dactyliques, plutôt que d'indiquer l'indentation pour chaque vers, il suffit  d'indiquer \cs{indentpattern}\verb|{01}| et d'insérer tout le poème  dans l'environnement \enviro{patverse*} pour avoir un vers sur deux indenté.
  
  
  Le package \package{verse} offre bien d'autres possibilités qui dépassent la simple citation de poésie dans le cours d'un texte. À l'instar d'un autre package, \package{poemscol}, c'est un véritable outil pour éditer de la poésie (nous vous renvoyons ici aux manuels de ces packages). Ni l'un ni l'autre ne permettent en revanche de faire des éditions bilingues: pour cela, il faut utiliser les packages \package{ledmac} et \package{ledpar}. \renvoi{ledmac}
