@@ -1,7 +1,7 @@
 \chapter{Mettre en sens son document (1) : premiers pas}
 
 \begin{prealable}
-    Nous allons maintenant voir comment \emph{mettre en sens} notre document, c'est à dire comment indiquer  la signification de nos textes.
+Nous allons maintenant voir comment \emph{mettre en sens} notre document, c'est à dire comment indiquer  la signification de nos textes.
 \end{prealable}
 
 \section{Mettre en forme n'est pas mettre en sens}\label{sensforme}
@@ -16,12 +16,12 @@ C'est d'ailleurs ce qui se passait auparavant quand les auteurs proposaient enco
 
 Dans \LaTeX, le principe est le même : il existe des commandes de mise en sens qui sont ensuite transformées en commandes de mise en forme. Mieux : on peut définir ses propres commandes de mise en sens. L'intérêt est  évident : pouvoir changer rapidement de mise en forme pour un ensemble de données mises en sens.
 
-Un exemple sera plus parlant. Supposons que j'écrive un livre d'introduction à l'histoire du christianisme antique. Ce livre cite divers auteurs. Je souhaite mettre en valeur ces auteurs, et pour ce faire décide de les mettre en petites capitales.
+Un exemple sera plus parlant. Supposons que nous écrivions un livre d'introduction à l'histoire du christianisme antique. Ce livre cite divers auteurs. Nous souhaitons mettre en valeur ces auteurs, et pour ce faire décide de les mettre en petites capitales.
 
-Donc, à chaque fois que je cite un auteur, j'indique que je souhaite avoir son nom en petite capitale.
-Vient le moment où j'imprime mon livre, et je me rend compte que le choix des petites capitales n'est pas le plus pertinent, mais qu'il vaudrait mieux mettre du gras. Il ne me reste alors plus qu'à repérer toutes les petites capitales dans mon texte, à vérifier qu'il s'agit bien de petites capitales indiquant un nom d'auteur et à les remplacer par du gras --- travail fastidieux!
+Donc, à chaque fois que nous citons un auteur, nous indiquons que je souhaitons avoir son nom en petite capitale.
+Vient le moment où nous imprimons notre livre, et nous nous rendons compte que le choix des petites capitales n'est pas le plus pertinent, mais qu'il vaudrait mieux mettre du gras. Il ne nous reste alors plus qu'à repérer toutes les petites capitales dans mon texte, à vérifier qu'il s'agit bien de petites capitales indiquant un nom d'auteur et à les remplacer par du gras --- travail fastidieux !
 
-En revanche, si au lieu de signaler à chaque occurrence qu'il faut des petites capitales, je signale simplement  qu'il s'agit d'un nom d'auteur --- par exemple en écrivant : \cs{auteur}\verb|{Tertullien}| --- je n'aurais qu'une seule ligne à changer pour indiquer que je souhaite avoir mes noms d'auteur en gras. Mieux : je pourrais créer très simplement un index de mes auteurs\renvoi{indexauteur}.
+En revanche, si au lieu de signaler à chaque occurrence qu'il faut des petites capitales, nous signalons simplement  qu'il s'agit d'un nom d'auteur --- par exemple en écrivant : \cs{auteur}\verb|{Tertullien}| --- nous n'aurons qu'une seule ligne à changer pour indiquer que nous souhaitons avoir mes noms d'auteur en gras. Mieux : nous pourrons créer très simplement un index de mes auteurs\renvoi{indexauteur}.
 
 LaTeX propose quelques commandes simples de mise en sens  : par exemple celles que nous avons vues plus haut pour indiquer les niveaux de titres\renvoi{niveautitre}.
 
@@ -40,7 +40,7 @@ Le quatrième siècle voit la naissance d'une Église impériale
 et par conséquent \emph{le basculement vers un christianisme
 de masse},
 ce qui aura des impacts sur l'ecclésiologie,
- la théologie et la liturgie.
+la théologie et la liturgie.
 \end{latexcode}
 
 Concrètement cela se traduit par un italique. 
@@ -55,7 +55,7 @@ Une autre propriété intéressante est la gestion des imbrications : par défau
 
 \subsection{Le paratexte : notes de bas de page et de marge}
 
-\LaTeX propose deux commandes pour indiquer des paratextes\footnote{La question des apparats critiques mise à part, question que nous traiterons plus loin.} : pour des notes de bas de page et des notes de marge (la position de ces dernières changeant, quand on est en recto-verso, selon que la page est paire ou impaire). Ces commandes sont, respectivement, \csp{footnote} et \cs{marginpar}.
+\LaTeX propose deux commandes pour indiquer des paratextes\footnote{La question des apparats critiques mise à part, question que nous traiterons plus loin (p.~\pageref{ledmac}).} : pour des notes de bas de page et des notes de marge (la position de ces dernières changeant, quand on est en recto-verso, selon que la page est paire ou impaire). Ces commandes sont, respectivement, \csp{footnote} et \cs{marginpar}.
 
 \begin{latexcode}
 Lorem\footnote{Une note de bas de page.} ipsum dolor amat.
