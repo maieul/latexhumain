@@ -44,7 +44,7 @@ Comme le dit très justement xxx : \enquote{Lorsque yyy déclare \enquote{zzz} i
 \end{quotation}
 
 
-Nous constatons que \package{csquotes} s'occupe automatiquement de choisir les bons guillemets. Par défaut on ne peut imbriquer que deux niveaux de citation. Toutefois une option du package permet d'avoir plus de niveaux de citation. Par exemple pour en avoir 3 : 
+Nous constatons que \package{csquotes} s'occupe automatiquement de choisir les bons guillemets. Par défaut on ne peut imbriquer que deux niveaux de citation. Toutefois une option du package permet d'avoir plus de niveaux de citation. Par exemple pour en avoir trois : 
 
 \begin{latexcode}
 \usepackage[maxlevel=3]{csquotes}
@@ -59,142 +59,49 @@ LaTeX propose en standard trois environnements pour citer dans un bloc séparé.
 
 \subsection{L'environnement \environoidx{quote}}\sindex[enviro]{quote}
 
-Il est prévu pour des courtes citations d'un paragraphe.
+Il est prévu pour des courtes citations d'un paragraphe\footcite[6]{AugustinSermo296}.
 
-\begin{latexcode}
-\begin{quote}
-Le corps de Pierre gît à Rome, disent les hommes,
-le corps de Paul gît à Rome, le corps de Laurent aussi,
-les corps d'autres martyrs y gisent,
-mais Rome est misérable,
-elle est dévastée, affligée, saccagée, incendiée.
-\end{quote}
-\end{latexcode}
+\inputminted{exemples/premierpas/citation/rome.tex}
 
 
-    \begin{quote}
-    Le corps de Pierre gît à Rome, disent les hommes, le corps de Paul gît à Rome, le corps de Laurent aussi, les corps d'autres martyrs y gisent, mais Rome est misérable, elle est dévastée, affligée, saccagée, incendiée\footcite[6]{AugustinSermo296}.
-    \end{quote}
+\input{exemples/premierpas/citation/rome.tex}
 
 \subsection{L'environnement \environoidx{quotation}}\sindex[enviro]{quotation}
 
-Il est prévu pour des citations plus longues.
+Il est prévu pour des citations plus longues\footcite{BreveHippone}.
 
-\begin{latexcode}
-\begin{quotation}
-Que rien exceptées les écritures canoniques ne soit lu en église
- sous le nom d’écritures divines.
 
-Les écritures canoniques sont : Genèse, Exode, Lévitique,
- Nombres, Deutéronome,
-Josué fils de Noun, Juges, Ruth, 4 livres des règnes,
- 2 livres des paralipoménes,
-Job, psautier, cinq livres de Salomon,
- 12 livres des prophètes mineurs,
-de même Isaïe, Jérémie, Ézechiel, Daniel,
-Tobie, Judith, Esther,
-2 livres d’Esdras, 2 livres des Maccabées.
 
-Du nouveau testament sont :
-4 évangiles, un livre des actes des apôtres,
-14 lettres de l’apôtre Paul, 2 de Pierre,
--3 de Jean, 1 de Jude, 1 de Jacques,
-l’apocalypse de Jean.
+\inputminted{exemples/premierpas/citation/concile.tex}
 
-Que l’Église d'outre-mer soit consultée
- pour la confirmation de ce canon.
 
-De plus, qu'il soit permis de lire les passions des martyrs,
-lorsqu'on célèbre leurs anniversaires.
-\end{quotation}
-\end{latexcode}
+\input{exemples/premierpas/citation/concile.tex}
 
-    \begin{quotation}
-Que rien exceptées les écritures canoniques ne soit lu en église
- sous le nom d’écritures divines.
-
-Les écritures canoniques sont : Genèse, Exode, Lévitique,
- Nombres, Deutéronome,
-Josué fils de Noun, Juges, Ruth, 4 livres des règnes,
- 2 livres des paralipoménes,
-Job, psautier, cinq livres de Salomon, 12 livres des prophètes mineurs,
-de même Isaïe, Jérémie, Ézechiel, Daniel,
-Tobie, Judith, Esther,
-2 livres d’Esdras, 2 livres des Maccabées.
-
-Du nouveau testament sont :
-4 évangiles, un livre des actes des apôtres,
-14 lettres de l’apôtre Paul, 2 de Pierre,
--3 de Jean, 1 de Jude, 1 de Jacques,
-l’apocalypse de Jean.
-
-Que l’Église d'outre-mer soit consultée pour la confirmation de ce canon.
-
-De plus, qu'il soit permis de lire les passions des martyrs,
-lorsqu'on célèbre leurs anniversaires\footcite{BreveHippone}.
-    \end{quotation}
 
 \begin{attention}
-Le fond gris que vous constatez ici n'est pas standard avec \LaTeX : il est propre au livre que vous avez sous les yeux.
+Le fond gris que vous constatez ici  avec \LaTeX : il est propre au livre que vous avez sous les yeux.
 \end{attention}
 
 \subsection{L'environnement \environoidx{verse} et le package \packagenoidx{verse}}\sindex[enviro]{verse}\sindex[pkg]{verse}
 
 
-L'environnement  \enviro{verse} permet de citer de façon rapide et simple des poèmes, en gérant notamment le rejet en cas de vers trop long. Chaque vers, à l'exception du dernier, doit se terminer par \verb|\\|. Si le vers est composé de plusieurs strophes, il suffit de sauter une ligne entre chaque strophe.    
+L'environnement  \enviro{verse} permet de citer de façon rapide et simple des poèmes, en gérant notamment le rejet en cas de vers trop long. Chaque vers, à l'exception du dernier, doit se terminer par \verb|\\|. Si le vers est composé de plusieurs strophes, il suffit de sauter une ligne entre chaque strophe, le dernier vers de chaque strophe ne devant pas finir par \verb|\\|.    
 
-Cet environnement est très limité: il ne permet pas de numéroter ni d'indenter les vers, ni encore de rajouter un titre. Si l'on est amené à citer fréquemment des vers, il vaut mieux appeler dans le préambule le package \package{verse}. La citation du poème se fait de la même manière.
+Cet environnement est très limité: il ne permet pas de numéroter ni d'indenter les vers, ni encore de rajouter un titre. Si l'on est amené à citer fréquemment des vers, il vaut mieux appeler dans le préambule le package \package{verse}\footcite{verse}. La citation du poème se fait de la même manière.
 
 
 Avec ce package, pour numéroter les vers cités il faut indiquer \csp{poemlines}\marg{nbr} :  \arg{nbr} 
 définit la fréquence avec laquelle les vers sont numérotés. 
 
 
-Citons pour  exemple un poème entier, dont les vers sont numérotés, de façon assez traditionnelle, une fois sur cinq. En frappant ceci:
+Citons pour  exemple un poème entier, dont les vers sont numérotés, de façon assez traditionnelle, une fois sur cinq. En frappant ceci\footcite{demain}:
 
-\begin{latexcode}
-\begin{verse}
-\poemlines{5}
-
-Demain, dès l'aube, à l'heure où blanchit la campagne,\\
-Je partirai. Vois-tu, je sais que tu m'attends.\\
-J'irai par la forêt, j'irai par la montagne.\\
-Je ne puis demeurer loin de toi plus longtemps.\\
-
-Je marcherai les yeux fixés sur mes pensées,\\
-Sans rien voir au dehors, sans entendre aucun bruit,\\
-Seul, inconnu, le dos courbé, les mains croisées,\\
-Triste, et le jour pour moi sera comme la nuit.\\
-
-Je ne regarderai ni l'or du soir qui tombe,\\
-Ni les voiles au loin descendant vers Harfleur,\\
-Et, quand j'arriverai, je mettrai sur ta tombe\\
-Un bouquet de houx vert et de bruyère en fleur.
-
-\end{verse}
-\end{latexcode}
+\inputminted{exemples/premierpas/citation/demain.tex}
 
 on obtient cela :
 
-\begin{verse}
-\poemlines{5}
 
-Demain, dès l'aube, à l'heure où blanchit la campagne,\\
-Je partirai. Vois-tu, je sais que tu m'attends.\\
-J'irai par la forêt, j'irai par la montagne.\\
-Je ne puis demeurer loin de toi plus longtemps.\\
-
-Je marcherai les yeux fixés sur mes pensées,\\
-Sans rien voir au dehors, sans entendre aucun bruit,\\
-Seul, inconnu, le dos courbé, les mains croisées,\\
-Triste, et le jour pour moi sera comme la nuit.\\
-
-Je ne regarderai ni l'or du soir qui tombe,\\
-Ni les voiles au loin descendant vers Harfleur,\\
-Et, quand j'arriverai, je mettrai sur ta tombe\\
-Un bouquet de houx vert et de bruyère en fleur.\footcite{demain}
-
-\end{verse}
+\input{exemples/premierpas/citation/demain.tex}
 
 
 
@@ -204,33 +111,13 @@ Avec \cs{setverselinenums}\marg{12}\marg{12}, le premier vers cité sera le prem
 
 Ne citant que la troisième strophe, par exemple, il faut frapper :
 
-\begin{latexcode}
-\begin{verse}
-\poemlines{5}
-\setverselinenums{9}{10}
+\inputminted{exemples/premierpas/citation/demainfin.tex}
+
+pour obtenir, correctement numéroté :
 
 
-Je ne regarderai ni l'or du soir qui tombe,\\
-Ni les voiles au loin descendant vers Harfleur,\\
-Et, quand j'arriverai, je mettrai sur ta tombe\\
-Un bouquet de houx vert et de bruyère en fleur.
+\input{exemples/premierpas/citation/demainfin.tex}
 
-\end{verse}
-\end{latexcode}
-
-pour obtenir, correctement numéroté, 
-
-\begin{verse}
-\poemlines{5}
-\setverselinenums{9}{10}
-
-
-Je ne regarderai ni l'or du soir qui tombe,\\
-Ni les voiles au loin descendant vers Harfleur,\\
-Et, quand j'arriverai, je mettrai sur ta tombe\\
-Un bouquet de houx vert et de bruyère en fleur.
-
-\end{verse}
 
 \begin{plusloins}
 Dans la typographie française, il est d'usage de mettre un crochet droit [ au début d'un rejet. Ni l'environnement ni le package \package{verse} ne suivent cette règle. Pour obtenir le crochet droit, il faut charger le package  \package{gmverse} en lui passant l'option \option{squarebr} :
@@ -244,38 +131,19 @@ Puis insérer, une fois commencé l'environnement \enviro{verse}, la commande \c
 
 Le package \package{verse} permet aussi d'indenter de façon très souple une strophe. On indique avec la commande \csp{indentpattern}\marg{$n_1 n_2 n_x$} l'indentation de chaque vers contenu dans la strophe encadrée dans l'environnement \enviro{patverse}: \arg{$n_1$} correspond au premier vers, \arg{$n_2$} au deuxième et ainsi de suite. Le premier vers n'est jamais indenté, mais il suffit de le faire précéder de \csp{vin}. Avec le code suivant :
 
-\begin{latexcode}
-\begin{verse} 
-\poemlines{1}
-\indentpattern{010110} 
-\begin{patverse} 
+\inputminted{exemples/premierpas/citation/apple.tex}
 
-\vin There was a young lady of Ryde \\
- Who ate some apples and died.  \\
- The apples fermented \\
- Inside the lamented \\
- And made cider inside her inside. \\
-\end{patverse}  
-\end{verse}
-\end{latexcode}
-
-on obtient donc:
+on obtient donc\footcite{EdwardLear} :
   
-\begin{verse} \poemlines{1}
 
-\indentpattern{010110} \begin{patverse} 
+\input{exemples/premierpas/citation/apple.tex}
 
-\vin There was a young lady of Ryde \\
- Who ate some apples and died.  \\
- The apples fermented \\
- Inside the lamented \\
- And made cider inside her inside\footcite{EdwardLear}.\\ 
-\end{patverse}  \end{verse} 
+
  
  Si l'on a besoin de répéter une indentation tout le long d'un poème, on remplace \enviro{patverse} par \enviro{patverse*}. Donc pour citer un long extrait en hexamètres dactyliques, plutôt que d'indiquer l'indentation pour chaque vers, il suffit  d'indiquer \cs{indentpattern}\verb|{01}| et d'insérer tout le poème  dans l'environnement \enviro{patverse*} pour avoir un vers sur deux indenté.
  
  
- Le package \package{verse} offre bien d'autres possibilités qui dépassent la simple citation de poésie dans le cours d'un texte. À l'instar d'un autre package, \package{poemscol}, c'est un véritable outil pour éditer de la poésie (nous vous renvoyons ici aux manuels de ces packages). Ni l'un ni l'autre ne permettent en revanche de faire des éditions bilingues: pour cela, il faut utiliser les packages \package{ledmac} et \package{ledpar}. \renvoi{ledmac}
+ Le package \package{verse} offre bien d'autres possibilités qui dépassent la simple citation de poésie dans le cours d'un texte. À l'instar d'un autre package, \package{poemscol}, c'est un véritable outil pour éditer de la poésie\footcites(Nous vous renvoyons ici aux manuels de ces packages){verse}{poemscol}. Ni l'un ni l'autre ne permettent en revanche de faire des éditions bilingues: pour cela, il faut utiliser les packages \package{ledmac} et \package{ledpar}. \renvoi{ledmac}
 
 
 \section{Citations tronquées et modifiées}
@@ -286,27 +154,11 @@ Le package \package{csquotes} proposent deux commandes spécifiques pour signale
 
 La commande \csp{textelp}\arg{texte} signale un texte tronqué. L'argument \arg{texte} est inséré après la troncature, entre crochets (par défaut) ; pour ne rien insérer, le laisser vide.
 
-\begin{latexcode}
-\begin{quotation}
-Que rien exceptées les écritures canoniques ne soit lu
-en église sous le nom d’écritures divines.
-\textelp{Suit la liste des écritures canoniques.}
 
-Que l’Église d'outre-mer soit consultée pour la confirmation de ce canon.
+\inputminted{exemples/premierpas/citation/conciletronque.tex}
 
-De plus, qu'il soit permis de lire les passions des martyrs,
-lorsqu'on célèbre leurs anniversaires.
-\end{quotation}
-\end{latexcode}
 
-    \begin{quotation}
-    Que rien exceptées les écritures canoniques ne soit lu en église sous le nom d’écritures divines.
-\textelp{Suit la liste des écritures canoniques.}
-
-Que l’Église d'outre-mer soit consultée pour la confirmation de ce canon.
-
-De plus, qu'il soit permis de lire les passions des martyrs, lorsqu'on célèbre leurs anniversaires\footcite{BreveHippone}.
-    \end{quotation}
+\input{exemples/premierpas/citation/conciletronque.tex}
 
 \begin{plusloins}
 On peut décider de la manière dont la troncature et l'ajout sont signalés : consulter le manuel\footcite{csquotes_ellipses}.
@@ -316,16 +168,8 @@ On peut décider de la manière dont la troncature et l'ajout sont signalés : c
 
 Pour signaler une modification dans une citation, on utilise  \csp{textins}\marg{texte modifié}.
 
-\begin{latexcode}
-\begin{quotation}
-Comme le disait très justement xxx :
- \enquote{Lorsque yyy \textins{a déclaré}
-\enquote{zzz} il \textins{n'a rien déclaré} du tout}.
-\end{quotation}
-\end{latexcode}
+\input{exemples/premierpas/citation/modif.tex}
 
-\begin{quotation}
-    Comme le disait très justement xxx : \enquote{Lorsque yyy \textins{a déclaré} \enquote{zzz} il \textins{n'a rien déclaré} du tout}.
-\end{quotation}
+\input{exemples/premierpas/citation/modif.tex}
 
 La commande \csp{textins*} est une variante, servant pour déclarer les changements mineurs nécessaires au nouveau contexte d'énonciation : mise en majuscules, changement de personne etc.
