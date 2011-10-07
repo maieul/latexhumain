@@ -42,7 +42,7 @@ Quelques remarques importantes :
 \end{itemize}
 
 \subsection{Des titres non numérotés}\label{titresansnumero}
-Par défaut, tout les titres sont automatiquement numérotés\footnote{Nous verrons plus loin comment changer la numérotation (p.~\pageref{apparencecompteur}).}. Il est possible d'avoir un titre non numéroté, en faisant suivre le nom de la commande d'un astérisque : \csp{chapter*}\marg{Un chapitre non numéroté}.
+Par défaut, tout les titres sont automatiquement numérotés\footnote{Nous verrons plus loin comment changer la numérotation (p.~\pageref{apparencecompteur}).}. Il est possible d'obtenir un titre non numéroté, en faisant suivre le nom de la commande d'un astérisque : \csp{chapter*}\marg{Un chapitre non numéroté}.
 
 
 Toutefois un titre non numéroté ne sera pas ajouté à la table des matières\renvoi{toc}. 
@@ -60,8 +60,8 @@ Un exemple sera plus parlant :
 
 
 \begin{latexcode}
-\chapter*{Introduction}
 \addcontentsline{toc}{chapter}{Introduction}
+\chapter*{Introduction}
 \end{latexcode}
 
 
@@ -102,13 +102,11 @@ Nous conseillons de mettre l'ensemble des appels à des packages dans un fichier
 
 La notion de chemin de fichier en informatique renvoie à l'arborescence des dossiers sur un ordinateur.
 
-En \LaTeX{}, le chemin du fichier se compte à partir du fichier \enquote{père}, celui qui est compilé. \emph{Y compris lorsqu'on procède à une inclusion dans un fichier \enquote{fils}}.
+En \LaTeX{}, le chemin du fichier se compte à partir du fichier \enquote{père}, celui qui est compilé, \emph{y compris lorsqu'on procède à une inclusion dans un fichier \enquote{fils}}.
 
-On indique le chemin du fichier en séparant chaque dossiers par \verb|/|.\footnote{Cette norme s'applique même sous Windows, qui sépare traditionnellement les répertoires par des \texttt{\textbackslash} dans les chemins.} Par exemple, nous souhaitons inclure le fichier nommé \verb|c.tex| situé dans le dossier \verb|b|, lui même situé dans le dossier \verb|a|, qui se trouve à côté du fichier \enquote{père}.
-
-Il faut que nous mettions dans notre fichier \enquote{père} : \cs{input}\verb|{a/b/c}|
+On indique le chemin du fichier en séparant chaque dossiers par \verb|/|\footnote{Cette norme s'applique même sous Windows, qui sépare traditionnellement les répertoires par des \texttt{\textbackslash} dans les chemins.}. Ainsi, si nous souhaitons inclure le fichier nommé \verb|c.tex| situé dans le dossier \verb|b|, lui même situé dans le dossier \verb|a|, qui se trouve à côté du fichier \enquote{père}, il faut que nous mettions dans notre fichier \enquote{père} : \cs{input}\verb|{a/b/c}|
 ou bien
-\cs{include}\verb|{a/b/c}|
+\cs{include}\verb|{a/b/c}|.
 
 \begin{attention}
 
