@@ -10,7 +10,7 @@ Dans ce chapitre nous allons voir comment afficher et trier une bibliographie.
 
 La commande de base  pour imprimer une bibliographie est \csp{printbibliography}. Si vous l'essayez dans votre projet, vous obtenez là où vous l'avez placée une bibliographie reprenant l'ensemble des œuvres  citées au cours de votre travail. Ainsi, vous êtes certain de ne rien oublier.
 
-Toutefois une telle bibliographie est peu utile pour les longs travaux : elle mélange allègrement sources primaires et études secondaires, ne fait pas de distinctions entre les chapitres, etc. Nous allons donc voir  comment sectionner une bibliographie. Mais auparavant il nous faut mentionner une spécificité propre aux sciences humaines.
+Toutefois une telle bibliographie est peu utile pour les longs travaux : elle mélange allègrement sources primaires et études secondaires, ne fait pas de distinctions entre les chapitres, etc. Nous allons donc voir  comment sectionner une bibliographie. Mais auparavant il nous faut mentionner une spécificité propre aux sciences humaines ainsi que la manière d'ajouter des références non citées.
 
 
 
@@ -22,6 +22,11 @@ Ainsi, lors de l'appel au package \package{biblatex}, il suffit d'écrire :
 \begin{latexcode}
 \usepackage[bibstyle=verbose,...]{biblatex}
 \end{latexcode}
+
+\section{Ajout de références non citées}
+
+On peut vouloir ajouter dans une bibliographie des références qui n'ont pas été explicitement citées dans le texte. Il faut  utiliser la commande \csp{nocite}\verb|{|\meta{clef1}\verb|,|\meta{clef2}\verb|,…}|.
+Pour ajouter l'ensemble des références d'un fichier \ext{bib} il suffit d'écrire : \csp{nocite}\verb|{*}|.
 
 \section{Diviser une bibliographie}
 
@@ -41,7 +46,7 @@ On peut passer une option \option{title} afin de préciser le titre de notre bib
 Une telle méthode permet aisément de séparer une bibliographie en plusieurs parties selon les catégories de documents.
 
 \begin{latexcode}
-\printbibliography[subtype=concile,title=Actes de conciles]
+\printbibliography[subtype=concile,title=Actes de concile]
 \printbibliography[subtype=traite,title=Traités]
 \printbibliography[subtype=lettre,title=Lettres]
 \end{latexcode}
@@ -114,7 +119,7 @@ Il est enfin possible de combiner plusieurs mots clés. Dans ce cas, les entrée
 
 \subsection{Par section du document}
 
-\package{biblatex} permet aussi d'afficher une bibliographie correspondant à une partie du document, par exemple un chapitre,  grâce à la définition de segments bibliographiques --- un segment bibliographique étant une partie de document qui a sa bibliographie propre\footcites[En réalité \package{biblatex} propose deux choses différentes : \enquote{segment} et \enquote{section} bibliographiques. Seules les sections bibliographiques ont réellement une bibliographie propre, dans la mesure où, si on utilise un style numéroté de bibliographie, la numérotation recommence à chaque changement de section, mais pas à chaque changement de segment. Toutefois il est rare en sciences humaines d'utiliser un style bibliographique numéroté. C'est pourquoi nous ne parlons ici que des segments bibliographiques et non pas des sections bibliographiques. Voir :][]{biblatex_section}{biblatex_segment}.
+\package{biblatex} permet aussi d'afficher une bibliographie correspondant à une partie du document, par exemple un chapitre,  grâce à la définition de segments bibliographiques --- un segment bibliographique étant une partie de document qui a sa bibliographie propre\footcites[En réalité \package{biblatex} propose deux choses différentes : \enquote{segment} et \enquote{section} bibliographiques. Seules les sections bibliographiques ont réellement une bibliographie propre, dans la mesure où, si on utilise un style numéroté de bibliographie, la numérotation recommence à chaque changement de section, mais pas à chaque changement de segment. Toutefois il est rare en sciences humaines d'utiliser un style bibliographique numéroté. C'est pourquoi nous ne parlons ici que des segments bibliographiques et non pas des sections bibliographiques. Voir :][ainsi que :]{biblatex_section}[][]{biblatex_segment}.
 
 La méthode la plus simple est de passer une option \option{refsegment} lors de l'appel au package \package{biblatex}. La valeur de cet argument peut-être \forme{part}, \forme{chapter}, \forme{section}, \forme{subsection}, qui indique à quel niveau de titre commencer une nouvelle section bibliographique\footcite[Il est toutefois possible de créer des sections bibliographiques autrement que par niveaux de titre, voir :][]{biblatex_segment}.
 
@@ -142,14 +147,11 @@ On peut ainsi afficher à la fin de chaque chapitre une bibliographie du chapitr
 
 \package{biblatex} propose de nombreuses autres manières de diviser une bibliographie : ainsi il est possible de définir des filtres personnalisés pour ne sélectionner que les entrées répondant à certains critères, d'assigner des \enquote{catégories} à certaines entrées, etc. Nous n'avons présenté ici qu'un aperçu des usages les plus courants : nous renvoyons à la documentation de \package{biblatex} pour plus de détails\footcite{biblatex_bibliographycommands}.
 
-\section{Ajout de références non citées}
 
-On peut vouloir ajouter dans une bibliographie des références qui n'ont pas été explicitement citées dans le texte. Il faut  utiliser la commande \csp{nocite}\verb|{|\meta{clef1}\verb|,|\meta{clef2}\verb|,…}|.
-Pour ajouter l'ensemble des références d'un fichier \ext{bib} il suffit d'écrire : \csp{nocite}\verb|{*}|.
 
 \section{Tri à l'intérieur d'une bibliographie}
 
-On constate que la bibliographie est triée par nom d'auteur, puis par titre, puis par année. Il est possible de passer une option \option{sorting} lors de l'appel au package \package{biblatex}. Cet argument prend pour valeur l'un des schémas de tri proposés par \package{biblatex} ou bien définis par vos soins\footcites[Pour les schémas de tri standards voir][]{biblatex_tri}[pour les schémas personnalisés, qui nécessitent l'utilisation de Biber (\cf{} p.~\pageref{biber}), voir][]{biblatex_triperso}.
+On constate que la bibliographie est triée par nom d'auteur, puis par titre, puis par année. Il est possible de passer une option \option{sorting} lors de l'appel au package \package{biblatex}. Cette option prend pour valeur l'un des schémas de tri proposés par \package{biblatex} ou bien définis par vos soins\footcites[Pour les schémas de tri standards voir][]{biblatex_tri}[pour les schémas personnalisés, qui nécessitent l'utilisation de Biber (\cf{} p.~\pageref{biber}), voir][]{biblatex_triperso}.
 
 Par exemple pour trier par nom d'auteur (indiqué par la lettre \verb|n|), année (\verb|y|), titre (\verb|t|):
 
@@ -160,7 +162,7 @@ Par exemple pour trier par nom d'auteur (indiqué par la lettre \verb|n|), anné
 Parfois   la valeur utilisée pour le tri ne doit pas être la valeur ensuite affichée dans la bibliographie. Prenons deux entrées dont les titres sont \enquote{Lettre 237} et \enquote{Lettre 64}. Dans la bibliographie finale,
 \enquote{Lettre 64} est affiché \emph{après} \enquote{Lettre 237}. 
 
-En effet, ce n'est pas le nombre \forme{237} qui est reconnu, mais seulement le caractère {2}, puis le caractère \forme{3}, etc. C'est pourquoi \enquote{Lettre 237} est situé avant \enquote{Lettre 64}, 2 se trouvant avant 6.
+En effet, ce n'est pas le nombre \forme{237} qui est reconnu, mais seulement le caractère \forme{2}, puis le caractère \forme{3}, etc. C'est pourquoi \enquote{Lettre 237} est situé avant \enquote{Lettre 64}, 2 se trouvant avant 6.
 
 Pour contourner ce problème, on peut utiliser le champ \champ{sorttitle}. Celui-ci n'est pas affiché mais a la priorité sur le  champ \champ{title} en ce qui concerne le tri dans la bibliographie finale.  Voici ce que donnent nos deux entrées :
 
