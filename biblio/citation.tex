@@ -1,4 +1,4 @@
-\chapter{Indiquer des références}
+\chapter{Indiquer des références bibliographiques}
 
 \renewbibmacro{cite:ibid}{\usebibmacro{cite:full}} % On modifie, pour ne pas avoir des ibidem à tout bout de champs
 
@@ -28,7 +28,7 @@ Il existe un nombre important de styles de citation livrés en standard. Nous me
 \item[verbose] la description complète de l'entrée est donnée la première fois, une version abrégée est affichée ensuite.
 \item[verbose-ibid] la description complète de l'entrée est donnée, mais si un passage est cité plusieurs fois de suite, l'abréviation \emph{ibidem} est utilisée.
 \item[verbose-note] la description complète de l'entrée est donnée à sa première mention, puis une version abrégée est utilisée.
-\item[verbose-trad1 ; verbose-trad2 ; verbose-trad3] la description complète de l'entrée est utilisée, puis les abréviations universitaires de type \emph{op. cit.}, \emph{ibidem.} etc. sont utilisées. \package{biblatex} calcule automatiquement l'opportunité d'utiliser une abréviation universitaire, selon l'endroit où l'ouvrage aura été cité précédemment. Voir le manuel pour la description complète des différences entre ces trois styles.
+\item[verbose-trad1 ; verbose-trad2 ; verbose-trad3] la description complète de l'entrée est utilisée, puis les abréviations universitaires de type \emph{op. cit.}, \emph{ibidem.} etc. sont utilisées ; \package{biblatex} calcule automatiquement l'opportunité d'utiliser une abréviation universitaire, selon l'endroit où l'ouvrage aura été cité précédemment. Voir le manuel pour la description complète des différences entre ces trois styles.
 \end{description}
 
 On comprend ici l'un des grands intérêts de \LaTeX : plus de perte de temps à se demander \enquote{Faut-il que j'utilise ici une version abrégée de la référence ?}, \package{biblatex} le fait pour vous.
@@ -219,16 +219,58 @@ On peut préciser dans sa base de données le type de pagination d'une entrée :
 \item[none] la pagination est libre.
 \end{description}
 
-Le champ  \champ{pagination} sert lorsque l'on met une indication numérique dans l'argument \arg{postnote}. En revanche si on laisse le contenu du champ \champ{pages}, il est sans effet. Il faut dans ce cas mettre la même valeur dans le champ \champ{bookpagination}.
+Le champ  \champ{pagination} sert lorsque l'on met une indication numérique dans l'argument \arg{postnote}. En revanche si on n'utilise pas d'argument \arg{postnote} et qu'on laisse le contenu du champ \champ{pages}, il est sans effet. Prenons l'entrée suivante :
+
+\inputminted{exemples/biblio/citation/desnos.bib}
+
+Appelons la en utilisant l'argument \arg{postnote}, puis sans l'utiliser.
+
+
+\begin{latexcode}
+\autocite[2]{desnos}
+
+\autocite{desnos}
+\end{latexcode}
+
+% On modifie pour avoir le choix standard :
+\DeclareFieldFormat{pages}{\mkpageprefix[bookpagination]{#1}}
+
+\begin{quotation}
+\cite[2]{desnos}
+
+\cite{desnos}
+\end{quotation}
+
+% On rétablis
+\DeclareFieldFormat{pages}{\mkpageprefix[pagination]{#1}}
+
+On constate que dans le deuxième cas, \package{biblatex} n'est pas pris en compte
+Il faut dans ce cas mettre le type de pagination dans le champ \champ{bookpagination} :
+
+\begin{latexcode}
+@book{desnos,
+    Author = {Robert Desnos},
+    Pagination = {verse},
+    Bookpagination = {verse},
+    Pages = {1-3},
+    Title = {La fourmi}}
+\end{latexcode}
+
+\begin{quotation}
+\cite[2]{desnos}
+
+\cite{desnos}
+\end{quotation}
+
 
 \begin{plusloins}
-On peut éviter de dupliquer l'information en insérant la ligne suivante en début de fichier \ext{tex} :
+On peut éviter de dupliquer l'information dans le champ \champ{bookpagination} en insérant la ligne suivante en début de fichier \ext{tex} :
 
 \begin{minted}{latex}
 \DeclareFieldFormat{pages}{\mkpageprefix[pagination]{#1}}
 \end{minted}
 
-La commande \csp{DeclareFieldFormat} indique la manière d'afficher le champ \champ{pages} : en passant son contenu (\verb|#1|) à une fonction \csp{mkpageprefix}, à qui on indique d'utiliser le champ \champ{pagination} pour afficher le préfixe de page\footcite[Voir][]{biblatex_formating}.
+La commande \csp{DeclareFieldFormat} indique la manière d'afficher le champ \champ{pages} : en passant son contenu (\verb|#1|) à une fonction \csp{mkpageprefix}, à qui on indique de se baser sur le champ \champ{pagination} pour afficher le préfixe de page\footcite[Voir][]{biblatex_formating}.
 
 \end{plusloins}
 
