@@ -40,15 +40,15 @@
 
 
  
- 
+
 \newcommand{\fielditem}[1]{\item[#1]}
 \newenvironment{fieldlist}
   {\list{}{%
-     \setlength{\labelwidth}{\marglistwidth}%
+     \setlength{\labelwidth}{1.2\marglistwidth}%
      \setlength{\labelsep}{\marglistsep}%
 	\itemindent\z@
-     \setlength{\leftmargin}{1cm}%
-     \setlength{\rightmargin}{1cm}%
+     \setlength{\leftmargin}{1.2\marglistwidth}%
+     \setlength{\rightmargin}{\marglistwidth}%
      \renewcommand*{\makelabel}[1]{\marglistfont##1}}%
   }
   {\endlist}
