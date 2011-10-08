@@ -16,7 +16,10 @@
     
 Prenons un problème courant. Vous avez constaté que, par défaut, les différents champs d'une référence bibliographique sont séparés par des points. On obtient par exemple :
     
-    \renewcommand{\newunitpunct}[0]{\adddot\addspace} 
+    \bibverbose
+
+    
+    \renewcommand{\newunitpunct}[0]{\adddot\addspace} % pour l'exemple
     
     \begin{quotation}
     \cite{Urner1952}
@@ -24,12 +27,14 @@ Prenons un problème courant. Vous avez constaté que, par défaut, les différe
     
 alors que le règles françaises voudraient que l'on ait :
     
-\renewcommand{\newunitpunct}[0]{\addcomma\addspace}
+\renewcommand{\newunitpunct}[0]{\addcomma\addspace} % on revient
     
     \begin{quotation}
     \cite{Urner1952}
     \end{quotation}
     
+    \bibverbosetrad
+
 À l'intérieur d'une référence bibliographique, biblatex distingue des unités de sens\footnote{À vrai dire il existe des unités plus vastes, appelés blocs. Mais ces unités servent pour des réglages avancés de l'affichage de la bibliographie finale.}. Ici : l'auteur, le titre, l'adresse, l'éditeur, l'année. 
 
     Ces unités sont séparées par des signes de ponctuation. Les séparateurs sont définis par la commande \csp{newunitpunct}.\label{newunitpunct}
@@ -88,14 +93,16 @@ alors que le règles françaises voudraient que l'on ait :
 
 Lorsque nous utilisons une commande de citation multiple\renvoi{citemultiple}, les séparateurs par défaut sont des points-virgules :
 
+
 \begin{latexcode}
 \autocites{Saxer1980}{Junod1992}
 \end{latexcode}
 
-
+\bibverbose
 \begin{quotation}
 \cites{Saxer1980}{Junod1992}
 \end{quotation}
+\bibverbosetrad
 
 On peut là aussi modifier le séparateur en rédefinissant la commande \csp{multicitedelim}. Par exemple pour avoir une virgule :
 
@@ -108,13 +115,13 @@ On peut là aussi modifier le séparateur en rédefinissant la commande \csp{mul
 
 La ponctuation n'est pas le seul endroit où \package{biblatex} propose des points d'entrée pour des modifications spécifiques. Certaines parties des références bibliographiques disposent également de la possibilité d'être configurées grâce à des commande particulières\footcite{biblatex_hooks}. Prenons par exemple la particule d'un auteur.
     
+    \bibverbose
     \begin{quotation}
     \cite{BeauvoirSexe}
     \end{quotation}
     
     \renewcommand{\mkbibnameprefix}[1]{\parentext{#1}}
-    % On modifie
-    \renewbibmacro*{cite:ibid}{\usebibmacro{cite:full}}
+
 
     
 Il est parfois d'usage de mettre la particule entre parenthèse. Pour ce faire, il suffit de redéfinir la commande \csp{mkbibnameprefix}. Cette commande prend un argument, qui est la particule. Ainsi pour la mettre automatiquement entre parenthèse, il suffit d'écrire.
@@ -137,14 +144,7 @@ La commande \csp{parentext} met entre parenthèse un texte passé en argument. O
     \cite{BeauvoirSexe}
     \end{quotation}
     
-% On rétablis
-\renewbibmacro*{cite:ibid}{%
-  \printtext{%
-    \bibhyperlink{cite\csuse{cbx@lastcite@\thefield{entrykey}}}{%
-      \bibstring[\mkibid]{ibidem}}}%
-  \ifloccit
-    {\global\toggletrue{cbx:loccit}}
-    {}}
+\bibverbose
 
 \section{Chaînes de langues}\label{i18nchaines}
     

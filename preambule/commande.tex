@@ -105,3 +105,24 @@
 \let\oldxelatex\XeLaTeX
 \renewcommand{\XeLaTeX}[0]{%
 	\oldxelatex\xspace}
+
+\newcommand{\bibverbose}{
+\renewbibmacro{cite:ibid}{\usebibmacro{cite:full}} % On modifie, pour ne pas avoir des ibidem à tout bout de champs
+\renewbibmacro*{cite:title}{\usebibmacro{cite:full}}
+}
+\newcommand{\bibverbosetrad}{
+\renewbibmacro*{cite:ibid}{%
+  \printtext{%
+    \bibhyperlink{cite\csuse{cbx@lastcite@\thefield{entrykey}}}{%
+      \bibstring[\mkibid]{ibidem}}}%
+  \ifloccit
+    {\global\toggletrue{cbx:loccit}}
+    {}}
+
+\renewbibmacro*{cite:title}{%
+  \printtext[bibhyperlink]{%
+    \printfield[citetitle]{labeltitle}%
+    \setunit{\nametitledelim}%
+    \bibstring[\mkibid]{opcit}}}
+   
+}
