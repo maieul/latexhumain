@@ -253,57 +253,6 @@ Avec \enviro{longtable}, il faut compiler deux fois le fichier \ext{tex}.
 
 En effet, \XeLaTeX{} --- comme d'ailleurs \LaTeX{} --- n'arrive pas à déterminer la taille des colonnes à la première compilation : il procède à un calcul page par page. Cependant il stocke la taille maximale des colonnes dans un fichier temporaire, portant l'extension \ext{aux}. Lors de la seconde compilation, il se sert de ce fichier temporaire pour indiquer la taille des colonnes sur chacune des pages.
 \end{attention}
-\subsection{Création depuis un fichier \ext{csv}}
-
-Évidemment la syntaxe des tableaux est assez compliquée et risque d'entraîner des erreurs. Il est toutefois possible d'utiliser un fichier au format \ext{csv}, que n'importe quel tableur est capable de produire. Il faut pour cela utiliser le package \package{csvtools}.
-
-Le format \ext{csv} est un format standard de données tabulaires. Malheureusement il ne dispose ni de mise en forme ni de possibilité de fusion de cellules.
-
-\begin{plusloins}Une solution serait peut-être  d'utiliser la macro Calc2LaTeX pour le logiciel OpenOffice.org, mais nous n'avons l'avons pas testée.
-\end{plusloins}
-
-
-
-Toutefois pour des données simples, comme par exemple un tableau statistiques, il suffit amplement. 
-Il vous faut donc exporter votre tableau au format CSV, en choisissant la virgule comme séparateur de champs. La première ligne correspond à l'en-tête. Certains logiciels d'export au format CSV ne laissent pas le choix quant aux séparateurs de champs. Dans ce cas, il faut utiliser la commande \csp{setcsvseparator}\marg{separateur} pour définir les champs. Ainsi si le séparateur est un point-virgule : 
-\cs{setcsvseparator}\verb|{;}|.
-
-Il est possible de créer à partir d'un fichier \ext{csv} un environnement \enviro{tabular} ou \enviro{longtable}.
-
-
-Le premier se crée  avec la commande
-\csp{CSVtotabular}\marg{fichier}\marg{type col.}\marg{premiere}\marg{milieu}\marg{dernier}.
-
-Le second se crée avec la commande
-\csp{CSVtolongtable}\marg{fichier}\marg{type col.}\marg{premiere}\marg{milieu}\marg{dernière}.
-
-
-
-\begin{description}
-\item[\arg{fichier}]est le nom du fichier \ext{csv}. La méthode pour indiquer le chemin du fichier est la même que d'habitude.\renvoi{chemin}
-\item[\arg{type col.}] indique les alignements de colonnes, comme vus précédemment\renvoi{typecolonnes}.
-\item[\arg{premiere}] indique le contenu de la première ligne du  tableau que vous allez générer.
-\item[\arg{milieu}] indique le contenu des lignes du milieu.
-\item[\arg{dernière}] indique le contenu de la dernière ligne.
-\end{description}
-
-On utilise la commande \csp{insertbyname}\marg{nom} pour insérer le contenu de la colonne \arg{nom}.
-
-Exemple avec le fichier \fichier{csv.csv} :
-
-\inputminted{exemples/premierpas/nontextuels/csv.csv}
-
-\inputminted{exemples/premierpas/nontextuels/csvtolongtable.tex}
-
-
-Le résultat est le tableau \ref{csvtolongtable}\renvoi{csvtolongtable}.
-
-\begin{table}[h]
-\setcsvseparator{;}
-\input{exemples/premierpas/nontextuels/csvtolongtable}
-\caption{Exemple d'utilisation de la commande \cs{CSVtolongtable}}
-\label{csvtolongtable}
-\end{table}
 
 
 \begin{plusloins}
