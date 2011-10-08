@@ -14,7 +14,7 @@ Chaque élément d'une bibliographie est appelé \forme{entrée}. Une entrée bi
 \item[Des champs] contenant des indications sur l'ouvrage, tels que : auteur, titre, éditeur, etc. 
 \end{description}
 
-L'avantage de ce système se comprend  aisément. En effet, une correction dans la base de donnée bibliographique est automatiquement reportée dans le travail, moyennant une nouvelle compilation avec BibTeX, à chaque fois que l'entrée est mentionnée.
+L'avantage de ce système se comprend  aisément. En effet, une correction dans la base de donnée bibliographique est automatiquement reportée dans le travail à chaque fois que l'entrée est mentionnée, moyennant une nouvelle compilation avec BibTeX.
 
 Un fichier \ext{bib} est un fichier texte contenant une suite d'instructions, de la forme suivante :
 
@@ -36,7 +36,7 @@ Par exemple
 Par ces lignes nous déclarons un livre (\type{book}) auquel nous attribuons la clef \verb|Urner1952|. Ce livre est une œuvre de Urner, Hans de son prénom ; il s'intitule \emph{Die ausserbiblische Lesung in Christlichen Gottesdienst} et a été publié en 1952 à Gottigen.
 
 
-Il peut être affiché dans le fichier .pdf sous la forme :
+Il peut être affiché dans le fichier \ext{pdf} sous la forme :
 
 \begin{quotation}
 \cite{Urner1952}
@@ -44,7 +44,7 @@ Il peut être affiché dans le fichier .pdf sous la forme :
 
 
 
-Un fichier \ext{bib} n'est rien d'autre qu'une série d'entrées de ce type. Cependant, comme il est assez aisé de \enquote{s'emmêler les pinceaux}, notamment dans les ouvertures et fermetures des accolades, il vaut la peine d'utiliser un logiciel de gestion de bibliographies\renvoi{logicielbiblio}, permettant de créer facilement des fichiers au format \ext{bib}. Nous en  présentons deux en annexe. En outre ces logiciels permettent en général des recherches croisées dans la base de données.
+Un fichier \ext{bib} n'est rien d'autre qu'une série d'entrées de ce type. Cependant, comme il est assez aisé de \enquote{s'emmêler les pinceaux}, notamment dans les ouvertures et fermetures des accolades, il vaut la peine d'utiliser un logiciel de gestion de bibliographies\renvoi{logicielbiblio}, permettant de créer facilement des fichiers au format \ext{bib}. En outre ces logiciels permettent en général des recherches croisées dans la base de données. Nous en  présentons deux en annexe.
 
 La documentation de \package{biblatex} contient l'ensemble des champs et des types possibles. Pour éviter de répéter ce manuel, nous vous présenterons les champs en les classant par catégorie. Mais auparavant nous allons donner quelques conseils sur le choix de la clef.
 
@@ -144,7 +144,7 @@ Ces champs servent à désigner des personnes qui ont participé au processus de
    	\fielditem{translator} Traducteur(s). 		
 \end{fieldlist}
 
-Lorsque des champs possèdent des valeurs identiques (par exemples les champs \champ{publisher} et \champ{translator}), \package{biblatex} fusionne ces champs lors de l'affichage. Prenons ainsi l'entrée suivante : 
+Lorsque des champs possèdent des valeurs identiques, par exemples les champs \champ{editor} et \champ{translator}, \package{biblatex} fusionne ces champs lors de l'affichage. Prenons ainsi l'entrée suivante : 
 
 \inputminted{exemples/biblio/fichier/augustin_editeur.bib}
 
@@ -165,7 +165,7 @@ author = {Maïeul Rouquette and Enimie Rouquette and Brendan Chabannes}
 Un nom se caractérise en \LaTeX par :
 \begin{description}
 	\item[Un ou plusieurs prénoms.] L'initiale doit être en majuscule, le reste en minuscules. Exemple : \forme{Albert}. Il vaut mieux mettre le prénom complet : on peut confier le travail de limitation à une minuscule  à \package{biblatex}\footnote{Il faut pour cela passer l'option \option{firstinits=true} lors du chargement du package.}.
-	\item[Un nom.] L'initiale doit être en majuscule, le reste en minuscules. Exemple : \forme{Londres} et non pas \forme{LONDRES}. \package{biblatex} se charge le cas échéant de mettre en petites capitales.
+	\item[Un nom.] L'initiale doit être en majuscule, le reste en minuscules. Exemple : \forme{Londres} et non pas \forme{LONDRES} ; \package{biblatex} se charge le cas échéant de mettre en petites capitales.
 	\item[Éventuellement une particule.]Elle doit être entièrement en minuscules. Par exemple : \forme{de}, \forme{von}.
 	\item[Éventuellement un suffixe.] L'initiale doit être en majuscule. Ce type de donnée est plutôt anglo-saxonne. Exemple : \forme{Junior}.
 \end{description}
@@ -180,7 +180,6 @@ Ainsi les entrées \verb|Victor Marie Hugo| et \verb|Hugo, Victor Marie| sont é
 Dans le premier cas, BibTeX considère que le dernier mot commençant par une majuscule est le nom de famille. Dans le second cas, il considère l'ensemble situé avant la virgule comme le nom de famille, ce qui est utile pour les noms composés. Ainsi pour parler de Charles De Gaulle : \verb|De Gaulle, Charles|.
 
 Si je parle de Simone de Beauvoir, le \forme{de} étant une particule je peux utiliser la première syntaxe : dans ce cas BibTeX considère tout ce qui suit la particule comme constituant le nom : \verb|Simone de Beauvoir|.
-
 Mais la seconde syntaxe fonctionne également : \verb|de Beauvoir, Simone|.
 
 
@@ -222,8 +221,8 @@ Pour résumer, voici un exemple de quelques entrées correctes\footnote{Le lecte
    	\fielditem{booktitleaddon} Ajout au titre du livre dans lequel l'entrée se situe. 
    	\fielditem{chapter} Chapitre d'un livre. Pour les entrées de type \type{inbook}.	
    	\fielditem{eventitle} Titre du colloque, pour les entrées de type \type{proceedings} et \type{inproceedings}.
-   	\fielditem{issuesubtitle} Sous-titre d'un numéro spécifique d'un périodique. 	Pour les entrées de type \type{periodical}, le sous-titre du périodique doit aller dans le champ \champ{subtitle}, celui du numéro dans le champ \champ{issusubtitle}		
-   	\fielditem{issuetitle} Titre d'un numéro spécifique d'un périodique. Pour les entrées de type \type{periodical}, le titre du périodique doit aller dans le champ \champ{title}, celui titre du numéro dans le champ \champ{issutitle}.		
+   	\fielditem{issuesubtitle} Sous-titre d'un numéro spécifique d'un périodique. 	Pour les entrées de type \type{periodical}, le sous-titre du périodique doit aller dans le champ \champ{subtitle}, celui du numéro dans le champ \champ{issuesubtitle}		
+   	\fielditem{issuetitle} Titre d'un numéro spécifique d'un périodique. Pour les entrées de type \type{periodical}, le titre du périodique doit aller dans le champ \champ{title}, celui titre du numéro dans le champ \champ{issuetitle}.		
    	\fielditem{journalsubtitle} Sous-titre d'un périodique.							
    	\fielditem{journaltitle} Titre d'un périodique. Le champ \champ{journal} est un alias de ce champ\footnote{Ce qui signifie que remplir le champ \champ{journal} revient à remplir ce champ.}.				
    	\fielditem{mainsubtitle} Sous-titre d'une œuvre en plusieurs volumes.			
@@ -265,7 +264,7 @@ Voici quelques exemples afin de comprendre comment se servir de ces champs:
 \subsection{Champs d'informations sur la publication}
 
 \begin{fieldlist}
-	\fielditem{adress} 
+	\fielditem{address} 
 	Lieu de publication. Alias du champ \champ{location}.	
 	\fielditem{date} 
 	Date de publication, sous la forme \verb|AAAA-MM-JJ/AAAA-MM-JJ|.
@@ -288,7 +287,7 @@ Voici quelques exemples afin de comprendre comment se servir de ces champs:
    	\fielditem{origpublisher} Éditeur (commercial) de l'édition originelle.		
 	\fielditem{pages} Pages de l'article ou de la partie du livre étudiée. 
 	\fielditem{pagetotal} Nombre total de pages.
-   	\fielditem{part} Pour les livres en plusieurs volumes, indique le numéro du volume physique. 
+   	\fielditem{part} Pour les livres en plusieurs volumes \emph{physiques}, indique le numéro du volume physique.  Le numéro du volume \emph{logique} est à indiquer dans le champ \champ{volume}.
    	\fielditem{publisher} Éditeur commercial.					
    	\fielditem{pubstate} Pour les œuvres qui ne sont pas encore imprimées, indique le statut :
 					\begin{description}
@@ -298,9 +297,11 @@ Voici quelques exemples afin de comprendre comment se servir de ces champs:
 					\end{description}
 					
 					
-   	\fielditem{type} Pour les entrées de type  \type{manual}, \type{patent} et \type{report}, précise le type de travail.
+   	\fielditem{type} Pour les entrées de type  \type{thesis}, \type{patent} et \type{report}, précise le type de travail.
 	
-	 Pour les entrées de type \type{manual}, deux valeurs possibles :
+	On peut y mettre une valeur personnelle, ou bien prendre l'une des valeurs prédéfinies. Dans ce cas la valeur est automatiquement traduite dans la langue du document.
+	
+	 Pour les entrées de type \type{thesis}, deux valeurs possibles :
 					\begin{description}
 						\item[mathesis]mémoire de master.
 						\item[phdthesis]thèse de doctorat.
@@ -313,8 +314,8 @@ Voici quelques exemples afin de comprendre comment se servir de ces champs:
 						\item[patentde] Brevet allemand.
 						\item[patenteu] Brevet européen.
 						\item[patentfr] Brevet français.
-						\item[patentuk] Brevet grand-breton.
-						\item[patentus] Brevet États-Unien.
+						\item[patentuk] Brevet britannique.
+						\item[patentus] Brevet états-unien.
 						\item[etc.]
 					 \end{description}
 					
@@ -345,12 +346,12 @@ Il peut être utile d'indiquer des informations comme l'ISBN, etc. Voici les cha
 
 \begin{fieldlist}
 	\fielditem{eid} Identifiant électronique d'une entrée de type \type{article}. 
-   	\fielditem{isan} \textenglish{International Standard Audiovisual Number}, pour les entrées de type audiovisuel.
-   	\fielditem{isbn} \textenglish{International Standard Book Number}, pour les livres. 
-   	\fielditem{ismn} \textenglish{International Standard Music Number}, pour les musiques imprimées, comme par exemple les partitions. 
-   	\fielditem{isrn} \textenglish{International Standard Technical Report Number}, pour les rapports techniques. 
-   	\fielditem{issn} \textenglish{International Standard Serial Number}, pour les numéros de revues. 
-   	\fielditem{iswc} \textenglish{International Standard Work Code} pour les œuvres musicales.
+   	\fielditem{isan} \emph{\textenglish{International Standard Audiovisual Number}}, pour les entrées de type audiovisuel.
+   	\fielditem{isbn} \emph{\textenglish{International Standard Book Number}}, pour les livres. 
+   	\fielditem{ismn} \emph{\textenglish{International Standard Music Number}}, pour les musiques imprimées, comme par exemple les partitions. 
+   	\fielditem{isrn} \emph{\textenglish{International Standard Technical Report Number}}, pour les rapports techniques. 
+   	\fielditem{issn} \emph{\textenglish{International Standard Serial Number}}, pour les numéros de revues. 
+   	\fielditem{iswc} \emph{\textenglish{International Standard Work Code}} pour les œuvres musicales.
 \end{fieldlist}
 
 \subsection{Champs d'annotations}
@@ -360,7 +361,7 @@ Ces champs par défaut ne sont pas imprimés.
 \begin{fieldlist}
 	\fielditem{abstract} Résumé de l'œuvre. 
    	\fielditem{annotation} Annotation sur l'œuvre.
-   	\fielditem{file} Adresse d'une version informatique du travail. 
+   	\fielditem{file} Adresse d'une version informatique locale du travail. 
    	\fielditem{library} Annotation sur la disponibilité en bibliothèque, par exemple  le nom de la bibliothèque et la cotation.
 	
 \end{fieldlist}
