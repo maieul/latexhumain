@@ -12,12 +12,11 @@ Les images insérables avec \XeLaTeX sont au format JPEG (extension~\ext{jpg}), 
 L'insertion d'une image se fait de la manière suivante : \csp{includegraphics}\oarg{param. opti.}\marg{chemin de l'image}
 
 Le chemin de l'image s'indique de la même manière que le chemin des fichiers inclus.\renvoi{chemin}
-
 Les principaux paramètres optionnels sont les suivants\footcite[Pour les autres, on consultera][]{graphicx_options} :
 
-\begin{longtable}{|p{7em}|p{14em}|p{7em}|}
+\begin{longtable}{|p{0.2\linewidth}|p{0.6\linewidth}|p{0.2\linewidth}|}
     \hline
-    \headlongtable{Paramètres} & \headlongtable{Signification} & \headlongtable{Exemple}    \\
+    \centering\textbf{Paramètres} & \centering\textbf{Signification} & \centering\textbf{Exemple}    \tabularnewline
     \hline
     \endhead
     \hline
@@ -29,7 +28,7 @@ Les principaux paramètres optionnels sont les suivants\footcite[Pour les autres
 \end{longtable}
 
 \begin{plusloins}
-Le centimètre n'est pas la seule  unité de mesure disponible en \LaTeX. Nous en parlons en annexe de ce livre.\ref{unite}
+Le centimètre n'est pas la seule  unité de mesure disponible en \LaTeX. Nous en parlons en annexe de ce livre.\renvoi{unite}
 \end{plusloins}
 
 \begin{plusloins}
@@ -55,7 +54,7 @@ on perd la possibilité de sélectionner dans le PDF généré par \LaTeX les te
 
 Nous allons donc ici vous présenter une des possibilités du \package{TikZ} : la représentation d'une famille de manuscrits. 
 
-Nous avons choisi cet exemple car il est assez simple, tout en étant fréquent en sciences humaines. Mais \package{TikZ} permet de faire bien plus, comme produire des diagrammes statistiques : nous renvoyons à d'autres ouvrages pour en savoir plus\footnote{Outre le manuel \cite{tikz}, on pourra lire \cites{tikzimpatient}[on pourra également consulter le site ][]{tikzexample}}.
+Nous avons choisi cet exemple car il est assez simple, tout en étant fréquent en sciences humaines. Mais \package{TikZ} permet de faire bien plus, comme produire des diagrammes statistiques : nous renvoyons à d'autres ouvrages pour en savoir plus\footnote{Outre le manuel \cite{tikz}, on pourra lire \cites{tikzimpatient}[on pourra également consulter le site][]{tikzexample}}.
 Ce package possède une syntaxe spécifique. 
 
 \begin{attention}
@@ -64,18 +63,21 @@ Ce package possède une syntaxe spécifique.
 \end{attention}
 
 
-Notre exemple est volontairement simple. Nous disposons de six familles de manuscrits d'un même texte. La  famille A a engendré les familles B, C, D. Les familles E et F pour leur part sont issues de la famille D. 
+Nous disposons de six familles de manuscrits d'un même texte. La  famille A a engendré les familles B, C, D. Les familles E et F pour leur part sont issues de la famille D. 
 
 Le code est le suivant: 
 \inputminted{exemples/premierpas/nontextuels/genealogie.tex}
 
-Ce qui donne le résultat de la figure~\ref{figure:genealogie}\renvoi{figure:genealogie}. \begin{figure}[hp]
+Ce qui donne le résultat de la figure~\ref{figure:genealogie}\renvoi{figure:genealogie}. Analysons le code :
+
+\begin{figure}[h]
 \centering
 \input{exemples/premierpas/nontextuels/genealogie}
 \caption{Exemple de \emph{stemma}}
-\label{figure:genealogie}    
+\label{figure:genealogie}
 \end{figure}
-Analysons le code :
+
+
 
 \begin{description}
 \item[Ligne 1] l'environnement \enviro{tikzpicture} est l'environnement utilisé pour insérer une figure TikZ. Il peut recevoir de nombreux arguments pour modifier certains aspects, tels que l'épaisseur par défaut des lignes, la taille du texte, l'orientation du schéma. Nous renvoyons à la documentation.
@@ -98,7 +100,6 @@ Notre \emph{stemma} est relativement simple : il n'y a pas de \enquote{consangui
 \begin{attention}
 La création de tableaux en \LaTeX nécessite  une extrême rigueur. 
 C'est à nos yeux l'un des éléments les plus complexes de \LaTeX. C'est pourquoi nous ne ferons ici qu'un bref aperçu : on trouvera aisément des exemples plus détaillés dans d'autres ouvrages ou sur internet\footcite[On pourra consulter des fichiers assez didactiques :][]{bebert_tableaux}.
-
 \end{attention}
 
 \subsection{Syntaxe de base}
@@ -124,11 +125,11 @@ L'argument \arg{type de colonnes} de l'environnement \enviro{tabular} sert à pr
 
 Il existe trois types possibles de colonnes,  qui précisent l'alignement des textes : \label{typecolonnes}
 
-\begin{itemize}
-    \item \verb|l| Alignement à gauche.
-    \item \verb|c| Centré.
-    \item \verb|r| Alignement à droite.
-\end{itemize}
+\begin{description}
+\item[l] Alignement à gauche.
+\item[c] Centré.
+\item[r] Alignement à droite.
+\end{description}
 
 Supposons que nous ayons un tableau à trois colonnes. Nous souhaitons que les cellules de la première colonne soient alignées à gauche, celles de la seconde centrées et celles de la dernière alignées à droite\footnote{Il s'agit ici d'une dérogation au principe de séparation de fond et de forme. Toutefois le lecteur pourra aisément, lorsqu'il l'aura assimilée, contourner cette dérogation et revenir dans le droit chemin.}.  
 Il nous faut  écrire :
@@ -170,19 +171,28 @@ La ligne de base est une ligne spécifique, correspondant, \emph{grosso-modo} au
 
 
 \begin{plusloins}
-
 Il est possible de créer ses propres types de colonnes, afin par exemple d'en avoir avec une typographie particulière. Consultez le manuel du package \package{array}\footcite{array_colonnes}.
-
 \end{plusloins}
+
 \begin{plusloins}
 On peut utiliser le package \package{slahshbox} afin d'avoir une cellule divisée en deux dans un sens diagonal, pour les tableaux à doubles entrées.
 \end{plusloins}
+
 \begin{plusloins}
 Le package \package{tabularx} propose un environnement \package{tabularx} permettant de calculer automatiquement la taille des colonnes.
 \end{plusloins}
+
+\begin{plusloins}
+Il existe également un package \package{tabbing} permettant de gérer des alignements de texte sans utiliser un tableau\footcite{tabbing}.
+\end{plusloins}
+
+\begin{plusloins}
+On peut simuler certaines fonctionnalités d'un tableau à l'aide du package \package{spreadtab}\footcite{spreadtab}.
+\end{plusloins}
+
 \subsubsection{Séparation des cellules}
 
-On peut tracer des filets de séparation des cellules : pour un filet  horizontal, il suffit d'utiliser la commande \csp{hline}. Pour un filet  vertical, il faut mettre le caractère \verb+|+\footnote{Ce caractère, appelé \forme{pipe} ne doit pas être confondu avec un \verb+l+.} entre les types de cellules.
+On peut tracer des filets de séparation des cellules : pour un filet  horizontal, il suffit d'utiliser la commande \csp{hline}. Pour un filet  vertical, il faut mettre le caractère \verb+|+\footnote{Ce caractère, appelé \forme{pipe} ne doit pas être confondu avec un L minuscule.} entre les types de cellules.
 
 On trace des filets horizontaux plus petits en utilisant la commande \csp{cline}\verb|{<col1>-<col2>}|, où \arg{col1} et \arg{col2} doivent être remplacés par les numéros de colonnes.
 
@@ -201,7 +211,7 @@ Il est possible de fusionner des cellules. Pour une fusion de colonnes, il faut 
 \item[\arg{contenu}] est le contenu de la ligne fusionnée.
 \end{description}
 
-Pour une fusion de lignes, il faut charger le package \package{multirow}. Celui-ci propose une commande \cs{multirow} dont voici la syntaxe simplifiée\footcite[Simplifiée car nous ne présentons pas les arguments optionnels : nous renvoyons à la documentation :][]{} :
+Pour une fusion de lignes, il faut charger le package \package{multirow}. Celui-ci propose une commande \cs{multirow} dont voici la syntaxe simplifiée\footcite[Simplifiée car nous ne présentons pas les arguments optionnels : nous renvoyons à la documentation :][]{multirow} :
 \csp{multirow}\marg{lignes}\marg{largeur}\marg{contenu}.
 
 
@@ -220,7 +230,7 @@ On remarquera les cellules vides correspondant aux anciennes cellules A2 et A3. 
 
 Si vous fabriquez ainsi un long tableau, vous constaterez que les cellules dépassent dans la marge inférieure, jusqu'à sortir de la page, au lieu, comme il semblerait logique, de continuer sur les pages suivantes.
 
-Pour éviter cela, il faut donc utiliser l'environnement \enviro{longtable} du package éponyme\sindex[pkg]{longtable}.
+Pour éviter cela, il faut  utiliser l'environnement \enviro{longtable} du package éponyme\sindex[pkg]{longtable}.
 
 \begin{latexcode}
 \usepackage{longtable}
@@ -259,7 +269,7 @@ En effet, \XeLaTeX{} --- comme d'ailleurs \LaTeX{} --- n'arrive pas à détermin
 Pour afficher un graphique statistique, nous recommandons d'utiliser le package \package{TikZ}\renvoi{TikZ}. Toutefois la maîtrise de cet outils peut être relativement complexe. C'est pourquoi nous listons ici quelques packages utiles : 
 \begin{itemize}
 \item Le package \package{csvpie} propose une fonction pour tracer un diagramme circulaire à partir d'un fichier \ext{csv}\footcite[Sa documentation se trouve dans celle du package \package{csvtools} :][]{csvtools_pie}. 
-\item Le package \package{datatool} propose un certain nombre de graphiques statistiques. Il faut enregistrer les données selon une forme liée au package. Nous renvoyons à sa documentation\footnote{datatool}.
+\item Le package \package{datatool} propose un certain nombre de graphiques statistiques. Il faut enregistrer les données selon une forme liée au package. Nous renvoyons à sa documentation\footcite{datatool}.
 \end{itemize}
 \end{plusloins}
 
@@ -304,8 +314,9 @@ Nous avons un exemple de flottant   dans ce chapitre : la figure \ref{figure:gen
     De même on pourrait souhaiter renvoyer automatiquement au numéro et la page d'une figure : nous en parlons dans le chapitre consacré à la navigation à l'intérieur d'un document.\renvoi{label}
 \end{attention}
 
-À noter que, comme les titres, la commande \csp{caption} peut recevoir un argument optionnel qui compte pour titre dans la table des figures ou la table des tableaux :\renvoi{tablefigure}
-\cs{caption}\oarg{Légende pour la table}\marg{Légende}.
+À noter que, comme les titres, la commande \csp{caption} peut recevoir un argument optionnel qui compte pour titre dans la table des figures ou la table des tableaux : \renvoi{tablefigure}
+
+\cs{caption}\oarg{Légende pour la table}\marg{Légende}. 
 
 
 \begin{plusloins}
@@ -341,7 +352,7 @@ Le \arg{paramètre de placement} indique à \LaTeX comment placer idéalement le
 
 \begin{longtable}{|l|l|}
     \hline
-    Valeur & Signification    \\
+    \headlongtable{Valeur} & \headlongtable{Signification}    \\
     \hline
     \endhead
     \hline
