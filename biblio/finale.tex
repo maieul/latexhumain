@@ -14,7 +14,7 @@ Toutefois une telle bibliographie est peu utile pour les longs travaux : elle m�
 
 
 
-\section{Choix du style de bibliographie}
+\subsection{Choix du style de bibliographie}
 
 De même qu'il est possible de choisir, lors de l'appel à \package{biblatex}, les styles des références bibliographiques, il est possible de choisir un style bibliographique grâce à l'argument \arg{bibstyle}. Pour les sciences humaines, il vaut mieux utiliser \verb|verbose| qui nous assure d'avoir des références complètes, sans pour autant qu'un numéro soit attribué à chaque entrée comme c'est le cas avec \verb|numeric|, le style par défaut.
 Ainsi, lors de l'appel au package \package{biblatex}, il suffit d'écrire :
@@ -23,7 +23,7 @@ Ainsi, lors de l'appel au package \package{biblatex}, il suffit d'écrire :
 \usepackage[bibstyle=verbose,...]{biblatex}
 \end{latexcode}
 
-\section{Ajout de références non citées}
+\subsection{Ajout de références non citées}
 
 On peut vouloir ajouter dans une bibliographie des références qui n'ont pas été explicitement citées dans le texte. Il faut  utiliser la commande \csp{nocite}\verb|{|\meta{clef1}\verb|,|\meta{clef2}\verb|,…}|.
 Pour ajouter l'ensemble des références d'un fichier \ext{bib} il suffit d'écrire : \csp{nocite}\verb|{*}|.
