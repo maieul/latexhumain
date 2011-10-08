@@ -2,6 +2,8 @@
 
 \renewbibmacro{cite:ibid}{\usebibmacro{cite:full}} % On modifie, pour ne pas avoir des ibidem à tout bout de champs
 
+\renewbibmacro*{cite:title}{\usebibmacro{cite:full}}
+
 
 \begin{prealable}
 Nous avons vu plus haut les différentes manières de citer un texte dans \renvoi{citertexte} le corps du travail. Nous avons également vu comment remplir une base de données bibliographique\renvoi{bddbiblio}.
@@ -284,7 +286,7 @@ Avec le style verbose, on peut faire apparaître les références sous une forme
 
 La commande \csp{printshorthands} permet d'imprimer la liste des abréviations.
 
-% On rétablis la gestion des ibidems
+% On rétablis la gestion des ibidems et op. cit
 
 \renewbibmacro*{cite:ibid}{%
   \printtext{%
@@ -294,3 +296,8 @@ La commande \csp{printshorthands} permet d'imprimer la liste des abréviations.
     {\global\toggletrue{cbx:loccit}}
     {}}
 
+\renewbibmacro*{cite:title}{%
+  \printtext[bibhyperlink]{%
+    \printfield[citetitle]{labeltitle}%
+    \setunit{\nametitledelim}%
+    \bibstring[\mkibid]{opcit}}}
