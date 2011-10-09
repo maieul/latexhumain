@@ -122,7 +122,6 @@ Ducs \\
 Evêques \\
 \> Damase, 5\\
 \> Formose, 5\\
-
 \end{tabbing}
 \end{quotation}
 
@@ -176,7 +175,6 @@ Empereurs\\
 \> Auguste, x\\
 \> Tibère, y\\
 \> Claude, z \\
-
 \end{tabbing}
 \end{quotation}
 
@@ -195,16 +193,18 @@ Désormais, frapper \cs{auteur}\verb|{Victor}{Hugo}|donne
 
 Il peut arriver, lorsqu'une entrée est très souvent représentée dans un texte indexé, que l'on veuille mettre en valeur une de ses occurrences, en faisant apparaître en gras dans l'index le numéro de la page où elle se situe : on utilise alors la commande \cs{index}\verb|{|\meta{entrée}\verb+|textbf}+. 
 
-De même pour faire apparaître le numéro de la page en italique va-t-on utiliser la commande \cs{index}\cs{index}\verb|{|\meta{entrée}\verb+|textit}+.
-
 \begin{attention}
 Il s'agit bien de \verb+|textbf+, non de \verb+|\textbf+
 \end{attention}
 
+De même pour faire apparaître le numéro de la page en italique utilise-t-on la commande \cs{index}\verb|{|\meta{entrée}\verb+|textit}+.
+
+
+
 
 
 \begin{plusloins}
-Si vous utilisez le package \package{hyperref}, vous constaterez que celui-ci insère des liens hypertextes vers les pages au sein de l'index. Toutefois si une de ces pages est formatée, le lien disparaît. Nous expliquons sur notre site comment éviter ce problème\footnote{indexhypergras}.
+Si vous utilisez le package \package{hyperref}, vous constaterez que celui-ci insère des liens hypertextes vers les pages au sein de l'index. Toutefois si une de ces pages est formatée, le lien disparaît. Nous expliquons sur notre site comment éviter ce problème\footcite{indexhypergras}.
 \end{plusloins}
 
 
@@ -239,7 +239,7 @@ Mais au lieu de la commande \cs{index}\marg{entrée}, on utilise \csp{sindex}\oa
 Toutes les entrées indiquées non par \cs{sindex} mais par \cs{index} sont automatiquement placées dans un index général, dont le nom abrégé est idx.
 
 \end{plusloins}
-On peut ainsi indexer notre texte d'Eginhard de la façon suivante:
+On peut ainsi indexer notre texte d'Éginhard de la façon suivante:
 
 \begin{latexcode}
 \sindex[idx]{Charles et la papauté|(}
@@ -252,7 +252,7 @@ la part du pape, les évêques Formose\sindex[npr]{Formose} et
 Damase\sindex[npr]{Damase}(…)\sindex[idx]{Charles et la papauté|)}.
 \end{latexcode}
 
-Après la compilation avec \XeLaTeX il faut compiler le fichier \ext{idx} avec SplitIndex. En général, la seule solution est de passer par la ligne de commande\renvoi{terminal} :
+Après la compilation avec \XeLaTeX il faut compiler le fichier \ext{idx} avec SplitIndex. En général, la seule solution est de modifier les réglages de son éditeur ou de  passer par la ligne de commande\renvoi{terminal}  :
 
 \begin{bashcode}
 splitindex exemple.idx
@@ -371,7 +371,7 @@ Cette macro est déjà définie par \package{biblatex}. Elle reçoit plusieurs a
   }
 \end{latexcode}
 
-La commande \cs{DeclareIndexFieldFormat} sert à déclarer la manière d'indexer les champs qui ne sont ni des listes ni des noms. La valeur \verb|#1| correspond à la valeur du champ à indexer. En deuxième ligne, nous vérifions grâce à la commande \csp{ifcurrentfield}, que le champ à indexer  est \champ{indextitle} : si c'est le cas, nous l'indexons dans l'index \verb|source| en mettant l'emphase sur le titre pour l'affichage final. Sinon, nous l'indexons simplement dans l'index \verb|source|.
+La commande \cs{DeclareIndexFieldFormat} sert à déclarer la manière d'indexer les champs qui ne sont ni des listes ni des noms. La valeur \verb|#1| correspond à la valeur du champ à indexer. En deuxième ligne, nous vérifions grâce à la commande \csp{ifcurrentfield}, que le champ    est \champ{indextitle} : si c'est le cas, nous l'indexons dans l'index \verb|source| en mettant l'emphase sur le titre pour l'affichage final. Sinon, nous l'indexons simplement dans l'index \verb|source|.
 
 \subsection{Compilation et concaténation des index}
 
@@ -415,7 +415,7 @@ splitindex xxx
 
 Nous souhaitons n'indexer que les sources primaires. La solution la plus simple est d'utiliser dans le fichier \ext{bib} un champ personnalisé \champ{usera}. Le package \package{biblatex} permet en effet à l'utilisateur d'utiliser librement un certain nombre de champs\footcite[La liste de ces champs est fournie dans][]{biblatex_custom_fields}.  Dans ce champ, mettre 1 si l'entrée est une source primaire, 2 si l'entrée est une source secondaire.
 
-Il nous suffit de modifier la macro \bibmacro{citeindex}, en introduisant un test (ligne 2) sur la valeur du champ \champ{usera}, grâce à la commande \csp{iffieldequalstr}.
+Il nous suffit de modifier la macro \bibmacro{citeindex}, en introduisant un test (ligne~3) sur la valeur du champ \champ{usera}, grâce à la commande \csp{iffieldequalstr}.
 \inputminted{exemples/navigation/index-source/citeindex-usera.tex}
 
 \subsection{Résumé des diverses compilations}
@@ -431,7 +431,7 @@ Pour obtenir un index des sources primaires, une fois tous les fichiers mis en p
 \end{enumerate}
 
 \begin{plusloins}
-Évidemment, il peut être fastidieux de se souvenir de l'ensemble de ces opérations, de les faire et refaire,\ldots C'est pourquoi il est conseillé pour les personnes travaillant sous Linux et Mac Os X d'utiliser un programme nommé make\footnote{Pour les utilisateurs de Windows, il est possible aussi, moyennant certaines techniques, d'installer ce programme.}. 
+Évidemment, il peut être fastidieux de se souvenir de l'ensemble de ces opérations, de les faire et refaire\ldots C'est pourquoi il est conseillé pour les personnes travaillant sous Linux et Mac~Os~X d'utiliser un programme nommé make\footnote{Pour les utilisateurs de Windows, il est possible aussi, moyennant certaines techniques, d'installer ce programme.}. 
 
 L'idée du programme make est de décrire dans un fichier les opérations nécessaires au passage d'un ensemble de fichier a vers un fichier b. Le programme make exécute ces opérations uniquement si les fichiers  ont été modifiés. En outre make peut faire des tests pour éviter de compiler deux fois si cela n'est pas utile. Notre livre n'est pas assez long pour expliquer comment se servir de make. Nous renvoyons à d'autres travaux\footcite[On pourra consulter, par exemple :][]{makefile}.
 \end{plusloins}
