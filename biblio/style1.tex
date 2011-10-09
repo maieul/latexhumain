@@ -14,7 +14,7 @@
     
 \section{Séparateurs d'unité de sens}\label{unitebiblio}
     
-Prenons un problème courant. Vous avez constaté que, par défaut, les différents champs d'une référence bibliographique sont séparés par des points. On obtient par exemple :
+Prenons un problème courant. Vous avez constaté que, par défaut, les différents champs d'une référence bibliographique\footnote{À l'exception de la date et de quelques autres champs.} sont séparés par des points. On obtient par exemple :
     
     \bibverbose
 
@@ -46,7 +46,7 @@ alors que le règles françaises voudraient que l'on ait :
     \end{latexcode}
 
 \begin{plusloins}
-        Nous n'avons par parlé jusqu'à présent de la commande \csp{renewcommand}. Celle-ci est identique à la commande \cs{newcommand} à la différence qu'elle permet de redéfinir une commande déjà existante.
+        Nous n'avons pas parlé jusqu'à présent de la commande \csp{renewcommand}. Celle-ci est identique à la commande \cs{newcommand} à la différence qu'elle permet de redéfinir une commande déjà existante.
         \end{plusloins}
     
     Cette solution semble fonctionner. Mais elle pose un problème : les styles définissent des unités de sens sans se poser la question de savoir si ces unités sont vides ou pas.
@@ -220,7 +220,7 @@ On pourrait redéfinir les chaînes de langue consacrées aux abréviations univ
 
 Il y a une solution plus simple\label{mkibid}. En effet, \package{biblatex} passe ces chaînes de langue dans une commande \csp{mkibidem}\marg{chaine} avant de les afficher.
 
-Il nous suffit dont de redéfinir cette commande :
+Il nous suffit donc de redéfinir cette commande :
 
 \begin{latexcode}
 \renewcommand{\mkibid}[1]{\emph{#1}}
@@ -241,7 +241,7 @@ Il s'agit de la commande : \csp{iffieldequalstr}\marg{champ}\marg{texte}\marg{si
 Cette commande ne peut s'utiliser que dans certaines parties d'un fichier \LaTeX : dans les commandes de définition de styles bibliographiques et  dans celles de définition d'un chaîne de langue. 
 Elle vérifie que le champ \arg{champ}    de l'entrée bibliographique citée correspond à l'argument \arg{texte}: si c'est le cas, elle retourne l'argument \arg{sioui}, et sinon elle retourne l'argument \arg{sinon}.
 
-Ici nous testons le pseudo-champ\footnote{\forme{Pseudo} car il ne se situe pas réellement comme un champ dans l'entrée bibliographique.}\champ{entrytype}, qui correspond au type d'entrée sans le @. Nous vérifions  s'il s'agit d'une entrée de type article : si c'est le cas nous donnons à la chaîne de langue la valeur  \forme{\emph{art. cit.}},  dans le cas contraire nous donnerons la valeur \forme{\emph{op. cit.}}.
+Ici nous testons le pseudo-champ\footnote{\forme{Pseudo} car il ne se situe pas réellement comme un champ dans l'entrée bibliographique.}\champ{entrytype}, qui correspond au type d'entrée sans le @. Nous vérifions  s'il s'agit d'une entrée de type article : si c'est le cas nous donnons à la chaîne de langue la valeur  \forme{art. cit.},  dans le cas contraire nous donnons la valeur \forme{op. cit.}.
 Au final cela donne : 
 
 \begin{latexcode}
