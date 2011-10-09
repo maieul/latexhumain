@@ -50,9 +50,11 @@ Prenons l'entrée suivante :
 
 Elle s'affiche ainsi, avec l'éditeur commercial après l'adresse :
 
+\bibverbose
 \begin{quotation}
 \cite{Saxer1980}
 \end{quotation}
+
 
 On pourrait souhaiter avoir l'éditeur avant l'adresse, comme ceci : 
 
@@ -69,7 +71,7 @@ On pourrait souhaiter avoir l'éditeur avant l'adresse, comme ceci :
 \begin{quotation}
 \cite{Saxer1980}
 \end{quotation}
-
+\bibverbosetrad
 
 
 La première chose à faire va donc être de repérer quelle macro bibliographique modifier. Pour cela, il faut trouver les fichiers de définition des styles bibliographiques\renvoi{trouverfichier}. Il en existe plusieurs :
@@ -152,10 +154,11 @@ On peut déclarer des nouveaux alias de champ via la commande :
 Un des éléments gênants des styles bibliographiques standards de la famille verbose est leur manière de gérer les abréviations universitaires de type \emph{op. cit.} En effet, les styles indiquent les \emph{op. cit.} après avoir affiché l'auteur et le titre. Par exemple :
 
 \begin{quotation}
+\bibverbose	
 \cite{Urner1952}
 
 \cite{Saxer1980}
-
+\bibverbosetrad
 
 \cite{Urner1952}
 
@@ -164,9 +167,7 @@ Un des éléments gênants des styles bibliographiques standards de la famille v
 
 Si nous n'avons qu'une seule entrée dont Victor Saxer est l'auteur, cela est assez inutile. On pourrait avoir une version abrégée sous la forme :
 
-% Changeons %
-\renewbibmacro*{cite:title}{\usebibmacro{cite:full}}
-% Changeons
+\bibverbose
 
 \begin{quotation}
 \cite{Urner1952}
@@ -188,11 +189,7 @@ Si nous n'avons qu'une seule entrée dont Victor Saxer est l'auteur, cela est as
 \end{quotation}
 
 % Rétablissons
-\newbibmacro*{cite:title}{%
-  \printtext[bibhyperlink]{%
-    \printfield[citetitle]{labeltitle}%
-    \setunit{\nametitledelim}%
-    \bibstring[\mkibid]{opcit}}}
+\bibverbosetrad
 % Rétablissons
 
 Pour ce faire, nous allons modifier les styles de \emph{biblatex}, en utilisant la commande \csp{ifsingletitle}\marg{sioui}{sinon}. Cette commande vérifie si une entrée est la seule attribuée à son auteur, et renvoie \arg{sioui} si c'est le cas, \arg{sinon} sinon. 
