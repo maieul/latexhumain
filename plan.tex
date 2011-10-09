@@ -1,4 +1,6 @@
-\frontmatter
+\ifpapierstandard
+\maketitle
+\fi
 \phantomsection\addcontentsline{toc}{part}{Avant-propos}\part*{Avant-propos}
 \pdfbookmark[0]{Remerciements et détails techniques}{}
 \input{preliminaires/merci}
@@ -59,3 +61,14 @@
 \setcounter{tocdepth}{2}
 \tableofcontents
 
+\ifpapierstandard
+%Pour avoir la 4ème sur une page de gauche
+\makeatletter
+\ifodd\c@TotPages
+\newpage\hbox{}\newpage
+\else
+\newpage\hbox{}
+\fi
+\makeatother
+\input{couv/4couv}
+\fi
