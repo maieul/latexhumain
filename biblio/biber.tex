@@ -13,7 +13,7 @@ Jusqu'à maintenant, pour intégrer une bibliographie, vous procédiez ainsi :
 \item Compilation avec \XeLaTeX du fichier \ext{tex}.
 \end{enumerate}
 
-Si vous utiliser Biber, il vous faudra procéder ainsi :
+Si vous utilisez Biber, il vous faudra procéder ainsi :
 
 \begin{enumerate}
 \item Compilation avec \XeLaTeX du fichier \ext{tex}.
@@ -29,20 +29,20 @@ Biber est donc un logiciel qui remplace BibTeX. Quels sont ses avantages ?
 \item Certaines fonctionnalités avancées de \package{biblatex} ne fonctionnent qu'avec Biber.
 \end{itemize}
 
-\section[Principe des sous-entrées]{Les sous entrées bibliographiques : le principe}
+\section[Principe des sous-entrées]{Les sous-entrées bibliographiques : le principe}
 
 Supposons que vous citiez plusieurs contributions d'un même colloque. Classiquement vous créez plusieurs entrées bibliographiques sous la forme\footnote{Toute ressemblance avec un colloque s'étant déjà tenu ne saurait être que pure coïncidence.}:
 
 \inputminted{exemples/biblio/biber/reproduction.bib}
 
-Vous dupliquez ainsi les données sur le colloque (titre, éditeur etc.). Si par hasard vous vous êtes trompés dans une information, vous devrez la modifier partout. Pour éviter cela BibTeX prévoit la possibilité de créer des filiations d'entrée : des entrées secondaires \enquote{héritant} d'une entrée principale. L'héritage étant pris en charge lors de l'interprétation du fichier. Pour ce faire, il suffit d'indiquer dans le champ \champ{crossref} des entrées secondaires la clef de l'entrée principale.
+Vous dupliquez ainsi les données sur le colloque (titre, éditeur, etc.). Si par hasard vous vous êtes trompés dans une information, vous devrez la modifier partout. Pour éviter cela BibTeX prévoit la possibilité de créer des filiations d'entrées : des entrées secondaires \enquote{héritant} d'une entrée principale. L'héritage étant pris en charge lors de l'interprétation du fichier. Pour ce faire, il suffit d'indiquer dans le champ \champ{crossref} des entrées secondaires la clef de l'entrée principale.
 
 
 \inputminted{exemples/biblio/biber/crossref.bib}
 
-En toute logique la compilation avec BibTeX devrait attribuer la valeur du champ \champ{title} de l'entrée \verb|principale| aux champs \champ{booktitle} des entrées \verb|clef1| et \verb|clef2|, puisqu'il s'agit d'entrées de type \type{inproceedings} héritant d'entrée \type{proceedings}. 
+En toute logique la compilation avec BibTeX devrait attribuer la valeur du champ \champ{title} de l'entrée \verb|principale| aux champs \champ{booktitle} des entrées \verb|clef1| et \verb|clef2|, puisqu'il s'agit d'entrées de type \type{inproceedings} héritant d'une entrée \type{proceedings}. 
 
-Il n'en est rien : BibTeX procède à des héritages simples : il attribue les valeurs \enquote{mères} \champ{title} aux champs \champ{title} des fils. Ceci oblige donc à dupliquer les valeurs\footnote{Certain logiciel de gestion bibliographique le font pour vous. Toutefois, cela alourdit le fichier. En outre il s'agit de contourner un limitation technique de BibTeX, plutôt que de remédier à cette limitation.}.
+Il n'en est rien : BibTeX procède à des héritages simples : il attribue les valeurs \enquote{mères} \champ{title} aux champs \champ{title} des fils. Ceci oblige donc à dupliquer les valeurs\footnote{Certains logiciels de gestion bibliographique le font pour vous. Cela alourdit toutefois le fichier. En outre ils se contentent de contourner une limitation technique de BibTeX, plutôt que de remédier à cette limitation.}.
 
 Biber quant à lui attribue correctement les valeurs des champs. Si nous reprenons notre exemple et que nous utilisons Biber, nous obtenons les résultats souhaités :
 
@@ -63,7 +63,7 @@ Pour que la compilation avec Biber fonctionne, il faut indiquer lors du chargeme
 \usepackage[backend=biber,...]{biblatex}
 \end{latexcode}
 
-Par ailleurs, lorsqu'une entrée fille est citée, Biber rajoute systématiquement l'entrée mère dans la bibliographie finale. On peut toutefois régler un nombre minimal de citations d'entrées filles nécessaires à l'ajout de l'entrée mère dans la bibliographie. Si nous souhaitons qu'une entrée mère ne soit ajoutée à la bibliographie que si les entrées filles sont citées au moins 10 fois (toutes entrées confondues) :
+Par ailleurs, lorsqu'une entrée fille est citée, Biber rajoute systématiquement l'entrée mère dans la bibliographie finale. On peut toutefois indiquer un nombre minimal de citations d'entrées filles pour que se fasse l'ajout de l'entrée mère dans la bibliographie. Si nous souhaitons qu'une entrée mère ne soit ajoutée à la bibliographie que si les entrées filles sont citées au moins 10 fois (toutes entrées confondues) :
 
 
 \begin{latexcode}
@@ -76,7 +76,7 @@ Par ailleurs, lorsqu'une entrée fille est citée, Biber rajoute systématiqueme
 
 Pour compiler avec Biber, il faut bien sûr que ce dernier soit installé, ce qui est le cas avec les distributions récentes de \LaTeX. Toutefois la plupart des éditeurs \LaTeX{} ne prévoient pas encore de compiler avec Biber : il faut soit passer par la ligne de commande, que nous expliquons en annexe\renvoi{terminal}, soit modifier les réglages du logiciel\footcite[On peut trouver comment faire pour quelques logiciels à cette adresse]{biber_logiciels}.
 
-Si vous optez pour la ligne de commande, il suffit de frapper dans votre terminal : \verb|biber fichieracompiler|. L'extension n'étant pas nécessairement à préciser. Ainsi si votre fichier \ext{tex} principal s'appelle \fichier{principal.tex}, il vous faut procéder ainsi :
+Si vous optez pour la ligne de commande, il suffit de frapper dans votre terminal : \verb|biber fichieracompiler|. Il n'est pas nécessaire de préciser l'extension. Ainsi si votre fichier \ext{tex} principal s'appelle \fichier{principal.tex}, il vous faut procéder ainsi :
 
 \begin{bashcode}
 xelatex principal.tex
@@ -86,18 +86,18 @@ xelatex principal
 
 \subsection{Préciser les héritages de champs}
 
-Biber possède un certain nombre de réglages d'héritages de champs\footcite{biblatex_crossrefsetup}. Toutefois on peut vouloir modifier ces héritages, ou en ajouter d'autres. Par exemple les champs \champ{entrysubtype} ne sont, par défaut, pas hérités. 
+Biber possède un certain nombre de réglages d'héritages de champs\footcite{biblatex_crossrefsetup}. On peut cependant modifier ces héritages, ou en ajouter d'autres. Les champs \champ{entrysubtype}, par exemple, ne sont par défaut pas hérités. 
 
 Il suffit d'utiliser dans le préambule la commande :
 \csp{DeclareDataInheritance}\marg{entrée mère}\marg{entrée fille}\marg{règles}.
 
 \begin{description}
-\item[\arg{entrée mère}] désigne le type d'entrée mère : \type{book}, \type{proceedings} etc. Le symbole * désigne n'importe quel type d'entrée.
+\item[\arg{entrée mère}] désigne le type d'entrée mère : \type{book}, \type{proceedings}, etc. Le symbole * désigne n'importe quel type d'entrée.
 \item[\arg{entrée fille}] désigne le type d'entrée fille. Là aussi le symbole * désigne n'importe quel type d'entrée..
 \item[\arg{règles}] désigne un certain nombre de règles d'héritages, sous forme de commandes.
 \end{description}
 
-Les types d'entrées à préciser dans les arguments \arg{entrée fille} et \arg{entrée mère} ne doivent pas être précédés du signe \verb|@|.
+Les types d'entrées à préciser dans les arguments \arg{entrée fille} et \arg{entrée mère} ne doivent pas être précédés du signe \verb|@|.
 
 La première commande d'héritage est la suivante \csp{noinherit}\marg{champ}.
 Elle empêche l'héritage d'un champ par une entrée fille.
@@ -107,7 +107,7 @@ La seconde commande est
 
 Il n'y qu'une seul option possible : \verb|override=true|. Si cette option est passée, alors la valeur du champ de l'entrée fille est écrasée par celles du champ de l'entrée mère. Sinon, la valeur  du champ de l'entrée fille a priorité.
 
-Ainsi, pour permettre l'héritage du du champ \champ{entrysubtype} il suffit d'écrire :
+Ainsi, pour permettre l'héritage du  champ \champ{entrysubtype} il suffit d'écrire :
 
 \begin{latexcode}
 \DeclareDataInheritance{*}{*}{
@@ -115,16 +115,16 @@ Ainsi, pour permettre l'héritage du du champ \champ{entrysubtype} il suffit d'�
 }
 \end{latexcode}
 
-\section[Division des sources antiques]{Utilisation de Biber pour la gestion des division de sources}\label{divisionsource}
+\section[Division des sources antiques]{Utilisation de Biber pour la gestion des divisions de sources}\label{divisionsource}
 
-Les sous-entrées peuvent être utilisées pour contourner une des limites de la gestion bibliographique de \LaTeX{} : l'impossibilité de gérer à la fois  la division d'une source et la pagination. Les textes anciens disposent en générale d'une division propre qui permet --- en théorie ---  de repérer un passage dans n'importe quelle édition. Par exemple :
+Les sous-entrées peuvent être utilisées pour contourner une des limites de la gestion bibliographique de \LaTeX{} : l'impossibilité de gérer à la fois  la division d'une source et la pagination. Les textes anciens disposent en général d'une division propre qui permet --- en théorie ---  de repérer un passage dans n'importe quelle édition. Par exemple :
 
 \begin{quotation}
 \cite{DoctrineChretienneDivision}
 \end{quotation}
 
 Signifie que nous renvoyons au \emph{De Doctrina Christiana} d'Augustin, livre II, chapitre \textsc{viii}, paragraphes 12-13. En théorie on peut retrouver le passage concerné dans n'importe quelle édition du traité. Ceci est appelé généralement \enquote{division de source}.
-En revanche, supposons que nous renvoyons à une édition particulière, par exemple celle de la Bibliothèque Augustinienne : on aimerait indiquer les pages précises.
+En revanche, supposons que nous renvoyions à une édition particulière, par exemple celle de la Bibliothèque Augustinienne : on aimerait indiquer les pages précises.
 
 \begin{quotation}
 \cite{DeDoctChrIIviii18-20}
@@ -136,14 +136,14 @@ S'il est aisé lorsqu'on utilise une commande de citation d'indiquer une page pr
 Il n'existe pas de champ spécifiquement prévu pour indiquer la division de source. Pourquoi choisir ce champ \champ{titleaddon} ? Deux raisons poussent l'auteur de ces lignes à adopter cette solution :
 \begin{enumerate}
 \item D'un point de vue sémantique, la division de source peut être considérée comme un ajout au titre. 
-\item D'un point de vue pratique, ce champ à pour avantage d'être, par défaut, situé par \package{biblatex} entre le titre et les informations d'édition, tout en n'étant pas en italique.
+\item D'un point de vue pratique, ce champ a pour avantage d'être, par défaut, situé par \package{biblatex} entre le titre et les informations d'édition, sans pour autant être en italique.
 
 
 \end{enumerate}
 
 Le choix d'une entrée de type \type{book} pour la clef \verb|DeDoctChrIIviii18-20| à la place d'une entrée \type{inbook} se justifie dans la mesure où notre entrée ne possède pas de titre propre.
 
-Évidemment le choix de ce champ devrait, idéalement, être discuté en accord avec l'éditeur. De toute façon, il est  facile si le choix ne convient pas de changer en série les entrées.
+Évidemment le choix de ce champ devrait, idéalement, être discuté en accord avec l'éditeur. De toute façon, il est  facile, si le choix ne convient pas, de changer en série les entrées.
 \end{plusloins}
 
 Ainsi pour notre cas, il suffit de créer les deux entrées suivantes :
@@ -157,5 +157,5 @@ Pour citer notre passage précis, il faut écrire :
 \end{latexcode}
 
 \begin{plusloins}
-L'inconvénient d'une telle méthode est de multiplier les entrées dans la bibliographie finale, puisque nous obtenons à la fois l'œuvre entière et chacune des divisions que nous ajoutons dans notre fichier \ext{bib}.  Nous expliquons  sur  notre blog comment empêcher cela\footcite{biblio_sanssousentrees}.   
+L'inconvénient d'une telle méthode est qu'elle multiplie les entrées dans la bibliographie finale, puisque celle-ci contiendra  à la fois l'œuvre entière et chacune des divisions que nous ajoutons dans notre fichier \ext{bib}.  Nous expliquons  sur  notre blog comment empêcher cela\footcite{biblio_sanssousentrees}.   
 \end{plusloins}
