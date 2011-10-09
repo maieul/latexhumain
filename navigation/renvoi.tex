@@ -1,13 +1,13 @@
 \chapter{Renvois internes}\label{label}
 
 \begin{prealable}
-Dans ce court chapitre nous allons nous intéresser à la manière d'opérer des renvois à l'intérieur d'un document.
+Dans ce court chapitre nous allons nous intéresser à la manière de mettre des renvois à l'intérieur d'un document.
 Il s'agit de permettre d'afficher des textes du type : \enquote{Nous renvoyons au chapitre~N. page~P.}
 \end{prealable}
 
 \section{Étiqueter des  emplacements : la commande \cs{label}}
 
-Pour permettre de faire des renvois internes, il est nécessaire de placer des \enquote{étiquettes} aux endroits vers lesquels on souhaite renvoyer.
+Pour pouvoir faire des renvois internes, il est nécessaire de placer des \enquote{étiquettes} aux endroits vers lesquels on souhaite renvoyer.
 Cet étiquetage  se fait avec la commande \csp{label}\marg{etiquette}.
 
 \begin{plusloins}
@@ -18,17 +18,17 @@ Lors de la relecture, il peut être intéressant d'avoir les étiquettes affich�
 
 Après avoir avoir placé des étiquettes, on peut y renvoyer. 
 Il suffit d'insérer une commande de renvoi à l'endroit souhaité. 
-Toutefois il est nécessaire de compiler deux fois avec \XeLaTeX.
+Il est toutefois nécessaire de compiler deux fois avec \XeLaTeX.
 À la première compilation,   \XeLaTeX
 note les emplacements des étiquettes dans un fichier. À la seconde compilation, il lit ce fichier afin de procéder aux renvois. 
 
 \begin{attention}
-    Si vous modifiez votre texte, il faudra de nouveau compiler deux fois. En effet, les numéros de pages, de titres, de légendes etc. peuvent avoir changé. Il faut donc  que \XeLaTeX{} les apprenne à nouveau. En résumé, pour avoir un document correct il faut :
+    Si vous modifiez votre texte, il faudra de nouveau compiler deux fois. En effet, les numéros de pages, de titres, de légendes, etc. peuvent avoir changé. Il faut donc  que \XeLaTeX{} les apprenne à nouveau. En résumé, pour avoir un document correct il faut :
     \begin{enumerate}
         \item Compiler avec \XeLaTeX{};
         \item Compiler avec BibTeX ou Biber afin d'incorporer les références bibliographiques;
         \item Compiler avec \XeLaTeX{};
-        \item Re-compiler avec \XeLaTeX{}, car l'ajout des références bibliographiques a pu modifié le positionnement des étiquettes.
+        \item Re-compiler avec \XeLaTeX{}, car l'ajout des références bibliographiques a pu modifier le positionnement des étiquettes.
     \end{enumerate}
     
     Tout ceci peut paraître bien compliqué et risque d'entraîner des oublis. C'est pourquoi les journaux de compilations, ces lignes de textes qui apparaissent lors de la compilation avec \XeLaTeX{} et sont stockées dans un fichier \ext{log}, disent dans leurs dernières lignes s'il est nécessaire de compiler, et avec quel logiciel.
@@ -36,7 +36,7 @@ note les emplacements des étiquettes dans un fichier. À la seconde compilation
 
 \subsection{Renvoyer à une page}
 
-Pour renvoyer au numéro de page correspondant à l'étiquette \arg{etiquette} il suffit d'utiliser la commande \csp{pageref}\marg{etiquette}.
+Pour renvoyer au numéro de page correspondant à l'étiquette \arg{etiquette}, on utilise la commande \csp{pageref}\marg{etiquette}.
 
 \begin{latexcode}
 blabla \label{etiquette}
@@ -46,7 +46,7 @@ Nous renvoyons à la page~\pageref{etiquette}.
 
 \subsection{Renvoyer à un numéro de section}
 
-Pour renvoyer à un numéro de section, il suffit d'utiliser la commande \csp{ref}.
+Pour renvoyer à un numéro de section, on utilise la commande \csp{ref}.
 
 \begin{latexcode}
 \section{Section} \label{etiquette}
@@ -56,7 +56,7 @@ Nous renvoyons à la section~\ref{etiquette}.
  
 \subsection{Renvoyer à un titre de section}\label{renvoititre}
 
-Pour renvoyer à un titre de section, il suffit d'utiliser la commande \csp{nameref}.
+Pour renvoyer à un titre de section, on utilise la commande \csp{nameref}.
 
 \begin{latexcode}
 \section{Section} \label{etiquette}
@@ -69,12 +69,12 @@ Toutefois cette commande n'est pas disponible en standard : elle est proposée p
 
 \section{Où placer la commande \cs{label} ?}
 
-Pour le moment, nous avons vu que des renvois vers des sections, mais le système de renvois est beaucoup plus souple.
+Pour le moment, nous n'avons vu que des renvois vers des sections, mais le système de renvois est beaucoup plus souple.
 
-Une étiquette permet de renvoyer à tout élément numéroté, comme un titre, une note de base de page, une légende de flottant. Elle peut aussi renvoyer à un endroit précis en indiquant la page.
+Une étiquette permet de renvoyer à tout élément numéroté, comme un titre, une note de bas de page, une légende de flottant. Elle peut aussi renvoyer à un endroit précis en indiquant la page.
 
 \begin{itemize}
-\item Si l'étiquette \cs{label} est placée \emph{dans}  une commande  d'élément numéroté, elle renvoie à cette élément. Par exemple, pour renvoyer à une figure \renvoi{legende} :
+\item Si l'étiquette \cs{label} est placée \emph{dans}  une commande  d'élément numéroté, elle renvoie à cet élément. Par exemple, pour renvoyer à une figure \renvoi{legende} :
 
 \begin{latexcode}
 \begin{figure}[paramètre de placement]
@@ -86,12 +86,12 @@ Une étiquette permet de renvoyer à tout élément numéroté, comme un titre, 
 Nous renvoyons à la figure~\ref{figure} situé page~\pageref{figure}.
 \end{latexcode}
 
-\item Si la commande est placée ailleurs, elle renvoie à la page courante et à la section courante\footnote{En réalité il est possible de placer immédiatement après un élément numéroté pour y renvoyer, mais cela ne s'applique pas aux notes de bas de pages.}.
+\item Si la commande est placée ailleurs, elle renvoie à la page courante et à la section courante\footnote{En réalité il est possible de la placer immédiatement après un élément numéroté pour y renvoyer, mais cela ne s'applique pas aux notes de bas de pages.}.
 \end{itemize}
 
 \section{Comment nommer ses étiquettes ?}
 
-Vous êtes bien sûr libre de trouver votre propre système de dénomination des étiquettes. Toutefois il est conseillé d'avoir quelque chose de la forme : \begin{english}\meta{contenu}:\meta{nom}|\end{english}, où \contenuarg{forme} désigne le type d'élément vers lequel on renvoie.
+Vous êtes bien sûr libre de trouver votre propre système de dénomination des étiquettes. Toutefois il est conseillé d'avoir quelque chose de la forme : \begin{english}\meta{forme}:\meta{nom}\end{english}, où \contenuarg{forme} désigne le type d'élément vers lequel on renvoie.
 
 Exemples :
 
