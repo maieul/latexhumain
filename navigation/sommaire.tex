@@ -72,7 +72,7 @@ La commande \csp{def} permet de créer de nouvelles commandes. Toutefois à la d
 
 Définir des commandes en \TeX{} par rapport à les définir en \LaTeX{} permet plus de souplesse. Mais cela demande plus de maîtrise technique pour éviter divers problèmes, comme par exemple des erreurs de compilation. C'est pourquoi nous n'en parlons pas dans ce livre, sauf ponctuellement.
 
-Les commandes \TeX{} peuvent contenir des \enquote{sous-commandes}. Ici par exemple, la commande \cs{captionsfrench} contient la sous-commande \cs{contentsname}. Nous utilisons la commande \TeX{} \csp{gappto} pour injecter une sous-commande dans une commande déjà définie.
+Les commandes \TeX{} peuvent contenir des \enquote{sous-commandes}. Ici par exemple, la commande \cs{captionsfrench} contient la sous-commande \cs{contentsname}. Nous utilisons la commande  \csp{gappto} pour injecter une sous-commande dans une commande déjà définie.
 
 La commande \cs{gappto} n'est une commande standard ni de \TeX ni de \LaTeX. Elle est définie par le package \package{etoolbox}, qui est lui même appelé par \package{polyglossia}.
 \end{plusloins}
@@ -106,7 +106,7 @@ Pour un sommaire qui ne reprendrait que les niveaux de section et de chapitre, i
 
 \subsection{Sommaires partiels}
 
-Si l'on désire mettre un sommaire au début de chaque chapitre, il faut utiliser le package \package{minitoc} en lui passant l'option \option{french}. On doit alors activer les mini-sommaires grâce à la commande \csp{dominitoc}
+Si l'on désire mettre un sommaire au début de chaque chapitre, il faut utiliser le package \package{minitoc}\footcite{minitoc} en lui passant l'option \option{french}. On doit alors activer les mini-sommaires grâce à la commande \csp{dominitoc}
 
 \begin{latexcode}
 \usepackage[french]{minitoc}
@@ -141,7 +141,7 @@ Pour afficher des mini-sommaires par parties, il faut utiliser la commande \csp{
 \end{latexcode}
 
 
-Le package \package{minitoc} est très complexe et contient de nombreuses subtilités ; il permet  par exemple choisir facilement les styles du sommaire. Nous renvoyons au manuel pour plus de détails\footcites{minitoc}[en particulier][]{minitoc_typesetting}.
+Le package \package{minitoc} est très complexe et contient de nombreuses subtilités ; il permet  par exemple choisir facilement les styles du sommaire. Nous renvoyons au manuel pour plus de détails\footcite[Notamment][]{minitoc_typesetting}.
 
 \section{Des signets dans le PDF : le package \packagenoidx{hyperref}}\sindex[pkg]{hyperref}\label{hyperref}
 
