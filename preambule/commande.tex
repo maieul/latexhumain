@@ -107,22 +107,30 @@
 	\oldxelatex\xspace}
 
 \newcommand{\bibverbose}{
-\renewbibmacro{cite:ibid}{\usebibmacro{cite:full}} % On modifie, pour ne pas avoir des ibidem à tout bout de champs
-\renewbibmacro*{cite:title}{\usebibmacro{cite:full}}
+\renewbibmacro*{cite}{%
+	 \global\togglefalse{cbx:fullcite}%
+  	\global\togglefalse{cbx:loccit}%
+	\usebibmacro{cite:citepages}%
+	\usebibmacro{cite:full}%
+      	\usebibmacro{cite:save}%
+}
 }
 \newcommand{\bibverbosetrad}{
-\renewbibmacro*{cite:ibid}{%
-  \printtext{%
-    \bibhyperlink{cite\csuse{cbx@lastcite@\thefield{entrykey}}}{%
-      \bibstring[\mkibid]{ibidem}}}%
-  \ifloccit
-    {\global\toggletrue{cbx:loccit}}
-    {}}
-
-\renewbibmacro*{cite:title}{%
-  \printtext[bibhyperlink]{%
-    \printfield[citetitle]{labeltitle}%
-    \setunit{\nametitledelim}%
-    \bibstring[\mkibid]{opcit}}}
-   
+\newbibmacro*{cite}{%
+  \usebibmacro{cite:citepages}%
+  \global\togglefalse{cbx:fullcite}%
+  \global\togglefalse{cbx:loccit}%
+  \bibhypertarget{cite\the\value{instcount}}{%
+    \ifciteseen
+      {\iffieldundef{shorthand}
+         {\ifciteibid
+            {\usebibmacro{cite:ibid}}
+            {\ifthenelse{\ifciteidem\AND\NOT\boolean{cbx:noidem}}
+               {\usebibmacro{cite:idem}}
+               {\usebibmacro{cite:name}}%
+             \usebibmacro{cite:title}}%
+	  \usebibmacro{cite:save}}
+         {\usebibmacro{cite:shorthand}}}
+      {\usebibmacro{cite:full}%
+       \usebibmacro{cite:save}}}}
 }
