@@ -14,7 +14,7 @@
 Pour comprendre comment personnaliser l'affichage bibliographique, il est nécessaire de connaître sommairement ce qui passe lorsqu'on utilise une commande de citation. 
 
 
-Lorsqu'on appelle une commande de citation, du type \cs{\meta{prefix}cite}, cette commande va appeler :
+Lorsqu'on appelle une commande de citation, du type \cs{\meta{prefix}cite}, celle-ci va appeler :
     \begin{itemize}
         \item Des macros bibliographiques, chargées d'afficher l'argument \arg{prenote} ou \arg{postnote}, ou encore de gérer les citations répétées. Les macros bibliographiques sont des types particuliers de commande, propres au package \package{biblatex}.\label{macrobiblio} 
         \item Un driver\footnote{Bien que le terme \enquote{driver} ne soit pas français, nous l'utilisons car on le trouve dans les commandes internes de BibLaTeX} bibliographique. Un driver correspond à un type d'entrée (\type{article}, \type{book} etc.), et se charge d'afficher les champs de l'entrée dans le bon ordre. Pour cela, il appelle :
@@ -85,14 +85,14 @@ La première chose à faire va donc être de repérer quelle macro bibliographiq
 Certains fichiers s'appellent mutuellement : ainsi les fichiers \ext{bbx} contiennent les drivers bibliographiques. Ils sont donc appelés par les fichiers \ext{cbx}. Ces appels mutuels entre fichiers permettent de garantir une uniformité entre les styles bibliographiques lors de l'utilisation de \cs{\meta{prefix}cite} et lors de l'utilisation de \cs{printbibliography}.
 
 Nous supposons que  vous utilisez les styles de la famille \forme{verbose}. En consultant les journaux de compilation et en ouvrant les fichiers standards, vous pouvez aisément remonter au fichier \fichier{standard.bbx}, qui contient les drivers bibliographiques de cette famille.\renvoi{trouverfichier}
+Vous pouvez  repérer dedans les lignes suivantes\footnote{L.~58 au 9 octobre 2011.} :
 
-
-Vous pouvez  repérer dedans les lignes suivantes :
 \inputminted{exemples/biblio/styles2/driverbook.tex}
 
-Il s'agit d'un driver bibliographique expliquant comment afficher les entrées de type \type{book}. Ce driver fait appel à des macros bibliographiques, les commandes \csp{usebibmacro}. Ces macros sont communes à plusieurs drivers, ce qui permet d'avoir une certaine uniformité de style, afin par exemple que les noms d'auteurs s'affichent systématiquement de la même façon.
+Il s'agit d'un driver bibliographique expliquant comment afficher les entrées de type \type{book}. Il fait appel à des macros bibliographiques \emph{via} les commandes \csp{usebibmacro}. Ces macros sont communes à plusieurs drivers, ce qui permet d'avoir une certaine uniformité de style, afin par exemple que les noms d'auteurs s'affichent systématiquement de la même façon.
 
-Dans le lot des macros appelées, on constate l'appel à la macro \bibmacro{publisher+location+date}, via 
+Dans le lot des macros appelées, on constate l'appel à la macro \bibmacro{publisher+location+date}, via :
+ 
 \csp{usebibmacro}\verb|{publisher+location+date}|.
 
 En fouillant un peu le même fichier, on repère l'endroit où la macro est définie :
@@ -192,7 +192,11 @@ Si nous n'avons qu'une seule entrée dont Victor Saxer est l'auteur, cela est as
 \bibverbosetrad
 % Rétablissons
 
-Nous allons pour cela modifier les styles de \emph{biblatex}, en utilisant la commande \csp{ifsingletitle}\marg{sioui}\marg{sinon}. Cette commande vérifie si une entrée est la seule attribuée à son auteur, et renvoie \arg{sioui} si c'est le cas, \arg{sinon} sinon. 
+Nous allons pour cela modifier les styles de \emph{biblatex}, en utilisant la commande :
+
+\csp{ifsingletitle}\marg{sioui}\marg{sinon}. 
+
+Cette commande vérifie si une entrée est la seule attribuée à son auteur, et renvoie \arg{sioui} si c'est le cas, \arg{sinon} dans le cas contraire. 
 
 Pour la faire fonctionner, il faut utiliser Biber\renvoi{biber}, et passer l'option \option{singletitle=true} au chargement de \package{biblatex}.
 
@@ -212,7 +216,7 @@ Procédons à l'analyse :
 \begin{description}
 \item[Ligne 1] le nom de la macro est \bibmacro{cite:title}.
 \item[Ligne 2] la commande \csp{printtext} sert à deux chose : à mettre directement un texte en s'assurant que \emph{biblatex} gère la ponctuation ou bien à assembler plusieurs champs dans un seul bloc typographique. Ici, nous avons affaire au second usage. Le \contenuarg{bibhyperlink} signifie que \package{biblatex} va s'occuper de mettre un lien hypertexte à l'intérieur du document PDF.
-\item[Ligne 3]la commande \cs{printfield} imprime un champ. Ici le pseudo-champ \champ{labeltitle} : celui-ci renvoie la valeur du champ \champ{shortitle} s'il est défini, sinon celle de \champ{title}.\renvoi{shortfields}. Il l'affiche selon le format \contenuarg{citetitle}\footcite[On pourrait si on voulait définir une autre manière d'afficher ce champ grâce à la commande \cs{DeclareFieldFormat}. Voir][]{biblatex_formating}.
+\item[Ligne 3]la commande \cs{printfield} imprime un champ. Ici le pseudo-champ \champ{labeltitle} : celui-ci renvoie la valeur du champ \champ{shortitle} s'il est défini, sinon celle de \champ{title}\renvoi{shortfields}. Il l'affiche selon le format \contenuarg{citetitle}\footcite[On pourrait si on voulait définir une autre manière d'afficher ce champ grâce à la commande \cs{DeclareFieldFormat}. Voir][]{biblatex_formating}.
 \item[Ligne 4]nouvelle unité bibliographique, dont le séparateur est défini par la commande \csp{nametitledelim}.
 \item[Ligne 5]la commande \csp{bibstring} sert à appeler une chaîne de langue, ici \verb|opcit|. Le premier argument, dont la valeur est ici \contenuarg{\cs{mkibid}}, indique que la chaîne de langue est passée à la commande \csp{mkibid} avant d'être affichée. Cette commande qu'on peut redéfinir se charge de la mise en forme : nous avons parlé plus haut de la manière de s'en servir pour avoir les abréviations latines en italiques\renvoi{mkibid}.
 \end{description}
