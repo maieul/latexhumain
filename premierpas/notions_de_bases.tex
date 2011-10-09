@@ -137,10 +137,14 @@ Une commande peut prendre des arguments, certains facultatifs, d'autres obligato
 
 La syntaxe d'une commande est :\csp{nom}\oarg{opt1}\oarg{…}\oarg{optn}\marg{obl1}\marg{…}\marg{obln} \label{syntaxecommande}
 
-Entre crochets sont indiqués les arguments optionnels, entre accolades les arguments obligatoires.
+Entre crochets sont indiqués les arguments optionnels, entre accolades les arguments obligatoires. Ces arguments peuvent eux même contenir des commandes.
 
 
 L'ordre des arguments dépend de chaque commande, et les arguments optionnels ne sont pas systématiquement avant les arguments obligatoires : ils peuvent être après ou s'intercaler entre. Notez que certaines commandes peuvent ne pas prendre d'argument : c'est le cas ici de \cs{maketitle}.
+
+\begin{attention}
+À chaque crochet ou accolade ouvert doit correspondre un crochet ou accolade fermé, faut de quoi vous risquez de provoquer une erreur de compilation.
+\end{attention}
 
 La grande force de \LaTeX est justement l'utilisation de commandes afin d'éviter la répétition des tâches fréquentes. C'est pourquoi nous apprendrons à définir nos propres commandes\renvoi{creercommandes}.
 
