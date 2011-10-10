@@ -1,6 +1,10 @@
 \ifpapierstandard
 \maketitle
 \fi
+
+\def\epi{Du \LaTeX sed \TeX}
+\def\episource{Proverbe Latin}
+
 \phantomsection\addcontentsline{toc}{part}{Avant-propos}\part*{Avant-propos}
 \pdfbookmark[0]{Remerciements et détails techniques}{}
 \input{preliminaires/merci}
@@ -9,6 +13,9 @@
 \input{preliminaires/latex}
 
 \mainmatter
+
+\def\epi{Les Sabins \textelp{} commencerent la bataille, qui fut aspre \& dura longuement}
+\def\episource{\cite{Sabins}}
 
 \part{Premiers pas avec \LaTeX}
 \input{premierpas/notions_de_bases}
@@ -19,6 +26,8 @@
 \input{premierpas/commande}
 \input{premierpas/nontextuels}
 
+\def\epi{Empoisonnée de dogmes et de mythes, notre opinion, même la moins ennemie des lumières, a perdu jusqu’au goût du contrôle. Le jour où, ayant pris soin d’abord de ne pas la rebuter par un oiseux pédantisme , nous aurons réussi à la persuader de mesurer la valeur d’une connaissance sur son empressement à tendre le cou d’avance à la réfutation, les forces de la raison remporteront une de leurs plus éclatantes victoires. C’est à la préparer que travaillent nos humbles notes, nos petites références tatillonnes que moquent aujourd’hui, sans les comprendre, tant de beaux esprits.}
+\def\episource{\cite{Bloch}}
 \part{Gérer sa bibliographie avec \LaTeX}\label{bibliographie}
 \input{biblio/principe}
 \input{biblio/fichier}
@@ -28,6 +37,8 @@
 \input{biblio/style1}
 \input{biblio/style2}
 
+\def\epi{Quand on ne sait pas où on va, il faut y aller\ldots et le plus vite possible !}
+\def\episource{Devise shadok}
 \part{Faciliter la navigation}
 \input{navigation/renvoi}
 \input{navigation/sommaire}
@@ -45,6 +56,8 @@
 \input{avancees/espace}
 \input{avancees/index}
 
+\def\epi{Avec un escalier prévu pour la montée, on réussit souvent à monter plus bas qu'on serait descendu avec un escalier prévu pour la descente.}
+\def\episource{Dicton shadok}
 \appendix
 \part{Annexes}
 \input{annexes/install}
@@ -62,7 +75,7 @@
 \tableofcontents
 
 \ifpapierstandard
-%Pour avoir la 4ème sur une page de gauche
+Pour avoir la 4ème sur une page de gauche
 \makeatletter
 \ifodd\c@TotPages
 \newpage\hbox{}\newpage
