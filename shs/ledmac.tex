@@ -2,7 +2,7 @@
 
 
 \begin{intro}
-Nous allons aborder ici deux packages particulièrement utiles en sciences humaines : \package{ledmac} pour faire des éditions critiques et \package{ledpar} (qui ne peut être utilisé séparément de \pakage{ledmac}) pour éditer un texte et sa traduction en parallèle.
+Nous allons aborder ici deux packages particulièrement utiles en sciences humaines : \package{ledmac} pour faire des éditions critiques et \package{ledpar} (qui ne peut être utilisé séparément de \package{ledmac}) pour éditer un texte et sa traduction en parallèle.
 
 Ces packages contiennent moult fonctionnalités : nous n'en présentons ici que quelque unes et renvoyons aux manuels pour les autres\footcites{ledmac}{ledpar}. 
 \end{intro}
@@ -81,9 +81,9 @@ Il faut indiquer l'indentation de chaque vers de la strophe --- faute de quoi on
 
 donne ainsi\footcite{tucholsky}: 
 
-\begin{minipage}{0}
+
 \input{exemples/shs/ledmac/vers.tex}
-\end{minipage}
+
 
 
 
@@ -100,7 +100,7 @@ Pour obtenir un crochet indiquant les rejets de vers, selon la typographie fran�
 \renewcommand{\hangingsymbol}{[\,}
 \end{latexcode}
 
-La commande \csp{,} sert à indiquer une espace fine insécable.
+La commande \csp{,} sert à insérer une espace fine insécable.
 \end{plusloins}
 
 Si vos vers ne possèdent pas d'indentation, mettez \verb=0= partout dans la commande \cs{stanzaindents}, sauf pour l'indentation de rejet. S'il y a moins de vers qu'indiqué dans \cs{stanzaindents}, cela n'est pas problématique, l'inverse en revanche produit une erreur de compilation.
@@ -309,9 +309,9 @@ Les packages \package{ifthen} et \package{xargs} sont extrêmement utiles, mais 
 
 \section{Mettre deux textes en vis-à-vis: le package \packagenoidx{ledpar}}\sindex[pkg]{ledpar}
 
-\begin{intro}
+
 Le package \package{ledpar}, qui sert à mettre un texte et sa traduction en vis-à-vis, fonctionne avec \package{ledmac}. Tout ce qui concerne l'apparat critique et la numérotation dans \package{ledmac} est ainsi valable ici aussi. Nous considérons donc, pour éviter les redites, que vous avez lu ce qui précède.
-\end{intro}
+
 
 
 \subsection{Principes}
@@ -320,7 +320,7 @@ Le package \package{ledmac} permet d'obtenir très facilement deux textes en vis
 
 Son principe de base est simple:  des textes numérotés  --- inscrits entre \cs{beginnumbering} et \cs{endnumbering}  --- sont placés dans les environnements \enviro{Leftside} pour le texte de gauche,  \enviro{Rightside} pour le texte de droite.
 
-\package{ledmac} fait correspondre en vis-à-vis chaque \enquote{boîte} d'un texte à la boîte correspondante de l'autre texte (il faut donc qu'il y ait le même nombre de boites des deux côtés). Pour la poésie,  chaque vers  (terminé par \ampersand ), est une boîte;  en prose, les boîtes sont délimitées par  \cs{pstart} et  \cs{pend}.  Il est recommandé, en prose, de mettre chaque paragraphe dans une boîte, pour obtenir une synchronisation la plus fine possible --- donc de débuter chaque paragraphe par \cs{pstart} et de le finir par \cs{pend}. 
+Le package \package{ledpar} fait correspondre en vis-à-vis chaque \enquote{boîte} d'un texte à la boîte correspondante de l'autre texte (il faut donc qu'il y ait le même nombre de boites des deux côtés). Pour la poésie,  chaque vers  (terminé par \ampersand ), est une boîte;  en prose, les boîtes sont délimitées par  \cs{pstart} et  \cs{pend}.  Il est recommandé, en prose, de mettre chaque paragraphe dans une boîte, pour obtenir une synchronisation la plus fine possible --- donc de débuter chaque paragraphe par \cs{pstart} et de le finir par \cs{pend}. 
 
 
 Le package \package{ledpar} peut mettre les textes en vis-à-vis sur deux colonnes ou sur deux pages  : bien sûr dans ce dernier  cas le texte de gauche est toujours imprimé sur une page paire.
