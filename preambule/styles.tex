@@ -30,7 +30,7 @@
 \makeatletter
 \newcommand*{\epigramme}[0]{
 	\begin{list}{}{
-		\leftmargin 0.45\linewidth
+		\leftmargin 0.25\linewidth
 		\listparindent \z@
 		\listparindent \z@
                      \itemindent    \listparindent
@@ -40,7 +40,7 @@
 		\item\ifthenelse{\equal{\epi}{}}{}{
 		\enquote{\epi}}
 	
-	\begin{flushright}\small\episource\end{flushright}
+	\begin{flushright}{\small\episource}\end{flushright}
 	\end{list}
 
 	\def\episource{}
