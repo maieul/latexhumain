@@ -51,11 +51,11 @@ Les claviers Apple n'indiquent pas directement les caractères spéciaux disponi
 \verb+|+ & \verb|⌥ + ⇧ + L|  \\
 \verb+~+ & \verb|⌥ + N|  \\
 \end{longtable}
-\section{Installer TeX Live sous GNU/Linux}
+\section{Installer TeX Live sous GNU/Linux par le biais du gestionnaire de paquets}
 
 Il y a plusieurs manières de procéder pour installer TexLive sur une distribution GNU/Linux. Il est possible de télécharger l'installateur pour GNU/Linux depuis le site de TeX Live, mais la procédure d'installation de TeX Live est alors complexe, tout comme la mise à jour. Nous ne détaillerons donc pas cette procédure d'installation.
 
-La meilleure façon de procéder est en effet de recourir au gestionnaire de paquets de votre distribution. C'est l'approche que nous allons documenter pour les distributions GNU/Linux grand public les plus usitées, car la mise à jour de tous les paquets de TeX Live en est facilitée : ils sont mis à jour en même temps que les logiciels de votre distribution GNU/Linux.
+La meilleure façon de procéder est en effet la plupart du temps de recourir au gestionnaire de paquets de votre distribution. C'est l'approche que nous allons documenter pour les distributions GNU/Linux grand public les plus usitées, car la mise à jour de tous les paquets de TeX Live en est facilitée : ils sont mis à jour en même temps que les logiciels de votre distribution GNU/Linux.
 
 Pour l'installation complète telle que présentée ci-dessous, il faut prévoir environ trois gigaoctets d'espace libre en comptant la taille des paquets téléchargés et leur place installée.
 
@@ -76,6 +76,27 @@ Le processus est similaire. Ouvrez l'application \emph{Installer des logiciels},
 \subsubsection{Fedora}
 
 Sous Fedora, ouvrez l'application \emph{Ajouter/supprimer des logiciels}. Cliquez dans la colonne de gauche sur la catégorie \forme{Éditeurs}, puis sélectionnez les paquets \verb|texlive| et \verb|texlive-texmf-latex|. Appliquez les changements et acceptez les dépendances.
+
+\section{Installer TeX Live sous GNU/Linux à partir du site officiel}
+
+Assurez-vous avant toute chose d'avoir le paquet perltk installé sur votre système. Si vous ne le possédez pas, vous devrez lancer l'installation en ligne de commande uniquement.
+
+À titre d'exemple, le paquet se nomme \forme{perl-tk} sous Debian et Ubuntu, \forme{perl-Tk-804} sous Fedora et ses dérivés.
+
+Rendez-vous alors à l'url \url{http://tug.org/texlive/acquire-netinstall.html}. Choisissez alors le fichier \emph{install-tl-unx.tar.gz}. Une fois téléchargé, décompressez-le puis rendez-vous dans le dossier nouvellement créé à l'aide d'un terminal, par exemple en tapant \verb|cd ~/Téléchargements/install-tl-*/|. Vous pouvez alors lancer l'installation en mode administrateur, par exemple ainsi : \verb|sudo perl install-tl -gui wizard|. Cette commande fournira un installateur qui installera la distribution complète selon votre architecture.
+
+Après avoir donné votre mot de passe, il vous suffira de suivre les étapes:
+
+\begin{enumerate}
+\item Cliquez simplement sur \endquote{Suivant}.
+\item Attendez que le téléchargement soit fini, il vous faut choisir un dossier d'installation. Choisissez de préférence un répertoire hors du système de base, comme \verb|/opt/texlive2011|.
+\item Conservez A4 pour la taille de papier.
+\item Cliquez sur Installer.
+\item À la fin de l'installation, un message vous informera qu'il vous ajuster votre \forme{$PATH}. Ouvrez le fichier ~/.bashrc (créez-le s'il n'existe pas), et ajoutez-y les lignes suivantes:\footnote{\forme{$PATH} est une variable d'environnement qui permet au système de savoir où chercher les exécutables. TeX Live n'étant pas installé dans les dossiers par défaut dans la mesure où il est étranger au système de base, c'est à vous de l'intégrer. Ajustez le champ entre guillemets selon le message qui s'affiche à l'écran, en prenant soin de finir par  \forme{:$PATH}.}\\
+\verb| PATH="/opt/texlive2011/bin/x86_64-linux:$PATH"|
+\end{enumerate}
+
+L'installation est terminée. Vous pouvez fermer votre terminal pour que les modifications appliquées à votre \fomre{$PATH} soient prises en compte.
 
 \section{MiKTeX sous Windows}
 
