@@ -178,7 +178,7 @@ Empereurs\\
 \end{tabbing}
 \end{quotation}
 
-Cette syntaxe est aussi utile pour mettre en évidence une entrée dans l'index en modifiant son aspect. En mettant \cs{index}\verb|{|\meta{entrée}\verb|@\textbf{|meta{entrée formatée}\verb|}}|, l'entrée apparaît en gras dans l'index. Ceci est valable pour toutes les commandes agissant sur la fonte. Modifions ainsi comme suit la commande \cs{auteur} que l'on a créée précédemment :\renvoi{indexauteur}
+Cette syntaxe est aussi utile pour mettre en évidence une entrée dans l'index en modifiant son aspect. En mettant \cs{index}\verb|{|\meta{entrée}\verb|@\textbf{|\meta{entrée formatée}\verb|}}|, l'entrée apparaît en gras dans l'index. Ceci est valable pour toutes les commandes agissant sur la fonte. Modifions ainsi comme suit la commande \cs{auteur} que l'on a créée précédemment :\renvoi{indexauteur}
 
 \begin{latexcode}
 \newcommand\auteur[2]{#1~\textsc{#2}\index{#2 #1@\textsc{#2}, #1}\xspace}
