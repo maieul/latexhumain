@@ -58,7 +58,14 @@
 \let\oldminipage\minipage
 \let\endoldminipage\endminipage
 
-\renewenvironment{minipage}[1]{\begin{quotation}\begin{oldminipage}{\linewidth}}{\end{oldminipage}\end{quotation}}
+\renewenvironment{minipage}[1]{%
+	 \list{}{\listparindent 1.5em%
+                        \itemindent    \listparindent
+                        \rightmargin   \leftmargin
+                        \parsep        \z@ \@plus\p@}
+                        \begin{shaded}\item\relax\begin{oldminipage}{\linewidth}}{%
+	\end{oldminipage}\end{shaded}\endlist%
+	}
 
 \renewenvironment{quotation}
                {\list{}{\listparindent 1.5em%
