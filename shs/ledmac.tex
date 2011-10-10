@@ -2,18 +2,18 @@
 
 
 \begin{intro}
-Nous allons aborder ici deux packages particulièrement utiles en sciences humaines : \package{ledmac} pour faire des éditions critiques et \package{ledpar} pour éditer un texte et sa traduction en parallèle, le second package nécessitant le premier.
+Nous allons aborder ici deux packages particulièrement utiles en sciences humaines : \package{ledmac} pour faire des éditions critiques et \package{ledpar} (qui ne peut être utilisé séparément de \pakage{ledmac}) pour éditer un texte et sa traduction en parallèle.
 
 Ces packages contiennent moult fonctionnalités : nous n'en présentons ici que quelque unes et renvoyons aux manuels pour les autres\footcites{ledmac}{ledpar}. 
 \end{intro}
 
 \begin{attention}
 Ces packages ont été améliorés durant la rédaction de ce livre. Veillez à les mettre à jour.\renvoi{maj}
-Dans le gestionnaire de packages, vous ne trouverez qu'une entrée pour  \package{ledmac} et non pas pour \package{ledpar}.  Toutefois, en mettant à jour \package{ledmac} vous mettez aussi à jour  \package{ledpar}.
+Dans le gestionnaire de packages, vous ne trouverez une entrée que pour  \package{ledmac},  pas pour \package{ledpar}.  En mettant à jour \package{ledmac} vous mettez toutefois aussi à jour  \package{ledpar}.
 \end{attention}
 
 \begin{attention}
-Un certain nombre de fonctionnalités de ce package nécessitent pour fonctionner correctement de compiler deux fois.
+Un certain nombre de fonctionnalités de ces packages nécessitent pour fonctionner correctement une double compilation.
 \end{attention}
 
 
@@ -22,12 +22,12 @@ Un certain nombre de fonctionnalités de ce package nécessitent pour fonctionne
 
 \subsection{Numéroter les lignes d'un texte}
 
-La première fonctionnalité utile de \package{ledmac} est  de permettre  de numéroter les lignes d'un texte, en l'entourant des commandes \csp{beginnumbering} et \csp{endnumbering}. L'indication des changements de numéro varie selon que le texte est prose ou vers.
+La première fonctionnalité utile de \package{ledmac} est de numéroter les lignes d'un texte. On commence par  entourer celui-ci des commandes \csp{beginnumbering} et \csp{endnumbering}. Il faut ensuite procéder de deux façons différentes  selon que le texte est en prose ou en vers.
 
 \subsubsection{Texte en prose}
 
 
-La numérotation des lignes commence, entre ces deux commandes, avec la commande \csp{pstart} et se termine avec la commande \csp{pend} comme dans l'exemple suivant:
+La numérotation des lignes commence, entre ces deux commandes, avec la commande \csp{pstart} et se termine avec la commande \csp{pend}, comme dans l'exemple suivant:
 
 \inputminted{exemples/shs/ledmac/prose.tex}
 
@@ -39,7 +39,7 @@ Nous obtenons ainsi :
 
 
 
-Le texte qui n'est pas situé entre \cs{pstart} et \cs{pend} n'est pas numéroté. Cela peut donc être utile pour interrompre temporairement la numérotation :
+Tout texte qui n'est pas situé entre \cs{pstart} et \cs{pend} n'est pas numéroté. Cela peut donc être utile pour interrompre temporairement la numérotation :
 
 \begin{latexcode}
 \beginnumbering
@@ -61,12 +61,12 @@ erat  elit consectetuer erat, id egestas pede nibh eget odio.
 \endnumbering
 \end{latexcode}
 
-La numérotation recommence à chaque \cs{beginnumbering}. Il est toutefois possible d'indiquer de recommencer la numérotation  à chaque page \emph{via} la commande \csp{lineation}\verb={page}=. \label{lineation}
+La numérotation recommence à zéro à chaque \cs{beginnumbering}. Il est toutefois possible d'indiquer de recommencer automatiquement la numérotation  à chaque page \emph{via} la commande \csp{lineation}\verb={page}=. \label{lineation}
 
 \begin{attention}
-Si vos sections numérotées sont très longues, il peut arriver une erreur de compilation \forme{TeX capacity exceeded}. Il faut alors fractionner vos sections en utilisant de temps en temps la commande \csp{pausenumbering} suivie de \csp{resumenumbering} au sein de  la section numérotée\footnote{Une autre solution serait de régler la configuration de \TeX pour lui allouer plus de mémoire.}. 
+Si vos sections numérotées sont très longues, il peut arriver l'erreur de compilation \forme{TeX capacity exceeded}. Il faut alors fractionner vos sections en utilisant de temps en temps la commande \csp{pausenumbering} suivie de \csp{resumenumbering} au sein de  la section numérotée\footnote{On peut aussi régler la configuration de \TeX pour lui allouer plus de mémoire.}. 
 
-Cette séquence de commandes correspond \emph{grosso-modo} à la séquence \cs{endnumbering}\cs{beginnumbering} mais sans recommencer la numérotation.
+Cette séquence de commandes correspond \emph{grosso-modo} à la séquence \cs{endnumbering}\cs{beginnumbering} mais sans ré-initialisation de la numérotation.
 \end{attention}
 
 \subsubsection{Texte en vers}
@@ -132,7 +132,7 @@ erat  elit consectetuer erat, id egestas pede nibh eget odio.
 \endnumbering
 \end{minipage}
 
-Pour arrêter la numérotation,  utilisez la commande \csp{numberpstartfalse}.
+Pour arrêter la numérotation des \cs{pstart}s,  utilisez la commande \csp{numberpstartfalse}.
 
 \begin{plusloins}
 Si chaque \cs{pstart} correspond à un paragraphe, il est possible d'automatiser l'insertion des \cs{pstart}s et \cs{pend}s en insérant la commande \csp{autopar} après \cs{beginnumbering}.
@@ -168,7 +168,7 @@ La commande \cs{skipnumbering} permet de ne pas prendre en compte la ligne coura
 
 \subsubsection{Sous-numéro}
 
-Il est possible d'indiquer que des lignes sont des \enquote{sous-lignes} c'est à dire de stopper temporairement la numérotation et de commencer une sous-numérotation.
+Il est possible d'indiquer  des lignes comme \enquote{sous-lignes}, c'est-à-dire de stopper temporairement la numérotation et de commencer une sous-numérotation.
 
 La sous-numérotation commence avec \csp{startsub} et  finit avec \csp{endsub}.
 Si la première commande se situe au milieu d'une ligne, la sous-numérotation commence à la ligne suivante.
@@ -181,20 +181,20 @@ Les commandes \cs{subfirstlinenum}\marg{nbre} et \cs{sublinenumincrement}\marg{n
 \input{exemples/shs/ledmac/subline.tex}
 \end{minipage}
 
-\subsubsection{Style et position des numéros de ligne}
+\subsubsection{Style et position des numéros des lignes}
 
 
 Les numéros des lignes apparaissent  par défaut dans la marge de gauche. La commande \cs{linenummargin}\marg{arg} redéfinit cette position. L'argument peut prendre la valeur :
 
 \begin{description}
 \item[\contenuarg{left}] qui est la valeur par défaut ;
-\item[\contenuarg{right}] pour avoir numéros  à droite ;
+\item[\contenuarg{right}] pour avoir les numéros  à droite ;
 \item[\contenuarg{inner}] pour les avoir dans la marge intérieure ;
-\item[\contenuarg{outer}] pour les avoir la marge extérieure.
+\item[\contenuarg{outer}] pour les avoir dans la marge extérieure.
 \end{description}
 
 Il existe   cinq styles pour numéroter les lignes, sélectionnés par la commande 
-\cs{linenumberstyle}\marg{style} ; \cs{sublinenumberstyle}\marg{style} pour les sous-numérotations.
+\cs{linenumberstyle}\marg{style}, \cs{sublinenumberstyle}\marg{style} pour la sous-numérotation :
 
 \begin{description} 
 \item[\contenuarg{arabic}] les numéros des lignes sont en chiffres arabes, c'est le style par défaut ; 
@@ -207,7 +207,7 @@ Il existe   cinq styles pour numéroter les lignes, sélectionnés par la comman
 La distance \cs{linenumsep} représente la distance entre le texte et le numéro de la ligne\renvoi{unite}, par défaut, 1~pica. 
 Elle est  modifiable par la commande \cs{setlength}\verb|{|\cs{linenumsep}\verb|}|\marg{distance}\renvoi{setlength}. 
 
-De la même façon nous pouvons modifier \cs{numlabfont}, via \cs{renewcommand} qui indique la taille du numéro et qui est ainsi définie:
+De la même façon nous pouvons modifier, via \cs{renewcommand}, \cs{numlabfont}, qui indique la taille du numéro et qui est ainsi définie:
  \cs{newcommand}\verb|{|\cs{numlabfont}\verb|}{|\cs{normalfont}\cs{scriptsize}\verb|}|. 
  
 
@@ -216,13 +216,13 @@ De la même façon nous pouvons modifier \cs{numlabfont}, via \cs{renewcommand} 
 Les notes de bas de page se présentent de cette façon:  \cs{Afootnote}\marg{texte}. Il en existe cinq sortes, de \csp{Afootnote} à \csp{Efootnote}.
 
 
-Ce type de note appelle un \enquote{lemme}, c'est-à-dire une partie du texte annoté reprise dans la note de bas de page, précédée du numéro de la ou des lignes correspondantes. 
+Ce type de notes appelle un \enquote{lemme}, c'est-à-dire une partie du texte annoté reprise dans la note de bas de page, précédée du numéro de la ou des lignes correspondantes. 
 
 La note de bas de page est appelée de la façon suivante:  
 
 \csp{edtext}\marg{lemme}\marg{commande}. 
 
-L'argument \arg{commande} contient l'appel à la note: \csp{Afootnote}, \csp{Bfootnote} etc.
+L'argument \arg{commande} contient l'appel à la note: \csp{Afootnote}, \csp{Bfootnote}, etc.
 
 Il est aussi possible d'utiliser  des  notes de bas de page \enquote{normales}, appelées par un numéro dans le texte. Il  en existe là aussi cinq sortes: de \csp{footnoteA} à \csp{footnoteE}.
 
@@ -231,7 +231,7 @@ Dans les notes de type \cs{Afootnote}\dots, lorsque le \enquote{lemme} est trop 
 \cs{edtext}\marg{le lemme trop long}\verb|{|\cs{lemma}\marg{le lemme raccourci}\cs{Bfootnote}\marg{la note}\verb|}|. 
 
 \begin{plusloins}
-Il est aussi possible de mettre des notes de fin. Là encore, cinq sortes possibles:  de \csp{Aendnote} à \csp{Eendnote}.
+Il est aussi possible de mettre des notes de fin. Là encore, il y en a cinq sortes :  de \csp{Aendnote} à \csp{Eendnote}.
 
 La commande \cs{marginpar} ne fonctionne pas dans les textes numérotés. À la place, le package propose les commandes \csp{ledleftnote}\marg{note} et \csp{ledrightnote}\marg{note} pour des notes de marge gauche et droite.
 
@@ -280,11 +280,11 @@ Mais il est aussi conseillé de créer des commandes personnelles pour simplifie
 
 Cette commande est un peu plus complexe parce qu'elle fait appel aux packages \package{xargs} et \package{ifthen}. 
 
-La commande \csp{newcommandx}, fournie par \package{newcommandx*} permet de créer une commande avec des arguments optionnels. Le premier argument est le lemme ; le deuxième argument, optionnel --- ce qu'indique,  dans la commande, l'argument \verb=[2]= --- contient le lemme raccourci ; enfin le dernier argument contient l'annotation.
+La commande \csp{newcommandx}, fournie par \package{xargs}, permet de créer une commande avec des arguments optionnels. Ici, la commande crée appelle trois arguments: le premier argument est le lemme ; le deuxième argument, optionnel --- ce qu'indique,  dans notre code, l'argument \verb=[2]= --- contient le lemme raccourci ; enfin le dernier argument contient l'annotation.
 
-Ligne 4, la commande \csp{ifthenelse}\arg{test}\arg{sioui}\arg{sinon} du package \package{ifthen} permet d'effectuer un test : ici nous regardons si le deuxième argument est vide (\csp{equal}\verb=\equal{#2}{}=) : si ce n'est pas le cas, alors nous l'utilisons  comme argument d'une commande \cs{lemma}.
+Ligne 4, la commande \csp{ifthenelse}\arg{test}\arg{sioui}\arg{sinon} du package \package{ifthen} permet d'effectuer un test : ici nous regardons si le deuxième argument est vide (\csp{equal}\verb={#2}{}=) : si ce n'est pas le cas, alors nous l'utilisons  comme argument d'une commande \cs{lemma}.
 
- L'utilisation de la commande peut donc se résumer ainsi : 
+ L'utilisation de la commande que nous venons de créer peut donc se résumer ainsi : 
  
  \cs{variantes}\marg{lemme}\oarg{lemme plus court}\marg{annotation}. 
  
@@ -323,7 +323,7 @@ Son principe de base est simple:  des textes numérotés  --- inscrits entre \cs
 \package{ledmac} fait correspondre en vis-à-vis chaque \enquote{boîte} d'un texte à la boîte correspondante de l'autre texte (il faut donc qu'il y ait le même nombre de boites des deux côtés). Pour la poésie,  chaque vers  (terminé par \ampersand ), est une boîte;  en prose, les boîtes sont délimitées par  \cs{pstart} et  \cs{pend}.  Il est recommandé, en prose, de mettre chaque paragraphe dans une boîte, pour obtenir une synchronisation la plus fine possible --- donc de débuter chaque paragraphe par \cs{pstart} et de le finir par \cs{pend}. 
 
 
-Le package \package{ledpar} peut mettre les textes sur deux colonnes ou sur deux pages en vis-à-vis : bien sûr dans ce dernier  cas le texte de gauche est toujours imprimé sur une page paire.
+Le package \package{ledpar} peut mettre les textes en vis-à-vis sur deux colonnes ou sur deux pages  : bien sûr dans ce dernier  cas le texte de gauche est toujours imprimé sur une page paire.
 Nous utilisons dans le premier cas l'environnement \enviro{pairs} ; l'environnement \enviro{pages} dans le second.
 
 Les commandes \cs{Columns} ou \cs{Pages}, selon qu'il s'agisse de l'environnement \enviro{pairs} ou \enviro{pages}, indiquent à \LaTeX  d'imprimer les boîtes jusqu'ici gardées en mémoire. 
@@ -332,7 +332,7 @@ Les commandes \cs{Columns} ou \cs{Pages}, selon qu'il s'agisse de l'environnemen
 
 Résumons!
 
-Pour mettre deux textes en vis-à-vis sur deux colonnes :
+Pour mettre deux textes en vis-à-vis sur deux pages :
 
 \begin{latexcode}
 
@@ -362,7 +362,7 @@ Le texte dans une autre langue
 \end{latexcode}
 
 \begin{attention}
-Si l'un des textes n'est pas dans la langue principale du document, il faut préciser le changement de langue\renvoi{i18n} \emph{à l'intérieur} de l'environnement \enviro{Leftside} ou {Rightside}.
+Si l'un des textes n'est pas dans la langue principale du document, il faut préciser le changement de langue\renvoi{i18n} \emph{à l'intérieur} de l'environnement \enviro{Leftside} ou \enviro{Rightside}.
 
 \begin{latexcode}
 \begin{Leftside}
@@ -373,17 +373,17 @@ Si l'un des textes n'est pas dans la langue principale du document, il faut pré
 \end{attention}
 
 \begin{attention}
-Comme avec \package{ledmac}\renvoi{lineation} la numérotation recommence à chaque \cs{beginnumbering}. Il est toutefois possible d'indiquer de recommencer la numérotation  à chaque page \emph{via} les commandes \cs{lineation} et \csp{lineationR}, qui ont la même syntaxe, vue plus haut. \renvoi{lineation}
+Comme avec \package{ledmac}\renvoi{lineation}, la numérotation recommence à chaque \cs{beginnumbering}. On peut toutefois faire recommencer la numérotation  à chaque page \emph{via} les commandes \cs{lineation} et \csp{lineationR}, qui ont la même syntaxe, vue plus haut. \renvoi{lineation}
 \end{attention}
 
 Nous obtenons parfois le message d'erreur \enquote{Too many \cs{pstart} without printing}. Pas de panique ! Cela signifie qu'il y a trop de boîtes en mémoire: \LaTeX  doit en imprimer quelques-unes avant de pouvoir continuer.  Il y a deux solutions possibles à ce problème.
 
 La première solution consiste à  augmenter le nombre de boîtes que \package{ledpar} peut garder en mémoire, en mettant dans le préambule la commande \cs{maxchunks}\marg{nbre}, où \arg{nbre} est le nombre de boîtes en mémoire. Par défaut, ce nombre est de dix. Il suffit donc de l'augmenter  pour qu'il soit égal ou supérieur au nombre de boîtes de son  texte. 
 
-Toutefois \TeX ne dispose pas d'une place illimité pour les boîtes, c'est pourquoi il est souvent préférable d'utiliser la seconde solution.
+Toutefois \TeX ne dispose pas d'une place illimitée pour les boîtes, c'est pourquoi il est souvent préférable d'utiliser la seconde solution.
 
 
-Celle-ci, que nous pouvons d'ailleurs combiner avec la première, consiste à  couper le texte en plusieurs grands ensembles de boîtes --- c'est-à-dire en plusieurs environnements \enviro{Leftside} et \enviro{Rightside}, se terminant chacun par \cs{Columns} ou \cs{Pages}.  Cette solution est préférable pour les longs textes. Les divisions internes du texte se reflètent alors dans les environnements \enviro{Leftside} et \enviro{Rightside},  mais en mettant simplement :
+Celle-ci, que nous pouvons d'ailleurs combiner avec la première, consiste à  couper le texte en plusieurs grands ensembles de boîtes --- c'est-à-dire en plusieurs environnements \enviro{Leftside} et \enviro{Rightside}, se terminant chacun par \cs{Columns} ou \cs{Pages}.  Cette solution est préférable pour les longs textes. Les divisions internes du texte se reflètent alors dans les environnements \enviro{Leftside} et \enviro{Rightside}. Cependant,  en mettant simplement :
 
 \begin{latexcode}
 \begin{pages}  
@@ -454,7 +454,7 @@ Par ailleurs, si vous utilisez la commande \cs{numberpstarttrue}\renvoi{numberps
 
 \subsubsection{Vers de longueurs inégales}
 
-Si des vers sur des pages parallèles prennent un nombre de lignes inégales, par exemple si le vers de gauche fait deux lignes et celui de droite n'en fait qu'une, alors \package{ledpar} introduit un blanc après le vers le plus long.
+Si des vers sur des pages parallèles prennent un nombre de lignes inégales, par exemple si le vers de gauche contient un rejet et non  celui de droite, alors \package{ledpar} introduit un blanc après le vers le droite, pour que le vers suivant soit exactement au même niveau dans la page de droite et dans la page de gauche.
 
 Il est possible de dire à \package{ledpar} de ne pas introduire ce blanc, mais de produire un léger décalage des vers, décalage rattrapé à chaque changement de pages. Pour ce faire, il faut passer l'option \option{shiftedverses} au chargement du package.
 
@@ -464,7 +464,7 @@ Il est possible de dire à \package{ledpar} de ne pas introduire ce blanc, mais 
  
  \subsubsection{Tailles et séparateurs des colonnes}
 
-Par défaut, les colonnes font 45\% d'une largeur normale de texte. Nous pouvons modifier ce réglage en redéfinissant les longueurs \csp{Lcolwidth} et \csp{Rcolwidth} respectivement pour la colonne gauche et droite. Nous utilisons pour ce faire la commande \cs{setlength}\renvoi{setlength}\renvoi{longueurrelative}. Par exemple pour avoir 47\% de la largeur normale d'un texte, il faut mettre:
+Par défaut, les colonnes font 45\% d'une largeur normale de texte. Nous pouvons modifier ce réglage en redéfinissant les longueurs \csp{Lcolwidth} et \csp{Rcolwidth} respectivement pour la colonne gauche et droite. Nous utilisons pour cela la commande \cs{setlength}\renvoi{setlength}\renvoi{longueurrelative}. Par exemple pour avoir 47\% de la largeur normale d'un texte, il faut mettre:
 
 \begin{latexcode}
 \setlength{\Lcolwidth}{0.47\textwidth}
@@ -477,12 +477,10 @@ De même nous pouvons définir un filet de séparation grâce à la longueur \cs
 \setlength{columnrulewidth}{0.4pt}
 \end{latexcode}
 
-\begin{latexcode}
-\end{latexcode}
 
 \subsubsection{Numérotation des lignes de droite}
 
-Par défaut, les lignes de droite sont suivies d'un \forme{R}, correspondant au terme \cs{Right}. Pour obtenir à la place un \forme{D}, il suffit de redéfinir la commande \csp{Rlineflag} :
+Par défaut, les numéros des lignes de droite sont suivies d'un \forme{R}, correspondant au terme \cs{Right}. Pour obtenir à la place un \forme{D}, il suffit de redéfinir la commande \csp{Rlineflag} :
 
 \begin{latexcode}
 \renewcommand{\Rlineflag}{D}
@@ -492,7 +490,7 @@ Si nous ne souhaitons  rien, mettre tout simplement :
 
 
 \begin{latexcode}
-\renewcommand{\Rlineflag}{D}
+\renewcommand{\Rlineflag}{}
 \end{latexcode}
 
 
