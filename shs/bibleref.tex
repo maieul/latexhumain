@@ -81,7 +81,7 @@ La syntaxe pour référencer un passage biblique varie selon que l'on souhaite r
 \begin{english}\verb|\bibleverse{Ex}(20:)|\end{english} & \bibleverse{Exodus}(20:)\\
 \begin{english}\verb|\bibleverse{Ex}(20:17)|\end{english} & \bibleverse{Exod}(20:17)\\
 \begin{english}\verb|\bibleverse{IICo}(12:21)|\end{english} & \bibleverse{IICo}(12:21)\\
-\begin{english}\verb|\bibleverse{IICor}(12:21-32)|\end{english} & \bibleverse{IICor}(12:21-32)\\
+\begin{english}\verb|\bibleverse{IICo}(12:21-32)|\end{english} & \bibleverse{IICo}(12:21-32)\\
 \begin{english}\verb|\bibleverse{Ex}(20:17)(21:3)|\end{english} & \bibleverse{Ex}(20:17)(21:3)\\
 \begin{english}\verb|\bibleverse{Ex}(15:)(17:)(20:)|\end{english} & \bibleverse{Ex}(15:)(17:)(20:)\\
 \begin{english}\verb|\bibleverse{Ap}(1:2,5,7-9,11)|\end{english} & \bibleverse{Rev}(1:2,5,7-9,11)\\
@@ -189,7 +189,7 @@ Il existe en outre deux commandes, utilisant la même syntaxe que \csp{ibiblever
 
 \subsection[Tri dans l'index]{Tri dans l'index\footnote{Ce passage reprend, pour l'essentiel, la documentation du package, dont nous sommes l'auteur.}}
 
-Vous pouvez constater que l'ordre de tri dans l'index n'est par défaut pas très bon. Par exemple, les livres numérotés sont classés à la lettre `i'. 
+Vous pouvez constater que l'ordre de tri dans l'index n'est par défaut pas très bon. Par exemple, les livres numérotés sont classés à la lettre \forme{i}ƒ. 
 
 Le package fournit des options pour un meilleur tri\footcite[Pour l'Ancien Testament, les protestants suivent le canon juif pour son contenu mais utilisent l'ordre du canon catholique : voir][]{canons}. Au chargement du package, vous pouvez choisir l'une de ces options :
  \begin{description}
@@ -197,7 +197,7 @@ Le package fournit des options pour un meilleur tri\footcite[Pour l'Ancien Testa
 \item[indexalphap] les livres sont triés par ordre alphabétique, suivant les noms protestants.
 \item[indexLXX]les livres sont triés dans l'ordre des bibles chrétiennes classiques, pour l'Ancien Testament  selon la Septante. Ancien et Nouveau Testaments ne sont pas séparés.
 \item[indextestamentsL] les livres sont triés dans l'ordre des bibles chrétiennes classiques, pour l'Ancien Testament  selon la Septante. Ancien et Nouveau Testaments forment deux sections.
-\item[indexTOB] les livres sont triés dans l'ordre des bibles catholiques classiques, \emph{Traduction Œcuméniques de la Bible}, pour l'Ancien Testament  selon la bible hébraïque, suivie des deutérocanoniques. Ancien et Nouveau Testaments ne sont pas séparés.
+\item[indexTOB] les livres sont triés dans l'ordre de la \emph{Traduction Œcuméniques de la Bible}, pour l'Ancien Testament  selon la bible hébraïque, suivie des deutérocanoniques. Ancien et Nouveau Testaments ne sont pas séparés.
 \item[indextestamentsT] les livres sont triés dans l'ordre de la \emph{Traduction Œcuménique de la Bible}, pour l'Ancien Testament  selon la bible hébraïque, suivie des deutérocanoniques. Ancien et Nouveau Testaments forment deux sections.
 \item[indexBHS] les livres de la biblique hébraïque sont triés selon les bibles hébraïques classiques. La Torah, les Nebiim et les Ketouvim sont dans la même section. Les deutérocanoniques et les livres du Nouveau Testament ne sont pas triés.
 \item[indexTanak] les livres de la biblique hébraïque sont triés selon les bibles hébraïques classiques. La Torah, les Nebiim et les Ketouvim sont dans trois sections distinctes. Les deutérocanoniques et les livres du Nouveau Testament ne sont pas triés.
@@ -225,7 +225,7 @@ Il faut pour cela d'abord déclarer un nouvel index avec \package{splitindex}\re
 Il faut ensuite redéfinir la commande \csp{biblerefindex} de la manière suivante :
 
 \begin{latexcode}
-\renewcommand{\biblerefindex}[0]{\sindex[sources]}
+\renewcommand{\biblerefindex}[0]{\sindex[bible]}
 \end{latexcode}
 
 Et à l'endroit où l'on souhaite afficher cet index :
