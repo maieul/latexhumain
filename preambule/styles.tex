@@ -25,3 +25,24 @@
 \setitemize{itemsep=0pt}
 \setdescription{itemsep=0pt}
 
+
+% Pour les épigrammes
+\makeatletter
+\newcommand*{\epigramme}[0]{
+	\begin{list}{}{
+		\leftmargin 0.70\linewidth
+		\listparindent \z@
+		\listparindent \z@
+                     \itemindent    \listparindent
+                     \rightmargin   0.05\linewidth
+                     \parsep        \z@ \@plus\p@
+		}
+		\item\ifthenelse{\equal{\epi}{}}{}{
+		\enquote{\epi}}
+	\end{list}
+	\begin{flushright}\episource\end{flushright}
+	\def\episource{}
+	\def\epi{}
+}
+\patchcmd{\@endpart}{\vfil\newpage}{\vfil\epigramme\newpage}{}{}
+\makeatother
