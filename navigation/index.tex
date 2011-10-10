@@ -334,11 +334,17 @@ Nous avons donc notre index spécifique. Mais encore faut-il que nous disions  �
 \begin{description}
 \item[ligne 2] la commande \csp{ifciteindex} vérifie que l'option \option{indexing} de \package{biblatex} est bien égale à \verb|true| ou bien à \verb|cite|: si tel est le cas ce qui suit entre accolades est exécuté.
 \item[ligne 3] nous indexons le champ \champ{author}.  Nous utilisons le format d'indexation \verb|sources|.
-\item[ligne 4] nous indexons le champ \champ{indextitle}. Si ce champ est vide \package{biblatex} utilise à la place le champ \champ{title}. Nous utilisons le format d'indexation \verb|sources|.
+\item[ligne 4] nous indexons le champ \champ{indextitle}. C'est un champ spécial, qui sert à avoir un autre titre dans l'index que dans le corps du document. Si ce champ est vide \package{biblatex} utilise à la place le champ \champ{title}. Nous utilisons le format d'indexation \verb|sources|.
 \item[ligne 5] nous indexons le champ \champ{titleaddon}. Nous utilisons le format d'indexation \verb|sources|.
-\item[ligne 6] nous indexons la valeur \verb|---| dans le fichier \fichier{xxx-source.idx}. Cette valeur sert plus tard lors de l'exécution d'un script écrit dans le langage Python.\renvoi{python}. En effet, une des limitations de \package{biblatex} est qu'il ne peut indexer qu'un seul champ à la fois, et n'est pas capable, pour le moment, de produire des entrées d'index à plusieurs niveaux. 
+\item[ligne 6]  une des limitations de \package{biblatex} est qu'il ne peut indexer qu'un seul champ à la fois, et n'est pas capable, pour le moment, de produire des entrées d'index à plusieurs niveaux. 
+Avec cette macro \bibmacro{citeindex}, on obtient une indexation séparée de chaque champ des entrées indéxées. 
+Or nous voudrions obtenir une indexation correspondant à la commande:
+\begin{latexcode} 
+\index{auteur!titre!titleaddon}
+\end{latexcode}
+ C'est pourquoi nous avons conçu un script dans le langage python (nous expliquons plus loin comment s'en servir)\renvoi{python}, qui concatène dans le fichier \ext{idx} les trois indexations en une seule.
+Mais avant d'utiliser ce script, il faut  indexer une fausse valeur, la valeur \verb|---|, qui empêchera le script d'indexer tous les champs d'une entrée: nous ne voulons pas obtenir une entrée de la forme \verb|\index{author!title!titleaddon!editor!location!year}|, par exemple.
 
-Pour contourner cela, nous avons conçu un script qui concatène dans le fichier \ext{idx} trois indexations en une seule. Pour que ce script ne concatène pas ensemble des indexations qui ne doivent pas être concaténée, nous écrivons des fausses indexations sous la forme \verb|---|, qui servent de point de repère au script.
 \end{description}
 
 \subsection{Fomat d'indexation \packagenoidx{biblatex}}\sindex[pkg]{biblatex}
