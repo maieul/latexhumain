@@ -94,11 +94,11 @@ Ainsi pour mettre le numéro de page à l'extérieur du pied de page, il suffit 
 \fancyfoot[LE,RO]{\thepage}
 \end{latexcode}
 
-Évidemment, si l'on dit à \LaTeX de générer un fichier à destination d'une impression monoface\renvoi{rectoverso}, il considère qu'il n'y a que des pages recto.
+Évidemment, si l'on dit à \LaTeX de générer un fichier à destination d'une impression monoface\renvoi{rectoverso}, il considère qu'il n'y a que des pages recto, c'est à dire impaires.
 
 \section{Titres dans l'en-tête : le mécanisme des marqueurs}
 
-Dans la classe \classe{book}, les en-têtes contiennent par défaut les titres de chapitres sur la page de gauche et de sections sur la page de droite. En utilisant le style \verb|fancy|, on insère automatiquement les titres de chapitres dans le côté interne et ceux de sections dans le côté externe. 
+Dans la classe \classe{book}, les en-têtes contiennent par défaut les titres de chapitres sur la page de gauche et de sections sur la page de droite. En utilisant le style \verb|fancy|, on insère automatiquement les titres de chapitres du côté interne et ceux de sections dans le côté externe. 
 
 Si on utilise \package{fancyhdr} pour ne personnaliser que le pied de page, on peut  vouloir rétablir pour le reste la présentation  par défaut. Il est nécessaire pour cela de comprendre le mécanisme des marqueurs de \LaTeX. 
 
