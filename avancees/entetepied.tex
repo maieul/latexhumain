@@ -157,6 +157,10 @@ Comme vous n'affichez alors plus que le titre du chapitre, il est peut-être inu
 Si vous vous amusez à fouiller le fichier \fichier{book.cls}, vous verrez que la commande \cs{chaptermark} est définie deux fois. En réalité, sa définition est conditionnée par l'option de classe \option{twoside} ou \option{oneside}.\renvoi{nbsides}
 \end{plusloins}
 
+\begin{plusloins}
+La commande \cs{thechapter} sert à afficher le numéro du chapitre, stocké dans un compteur \compteur{chapter}. Nous parlons plus loin des compteurs et des commande \cs{the\meta{compteur}}.\label{apparencecompteur}
+\end{plusloins}
+
 \section{Filet d'en-têtes et de pieds de pages}
 
 Le package \package{fancyhdr} inclut un filet entre le corps du texte et l'en-tête. Il est possible de modifier l'épaisseur de ce filet, ainsi que de rajouter un filet avant le  pied de page.
