@@ -57,7 +57,7 @@ Par exemple :
 
 Il est possible d'utiliser dans le document Beamer les commandes \cs{section} et \cs{subsection}\renvoi{niveautitre}\footcite[Le manuel de \classe{Beamer} déconseille d'utiliser  \cs{subsubsection} parce que \enquote{c'est le diable}. \emph{Cf}. :][]{beamer_diable} et d'utiliser dans le préambule les commandes de description : \cs{title}, \cs{author} et \cs{date}\renvoi{notioncommande}.
 
-Ces informations servent toutefois uniquement à structurer le document, afin de pouvoir afficher le plan. C'est pourquoi il faut les entrer \emph{en-dehors} des diapositives\footnote{Un  autre intérêt est aussi de permettre d'avoir un seul document pour une version \forme{article} et une version \forme{diapositive} d'un même sujet.}.
+Ces informations servent toutefois uniquement à structurer le document, afin de pouvoir afficher le plan. C'est pourquoi il faut les entrer \emph{en-dehors} des diapositives.
 
 Pour les afficher dans une diapositive, en revanche, il faut utiliser les commandes \csp{sectionpage} et \csp{subsectionpage} pour les niveaux de titres et \csp{titlepage} pour les informations sur la date, l'auteur et le titre de la conférence.
 
@@ -184,7 +184,7 @@ Il est également possible de produire un fichier contenant les diapositives et 
 
 \section{Écrire son article dans le même fichier que la présentation}
 
-Il peut être judicieux d'écrire l'article correspondant à la présentation dans le même fichier que celui-ci. Il suffit pour cela d'écrire le contenu de l'article entre les environnements (ou les commandes) \enviro{frame}\footcites[À noter qu'on peut aussi introduire des miniatures des diapositives  dans l'article, voir :][]{beamer_diapo_article}.
+Il peut être judicieux d'écrire l'article correspondant à la présentation dans le même fichier que celui-ci. Il suffit pour cela d'écrire le contenu de l'article entre les environnements (ou les commandes) \enviro{frame}\footcites[À noter qu'on peut aussi introduire des miniatures des diapositives  dans l'article, voir :][]{beamer_diapo_article} ---  mettre les titres des sections hors des diapositives révèle ici son avantage: ces titres sont aussi ceux de l'article.
 
 \begin{latexcode}
 \section{Introduction}
