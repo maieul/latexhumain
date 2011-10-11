@@ -10,11 +10,11 @@ Dans ce chapitre nous verrons comment changer l'apparence de nos textes : police
 Il existe trois grandes familles de polices de caractères : 
 \begin{description}
 \item[Les polices à empattements]pour le corps du texte. Ces empattements améliorent le confort de lecture, sur version papier du moins. 
-\item[Les polices sans empattements]normalement pour les couvertures.
+\item[Les polices sans empattements]normalement pour les titre sur les couvertures.
 \item[Les polices à pas fixe]qui se caractérisent par le fait que la largeur des caractères ne varie pas en fonction des lettres, mais reste uniforme d'une lettre à l'autre. Ces polices sont utilisées par les informaticiens pour citer du code informatique. Dans notre domaine, elles peuvent éventuellement servir pour une transcription diplomatique d'un texte ancien. On utilisera pour cela  l'environnement \enviro{verbatim}.
 \end{description}
 
-Le package \package{fontspec} propose de définir une police pour chaque famille de caractères. Ainsi pour ce livre avons-nous choisi les polices \enquote{Linux Libertine} pour les caractères avec empattements, \enquote{Linux Biolinum} pour les caractères sans empattements et \enquote{DejaVu  Sans Mono} pour les caractères à espacements fixes.
+Le package \package{fontspec}\footcite{fontspec} propose de définir une police pour chaque famille de caractères. Ainsi pour ce livre avons-nous choisi les polices \enquote{Linux Libertine} pour les caractères avec empattements, \enquote{Linux Biolinum} pour les caractères sans empattements\footnote{Nous n'utilisons cette police que pour la version informatique. Pour la version papier, nous avons confié la création de la couverture à Laura Pigeon, qui a fait son propre choix de police.} et \enquote{DejaVu  Sans Mono} pour les caractères à espacements fixes.
 
 Nous avons indiqués dans notre préambule que nous souhaitons les utiliser :
 
@@ -26,7 +26,7 @@ Nous avons indiqués dans notre préambule que nous souhaitons les utiliser :
 
 La commande \csp{setmainfont} sert à définir la police avec empattements (corps du texte), \csp{setsansfont} celle sans empattements et \csp{setmonofont} la police à espacements fixes. L'argument optionnel peut prendre un certain nombre de paramètres pour la police. 
 
-Ici nous avons indiqué avec le paramètre \option{Scale} que nous souhaitons réduire de 25 \% la taille de la police \enquote{DejaVu Sans Mono}, car il s'agit d'une police relativement grande. 
+Ici nous avons indiqué avec le paramètre \option{Scale} que nous souhaitons réduire de 25 \% la taille de la police \enquote{DejaVu Sans Mono}, car il s'agit d'une police assez grande. 
 
 L'option \option{Mapping=tex-text} des deux premières commandes permet de gérer de manière particulière certaines suites de caractères, par exemple de remplacer trois tirets courts (\verb|---|) par un tiret long (---).\renvoi{tirets} 
 
@@ -38,7 +38,7 @@ Le package \package{fontspec} permet de définir d'autres familles de caractère
 
 \section{Interlignes}\label{interligne}
 
-Le package \package{setspace} --- qui ne possède pas de documentation officielle --- permet de changer facilement l'interligne du document en proposant trois interlignages : simple --- c'est le réglage standard ---, double et \enquote{un et demi}. En général une interligne de 1,5 est recommandée pour les travaux universitaires, sauf pour les notes de bas de pages, où un interlignage simple est de mise. Cela tombe bien : le package n'applique le changement d'interlignes qu'au corps du texte. Les notes de bas de page sont donc préservées.
+Le package \package{setspace} --- qui ne possède pas de documentation officielle --- permet de changer facilement l'interligne du document en proposant trois interlignages : simple, c'est le réglage standard, double et \enquote{un et demi}. En général une interligne de 1,5 est recommandée pour les travaux universitaires, sauf pour les notes de bas de pages, où un interlignage simple est de mise. Cela tombe bien : le package n'applique le changement d'interlignes qu'au corps du texte. Les notes de bas de page sont donc préservées.
 
 \begin{plusloins}
 Le package \package{setspace}  \enquote{se contente} de définir des nouvelles commandes pour exécuter des suites complexes de commandes \TeX et \LaTeX nécessaires à la définition de l'interligne en tenant compte de la taille de la police.
@@ -63,7 +63,7 @@ Tant qu'aucune commande de changement d'interligne n'est utilisée, le texte res
 
 Jusqu'à maintenant, à quelques exceptions près, nous n'avons vu que des commandes prenant un certain nombre d'arguments. Ici nos commandes ne prennent pas d'argument, mais changent des paramètres, jusqu'à nouvel ordre. On appelle de telles commandes \emph{commandes de bascule}. Ainsi, nos commandes de bascule du package \package{setspace} changent l'interligne de notre texte. L'utilisation des commandes de bascule est nécessaire pour la redéfinition de certaines commandes de \LaTeX, dont les commandes des titres\renvoi{apparencetitre}.
 
-Une commande à bascule entourée d'accolades n'a d'effet qu'au sein de la paire d'accolade. Une commande à bascule utilisée dans un environnement n'a d'effet que dans cet environnement.\label{porteebascule} 
+Une commande de bascule entourée d'accolades n'a d'effet qu'au sein de la paire d'accolade. Une commande de bascule utilisée dans un environnement n'a d'effet que dans cet environnement. Si une commande de bascule est utilisée dans le préambule, elle a en général un effet dans l'ensemble du document.\label{porteebascule} 
 
 Nous avons déjà présenté plus haut des commandes à bascule : celles de modification de la taille des caractères.\renvoi{commandesdetaille}
 
@@ -128,10 +128,8 @@ En créant ces deux commandes \csp{oldquotation} et \csp{endoldquotation} nous a
 Si vous avez compris nos propos sur les commandes de début et de fin d'environnement, vous pouvez vous rendre compte que nous aurions pu obtenir le même résultat avec :
 
 \begin{latexcode}
-\let\oldquotation\quotation
 \let\endoldquotation\endquotation
 \renewcommand{\quotation}{\oldquotation\singlespace}
-\renewcommand{\endquotation}{\endoldquotation}
 \end{latexcode}
 
 \end{plusloins}
@@ -315,7 +313,7 @@ Analysons-là :
 \item[les lignes 4, 5, 9 et 10] servent à conditionner l'affichage d'un numéro de chapitre à la présence dans la partie principale du document (celle qui suit \cs{mainmatter}\renvoi{sectionbook}) et à la valeur du compteur \compteur{secnumdepth}, que vous pouvez redéfinir pour empêcher la numérotation de certains niveaux de titre\renvoi{manipcompteurs}.
 \item[ligne 6] on affiche en taille \cs{huge}\renvoi{taille}, en gras (\cs{bfseries}\renvoi{bfseries}) la chaîne de langue de début de chapitre (\cs{@chapapp}) suivie d'une espace et du numéro de chapitre : le compteur \compteur{chapter}, affiché \emph{via} la commande \cs{thechapter}.
 \item[ligne 7] on insère un paragraphe (\csp{par}) et on empêche un changement de ligne (\csp{nobreak}).
-\item[ligne 8] on insère un espace vertical de 20 pt.
+\item[ligne 8] on insère un espace vertical de 20~pt.
 \item[ligne 11] au niveau visé par ce livre la compréhension de cette ligne n'est pas indispensable. Pour les curieux toutefois, cette ligne sert à prévenir un titre s'étalant sur plusieurs lignes. Sommairement, on peut dire que pour prévenir les ruptures de lignes ou les changements de pages, \LaTeX utilise des paramètres appelés \forme{penalty}. Plus une \forme{penalty} est importante, plus la probabilité d'une rupture est faible. Ici la \forme{penalty} d'interlignage --- de rupture de ligne --- est définie à 1000 (\cs{@M}). 
 \item[ligne 12]: on indique le titre du chapitre (\#1) en taille \cs{Huge}, en gras (\cs{bfseries}). On introduit ensuite un paragraphe (\csp{par}), en demandant d'éviter les changements de pages (\csp{nobreak}).
 \item[ligne 13]on insère un espace vertical de 40~pt.
@@ -369,7 +367,7 @@ En outre, il existe une commande \csp{refstepcounter} qui permet d'incrémenter 
 
 
 
-Il est possible de créer son propre compteur grâce à la commande \csp{newcounter}\marg{compteur}\oarg{compteur2}. Si l'argument \arg{compteur2} est présent, alors il indique que la valeur du compteur \arg{compteur} doit être réinitialisée lorsque la commande \csp{refstepcounter} est appliquée au compteur \arg{compteur2}.
+Il est possible de créer son propre compteur grâce à la commande \csp{newcounter}\marg{compteur}\oarg{compteur2}. Si l'argument \arg{compteur2} est présent, alors il indique que la valeur du compteur \arg{compteur} doit être réinitialisée lorsque la commande \csp{refstepcounter} est appliquée au compteur \compteur{compteur2}.
 
 La commande  \cs{@addtoreset}\marg{compteur}\marg{compteur2}  permet d'appliquer cette règle sur un compteur déjà existant.
 
