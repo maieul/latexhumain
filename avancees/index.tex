@@ -11,7 +11,7 @@ Les commandes pour formater l'index sont à placer dans un fichier \fichier{mons
 Pensez à placer ce fichier à un endroit où \LaTeX peut le trouver, par exemple à côté du fichier principal.
 \end{attention}
 
-Il faut ensuite compiler en ligne de commande suivante la syntaxe :\renvoi{terminal}
+Il faut ensuite compiler en ligne de commande suivant cette syntaxe :\renvoi{terminal}
 
 \begin{bashcode}
 makeindex -s monstyle.ist monfichier.idx
@@ -27,13 +27,13 @@ L'option -s indique à \package{makeindex}  qu'il doit utiliser le fichier de st
 
 \section{Quelques commandes}
 
-Nous allons ici quelques exemples de commandes que l'on peut mettre dans son fichier \fichier{monstyle.ist}. 
+Nous allons donner ici quelques exemples de commandes que l'on peut mettre dans son fichier \fichier{monstyle.ist}. 
 
 \begin{attention}
 Dans le fichier de style\ext{ist}, on n'écrit pas en \LaTeX{} mais en \TeX . Les commandes sont ainsi encadrées par des guillemets anglais \verb|"| . La barre contre-oblique, quant à elle, n'est prise en compte que si elle est précédée d'une autre contre-oblique.
 \end{attention}
 
-Le manuel de la commande MakeIndex --- que l'on peut lire en frappant dans le terminal \verb+man makeindex+\renvoi{terminal} et que l'on peut quitter en frappant la lettre  \verb|q|, ou, si on utilise Windows, qu'on peut consulter à cette adresse \url{http://www.fiveanddime.net/man-pages/makeindex.1.html}. --- nous indique que, pour modifier ce qui est inséré entre le premier niveau d'item (l'entrée) --- ou niveau 0 --- et le ou les numéros de page, on utilise l'option \verb|delim_0| ; de même, pour définir ce qui est inséré entre le deuxième niveau d'item (la sous-entrée) --- ou niveau 1, on utilise l'option \verb+delim_1+, et l'option \verb| delim_2| pour les sous-sous-entrées --- ou niveau 2 d'itemisation. Le choix par défaut est une virgule suivit d'un blanc : \verb|", "|
+Le manuel de la commande MakeIndex --- que l'on peut lire en frappant dans le terminal \verb+man makeindex+\renvoi{terminal} et que l'on peut quitter en frappant la lettre  \verb|q|, ou, si l'on utilise Windows, que l'on peut consulter à cette adresse \url{http://www.fiveanddime.net/man-pages/makeindex.1.html}. --- nous indique que, pour modifier ce qui est inséré entre le premier niveau d'item (l'entrée) --- ou niveau 0 --- et le ou les numéros de page, on utilise l'option \verb|delim_0| ; de même, pour définir ce qui est inséré entre le deuxième niveau d'item (la sous-entrée) --- ou niveau 1, et les numéros, on utilise l'option \verb+delim_1+, et l'option \verb| delim_2| pour les sous-sous-entrées --- ou niveau 2 d'itemisation. Le choix par défaut est une virgule suivit d'un blanc : \verb|", "|
 
 Ainsi, si nous désirons que le numéro de la page soit justifié à droite, et non simplement séparé de l'entrée par une virgule et un blanc, nous devons utiliser la commande \csp{hfill}\renvoi{hfill} que nous indiquons dans notre fichier de style par les lignes suivantes:
 
@@ -43,7 +43,7 @@ delim_1 "\\hfill "
 delim_2 "\\hfill "
 \end{latexcode}
 
-Nous obtenons donc 
+Nous obtenons donc: 
 
 \begin{quotation}
 \begin{tabbing}
@@ -64,7 +64,7 @@ Evêques \\
 Si nous préférons une ligne de points, il faut logiquement remplacer \verb|"|\textbackslash\cs{hfill}\verb| "| par \verb|"|\textbackslash\cs{dotfill}\verb| "|
 
 \begin{attention}
-Les espaces situés entre les commandes et les guillemets fermants sont indispensables. En effet, en l'absence de ces espaces, MakeIndex accole dans le fichier \ext{ind} généré les commandes aux numéros de page, ce qui empêche la second compilation avec \LaTeX, puisque celui si se retrouve face à des commandes inconnus, du style \csp{hfill1}.
+Les espaces situées entre les commandes et les deuxièmes guillemets fermants sont indispensables. En effet, en l'absence de ces espaces, MakeIndex accole, dans le fichier \ext{ind} généré, les commandes aux numéros de page, ce qui bloque la seconde compilation, puisque \LaTeX{} se retrouve alors face à des commandes inconnues, du style \csp{hfill1}.
 \end{attention}
 
 Si l'on continue la lecture du manuel, on apprend aussi comment faire apparaître \enquote{sq.}, ou ce que l'on veut, quand une même entrée est indexée dans trois pages ou plus à la suite. Il suffit d'indiquer \verb+suffix_3p "~sq."+
