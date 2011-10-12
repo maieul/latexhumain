@@ -30,10 +30,10 @@ L'option -s indique à \package{makeindex}  qu'il doit utiliser le fichier de st
 Nous allons donner ici quelques exemples de commandes que l'on peut mettre dans son fichier \fichier{monstyle.ist}. 
 
 \begin{attention}
-Dans le fichier de style\ext{ist}, on n'écrit pas en \LaTeX{} mais en \TeX . Les commandes sont ainsi encadrées par des guillemets anglais \verb|"| . La barre contre-oblique, quant à elle, n'est prise en compte que si elle est précédée d'une autre contre-oblique.
+Dans le fichier de style\ext{ist}, on n'écrit pas en \LaTeX{} mais en \TeX . Les commandes sont ainsi encadrées par des guillemets anglais \verb|"|. La barre contre-oblique, quant à elle, n'est prise en compte que si elle est précédée d'une autre contre-oblique.
 \end{attention}
 
-Le manuel de la commande MakeIndex --- que l'on peut lire en frappant dans le terminal \verb+man makeindex+\renvoi{terminal} et que l'on peut quitter en frappant la lettre  \verb|q|, ou, si l'on utilise Windows, que l'on peut consulter à cette adresse \url{http://www.fiveanddime.net/man-pages/makeindex.1.html}. --- nous indique que, pour modifier ce qui est inséré entre le premier niveau d'item (l'entrée) --- ou niveau 0 --- et le ou les numéros de page, on utilise l'option \verb|delim_0| ; de même, pour définir ce qui est inséré entre le deuxième niveau d'item (la sous-entrée) --- ou niveau 1, et les numéros, on utilise l'option \verb+delim_1+, et l'option \verb| delim_2| pour les sous-sous-entrées --- ou niveau 2 d'itemisation. Le choix par défaut est une virgule suivit d'un blanc : \verb|", "|
+Le manuel de la commande MakeIndex\footnote{Que l'on peut lire en frappant dans le terminal \verb+man makeindex+\renvoi{terminal} et que l'on peut quitter en frappant la lettre  \verb|q|, ou, si l'on utilise Windows, que l'on peut consulter à cette adresse \url{http://www.fiveanddime.net/man-pages/makeindex.1.html}.} nous indique que, pour modifier ce qui est inséré entre le premier niveau d'item (l'entrée) --- ou niveau 0 --- et le ou les numéros de page, on utilise l'option \verb|delim_0| ; de même, pour définir ce qui est inséré entre le deuxième niveau d'item (la sous-entrée) --- ou niveau 1, et les numéros, on utilise l'option \verb+delim_1+, et l'option \verb|delim_2| pour les sous-sous-entrées --- ou niveau 2 d'itemisation. Le choix par défaut est une virgule suivit d'un blanc : \verb|", "|
 
 Ainsi, si nous désirons que le numéro de la page soit justifié à droite, et non simplement séparé de l'entrée par une virgule et un blanc, nous devons utiliser la commande \csp{hfill}\renvoi{hfill} que nous indiquons dans notre fichier de style par les lignes suivantes:
 
@@ -124,12 +124,11 @@ Ducs \\
 Evêques \\
 \> Damase \>\> 5\\
 \> Formose\>\>  5\\
-
 \end{tabbing}
 \end{quotation}
 
 
-Si nous préférons qu'elles soient simplement légèrement décalées vers la droite, nous pouvons utiliser, à la place de \textbackslash\cs{hfill}, \textbackslash\cs{hspace*}\verb|{1ex}| qui rajoute à gauche un espace de la taille d'un x. \renvoi{unite}\renvoi{espace}
+Si nous préférons qu'elles soient simplement légèrement décalées vers la droite, nous pouvons utiliser, à la place de \textbackslash\cs{hfill}, \textbackslash\cs{hspace*}\verb|{1em}| qui rajoute à gauche un espace d'un cadratin. \renvoi{unite}\renvoi{espace}
 
 
 Quand on a compris ce système, il est alors assez simple de formater à sa guise l'index. C'est pourquoi, pour les autres options, nous renvoyons ici à la lecture du manuel\footcite[On pourra aussi consulter][]{frama_index}. 
