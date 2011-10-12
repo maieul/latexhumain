@@ -5,7 +5,7 @@ Dans ce chapitre, nous allons voir quelques commandes permettant de modifier la 
 Rappelons qu'il ne faut normalement pas utiliser ces commandes telles quelles, mais les imbriquer dans des commandes de mise en sens.\renvoi{sensforme}
 
 Il ne s'agit ici que d'une très courte introduction : d'autres ouvrages en parlent mieux que nous\footcites(En particulier)(){frama}{latex_graphic_companion}.
-En ce qui concerne les unités de longueurs, nous renvoyons à l'annexe~ \ref{unite}.\renvoi{unite}
+En ce qui concerne les unités de longueurs, nous renvoyons à l'annexe~\ref{unite}.\renvoi{unite}
 \end{intro}
 
 \section{Espacements}\label{espace}
@@ -60,7 +60,7 @@ Ainsi pour une impression avec seulement 1 cm de marge --- ce qui n'est pas à c
 
 On peut aussi modifier temporairement les réglages, pour une ou plusieurs pages, \emph{via} la commande \csp{newgeometry}\marg{reglages}. On restaure ensuite les réglages initiaux  avec la commande \csp{restoregeometry}.
 
-Par exemple pour avoir une page sans marge, on écrira :
+Par exemple pour avoir une page sans marge, on écrit :
 
 \begin{latexcode}
 \newgeometry{lmargin=0cm,rmargin=0cm,tmargin=0cm,bmargin=0cm}
@@ -108,16 +108,16 @@ Que nous pouvons analyser ainsi:
 
 Voici pour l'analyse. Maintenant, nous voulons notre environnement \enviro{exemple}, avec :
 \begin{itemize}
-\item Une marge gauche plus forte, de 3 cadratin (3 ex).
-\item Une marge droite de 1 cadratin (1 ex). 
+\item Une marge gauche plus forte, de 3 cadratin (3~em).
+\item Une marge droite de 1 cadratin (1~em). 
 \item Un texte en italique.
 \end{itemize}
 
 Nous allons pour cela insérer dans le deuxième argument de la commande \cs{list} les lignes suivantes :
 
 \begin{latexcode}
-\leftmargin 3ex
-\rightmargin 1ex
+\leftmargin 3em
+\rightmargin 1em
 \itshape
 \end{latexcode}
 
@@ -165,7 +165,7 @@ Exemple :
 \dotfill Du texte comprimé.
 \end{quotation}
 
-Pour des traits plus complexes, par exemple en diagonale ou en pointillés, on se reportera au package \package{epic} ou, selon le cas, à \package{TikZ}. 
+Pour des traits plus complexes, par exemple en diagonale ou en pointillés, on se reportera au package \package{eepic}\footcite{eepic} ou, selon le cas, à \package{TikZ}\footcite{tikz}. 
 
 
 
