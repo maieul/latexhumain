@@ -1,14 +1,14 @@
 \chapter {Installer \LaTeX{}}\label{install}
 
 \begin{intro}
-    Avant de pouvoir se servir de \LaTeX{} (\XeLaTeX) il faut l'installer. Voici comment faire pour les systèmes d'exploitation courants.
+    Avant de pouvoir se servir de \LaTeX{} (\XeLaTeX), il faut l'installer sur son ordinateur. Voici comment faire pour les systèmes d'exploitation courants.
 \end{intro}
 
 \section{La notion de distribution}
 
 En général, on n'installe pas \LaTeX{} tout seul, on installe une distribution \LaTeX{}. Une distribution est un ensemble de fichiers comprenant :
 \begin{itemize}
-\item Les logiciels \TeX, \LaTeX, et généralement \XeLaTeX, mais aussi d'autres logiciels qui appartiennent à la  \forme{famille \TeX\footnote{Pour prendre une analogie avec les logiciels connus, quand vous installez Microsoft Office, vous installez non seulement Word, Excel et Powerpoint, mais aussi des logiciels utiles à ces derniers, par exemples pour tracer des organigrammes.}}, que nous verrons en temps voulu.
+\item Les logiciels \TeX, \LaTeX, et généralement \XeLaTeX, mais aussi d'autres logiciels qui appartiennent à la  \forme{famille \TeX\footnote{Pour prendre une analogie avec les logiciels connus, quand vous installez Microsoft Office, vous installez non seulement Word, Excel et Powerpoint, mais aussi des logiciels utiles à ces derniers, par exemple pour tracer des organigrammes.}}, que nous verrons en temps voulu.
 \item Des fichiers permettant d'étendre les possibilités de \LaTeX, appelés packages et classes.
 \item De la documentation sur ces fichiers.
 \end{itemize}
@@ -28,7 +28,7 @@ Ce dossier comprend plusieurs applications :
 \item[BibDesk] qui est un logiciel pour gérer les fichiers bibliographiques au format BibTex.\renvoi{bddbiblio}
 \item[Excalibur] qui est un logiciel de correction orthographique prévu pour reconnaître les commandes \LaTeX{}. Nous ignorons sa qualité, ne l'ayant pas essayé.
 \item[LaTeXit] qui est un logiciel pour rédiger encore plus facilement des équations en \LaTeX{} et les exporter vers divers logiciels. Comme ce livre est l'un des rares sur \LaTeX{} à ne pas expliquer comment faire des équations avec, nous ne nous étendrons pas.
-\item[TeXLive Utility] qui sert à mettre à jour les différents modules de \LaTeX{} : classe, packages etc. Nous en parlons plus loin. \renvoi{majosX}
+\item[TeXLive Utility] qui sert à mettre à jour les différents modules de \LaTeX{} : classes, packages, etc. Nous en parlons plus loin. \renvoi{majosX}
 \item[TeXworks et TeXShop] qui sont deux éditeurs de textes prévus pour \LaTeX. Choissisez l'un d'entre eux pour commencer avec \LaTeX{}.\renvoi{commencer}
 \end{description}
 
@@ -53,7 +53,7 @@ Les claviers Apple n'indiquent pas directement les caractères spéciaux disponi
 \end{longtable}
 \section{Installer TeX Live sous GNU/Linux par le biais du gestionnaire de paquets}
 
-Il y a plusieurs manières de procéder pour installer TexLive sur une distribution GNU/Linux. Il est possible de télécharger l'installateur pour GNU/Linux depuis le site de TeX Live, mais la procédure d'installation de TeX Live est alors complexe, tout comme la mise à jour. Nous ne détaillerons donc pas cette procédure d'installation.
+Il y a plusieurs manières de procéder pour installer TexLive sur une distribution GNU/Linux. Il est possible de télécharger l'installateur pour GNU/Linux depuis le site de TeX Live, mais la procédure d'installation de TeX Live est alors complexe, tout comme la mise à jour. Nous ne détaillerons donc pas cette procédure.
 
 La meilleure façon de procéder est en effet la plupart du temps de recourir au gestionnaire de paquets de votre distribution. C'est l'approche que nous allons documenter pour les distributions GNU/Linux grand public les plus usitées, car la mise à jour de tous les paquets de TeX Live en est facilitée : ils sont mis à jour en même temps que les logiciels de votre distribution GNU/Linux.
 
@@ -67,7 +67,7 @@ Il est très facile d'installer la distribution TeX Live avec Debian, Ubuntu et 
 
 \subsubsection{Mageia et Mandriva}
 
-Ces deux systèmes sont très proches, par conséquent les instructions pour l'une valent pour l'autre. Il faut dans un premier temps ouvrir le \emph{centre de contrôle}. Il suffit alors de cliquer sur le bouton \emph{Installer et désinstaller des logiciels}, puis de chercher le paquet \verb|texlive| et appliquer les changements. 
+Ces deux systèmes sont très proches, par conséquent les instructions pour l'un valent pour l'autre. Il faut dans un premier temps ouvrir le \emph{centre de contrôle}. Il suffit alors de cliquer sur le bouton \emph{Installer et désinstaller des logiciels}, puis de chercher le paquet \verb|texlive| et appliquer les changements. 
 
 \subsubsection{OpenSUSE}
 
@@ -79,24 +79,26 @@ Sous Fedora, ouvrez l'application \emph{Ajouter/supprimer des logiciels}. Clique
 
 \section{Installer TeX Live sous GNU/Linux à partir du site officiel}
 
-Assurez-vous avant toute chose d'avoir le paquet perltk installé sur votre système. Si vous ne le possédez pas, vous devrez lancer l'installation en ligne de commande uniquement.
+Assurez-vous avant toute chose d'avoir le paquet \verb|perltk| installé sur votre système. Si vous ne le possédez pas, vous devrez lancer l'installation en ligne de commande uniquement.
 
 À titre d'exemple, le paquet se nomme \forme{perl-tk} sous Debian et Ubuntu, \forme{perl-Tk-804} sous Fedora et ses dérivés.
 
-Rendez-vous alors à l'url \url{http://tug.org/texlive/acquire-netinstall.html}. Choisissez alors le fichier \emph{install-tl-unx.tar.gz}. Une fois téléchargé, décompressez-le puis rendez-vous dans le dossier nouvellement créé à l'aide d'un terminal, par exemple en tapant \verb|cd ~/Téléchargements/install-tl-*/|. Vous pouvez alors lancer l'installation en mode administrateur, par exemple ainsi : \verb|sudo perl install-tl -gui wizard|. Cette commande fournira un installateur qui installera la distribution complète selon votre architecture.
+Rendez-vous alors à l'url \url{http://tug.org/texlive/acquire-netinstall.html}. Choisissez  le fichier \emph{install-tl-unx.tar.gz}. Une fois téléchargé, décompressez-le puis rendez-vous dans le dossier nouvellement créé à l'aide d'un terminal, par exemple en tapant \verb|cd ~/Téléchargements/install-tl-*/|. Vous pouvez alors lancer l'installation en mode administrateur, par exemple ainsi : \verb|sudo perl install-tl -gui wizard|. Cette commande fournira un installateur qui installera la distribution complète selon votre architecture.
 
-Après avoir donné votre mot de passe, il vous suffira de suivre les étapes:
+Après avoir donné votre mot de passe, il vous suffira de suivre les étapes suivantes:
 
 \begin{enumerate}
 \item Cliquez simplement sur \endquote{Suivant}.
-\item Attendez que le téléchargement soit fini, il vous faut choisir un dossier d'installation. Choisissez de préférence un répertoire hors du système de base, comme \verb|/opt/texlive2011|.
+\item Attendez que le téléchargement soit fini. Il vous faut choisir un dossier d'installation : choisissez de préférence un répertoire hors du système de base, comme \verb|/opt/texlive2011|.
 \item Conservez A4 pour la taille de papier.
 \item Cliquez sur Installer.
-\item À la fin de l'installation, un message vous informera qu'il vous ajuster votre \forme{$PATH}. Ouvrez le fichier ~/.bashrc (créez-le s'il n'existe pas), et ajoutez-y les lignes suivantes:\footnote{\forme{$PATH} est une variable d'environnement qui permet au système de savoir où chercher les exécutables. TeX Live n'étant pas installé dans les dossiers par défaut dans la mesure où il est étranger au système de base, c'est à vous de l'intégrer. Ajustez le champ entre guillemets selon le message qui s'affiche à l'écran, en prenant soin de finir par  \forme{:$PATH}.}\\
+\item À la fin de l'installation, un message vous informera qu'il vous faut ajuster votre \forme{$PATH}. Ouvrez le fichier ~/.bashrc (créez-le s'il n'existe pas), et ajoutez-y les lignes suivantes:\footnote{\forme{$PATH} est une variable d'environnement qui permet au système de savoir où chercher les exécutables. TeX Live n'étant pas installé dans les dossiers par défaut, puisqu'il est   étranger au système de base, c'est à vous de l'intégrer. Ajustez le champ entre guillemets selon le message qui s'affiche à l'écran, en prenant soin de finir par  \forme{:$PATH}.}\\
 \verb| PATH="/opt/texlive2011/bin/x86_64-linux:$PATH"|
 \end{enumerate}
 
-L'installation est terminée. Vous pouvez fermer votre terminal pour que les modifications appliquées à votre \fomre{$PATH} soient prises en compte.
+L'installation est terminée. Vous pouvez fermer votre terminal pour que les modifications appliquées à votre \forme{$PATH} soient prises en compte. 
+
+% $
 
 \section{MiKTeX sous Windows}
 
@@ -110,14 +112,14 @@ C'est pourquoi nous nous tournerons vers une distribution consacrée exclusiveme
 Il faut se rendre sur la page de téléchargement de la distribution : \url{http://miktex.org/2.9/setup}. Choisissez le fichier \emph{Net Installer}, et non le \emph{Basic Installer}.
 
 \begin{attention}
-Vous remarquerez de les installateurs sont fournis pour les versions dites respectivement 32 bits et 64 bits de Windows. Si vous ne connaissez pas ces termes, veillez à choisir la version \emph{32 bits}. Cette dernière peut en effet s'exécuter sur les deux types de plate-formes, tandis que la réciproque n'est pas vraie. Si vous savez que vous disposez d'un système en 64 bits, vous pouvez choisir sans crainte l'installateur qui y correspond.
+Vous remarquerez que des installateurs sont fournis pour les versions dites respectivement 32 bits et 64 bits de Windows. Si vous ne connaissez pas ces termes, veillez à choisir la version \emph{32 bits}. Cette dernière peut en effet s'exécuter sur les deux types de plate-formes, tandis que la réciproque n'est pas vraie. Si vous savez que vous disposez d'un système en 64 bits, vous pouvez choisir sans crainte l'installateur qui y correspond.
 \end{attention}
 
-Une fois l'installateur téléchargé sur votre ordinateur, un double clic lance la procédure. Il faut d'abord accepter la licence du logiciel. Puis choisissez \enquote{Download MiKTeX}, et à l'écran suivant, \enquote{Basic MiKTeX}.
+Une fois l'installateur téléchargé sur votre ordinateur, un double clic lance la procédure. Il faut d'abord accepter la licence du logiciel. Puis choisissez \enquote{Download MiKTeX}, et, à l'écran suivant, \enquote{Basic MiKTeX}.
 
 Il vous est demandé de choisir une source de téléchargement. Préférez une source proche de votre domicile, donc pour un utilisateur habitant dans le nord de la France, les serveurs français, anglais ou allemands font amplement l'affaire.
 
-À l'étape suivante il vous est demandé de choisir un répertoire de téléchargement. Choisissez de préférence un dossier qui se trouve dans \enquote{Mes Documents}, comme par exemple \begin{english}\verb|C:\Documents and Settings\Votre utilisateur\Mes documents\miktex|\end{english}. Lorsque vous avez achevé cette étape, l'installateur télécharge tout les composants dont il a besoin, vous averti qu'il a terminé son travail, puis s'arrête.
+À l'étape suivante il faut choisir un répertoire de téléchargement. Choisissez de préférence un dossier qui se trouve dans \enquote{Mes Documents}, comme par exemple \begin{english}\verb|C:\Documents and Settings\Votre utilisateur\Mes documents\miktex|\end{english}. Lorsque vous avez achevé cette étape, l'installateur télécharge tous les composants dont il a besoin, vous avertit qu'il a terminé son travail, puis s'arrête.
 
 Lancez-le alors une seconde fois. Mais au lieu de choisir \enquote{Download MiKTeX}, choisissez à présent \enquote{Install MiKTeX}, puis de nouveau \enquote{Basic MiKTeX}. Préférez alors une installation en tant qu'administrateur, pour tous les utilisateurs de l'ordinateur. Puis sélectionnez le dossier qui contient les composants ; dans notre exemple précédent, il s'agissait de \begin{english}\verb|C:\Documents and Settings\Votreutilisateur\Mes documents\miktex|\end{english}.
 
@@ -131,7 +133,7 @@ Conservez les choix par défaut sur les deux écrans suivants: ils sont corrects
 
 \section{Mettre à jour les packages}\label{maj}
 
-La plupart des packages sont listés sur le site \url{http://www.ctan.org/tex-archive/} qui sert de dépôt pour tout les projets tournant autour de \TeX et \LaTeX. C'est sur les serveurs du CTAN (\forme{Comprehensive TeX Archive Network}). que les logiciels de mise à jour des packages vont, en général, les chercher.
+La plupart des packages sont listés sur le site \url{http://www.ctan.org/tex-archive/} qui sert de dépôt pour tous les projets tournant autour de \TeX et \LaTeX. C'est  en général sur les serveurs du CTAN (\forme{Comprehensive TeX Archive Network}) que les logiciels de mise à jour des packages vont chercher  ceux-ci.
 
 \subsection{Sous Mac OS X}\label{majosX}
 
@@ -139,10 +141,10 @@ Pour mettre à jour les packages, le plus simple est d'utiliser le logiciel \for
 
 \subsection{Sous Linux}
 
-La mise à jour des packages de TeXLive avec le même outils que la mise à jour des composants logiciels de votre ordinateur.
+La mise à jour des packages de TeXLive se fait avec le même outils que la mise à jour des composants logiciels de votre ordinateur.
 
 \subsection{Sous Windows}
 
-Dans le menu Démarrer, vous trouvez une section nommée fort justement MiKTeX, suivie d'un numéro de version. Dans cette section, vous trouvez notamment une sous-section consacrée à la \enquote{Maintenance} – Répondant au doux nom de Maintenance (Admin) –, dans laquelle vous avez accès à deux outils utiles: le gestionnaire de mises à jour de packages (Updates), et le gestionnaire d'installation de nouveaux packages (Package Manager).
+Dans le menu Démarrer, vous trouvez une section nommée fort justement MiKTeX, suivie d'un numéro de version. Dans cette section, il y a notamment une sous-section consacrée à la \enquote{Maintenance} –-- répondant au doux nom de Maintenance (Admin) --–, dans laquelle vous avez accès à deux outils utiles: le gestionnaire de mises à jour de packages (Updates), et le gestionnaire d'installation de nouveaux packages (Package Manager).
 
 Remarquez que la plupart du temps, vous n'aurez pas besoin d'installer explicitement un nouveau package. En effet, au moment de la compilation, MiKTeX détecte que vous sollicitez un composant qui n'est pas présent sur votre système et vous propose de l'installer.
