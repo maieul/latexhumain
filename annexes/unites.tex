@@ -1,14 +1,14 @@
 \chapter{Unités de mesure en \LaTeX{}}\label{unite}
 
 \begin{intro}
-    Nous expliquons ici les principales unités de mesure en \LaTeX{}, mais aussi les manières d'indiquer des tailles relatives à une autre taille : par exemple indiquer que nous souhaitons avoir la moitié de la longueur de la ligne.
+    Nous expliquons ici les principales unités de mesure en \LaTeX{}, mais aussi les manières d'indiquer des tailles relatives  : indiquer, par exemple,  que nous souhaitons avoir la moitié de la longueur de la ligne.
 \end{intro}
 
 \section{Unités de mesure}
 
 \LaTeX{} étant d'origine anglophone, le séparateur des décimales doit être un point et non pas une virgule. Ainsi pour préciser une taille de 1,5 cm, il faut écrire : \verb|1.5cm| et non pas \verb|1,5cm|.
 
-Les unités de mesures peuvent être divisées en deux catégories : unités absolues et unités relatives à la taille  de la police courante. Nous ne présentons ici que les unités les plus courantes.
+Les unités de mesure peuvent être divisées en deux catégories : unités absolues et unités relatives à la taille  de la police courante. Nous ne présentons ici que les unités les plus courantes.
 
 
 
@@ -20,7 +20,7 @@ Les unités de mesures peuvent être divisées en deux catégories : unités abs
     \hline
     \endfoot
     \multicolumn{3}{|c|}{\emph{Unités absolues}} \\
-    pt & Point typographique pica & Unité de base des mesures typographiques dans les système anglo-saxons. C'est celle qui est utilisée dans quasiment tout les logiciels. Correspond approximativement à 0,35 mm. \\
+    pt & Point typographique pica & Unité de base des mesures typographiques dans les systèmes anglo-saxons. C'est celle qui est utilisée dans quasiment tous les logiciels. Correspond approximativement à 0,35 mm. \\
     mm & millimètre &  \\
     cm  & centimètre & \\
     in    & Pouce anglo-saxon & Correspond approximativement à 2,54 cm. \\
@@ -31,7 +31,7 @@ Les unités de mesures peuvent être divisées en deux catégories : unités abs
 
 \section{Longueurs relatives}\label{longueurrelative}
 
-Il est également possible d'indiquer des longueurs relatives à certains éléments. Pour ce faire, il suffit d'indiquer un nombre décimal devant une commande de longueur.
+Il est également possible d'indiquer des longueurs relatives à certains éléments. Il suffit d'indiquer un nombre décimal devant une commande de longueur.
 
 Ainsi pour un trait horizontal d'une moitié de  largeur de la ligne :
 
@@ -48,9 +48,9 @@ Voici les principales commandes de longueur :
     \hline
     \endfoot
     \csp{baselineskip} & Distance entre le bas d'une ligne et celui de la ligne suivante. \\
-    \csp{linewidth} & Largeur d'une ligne. Dans certains environnement (par exemple \enviro{quotation}) les lignes n'ont pas la même longueur que dans le texte principal. \\
+    \csp{linewidth} & Largeur d'une ligne. Dans certains environnements (par exemple \enviro{quotation}) les lignes n'ont pas la même longueur que dans le texte principal. \\
     \csp{textheight}& Hauteur maximale du texte dans une page. Correspond \emph{grosso-modo} à la longueur entre la marge haute et la marge basse. \\
-    \csp{textwith} & Largeur maximale de texte dans une page. Correspond \emph{grosso-modo} à la longueur entre la marge gauche et la marge droite.  \\
+    \csp{textwidth} & Largeur maximale de texte dans une page. Correspond \emph{grosso-modo} à la longueur entre la marge gauche et la marge droite.  \\
      \csp{parindent} & Longueur de l'indentation du paragraphe. \\
      \csp{parskip}    & Distance verticale entre deux paragraphes. \\
      
@@ -58,14 +58,14 @@ Voici les principales commandes de longueur :
 
 \section{Elasticité}\label{elastique}
 
-Il est possible de définir une certaine élasticité pour les longueurs, qui permet de s'adapter à l'espace disponible et aux contraintes de mise en page\footnote{Par exemple concernant les veuves et orphelines.}. Pour ce faire, on utilise les mot clefs \verb|minus| et \verb|plus|.
-Ainsi si nous souhaite afficher un espace blanc \renvoi{espace} vertical d'une longueur comprise entre 1~cm et 3~cm, mais tournant idéalement autour de 2,5~cm, nous écrivons :
+Il est possible de définir une certaine élasticité pour les longueurs, qui permet de s'adapter à l'espace disponible et aux contraintes de mise en page\footnote{Par exemple concernant les veuves et orphelines.}. On utilise pour cela les mot clefs \verb|minus| et \verb|plus|.
+Ainsi, si nous souhaitons afficher un espace blanc \renvoi{espace} vertical d'une longueur comprise entre 1~cm et 3~cm, mais tournant idéalement autour de 2,5~cm, nous écrivons :
 
 \begin{latexcode}
 \vspace{2.5cm minus 1.5cm plus 0.5cm}
 \end{latexcode}
 
-Cette syntaxe est utilisé dans les commandes de définitions des en-têtes de section, sous une forme légèrement différente : \cs{@plus} et \cs{@minus} ne sont que des alias \LaTeX des mot clefs \TeX \verb|plus| et \verb|minus|.\renvoi{apparencetitre}
+Cette syntaxe est utilisée dans les commandes de définitions des en-têtes de section, sous une forme légèrement différente : \cs{@plus} et \cs{@minus} ne sont que des alias \LaTeX des mot clefs \TeX \verb|plus| et \verb|minus|.\renvoi{apparencetitre}
 
 Plus globalement, avec une syntaxe de longueur sous la forme \verb|a minus b plus c| la longueur finale \verb|m| est telle que $ a - b \leq m \leq a + c $.  
 
