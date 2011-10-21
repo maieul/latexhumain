@@ -3,9 +3,9 @@
 \begin{intro}
 La plupart des éditeurs de textes spécialisés en LaTeX  proposent un bouton pour mettre en œuvre les principales commandes de compilation :  XeLaTeX, MakeIndex, BibTeX.
 
-Toutefois très rapidement il devient nécessaire de pouvoir faire plus : par exemple si l’on utilise le package \package{splitindex}, il faut pouvoir  exécuter la commande \verb|splitindex|.
+Il devient toutefois très rapidement nécessaire de pouvoir faire plus : par exemple si l’on utilise le package \package{splitindex}, il faut pouvoir  exécuter la commande \verb|splitindex|.
 
-Pour ce faire on utilise le terminal du système d'exploitation, qui permet d'executer directement ces commandes. Voici une breve introduction à son utilisation dans le cadre d'un usage de \XeLaTeX.
+On utilise pour cela le terminal du système d'exploitation, qui permet d'exécuter directement ces commandes. Voici une brève introduction à son utilisation dans le cadre d'un usage de \XeLaTeX.
 \end{intro}
 
 \section{La notion de répertoire courant}\label{repcourant}
@@ -28,6 +28,8 @@ Ainsi la commande \verb|cd projet-latex| vous fait pénétrer dans le
 répertoire \verb|projet-latex|, ce que vous pouvez vérifier avec la
 commande \verb|dir|. Pour vous déplacer dans un répertoire parent, frappez
 simplement \verb|cd ..|
+
+Plutôt que de remonter de dossier en dossier avec la commande \verb|cd| jusqu'au répertoire courant, on peut aussi  taper  \verb|cd| suivi directement du chemin complet\renvoi{{chemin} du dossier où l'on veut se rendre. Sous Mac, si l'on n'est pas sûr du chemin, on peut le vérifier en faisant simplement glisser l'icône du dossier sur la fenêtre du Terminal : le chemin s'affichera alors.
 
 Lorsque vous êtes dans le répertoire où vous souhaitez exécuter une
 commande, vous pouvez la lancer de la même manière :
@@ -73,7 +75,7 @@ xelatex nomdufichieràcompiler.tex
 
 Pour pouvoir personaliser le comportement standard de \LaTeX ou d'un package, par exemple les styles de \package{biblatex}, il est en général nécessaire de regarder les fichiers standards pour redefinir telle ou telle commande ou macro bibliographique. 
 
-Pour ce faire, il faut trouver leurs emplacements. Dans le fichier \ext{log} produit lors de la compilation est listé l'ensemble des fichiers chargés par le compilateur. Il est général aisé de connaître le nom du fichier : il s'agit souvent de celui du package ou de la classe. Une recherche dans le fichier permet donc de trouver le chemin, par exemple : 
+Il faut donc trouver leurs emplacements. Dans le fichier \ext{log} produit lors de la compilation est listé l'ensemble des fichiers chargés par le compilateur. Il est général aisé de connaître le nom du fichier : il s'agit souvent de celui du package ou de la classe. Une recherche dans le fichier permet donc de trouver le chemin, par exemple : 
 
 \verb|/usr/local/texlive/2011/texmf-dist/tex/latex/biblatex/cbx/verbose-trad2.cbx|.
 
