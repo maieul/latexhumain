@@ -7,6 +7,7 @@
 % \contenuarg -> pour un exemple d'argument. titi
 
 % Repris de doc.sty, ligne 636 ss.
+\makeatletter
 \DeclareRobustCommand\meta[1]{%
      \ensuremath\langle
      \ifmmode \expandafter \nfss@text \fi
@@ -47,3 +48,4 @@
 \let\oldtextbackslash\textbackslash
 
 \renewcommand{\textbackslash}[0]{{\ttfamily\oldtextbackslash}}
+\makeatother
