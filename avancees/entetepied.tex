@@ -115,7 +115,11 @@ Les deux commandes de marquage sont :
 \item \csp{rightmark} retourne l'argument \arg{marqueur droit} de la première commande \cs{markright} ou \cs{markboth}  située sur la page courante. En revanche, si la page en cours ne contient aucune de ces commandes, alors \csp{rightmark} retourne l'argument \arg{marqueur droit} de la dernière commande \cs{markright} ou \cs{markboth} utilisée.
 \end{itemize}
 
-Concrètement, les commandes  \cs{markboth} et \cs{markright} sont appelées  dans la classe \classe{book} par les commandes \cs{chapter} et \cs{section} \emph{via} les commandes \csp{chaptermark} et \csp{sectionmark}. 
+Concrètement, les commandes  \cs{markboth} et \cs{markright} sont appelées automatiquement dans la classe \classe{book} par les commandes \cs{chapter} et \cs{section} \emph{via} les commandes \csp{chaptermark} et \csp{sectionmark}. Ces commandes \cs{sectionmark} et \cs{chaptermark} sont par défaut définies ainsi:
+ \begin{latexcode}
+ \newcommand{\sectionmark}[1]{\thesection}
+ \newcommand{\chaptermark}[1]{\thesection}
+ \begin{latexcode}
 
 \subsection{Appeler les marqueurs dans les style fancy}
 

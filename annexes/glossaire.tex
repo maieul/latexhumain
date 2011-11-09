@@ -2,40 +2,40 @@
 
 
 \begin{description}
-\item[Argument] paramètre passé à une commande et qui détermine en tout ou partie son résultat.
+\item[Argument] Paramètre passé à une commande et qui détermine en tout ou partie son résultat.
 
 
-\item[Champ bibliographique] élément d'une référence bibliographique, tel que nom de l'auteur, titre, éditeur…
+\item[Champ bibliographique] Élément d'une référence bibliographique, tel que nom de l'auteur, titre, éditeur…
 
 
-\item[Classe] indication du type éditorial du document à produire. Son choix se fait au tout début du document \LaTeX avec : \cs{documentclass}\oarg{options}\marg{classe}. 
+\item[Classe] Indication du type éditorial du document à produire. Son choix se fait au tout début du document \LaTeX avec : \cs{documentclass}\oarg{options}\marg{classe}. 
 
 La classe influence notamment le rendu final et les commandes disponibles.
 
-\item[Clef bibliographique] identifiant unique attribué à une référence bibliographique. Il est conseillé de n'y mettre que des caractères alphanumériques non accentués.
+\item[Clef bibliographique] Identifiant unique attribué à une référence bibliographique. Il est conseillé de n'y mettre que des caractères alphanumériques non accentués.
 
-\item[Clef d'index] code indiquant la position d'une entrée dans un index. Il est nécessaire de définir une clef d'index pour les entrées comportant des caractères accentués. Les clefs d'index peuvent également servir pour des index non alphabétiques (par exemple des index par date de règne.). La syntaxe est : \cs{index}\verb|{|\meta{clef}\verb|@|\meta{entrée}\verb|}|.
+\item[Clef d'index] Code indiquant la position d'une entrée dans un index. Il est nécessaire de définir une clef d'index pour les entrées comportant des caractères accentués. Les clefs d'index peuvent également servir pour des index non alphabétiques (par exemple des index par date de règne.). La syntaxe est : \cs{index}\verb|{|\meta{clef}\verb|@|\meta{entrée}\verb|}|.
 
-\item[Commande] morceaux de code  interprété par le compilateur pour effectuer une suite d'opérations. Une commande est un raccourci d'écriture. \LaTeX propose des commandes, les packages en rajoutent et il est possible de définir ses propres commandes.
+\item[Commande] Morceau de code  interprété par le compilateur pour effectuer une suite d'opérations. Une commande est un raccourci d'écriture. \LaTeX propose des commandes, les packages en rajoutent et il est possible de définir ses propres commandes.
 
-\item[Commentaire] texte qui n'est pas interprété par le compilateur. Tout ce qui est situé entre le signe \% et la fin de ligne est un commentaire.
+\item[Commentaire] Texte qui n'est pas interprété par le compilateur. Tout ce qui est situé entre le signe \% et la fin de ligne est un commentaire.
 
-\item[Compilateur] \enquote{logiciel} chargé d'interpréter le fichier \ext{tex} pour produire un fichier \ext{pdf}. Dans ce livre nous utilisons le compilateur \XeLaTeX, plus récent que \LaTeX.
+\item[Compilateur] \enquote{Logiciel} chargé d'interpréter le fichier \ext{tex} pour produire un fichier \ext{pdf}. Dans ce livre nous utilisons le compilateur \XeLaTeX, plus récent que \LaTeX.
 
-\item[Compteur] nombre entier stocké dans la mémoire de l'ordinateur et manipulable par diverses commandes. Par exemple, les éléments numérotés se voient associé un compteur.
+\item[Compteur] Nombre entier stocké dans la mémoire de l'ordinateur et manipulable par diverses commandes. Par exemple, les éléments numérotés se voient associer un compteur.
 
 
-\item[Environnement] portion de document ayant une signification spécifique et qui, par conséquent, reçoit un traitement spécifique. Le début et la fin d'un environnement se marquent par \cs{begin}\marg{nom de l'environnement} et \cs{end}\marg{nom de l'environnement}. \LaTeX propose des environnements, les packages en rajoutent et il est possible de définir ses propres environnements.
+\item[Environnement] Portion de document ayant une signification spécifique et qui, par conséquent, reçoit un traitement spécifique. Le début et la fin d'un environnement se marquent par \cs{begin}\marg{nom de l'environnement} et \cs{end}\marg{nom de l'environnement}. \LaTeX propose des environnements, les packages en rajoutent et il est possible de définir ses propres environnements.
 
-\item[Flottant] élément non textuel (images, tableau par ex.) dont l'insertion dans le flux du texte est automatiquement calculée par \LaTeX, en fonction d'indications fournies, 
+\item[Flottant] Élément non textuel (image ou tableau, par exemple) dont l'insertion dans le flux du texte est automatiquement calculée par \LaTeX, en fonction d'indications fournies.
 
-\item[Macro bibliographique] sous élément d'un style bibliographique, en général chargé de gérer l'affichage d'un ou plusieurs champs.
+\item[Macro bibliographique] Sous-élément d'un style bibliographique, en général chargé de gérer l'affichage d'un ou plusieurs champs.
 
-\item[Package] chargés dans le préambule, les packages sont des fichiers qui permettent d'étendre les fonctionnalités  de \LaTeX.
+\item[Package] Chargés dans le préambule, les packages sont des fichiers qui permettent d'étendre les fonctionnalités  de \LaTeX.
 
-\item[Préambule] partie du code \ext{tex} située avant \cs{begin}\verb|{document}|. Son contenu n'est pas affiché dans le document final, mais sert à divers usages, notamment le chargement de packages.
+\item[Préambule] Partie du code \ext{tex} située avant \cs{begin}\verb|{document}|. Son contenu n'est pas affiché dans le document final, mais sert à divers usages, notamment le chargement de packages.
 
-\item[Style bibliographique] manière d'afficher une entrée bibliographique, indépendamment de son contenu. Le package \package{biblatex} propose un certain nombre de styles bibliographiques, qu'il est possible de personnaliser. 
+\item[Style bibliographique] Manière d'afficher une entrée bibliographique, indépendamment de son contenu. Le package \package{biblatex} propose un certain nombre de styles bibliographiques, qu'il est possible de personnaliser. 
 
-\item[WYSIWYG] abréviation de \textenglish{\emph{What You See Is What You Get}} : \enquote{ce que vous voyez est ce que vous produisez}. Se dit d'un logiciel qui affiche à l'écran le résultat final. Les traitements de texte comme OpenOffice.Org ou Microsoft Word sont des logiciels WYSIWYG.
+\item[WYSIWYG] Abréviation de \textenglish{\emph{What You See Is What You Get}} : \enquote{ce que vous voyez est ce que vous produisez}. Se dit d'un logiciel qui affiche à l'écran le résultat final. Les traitements de texte comme OpenOffice.Org ou Microsoft Word sont des logiciels WYSIWYG.
 \end{description}
