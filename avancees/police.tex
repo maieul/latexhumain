@@ -234,7 +234,7 @@ Commentons ces quelques lignes :
 \begin{description}
 \item[ligne 1]La commande \cs{section} fait appel à une commande \csp{@startsection}. Cette commande ajoute  un niveau de titre à la table des matières. Malgré son titre, elle peut servir pour n'importe quel niveau de titre (par exemple, pour les \cs{subsection}s). Elle prend plusieurs arguments. Le premier est le nom du niveau : ici \verb|section|. Le second est le niveau de profondeur : \verb|1|. Le troisième est l'indentation prélable : ici \csp{z@}, c'est-à-dire une longueur nulle.
 
-\item[ligne 2] quatrième argument de la commande \cs{@startsection}, qui indique l'espace vertical \emph{avant} le titre. Cet espace est idéalement de 3,5 ex \renvoi{unite}, mais peut être compris entre 1,5 ex ($3,5 - 2$) et 4,5 ex ($3,5 + 1$) :  cette marge de manœuvre est indiquée par les commandes  \cs{@moins} et \cs{@plus}.\renvoi{elastique}
+\item[ligne 2] quatrième argument de la commande \cs{@startsection}, qui indique l'espace vertical \emph{avant} le titre. Cet espace est idéalement de 3,5 ex \renvoi{unite}, mais peut être compris entre 1,5 ex ($3,5 - 2$) et 4,5 ex ($3,5 + 1$) :  cette marge de manœuvre est indiquée par les commandes  \cs{@minus} et \cs{@plus}.\renvoi{elastique}
 \item[ligne 3] cinquième argument de \cs{@startsection}, qui indique l'espace vertical après le titre. Notre longueur étant positive, le texte qui suit débute un nouveau paragraphe. Une longueur négative (comme c'est le cas pour la définition de la commande \cs{paragraph}) indique qu'il n'y a pas de changement de paragraphe. Ici donc, l'espace après le titre est de 2,3 ex, mais peut atteindre 2,5 ex (2,3 + 0,2).
 \item[ligne 4] sixième et dernier argument de \cs{@startsection}, qui indique l'apparence proprement dite de notre titre. Il s'agit d'un texte en police normale --- c'est-à-dire celle définie par la commande \cs{setmainfont} ---, en taille \cs{Large}, mise en gras (\cs{bfseries}). Ici toutes nos commandes sont considérées comme des commandes de bascule, la bascule finissant avec l'accolade fermante. La commande \csp{bfseries} est l'équivalent à bascule de la commande \cs{textbf}. Il est recommandé de n'utiliser dans les styles de titre que des commandes à bascule, pour éviter des espaces indésirables.\label{bfseries}
 \end{description}
@@ -308,13 +308,13 @@ Intéressons-nous à la commande \cs{@makechapterhead}\footnote{Ligne 386, à la
 Analysons-là :
 
 \begin{description}
-\item[ligne 2]la commande  \cs{vspace} produit un espace vertical, ici de 50~pt, comme l'indique la commande 50\cs{p@}. La présence d'une astérique indique que notre espace vertical continue après un changement de page.
+\item[ligne 2]la commande  \cs{vspace} produit un espace vertical, ici de 50~pt, comme l'indique le 50\csp{p@}. La présence d'une astérique indique que notre espace vertical continue après un changement de page.
 \item[ligne 3]la commande \cs{parindent} précise l'indentation du paragraphe à ce point précis : ici une longueur nulle (\cs{z@}). La commande \csp{raggedright} signifie que le texte va être aligné à gauche --- à l'inverse \csp{raggedleft} signifierait que le texte serait aligné à droite. Quant à la commande \csp{normalfont}, inutile de dire qu'elle signifie que la police standard --- celle définie par la commande \cs{setmainfont} --- est utilisée.
 \item[les lignes 4, 5, 9 et 10] servent à conditionner l'affichage d'un numéro de chapitre à la présence dans la partie principale du document (celle qui suit \cs{mainmatter}\renvoi{sectionbook}) et à la valeur du compteur \compteur{secnumdepth}, que vous pouvez redéfinir pour empêcher la numérotation de certains niveaux de titre\renvoi{manipcompteurs}.
-\item[ligne 6] on affiche en taille \cs{huge}\renvoi{taille}, en gras (\cs{bfseries}\renvoi{bfseries}) la chaîne de langue de début de chapitre (\cs{@chapapp}) suivie d'une espace et du numéro de chapitre : le compteur \compteur{chapter}, affiché \emph{via} la commande \cs{thechapter}.
+\item[ligne 6] on affiche en taille \cs{huge}\renvoi{taille}, en gras (\cs{bfseries}\renvoi{bfseries}) la chaîne de langue de début de chapitre (\csp{@chapapp}) suivie d'une espace et du numéro de chapitre : le compteur \compteur{chapter}, affiché \emph{via} la commande \cs{thechapter}.
 \item[ligne 7] on insère un paragraphe (\csp{par}) et on empêche un changement de ligne (\csp{nobreak}).
 \item[ligne 8] on insère un espace vertical de 20~pt.
-\item[ligne 11] au niveau visé par ce livre la compréhension de cette ligne n'est pas indispensable. Pour les curieux toutefois, cette ligne sert à prévenir un titre s'étalant sur plusieurs lignes. Sommairement, on peut dire que pour prévenir les ruptures de lignes ou les changements de pages, \LaTeX utilise des paramètres appelés \forme{penalty}. Plus une \forme{penalty} est importante, plus la probabilité d'une rupture est faible. Ici la \forme{penalty} d'interlignage --- de rupture de ligne --- est définie à 1000 (\cs{@M}). 
+\item[ligne 11] au niveau visé par ce livre la compréhension de cette ligne n'est pas indispensable. Pour les curieux toutefois, cette ligne sert à prévenir un titre s'étalant sur plusieurs lignes. Sommairement, on peut dire que pour prévenir les ruptures de lignes ou les changements de pages, \LaTeX utilise des paramètres appelés \forme{penalty}. Plus une \forme{penalty} est importante, plus la probabilité d'une rupture est faible. Ici la \forme{penalty} d'interlignage --- de rupture de ligne --- est définie à 1000 (\csp{@M}). 
 \item[ligne 12]: on indique le titre du chapitre (\#1) en taille \cs{Huge}, en gras (\cs{bfseries}). On introduit ensuite un paragraphe (\csp{par}), en demandant d'éviter les changements de pages (\csp{nobreak}).
 \item[ligne 13]on insère un espace vertical de 40~pt.
 \end{description}
@@ -357,7 +357,7 @@ Cela nous donne au final :
 \makeatother
 \end{latexcode}
 
-Évidemment, il faudrait appliquer le même type de modifications sur la commande \cs{makeschapterhead}. On pourrait aussi s'amuser à modifier ce qui est produit par \cs{part}. Pour cela  il faut, de la même façon, fouiller le fichier \fichier{book.cls}.
+Évidemment, il faudrait appliquer le même type de modifications sur la commande \csp{makeschapterhead}. On pourrait aussi s'amuser à modifier ce qui est produit par \cs{part}. Pour cela  il faut, de la même façon, fouiller le fichier \fichier{book.cls}.
 
 \section[Manipuler les compteurs]{Manipuler les compteurs : le cas des notes de bas de page}\label{manipcompteurs}
 
@@ -373,7 +373,7 @@ Il est possible de créer son propre compteur grâce à la commande :
  
 Si l'argument \arg{compteur2} est présent, alors il indique que la valeur du compteur \arg{compteur} doit être réinitialisée lorsque la commande \csp{refstepcounter} est appliquée au compteur \compteur{compteur2}.
 
-La commande  \cs{@addtoreset}\marg{compteur}\marg{compteur2}  permet d'appliquer cette règle sur un compteur déjà existant.
+La commande  \csp{@addtoreset}\marg{compteur}\marg{compteur2}  permet d'appliquer cette règle sur un compteur déjà existant.
 
 Ainsi, dans le fichier \fichier{book.cls}, vous remarquerez la ligne suivante\footnote{Ligne 718, à la date du 24 août 2011}  :
 

@@ -111,7 +111,7 @@ Les deux commandes de marquage sont :
 \end{itemize}
 
 \begin{itemize}
-\item \cs{leftmark} retourne l'argument \arg{marqueur gauche} de la dernière commande \cs{markboth}.
+\item \csp{leftmark} retourne l'argument \arg{marqueur gauche} de la dernière commande \cs{markboth}.
 \item \csp{rightmark} retourne l'argument \arg{marqueur droit} de la première commande \cs{markright} ou \cs{markboth}  située sur la page courante. En revanche, si la page en cours ne contient aucune de ces commandes, alors \csp{rightmark} retourne l'argument \arg{marqueur droit} de la dernière commande \cs{markright} ou \cs{markboth} utilisée.
 \end{itemize}
 
@@ -165,7 +165,7 @@ La commande \cs{thechapter} sert à afficher le numéro du chapitre, stocké dan
 
 Le package \package{fancyhdr} inclut un filet entre le corps du texte et l'en-tête. Il est possible de modifier l'épaisseur de ce filet, ainsi que de rajouter un filet avant le  pied de page.
 
-On redéfinit pour cela les commandes \cs{headrulewidth} et \cs{footrulewidth}, qui doivent renvoyer une longueur\renvoi{unite}.
+On redéfinit pour cela les commandes \csp{headrulewidth} et \csp{footrulewidth}, qui doivent renvoyer une longueur\renvoi{unite}.
 Par exemple, pour supprimer le filet au-dessous de l'en-tête mais en ajouter un de 0,05 mm au-dessus du pied de page, on écrit : 
 
 \begin{latexcode}
