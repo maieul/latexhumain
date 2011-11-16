@@ -146,7 +146,7 @@ erat  elit consectetuer erat, id egestas pede nibh eget odio.
 \endnumbering
 \end{minipage}
 
-Pour arrêter la numérotation des \cs{pstart}s,  utilisez la commande \csp{numberpstartfalse}.
+Pour arrêter la numérotation des \cs{pstart}s,  utilisez  \csp{numberpstartfalse}.
 
 \begin{plusloins}
 Si chaque \cs{pstart} correspond à un paragraphe, il est possible d'automatiser l'insertion des \cs{pstart}s et \cs{pend}s en insérant la commande \csp{autopar} après \cs{beginnumbering}.
@@ -222,6 +222,7 @@ La distance \cs{linenumsep} représente la distance entre le texte et le numéro
 Elle est  modifiable par la commande \cs{setlength}\verb|{|\cs{linenumsep}\verb|}|\marg{distance}\renvoi{setlength}. 
 
 De la même façon nous pouvons modifier, via \cs{renewcommand}, \cs{numlabfont}, qui indique la taille du numéro et qui est ainsi définie:
+
  \cs{newcommand}\verb|{|\cs{numlabfont}\verb|}{|\cs{normalfont}\cs{scriptsize}\verb|}|. 
  
 

@@ -232,7 +232,9 @@ Ainsi, pour faire un index des noms propres et un index général, on peut décl
 \subsection{Indexer son texte}
 Une fois  les index déclarés, il faut passer à l'indexation proprement dite. Le principe est similaire à celui que nous avons déjà vu pour le package \package{makeindex}\renvoi{cmdindex}.
 
-Mais au lieu de la commande \cs{index}\marg{entrée}, on utilise \csp{sindex}\oarg{abbréviation}\marg{entrée}. 
+Mais au lieu de la commande \cs{index}\marg{entrée}, on utilise :
+
+\csp{sindex}\oarg{abbréviation}\marg{entrée}. 
 
 \begin{plusloins}
 
@@ -308,7 +310,9 @@ La documentation de \package{biblatex}\footcite{biblatex_options} nous informe q
 On constate cependant deux problèmes : 
 \begin{enumerate}
 \item La bibliographie se trouve mêlée aux autres entrées de l'index.
-\item Plus grave : au lieu d'avoir des entrées sous la forme : \begin{english}\verb|Auteur!Titre|\end{english}, nous avons des entrées pour les auteurs et des entrées pour les titres.
+\item Plus grave : nous avons des entrées pour les auteurs et des entrées pour les titres, au lieu d'avoir des entrées sous la forme : 
+
+\begin{english}\verb|Auteur!Titre|\end{english}.
 \end{enumerate}
 
 En outre nous aimerions :
