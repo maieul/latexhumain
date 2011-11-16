@@ -88,14 +88,14 @@ donne ainsi\footcite{tucholsky}:
 Si l'indentation se répète tout les \emph{n} vers, on peut assigner la valeur \emph{n} au compteur \compteur{stanzaindentsrepetition} pour ne pas avoir à répéter l'indentation dans la commande \cs{setstanzaindents}. \renvoi{compteur}
 
 Ainsi  :
-\begin{latexdoc}
+\begin{latexcode}
 \setstanzaindents{12,1,0}
 \setcounter{stanzaindentsrepetition}{2}
 \end{latexcode}
 
 est équivalent à :
 
-\begin{latexdoc}
+\begin{latexcode}
 \setstanzaindents{12,1,0,1,0,1,0,1,0,1,0…}
 \end{latexcode}
 
