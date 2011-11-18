@@ -76,10 +76,10 @@ Le manuel indique que l'option par défaut \verb+headings_flag 0+ ne met pas de 
 Définissons ensuite la manière dont vont apparaître ces lettres. On utilise la commande \verb|heading_prefix|. Supposons que nous voulions faire apparaître ces lettres séparatrices en gras. N'oublions pas que l'on code en \TeX … Nous écrivons donc :
 
 \begin{latexcode}
-heading_prefix "{\\bf "
+heading_prefix "{\\bfseries "
 \end{latexcode} 
 
-Si nous voulons qu'elles apparaissent en italique, nous écrivons \verb|"|\textbackslash\cs{it}\verb|"| (on utilise \csp{bf} et \csp{it}, qui sont des commandes \TeX, et non \cs{textbf} \cs{textit}).
+Si nous voulons qu'elles apparaissent en italique, nous écrivons \verb|"|\textbackslash\cs{itshape}\verb|"| (on utilise \cs{bfseries} et \csp{itshape}, qui sont des commandes \TeX, et non \cs{textbf} \cs{textit}).
 
 Nous  pouvons de même changer la taille des lettres séparatrices en ajoutant \textbackslash\cs{large} ou \textbackslash\cs{Large}, et ainsi de suite. \renvoi{taille}
 
@@ -97,7 +97,7 @@ Ce n'est pas fini. Nos lettres sont actuellement justifiées à gauche, comme le
 
 \begin{latexcode}
 headings_flag 1
-heading_prefix " {\\bf\\large\\hfill " 
+heading_prefix " {\\bfseries\\large\\hfill " 
 heading_suffix " \\hfill}\\nopagebreak\n " 
 \end{latexcode}
 
@@ -138,7 +138,7 @@ Voici tout de même, à titre indicatif, le fichier final :
 \begin{latexcode}
 headings_flag 1
 suffix_3p "~sq."
-heading_prefix "{\\bf\\large\\hspace*{1ex} " 
+heading_prefix "{\\bfseries\\large\\hspace*{1ex} " 
 heading_suffix " }\\nopagebreak\n" 
 delim_0 "\\dotfill "
 delim_1 "\\dotfill "

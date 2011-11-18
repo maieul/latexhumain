@@ -246,11 +246,11 @@ Supposons maintenant que nous souhaitons avoir notre titre en italique et en pol
 \renewcommand\section{\@startsection {section}{1}{\z@}%
                              {-3.5ex \@plus -1ex \@minus -.2ex}%
                              {2.3ex \@plus.2ex}%
-                             {\sffamily\Large\it}}
+                             {\sffamily\Large\itshape}}
 \makeatother
 \end{latexcode}
 
-La commande \csp{ssfamily} produit une bascule vers la police sans empattement définie par \cs{setsansfont}, tandis que \cs{it} produit une bascule vers un texte en italique.
+La commande \csp{ssfamily} produit une bascule vers la police sans empattement définie par \cs{setsansfont}, tandis que \csp{itshape} produit une bascule vers un texte en italique.
 
 \section{Définir l'apparence : chapitres et niveaux supérieurs}
 
