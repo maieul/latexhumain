@@ -6,7 +6,7 @@ Dans ce chapitre nous verrons comment générer un sommaire ou une table des mat
 
 \section{Une table simple}
 
-La manière la plus simple de faire une table des matières est d'utiliser la commande : \csp{tableofcontents}.
+La manière la plus simple de faire une table des matières est d'utiliser la commande \csp{tableofcontents}.
 Pour que \XeLaTeX{} puisse afficher cette table des matières, il est nécessaire de compiler deux fois : lors de la première compilation, \XeLaTeX{} stocke le contenu de la table des matières dans un fichier \ext{toc} ; lors de la seconde compilation, il se sert de ce fichier pour afficher la table des matières. En règle générale, cette double compilation n'est guère gênante, puisqu'elle déjà nécessaire lors de l'utilisation d'une bibliographie.\renvoi{3compil}
 
 \begin{attention}
@@ -40,7 +40,7 @@ Le niveau \cs{subsubsection} a comme numéro 3. Pour afficher dans la table des 
 \tableofcontents
 \end{latexcode}
 
-\section[Table des matières ou sommaire ?]{Table des matières ou sommaire ? les chaînes de langues de polyglossia}
+\section[Table des matières ou sommaire ?]{Table des matières ou sommaire ? Les chaînes de langues de polyglossia}
 
 Selon l'usage français, une table des matières se situe en fin d'ouvrage, un sommaire  en début d'ouvrage. Par défaut la commande \cs{tableofcontents} indique que nous avons affaire à une  \enquote{table des matières} et non  à un \enquote{sommaire}. Comment avoir le terme  \enquote{sommaire} ? Il suffit de redéfinir la chaîne de langue. 
 
@@ -146,7 +146,7 @@ Le package \package{minitoc} est très complexe et contient de nombreuses subtil
 \section{Des signets dans le PDF : le package \packagenoidx{hyperref}}\sindex[pkg]{hyperref}\label{hyperref}
 
 
-Certains PDFs proposent des signets qui permettent d'accéder rapidement à un endroit précis du PDF\footnote{L'utilisation concrète de ces signets dépend du lecteur PDF.}. Il est possible avec \LaTeX{} d'obtenir un PDF contenant des signets correspondant aux différents niveaux de titre. Pour ce faire il faut utiliser le package \package{hyperref}.
+Certains PDFs proposent des signets qui permettent d'accéder rapidement à un endroit précis du document\footnote{L'utilisation concrète de ces signets dépend du lecteur PDF.}. Il est possible avec \LaTeX{} d'obtenir un PDF contenant des signets correspondant aux différents niveaux de titre. Pour ce faire il faut utiliser le package \package{hyperref}.
 
 Ce package propose de nombreuses fonctionnalités :  nous avons vu  qu'il permettait notamment de créer des renvois vers les titres de sections.\renvoi{renvoititre}
 Mais il introduit aussi des liens cliquables en interne, par exemple entre un appel de note de bas de page et la note correspondante. Il permet aussi de configurer un certain nombre de méta-données du document PDF.
