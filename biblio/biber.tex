@@ -150,9 +150,9 @@ Il n'existe pas de champ spécifiquement prévu pour indiquer la division de sou
 
 Le choix d'une entrée de type \type{book} pour la clef \verb|DeDoctChrIIviii18-20| à la place d'une entrée \type{inbook} se justifie par des questions d'héritage. On ne donne pas en effet  à cette entrée de titre propre. Dès lors, si elle était de type \type{inbook}, Biber récupérerait le champ \champ{title} de l'entrée mère et en ferait un \champ{booktitle}, ce qui n'est pas ce que nous souhaitons. En revanche, en faisant de notre division de source une entrée de type \type{book}, on  lui permet d'hériter dans son champ \champ{title} du champ \champ{title} de l'entrée mère.
 
-
-
 Évidemment le choix de ce champ devrait, idéalement, être discuté en accord avec l'éditeur. De toute façon, il est  facile, si le choix ne convient pas, de changer en série les entrées.
+
+Il est possible de vérifier automatiquement que les entrées soient du même type : nous en parlons sur notre blog\footnote{biblio_verif1}.
 \end{plusloins}
 
 Ainsi pour notre cas, il suffit de créer les deux entrées suivantes :
