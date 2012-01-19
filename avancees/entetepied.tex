@@ -64,10 +64,8 @@ Supposons que nous souhaitions afficher le numéro des pages en pied de page cen
 
 La commande \csp{thepage} indique la valeur du compteur \compteur{page}\renvoi{compteur}, correspondant au numéro de page.
 
-Vous pouvez constater le résultat sur cette page.\thispagestyle{fancy}\cfoot{{\thepage} / \ref{TotPages}} \renewcommand{\headrulewidth}{0pt}
-\fancyhead[LE,RO]{}
-\fancyhead[RE]{\leftmark}
-\fancyhead[LO]{\rightmark}
+Vous pouvez constater le résultat sur cette page.
+\cfoot{{\thepage} / \ref{TotPages}\cfoot{\thepage}} 
 
 \section{Pages recto verso et alternance gauche-droite}
 
