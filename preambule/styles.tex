@@ -4,6 +4,19 @@
 \setmonofont[Scale=0.75]{DejaVu  Sans Mono}
 \newcommand*{\headlongtable}[1]{\hfill\textbf{#1}\hfill}
 
+
+% Pour les entêtes
+
+\pagestyle{fancy}        
+\fancyfoot[C]{\thepage}
+\renewcommand{\chaptermark}[1]{\markboth {
+     #1}{}}
+\renewcommand{\sectionmark}[1]{\markright{
+    \thesection~#1}{}}
+\fancyhead[LE,RO]{}
+\fancyhead[RE]{\leftmark}
+\fancyhead[LO]{\rightmark}
+
 % Réglage pour la bibliographie
 \defbibheading{bibliography}{}
 
