@@ -133,16 +133,16 @@ On peut ainsi afficher à la fin de chaque chapitre une bibliographie du chapitr
 \begin{latexcode}
 \documentclass{…}
 …
-\usepackage[segment=chapter]{biblatex}
+\usepackage[refsegment=chapter]{biblatex}
 \defbibheading{bibliography}[\bibname]{\section{#1}}
 …
 \begin{document}
 \chapter{…}
 …
-\printbibliography[segment=\therefsegment]
+\printbibliography[refsegment=\therefsegment]
 \chapter{…}
 …
-\printbibliography[segment=\therefsegment]
+\printbibliography[refsegment=\therefsegment]
 \end{document}
 \end{latexcode}
 
