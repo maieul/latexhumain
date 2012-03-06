@@ -116,6 +116,11 @@
 }
 }
 \newcommand{\bibverbosetrad}{
+\renewbibmacro*{cite:title}{%
+  \printtext[bibhyperlink]{%
+    \printfield[citetitle]{labeltitle}%
+    \setunit{\nametitledelim}%
+    \bibstring[\mkibid]{opcit}}}
 \renewbibmacro*{cite}{%
   \usebibmacro{cite:citepages}%
   \global\togglefalse{cbx:fullcite}%
