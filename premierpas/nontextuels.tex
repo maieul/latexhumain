@@ -9,7 +9,7 @@
 Les images insérables avec \XeLaTeX sont au format JPEG (extension~\ext{jpg}), PNG (extension~\ext{png}) ou PDF (extension~\ext{jpg}). Il est nécessaire d'utiliser le package \package{graphicx}.
 
 
-L'insertion d'une image se fait de la manière suivante : \csp{includegraphics}\oarg{param. opti.}\marg{chemin de l'image}
+L'insertion d'une image se fait de la manière suivante : \csp{includegraphics}\oarg{param. opti.}\marg{chemin de l'image}.
 
 Le chemin de l'image s'indique de la même manière que le chemin des fichiers inclus.\renvoi{chemin}
 Les principaux paramètres optionnels sont les suivants\footcite[Pour les autres, on consultera][]{graphicx_options} :
@@ -52,7 +52,7 @@ La première solution paraît de prime abord plus simple, puisqu'elle ne nécess
 \footnote{Il existe deux manières en informatique de coder une image : en codant point par point (image bitmap) ou bien en codant simplement les formes, par exemple des cercles ou des segments (image vectorielle). La première méthode est adaptée à des images complexes, comme les photographies,  la seconde méthode est conseillée pour les images \enquote{simples} telles que les graphismes. La méthode vectorielle possède l'avantage d'offrir une image plus facilement redimensionnable  sans perte de qualité et de permettre aisément la sélection de texte.},
 on perd la possibilité de sélectionner dans le PDF généré par \LaTeX les textes, et on risque d'avoir des problèmes de redimensionnement.
 
-Nous allons donc ici vous présenter une des possibilités du \package{TikZ} : la représentation d'une famille de manuscrits. 
+Nous allons donc ici vous présenter une des possibilités du package \package{TikZ} : la représentation d'une famille de manuscrits. 
 
 Nous avons choisi cet exemple car il est assez simple, tout en étant fréquent en sciences humaines. Mais \package{TikZ} permet de faire bien plus, comme produire des diagrammes statistiques : nous renvoyons à d'autres ouvrages pour en savoir plus\footnote{Outre le manuel \cite{tikz}, on pourra lire \cites{tikzimpatient}[on pourra également consulter le site][]{tikzexample}}.
 Ce package possède une syntaxe spécifique. 
@@ -82,7 +82,7 @@ Ce qui donne le résultat de la figure~\ref{figure:genealogie}\renvoi{figure:gen
 \begin{description}
 \item[Ligne 1] l'environnement \enviro{tikzpicture} est l'environnement utilisé pour insérer une figure TikZ. Il peut recevoir de nombreux arguments pour modifier certains aspects, tels que l'épaisseur par défaut des lignes, la taille du texte, l'orientation du schéma. Nous renvoyons à la documentation.
 \item[Ligne 2] un nœud TikZ, matérialisé  par le commande \csp{node}, est un bloc de texte. On pourrait passer des options à cette commande, afin de modifier certains aspects comme la taille du texte.
-\item[Lignes 3 et 4] \verb|child| désigne ici une opération : associer un fils au nœud précédent. Ce fils est lui même un nœud (\verb|node|)
+\item[Lignes 3 et 4] \verb|child| désigne ici une opération : associer un fils au nœud précédent. Ce fils est lui même un nœud (\verb|node|).
 \item[Lignes 5 à 12]même chose que précédemment, sauf que le nœud D se voit attribuer des fils (E et F). Notez le nombre d'accolades et leurs imbrications : c'est ce qui permet à \package{TikZ} de construire correctement le \emph{stemma}.
 \item[Ligne 13] le point-virgule est obligatoire après chaque commande \package{TikZ} (ici \cs{node}).
 \item[Ligne 14] fin du graphisme \package{TikZ}.
@@ -109,7 +109,7 @@ La création d'un tableau simple se fait grâce à l'environnement \enviro{tabul
 \begin{latexcode}
 \begin{tabular}{<type de colonnes>}
     Cellule & Cellule & Cellule \\
-    Cellule & Cellule & Cellulle \\
+    Cellule & Cellule & Cellule \\
 \end{tabular}
 \end{latexcode}
 
@@ -163,7 +163,7 @@ Ces trois types de colonnes sont :
     \item[b\marg{largeur}] texte justifié. La plus basse ligne du texte se trouve sur la ligne de base.
 \end{description}
 
-La ligne de base est une ligne spécifique, correspondant, \emph{grosso-modo} au milieu d'une cellule. Exemple :
+La ligne de base est une ligne spécifique, correspondant \emph{grosso-modo} au milieu d'une cellule. Exemple :
 
 \inputminted{exemples/premierpas/nontextuels/tableau3colonnesarray.tex}
 \input{exemples/premierpas/nontextuels/tableau3colonnesarray}
