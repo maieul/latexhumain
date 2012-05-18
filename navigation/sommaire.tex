@@ -7,7 +7,7 @@ Dans ce chapitre nous verrons comment générer un sommaire ou une table des mat
 \section{Une table simple}
 
 La manière la plus simple de faire une table des matières est d'utiliser la commande \csp{tableofcontents}.
-Pour que \XeLaTeX{} puisse afficher cette table des matières, il est nécessaire de compiler deux fois : lors de la première compilation, \XeLaTeX{} stocke le contenu de la table des matières dans un fichier \ext{toc} ; lors de la seconde compilation, il se sert de ce fichier pour afficher la table des matières. En règle générale, cette double compilation n'est guère gênante, puisqu'elle déjà nécessaire lors de l'utilisation d'une bibliographie.\renvoi{3compil}
+Pour que \XeLaTeX{} puisse afficher cette table des matières, il est nécessaire de compiler deux fois : lors de la première compilation, \XeLaTeX{} stocke le contenu de la table des matières dans un fichier \ext{toc} ; lors de la seconde compilation, il se sert de ce fichier pour afficher la table des matières. En règle générale, cette double compilation n'est guère gênante, puisqu'elle est déjà nécessaire lors de l'utilisation d'une bibliographie.\renvoi{3compil}
 
 \begin{attention}
 La table des matières prend elle même un certain volume dans le corps du texte. Par conséquent si votre table des matières se trouve en début d'ouvrage --- il serait alors plus juste de l'appeler \forme{sommaire} --- elle décale la pagination lors de son affichage. C'est pourquoi il faut parfois compiler trois fois :
@@ -106,7 +106,7 @@ Pour un sommaire qui ne reprendrait que les niveaux de section et de chapitre, i
 
 \subsection{Sommaires partiels}
 
-Si l'on désire mettre un sommaire au début de chaque chapitre, il faut utiliser le package \package{minitoc}\footcite{minitoc} en lui passant l'option \option{french}. On doit alors activer les mini-sommaires grâce à la commande \csp{dominitoc}
+Si l'on désire mettre un sommaire au début de chaque chapitre, il faut utiliser le package \package{minitoc}\footcite{minitoc} en lui passant l'option \option{french}. On doit alors activer les mini-sommaires grâce à la commande \csp{dominitoc} :
 
 \begin{latexcode}
 \usepackage[french]{minitoc}
@@ -141,7 +141,7 @@ Pour afficher des mini-sommaires par parties, il faut utiliser la commande \csp{
 \end{latexcode}
 
 
-Le package \package{minitoc} est très complexe et contient de nombreuses subtilités ; il permet  par exemple choisir facilement les styles du sommaire. Nous renvoyons au manuel pour plus de détails\footcite[Notamment][]{minitoc_typesetting}.
+Le package \package{minitoc} est très complexe et contient de nombreuses subtilités ; il permet  par exemple de choisir facilement les styles du sommaire. Nous renvoyons au manuel pour plus de détails\footcite[Notamment][]{minitoc_typesetting}.
 
 \section{Des signets dans le PDF : le package \packagenoidx{hyperref}}\sindex[pkg]{hyperref}\label{hyperref}
 
@@ -180,7 +180,7 @@ Pour notre cas, les arguments nécessaires sont :
 citecolor=black,
 filecolor=black,
 linkcolor=black,
-urlcolor=black,
+urlcolor=black}
 \end{latexcode}
 
 \verb|colorlinks=true| indique nous colorons les liens au lieu de les entourer. Pour \package{hyperref} il existe plusieurs types de liens dont la couleur est configurable. Ici nous indiquons qu'il faut mettre en noir les types de liens suivants  :\begin{itemize}

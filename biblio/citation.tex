@@ -58,7 +58,7 @@ L'ensemble des commandes de citation ont la syntaxe suivante :
 
 \csp{\meta{prefix}cite}\oarg{prenote}\oarg{postnote}\marg{clef}.
 
-\meta{prefix} indique où et comment doit apparaître la référence : directement dans le texte, entre parenthèses, en note de bas page, etc.
+\meta{prefix} indique où et comment doit apparaître la référence : directement dans le texte, entre parenthèses, en note de bas de page, etc.
 
 Par exemple, nous souhaitons citer  un livre de Victor Saxer que nous avons entré de cette manière dans la base de données :
 
@@ -127,7 +127,7 @@ Par exemple, pour citer la page 25 :
 Ou encore les pages 25 et 35:
 
 \begin{latexcode}
-\autocite[35 \& 25]{Saxer1980}
+\autocite[25 \& 35]{Saxer1980}
 \end{latexcode}
 
 Pour non seulement citer la page précise mais  aussi ajouter autre chose dans l'argument \arg{postnote}, utilisons la commande \csp{pno}, afin que \package{biblatex} insère lui même le \forme{p.} :

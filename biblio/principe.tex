@@ -11,12 +11,12 @@ Il existe un module de gestion de la bibliographie dans la plupart des logiciels
 
 Conséquence, la grande partie des utilisateurs de ces logiciels gèrent leur bibliographie \enquote{à la main} --- les références bibliographique sont écrites textuellement, directement dans le fichier, ce qui implique beaucoup de contraintes  :
 \begin{itemize}
-\item Si on veut changer l'ordre des informations, ou en supprimer, il faut reprendre soit même l'ensemble des références.
+\item Si on veut changer l'ordre des informations, ou en supprimer, il faut reprendre soi-même l'ensemble des références.
 \item La gestion des versions abrégées des références est  compliquée :  il faut s'assurer soi-même que la référence a déjà été citée, mais pas trop loin, etc. 
 \item Il faut copier-coller soi-même à la fin l'ensemble des références bibliographiques. 
 \end{itemize}
 
-La logique de la gestion bibliographique en \LaTeX{} est  simple. Un fichier  \ext{bib} --- éventuellement plusieurs --- contient l'ensemble des références bibliographiques. Pour chaque référence, appelée \forme{entrée}, sont indiqués les éléments utiles :  type de référence (livre, article, actes de colloque etc.), titre, auteur, pagination, sous-titre, éditeur, etc\footnote{Par ailleurs ce fichier pourra contenir des commentaires utiles pour la préparation du travail : résumé, notes de lecture, cotation dans une bibliothèque.}. Chaque référence possède une clef unique permettant de la distinguer d'une autre.
+La logique de la gestion bibliographique en \LaTeX{} est  simple. Un fichier  \ext{bib} --- éventuellement plusieurs --- contient l'ensemble des références bibliographiques. Pour chaque référence, appelée \forme{entrée}, sont indiqués les éléments utiles :  type de référence (livre, article, actes de colloque, etc.), titre, auteur, pagination, sous-titre, éditeur, etc.\footnote{Par ailleurs ce fichier pourra contenir des commentaires utiles pour la préparation du travail : résumé, notes de lecture, cotation dans une bibliothèque.} Chaque référence possède une clef unique permettant de la distinguer d'une autre.
 
 Dans le document \LaTeX{}, on précise dans le préambule le chemin du fichier \ext{bib}. À chaque fois que l'on souhaite citer une référence, οn utilise une commande en lui passant la clef en argument. Le package \package{biblatex} se charge alors d'afficher la référence selon un style de citation --- c’est-à-dire une présentation --- déterminé. Ainsi, si on veut changer l'ordre de présentation, par exemple intervertir l'éditeur et la ville de publication, il suffit de modifier le style, ce qui se fait aisément, puisque les styles sont une série de commandes \LaTeX{}. Par ailleurs \package{biblatex} gère automatiquement les références déjà citées et introduit tout seul, en fonction du style choisi, les abréviations universitaires. 
 

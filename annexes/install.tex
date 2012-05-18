@@ -136,12 +136,12 @@ Il y a deux moyens de mettre à jour votre installation \LaTeX sous GNU/Linux.
 
 \begin{enumerate}
 \item Le premier moyen de mettre à jour simplement est d'utiliser \verb|tlmgr| dans un terminal. La commande permettant de tout mettre à jour est la suivante:
-\verb|tlmgr update --self --all|.\footnote{Vous devez bien entendu être en mode administrateur pour lancer ces commandes. Utilisez \endquote{su} ou \endquote{sudo} selon votre distribution.} S'il s'avère nécessaire d'installer un nouveau paquet, il faut utiliser la commande \verb|tlmgr install paquet|.
+\verb|tlmgr update --self --all|.\footnote{Vous devez bien entendu être en mode administrateur pour lancer ces commandes. Utilisez \enquote{su} ou \enquote{sudo} selon votre distribution.} S'il s'avère nécessaire d'installer un nouveau paquet, il faut utiliser la commande \verb|tlmgr install paquet|.
 \item Vous pouvez lancer l'interface graphique de gestion des paquets en tapant la commande \verb|tlmgr gui|.
 \end{enumerate}
 
 \subsection{Sous Windows}
 
-Dans le menu Démarrer, vous trouvez une section nommée fort justement MiKTeX, suivie d'un numéro de version. Dans cette section, il y a notamment une sous-section consacrée à la \enquote{Maintenance} –-- répondant au doux nom de \forme{Maintenance (Admin)} --–, dans laquelle vous avez accès à deux outils utiles: le gestionnaire de mises à jour de packages (\forme{Updates}), et le gestionnaire d'installation de nouveaux packages (\forme{Package Manager}).
+Dans le menu Démarrer, vous trouvez une section nommée fort justement MiKTeX, suivie d'un numéro de version. Dans cette section, il y a notamment une sous-section consacrée à la \enquote{Maintenance} --- répondant au doux nom de \forme{Maintenance (Admin)} ---, dans laquelle vous avez accès à deux outils utiles: le gestionnaire de mises à jour de packages (\forme{Updates}), et le gestionnaire d'installation de nouveaux packages (\forme{Package Manager}).
 
 Remarquez que la plupart du temps, vous n'aurez pas besoin d'installer explicitement un nouveau package. En effet, au moment de la compilation, MiKTeX détecte que vous sollicitez un composant qui n'est pas présent sur votre système et vous propose de l'installer.
