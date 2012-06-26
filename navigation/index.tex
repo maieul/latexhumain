@@ -7,16 +7,16 @@ Dans ce chapitre nous verrons comment faire un ou plusieurs index\footnote{Je re
 \end{intro}
 
 
-\section{Faire un index simple avec \packagenoidx{MakeIndex}}\sindex[pkg]{MakeIndex}
+\section{Faire un index simple avec \packagenoidx{imakeidx}}\sindex[pkg]{imakeidx}
 
 
 \subsection{Principe de base}
 
 
-Pour indexer un document, il faut utiliser le package \package{makeidx} et placer  dans le préambule la commande \csp{makeindex}.
+Pour indexer un document, il faut utiliser le package \package{makeidx} et placer  dans le préambule la commande \csp{makeindex}\footnote{Le \package {imakeidx} remplace à la fois le  \package{makeidx} et le  \package{SplitIndex}, dont il reprend les commandes. Il est plus simple à utiliser, notamment pour la mise en page de l'index (voir son manuel), et ne nécessite qu'une compilation, contrairement à ses prédécesseurs. Pour obtenir des informations sur les commandes d'indexations, il faut consulter les manuels de \package{makeidx} et de \package{SplitIndex}}.
 
 \begin{latexcode}
-\usepackage{makeidx}
+\usepackage{imakeidx}
 \makeindex
 \end{latexcode}
 
@@ -64,32 +64,15 @@ Il suffit ensuite, au cours de la rédaction de son texte, de taper par exemple 
 
 \subsubsection{Générer l'index}
 
-Si notre fichier principal s'appelle \fichier{exemple.tex}, lors de la première compilation, la commande \cs{makeindex} indique à \LaTeX{} de créer un fichier de type \fichier{exemple.idx}, contenant la liste de toutes les entrées que l'on a placées. 
- 
+Si notre fichier principal s'appelle \fichier{exemple.tex},  la commande \cs{makeindex} indique à \LaTeX{}, lors de la compilation avec \XeLaTeX , de créer un fichier de type \fichier{exemple.idx}, contenant la liste de toutes les entrées que l'on a placées. 
+\LaTeX{} génère aussi un fichier \fichier{exemple.ilg} qui contient les messages de compilation de l'index, et un fichier \fichier{exemple.ind} qui contient l'index formaté.
+L'index  apparaît dans le document à l'emplacement que l'on a indiqué par la commande \csp{printindex}.
 
+%\begin{plusloins}
+%L'index n'apparaît pas dans la table des matières. Nous indiquons sur notre blog comment faire pour qu'il apparaisse. Un collègue y indique également en réaction sa méthode, qui consiste à passer par le package \package{imakeidx}\footcite{indextoc}.
 
-
-
-On compile ensuite le document avec le programme MakeIndex, soit  en ligne de commande\renvoi{terminal}  soit via l'éditeur de texte, si celui-ci le propose.
-
-\begin{bashcode}
-makeindex exemple.idx
-\end{bashcode}
-
-Il est possible de ne pas indiquer l'extension \ext{idx}.
-
-\LaTeX{} génère alors un fichier \fichier{exemple.ilg} qui contient les messages de compilation de l'index, et un fichier \fichier{exemple.ind} qui contient l'index formaté.
-
-
-
-
-Il suffit alors de compiler à nouveau le document principal pour y intégrer son index, qui apparaît à l'emplacement que l'on a indiqué par la commande \csp{printindex}.
-
-\begin{plusloins}
-L'index n'apparaît pas dans la table des matières. Nous indiquons sur notre blog comment faire pour qu'il apparaisse. Un collègue y indique également en réaction sa méthode, qui consiste à passer par le package \package{imakeidx}\footcite{indextoc}.
-
-Nous parlons dans un autre chapitre de  la façon de  modifier la présentation de l'index.\renvoi{styleindex}
-\end{plusloins}
+%Nous parlons dans un autre chapitre de  la façon de  modifier la présentation de l'index.\renvoi{styleindex}
+%\end{plusloins}
 \subsection{Allons plus loin}
 \subsubsection{Créer des subdivisions}
 
@@ -207,6 +190,50 @@ De même pour faire apparaître le numéro de la page en italique utilise-t-on l
 Si vous utilisez le package \package{hyperref}, vous constaterez que celui-ci insère des liens hypertextes vers les pages au sein de l'index. Toutefois si une de ces pages est formatée, le lien disparaît. Nous expliquons sur notre site comment éviter ce problème\footcite{indexhypergras}.
 \end{plusloins}
 
+
+\subsection{Quelques options du package \package{imakeidx}}
+
+
+
+La commande \cs{makeindex} peut recevoir des arguments optionnels sous la forme \cs{makeindex}\oarg{clef$=$valeur} ; s'il y a plusieurs arguments, ils doivent être séparés par une virgule. En voici deux (nous en verrons un troisième pour les index multiples, et un autre lorsque nous évoquerons le formatage de l'index)\footnote{Pour une liste exhaustive, voir le manuel du package} :%mettre le renvoi
+\begin{fieldlist}
+\fielditem{title} Permet de changer le nom de l'index, qui par défaut est \enquote{Index}. Par exemple, le code suivant permet d'avoir un index intitulé \enquote{Index rerum} 
+
+\begin{latexcode}
+\makeindex[title = Index rerum]
+\end{latexcode}
+
+\fielditem{columns} Indique le nombre de colonnes. Par défaut, l'index est en deux colonnes. Si l'on veut un index en une seule colonne, il suffit  de mettre  :
+
+\begin{latexcode}
+\makeindex[title = Index rerum, columns = 1]
+\end{latexcode}
+
+\fielditem{intoc} Indique si l'index doit apparaître ou non dans la table des matières. Par défaut, vaut pour \verb|false| . Pour le positionner en \verb|true| , il suffit de le mettre dans la liste des argument, sans la valeur true: 
+
+\begin{latexcode}
+\makeindex[title = Index rerum, columns = 1, intoc]
+\end{latexcode}
+\end{fieldlist}
+
+Il existe une autre commande, la commande \cs{indexsetup} qui peut, elle aussi, recevoir plusieurs arguments sous la forme
+\marg{clef$=$valeur}. Voici ceux qui peuvent être utile lorsque l'on n'a qu'un index (nous en verrons quelques autres à la section suivante:
+\begin{fieldlist}
+\fielditem{level} Indique le niveau de division (section, chapitre, etc) auquel correspond l'index. Par défaut, il s'agit de \verb|\chapter*| .
+\fielditem{toclevel} Indique le niveau de division (section, chapitre, etc) auquel correspond l'index dans la table des matières.  Contrairement à l'argument précédent, il ne faut pas mettre de barre oblique ici :
+
+\begin{latexcode}
+\indexsetup[level=\section*, toclevel=section]
+\end{latexcode}
+\end{fieldlist}
+
+
+Pour terminer, voici la commande \cs{indexprologue}\oarg{espace}\marg{texte} qui permet de mettre un prologue avant l'index. La commande se place juste avant \cs{printindex}\footnote{Il peut y avoir autant de prologues que d'index}. L'argument \oarg{espace} (par défaut \verb|bigskip|) indique l'espace   entre le prologue de l'index et la première entrée; il doit contenir  une commande de distance verticale (comme  \verb|\vspace{36pt}|). L'argument \marg{texte} contient le prologue en lui même. Par exemple, pour un index des notions :
+
+\begin{latexcode}
+\indexprologue{Les numéros en gras renvoient aux pages où la notion est définie}
+\printindex
+\end{latexcode}
 
 
 \section{\packagenoidx{SplitIndex}, ou comment faire plusieurs index}\sindex[pkg]{SplitIndex} \label{splitindex}
