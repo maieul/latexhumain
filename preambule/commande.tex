@@ -61,7 +61,8 @@
 \setcounter{renvoi}{0}
 \newcommand{\renvoi}[1]{\addtocounter{renvoi}{1}%
 	\textsuperscript{\alph{renvoi}}%
-	\marginpar{\fbox{\textsuperscript{\alph{renvoi}}p. \pageref{#1}}}%
+	\marginpar{\small\fbox{\textsuperscript{\alph{renvoi}}§\ref{#1}}}%
+	\normalmarginpar%
 	}
 
 \newcommand{\rev}[1]{\marginpar{#1}}
