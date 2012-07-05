@@ -135,7 +135,7 @@ entrée x-y
 
 \subsubsection{Entrées formatées}
 
-Makeindex ne gère pas correctement les accents indiqués dans l'argument de la commande \cs{index} : il classe les mots commençant par un accent à la fin de l'index. La syntaxe \cs{index}\verb|{|\meta{entrée}\verb|@|\meta{entrée formatée}\verb+}+ permet de résoudre ce problème. Ainsi, si l'on veut créer une entrée \enquote{écrivains}, qui soit triée à \enquote{e}, il faut insérer \cs{index}\verb|{ecrivains@écrivains}|.
+L'indexation avec \LaTeX ne gère pas correctement les accents indiqués dans l'argument de la commande \cs{index} : il classe les mots commençant par un accent à la fin de l'index. La syntaxe \cs{index}\verb|{|\meta{entrée}\verb|@|\meta{entrée formatée}\verb+}+ permet de résoudre ce problème. Ainsi, si l'on veut créer une entrée \enquote{écrivains}, qui soit triée à \enquote{e}, il faut insérer \cs{index}\verb|{ecrivains@écrivains}|.
 
 La commande \cs{index}\verb|{|\meta{entrée}\verb|@|\meta{entrée formatée}\verb+}+ permet donc de classer une entrée où l'on veut dans l'index. Pour faire apparaître dans l'index, par exemple, les empereurs romains dans l'ordre chronologique et non dans l'ordre alphabétique, on peut utiliser les commandes suivantes:
 
