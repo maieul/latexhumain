@@ -71,7 +71,7 @@ L'index  apparaît dans le document à l'emplacement que l'on a indiqué par la 
 \subsection{Allons plus loin}
 \subsubsection{Créer des subdivisions}
 
-Il est possible, avec \package{MakeIndex},  de créer des subdivisions et des subsubdivisions  pour chaque entrée de l'index. La subdivision se crée de la manière suivante : \begin{english}\cs{index}\verb|{|\meta{entrée}\verb|!|\meta{sous-entrée}\verb|}|\end{english}. La sous-sous-entrée, logiquement, se crée ainsi: \begin{english}\cs{index}\verb|{|\meta{entrée}\verb|!|\meta{sous-entrée}\verb|!|\meta{sous-sous-entrée}\verb|}|\end{english}. MakeIndex ne permet cependant que ces trois niveaux d'indexation.
+Il est possible, avec \package{imakeidx},  de créer des subdivisions et des subsubdivisions  pour chaque entrée de l'index. La subdivision se crée de la manière suivante : \begin{english}\cs{index}\verb|{|\meta{entrée}\verb|!|\meta{sous-entrée}\verb|}|\end{english}. La sous-sous-entrée, logiquement, se crée ainsi: \begin{english}\cs{index}\verb|{|\meta{entrée}\verb|!|\meta{sous-entrée}\verb|!|\meta{sous-sous-entrée}\verb|}|\end{english}. On ne peut cependant avoir que ces trois niveaux d'indexation.
 
 On peut ainsi référencer autrement notre premier exemple, en créant les entrées \enquote{Evêques} et \enquote{Ducs} que l'on subdivise:
 
@@ -327,8 +327,6 @@ La documentation de \package{biblatex}\footcite{biblatex_options} nous informe q
 \item Compilation avec \XeLaTeX.
 \item Compilation avec Biber (ou BibTeX).
 \item Compilation avec \XeLaTeX pour que les données bibliographiques soit intégrées dans l'index.
-\item Compilation avec Makeindex pour transformer le fichier \ext{idx} en \ext{ind}.
-\item Compilation avec \XeLaTeX pour finir d'intégrer l'index dans le fichier \ext{pdf}
 \end{enumerate}
 
 On constate cependant deux problèmes : 
@@ -347,10 +345,10 @@ En outre nous aimerions :
 
 \subsection{Création d'un index spécifique}
 
-Pour créer un index spécifique aux sources, rien de particulier : il suffit d'utiliser \package{splitindex} et la commande \cs{newindex} :
+Pour créer un index spécifique aux sources, rien de particulier : il suffit d'utiliser \package{imakeidx} et la commande \cs{makeindex} :
 
 \begin{latexcode}
-\newindex[Index des sources]{sources}
+\makeindex[name=sources,title=Index des sources]
 \end{latexcode}
 
 \subsection{Modifications des macros de \packagenoidx{biblatex}}\sindex[pkg]{biblatex}
@@ -373,8 +371,20 @@ Or nous voudrions obtenir une indexation correspondant à la commande:
  C'est pourquoi nous avons conçu un script dans le langage python (nous expliquons plus loin comment s'en servir\renvoi{python}), qui concatène dans le fichier \ext{idx} les trois indexations en une seule.
 Mais avant d'utiliser ce script, il faut  indexer une fausse valeur, la valeur \verb|---|, qui empêchera le script d'indexer tous les champs d'une entrée: nous ne voulons pas obtenir une entrée de la forme : \\
  \verb|\index{author!title!titleaddon!author2!title2!}|
+ 
+ Toutefois, ce script python doit être exécuté avant que \LaTeX ne transforme le fichier \ext{idx} en fichier \ext{ind}. Cette transformation est faite automatiquement par le package \package{imakeidx}. Cependant, nous pouvons désactiver cet automatisme pour un index particulier, dans le cas présent pour l'index sources. Pour ce faire, il nous suffit d'appeler ainsi la commande \cmd{makeindex} :
 
+\begin{latexcode}
+\makeindex[name=sources,title=Index des sources,noautomatic]
+\end{latexcode}
+
+Il nous faudra alors, après l'exécution du script python, compiler le fichier \fichier{sources.idx} avec le script MakeIndex, afin de produire un fichier \fichier{sources.ind} :
+\begin{bashcode}
+makeindex sources.idx
+\end{bashcode}
 \end{description}
+
+Après cela, la compilation avec XeLa
 
 \subsection{Fomat d'indexation \packagenoidx{biblatex}}\sindex[pkg]{biblatex}
 
@@ -387,22 +397,22 @@ Il nous faut donc définir ce format grâce aux commandes \csp{DeclareIndexNameF
 \begin{english}
 \begin{latexcode}
 \DeclareIndexNameFormat{sources}{%
-  \usebibmacro{index:name}{\sindex[sources]}{#1}{#3}{#5}{#7}
+  \usebibmacro{index:name}{\index[sources]}{#1}{#3}{#5}{#7}
   }
 \end{latexcode}
 \end{english}
 
 Nous disons en première ligne que nous déclarons un format d'indexation \verb|sources| pour les noms propres. Dans la ligne suivante, nous déclarons ce que nous faisons : nous appelons une macro \bibmacro{index:name}. 
 
-Cette macro est déjà définie par \package{biblatex}. Elle reçoit plusieurs arguments. Le premier argument est la commande à exécuter : ici \cs{sindex}\verb|[sources]|, qui permet d'indexer dans l'index \verb|sources| défini plus haut. Les autres arguments sont repris des codes de \package{biblatex} et désignent les différentes parties du nom à indexer\footcite[Nous renvoyons le lecteur à la documentation de \package{biblatex} : ][]{biblatex_formats}.
+Cette macro est déjà définie par \package{biblatex}. Elle reçoit plusieurs arguments. Le premier argument est la commande à exécuter : ici \cs{index}\verb|[sources]|, qui permet d'indexer dans l'index \verb|sources| défini plus haut. Les autres arguments sont repris des codes de \package{biblatex} et désignent les différentes parties du nom à indexer\footcite[Nous renvoyons le lecteur à la documentation de \package{biblatex} : ][]{biblatex_formats}.
 
 
 \subsubsection{Indexation des autres champs}
 
 \begin{latexcode}
 \DeclareIndexFieldFormat{sources}{%
-  \ifcurrentfield{indextitle}{\sindex[sources]{#1@\emph{#1}}}%
-  {\sindex[sources]{#1}}%
+  \ifcurrentfield{indextitle}{\index[sources]{#1@\emph{#1}}}%
+  {\index[sources]{#1}}%
   }
 \end{latexcode}
 
@@ -411,13 +421,13 @@ La commande \cs{DeclareIndexFieldFormat} sert à déclarer la manière d'indexer
 \subsection{Compilation et concaténation des index}
 
 
-Après la  compilation \XeLaTeX, nous obtenons un fichier \fichier{xxx.idx}. Si vous l'ouvrez vous constaterez que nous avons des entrées sous la forme : 
+Après la  compilation \XeLaTeX, nous obtenons un fichier \fichier{sources.idx}. Si vous l'ouvrez vous constaterez que nous avons des entrées sous la forme : 
 
 \begin{latexcode}
-\indexentry[sources]{Author}{page}
-\indexentry[sources]{Titleindex@\emph  {Titleindex}}{page}
-\indexentry[sources]{Titleaddon}{page}
-\indexentry[sources]{---}{page}
+\indexentry{Author}{page}
+\indexentry{Titleindex@\emph  {Titleindex}}{page}
+\indexentry{Titleaddon}{page}
+\indexentry{---}{page}
 \end{latexcode}
 
 Nous souhaitons remplacer ces entrées par des entrées sous la forme :
@@ -439,10 +449,10 @@ Pour utiliser ce script, il vous faut :\label{python}
 \end{itemize}
 
 
-Après cette concaténation nous devons compiler en ligne de commande, enfin de séparer les différents index :
+Après cette concaténation nous devons compiler l'index \forme{sources} en ligne de commande, via le programme makeindex :
 
 \begin{bashcode}
-splitindex xxx
+makeindex sources
 \end{bashcode}
 
 
@@ -459,9 +469,9 @@ Pour obtenir un index des sources primaires, une fois tous les fichiers mis en p
 \begin{enumerate}
 \item \verb|xelatex xxx.tex|
 \item \verb|biber xxx|
-\item \verb|xelatex xxx.tex|\footnote{Si un sommaire se situe en début d'ouvrage, il peut être nécéssaire de compiler plusieurs fois.}
+\item \verb|xelatex xxx.tex|\footnote{Si un sommaire se situe en début d'ouvrage, il peut être nécessaire de compiler plusieurs fois.}
 \item \verb|python index.py|
-\item \verb|splitindex xxx|
+\item \verb|makeindex sources|
 \item \verb|xelatex xxx|
 \end{enumerate}
 
