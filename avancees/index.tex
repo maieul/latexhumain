@@ -11,19 +11,16 @@ Les commandes pour formater l'index sont à placer dans un fichier \fichier{mons
 Pensez à placer ce fichier à un endroit où \LaTeX peut le trouver, par exemple à côté du fichier principal.
 \end{attention}
 
-Il faut ensuite compiler en ligne de commande suivant cette syntaxe :\renvoi{terminal}
+Auparavant, il fallait compiler en ligne de commande suivant cette syntaxe :\renvoi{terminal}
 
 \begin{bashcode}
 makeindex -s monstyle.ist monfichier.idx
 \end{bashcode}
 
-Ou si vous utilisez \package{splitindex}\renvoi{splitindex}.
+L'option -s indiquait  à \package{makeindex}  qu'il devait utiliser le fichier de style \fichier{monstyle.ist}.
+Le package \package{imakeidx}  évite de passerpar le terminal : il suffit en effet de  donner à la commande \cs{makeindex} l'argument \oarg{options=-s  monstyle.ist}
 
-\begin{bashcode}
-splitindex -m "makindex -s monstyle.ist" monfichier.idx
-\end{bashcode}
 
-L'option -s indique à \package{makeindex}  qu'il doit utiliser le fichier de style \fichier{monstyle.ist}.
 
 \section{Quelques commandes}
 

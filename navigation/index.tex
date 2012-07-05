@@ -13,7 +13,7 @@ Dans ce chapitre nous verrons comment faire un ou plusieurs index\footnote{Je re
 \subsection{Principe de base}
 
 
-Pour indexer un document, il faut utiliser le package \package{imakeidx} et placer  dans le préambule la commande \csp{makeindex}\footnote{Le \package {imakeidx} remplace à la fois le  \package{makeidx} et le  \package{SplitIndex}, dont il reprend les commandes. Il est plus simple à utiliser, notamment pour la mise en page de l'index (voir son manuel), et ne nécessite qu'une compilation, contrairement à ses prédécesseurs. Pour obtenir des informations sur les commandes d'indexations, il faut consulter les manuels de \package{makeidx} et de \package{SplitIndex}}.
+Pour indexer un document, il faut utiliser le package \package{imakeidx} et placer  dans le préambule la commande \csp{makeindex}\footnote{Le \package {imakeidx} remplace à la fois le  \package{makeidx} et le  \package{SplitIndex}, dont il reprend les commandes. Il est plus simple à utiliser, notamment pour la mise en page de l'index (voir son manuel), et ne nécessite qu'une compilation, contrairement à ses prédécesseurs. Pour obtenir des informations sur les commandes d'indexation, il faut consulter les manuels de \package{makeidx} et de \package{SplitIndex}}.
 
 \begin{latexcode}
 \usepackage{imakeidx}
@@ -236,77 +236,77 @@ Pour terminer, voici la commande \cs{indexprologue}\oarg{espace}\marg{texte} qui
 \end{latexcode}
 
 
-\section{\packagenoidx{SplitIndex}, ou comment faire plusieurs index}\sindex[pkg]{SplitIndex} \label{splitindex}
+\section{Faire plusieurs index}%\sindex[pkg]{SplitIndex} \label{splitindex}
 
 
-Le package se charge en remplaçant \cs{usepackage}\verb|{makeindex}| par : \\ 
-\cs{usepackage}\verb|{splitidx}|, tout en gardant ensuite \cs{makeindex} dans le préambule, ou bien en mettant simplement  \cs{usepackage}\verb|[makeindex]{splitidx}|.
+Le package \package{imakeidx} remplace ici le package \package{SplitIndex}
+%Le package se charge en remplaçant \cs{usepackage}\verb|{makeindex}| par : \\ 
+%\cs{usepackage}\verb|{splitidx}|, tout en gardant ensuite \cs{makeindex} dans le préambule, ou bien en mettant simplement  \cs{usepackage}\verb|[makeindex]{splitidx}|.
 
 \subsection{Définir ses index}
 
-Le package \package{SplitIndex} permet de faire plusieurs index pour un même document. La première étape consiste à définir ces index. On les déclare dans le préambule par la commande \csp{newindex}\oarg{Nom de l'index}\marg{abbréviation}.
-
-
-L'argument facultatif est le nom de l'index tel qu'il apparaît après la compilation du document. L'argument obligatoire doit être assez court, puisque c'est avec lui que vous indiquez à quel index appartient chaque entrée indexée dans votre document.
+Le package \package{imakeidx} permet de faire plusieurs index pour un même document. La première étape consiste à définir ces index. On les déclare dans le préambule en utilisant pour chaque index la commande \csp{makeindex} que nous avons déjà vue. On donne à chaque index un nom  abrégé (à ne pas confondre avec son titre) qui permettra ensuite d'indiquer  à quel index appartient telle entrée indexée dans votre document. Le nom abrégé de l'index est indiqué comme  option à la commande  \csp{makeindex}.
 
 
 Ainsi, pour faire un index des noms propres et un index général, on peut déclarer:
 
 \begin{latexcode}
-\newindex[Index général]{idx}
-\newindex[Noms propres]{npr}
+\makeindex[title=Index général]
+\makeindex[name=npr, title=Index des noms propres] 
 \end{latexcode}
 
+On remarque ici qu'aucun nom n'a été donné à l'index général: dans ce cas, le nom abrégé est automatiquement idx.
+%phrase à retravailler
+
 \subsection{Indexer son texte}
-Une fois  les index déclarés, il faut passer à l'indexation proprement dite. Le principe est similaire à celui que nous avons déjà vu pour le package \package{makeindex}\renvoi{cmdindex}.
+Une fois  les index déclarés, il faut passer à l'indexation proprement dite. Le principe est le même que pour un seul index,
+mais au lieu de la commande \cs{index}\marg{entrée}, on utilise :
 
-Mais au lieu de la commande \cs{index}\marg{entrée}, on utilise :
-
-\csp{sindex}\oarg{abbréviation}\marg{entrée}. 
+\csp{index}\oarg{nom abrégé}\marg{entrée}. 
 
 \begin{plusloins}
 
-Toutes les entrées indiquées non par \cs{sindex} mais par \cs{index} sont automatiquement placées dans un index général, dont le nom abrégé est idx.
+Toutes les entrées indiquées  par \cs{index}\marg{entrée}, sans l'argument \oarg{nom  abrégé}, sont automatiquement placées dans l'index général idx.
+
 
 \end{plusloins}
 On peut ainsi indexer notre texte d'Éginhard de la façon suivante:
 
 \begin{latexcode}
-\sindex[idx]{Charles et la papauté|(}
-Tandis que Charle\sindex[npr]{Charlemagne} était à Rome, il convint
-avec le pape Adrien\sindex[npr]{Adrien} qu’ils enverraient de concert
-des ambassadeurs à Tassilon, duc de Bavière\sindex[npr]{Tassilon}
+\index{Charles et la papauté|(}
+Tandis que Charle\index[npr]{Charlemagne} était à Rome, il convint
+avec le pape Adrien\index[npr]{Adrien} qu’ils enverraient de concert
+des ambassadeurs à Tassilon, duc de Bavière\index[npr]{Tassilon}
 \textelp{}
 Les hommes choisis et envoyés dans cette ambassade furent, de 
-la part du pape, les évêques Formose\sindex[npr]{Formose} et 
-Damase\sindex[npr]{Damase}(…)\sindex[idx]{Charles et la papauté|)}.
+la part du pape, les évêques Formose\index[npr]{Formose} et 
+Damase\index[npr]{Damase}(…)\index{Charles et la papauté|)}.
 \end{latexcode}
 
-Après la compilation avec \XeLaTeX il faut compiler le fichier \ext{idx} avec SplitIndex. En général, la seule solution est de modifier les réglages de son éditeur ou de  passer par la ligne de commande\renvoi{terminal}  :
 
-\begin{bashcode}
-splitindex exemple.idx
-\end{bashcode}
 
 \subsection{Imprimer les index}
 
-Pour imprimer un index, il suffit d'utiliser la commande \csp{printindex} en lui passant le nom abrégé de l'index en option. Ainsi, pour imprimer l'index des noms propres:
+Pour imprimer un index, il suffit d'utiliser la commande \csp{printindex} en lui passant le nom abrégé de l'index en option. Ainsi, pour imprimer l'index général suivit de celui des noms propres:
 
 \begin{latexcode}
+\printindex
 \printindex[npr]
 \end{latexcode}
 
-Pour imprimer l'ensemble des index, il faut utiliser la commande \csp{printindex*}.
-Par défaut, les index ont un titre de niveau \cs{chapter} dans la classe \classe{book} et de niveau \cs{section} dans la classe \classe{article}.
 
- Il est possible d'imprimer les index avec un titre de niveau immédiatement inférieur, pour regrouper par exemple  l'ensemble des index dans un chapitre divisé en autant de sections que d'index. Il faut utiliser dans ce cas la commande \csp{printsubindex}, ou \csp{printsubindex*} pour tous les imprimer.
+\begin{plusloins}
 
-Par exemple :
+Si l'on veut regrouper tous les index en un seul chapitre dont chaque index est une section, on utilisera  à la commande \cs{indexsetup}. On peut lui passer comme option \oarg{noclearpage}, pour  éviter que chaque index commence à une nouvelle page. Bien sûr, chaque index peut avoir son propre prologue. Voici un exemple: 
 
-\begin{latexcode}
-\chapter{Index}
-\printsubindex*
-\end{latexcode}
+
+\indexsetup{level=\section*,toclevel=section,noclearpage} ... \chapter*{Indices}
+\indexprologue{Les numéros en gras renvoient aux définitions des notions} 
+\printindex
+
+\indexprologue{Les auteurs anciens sont indiqués en italiques}
+\printindex[aut] 
+\end{plusloins}
 
 \section{Indexer ses sources}
 
