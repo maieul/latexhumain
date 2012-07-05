@@ -15,7 +15,7 @@ On peut également modifier le style d'une page en particulier grâce à la comm
 Ces styles sont :
 \begin{description}
 \item[empty] pas d'en-tête ni de pied de page.
-\item[plain] pas d'en-tête mais pieds de pages contenant le numéro de page en centré. C'est le style correspondant aux pages de début de chapitre. \renvoi{chapitrepagestyle}
+\item[plain] pas d'en-tête mais pieds de pages contenant le numéro de page en centré. C'est le style correspondant aux pages de début de chapitre\renvoi{chapitrepagestyle}. 
 \item[heading] pas de pied, en-têtes contenant le titre du chapitre, de la section ou de la sous-section et le numéro de la page. C'est le style par défaut. \label{styleentetes}
 \item[myheading] similaire au précédent, mais l'en-tête peut être personnalisé\footcite[Nous tenons cette information du manuel de][\pno~222, qui ne précise pas comment faire]{latex_companion}.
 \end{description}
@@ -34,7 +34,7 @@ Le \package{fancyhdr} propose un autre style, qu'il est aisé de personnaliser \
 \end{latexcode}
 
 \begin{plusloins}
-Les pages de début de chapitre ont automatiquement le style \forme{plain}. Pour désactiver ce style par défaut, il faut modifier le commande \cs{chapter}. Nous en parlons dans un autre chapitre. \renvoi{entetechapter}
+Les pages de début de chapitre ont automatiquement le style \forme{plain}. Pour désactiver ce style par défaut, il faut modifier le commande \cs{chapter}. Nous en parlons dans un autre chapitre\renvoi{entetechapter}. 
 \end{plusloins}
 
 
@@ -152,11 +152,11 @@ Comme vous n'affichez alors plus que le titre du chapitre, il est peut-être inu
 
 
 \begin{plusloins}
-Si vous vous amusez à fouiller le fichier \fichier{book.cls}, vous verrez que la commande \cs{chaptermark} est définie deux fois. En réalité, sa définition est conditionnée par l'option de classe \option{twoside} ou \option{oneside}.\renvoi{nbsides}
+Si vous vous amusez à fouiller le fichier \fichier{book.cls}, vous verrez que la commande \cs{chaptermark} est définie deux fois. En réalité, sa définition est conditionnée par l'option de classe \option{twoside} ou \option{oneside}\renvoi{nbsides}.
 \end{plusloins}
 
 \begin{plusloins}
-La commande \cs{thechapter} sert à afficher le numéro du chapitre, stocké dans un compteur \compteur{chapter}. Nous parlons plus loin des compteurs et des commandes \cs{the\meta{compteur}}.\renvoi{apparencecompteur}
+La commande \cs{thechapter} sert à afficher le numéro du chapitre, stocké dans un compteur \compteur{chapter}. Nous parlons plus loin des compteurs et des commandes \cs{the\meta{compteur}}\renvoi{apparencecompteur}.
 \end{plusloins}
 
 \section{Filet d'en-têtes et de pieds de pages}

@@ -28,7 +28,7 @@ La commande \csp{setmainfont} sert à définir la police avec empattements (corp
 
 Ici nous avons indiqué avec le paramètre \option{Scale} que nous souhaitons réduire de 25 \% la taille de la police \enquote{DejaVu Sans Mono}, car il s'agit d'une police assez grande. 
 
-L'option \option{Mapping=tex-text} des deux premières commandes permet de gérer de manière particulière certaines suites de caractères, par exemple de remplacer trois tirets courts (\verb|---|) par un tiret long (---).\renvoi{tirets} 
+L'option \option{Mapping=tex-text} des deux premières commandes permet de gérer de manière particulière certaines suites de caractères, par exemple de remplacer trois tirets courts (\verb|---|) par un tiret long (---)\renvoi{tirets}. 
 
 Il existe d'autres paramètres, par exemple pour gérer finement les ligatures, précisés dans le manuel de \package{fontspec}\footcite{fontspec_optionspolices}.
 
@@ -65,7 +65,7 @@ Jusqu'à maintenant, à quelques exceptions près, nous n'avons vu que des comma
 
 Une commande de bascule entourée d'accolades n'a d'effet qu'au sein de la paire d'accolade. Une commande de bascule utilisée dans un environnement n'a d'effet que dans cet environnement. Si une commande de bascule est utilisée dans le préambule, elle a en général un effet dans l'ensemble du document.\label{porteebascule} 
 
-Nous avons déjà présenté plus haut des commandes à bascule : celles de modification de la taille des caractères.\renvoi{commandesdetaille}
+Nous avons déjà présenté plus haut des commandes à bascule : celles de modification de la taille des caractères\renvoi{commandesdetaille}.
 
 Il est donc recommandé de mettre la commande \cs{onehalfspacing} en tout début de fichier, par exemple dans le préambule, pour agir sur tout le corps du texte.
 
@@ -121,7 +121,7 @@ En créant ces deux commandes \csp{oldquotation} et \csp{endoldquotation} nous a
 \begin{description}
 \item[ligne 3]nous redéfinissons l'environnement \enviro{quotation}.
 \item[ligne 4]au début de cet environnement\renvoi{redefinirlatin}, nous ouvrons l'environnement \enviro{oldquotation} puis nous exécutons la commande \csp{singlespace}.
-\item[ligne 5]à la fin de l'environnement \enviro{quotation}, nous fermons l'environnement \enviro{oldquotation}. La commande \csp{singlespace} exécutée en début d'environnement étant situé dans un environnement, elle ne s'applique qu'au contenu de cet environnement. C'est pourquoi il n'est pas nécessaire de l'annuler par une commande \csp{onehalfspace}. \renvoi{porteebascule}
+\item[ligne 5]à la fin de l'environnement \enviro{quotation}, nous fermons l'environnement \enviro{oldquotation}. La commande \csp{singlespace} exécutée en début d'environnement étant situé dans un environnement, elle ne s'applique qu'au contenu de cet environnement\renvoi{porteebascule}. C'est pourquoi il n'est pas nécessaire de l'annuler par une commande \csp{onehalfspace}. 
 \end{description}
 
 \begin{plusloins}
@@ -137,7 +137,7 @@ Si vous avez compris nos propos sur les commandes de début et de fin d'environn
 \section{Personnaliser les titres}
 
 \subsection{Redéfinir la numérotation}\label{apparencecompteur}
-Nous avons abordé plus haut la notion de compteur. À chaque niveau de titre, \LaTeX associe un compteur \compteur{niveau}. Ainsi le compteur associé au niveau de titre \cs{chapter} est \compteur{chapter}.\renvoi{tocdepth}
+Nous avons abordé plus haut la notion de compteur. À chaque niveau de titre, \LaTeX associe un compteur \compteur{niveau}. Ainsi le compteur associé au niveau de titre \cs{chapter} est \compteur{chapter}\renvoi{tocdepth}.
 
 La valeur d'un compteur peut s'afficher grâce à la commande \csp{the\meta{compteur}}. Ainsi, si vous écrivez :
  
@@ -153,7 +153,7 @@ Vous constatez qu'à la compilation apparaît le numéro du chapitre, tel qu'il 
 \end{quotation}
 
 
-Puisque les compteurs s'affichent à l'aide de commandes, il est aisée de redéfinir celles-ci. Si vous fouillez le fichier \fichier{book.cls}\renvoi{trouverfichier}, vous pouvez constater\footnote{Lignes 287-288, à la date où nous écrivons.}, les deux (re)définitions de commande suivantes :
+Puisque les compteurs s'affichent à l'aide de commandes, il est aisée de redéfinir celles-ci. Si vous fouillez le fichier\renvoi{trouverfichier} \fichier{book.cls}, vous pouvez constater\footnote{Lignes 287-288, à la date où nous écrivons.}, les deux (re)définitions de commande suivantes :
 
 \begin{latexcode}
 \renewcommand \thechapter {\@arabic\c@chapter}
@@ -215,12 +215,12 @@ On obtient donc un affichage de la forme :
 
 
 \begin{plusloins}
-Nous parlons plus loin de la manière de manipuler les compteurs.\renvoi{manipcompteurs}
+Nous parlons plus loin de la manière de manipuler les compteurs\renvoi{manipcompteurs}.
 \end{plusloins}
 
 \subsection{Définir l'apparence : sections et niveaux inférieurs}\label{apparencetitre}
 
-Pour personnaliser l'apparence des titres, le mieux est de regarder ce que nous proposent les classes standards. Prenons le cas de la classe \classe{book}, définie dans le fichier \fichier{book.cls}.\renvoi{trouverfichier} En cherchant un peu, nous trouvons\footnote{Ligne 414 à la date du 19 septembre 2011.} :
+Pour personnaliser l'apparence des titres, le mieux est de regarder ce que nous proposent les classes standards. Prenons le cas de la classe \classe{book}, définie dans le fichier\renvoi{trouverfichier} \fichier{book.cls}. En cherchant un peu, nous trouvons\footnote{Ligne 414 à la date du 19 septembre 2011.} :
 
 \begin{latexcode}
 \newcommand\section{\@startsection {section}{1}{\z@}%
@@ -234,12 +234,12 @@ Commentons ces quelques lignes :
 \begin{description}
 \item[ligne 1]La commande \cs{section} fait appel à une commande \csp{@startsection}. Cette commande ajoute  un niveau de titre à la table des matières. Malgré son titre, elle peut servir pour n'importe quel niveau de titre (par exemple, pour les \cs{subsection}s). Elle prend plusieurs arguments. Le premier est le nom du niveau : ici \verb|section|. Le second est le niveau de profondeur : \verb|1|. Le troisième est l'indentation prélable : ici \csp{z@}, c'est-à-dire une longueur nulle.
 
-\item[ligne 2] quatrième argument de la commande \cs{@startsection}, qui indique l'espace vertical \emph{avant} le titre. Cet espace est idéalement de 3,5 ex \renvoi{unite}, mais peut être compris entre 1,5 ex ($3,5 - 2$) et 4,5 ex ($3,5 + 1$) :  cette marge de manœuvre est indiquée par les commandes  \cs{@minus} et \cs{@plus}.\renvoi{elastique}
+\item[ligne 2] quatrième argument de la commande \cs{@startsection}, qui indique l'espace vertical \emph{avant} le titre. Cet espace est idéalement de 3,5~ex\renvoi{unite}, mais peut être compris entre 1,5~ex ($3,5 - 2$) et 4,5~ex ($3,5 + 1$) :  cette marge de manœuvre est indiquée par les commandes  \cs{@minus} et \cs{@plus}\renvoi{elastique}.
 \item[ligne 3] cinquième argument de \cs{@startsection}, qui indique l'espace vertical après le titre. Notre longueur étant positive, le texte qui suit débute un nouveau paragraphe. Une longueur négative (comme c'est le cas pour la définition de la commande \cs{paragraph}) indique qu'il n'y a pas de changement de paragraphe. Ici donc, l'espace après le titre est de 2,3 ex, mais peut atteindre 2,5 ex (2,3 + 0,2).
 \item[ligne 4] sixième et dernier argument de \cs{@startsection}, qui indique l'apparence proprement dite de notre titre. Il s'agit d'un texte en police normale --- c'est-à-dire celle définie par la commande \cs{setmainfont} ---, en taille \cs{Large}, mise en gras (\cs{bfseries}). Ici toutes nos commandes sont considérées comme des commandes de bascule, la bascule finissant avec l'accolade fermante. La commande \csp{bfseries} est l'équivalent à bascule de la commande \cs{textbf}. Il est recommandé de n'utiliser dans les styles de titre que des commandes à bascule, pour éviter des espaces indésirables.\label{bfseries}
 \end{description}
 
-Supposons maintenant que nous souhaitons avoir notre titre en italique et en police sans empattements. Il nous suffit de redéfinir la commande \cs{section}, en entourant notre définition de \cs{makeatletter} et \cs{makeatother}.\renvoi{makeatletter}
+Supposons maintenant que nous souhaitons avoir notre titre en italique et en police sans empattements. Il nous suffit de redéfinir la commande \cs{section}, en entourant notre définition de \cs{makeatletter} et \cs{makeatother}\renvoi{makeatletter}.
 
 \begin{latexcode}
 \makeatletter
@@ -332,7 +332,7 @@ Nous allons donc reprendre le code existant et le copier-coller dans notre préa
 \begin{itemize}
 \item Remplacer \csp{raggedright} par \csp{raggedleft} pour avoir nos textes à droite.
 \item Remplacer le premier \cs{huge}\cs{bfseries} par \csp{scshape}, pour avoir \forme{chapitre} en petites capitales et en taille normale.
-\item Insèrer la commande \cs{hrulefill}, qui produit un filet horizontal, entre les lignes 12 et 13.\renvoi{filets}
+\item Insèrer la commande \cs{hrulefill}, qui produit un filet horizontal, entre les lignes 12 et 13\renvoi{filets}.
 \end{itemize}
 
 Cela nous donne au final :
@@ -361,9 +361,9 @@ Cela nous donne au final :
 
 \section[Manipuler les compteurs]{Manipuler les compteurs : le cas des notes de bas de page}\label{manipcompteurs}
 
-Nous avons vu comment modifier l'affichage d'un compteur.\renvoi{apparencecompteur} Mais comment modifier la valeur d'un compteur ? Il y a pour cela deux commandes : \cs{setcounter}\marg{compteur}\marg{valeur} pour affecter la valeur \arg{valeur} au compteur \arg{compteur}, et \csp{addtocounter}\marg{compteur}\marg{valeur} pour additionner la valeur \arg{valeur} au compteur \arg{compteur}. La valeur ajoutée pouvant être négative, il est ainsi possible de faire reculer un compteur.
+Nous avons vu comment modifier l'affichage d'un compteur\renvoi{apparencecompteur}. Mais comment modifier la valeur d'un compteur ? Il y a pour cela deux commandes : \cs{setcounter}\marg{compteur}\marg{valeur} pour affecter la valeur \arg{valeur} au compteur \arg{compteur}, et \csp{addtocounter}\marg{compteur}\marg{valeur} pour additionner la valeur \arg{valeur} au compteur \arg{compteur}. La valeur ajoutée pouvant être négative, il est ainsi possible de faire reculer un compteur.
 
-En outre, il existe une commande \csp{refstepcounter} qui permet d'incrémenter d'une unité un compteur. C'est celle qui est utilisé par les commandes niveau de titre.\renvoi{niveautitre}
+En outre, il existe une commande \csp{refstepcounter} qui permet d'incrémenter d'une unité un compteur. C'est celle qui est utilisé par les commandes niveau de titre\renvoi{niveautitre}.
 
 
 

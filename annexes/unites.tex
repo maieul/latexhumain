@@ -58,13 +58,13 @@ Voici les principales commandes de longueur :
 \section{Elasticité}\label{elastique}
 
 Il est possible de définir une certaine élasticité pour les longueurs, qui permet de s'adapter à l'espace disponible et aux contraintes de mise en page\footnote{Par exemple concernant les veuves et orphelines.}. On utilise pour cela les mot clefs \verb|minus| et \verb|plus|.
-Ainsi, si nous souhaitons afficher un espace blanc \renvoi{espace} vertical d'une longueur comprise entre 1~cm et 3~cm, mais tournant idéalement autour de 2,5~cm, nous écrivons :
+Ainsi, si nous souhaitons afficher un espace blanc\renvoi{espace} vertical d'une longueur comprise entre 1~cm et 3~cm, mais tournant idéalement autour de 2,5~cm, nous écrivons :
 
 \begin{latexcode}
 \vspace{2.5cm minus 1.5cm plus 0.5cm}
 \end{latexcode}
 
-Cette syntaxe est utilisée dans les commandes de définitions des en-têtes de section, sous une forme légèrement différente : \cs{@plus} et \csp{@minus} ne sont que des alias \LaTeX des mot clefs \TeX \verb|plus| et \verb|minus|.\renvoi{apparencetitre}
+Cette syntaxe est utilisée dans les commandes de définitions des en-têtes de section\renvoi{apparencetitre}, sous une forme légèrement différente : \cs{@plus} et \csp{@minus} ne sont que des alias \LaTeX des mot clefs \TeX \verb|plus| et \verb|minus|.
 
 Plus globalement, avec une syntaxe de longueur sous la forme \verb|a minus b plus c| la longueur finale \verb|m| est telle que\footnote{Nous n'insérons pas une équation mais une inéquation. Le sous titre de ce livre est donc pleinement justifié.} $ a - b \leq m \leq a + c $.  
 
