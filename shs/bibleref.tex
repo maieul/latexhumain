@@ -217,7 +217,7 @@ Ainsi pour trier selon l'ordre de la TOB :
 
 Par défaut, les références sont indexées dans l'index principal. Il est toutefois possible  de les indexer séparément.
 
-Il faut pour cela d'abord déclarer un nouvel index avec \package{splitindex}\renvoi{splitindex}.
+Il faut pour cela d'abord déclarer un nouvel index avec \package{imakeidx}\renvoi{multiindex}.
 
 \begin{latexcode}
 \newindex[Index des références bibliques]{bible}
@@ -226,7 +226,7 @@ Il faut pour cela d'abord déclarer un nouvel index avec \package{splitindex}\re
 Il faut ensuite redéfinir la commande \csp{biblerefindex} de la manière suivante :
 
 \begin{latexcode}
-\renewcommand{\biblerefindex}[0]{\sindex[bible]}
+\renewcommand{\biblerefindex}[0]{\index[bible]}
 \end{latexcode}
 
 Et à l'endroit où l'on souhaite afficher cet index :
