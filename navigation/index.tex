@@ -191,7 +191,7 @@ Si vous utilisez le package \package{hyperref}, vous constaterez que celui-ci in
 \end{plusloins}
 
 
-\subsection{Quelques options du package \package{imakeidx}}
+\subsection{Quelques options du package \packagenoidx{imakeidx}}\sindex[pkg]{imakeidx}
 
 
 
@@ -299,13 +299,14 @@ Pour imprimer un index, il suffit d'utiliser la commande \csp{printindex} en lui
 
 Si l'on veut regrouper tous les index en un seul chapitre dont chaque index est une section, on utilisera  à la commande \cs{indexsetup}. On peut lui passer comme option \oarg{noclearpage}, pour  éviter que chaque index commence à une nouvelle page. Bien sûr, chaque index peut avoir son propre prologue. Voici un exemple: 
 
-
+\begin{latexcode}
 \indexsetup{level=\section*,toclevel=section,noclearpage} ... \chapter*{Indices}
 \indexprologue{Les numéros en gras renvoient aux définitions des notions} 
 \printindex
 
 \indexprologue{Les auteurs anciens sont indiqués en italiques}
 \printindex[aut] 
+\end{latexcode}
 \end{plusloins}
 
 \section{Indexer ses sources}
