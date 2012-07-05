@@ -3,7 +3,7 @@
 \bibverbose
 
 \begin{intro}
-Nous avons vu plus haut les différentes manières de citer un texte dans \renvoi{citertexte} le corps du travail. Nous avons également vu comment remplir une base de données bibliographique\renvoi{bddbiblio}.
+Nous avons vu plus haut les différentes manières de citer un texte\renvoi{citertexte} dans le corps du travail. Nous avons également vu comment remplir une base de données bibliographique\renvoi{bddbiblio}.
 
 Il ne nous reste plus qu'à mettre en relation les textes cités avec la base de données constituée pour avoir un travail correct, en indiquant les références des citations. C'est l'objet de ce chapitre.
 
@@ -76,7 +76,7 @@ L'usage en sciences humaines est de citer en note de bas de page. C'est pourquoi
 Mais on peut aussi choisir la commande \csp{autocite}. Le mode de citation (note de bas page, citation directe, citation entre parenthèse, etc.) dépend alors du style de citation choisi : pour les styles de la famille verbose, la référence est mise en note de bas de page. 
 
 \begin{plusloins}
-Par défaut les champs bibliographiques sont séparés par des points. Si vous êtes pressé d'avoir des virgules à la place, rendez-vous au chapitre~\ref{style1}.\renvoi{style1}
+Par défaut les champs bibliographiques sont séparés par des points. Si vous êtes pressé d'avoir des virgules à la place, rendez-vous au chapitre~\ref{style1}.
 \end{plusloins}
 
 \subsection{Les arguments \arg{prenote} et \arg{postnote}}
@@ -197,11 +197,11 @@ Dans le cas d'une citation en note de bas de page, il faut donc écrire :
 \begin{attention}
 Pour les sources anciennes, on aimerait pouvoir indiquer non seulement la pagination dans l'édition contemporaine mais aussi la division de source (livre, chapitre, paragraphe, etc.). Malheureusement on ne peut avec \package{biblatex} indiquer qu'un seul élément variable lors de l'utilisation d'une commande de citation.
 
-On peut contourner ce problème en créant des sous-entrées bibliographiques, dont nous parlons dans un autre chapitre. \renvoi{divisionsource}
+On peut contourner ce problème en créant des sous-entrées bibliographiques\renvoi{divisionsource}, dont nous parlons dans un autre chapitre. 
 \end{attention}
 
 \begin{attention}
-Par défaut, cette option ne fonctionne pas lorsque la référence est donnée sous forme abrégé (\emph{op. cit.} ou \emph{ibid.}). Il s'agit d'un bogue des styles standards de \emph{biblatex}, qu'il est aisé de corriger. Nous expliquons comment sur notre blog\footcite{biblio_bugomit}, mais il vous faut lire le deuxième chapitre sur les styles bibliographiques pour comprendre ce que nous y écrivons. \renvoi{style2}
+Par défaut, cette option ne fonctionne pas lorsque la référence est donnée sous forme abrégé (\emph{op. cit.} ou \emph{ibid.}). Il s'agit d'un bogue des styles standards de \emph{biblatex}, qu'il est aisé de corriger. Nous expliquons comment sur notre blog\footcite{biblio_bugomit}, mais il vous faut lire le deuxième chapitre sur les styles bibliographiques\renvoi{style2} pour comprendre ce que nous y écrivons. 
 \end{attention}
 
 \begin{plusloins}
@@ -305,7 +305,7 @@ Il est possible de préciser un texte à afficher avant la liste des référence
 \<prefix>cites(Texte avant)(Texte après){Saxer1980}{Junod1992}
 \end{latexcode}
 
-Les séparateurs de citations sont par défaut des points-virgules. Il est possible de les modifier globalement, nous en parlons plus loin.\renvoi{multicitedelim}
+Les séparateurs de citations sont par défaut des points-virgules. Il est possible de les modifier globalement, nous en parlons plus loin\renvoi{multicitedelim}.
 
 Toutefois, si l'argument \arg{postnote} d'un élément de la commande de citation multiple finit par un signe de ponctuation, alors le point-virgule n'apparaît pas entre cet élément et le suivant :
 

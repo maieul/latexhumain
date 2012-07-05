@@ -125,7 +125,7 @@ Heureusement petit à petit une solution a émergé : elle a consisté à invent
 
 Avec ce jeu de caractères, il est donc possible de mélanger allègrement de l'arabe, du vietnamien, de l'hébreu et du cyrillique dans un même fichier. Toutefois, histoire de compliquer les choses, plusieurs implémentations de ces jeux de caractères ont été inventées, chacune présentant des avantages et des inconvénient divers\footnote{Par exemple sur le volume des fichiers et les temps de recherche.}. La plus courante de ces implémentations est UTF-8.
 
-C'est celle que vous utilisez depuis que vous lisez ce livre, si du moins vous avez lu le chapitre~\ref{commencer}\renvoi{commencer}.
+C'est celle que vous utilisez depuis que vous lisez ce livre, si du moins vous avez lu le chapitre~\ref{commencer}.
 
 En un mot : Unicode dans sa variante UTF-8 est aujourd'hui la meilleure méthode pour écrire des fichiers mêlant plusieurs familles de caractères\footnote{L'auteur pense même que, étant donné la baisse des coûts de stockages et de transferts, on ne devrait plus utiliser que ce jeu de caractères, ce qui aurait pour mérite de permettre bien plus facilement à tous les peuples de s'exprimer dans leur langue. Malheureusement son expérience personnelle lui prouve que cela n'est pas encore toujours le cas.}.
 
@@ -147,7 +147,7 @@ Pour reprendre notre cas, il suffit de dire à notre ordinateur que la touche A 
 \subsection{Et les changements de sens d'écriture ?}
 
 Certaines langues s'écrivent de droite à gauche, d'autres de gauche à droite. On souhaiterait que les alignements de paragraphes, les positions des titres et d'autres éléments correspondent au sens de la langue. 
-Comment signaler cela à \LaTeX ? Le signalement des changements de langues suffit. \renvoi{changerlang}
+Comment signaler cela à \LaTeX ? Le signalement des changements de langue\renvoi{changerlang} suffit. 
 
 \begin{plusloins}
 Pour ce qui concerne l'écriture en boustrophédon, on utilisera le package \package{bidi}. Celui-ci possède des  commandes qui permettent d'indiquer des changements de sens. 

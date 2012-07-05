@@ -121,7 +121,7 @@ Pour qu'une entrée dans l'index renvoie à une autre entrée, on utilise la com
 \begin{quotation}
 Tassilon, voir Ducs
 \end{quotation}
-La traduction de \emph{see} change selon la langue indiquée comme \cs{setmainlanguage}. \renvoi{french}
+La traduction de \emph{see} change selon la langue indiquée comme \cs{setmainlanguage}\renvoi{french}. 
 
 
 
@@ -161,7 +161,7 @@ Empereurs\\
 \end{tabbing}
 \end{quotation}
 
-Cette syntaxe est aussi utile pour mettre en évidence une entrée dans l'index en modifiant son aspect. En mettant \cs{index}\verb|{|\meta{entrée}\verb|@\textbf{|\meta{entrée formatée}\verb|}}|, l'entrée apparaît en gras dans l'index. Ceci est valable pour toutes les commandes agissant sur la fonte. Modifions ainsi comme suit la commande \cs{auteur} que l'on a créée précédemment :\renvoi{indexauteur}
+Cette syntaxe est aussi utile pour mettre en évidence une entrée dans l'index en modifiant son aspect. En mettant \cs{index}\verb|{|\meta{entrée}\verb|@\textbf{|\meta{entrée formatée}\verb|}}|, l'entrée apparaît en gras dans l'index. Ceci est valable pour toutes les commandes agissant sur la fonte. Modifions ainsi comme suit la commande \cs{auteur} que l'on a créée précédemment\renvoi{indexauteur} :
 
 \begin{latexcode}
 \newcommand\auteur[2]{#1~\textsc{#2}\index{#2 #1@\textsc{#2}, #1}\xspace}
@@ -346,7 +346,7 @@ On constate cependant deux problèmes :
 En outre nous aimerions :
 \begin{enumerate}
 \item Limiter l'indexation aux sources primaires.
-\item Indexer aussi, comme troisième niveau d'index, le champ \champ{titleaddon} qui nous sert pour les divisions de source. \renvoi{divisionsource}
+\item Indexer aussi, comme troisième niveau d'index, le champ \champ{titleaddon} qui nous sert pour les divisions de source\renvoi{divisionsource}. 
 \end{enumerate}
 
 \subsection{Création d'un index spécifique}
@@ -374,7 +374,7 @@ Or nous voudrions obtenir une indexation correspondant à la commande:
 \begin{latexcode} 
 \index{auteur!titre!titleaddon}
 \end{latexcode}
- C'est pourquoi nous avons conçu un script dans le langage python (nous expliquons plus loin comment s'en servir)\renvoi{python}, qui concatène dans le fichier \ext{idx} les trois indexations en une seule.
+ C'est pourquoi nous avons conçu un script dans le langage python (nous expliquons plus loin comment s'en servir\renvoi{python}), qui concatène dans le fichier \ext{idx} les trois indexations en une seule.
 Mais avant d'utiliser ce script, il faut  indexer une fausse valeur, la valeur \verb|---|, qui empêchera le script d'indexer tous les champs d'une entrée: nous ne voulons pas obtenir une entrée de la forme : \\
  \verb|\index{author!title!titleaddon!author2!title2!}|
 

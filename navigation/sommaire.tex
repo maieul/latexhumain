@@ -7,7 +7,7 @@ Dans ce chapitre nous verrons comment générer un sommaire ou une table des mat
 \section{Une table simple}
 
 La manière la plus simple de faire une table des matières est d'utiliser la commande \csp{tableofcontents}.
-Pour que \XeLaTeX{} puisse afficher cette table des matières, il est nécessaire de compiler deux fois : lors de la première compilation, \XeLaTeX{} stocke le contenu de la table des matières dans un fichier \ext{toc} ; lors de la seconde compilation, il se sert de ce fichier pour afficher la table des matières. En règle générale, cette double compilation n'est guère gênante, puisqu'elle est déjà nécessaire lors de l'utilisation d'une bibliographie.\renvoi{3compil}
+Pour que \XeLaTeX{} puisse afficher cette table des matières, il est nécessaire de compiler deux fois : lors de la première compilation, \XeLaTeX{} stocke le contenu de la table des matières dans un fichier \ext{toc} ; lors de la seconde compilation, il se sert de ce fichier pour afficher la table des matières. En règle générale, cette double compilation n'est guère gênante, puisqu'elle est déjà nécessaire lors de l'utilisation d'une bibliographie\renvoi{3compil}.
 
 \begin{attention}
 La table des matières prend elle même un certain volume dans le corps du texte. Par conséquent si votre table des matières se trouve en début d'ouvrage --- il serait alors plus juste de l'appeler \forme{sommaire} --- elle décale la pagination lors de son affichage. C'est pourquoi il faut parfois compiler trois fois :
@@ -44,7 +44,7 @@ Le niveau \cs{subsubsection} a comme numéro 3. Pour afficher dans la table des 
 
 Selon l'usage français, une table des matières se situe en fin d'ouvrage, un sommaire  en début d'ouvrage. Par défaut la commande \cs{tableofcontents} indique que nous avons affaire à une  \enquote{table des matières} et non  à un \enquote{sommaire}. Comment avoir le terme  \enquote{sommaire} ? Il suffit de redéfinir la chaîne de langue. 
 
-Nous avons déjà vu la notion de chaîne de langue pour la bibliographie.\renvoi{i18nchaines} Il s'agit ici  d'une idée similaire, mais pour le package \package{polyglossia}. La syntaxe est toutefois différente. Comme pour les  chaînes de langue de la bibliographie, il faut commencer par découvrir quel est l'élément à modifier, en cherchant cette fois dans le fichier \fichier{french.ldf}. Vous pouvez repérer une ligne contenant \cs{def}\csp{captionsfrench}\verb|{%|. 
+Nous avons déjà vu la notion de chaîne de langue\renvoi{i18nchaines} pour la bibliographie. Il s'agit ici  d'une idée similaire, mais pour le package \package{polyglossia}. La syntaxe est toutefois différente. Comme pour les  chaînes de langue de la bibliographie, il faut commencer par découvrir quel est l'élément à modifier, en cherchant cette fois dans le fichier \fichier{french.ldf}. Vous pouvez repérer une ligne contenant \cs{def}\csp{captionsfrench}\verb|{%|. 
 Cette ligne est suivie d'autres lignes sous la forme : \cs{def}\cs{\meta{chaine}}\marg{Valeur}, qui s'enchaînent jusqu'à une accolade fermante.
 
 Pour notre cas, on repère la ligne contenant :
@@ -68,7 +68,7 @@ Dans le cas présent, cela donne :
 
 
 \begin{plusloins}
-La commande \csp{def} permet de créer de nouvelles commandes. Toutefois à la différence de la commande \cs{newcommand}, les commandes ainsi créées appartiennent à \TeX{} et non pas à \LaTeX{}.\renvoi{TeXLaTeX}
+La commande \csp{def} permet de créer de nouvelles commandes. Toutefois à la différence de la commande \cs{newcommand}, les commandes ainsi créées appartiennent à \TeX{} et non pas à \LaTeX{}\renvoi{TeXLaTeX}.
 
 Définir des commandes en \TeX{} par rapport à les définir en \LaTeX{} permet plus de souplesse. Mais cela demande plus de maîtrise technique pour éviter divers problèmes, comme par exemple des erreurs de compilation. C'est pourquoi nous n'en parlons pas dans ce livre, sauf ponctuellement.
 
@@ -79,7 +79,7 @@ La commande \cs{gappto} n'est une commande standard ni de \TeX ni de \LaTeX. Ell
 
 \section{Table des figures et table des tableaux}\label{tablefigure}
 
-En plus de la table des matières, \LaTeX{} permet d'afficher une table des tableaux et une table des figures. Il est nécessaire, pour que ces tables soient constituées, que les tableaux et figures aient une légende.\renvoi{legende}
+En plus de la table des matières, \LaTeX{} permet d'afficher une table des tableaux et une table des figures. Il est nécessaire, pour que ces tables soient constituées, que les tableaux et figures aient une légende\renvoi{legende}.
 
 Pour la table des tableaux, il faut utiliser la commande \csp{listoftables} et pour celle des figures  \csp{listoffigures}.
 
@@ -148,7 +148,7 @@ Le package \package{minitoc} est très complexe et contient de nombreuses subtil
 
 Certains PDFs proposent des signets qui permettent d'accéder rapidement à un endroit précis du document\footnote{L'utilisation concrète de ces signets dépend du lecteur PDF.}. Il est possible avec \LaTeX{} d'obtenir un PDF contenant des signets correspondant aux différents niveaux de titre. Pour ce faire il faut utiliser le package \package{hyperref}.
 
-Ce package propose de nombreuses fonctionnalités :  nous avons vu  qu'il permettait notamment de créer des renvois vers les titres de sections.\renvoi{renvoititre}
+Ce package propose de nombreuses fonctionnalités :  nous avons vu  qu'il permettait notamment de créer des renvois vers les titres de sections\renvoi{renvoititre}.
 Mais il introduit aussi des liens cliquables en interne, par exemple entre un appel de note de bas de page et la note correspondante. Il permet aussi de configurer un certain nombre de méta-données du document PDF.
 
 \subsection{Signet de navigation}

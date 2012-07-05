@@ -11,7 +11,7 @@ Les images insérables avec \XeLaTeX sont au format JPEG (extension~\ext{jpg}), 
 
 L'insertion d'une image se fait de la manière suivante : \csp{includegraphics}\oarg{param. opti.}\marg{chemin de l'image}.
 
-Le chemin de l'image s'indique de la même manière que le chemin des fichiers inclus.\renvoi{chemin}
+Le chemin de l'image s'indique de la même manière que le chemin des fichiers inclus\renvoi{chemin}.
 Les principaux paramètres optionnels sont les suivants\footcite[Pour les autres, on consultera][]{graphicx_options} :
 
 \begin{longtable}{|p{0.2\linewidth}|p{0.6\linewidth}|p{0.2\linewidth}|}
@@ -28,7 +28,7 @@ Les principaux paramètres optionnels sont les suivants\footcite[Pour les autres
 \end{longtable}
 
 \begin{plusloins}
-Le centimètre n'est pas la seule  unité de mesure disponible en \LaTeX. Nous en parlons en annexe de ce livre.\renvoi{unite}
+Le centimètre n'est pas la seule  unité de mesure disponible en \LaTeX. Nous en parlons en annexe de ce livre\renvoi{unite}.
 \end{plusloins}
 
 \begin{plusloins}
@@ -36,7 +36,7 @@ Le package \package{graphicx} propose de nombreux outils pour manipuler graphiqu
 \end{plusloins}
 
 \begin{attention}
-    Évidemment, il est plus correct d'insérer une légende sous une image. Nous expliquons comment faire plus loin.\renvoi{legende}
+    Évidemment, il est plus correct d'insérer une légende sous une image. Nous expliquons comment faire plus loin\renvoi{legende}.
 \end{attention}
 
 \section{Insérer des graphismes et des schémas}
@@ -68,7 +68,7 @@ Nous disposons de six familles de manuscrits d'un même texte. La  famille A a e
 Le code est le suivant: 
 \inputminted{exemples/premierpas/nontextuels/genealogie.tex}
 
-Ce qui donne le résultat de la figure~\ref{figure:genealogie}\renvoi{figure:genealogie}. Analysons le code :
+Ce qui donne le résultat de la figure~\ref{figure:genealogie}. Analysons le code :
 
 \begin{figure}[h]
 \centering
@@ -154,7 +154,7 @@ On peut utiliser l'environnement \enviro{tabular*} qui propose un argument suppl
 
 Toutefois il peut être pratique d'indiquer des tailles de colonnes : en particulier lorsque nos cellules contiennent des paragraphes.
 
-Pour ce faire trois types supplémentaires de colonnes nous sont proposés par le package \package{array}\footnote{En réalité le premier type ne nécessite pas que l'on charge le package.}. Ces types, à la différences des précédents, déterminent une largeur de colonne. Il faut pour les utiliser connaître  les unités de mesure de \LaTeX\renvoi{unite}. 
+Pour ce faire trois types supplémentaires de colonnes nous sont proposés par le package \package{array}\footnote{En réalité le premier type ne nécessite pas que l'on charge le package.}. Ces types, à la différences des précédents, déterminent une largeur de colonne. Il faut pour les utiliser connaître  les unités de mesure\renvoi{unite} de \LaTeX. 
 
 Ces trois types de colonnes sont :
 \begin{description}
@@ -307,14 +307,14 @@ Celle pour insérer le second est la suivante :
 
 Si la commande \cs{caption} est insérée au-dessus de la figure, de l'image ou du tableau, la légende sera située au-dessus de l'élément et non en-dessous. Il est possible, mais déconseillé, de ne pas mettre de légende.
 
-Nous avons un exemple de flottant   dans ce chapitre : la figure~\ref{figure:genealogie}\renvoi{figure:genealogie}.
+Nous avons un exemple de flottant   dans ce chapitre : la figure~\ref{figure:genealogie}.
 \begin{attention}
-    On pourrait vouloir changer les intitulés comme \emph{figure} et \emph{tableau}. Tout ceci est possible, nous en parlons plus loin, dans le chapitre consacré aux chaînes de langue.\renvoi{i18n}
+    On pourrait vouloir changer les intitulés comme \emph{figure} et \emph{tableau}. Tout ceci est possible, nous en parlons plus loin, dans le chapitre consacré aux chaînes de langue\renvoi{i18n}.
     
-    De même on pourrait souhaiter renvoyer automatiquement au numéro et la page d'une figure : nous en parlons dans le chapitre consacré à la navigation à l'intérieur d'un document.\renvoi{label}
+    De même on pourrait souhaiter renvoyer automatiquement au numéro et la page d'une figure : nous en parlons dans le chapitre consacré à la navigation à l'intérieur d'un document\renvoi{label}.
 \end{attention}
 
-À noter que, comme les titres, la commande \csp{caption} peut recevoir un argument optionnel qui compte pour titre dans la table des figures ou la table des tableaux : \renvoi{tablefigure}
+À noter que, comme les titres, la commande \csp{caption} peut recevoir un argument optionnel qui compte pour titre dans la table des figures ou la table des tableaux\renvoi{tablefigure} : 
 
 \cs{caption}\oarg{Légende pour la table}\marg{Légende}. 
 

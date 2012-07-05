@@ -8,7 +8,7 @@ Ces packages contiennent moult fonctionnalités : nous n'en présentons ici que 
 \end{intro}
 
 \begin{attention}
-Ces packages ont été améliorés durant la rédaction de ce livre. Veillez à les mettre à jour.\renvoi{maj}
+Ces packages ont été améliorés durant la rédaction de ce livre. Veillez à les mettre à jour\renvoi{maj}.
 Dans le gestionnaire de packages, vous ne trouverez une entrée que pour  \package{ledmac},  pas pour \package{ledpar}.  En mettant à jour \package{ledmac} vous mettez toutefois aussi à jour  \package{ledpar}.
 \end{attention}
 
@@ -85,7 +85,7 @@ donne ainsi\footcite{tucholsky}:
 \input{exemples/shs/ledmac/vers.tex}
 \end{minipage}
 
-Si l'indentation se répète tout les \emph{n} vers, on peut assigner la valeur \emph{n} au compteur \compteur{stanzaindentsrepetition} pour ne pas avoir à répéter l'indentation dans la commande \cs{setstanzaindents}. \renvoi{compteur}
+Si l'indentation se répète tout les \emph{n} vers, on peut assigner la valeur \emph{n} au compteur\renvoi{compteur} \compteur{stanzaindentsrepetition} pour ne pas avoir à répéter l'indentation dans la commande \cs{setstanzaindents}. 
 
 Ainsi  :
 \begin{latexcode}
@@ -153,7 +153,7 @@ Si chaque \cs{pstart} correspond à un paragraphe, il est possible d'automatiser
 \end{plusloins}
 
 \begin{plusloins}
-La numérotation se fait à l'aide d'un compteur \compteur{pstart}. Nous expliquons plus loin ce qu'est un compteur, comment en modifier l'apparence et la valeur.\renvoi{apparencecompteur}\renvoi{manipcompteurs} Avec ces informations vous pourrez aisément changer la numérotation des \cs{pstart}s.
+La numérotation se fait à l'aide d'un compteur \compteur{pstart}. Nous expliquons plus loin ce qu'est un compteur, comment en modifier l'apparence\renvoi{apparencecompteur} et la valeur\renvoi{manipcompteurs}. Avec ces informations vous pourrez aisément changer la numérotation des \cs{pstart}s.
 \end{plusloins}
 
 \subsubsection{Fréquence de numérotation des lignes}
@@ -218,7 +218,7 @@ Il existe   cinq styles pour numéroter les lignes, sélectionnés par la comman
 \item[\contenuarg{roman}] pour des chiffres romains minuscules. 
 \end{description}
 
-La distance \csp{linenumsep} représente la distance entre le texte et le numéro de la ligne\renvoi{unite}, par défaut, 1~pica. 
+La distance \csp{linenumsep} représente la distance\renvoi{unite} entre le texte et le numéro de la ligne, par défaut, 1~pica. 
 Elle est  modifiable par la commande \cs{setlength}\verb|{|\cs{linenumsep}\verb|}|\marg{distance}\renvoi{setlength}. 
 
 De la même façon nous pouvons modifier, via \cs{renewcommand}, \cs{numlabfont}, qui indique la taille du numéro et qui est ainsi définie:
@@ -388,7 +388,7 @@ Si l'un des textes n'est pas dans la langue principale du document, il faut pré
 \end{attention}
 
 \begin{attention}
-Comme avec \package{ledmac}\renvoi{lineation}, la numérotation recommence à chaque \cs{beginnumbering}. On peut toutefois faire recommencer la numérotation  à chaque page \emph{via} les commandes \cs{lineation} et \csp{lineationR}, qui ont la même syntaxe, vue plus haut. \renvoi{lineation}
+Comme avec \package{ledmac}, la numérotation\renvoi{lineation} recommence à chaque \cs{beginnumbering}. On peut toutefois faire recommencer la numérotation  à chaque page \emph{via} les commandes \cs{lineation} et \csp{lineationR}, qui ont la même syntaxe, vue plus haut.
 \end{attention}
 
 Nous obtenons parfois le message d'erreur \enquote{Too many \cs{pstart} without printing}. Pas de panique ! Cela signifie qu'il y a trop de boîtes en mémoire: \LaTeX  doit en imprimer quelques-unes avant de pouvoir continuer.  Il y a deux solutions possibles à ce problème.
@@ -458,7 +458,7 @@ Ainsi, la numérotation du texte se fait en continue entre la première partie e
 \begin{plusloins}
 Il est bien sûr possible de mettre en parallèle un texte en vers et sa traduction en prose. 
 
-Par ailleurs, si vous utilisez la commande \cs{numberpstarttrue}\renvoi{numberpstarttrue} pour numéroter les \cs{pstart}s, sachez que la numérotation gauche et la numérotation droite fonctionnent avec deux compteurs différents : \compteur{pstartL} et \compteur{pstartR}.\renvoi{apparencecompteur}\renvoi{manipcompteurs}
+Par ailleurs, si vous utilisez la commande \cs{numberpstarttrue}\renvoi{numberpstarttrue} pour numéroter les \cs{pstart}s, sachez que la numérotation gauche et la numérotation droite fonctionnent avec deux compteurs différents : \compteur{pstartL} et \compteur{pstartR}\renvoi{apparencecompteur}\renvoi{manipcompteurs}.
 \end{plusloins}
 
 

@@ -1,7 +1,7 @@
 \chapter[Commencer avec XeLaTeX]{Commencer avec \XeLaTeX}\label{commencer}
 
 \begin{intro}
-Nous supposons que vous avez installé \LaTeX et un éditeur de texte spécialisé en \LaTeX. Voyez en annexe. \renvoi{install}\renvoi{logiciels}
+Nous supposons que vous avez installé \LaTeX\renvoi{install} et un éditeur de texte\renvoi{logiciels} spécialisé en \LaTeX. Voyez en annexe. 
 
 La première chose à faire est de vérifier que ce logiciel de traitement de texte enregistre bien en UTF-8\footnote{Le réglage se trouve en général dans les préférences du logiciel, dans une rubrique \emph{enregistrement} ou \emph{encodage} : consultez le manuel de votre logiciel le cas échéant.}. Nous reviendrons plus loin\renvoi{utf8} sur l'intérêt d'un tel encodage, sachez simplement qu'il permet d'utiliser des signes non latins\footnote{Cyrilliques, grecs, sanskrits, hébraïques, etc. Et même extra-terrestres.}.
 
@@ -12,7 +12,7 @@ La première chose à faire est de vérifier que ce logiciel de traitement de te
 Dans votre éditeur de texte, frappez le code suivant\footnote{Comme nous l'avons expliqué en introduction (p.~\pageref{colorationsyntax}), la coloration que vous voyez ici, si vous lisez la version informatique de ce livre, a un sens syntaxique : ne vous préoccupez pas si elle est différente dans votre éditeur, et ne pensez pas que votre texte apparaîtra ainsi une fois compilé.} puis cliquez sur le bouton de compilation avec \XeLaTeX \footnote{Sa position dépend de votre éditeur de texte. Pour le moment vous pouvez vous contenter de ce bouton, mais un jour vous devrez apprendre à faire quelques lignes de commandes : ne vous inquiétez pas, tout sera expliqué.} :
 
 \begin{attention}
-Si vous êtes sous Mac, les caractères nécessaires à l'utilisation de \LaTeX ne sont pas visibles directement sur votre clavier. Nous avons listé en annexe la manière de les frapper.\renvoi{claviermac}
+Si vous êtes sous Mac, les caractères nécessaires à l'utilisation de \LaTeX ne sont pas visibles directement sur votre clavier. Nous avons listé en annexe la manière de les frapper\renvoi{claviermac}.
 \end{attention}
 \inputminted{exemples/premierpas/notions/1.tex}
 
@@ -72,7 +72,7 @@ Il s'agit, comme vous auriez pu le deviner, d'appel à des packages\footnote{Nou
 
 Le premier package est \package{fontspec}. Il est utile à \XeLaTeX  pour une typographie avancée, notamment pour disposer d'accents dans le document PDF produit. 
 
-Le second package est \package{xunicode}. Il permet de gérer l'unicode, autrement appelé UTF-8\footnote{En réalité UTF-8 n'est pas tout à fait Unicode, mais une implémentation de ce dernier. Toutefois, pour simplifier, nous assimilons les deux.}. Il nous permet d'utiliser des caractères non latins dans le document \ext{tex}.\renvoi{utf8}
+Le second package est \package{xunicode}. Il permet de gérer l'unicode, autrement appelé UTF-8\footnote{En réalité UTF-8 n'est pas tout à fait Unicode, mais une implémentation de ce dernier. Toutefois, pour simplifier, nous assimilons les deux.}. Il nous permet d'utiliser des caractères non latins\renvoi{utf8} dans le document \ext{tex}.
 
 \begin{plusloins}
 On trouve sur internet de la documentation   expliquant qu'il faut,  pour insérer un \enquote{é},  frapper \verb|\'{}|, et qui fournit une liste de commandes de caractères accentués. 
@@ -82,7 +82,7 @@ Ceci était vrai fut un temps. Il est depuis longtemps inutile d'apprendre ces c
 
 Le troisième, \package{polyglossia}, permet de gérer facilement un document multilingue\renvoi{i18n} et les changements typographiques qu'un tel document implique.
 
-Ces trois packages sont propres à \XeLaTeX  : ils ne fonctionnent pas avec \LaTeX.\renvoi{TeXLaTeX}.
+Ces trois packages sont propres à \XeLaTeX  : ils ne fonctionnent pas avec \LaTeX\renvoi{TeXLaTeX}.
 
 Certains packages peuvent recevoir des options qui modifieront leur comportement standard. La syntaxe est alors \csp{usepackage}\oarg{options}\marg{package}.
 
@@ -93,12 +93,12 @@ Dans la suite de ce livre, chaque fois que nous décrivons les fonctionnalités 
 \end{attention}
 
 \begin{plusloins}
-Lorsque nous parlons d'un package, nous renvoyons souvent à son manuel. Il existe une façon très simple de trouver le manuel d'un package en passant par le terminal: nous expliquons en annexe comment faire.\renvoi{manuels}
+Lorsque nous parlons d'un package, nous renvoyons souvent à son manuel. Il existe une façon très simple de trouver le manuel d'un package en passant par le terminal: nous expliquons en annexe comment faire\renvoi{manuels}.
 \end{plusloins}
 
 \subsection{Le fran\c cais, langue par défaut\label{french}}
 
-Tout de suite après, la ligne \csp{setmainlanguage}\verb|{french}| indique que nous utilisons comme langue principale du document le fran\c cais\renvoi{i18n}, et  que le compositeur de texte devra   donc prendre en compte la typographie fran\c caise. Cette ligne n'est compréhensible par le compilateur que parce que nous avons chargé \package{polyglossia} au préalable.
+Tout de suite après, la ligne \csp{setmainlanguage}\verb|{french}| indique que nous utilisons comme langue principale du document le français\renvoi{i18n}, et  que le compositeur de texte devra   donc prendre en compte la typographie fran\c caise. Cette ligne n'est compréhensible par le compilateur que parce que nous avons chargé \package{polyglossia} au préalable.
 
 \begin{plusloins}
 Vous entendrez peut-être parler du package \package{babel}. Il est très souvent utilisé à la place de \package{polyglossia}, notamment parce qu'il est plus ancien. Toutefois, nous avons choisi pour notre part de nous limiter à \package{polyglossia}, puisque c'est lui que nous avons utilisé pour nos travaux et qu'il possède plus de fonctionalités, notamment pour les langues notées dans un alphabet non latin.
@@ -197,7 +197,7 @@ Les espaces avant les signes de ponctuation double sont une spécificité de la 
 
 En revanche \emph{il est obligatoire de mettre une espace après chaque signe de ponctuation}. Pour ce qui est des points de suspension, il est mieux de ne pas frapper trois points à la suite, mais d'utiliser la commande \csp{ldots} qui espacera correctement les points\footnote{Il est tout à fait possible de configurer l'éditeur de texte pour qu'il remplace automatiquement trois points à la suite par cette commande.}.
 
-En ce qui concerne les guillemets, une partie sera consacrée plus tard à l'art et la manière de faire des citations en \LaTeX.\renvoi{guillemets} Nous n'en parlons donc pas maintenant.
+En ce qui concerne les guillemets, une partie sera consacrée plus tard à l'art et la manière de faire des citations\renvoi{guillemets} en \LaTeX. Nous n'en parlons donc pas maintenant.
 
 Prêtons attention à certaines lettres ligaturées comme  \verb|œ| et  \verb|æ|. À la différence de la plupart des traitements de texte, \LaTeX ne remplace pas automatiquement les suites \verb|oe| et \verb|ae| par \verb|œ| ou \verb|æ|. Il faut donc frapper soi-même ces caractères, ou configurer son éditeur pour qu'il effectue ce remplacement.
 
@@ -233,7 +233,7 @@ Nous conseillons d'utiliser les commentaires pour indiquer les grandes structure
 
 Vous pouvez aussi vous en servir, par exemple, pour faire un commentaire à usage personnel ligne à ligne d'un texte que vous traduisez.
 
-En revanche, nous vous déconseillons de l'utiliser pour des notes personnelles lors de la rédaction. Nous vous indiquerons plus loin \renvoi{commentaireredac} comment définir une commande  personnalisée afin de générer un fichier qui les affiche, pour une relecture, et une autre qui les masque, pour le document final.
+En revanche, nous vous déconseillons de l'utiliser pour des notes personnelles lors de la rédaction. Nous vous indiquerons plus loin comment définir une commande  personnalisée afin de générer un fichier qui les affiche, pour une relecture, et une autre qui les masque, pour le document final\renvoi{commentaireredac}.
 
 
 
