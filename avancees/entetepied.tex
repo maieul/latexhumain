@@ -26,7 +26,7 @@ On voit vite les limites de ces styles. Ainsi, comment  avoir à la fois les tit
 
 \section{Premiers exemples avec \packagenoidx{fancyhdr}}\sindex[pkg]{fancyhdr}
 
-Le \package{fancyhdr} propose un autre style, qu'il est aisé de personnaliser \emph{via} des commandes spécifiques. Pour faire fonctionner \package{fancyhdr} il faut écrire les lignes suivantes dans le préambule :
+Le package \package{fancyhdr} propose un autre style, qu'il est aisé de personnaliser \emph{via} des commandes spécifiques. Pour faire fonctionner \package{fancyhdr} il faut écrire les lignes suivantes dans le préambule :
 
 \begin{latexcode}
 \usepackage{fancyhdr}
@@ -108,6 +108,7 @@ Les deux commandes de marquage sont :
 \item \csp{markright}\marg{marqueur droit}
 \end{itemize}
 
+Les deux commandes d'appel des marqueurs sont : 
 \begin{itemize}
 \item \csp{leftmark} retourne l'argument \arg{marqueur gauche} de la dernière commande \cs{markboth}.
 \item \csp{rightmark} retourne l'argument \arg{marqueur droit} de la première commande \cs{markright} ou \cs{markboth}  située sur la page courante. En revanche, si la page en cours ne contient aucune de ces commandes, alors \csp{rightmark} retourne l'argument \arg{marqueur droit} de la dernière commande \cs{markright} ou \cs{markboth} utilisée.
