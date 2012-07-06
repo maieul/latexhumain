@@ -24,7 +24,7 @@ Pour indexer un document, il faut utiliser le package \package{imakeidx} et plac
 
 
 
-On indexe son document avec  la commande \csp{index}\marg{entrée}\label{cmdindex}. L'entrée apparaît dans l'index sous la forme indiquée par l'argument \arg{entrée}, suivit du numéro de la page où cette commande est placée dans le texte. 
+On indexe son document avec  la commande \csp{index}\marg{entrée}\label{cmdindex}. L'entrée apparaît dans l'index sous la forme indiquée par l'argument \arg{entrée}, suivie du numéro de la page où cette commande est placée dans le texte. 
 
 Dans l'exemple qui suit\footcite{eginhard}, l'index comporte ainsi cinq entrées: \enquote{Charlemagne}, \enquote{Adrien}, \enquote{Tassilon}, \enquote{Formose} et \enquote{Damase}:
 %Changer l'exemple.
@@ -41,11 +41,10 @@ Damase\index{Damase}\textelp{}.
 
 
 
- Lorsqu'une entrée est référencée deux fois dans la même page, cette page n'est indiquée qu'une seule fois. 
+Lorsqu'une entrée est référencée deux fois dans la même page, cette page n'est indiquée qu'une seule fois. 
 
 \begin{attention}
 Il vaut mieux accoler la commande \cs{index}\marg{entrée} directement au  mot à indexer, sans laisser d'espace, pour éviter toute ambiguïté en cas de changement de page.
-
 \end{attention}
 
 
@@ -64,7 +63,7 @@ Il suffit ensuite, au cours de la rédaction de son texte, de taper par exemple 
 
 \subsubsection{Générer l'index}
 
-Si notre fichier principal s'appelle \fichier{exemple.tex},  la commande \cs{makeindex} indique à \LaTeX{}, lors de la compilation avec \XeLaTeX , de créer un fichier \fichier{exemple.idx}, contenant la liste de toutes les entrées que l'on a placées. 
+Si notre fichier principal s'appelle \fichier{exemple.tex},  la commande \cs{makeindex} indique à \LaTeX{}, lors de la compilation avec \XeLaTeX, de créer un fichier \fichier{exemple.idx}, contenant la liste de toutes les entrées. 
 \LaTeX{} génère aussi un fichier \fichier{exemple.ilg} qui contient les messages de compilation de l'index, et un fichier \fichier{exemple.ind} qui contient l'index formaté.
 L'index  apparaît dans le document à l'emplacement que l'on a indiqué par la commande \csp{printindex}.
 
@@ -137,7 +136,7 @@ entrée x-y
 
 L'indexation avec \LaTeX ne gère pas correctement les accents indiqués dans l'argument de la commande \cs{index} : il classe les mots commençant par un accent à la fin de l'index. La syntaxe \cs{index}\verb|{|\meta{entrée}\verb|@|\meta{entrée formatée}\verb+}+ permet de résoudre ce problème. Ainsi, si l'on veut créer une entrée \enquote{écrivains}, qui soit triée à \enquote{e}, il faut insérer \cs{index}\verb|{ecrivains@écrivains}|.
 
-La commande \cs{index}\verb|{|\meta{entrée}\verb|@|\meta{entrée formatée}\verb+}+ permet donc de classer une entrée où l'on veut dans l'index. Pour faire apparaître dans l'index, par exemple, les empereurs romains dans l'ordre chronologique et non dans l'ordre alphabétique, on peut utiliser les commandes suivantes:
+La commande \cs{index}\verb|{|\meta{entrée}\verb|@|\meta{entrée formatée}\verb+}+ permet donc de classer une entrée où l'on veut dans l'index. Pour faire apparaître, par exemple, les empereurs romains dans l'ordre chronologique et non dans l'ordre alphabétique, on peut utiliser les commandes suivantes:
 
 \begin{latexcode}
 \index{Empereurs!empereur1@Auguste}
@@ -164,8 +163,8 @@ Cette syntaxe est aussi utile pour mettre en évidence une entrée dans l'index 
 \newcommand\auteur[2]{#1~\textsc{#2}\index{#2 #1@\textsc{#2}, #1}\xspace}
 \end{latexcode}
 
-Désormais, frapper \cs{auteur}\verb|{Victor}{Hugo}|donne
- \enquote{\textsc{Hugo},~Victor} dans l'index.
+Désormais, frapper \cs{auteur}\verb|{Victor}{Hugo}| produit  dans l'index
+ \enquote{\textsc{Hugo},~Victor}.
  
  
 
@@ -174,7 +173,7 @@ Désormais, frapper \cs{auteur}\verb|{Victor}{Hugo}|donne
 Il peut arriver, lorsqu'une entrée est très souvent représentée dans un texte indexé, que l'on veuille mettre en valeur une de ses occurrences, en faisant apparaître en gras dans l'index le numéro de la page où elle se situe : on utilise alors la commande \cs{index}\verb|{|\meta{entrée}\verb+|textbf}+. 
 
 \begin{attention}
-Il s'agit bien de \verb+|textbf+, non de \verb+|\textbf+
+Il s'agit bien de \verb+|textbf+, non de \verb+|\textbf+.
 \end{attention}
 
 De même pour faire apparaître le numéro de la page en italique utilise-t-on la commande \cs{index}\verb|{|\meta{entrée}\verb+|textit}+.
@@ -192,7 +191,7 @@ Si vous utilisez le package \package{hyperref}, vous constaterez que celui-ci in
 
 
 
-La commande \cs{makeindex} peut recevoir des arguments optionnels sous la forme \cs{makeindex}\oarg{clef$=$valeur} ; s'il y a plusieurs arguments, ils doivent être séparés par une virgule. En voici deux (nous en verrons un troisième pour les index multiples, et un autre lorsque nous évoquerons le formatage de l'index)\footnote{Pour une liste exhaustive, voir \cite{imakeidx}.} :
+La commande \cs{makeindex} peut recevoir des arguments optionnels sous la forme \cs{makeindex}\oarg{clef$=$valeur} ; s'il y a plusieurs arguments, ils doivent être séparés par une virgule. En voici deux\footnote{Nous en verrons un troisième pour les index multiples, et un autre lorsque nous évoquerons le formatage de l'index. Pour une liste exhaustive, voir \cite{imakeidx}.} :
 \begin{fieldlist}
 \fielditem{title} Permet de changer le nom de l'index, qui par défaut est \enquote{Index}. Par exemple, le code suivant permet d'avoir un index intitulé \enquote{Index rerum} 
 
@@ -206,7 +205,7 @@ La commande \cs{makeindex} peut recevoir des arguments optionnels sous la forme 
 \makeindex[title = Index rerum, columns = 1]
 \end{latexcode}
 
-\fielditem{intoc} Indique si l'index doit apparaître ou non dans la table des matières. Par défaut, vaut pour \verb|false| . Pour le positionner en \verb|true| , il suffit de le mettre dans la liste des argument, sans la valeur true: 
+\fielditem{intoc} Indique si l'index doit apparaître ou non dans la table des matières. Par défaut, l'index n'apparaît pas dans la table des matières. Pour le mettre, il suffit d'ajouter cet argument dans la liste. 
 
 \begin{latexcode}
 \makeindex[title = Index rerum, columns = 1, intoc]
@@ -217,7 +216,7 @@ Il existe une autre commande, la commande \cs{indexsetup} qui peut, elle aussi, 
 \marg{clef$=$valeur}. Voici ceux qui peuvent être utile lorsque l'on n'a qu'un index (nous en verrons quelques autres à la section suivante:
 \begin{fieldlist}
 \fielditem{level} Indique le niveau de division (section, chapitre, etc) auquel correspond l'index. Par défaut, il s'agit de \verb|\chapter*|.
-\fielditem{toclevel} Indique le niveau de division (section, chapitre, etc) auquel correspond l'index dans la table des matières.  Contrairement à l'argument précédent, il ne faut pas mettre de barre oblique ici :
+\fielditem{toclevel} Indique le niveau de division (section, chapitre, etc) auquel correspond l'index dans la table des matières.  Contrairement à l'argument précédent, il ne faut pas mettre de barre oblique :
 
 \begin{latexcode}
 \indexsetup[level=\section*, toclevel=section]
@@ -228,7 +227,7 @@ Il existe une autre commande, la commande \cs{indexsetup} qui peut, elle aussi, 
 Pour terminer, voici la commande \cs{indexprologue}\oarg{espace}\marg{texte} qui permet de mettre un prologue avant l'index. La commande se place juste avant \cs{printindex}\footnote{Il peut y avoir autant de prologues que d'index}. L'argument \oarg{espace} (par défaut \verb|bigskip|) indique l'espace   entre le prologue de l'index et la première entrée; il doit contenir  une commande d'espacement vertical\renvoi{espace} (comme  \verb|\vspace{36pt}|). L'argument \marg{texte} contient le prologue en lui même. Par exemple, pour un index des notions :
 
 \begin{latexcode}
-\indexprologue{Les numéros en gras renvoient aux pages où la notion est définie}
+\indexprologue{Les numéros en gras renvoient aux pages où la notion est définie.}
 \printindex
 \end{latexcode}
 
@@ -238,7 +237,7 @@ Pour terminer, voici la commande \cs{indexprologue}\oarg{espace}\marg{texte} qui
 
 \subsection{Définir ses index}
 
-Le package \package{imakeidx} permet de faire plusieurs index pour un même document. La première étape consiste à définir ces index. On les déclare dans le préambule en utilisant pour chaque index la commande \csp{makeindex} que nous avons déjà vue. On donne à chaque index un nom  abrégé --- à ne pas confondre avec son titre --- qui permettra ensuite d'indiquer  à quel index appartient telle entrée indexée dans votre document. Le nom abrégé de l'index est indiqué comme  option à la commande  \csp{makeindex}.
+Le package \package{imakeidx} permet de faire plusieurs index pour un même document. La première étape consiste à définir ces index. On les déclare dans le préambule en utilisant pour chaque index la commande \csp{makeindex}, déjà étudié. Chaque index reçoit un nom  abrégé --- à ne pas confondre avec son titre --- qui permettra ensuite d'indiquer  à quel index appartient telle entrée indexée dans votre document. Le nom abrégé de l'index est indiqué comme  option à la commande  \csp{makeindex}.
 
 
 Ainsi, pour faire un index des noms propres et un index général, on peut déclarer:
@@ -248,21 +247,18 @@ Ainsi, pour faire un index des noms propres et un index général, on peut décl
 \makeindex[name=npr, title=Index des noms propres] 
 \end{latexcode}
 
-On remarque ici qu'aucun nom n'a été donné à l'index principal: dans ce cas, le nom abrégé est automatiquement idx.
+On remarque ici qu'aucun nom n'a été donné à l'index principal: dans ce cas, le nom abrégé est automatiquement \forme{idx}.
 %phrase à retravailler
 
 \subsection{Indexer son texte}
 Une fois  les index déclarés, il faut passer à l'indexation proprement dite. Le principe est le même que pour un seul index,
-mais au lieu de la commande \cs{index}\marg{entrée}, on utilise :
-
+mais au lieu de \cs{index}\marg{entrée}, on utilise : \\
 \csp{index}\oarg{nom abrégé}\marg{entrée}. 
 
 \begin{plusloins}
-
-Toutes les entrées indiquées  par \cs{index}\marg{entrée}, sans l'argument \oarg{nom  abrégé}, sont automatiquement placées dans l'index général idx.
-
-
+Toutes les entrées indiquées  par \cs{index}\marg{entrée}, sans l'argument \oarg{nom  abrégé}, sont automatiquement placées dans l'index général \forme{idx}.
 \end{plusloins}
+
 On peut ainsi indexer notre texte d'Éginhard de la façon suivante:
 
 \begin{latexcode}
@@ -289,23 +285,20 @@ Pour imprimer un index, il suffit d'utiliser la commande \csp{printindex} en lui
 
 
 \begin{plusloins}
-
 Si l'on veut regrouper tous les index en un seul chapitre dont chaque index est une section, on utilisera  à la commande \cs{indexsetup}. On peut lui passer comme option \oarg{noclearpage}, pour  éviter que chaque index commence à une nouvelle page. Bien sûr, chaque index peut avoir son propre prologue. Voici un exemple: 
-
 \begin{latexcode}
 \indexsetup{level=\section*,toclevel=section,noclearpage} 
 ... 
 \chapter*{Indices}
-\indexprologue{Les numéros en gras renvoient aux définitions des notions} 
+\indexprologue{Les numéros en gras renvoient aux définitions des notions.} 
 \printindex
 
-\indexprologue{Les auteurs anciens sont indiqués en italiques}
-\printindex[aut] 
+\indexprologue{Les auteurs anciens sont indiqués en italiques.}
+\printindex[npr] 
 \end{latexcode}
 \end{plusloins}
 
 \section{Indexer ses sources}
-
 
 Nous allons maintenant voir comment utiliser les possibilités de \package{biblatex} et de \package{imakeidx} pour établir un index des sources primaires.
 
@@ -326,7 +319,7 @@ La documentation de \package{biblatex}\footcite{biblatex_options} nous informe q
 \begin{enumerate}
 \item Compilation avec \XeLaTeX.
 \item Compilation avec Biber (ou BibTeX).
-\item Compilation avec \XeLaTeX pour que les données bibliographiques soit intégrées dans l'index.
+\item Compilation avec \XeLaTeX pour que les données bibliographiques soient intégrées dans l'index.
 \end{enumerate}
 
 On constate cependant deux problèmes : 
@@ -363,7 +356,7 @@ Nous avons donc notre index spécifique. Mais encore faut-il que nous disions  �
 \item[ligne 4] nous indexons le champ \champ{indextitle}. C'est un champ spécial, qui sert à avoir un autre titre dans l'index que dans le corps du document. Si ce champ est vide \package{biblatex} utilise à la place le champ \champ{title}. Nous utilisons le format d'indexation \verb|sources|.
 \item[ligne 5] nous indexons le champ \champ{titleaddon}. Nous utilisons le format d'indexation \verb|sources|.
 \item[ligne 6]  une des limitations de \package{biblatex} est qu'il ne peut indexer qu'un seul champ à la fois, et n'est pas capable, pour le moment, de produire des entrées d'index à plusieurs niveaux. 
-Avec cette macro \bibmacro{citeindex}, on obtient une indexation séparée de chaque champ des entrées indéxées. 
+Avec cette macro \bibmacro{citeindex}, on obtient une indexation séparée de chaque champ des entrées indexées. 
 Or nous voudrions obtenir une indexation correspondant à la commande:
 \begin{latexcode} 
 \index{auteur!titre!titleaddon}
@@ -372,7 +365,7 @@ Or nous voudrions obtenir une indexation correspondant à la commande:
 Mais avant d'utiliser ce script, il faut  indexer une fausse valeur, la valeur \verb|---|, qui empêchera le script d'indexer tous les champs d'une entrée: nous ne voulons pas obtenir une entrée de la forme : \\
  \verb|\index{author!title!titleaddon!author2!title2!}|
  
- Toutefois, ce script python doit être exécuté avant que \LaTeX ne transforme le fichier \ext{idx} en fichier \ext{ind}. Cette transformation est faite automatiquement par le package \package{imakeidx}. Cependant, nous pouvons désactiver cet automatisme pour un index particulier, dans le cas présent pour l'index sources. Pour ce faire, il nous suffit d'appeler ainsi la commande \cmd{makeindex} :
+Toutefois, ce script python doit être exécuté avant que \LaTeX ne transforme le fichier \ext{idx} en fichier \ext{ind}. Cette transformation est faite automatiquement par le package \package{imakeidx}. Cependant, nous pouvons désactiver cet automatisme pour un index particulier, dans le cas présent pour l'index sources. Pour ce faire, il nous suffit d'appeler ainsi la commande \cmd{makeindex} :
 
 \begin{latexcode}
 \makeindex[name=sources,title=Index des sources,noautomatic]
@@ -388,7 +381,7 @@ Après cela, la compilation avec XeLaTeX affiche correctement l'index.
 
 \subsection{Fomat d'indexation \packagenoidx{biblatex}}\sindex[pkg]{biblatex}
 
-Nous avons dit que nous utilisions le format d'indexation \forme{source}. Un format d'indexation \package{biblatex}  est simplement la description de l'opération que \package{biblatex} effectue lorsqu'il doit indexer un champ. 
+Nous avons dit que nous utilisions le format d'indexation \verb|sources|. Un format d'indexation \package{biblatex}  est simplement la description de l'opération que \package{biblatex} effectue lorsqu'il doit indexer un champ. 
 
 Il nous faut donc définir ce format grâce aux commandes \csp{DeclareIndexNameFormat} et \csp{DeclareIndexFieldFormat}.
 
