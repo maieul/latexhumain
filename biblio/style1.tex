@@ -79,7 +79,7 @@ alors que le règles françaises voudraient que l'on ait :
     
     Deux cas existent :
         \begin{enumerate}
-            \item Le package \package{biblatex} a prévu une commande spécifique pour notre type d'unité. C'est le cas pour le séparateur avant le sous titre\footcite[Ces commandes sont peu nombreuses : on les trouvera dans][]{biblatex_hooks}. Il suffit dans ce cas de redéfinir la commande. Nous souhaitons par exemple avoir des deux-points entre le titre et le sous-titre. Il nous suffit d'indiquer :
+            \item Le package \package{biblatex} a prévu une commande spécifique pour notre type d'unité. C'est le cas pour le séparateur avant le sous-titre\footcite[Ces commandes sont peu nombreuses : on les trouvera dans][]{biblatex_hooks}. Il suffit dans ce cas de redéfinir la commande. Nous souhaitons par exemple avoir des deux-points entre le titre et le sous-titre. Il nous suffit d'indiquer :
             
             \begin{latexcode}
 \renewcommand{\subtitlepunct}[0]{\addspace\addcolon\addspace}
@@ -113,7 +113,7 @@ On peut là aussi modifier le séparateur en redéfinissant la commande \csp{mul
 
 \section{Styles de certains blocs}
 
-La ponctuation n'est pas le cas pour lequel  \package{biblatex} propose des outils pour faire des modifications spécifiques. Certaines parties des références bibliographiques ont également  la possibilité d'être configurées grâce à des commandes particulières\footcite{biblatex_hooks}. Prenons par exemple la particule d'un auteur.
+La ponctuation n'est pas le seul cas pour lequel  \package{biblatex} propose des outils pour faire des modifications spécifiques. Certaines parties des références bibliographiques ont également  la possibilité d'être configurées grâce à des commandes particulières\footcite{biblatex_hooks}. Prenons par exemple la particule d'un auteur.
     
     \bibverbose
     \begin{quotation}
