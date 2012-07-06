@@ -82,7 +82,7 @@ Ceci était vrai fut un temps. Il est depuis longtemps inutile d'apprendre ces c
 
 Le troisième, \package{polyglossia}, permet de gérer facilement un document multilingue\renvoi{i18n} et les changements typographiques qu'un tel document implique.
 
-Ces trois packages sont propres à \XeLaTeX  : ils ne fonctionnent pas avec \LaTeX\renvoi{TeXLaTeX}.
+Ces trois packages sont propres à \XeLaTeX  : ils ne fonctionnent pas\renvoi{TeXLaTeX} avec \LaTeX.
 
 Certains packages peuvent recevoir des options qui modifieront leur comportement standard. La syntaxe est alors \csp{usepackage}\oarg{options}\marg{package}.
 
@@ -101,7 +101,7 @@ Lorsque nous parlons d'un package, nous renvoyons souvent à son manuel. Il exis
 Tout de suite après, la ligne \csp{setmainlanguage}\verb|{french}| indique que nous utilisons comme langue principale du document le français\renvoi{i18n}, et  que le compositeur de texte devra   donc prendre en compte la typographie fran\c caise. Cette ligne n'est compréhensible par le compilateur que parce que nous avons chargé \package{polyglossia} au préalable.
 
 \begin{plusloins}
-Vous entendrez peut-être parler du package \package{babel}. Il est très souvent utilisé à la place de \package{polyglossia}, notamment parce qu'il est plus ancien. Toutefois, nous avons choisi pour notre part de nous limiter à \package{polyglossia}, puisque c'est lui que nous avons utilisé pour nos travaux et qu'il possède plus de fonctionalités, notamment pour les langues notées dans un alphabet non latin.
+Vous entendrez peut-être parler du package \package{babel}. Il est très souvent utilisé à la place de \package{polyglossia}, notamment parce qu'il est plus ancien. Toutefois, nous avons choisi pour notre part de nous limiter à \package{polyglossia}, puisque c'est lui que nous avons utilisé pour nos travaux et qu'il possède plus de fonctionalités, par exemple pour les langues notées dans un alphabet non latin.
 
 Vous trouverez aisément des informations à propos de \package{babel} sur Internet.
 
@@ -140,7 +140,7 @@ Ici la commande \csp{maketitle} affiche les informations tel que le titre, la da
 Une commande peut prendre des arguments, certains facultatifs, d'autres obligatoires. Ces arguments  modifient son comportement.
 
 
-La syntaxe d'une commande est :\csp{nom}\oarg{opt1}\oarg{…}\oarg{optn}\marg{obl1}\marg{…}\marg{obln} \label{syntaxecommande}
+\label{syntaxecommande}La syntaxe d'une commande est : \csp{nom}\oarg{opt1}\oarg{…}\oarg{optn}\marg{obl1}\marg{…}\marg{obln} 
 
 Entre crochets sont indiqués les arguments optionnels, entre accolades les arguments obligatoires. Ces arguments peuvent eux même contenir des commandes.
 
@@ -158,7 +158,7 @@ La grande force de \LaTeX est justement l'utilisation de commandes afin d'évite
 \subsection{Le corps du texte : la manière de rédiger}
 
 \subsubsection{Analyse de notre exemple}
-Regardez maintenant les lignes suivantes et leur résultat à la compilation .
+Regardez maintenant les lignes suivantes et leur résultat à la compilation.
 
 
 \begin{latexcode*}{linenos,firstnumber=13}
@@ -212,7 +212,7 @@ Enfin, il est parfois utile d'insérer une espace insécable, pour éviter que d
 
 
 
-Par ailleurs, comme vous avez pu le constater, \LaTeX interprète de manière spécifique un certain nombre de caractères : \verb|\{}~|, à quoi nous ajoutons \verb|%_&$#^| \footnote{Nous ne verrons pas l'utilité \LaTeX  de tout ces caractères, certains servant essentiellement à rédiger des formules mathématiques.}.
+Par ailleurs, comme vous avez pu le constater, \LaTeX interprète de manière spécifique un certain nombre de caractères : \verb|\{}~|, à quoi nous ajoutons \verb|%_&$#^|\footnote{Nous ne verrons pas l'utilité \LaTeX  de tout ces caractères, certains servant essentiellement à rédiger des formules mathématiques.}.
 
 Comment faire si nous désirons afficher un de ces caractères ? Il faut les faire précéder du caractère~\verb|\|. Ainsi pour insérer le caractère \verb|%|, il faut écrire \verb|\%|. 
 
