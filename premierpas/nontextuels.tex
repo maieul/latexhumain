@@ -48,7 +48,7 @@ Deux solutions s'offrent à nous :
 \item Utiliser les possibilités de \LaTeX et du package\package{TikZ}.\label{TikZ}
 \end{enumerate}
 
-La première solution paraît de prime abord plus simple, puisqu'elle ne nécessite pas d'apprendre de nouveaux éléments en \LaTeX. Toutefois il faut avec elle gérer plus de fichiers\footnote{Prenons un graphisme généré par un tableur : il faudra conserver la feuille du tableur plus l'image du graphisme généré par celui-ci.}. En outre, les images exportées par ces logiciels étant bien souvent de type bitmap et  pas vectoriel%
+La première solution paraît de prime abord plus simple, puisqu'elle ne nécessite pas d'apprendre de nouveaux éléments en \LaTeX. Toutefois il faut avec elle gérer plus de fichiers\footnote{Prenons un graphisme généré par un tableur : il faudra conserver la feuille du tableur plus l'image du graphisme généré par celui-ci.}. En outre, les images exportées par ces logiciels étant bien souvent de type bitmap et non pas vectoriel%
 \footnote{Il existe deux manières en informatique de coder une image : en codant point par point (image bitmap) ou bien en codant simplement les formes, par exemple des cercles ou des segments (image vectorielle). La première méthode est adaptée à des images complexes, comme les photographies,  la seconde méthode est conseillée pour les images \enquote{simples} telles que les graphismes. La méthode vectorielle possède l'avantage d'offrir une image plus facilement redimensionnable  sans perte de qualité et de permettre aisément la sélection de texte.},
 on perd la possibilité de sélectionner dans le PDF généré par \LaTeX les textes, et on risque d'avoir des problèmes de redimensionnement.
 
@@ -187,7 +187,7 @@ Il existe également un package \package{tabbing} permettant de gérer des align
 \end{plusloins}
 
 \begin{plusloins}
-On peut simuler certaines fonctionnalités d'un tableau à l'aide du package \package{spreadtab}\footcite{spreadtab}.
+On peut simuler certaines fonctionnalités d'un tableur à l'aide du package \package{spreadtab}\footcite{spreadtab}.
 \end{plusloins}
 
 \subsubsection{Séparation des cellules}
@@ -212,6 +212,7 @@ Il est possible de fusionner des cellules. Pour une fusion de colonnes, il faut 
 \end{description}
 
 Pour une fusion de lignes, il faut charger le package \package{multirow}. Celui-ci propose une commande \cs{multirow} dont voici la syntaxe simplifiée\footcite[Simplifiée car nous ne présentons pas les arguments optionnels : nous renvoyons à la documentation :][]{multirow} :
+
 \csp{multirow}\marg{lignes}\marg{largeur}\marg{contenu}.
 
 
@@ -314,7 +315,7 @@ Nous avons un exemple de flottant   dans ce chapitre : la figure~\ref{figure:gen
     De même on pourrait souhaiter renvoyer automatiquement au numéro et la page d'une figure : nous en parlons dans le chapitre consacré à la navigation à l'intérieur d'un document\renvoi{label}.
 \end{attention}
 
-À noter que, comme les titres, la commande \csp{caption} peut recevoir un argument optionnel qui compte pour titre dans la table des figures ou la table des tableaux\renvoi{tablefigure} : 
+À noter que, comme les titres de partie, la commande \csp{caption} peut recevoir un argument optionnel qui compte pour titre dans la table des figures ou la table des tableaux\renvoi{tablefigure} : 
 
 \cs{caption}\oarg{Légende pour la table}\marg{Légende}. 
 
@@ -339,9 +340,9 @@ Si l'on souhaite avoir deux éléments flottants en vis-à-vis, sur la page gauc
 
 Le package \package{endfloat}\footcite{endfloat} permet, quant à lui, de placer systématiquement les flottants à la fin du travail.
 
-Pour avoir des flottants orientés dans un autre sens que celui de la page, on utilisera pour ce faire le package \package{rotfloat}\footcite{rotfloat}.
+Pour avoir des flottants orientés dans un autre sens que celui de la page, on utilisera le package \package{rotfloat}\footcite{rotfloat}.
 
-Il est possible d'insérer au sein d'une figure des sous-figures, chacune d'entre elles disposant d'une légende, en plus de la légende principal; il faut utiliser le  \package{subcaption}\footcite{subcaption}.
+Il est possible d'insérer au sein d'une figure des sous-figures, chacune d'entre elles disposant d'une légende, en plus de la légende principale; il faut utiliser le  \package{subcaption}\footcite{subcaption}.
 \end{plusloins}
 
 
