@@ -11,16 +11,14 @@ Les commandes pour formater l'index sont à placer dans un fichier \fichier{mons
 Pensez à placer ce fichier à un endroit où \LaTeX peut le trouver, par exemple à côté du fichier principal.
 \end{attention}
 
-
-Auparavant, il fallait compiler en ligne de commande\renvoi{terminal} suivant cette syntaxe :
-
+Auparavant, il fallait compiler en ligne de commande, selon cette syntaxe :\renvoi{terminal}
 
 \begin{bashcode}
 makeindex -s monstyle.ist monfichier.idx
 \end{bashcode}
 
 L'option -s indiquait  à \package{makeindex}  qu'il devait utiliser le fichier de style \fichier{monstyle.ist}.
-Le package \package{imakeidx}  évite de passerpar le terminal : il suffit en effet de  donner à la commande \cs{makeindex} l'argument \oarg{options=-s  monstyle.ist}
+Le package \package{imakeidx}  évite de passer par le terminal : il suffit en effet de  donner à la commande \cs{makeindex} l'argument \oarg{options=-s  monstyle.ist}. 
 
 
 
@@ -80,7 +78,7 @@ heading_prefix "{\\bfseries "
 
 Si nous voulons qu'elles apparaissent en italique, nous écrivons \verb|"|\textbackslash\cs{itshape}\verb|"| (on utilise \cs{bfseries} et \csp{itshape}, qui sont des commandes \TeX, et non \cs{textbf} \cs{textit}).
 
-Nous  pouvons de même changer la taille des lettres séparatrices en ajoutant \textbackslash\cs{large} ou \textbackslash\cs{Large}, et ainsi de suite\renvoi{taille}. 
+Nous  pouvons de même changer la taille des lettres séparatrices en ajoutant \textbackslash\cs{large} ou \textbackslash\cs{Large}, et ainsi de suite. \renvoi{taille}
 
 Mais nous avons ouvert une accolade… il nous faut la refermer:
 
@@ -127,7 +125,7 @@ Evêques \\
 \end{quotation}
 
 
-Si nous préférons qu'elles soient simplement légèrement décalées vers la droite, nous pouvons utiliser, à la place de \textbackslash\cs{hfill}, \textbackslash\cs{hspace*}\verb|{1em}| qui rajoute à gauche un espace\renvoi{espace} d'un cadratin\renvoi{unite}. 
+Si nous préférons qu'elles soient simplement légèrement décalées vers la droite, nous pouvons utiliser, à la place de \textbackslash\cs{hfill}, \textbackslash\cs{hspace*}\verb|{1em}| qui rajoute à gauche un espace d'un cadratin. \renvoi{unite}\renvoi{espace}
 
 
 Quand on a compris ce système, il est alors assez simple de formater à sa guise l'index. C'est pourquoi, pour les autres options, nous renvoyons ici à la lecture du manuel\footcite[On pourra aussi consulter][]{frama_index}. 
