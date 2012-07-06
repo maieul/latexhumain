@@ -418,7 +418,7 @@ Cette macro est déjà définie par \package{biblatex}. Elle reçoit plusieurs a
 
 La commande \cs{DeclareIndexFieldFormat} sert à déclarer la manière d'indexer les champs qui ne sont ni des listes ni des noms. La valeur \verb|#1| correspond à la valeur du champ à indexer. En deuxième ligne, nous vérifions grâce à la commande \csp{ifcurrentfield}, que le champ    est \champ{indextitle} : si c'est le cas, nous l'indexons dans l'index \verb|source| en mettant l'emphase sur le titre pour l'affichage final. Sinon, nous l'indexons simplement dans l'index \verb|source|.
 
-\subsection{Compilation et concaténation des index}
+\subsection{Compilation et concaténation des index}\label{scriptpython}
 
 
 Après la  compilation \XeLaTeX, nous obtenons un fichier \fichier{sources.idx}. Si vous l'ouvrez vous constaterez que nous avons des entrées sous la forme : 
