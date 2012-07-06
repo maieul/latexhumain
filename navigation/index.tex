@@ -13,7 +13,7 @@ Dans ce chapitre nous verrons comment faire un ou plusieurs index\footnote{Je re
 \subsection{Principe de base}
 
 
-Pour indexer un document, il faut utiliser le package \package{imakeidx} et placer  dans le préambule la commande \csp{makeindex}\footnote{Le \package {imakeidx} remplace à la fois le  \package{makeidx} et le  \package{SplitIndex}, dont il reprend les commandes. Il est plus simple à utiliser, notamment pour la mise en page de l'index (voir son manuel), et ne nécessite qu'une compilation, contrairement à ses prédécesseurs. Pour obtenir des informations sur les commandes d'indexation, il faut consulter les manuels de \package{makeidx} et de \package{SplitIndex}.}.
+Pour indexer un document, il faut utiliser le package \package{imakeidx} et placer  dans le préambule la commande \csp{makeindex}\footnote{Le \package {imakeidx} remplace à la fois le  \package{makeindex} et le  \package{SplitIndex}, dont il reprend les commandes. Il est plus simple à utiliser, notamment pour la mise en page de l'index (voir son manuel), et ne nécessite qu'une compilation, contrairement à ses prédécesseurs. Pour obtenir des informations sur les commandes d'indexation, il faut consulter les manuels de \package{makeidx} et de \package{SplitIndex}.}.
 
 \begin{latexcode}
 \usepackage{imakeidx}
@@ -224,7 +224,7 @@ Il existe une autre commande, la commande \cs{indexsetup} qui peut, elle aussi, 
 \end{fieldlist}
 
 
-Pour terminer, voici la commande \cs{indexprologue}\oarg{espace}\marg{texte} qui permet de mettre un prologue avant l'index. La commande se place juste avant \cs{printindex}\footnote{Il peut y avoir autant de prologues que d'index}. L'argument \oarg{espace} (par défaut \verb|bigskip|) indique l'espace   entre le prologue de l'index et la première entrée; il doit contenir  une commande d'espacement vertical\renvoi{espace} (comme  \verb|\vspace{36pt}|). L'argument \marg{texte} contient le prologue en lui même. Par exemple, pour un index des notions :
+Pour terminer, voici la commande \cs{indexprologue}\oarg{espace}\marg{texte} qui permet de mettre un prologue avant l'index. La commande se place juste avant \cs{printindex}\footnote{Il peut y avoir autant de prologues que d'index.}. L'argument \oarg{espace} (par défaut \verb|bigskip|) indique l'espace   entre le prologue de l'index et la première entrée; il doit contenir  une commande d'espacement vertical\renvoi{espace} (comme  \verb|\vspace{36pt}|). L'argument \marg{texte} contient le prologue en lui même. Par exemple, pour un index des notions :
 
 \begin{latexcode}
 \indexprologue{Les numéros en gras renvoient aux pages où la notion est définie.}
@@ -247,8 +247,8 @@ Ainsi, pour faire un index des noms propres et un index général, on peut décl
 \makeindex[name=npr, title=Index des noms propres] 
 \end{latexcode}
 
-On remarque ici qu'aucun nom n'a été donné à l'index principal: dans ce cas, le nom abrégé est automatiquement \forme{idx}.
-%phrase à retravailler
+On remarque ici qu'aucun nom n'a été donné à l'index principal: dans ce cas, le nom abrégé est automatiquement \forme{idx}. À la compilation, sera crée, en plus  des fichiers \fichier{exemple.idx}, \fichier{exemple.ilg} et \fichier{exemple.ind},  les fichiers \fichier{npr.idx}, \fichier{npr.ilg} et \fichier{npr.ind}.
+
 
 \subsection{Indexer son texte}
 Une fois  les index déclarés, il faut passer à l'indexation proprement dite. Le principe est le même que pour un seul index,
