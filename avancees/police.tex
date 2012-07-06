@@ -278,7 +278,7 @@ Deux éléments nous intéressent ici. Le premier est la ligne 2 \cs{thispagesty
 
 Le second élément intéressant est la dernière ligne. La commande \csp{secdef} renvoie vers \csp{@chapter} si nous utilisons \cs{chapter} et vers \csp{@schapter} si nous utilisons \cs{chapter*}.
 
-En fouillant les codes des commandes \cs{@chapter} et \cs{@schapter} nous trouvons qu'elles appellent respectivement la commande \csp{@makechapterhead} et \csp{@makeschapterhead}.
+En fouillant les codes des commandes \cs{@chapter} et \cs{@schapter} nous trouvons qu'elles appellent respectivement \csp{@makechapterhead} et \csp{@makeschapterhead}.
 
 \begin{plusloins}
 Vous constaterez que les commandes \cs{@chapter}, \cs{@schapter}, \cs{@makechapterhead} et \cs{@makeschapterhead} sont définies \emph{via} la commande \cs{def} et non pas \cs{newcommand}. 
