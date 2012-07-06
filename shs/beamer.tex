@@ -65,7 +65,7 @@ Pour les afficher dans une diapositive, en revanche, il faut utiliser les comman
 
 \section{Affichage différé : les couches Beamer}
 
-Afficher tous les éléments d'une diapositive en une seule fois présente peu d'intérêt : il vaut mieux les afficher petit à petit afin de les commenter au fur et à mesure. \classe{Beamer} utilise pour cela la notion de \forme{\textenglish{slides}}, que nous traduisons par celle de \emph{couches}. Il s'agit de dire à une commande de ne s'exécuter que sur une ou plusieurs couches spécifiques.
+Afficher tous les éléments d'une diapositive en une seule fois présente peu d'intérêt : il vaut mieux les afficher petit à petit afin de les commenter au fur et à mesure. Beamer utilise pour cela la notion de \forme{\textenglish{slides}}, que nous traduisons par celle de \emph{couches}. Il s'agit de dire à une commande de ne s'exécuter que sur une ou plusieurs couches spécifiques.
 
 La syntaxe de l'affichage couche par couche (en anglais \textenglish{\emph{overlay specification}}) est  : \verb|<a-b>| où \verb|a| désigne la couche de départ et \verb|b| désigne la couche d'arrivée. On peut également séparer les numéros de couches spécifiques par des virgules. Voici des exemples pour mieux comprendre :
 
@@ -89,7 +89,7 @@ On peut vouloir obtenir un PDF où toutes les couches d'une diapositive apparais
 \documentclass[handout]{beamer}
 \end{latexcode}
 
-\package{Beamer} propose des commandes et des environnements pour des usages avancés des spécifications de couche, notamment pour remplacer des éléments par d'autres éléments, tout en accordant à chacun la même place sur la diapositive, pour éviter d'avoir des \enquote{effets de déplacement} d'un élément d'une couche à l'autre. 
+Beamer propose des commandes et des environnements pour des usages avancés des spécifications de couche, notamment pour remplacer des éléments par d'autres éléments, tout en accordant à chacun la même place sur la diapositive, pour éviter d'avoir des \enquote{effets de déplacement} d'un élément d'une couche à l'autre. 
 Ceci dépassant cette introduction, nous renvoyons au manuel\footcite{beamer_overlays}.
 \section{Mise en valeur}
 
