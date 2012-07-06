@@ -149,7 +149,7 @@ erat  elit consectetuer erat, id egestas pede nibh eget odio.
 Pour arrêter la numérotation des \cs{pstart}s,  utilisez  \csp{numberpstartfalse}.
 
 \begin{plusloins}
-Si chaque \cs{pstart} correspond à un paragraphe, il est possible d'automatiser l'insertion des \cs{pstart}s et \cs{pend}s en insérant la commande \csp{autopar} après \cs{beginnumbering}.
+\label{autopar}Si chaque \cs{pstart} correspond à un paragraphe, il est possible d'automatiser l'insertion des \cs{pstart}s et \cs{pend}s en insérant la commande \csp{autopar} après \cs{beginnumbering}.
 \end{plusloins}
 
 \begin{plusloins}
@@ -337,7 +337,7 @@ Le package \package{ledmac} permet d'obtenir très facilement deux textes en vis
 
 Son principe de base est simple:  des textes numérotés  --- inscrits entre \cs{beginnumbering} et \cs{endnumbering}  --- sont placés dans les environnements \enviro{Leftside} pour le texte de gauche,  \enviro{Rightside} pour le texte de droite.
 
-Le package \package{ledpar} fait correspondre en vis-à-vis chaque \enquote{boîte} d'un texte à la boîte correspondante de l'autre texte (il faut donc qu'il y ait le même nombre de boites des deux côtés). Pour la poésie,  chaque vers  (terminé par \ampersand ), est une boîte;  en prose, les boîtes sont délimitées par  \cs{pstart} et  \cs{pend}.  Il est recommandé, en prose, de mettre chaque paragraphe dans une boîte, pour obtenir une synchronisation la plus fine possible --- donc de débuter chaque paragraphe par \cs{pstart} et de le finir par \cs{pend}. 
+Le package \package{ledpar} fait correspondre en vis-à-vis chaque \enquote{boîte} d'un texte à la boîte correspondante de l'autre texte (il faut donc qu'il y ait le même nombre de boites des deux côtés). Pour la poésie,  chaque vers  (terminé par \ampersand ), est une boîte;  en prose, les boîtes sont délimitées par  \cs{pstart} et  \cs{pend}.  Il est recommandé, en prose, de mettre chaque paragraphe dans une boîte, pour obtenir une synchronisation la plus fine possible --- donc de débuter chaque paragraphe par \cs{pstart} et de le finir par \cs{pend}, ou d'utiliser la commande \cs{autopar}\renvoi{autopar}. 
 
 
 Le package \package{ledpar} peut mettre les textes en vis-à-vis sur deux colonnes ou sur deux pages  : bien sûr dans ce dernier  cas le texte de gauche est toujours imprimé sur une page paire.
