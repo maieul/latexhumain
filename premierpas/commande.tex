@@ -18,7 +18,7 @@ Une commande LaTeX peut prendre jusqu'à neuf~arguments, ce qui est en général
 \csp{newcommand}\verb|{\|\arg{nomcommande}\verb|}|\oarg{N}\marg{code}.
 
 \begin{attention}
-    Les noms de commandes ne doivent contenir que des latins non accentués. 
+    Les noms de commandes ne doivent contenir que des caractères latins non accentués. 
     
     Les noms sont sensibles à la casse : \verb|\a| est différent de \verb|\A|.
 \end{attention}
@@ -177,7 +177,7 @@ Que va-t-il se passer ? \LaTeX comprend que l'ensemble de la fin du texte est un
 
 Pour limiter ces soucis, \LaTeX propose de définir des commandes courtes, dont les arguments ne dépassent pas la longueur d'un paragraphe. En cas d'oubli de fermeture de parenthèses, \LaTeX arrête automatiquement l'argument à la fin du paragraphe.
 
-Pour définir ces commandes courtes, il suffit d'utiliser la \csp{newcommand*}.
+Pour définir ces commandes courtes, il suffit d'utiliser \csp{newcommand*}.
 
 \begin{latexcode}
 \newcommand*{\auteur}[1]{\textsc{#1}*}
@@ -277,7 +277,7 @@ Voici une liste non exhaustive de commandes utiles pour personnaliser les styles
     \csp{textsc}            & \textsc{Petites capitales}                    \\
     \csp{underline}        & \underline{Souligné}     (à éviter)                \\
     \csp{textsuperscript}    &  \textsuperscript{Exposant}                    \\
-    \csp{textsubscript}        & \textsubscript{Index} (nécessite le package \package{subscript}) \\
+    \csp{textsubscript}        & \textsubscript{Indice} (nécessite le package \package{subscript}) \\
 \end{longtable}
 
 \subsection{Couleurs}
