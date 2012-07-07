@@ -40,7 +40,7 @@
 
 
  
-
+% Les listes de descriptions
 \newcommand{\fielditem}[1]{\item[#1]}
 \newenvironment{fieldlist}
   {\list{}{%
@@ -52,7 +52,17 @@
      \renewcommand*{\makelabel}[1]{\marglistfont##1}}%
   }
   {\endlist}
-
+% Environnement de liste de description
+\renewenvironment{description}
+  {\list{}{%
+     \setlength{\labelwidth}{1.4\marglistwidth}%
+     \setlength{\labelsep}{0pt}%
+	\itemindent\z@
+     \setlength{\leftmargin}{1.4\marglistwidth}%
+     \setlength{\rightmargin}{\marglistwidth}%
+     \renewcommand*{\makelabel}[1]{\marglistfont##1\hfill}}%
+  }
+  {\endlist}
  
 
 \let\oldminipage\minipage
