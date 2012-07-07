@@ -12,10 +12,13 @@
 \renewcommand{\chaptermark}[1]{\markboth {
      #1}{}}
 \renewcommand{\sectionmark}[1]{\markright{
-    \thesection~#1}{}}
-\fancyhead[LE,RO]{}
-\fancyhead[RE]{\leftmark}
-\fancyhead[LO]{\rightmark}
+    #1}{}}
+\makeatletter
+\fancyhead[LE]{\@chapapp~\thechapter}
+\makeatother
+\fancyhead[RE]{\emph\leftmark}
+\fancyhead[LO]{\emph\rightmark}
+\fancyhead[RO]{§\,\thesection}
 \csappto{clearpage}{\thispagestyle{empty}}
 
 % Réglage pour la bibliographie
