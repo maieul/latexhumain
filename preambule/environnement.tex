@@ -63,7 +63,18 @@
      \renewcommand*{\makelabel}[1]{\marglistfont##1\hfill}}%
   }
   {\endlist}
- 
+% Pour le glossaire, un peu plus de marge car les termes sont longs
+
+\newenvironment{glossaire}
+  {\list{}{%
+     \setlength{\labelwidth}{2.2\marglistwidth}%
+     \setlength{\labelsep}{0pt}%
+	\itemindent\z@
+     \setlength{\leftmargin}{2.2\marglistwidth}%
+     \setlength{\rightmargin}{\marglistwidth}%
+     \renewcommand*{\makelabel}[1]{\marglistfont##1\hfill}}%
+  }
+  {\endlist}
 
 \let\oldminipage\minipage
 \let\endoldminipage\endminipage
