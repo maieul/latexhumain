@@ -13,7 +13,7 @@ Dans ce chapitre nous verrons comment faire un ou plusieurs index\footnote{Je re
 \subsection{Principe de base}
 
 
-Pour indexer un document, il faut utiliser le package \package{imakeidx} et placer  dans le préambule la commande \csp{makeindex}\footnote{Le \package {imakeidx} remplace à la fois le  \package{makeindex} et le  \package{SplitIndex}, dont il reprend les commandes. Il est plus simple à utiliser, notamment pour la mise en page de l'index (voir son manuel), et ne nécessite qu'une compilation, contrairement à ses prédécesseurs. Pour obtenir des informations sur les commandes d'indexation, il faut consulter les manuels de \package{makeidx} et de \package{SplitIndex}.}.
+Pour indexer un document, il faut utiliser le package \package{imakeidx} et placer  dans le préambule la commande \csp{makeindex}\footnote{Le \package {imakeidx} remplace à la fois le  \package{makeindex} et le  \package{SplitIndex}, dont il reprend les commandes. Il est plus simple à utiliser, notamment pour la mise en page de l'index (voir son manuel), et ne nécessite qu'une compilation, contrairement à ses prédécesseurs. Pour obtenir des informations sur les commandes d'indexation, il faut consulter les manuels de \package{makeindex} et de \package{SplitIndex}.}.
 
 \begin{latexcode}
 \usepackage{imakeidx}
@@ -191,7 +191,7 @@ Si vous utilisez le package \package{hyperref}, vous constaterez que celui-ci in
 
 
 
-La commande \cs{makeindex} peut recevoir des arguments optionnels sous la forme \cs{makeindex}\oarg{clef$=$valeur} ; s'il y a plusieurs arguments, ils doivent être séparés par une virgule. En voici deux\footnote{Nous en verrons un troisième pour les index multiples, et un autre lorsque nous évoquerons le formatage de l'index. Pour une liste exhaustive, voir \cite{imakeidx}.} :
+La commande \cs{makeindex} peut recevoir des arguments optionnels sous la forme \cs{makeindex}\oarg{clef$=$valeur} ; s'il y a plusieurs arguments, ils doivent être séparés par une virgule. En voici trois\footnote{Nous en verrons un quatrième pour les index multiples, et un autre lorsque nous évoquerons le formatage de l'index. Pour une liste exhaustive, voir \cite{imakeidx}.} :
 \begin{fieldlist}
 \fielditem{title} Permet de changer le nom de l'index, qui par défaut est \enquote{Index}. Par exemple, le code suivant permet d'avoir un index intitulé \enquote{Index rerum} 
 
@@ -205,15 +205,15 @@ La commande \cs{makeindex} peut recevoir des arguments optionnels sous la forme 
 \makeindex[title = Index rerum, columns = 1]
 \end{latexcode}
 
-\fielditem{intoc} Indique si l'index doit apparaître ou non dans la table des matières. Par défaut, l'index n'apparaît pas dans la table des matières. Pour le mettre, il suffit d'ajouter cet argument dans la liste. 
+\fielditem{intoc} Indique si l'index doit apparaître ou non dans la table des matières. Par défaut, l'index n'apparaît pas dans la table des matières. Pour l'y mettre, il suffit d'ajouter cet argument dans la liste. 
 
 \begin{latexcode}
 \makeindex[title = Index rerum, columns = 1, intoc]
 \end{latexcode}
 \end{fieldlist}
 
-Il existe une autre commande, la commande \cs{indexsetup} qui peut, elle aussi, recevoir plusieurs arguments sous la forme
-\marg{clef$=$valeur}. Voici ceux qui peuvent être utile lorsque l'on n'a qu'un index (nous en verrons quelques autres à la section suivante:
+Il existe une autre commande, la commande \cs{indexsetup}, qui peut, elle aussi, recevoir plusieurs arguments sous la forme
+\marg{clef$=$valeur}. Voici ceux qui peuvent être utile lorsque l'on n'a qu'un index (nous en verrons quelques autres à la section suivante):
 \begin{fieldlist}
 \fielditem{level} Indique le niveau de division (section, chapitre, etc) auquel correspond l'index. Par défaut, il s'agit de \verb|\chapter*|.
 \fielditem{toclevel} Indique le niveau de division (section, chapitre, etc) auquel correspond l'index dans la table des matières.  Contrairement à l'argument précédent, il ne faut pas mettre de barre oblique :
@@ -237,7 +237,7 @@ Pour terminer, voici la commande \cs{indexprologue}\oarg{espace}\marg{texte} qui
 
 \subsection{Définir ses index}
 
-Le package \package{imakeidx} permet de faire plusieurs index pour un même document. La première étape consiste à définir ces index. On les déclare dans le préambule en utilisant pour chaque index la commande \csp{makeindex}, déjà étudié. Chaque index reçoit un nom  abrégé --- à ne pas confondre avec son titre --- qui permettra ensuite d'indiquer  à quel index appartient telle entrée indexée dans votre document. Le nom abrégé de l'index est indiqué comme  option à la commande  \csp{makeindex}.
+Le package \package{imakeidx} permet de faire plusieurs index pour un même document. La première étape consiste à définir ces index. On les déclare dans le préambule en utilisant pour chaque index la commande \csp{makeindex}, déjà étudiée. Chaque index reçoit un nom  abrégé --- à ne pas confondre avec son titre --- qui permettra ensuite d'indiquer  à quel index appartient telle entrée indexée dans votre document. Le nom abrégé de l'index est indiqué comme  option à la commande  \csp{makeindex}.
 
 
 Ainsi, pour faire un index des noms propres et un index général, on peut déclarer:
@@ -247,7 +247,7 @@ Ainsi, pour faire un index des noms propres et un index général, on peut décl
 \makeindex[name=npr, title=Index des noms propres] 
 \end{latexcode}
 
-On remarque ici qu'aucun nom n'a été donné à l'index principal: dans ce cas, le nom abrégé est automatiquement \forme{idx}. À la compilation, sera crée, en plus  des fichiers \fichier{exemple.idx}, \fichier{exemple.ilg} et \fichier{exemple.ind},  les fichiers \fichier{npr.idx}, \fichier{npr.ilg} et \fichier{npr.ind}.
+On remarque ici qu'aucun nom n'a été donné à l'index principal: dans ce cas, le nom abrégé est automatiquement \forme{idx}. À la compilation, seront crées, en plus  des fichiers \fichier{exemple.idx}, \fichier{exemple.ilg} et \fichier{exemple.ind},  les fichiers \fichier{npr.idx}, \fichier{npr.ilg} et \fichier{npr.ind}.
 
 
 \subsection{Indexer son texte}
@@ -277,7 +277,7 @@ Damase\index[npr]{Damase}(…)\index{Charles et la papauté|)}.
 
 \subsection{Imprimer les index}
 
-Pour imprimer un index, il suffit d'utiliser la commande \csp{printindex} en lui passant le nom abrégé de l'index en option. Ainsi, pour imprimer l'index général suivit de celui des noms propres:
+Pour imprimer un index, il suffit d'utiliser la commande \csp{printindex} en lui passant le nom abrégé de l'index en option. Ainsi, pour imprimer l'index général suivi de celui des noms propres:
 
 \begin{latexcode}
 \printindex
@@ -286,7 +286,7 @@ Pour imprimer un index, il suffit d'utiliser la commande \csp{printindex} en lui
 
 
 \begin{plusloins}
-Si l'on veut regrouper tous les index en un seul chapitre dont chaque index est une section, on utilisera  à la commande \cs{indexsetup}. On peut lui passer comme option \oarg{noclearpage}, pour  éviter que chaque index commence à une nouvelle page. Bien sûr, chaque index peut avoir son propre prologue. Voici un exemple: 
+Si l'on veut regrouper tous les index en un seul chapitre dont chaque index est une section, on utilisera   la commande \cs{indexsetup}. On peut lui passer comme option \oarg{noclearpage}, pour  éviter que chaque index commence à une nouvelle page. Bien sûr, chaque index peut avoir son propre prologue. Voici un exemple: 
 \begin{latexcode}
 \indexsetup{level=\section*,toclevel=section,noclearpage} 
 ... 
