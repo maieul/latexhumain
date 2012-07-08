@@ -5,3 +5,6 @@
 *Ne pas mettre de note de bas de page dans les quotations, les mettres avant
 *Ne pas commencer de ligne par \cs, sauf si précédés de deux points (lorsqu'on veut citer une commande à la syntaxe longue). lorsque code trop long dans un texte, mettre un saut de ligne (changement de paragraphe), pas un //
 *les renvois marginaux : les mettre juste après le mot le plus pertinent
+* Les indexs : sont construits automatiquement lors des appels à \cs, \package, \classe etc. Attention toutefois :
+	* ne pas utiliser ces commandes à l'intérieur d'une commande de titre (bug avec hyperref). Utiliser à la place la commande \<type>noidx et indexer ensuite avec \sindex[<type>]{<element>}.
+	* Si l'élement commence en début de phrase, pour avoir la majuscule dans le corps du texte mais la miniscule dans l'index, utiliser le premier argument optionnel : \class[beamer]{Beamer}.
