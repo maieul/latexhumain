@@ -1,7 +1,7 @@
 \chapter{Présentations avec \LaTeX{} : \classenoidx{Beamer}}\label{beamer}\sindex[classe]{beamer}
 
 \begin{intro}
-Si \LaTeX{} permet d'écrire du texte, il offre également la possibilité de créer facilement des diapositives de présentation pour un exposé ou une conférence\footnote{Pour remplacer Microsoft Powerpoint ou LibreOffice Impress.}. Ceci se fait à l'aide d'une classe spécifique : \classe{Beamer}.
+Si \LaTeX{} permet d'écrire du texte, il offre également la possibilité de créer facilement des diapositives de présentation pour un exposé ou une conférence\footnote{Pour remplacer Microsoft Powerpoint ou LibreOffice Impress.}. Ceci se fait à l'aide d'une classe spécifique : \classe{beamer}.
 
 Nous présenterons ici les bases de Beamer afin de bien préparer des supports de présentation. Nous renvoyons à d'autres ouvrages pour plus de détails\footcites[On consultera pour une introduction plus approfondie][]{intro_beamer}[pour les usages avancées on se servira du manuel : ][]{beamer}.
 
@@ -10,7 +10,7 @@ Le PDF résultant de la compilation d'un fichier Beamer peut être affiché sous
 
 \section{Préambule et premières diapositives}
 
-\classe{Beamer} étant une classe \LaTeX{}, le document doit commencer par :
+\classe[beamer]{Beamer} étant une classe \LaTeX{}, le document doit commencer par :
 
 \begin{latexcode}
 \documentclass{beamer}
@@ -55,7 +55,7 @@ Par exemple :
 
 \section{Diapositives de titre}
 
-Il est possible d'utiliser dans le document Beamer les commandes \cs{section} et \cs{subsection}\renvoi{niveautitre}\footcite[Le manuel de \classe{Beamer} déconseille d'utiliser  \cs{subsubsection} parce que \enquote{c'est le diable}. \emph{Cf}. :][]{beamer_diable} et d'utiliser dans le préambule les commandes de description : \cs{title}, \cs{author} et \cs{date}\renvoi{notioncommande}.
+Il est possible d'utiliser dans le document Beamer les commandes \cs{section} et \cs{subsection}\renvoi{niveautitre}\footcite[Le manuel de \classe{beamer} déconseille d'utiliser  \cs{subsubsection} parce que \enquote{c'est le diable}. \emph{Cf}. :][]{beamer_diable} et d'utiliser dans le préambule les commandes de description : \cs{title}, \cs{author} et \cs{date}\renvoi{notioncommande}.
 
 Ces informations servent toutefois uniquement à structurer le document, afin de pouvoir afficher le plan. C'est pourquoi il faut les entrer \emph{en-dehors} des diapositives.
 
@@ -95,7 +95,7 @@ Ceci dépassant cette introduction, nous renvoyons au manuel\footcite{beamer_ove
 
 \subsection{Blocs}
 
-Il existe plusieurs manières de mettre en valeur certains éléments d'une diapositive. La première  consiste à les placer dans des blocs pour les encadrer. \classe{Beamer} propose plusieurs blocs standards, qui prennent à la fois un titre et un contenu. Ces blocs\footcites[Il est possible de créer ses propres blocs : voir  ][]{beamer_box}[il existe aussi des éléments proches des blocs que sont les encadrés, pour mettre en valeur des définitions, des théorèmes : voir][]{beamer_theorems} sont  : bloc standard, bloc d'exemple et bloc d'alerte.
+Il existe plusieurs manières de mettre en valeur certains éléments d'une diapositive. La première  consiste à les placer dans des blocs pour les encadrer. \classe[beamer]{Beamer} propose plusieurs blocs standards, qui prennent à la fois un titre et un contenu. Ces blocs\footcites[Il est possible de créer ses propres blocs : voir  ][]{beamer_box}[il existe aussi des éléments proches des blocs que sont les encadrés, pour mettre en valeur des définitions, des théorèmes : voir][]{beamer_theorems} sont  : bloc standard, bloc d'exemple et bloc d'alerte.
 
 \begin{latexcode}
 \begin{block}{Un bloc normal} 

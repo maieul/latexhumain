@@ -11,9 +11,10 @@
 \newcommand{\classenoidx}[1]{%
 	\textbf{#1}%
 }
-\newcommand{\classe}[1]{%
-	\classenoidx{#1}%	
-	\sindex[classe]{#1}%
+\newcommandx{\classe}[2][1]{%
+	% Premier argument optionel = la manière dont doit être indexé
+	\classenoidx{#2}%	
+	\ifthenelse{\equal{#1}{}}{\sindex[classe]{#2}}{\sindex[classe]{#1}}%
 }
 \newcommand{\champ}[1]{%
 	\sindex[champ]{#1}%
@@ -53,9 +54,10 @@
 	\emph{#1}%
 }
 
-\newcommand{\package}[1]{%
+\newcommandx{\package}[2][1]{%
+	% Premier argument optionel = la manière dont doit être indexé
 	\packagenoidx{#1}%
-	\sindex[pkg]{#1}%		
+	\ifthenelse{\equal{#1}{}}{\sindex[package]{#2}}{\sindex[package]{#1}}%		
 }
 
 \newcommand{\renvoi}[1]{ (☞\,p.~\pageref{#1}, \textbf{\ref{#1}})}
