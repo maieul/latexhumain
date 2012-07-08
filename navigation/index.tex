@@ -192,36 +192,36 @@ Si vous utilisez le package \package{hyperref}, vous constaterez que celui-ci in
 
 
 La commande \cs{makeindex} peut recevoir des arguments optionnels sous la forme \cs{makeindex}\oarg{clef$=$valeur} ; s'il y a plusieurs arguments, ils doivent être séparés par une virgule. En voici trois\footnote{Nous en verrons un quatrième pour les index multiples, et un autre lorsque nous évoquerons le formatage de l'index. Pour une liste exhaustive, voir \cite{imakeidx}.} :
-\begin{fieldlist}
-\fielditem{title} Permet de changer le nom de l'index, qui par défaut est \enquote{Index}. Par exemple, le code suivant permet d'avoir un index intitulé \enquote{Index rerum} 
+\begin{choix}
+\item[title] Permet de changer le nom de l'index, qui par défaut est \enquote{Index}. Par exemple, le code suivant permet d'avoir un index intitulé \enquote{Index rerum} 
 
 \begin{latexcode}
 \makeindex[title = Index rerum]
 \end{latexcode}
 
-\fielditem{columns} Indique le nombre de colonnes. Par défaut, l'index est en deux colonnes. Si l'on veut un index en une seule colonne, il suffit  de mettre  :
+\item[columns] Indique le nombre de colonnes. Par défaut, l'index est en deux colonnes. Si l'on veut un index en une seule colonne, il suffit  de mettre  :
 
 \begin{latexcode}
 \makeindex[title = Index rerum, columns = 1]
 \end{latexcode}
 
-\fielditem{intoc} Indique si l'index doit apparaître ou non dans la table des matières. Par défaut, l'index n'apparaît pas dans la table des matières. Pour l'y mettre, il suffit d'ajouter cet argument dans la liste. 
+\item[intoc] Indique si l'index doit apparaître ou non dans la table des matières. Par défaut, l'index n'apparaît pas dans la table des matières. Pour l'y mettre, il suffit d'ajouter cet argument dans la liste. 
 
 \begin{latexcode}
 \makeindex[title = Index rerum, columns = 1, intoc]
 \end{latexcode}
-\end{fieldlist}
+\end{choix}
 
 Il existe une autre commande, la commande \cs{indexsetup}, qui peut, elle aussi, recevoir plusieurs arguments sous la forme
 \marg{clef$=$valeur}. Voici ceux qui peuvent être utile lorsque l'on n'a qu'un index (nous en verrons quelques autres à la section suivante):
-\begin{fieldlist}
-\fielditem{level} Indique le niveau de division (section, chapitre, etc) auquel correspond l'index. Par défaut, il s'agit de \verb|\chapter*|.
-\fielditem{toclevel} Indique le niveau de division (section, chapitre, etc) auquel correspond l'index dans la table des matières.  Contrairement à l'argument précédent, il ne faut pas mettre de barre oblique :
+\begin{choix}
+\item[level] Indique le niveau de division (section, chapitre, etc) auquel correspond l'index. Par défaut, il s'agit de \verb|\chapter*|.
+\item[toclevel] Indique le niveau de division (section, chapitre, etc) auquel correspond l'index dans la table des matières.  Contrairement à l'argument précédent, il ne faut pas mettre de barre oblique :
 
 \begin{latexcode}
 \indexsetup[level=\section*, toclevel=section]
 \end{latexcode}
-\end{fieldlist}
+\end{choix}
 
 
 Pour terminer, voici la commande \cs{indexprologue}\oarg{espace}\marg{texte} qui permet de mettre un prologue avant l'index. La commande se place juste avant \cs{printindex}\footnote{Il peut y avoir autant de prologues que d'index.}. L'argument \oarg{espace} (par défaut \verb|bigskip|) indique l'espace   entre le prologue de l'index et la première entrée; il doit contenir  une commande d'espacement vertical\renvoi{espace} (comme  \verb|\vspace{36pt}|). L'argument \marg{texte} contient le prologue en lui même. Par exemple, pour un index des notions :
