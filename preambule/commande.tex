@@ -57,13 +57,8 @@
 	\packagenoidx{#1}%
 	\sindex[pkg]{#1}%		
 }
-\newcounter{renvoi}[chapter]
-\setcounter{renvoi}{0}
-\newcommand{\renvoi}[1]{\addtocounter{renvoi}{1}%
-	\textsuperscript{\alph{renvoi}}%
-	\marginpar{\small\textsuperscript{\alph{renvoi}}\ref{#1}}%
-	\normalmarginpar%
-	}
+
+\newcommand{\renvoi}[1]{ (☞\,p.~\pageref{#1}), \textbf{\ref{#1}}}
 
 \newcommand{\rev}[1]{\marginpar{#1}}
 
