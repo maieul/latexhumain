@@ -8,11 +8,11 @@ Dans ce chapitre nous verrons comment changer l'apparence de nos textes : police
 \section{Police de caractères}
 
 Il existe trois grandes familles de polices de caractères : 
-\begin{description}
-\item[Les polices à empattements]pour le corps du texte. Ces empattements améliorent le confort de lecture, sur version papier du moins. 
-\item[Les polices sans empattements]normalement pour les titre sur les couvertures.
-\item[Les polices à pas fixe]qui se caractérisent par le fait que la largeur des caractères ne varie pas en fonction des lettres, mais reste uniforme d'une lettre à l'autre. Ces polices sont utilisées par les informaticiens pour citer du code informatique. Dans notre domaine, elles peuvent éventuellement servir pour une transcription diplomatique d'un texte ancien. On utilisera pour cela  l'environnement \enviro{verbatim}.
-\end{description}
+\begin{choix}
+\item[À empattements]pour le corps du texte. Ces empattements améliorent le confort de lecture, sur version papier du moins. 
+\item[Sans empattement]normalement pour les titre sur les couvertures.
+\item[À pas fixe]qui se caractérisent par le fait que la largeur des caractères ne varie pas en fonction des lettres, mais reste uniforme d'une lettre à l'autre. Ces polices sont utilisées par les informaticiens pour citer du code informatique. Dans notre domaine, elles peuvent éventuellement servir pour une transcription diplomatique d'un texte ancien. On utilisera pour cela  l'environnement \enviro{verbatim}.
+\end{choix}
 
 Le package \package{fontspec}\footcite{fontspec} propose de définir une police pour chaque famille de caractères. Ainsi pour ce livre avons-nous choisi les polices \enquote{Linux Libertine} pour les caractères avec empattements, \enquote{Linux Biolinum} pour les caractères sans empattements\footnote{Nous n'utilisons cette police que pour la version informatique. Pour la version papier, nous avons confié la création de la couverture à Laura Pigeon, qui a fait son propre choix de police.} et \enquote{DejaVu  Sans Mono} pour les caractères à espacements fixes.
 
