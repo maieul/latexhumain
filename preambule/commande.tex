@@ -56,7 +56,7 @@
 
 \newcommandx{\package}[2][1]{%
 	% Premier argument optionel = la manière dont doit être indexé
-	\packagenoidx{#1}%
+	\packagenoidx{#2}%
 	\ifthenelse{\equal{#1}{}}{\sindex[package]{#2}}{\sindex[package]{#1}}%		
 }
 
