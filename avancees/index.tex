@@ -11,14 +11,22 @@ Les commandes pour formater l'index sont à placer dans un fichier \fichier{mons
 Pensez à placer ce fichier à un endroit où \LaTeX peut le trouver, par exemple à côté du fichier principal.
 \end{attention}
 
-Auparavant, il fallait compiler en ligne de commande, selon cette syntaxe :\renvoi{terminal}
+Sans le \package{imakedix}, il fallait compiler en ligne de commande\renvoi{terminal}, selon cette syntaxe :
 
 \begin{bashcode}
 makeindex -s monstyle.ist monfichier.idx
 \end{bashcode}
 
-L'option -s indiquait  à \package{makeindex}  qu'il devait utiliser le fichier de style \fichier{monstyle.ist}.
-Le package \package{imakeidx}  évite de passer par le terminal : il suffit en effet de  donner à la commande \cs{makeindex} l'argument \oarg{options=-s  monstyle.ist}. 
+Il faut encore procéder ainsi lorsque vous passer l'option \option{noautomatic} à la commande \cs{makeindex} pour un index particulier, comme par exemple pour celui des sources primaires\renvoi{noautomatic}.
+
+L'option -s indiquait  à Makeindex  qu'il devait utiliser le fichier de style \fichier{monstyle.ist}.
+
+En revanche, si vous ne passez pas l'option \option{noautomatic} à  \cs{makindex}, il vous faut passer  l'option \option{options=-s  monstyle.ist}  à la commande \cs{makeindex} :
+
+\begin{latexcode}
+\makeindex[options=-s  monstyle.ist]
+\end{latexcode}
+
 
 
 
