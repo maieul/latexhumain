@@ -130,7 +130,7 @@ Les sous-entrées peuvent être utilisées pour contourner une des limites de la
 \cite{DoctrineChretienneDivision}
 \end{quotation}
 
-Signifie que nous renvoyons au \emph{De Doctrina Christiana} d'Augustin, livre II, chapitre \textsc{viii}, paragraphes 12-13. En théorie on peut retrouver le passage concerné dans n'importe quelle édition du traité. Ceci est appelé généralement \enquote{division de source}.
+signifie que nous renvoyons au \emph{De Doctrina Christiana} d'Augustin, livre II, chapitre \textsc{viii}, paragraphes 12-13. En théorie on peut retrouver le passage concerné dans n'importe quelle édition du traité. Ceci est appelé généralement \enquote{division de source}.
 En revanche, supposons que nous renvoyions à une édition particulière, par exemple celle de la Bibliothèque Augustinienne : on aimerait indiquer les pages précises.
 
 \begin{quotation}
@@ -144,8 +144,6 @@ Il n'existe pas de champ spécifiquement prévu pour indiquer la division de sou
 \begin{enumerate}
 \item D'un point de vue sémantique, la division de source peut être considérée comme un ajout au titre. 
 \item D'un point de vue pratique, ce champ a pour avantage d'être, par défaut, situé par \package{biblatex} entre le titre et les informations d'édition, sans pour autant être en italique.
-
-
 \end{enumerate}
 
 Le choix d'une entrée de type \type{book} pour la clef \verb|DeDoctChrIIviii18-20| à la place d'une entrée \type{inbook} se justifie par des questions d'héritage. On ne donne pas en effet  à cette entrée de titre propre. Dès lors, si elle était de type \type{inbook}, Biber récupérerait le champ \champ{title} de l'entrée mère et en ferait un \champ{booktitle}, ce qui n'est pas ce que nous souhaitons. En revanche, en faisant de notre division de source une entrée de type \type{book}, on  lui permet d'hériter dans son champ \champ{title} du champ \champ{title} de l'entrée mère.
