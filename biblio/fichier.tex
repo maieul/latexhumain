@@ -9,8 +9,8 @@ La première étape pour gérer une bibliographie avec \LaTeX est la constitutio
 
 Chaque élément d'une bibliographie est appelé \forme{entrée}. Une entrée bibliographique se caractérise par :
 \begin{description}
-\item[Un type d'entrée] s'agit-il d'un article, d'un livre, d'actes de colloque ?
-\item[Une clef unique] qui permet de distinguer une entrée bibliographique d'une autre. C'est elle qui est mentionnée dans vos fichiers \ext{tex} lorsque vous désirez insérer une référence bibliographique.
+\item[Un type d'entrée] \quad s'agit-il d'un article, d'un livre, d'actes de colloque ?
+\item[Une clef unique] \quad qui permet de distinguer une entrée bibliographique d'une autre. C'est elle qui est mentionnée dans vos fichiers \ext{tex} lorsque vous désirez insérer une référence bibliographique.
 \item[Des champs] contenant des indications sur l'ouvrage, tels que : auteur, titre, éditeur, etc. 
 \end{description}
 
@@ -99,7 +99,7 @@ Livre. Pour les actes de colloque, voir  \type{proceedings}.
 	\item[\type{misc}]
 	 Entrée générique, pour tout type d'entrée non catégorisable. Par exemple : tableau, manuscrit, \emph{ostracon}. 
 	\item[\type{online}]
-	Ressource internet. Si une une œuvre existe aussi sous une autre forme, choisir le type d'entrée qui y correspond et utiliser le champ \champ{url}.
+	Ressource Internet. Si une une œuvre existe aussi sous une autre forme, choisir le type d'entrée qui y correspond et utiliser le champ \champ{url}.
 	\item[\type{patent}]
 	Brevet industriel.
 	\item[\type{periodical}]
@@ -124,7 +124,7 @@ Pour les éditions contemporaines d'œuvres anciennes, le choix du type \type{bo
 
 \section{Les différents champs possibles}
 
-Nous ne listons pas ici tout les champs, mais seulement ceux qui peuvent rentrer dans les catégories les plus utiles.
+Nous ne listons pas ici tous les champs, mais seulement ceux qui peuvent rentrer dans les catégories les plus utiles.
 \subsection{Les champs de personnes}
 
 Ces champs servent à désigner des personnes qui ont participé au processus de production de l'œuvre : auteur, annotateur, éditeur (scientifique), etc. Il n'est évidemment pas nécessaire de remplir tous ces champs.
@@ -165,10 +165,10 @@ author = {Maïeul Rouquette and Enimie Rouquette and Brendan Chabannes}
 
 Un nom se caractérise en \LaTeX par :
 \begin{description}
-	\item[Un ou plusieurs prénoms.] L'initiale doit être en majuscule, le reste en minuscules. Exemple : \forme{Albert}. Il vaut mieux mettre le prénom complet : on peut confier le travail de limitation à une minuscule  à \package{biblatex}\footnote{Il faut pour cela passer l'option \option{firstinits=true} lors du chargement du package.}.
+	\item[Un ou plusieurs prénoms.] \quad L'initiale doit être en majuscule, le reste en minuscules. Exemple : \forme{Albert}. Il vaut mieux mettre le prénom complet : on peut confier le travail de limitation à une minuscule  à \package{biblatex}\footnote{Il faut pour cela passer l'option \option{firstinits=true} lors du chargement du package.}.
 	\item[Un nom.] L'initiale doit être en majuscule, le reste en minuscules. Exemple : \forme{Londres} et non pas \forme{LONDRES} ; \package{biblatex} se charge le cas échéant de mettre en petites capitales.
-	\item[Éventuellement une particule.]Elle doit être entièrement en minuscules. Par exemple : \forme{de}, \forme{von}.
-	\item[Éventuellement un suffixe.] L'initiale doit être en majuscule. Ce type de donnée est plutôt anglo-saxonne. Exemple : \forme{Junior}.
+	\item[Éventuellement une particule.] \quad Elle doit être entièrement en minuscules. Par exemple : \forme{de}, \forme{von}.
+	\item[Éventuellement un suffixe.] \quad L'initiale doit être en majuscule. Ce type de donnée est plutôt anglo-saxonne. Exemple : \forme{Junior}.
 \end{description}
 
 En ce qui concerne l'ordre des éléments, il  peut être :

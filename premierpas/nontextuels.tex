@@ -6,7 +6,7 @@
 
 \section{Insérer des images}
 
-Les images insérables avec \XeLaTeX sont au format JPEG (extension~\ext{jpg}), PNG (extension~\ext{png}) ou PDF (extension~\ext{jpg}). Il est nécessaire d'utiliser le package \package{graphicx}.
+Les images insérables avec \XeLaTeX sont au format JPEG (extension~\ext{jpg}), PNG (extension~\ext{png}) ou PDF (extension~\ext{pdf}). Il est nécessaire d'utiliser le package \package{graphicx}.
 
 
 L'insertion d'une image se fait de la manière suivante : \csp{includegraphics}\oarg{param. opti.}\marg{chemin de l'image}.
@@ -21,7 +21,7 @@ Les principaux paramètres optionnels sont les suivants\footcite[Pour les autres
     \endhead
     \hline
     \endfoot
-    angle        & Angle exprimé en degré. Un nombre positif indique une rotation anti-horaire, un nombre négatif une rotation horaire.     & \verb|angle=90| \\
+    angle        & Angle exprimé en degrés. Un nombre positif indique une rotation anti-horaire, un nombre négatif une rotation horaire.     & \verb|angle=90| \\
     height        & Hauteur    & \verb|height=10cm|     \\
     scale        & Redimension proportionnelle & \verb|scale=0.5|\\
     width        & Largeur     & \verb|width=10cm|     \\
@@ -80,18 +80,18 @@ Ce qui donne le résultat de la figure~\ref{figure:genealogie}. Analysons le cod
 
 
 \begin{description}
-\item[Ligne 1] l'environnement \enviro{tikzpicture} est l'environnement utilisé pour insérer une figure TikZ. Il peut recevoir de nombreux arguments pour modifier certains aspects, tels que l'épaisseur par défaut des lignes, la taille du texte, l'orientation du schéma. Nous renvoyons à la documentation.
-\item[Ligne 2] un nœud TikZ, matérialisé  par le commande \csp{node}, est un bloc de texte. On pourrait passer des options à cette commande, afin de modifier certains aspects comme la taille du texte.
+\item[Ligne 1] L'environnement \enviro{tikzpicture} est l'environnement utilisé pour insérer une figure TikZ. Il peut recevoir de nombreux arguments pour modifier certains aspects, tels que l'épaisseur par défaut des lignes, la taille du texte, l'orientation du schéma. Nous renvoyons à la documentation.
+\item[Ligne 2] Un nœud TikZ, matérialisé  par le commande \csp{node}, est un bloc de texte. On pourrait passer des options à cette commande, afin de modifier certains aspects comme la taille du texte.
 \item[Lignes 3 et 4] \verb|child| désigne ici une opération : associer un fils au nœud précédent. Ce fils est lui même un nœud (\verb|node|).
-\item[Lignes 5 à 12]même chose que précédemment, sauf que le nœud D se voit attribuer des fils (E et F). Notez le nombre d'accolades et leurs imbrications : c'est ce qui permet à \package{TikZ} de construire correctement le \emph{stemma}.
-\item[Ligne 13] le point-virgule est obligatoire après chaque commande \package{TikZ} (ici \cs{node}).
-\item[Ligne 14] fin du graphisme \package{TikZ}.
+\item[Lignes 5 à 12]Même chose que précédemment, sauf que le nœud D se voit attribuer des fils (E et F). Notez le nombre d'accolades et leurs imbrications : c'est ce qui permet à \package{TikZ} de construire correctement le \emph{stemma}.
+\item[Ligne 13] Le point-virgule est obligatoire après chaque commande \package{TikZ} (ici \cs{node}).
+\item[Ligne 14] Fin du graphisme \package{TikZ}.
 \end{description}
 
 Évidemment un tel code est relativement complexe. C'est pourquoi nous conseillons de le commenter attentivement\footnote{Pour des raisons de place nous ne l'avons pas fait ici.} et de prêter extrêmement attention  aux accolades. Par ailleurs nous recommandons de mettre chaque graphisme \package{TikZ} dans un fichier séparé.
 
 
-Notre \emph{stemma} est relativement simple : il n'y a pas de \enquote{consanguinité}. Si cela avait été le cas la construction aurait été plus complexe : on n'aurait pas pu utiliser les opérations de types \verb|child| et il aurait fallu positionner précisément les éléments en utilisant un système de coordonnées\footcite[Nous avons publié sur notre site internet une série d'articles sur les \emph{stemma} avec TikZ :][]{stemma}.
+Notre \emph{stemma} est relativement simple : il n'y a pas de \enquote{consanguinité}. Si cela avait été le cas la construction aurait été plus complexe : on n'aurait pas pu utiliser les opérations de types \verb|child| et il aurait fallu positionner précisément les éléments en utilisant un système de coordonnées\footcite[Nous avons publié sur notre site Internet une série d'articles sur les \emph{stemma} avec TikZ :][]{stemma}.
 
 
 
@@ -99,7 +99,7 @@ Notre \emph{stemma} est relativement simple : il n'y a pas de \enquote{consangui
 
 \begin{attention}
 La création de tableaux en \LaTeX nécessite  une extrême rigueur. 
-C'est à nos yeux l'un des éléments les plus complexes de \LaTeX. C'est pourquoi nous ne ferons ici qu'un bref aperçu : on trouvera aisément des exemples plus détaillés dans d'autres ouvrages ou sur internet\footcite[On pourra consulter des fichiers assez didactiques :][]{bebert_tableaux}.
+C'est à nos yeux l'un des éléments les plus complexes de \LaTeX. C'est pourquoi nous ne proposerons ici qu'un bref aperçu : on trouvera aisément des exemples plus détaillés dans d'autres ouvrages ou sur Internet\footcite[On pourra consulter des fichiers assez didactiques :][]{bebert_tableaux}.
 \end{attention}
 
 \subsection{Syntaxe de base}
@@ -267,7 +267,7 @@ En effet, \XeLaTeX{} --- comme d'ailleurs \LaTeX{} --- n'arrive pas à détermin
 
 
 \begin{plusloins}
-Pour afficher un graphique statistique, nous recommandons d'utiliser le package \package{TikZ}\renvoi{TikZ}. Toutefois la maîtrise de cet outils peut être relativement complexe. C'est pourquoi nous listons ici quelques packages utiles : 
+Pour afficher un graphique statistique, nous recommandons d'utiliser le package \package{TikZ}\renvoi{TikZ}. Toutefois la maîtrise de cet outil peut se révéler relativement complexe. C'est pourquoi nous listons ici quelques packages utiles : 
 \begin{itemize}
 \item Le package \package{csvpie} propose une fonction pour tracer un diagramme circulaire à partir d'un fichier \ext{csv}\footcite[Sa documentation se trouve dans celle du package \package{csvtools} :][]{csvtools_pie}. 
 \item Le package \package{datatool} propose un certain nombre de graphiques statistiques. Il faut enregistrer les données selon une forme liée au package. Nous renvoyons à sa documentation\footcite{datatool}.
