@@ -261,7 +261,6 @@ Cellules de corps de tableau.
 
 \begin{attention}
 Avec \enviro{longtable}, il faut compiler deux fois le fichier \ext{tex}. 
-
 En effet, \XeLaTeX{} --- comme d'ailleurs \LaTeX{} --- n'arrive pas à déterminer la taille des colonnes à la première compilation : il procède à un calcul page par page. Cependant il stocke la taille maximale des colonnes dans un fichier temporaire, portant l'extension \ext{aux}. Lors de la seconde compilation, il se sert de ce fichier temporaire pour indiquer la taille des colonnes sur chacune des pages.
 \end{attention}
 
