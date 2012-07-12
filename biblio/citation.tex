@@ -19,14 +19,14 @@ La gestion bibliographique s'effectue avec le package \package{biblatex}. Dans l
 Cependant, le package dispose de nombreuses options\footcite{biblatex_options}. Celle qui nous intéresse pour le moment est \option{citestyle}, qui permet de définir la manière dont les références bibliographiques sont affichées, notamment lorsqu'elles sont citées à plusieurs reprises.
 
 Il existe un nombre important de styles de citation livrés en standard. Nous mentionnons ici les principaux\footcite[Se reporter pour plus de détails à][]{biblatex_style}:
-\begin{description}
-\item[numeric] chaque entrée se voit attribuer un numéro, qui est appelé lorsque l'on renvoie à cette entrée. La bibliographie finale indique les correspondances.
-\item[authortitle] sont indiqués seulement l'auteur et le titre de l'œuvre.
-\item[verbose] la description complète de l'entrée est donnée la première fois, une version abrégée est affichée ensuite.
-\item[verbose-ibid] la description complète de l'entrée est donnée, mais si un passage est cité plusieurs fois de suite, l'abréviation \emph{ibidem} est utilisée.
-\item[verbose-note] la description complète de l'entrée est donnée à sa première mention, puis une version abrégée est utilisée.
-\item[verbose-trad1; verbose-trad2; verbose-trad3] \quad la description complète de l'entrée est utilisée, puis les abréviations universitaires de type \emph{op. cit.}, \emph{ibidem.} etc. sont utilisées ; \package{biblatex} calcule automatiquement l'opportunité d'utiliser une abréviation universitaire, selon l'endroit où l'ouvrage aura été cité précédemment. Voir le manuel pour la description complète des différences entre ces trois styles.
-\end{description}
+\begin{choix}
+\item[numeric]chaque entrée se voit attribuer un numéro, qui est appelé lorsque l'on renvoie à cette entrée. La bibliographie finale indique les correspondances.
+\item[authortitle]sont indiqués seulement l'auteur et le titre de l'œuvre.
+\item[verbose]la description complète de l'entrée est donnée la première fois, une version abrégée est affichée ensuite.
+\item[verbose-ibid]la description complète de l'entrée est donnée, mais si un passage est cité plusieurs fois de suite, l'abréviation \emph{ibidem} est utilisée.
+\item[verbose-note]la description complète de l'entrée est donnée à sa première mention, puis une version abrégée est utilisée.
+\item[verbose-trad1; verbose-trad2; verbose-trad3]la description complète de l'entrée est utilisée, puis les abréviations universitaires de type \emph{op. cit.}, \emph{ibidem.} etc. sont utilisées ; \package{biblatex} calcule automatiquement l'opportunité d'utiliser une abréviation universitaire, selon l'endroit où l'ouvrage aura été cité précédemment. Voir le manuel pour la description complète des différences entre ces trois styles.
+\end{choix}
 
 On comprend ici l'un des grands intérêts de \LaTeX : plus de perte de temps à se demander : \enquote{Faut-il que j'utilise ici une version abrégée de la référence ?}, \package{biblatex} le fait pour vous.
 
@@ -204,7 +204,9 @@ On peut contourner ce problème en créant des sous-entrées bibliogra\-phiques\
 \begin{plusloins}
 Pour les œuvres en plusieurs volumes, il existe les commandes \csp{volvcite}, \csp{pvolcite}, \csp{fvolcite}, \csp{avolcite} correspondant aux commandes respectives \cs{cite}, \cs{parencite}, \cs{footcite}, \cs{autocite}.
 
-La syntaxe est la suivante : \csp{\meta{prefix}cite}\oarg{prenote}\marg{volume}\oarg{page}\marg{clef}.
+La syntaxe est la suivante : 
+
+\csp{\meta{prefix}cite}\oarg{prenote}\marg{volume}\oarg{page}\marg{clef}.
 \end{plusloins}
 
 \subsubsection{Type de pagination}
@@ -307,13 +309,13 @@ Les séparateurs de citations sont par défaut des points-virgules. Il est possi
 Toutefois, si l'argument \arg{postnote} d'un élément de la commande de citation multiple finit par un signe de ponctuation, alors le point-virgule n'apparaît pas entre cet élément et le suivant :
 
 \begin{latexcode}
-\autocites[on consultera également :]{Saxer1980}{Junod1992}
+\autocites[on consultera également :]{Saxer1980}{Urner1952}
 \end{latexcode}
 
 Donne :
 
 \begin{quotation}
-\cites[on consultera également :]{Saxer1980}{Junod1992}
+\cites[on consultera également :]{Saxer1980}{Urner1952}
 \end{quotation}
 
 
