@@ -99,7 +99,7 @@ Livre. Pour les actes de colloque, voir  \type{proceedings}.
 	\item[\type{misc}]
 	 Entrée générique, pour tout type d'entrée non catégorisable. Par exemple : tableau, manuscrit, \emph{ostracon}. 
 	\item[\type{online}]
-	Ressource Internet. Si une une œuvre existe aussi sous une autre forme, choisir le type d'entrée qui y correspond et utiliser le champ \champ{url}.
+	Ressource internet. Si une une œuvre existe aussi sous une autre forme, choisir le type d'entrée qui y correspond et utiliser le champ \champ{url}.
 	\item[\type{patent}]
 	Brevet industriel.
 	\item[\type{periodical}]
@@ -163,13 +163,14 @@ Ces différents champs prennent comme valeur un ou plusieurs noms de personne. S
 author = {Maïeul Rouquette and Enimie Rouquette and Brendan Chabannes}
 \end{latexcode}
 
-Un nom se caractérise en \LaTeX par :
-\begin{description}
-	\item[Un ou plusieurs prénoms.] \quad L'initiale doit être en majuscule, le reste en minuscules. Exemple : \forme{Albert}. Il vaut mieux mettre le prénom complet : on peut confier le travail de limitation à une minuscule  à \package{biblatex}\footnote{Il faut pour cela passer l'option \option{firstinits=true} lors du chargement du package.}.
-	\item[Un nom.] L'initiale doit être en majuscule, le reste en minuscules. Exemple : \forme{Londres} et non pas \forme{LONDRES} ; \package{biblatex} se charge le cas échéant de mettre en petites capitales.
-	\item[Éventuellement une particule.] \quad Elle doit être entièrement en minuscules. Par exemple : \forme{de}, \forme{von}.
-	\item[Éventuellement un suffixe.] \quad L'initiale doit être en majuscule. Ce type de donnée est plutôt anglo-saxonne. Exemple : \forme{Junior}.
-\end{description}
+Un nom contient les éléments suivant :
+\begin{choix}
+	\item[Prénom(s)]L'initiale doit être en majuscule, le reste en minuscules. Exemple : \forme{Albert}. Il vaut mieux mettre le prénom complet : on peut confier le travail de limitation à une minuscule  à \package{biblatex}\footnote{Il faut pour cela passer l'option \option{firstinits=true} lors du chargement du package.}.
+	\item[Nom]L'initiale doit être en majuscule, le reste en minuscules. Exemple : \forme{Londres}. \package[Biblatex]{biblatex} se charge le cas échéant de mettre en petites capitales.
+	\item[Particule (option)]Elle doit être entièrement en minuscules. Exemple : \forme{de}, \forme{von}.
+	\item[Suffixe (option)]L'initiale doit être en majuscule. Ce type de donnée est plutôt anglo-saxonne. Exemple : \forme{Junior}.
+\end{choix}
+
 
 En ce qui concerne l'ordre des éléments, il  peut être :
 \begin{itemize}
@@ -180,7 +181,7 @@ En ce qui concerne l'ordre des éléments, il  peut être :
 Ainsi les entrées \verb|Victor Marie Hugo| et \verb|Hugo, Victor Marie| sont équivalentes.
 Dans le premier cas, BibTeX considère que le dernier mot commençant par une majuscule est le nom de famille. Dans le second cas, il considère l'ensemble situé avant la virgule comme le nom de famille, ce qui est utile pour les noms composés. Ainsi pour parler de Charles De Gaulle : \verb|De Gaulle, Charles|.
 
-Si je parle de Simone de Beauvoir, le \forme{de} étant une particule je peux utiliser la première syntaxe : dans ce cas BibTeX considère tout ce qui suit la particule comme constituant le nom : \verb|Simone de Beauvoir|.
+Si nous parlons de Simone de Beauvoir, le \forme{de} étant une particule nous pouvons utiliser la première syntaxe : dans ce cas BibTeX considère tout ce qui suit la particule comme constituant le nom : \verb|Simone de Beauvoir|.
 Mais la seconde syntaxe fonctionne également : \verb|de Beauvoir, Simone|.
 
 
