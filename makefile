@@ -23,18 +23,18 @@ all:principal.pdf
 
 
 	@$(XELATEX) $<
-	for ((i = 3 ; i < 6 ; i++)) 
-	do 
-	if egrep -i -q  $(RERUN) $*.log ; 
-		then 
-			sed -i -e 's/@/"@/g' principal.idx
-			sed -i -e 's/"@\\oldcs/@\\oldcs/' principal.idx
-			splitindex -m "makeindex -s latex-humain.ist" $*.idx
-			python post-index.py 
-			echo "Compilation XELATEX" $$i
-			$(XELATEX) $< 
-		fi 
-	done 
+	for ((i = 3 ; i < 6 ; i++)) ; \
+	do \
+	if egrep -i -q  $(RERUN) $*.log ; \
+		then \
+			sed -i -e 's/@/"@/g' principal.idx ; \
+			sed -i -e 's/"@\\oldcs/@\\oldcs/' principal.idx ; \
+			splitindex -m "makeindex -s latex-humain.ist" $*.idx ; \
+			python post-index.py ; \
+			echo "Compilation XELATEX" $$i; \
+			$(XELATEX) $< ; \
+		fi \
+	done \
 
 
 	@echo "Citations indéfinies:"
