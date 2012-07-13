@@ -58,7 +58,7 @@ Ainsi, pour indexer automatiquement tous les noms propres d'un texte, déclarons
 
 \renewcommand\auteur[2]{#1~\textsc{#2}\xspace}
 
-Il suffit ensuite, au cours de la rédaction de son texte, de taper par exemple \cs{auteur}\verb|{Victor}{Hugo}| pour obtenir \enquote{\auteur{Victor}{Hugo}} dans le corps de son texte, indexé sous l'entrée \enquote{Hugo, Victor}.
+Il suffit ensuite, au cours de la rédaction de son texte, de frapper, par exemple, \cs{auteur}\verb|{Victor}{Hugo}| pour obtenir \enquote{\auteur{Victor}{Hugo}} dans le corps de son texte, indexé sous l'entrée \enquote{Hugo, Victor}.
 
 
 \subsubsection{Générer l'index}
@@ -72,7 +72,7 @@ L'index  apparaît dans le document à l'emplacement que l'on a indiqué par la 
 
 Il est possible, avec \package{imakeidx},  de créer des subdivisions et des subsubdivisions  pour chaque entrée de l'index. La subdivision se crée de la manière suivante : \begin{english}\cs{index}\verb|{|\meta{entrée}\verb|!|\meta{sous-entrée}\verb|}|\end{english}. La sous-sous-entrée, logiquement, se crée ainsi: \begin{english}\cs{index}\verb|{|\meta{entrée}\verb|!|\meta{sous-entrée}\verb|!|\meta{sous-sous-entrée}\verb|}|\end{english}. On ne peut cependant avoir que ces trois niveaux d'indexation.
 
-On peut ainsi référencer autrement notre premier exemple, en créant les entrées \enquote{Evêques} et \enquote{Ducs} que l'on subdivise:
+On peut ainsi référencer autrement notre premier exemple, en créant les entrées \enquote{Éveques} et \enquote{Ducs} que l'on subdivise:
 
 \begin{latexcode}
 Tandis que Charle\index{Charlemagne} était à Rome, il convint 
@@ -80,8 +80,8 @@ avec le pape Adrien\index{Adrien} qu’ils enverraient de concert
 des ambassadeurs à Tassilon, duc de Bavière\index{Ducs!Tassilon}.
 \textelp{}
 Les hommes choisis et envoyés dans cette ambassade furent, de la 
-part du pape, les évêques Formose\index{Evêques!Formose}
-et Damase\index{Evêques!Damase}\textelp{}.
+part du pape, les évêques Formose\index{Éveques!Formose}
+et Damase\index{Éveques!Damase}\textelp{}.
 \end{latexcode}
 
 
@@ -96,7 +96,7 @@ Charlemagne, 5 \\
 Ducs \\
 \> Tassilon, 5\\
 \\
-Evêques \\
+Éveques \\
 \> Damase, 5\\
 \> Formose, 5\\
 \end{tabbing}
@@ -104,7 +104,7 @@ Evêques \\
 
 
 
-Bien entendu, on pourrait encore rajouter une subdivision, en distinguant par exemple \enquote{Clercs} et \enquote{Laïcs}, et dans la première catégorie en distinguant \enquote{Evêques} et \enquote{Papes}. 
+Bien entendu, on pourrait encore rajouter une subdivision, en distinguant par exemple \enquote{Clercs} et \enquote{Laïcs}, et dans la première catégorie en distinguant \enquote{Éveques} et \enquote{Papes}. 
 
 
  
@@ -224,7 +224,7 @@ Il existe une autre commande, la commande \cs{indexsetup}, qui peut, elle aussi,
 \end{choix}
 
 
-Pour terminer, voici la commande \cs{indexprologue}\oarg{espace}\marg{texte} qui permet de mettre un prologue avant l'index. La commande se place juste avant \cs{printindex}\footnote{Il peut y avoir autant de prologues que d'index.}. L'argument \oarg{espace} (par défaut \verb|bigskip|) indique l'espace   entre le prologue de l'index et la première entrée; il doit contenir  une commande d'espacement vertical\renvoi{espace} (comme  \verb|\vspace{36pt}|). L'argument \marg{texte} contient le prologue en lui même. Par exemple, pour un index des notions :
+Pour terminer, voici la commande \cs{indexprologue}\oarg{espace}\marg{texte} qui permet de mettre un prologue avant l'index. La commande se place juste avant \cs{printindex}\footnote{Il peut y avoir autant de prologues que d'index.}. L'argument \oarg{espace} (par défaut \csp{bigskip}) indique l'espace   entre le prologue de l'index et la première entrée; il doit contenir  une commande d'espacement vertical\renvoi{espace}. L'argument \marg{texte} contient le prologue en lui même. Par exemple, pour un index des notions :
 
 \begin{latexcode}
 \indexprologue{Les numéros en gras renvoient aux pages où la notion est définie.}
@@ -352,21 +352,21 @@ Nous avons donc notre index spécifique. Mais encore faut-il que nous disions  �
 \inputminted{exemples/navigation/index-source/citeindex.tex}
 
 \begin{description}
-\item[ligne 2] la commande \csp{ifciteindex} vérifie que l'option \option{indexing} de \package{biblatex} est bien égale à \verb|true| ou bien à \verb|cite|: si tel est le cas ce qui suit entre accolades est exécuté.
+\item[ligne 2] la commande \csp{ifciteindex} vérifie que l'option \option{inde\-xing} de \package{biblatex} est bien égale à \verb|true| ou bien à \verb|cite|: ce qui suit entre accolades est exécuté si tel est le cas.
 \item[ligne 3] nous indexons le champ \champ{author}.  Nous utilisons le format d'indexation \verb|sources|.
-\item[ligne 4] nous indexons le champ \champ{indextitle}. C'est un champ spécial, qui sert à avoir un autre titre dans l'index que dans le corps du document. Si ce champ est vide \package{biblatex} utilise à la place le champ \champ{title}. Nous utilisons le format d'indexation \verb|sources|.
+\item[ligne 4] nous indexons le champ \champ{indextitle}. Ce champ spécial  sert à avoir dans l'index un autre titre que dans le corps du document. Si ce champ est vide \package{biblatex} utilise à la place le champ \champ{title}. Nous utilisons le format d'indexation \verb|sources|.
 \item[ligne 5] nous indexons le champ \champ{titleaddon}. Nous utilisons le format d'indexation \verb|sources|.
 \item[ligne 6]  une des limitations de \package{biblatex} est qu'il ne peut indexer qu'un seul champ à la fois, et n'est pas capable, pour le moment, de produire des entrées d'index à plusieurs niveaux. 
-Avec cette macro \bibmacro{citeindex}, on obtient une indexation séparée de chaque champ des entrées indexées. 
+Avec cette macro \bibmacro{citeindex}, on obtient une indexation séparée pour chaque champ des entrées indexées. 
 Or nous voudrions obtenir une indexation correspondant à la commande:
 \begin{latexcode} 
 \index{auteur!titre!titleaddon}
 \end{latexcode}
- C'est pourquoi nous avons conçu un script dans le langage python (nous expliquons plus loin comment s'en servir\renvoi{python}), qui concatène dans le fichier \ext{idx} les trois indexations en une seule.
+ C'est pourquoi nous avons conçu un script dans le langage python\footnote{Nous expliquons plus loin comment s'en servir\renvoi{python}.}, qui concatène dans le fichier \ext{idx} les trois indexations en une seule.
 Mais avant d'utiliser ce script, il faut  indexer une fausse valeur, la valeur \verb|---|, qui empêchera le script d'indexer tous les champs d'une entrée: nous ne voulons pas obtenir une entrée de la forme : \\
  \verb|\index{author!title!titleaddon!author2!title2!}|
  
-Toutefois, ce script python doit être exécuté avant que \LaTeX ne transforme le fichier \ext{idx} en fichier \ext{ind}. Cette transformation est faite automatiquement par le package \package{imakeidx}. Cependant, nous pouvons désactiver cet automatisme pour un index particulier, dans le cas présent pour l'index sources. Pour ce faire, il nous suffit de passer l'option \option{noautomatic} à la commande \cmd{makeindex} :\label{noautomatic}
+Toutefois, ce script python doit être exécuté avant que \LaTeX ne transforme le fichier \ext{idx} en fichier \ext{ind}. Cette transformation est faite automatiquement par le package \package{imakeidx}. Cependant, nous pouvons désactiver cet automatisme pour un index particulier, dans le cas présent pour l'index sources. Pour ce faire, il nous suffit de passer l'option \option{no\-au\-to\-ma\-tic} à la commande \cmd{makeindex} :\label{noautomatic}
 
 \begin{latexcode}
 \makeindex[name=sources,title=Index des sources,noautomatic]
@@ -439,7 +439,7 @@ Pour utiliser ce script, il vous faut :\label{python}
 \item Télécharger les scripts \verb|index.py| et \verb|roman.py| sur le site de l'auteur à l'adresse suivante : \url{http://geekographie.maieul.net/57}\footnote{Il est inutile de lire l'article, qui correspond à un fonctionnement avec un autre package que \package{imakeidx}.}.
 \item Mettre ces fichiers dans le répertoire du fichier \ext{idx}. 
 \item Ouvrir le fichier \verb|index.py| et modifier la ligne 8 en remplaçant \verb|xxx.idx| par le nom du fichier à concaténer.
-\item En ligne de commande\renvoi{terminal} se rendre dans le  répertoire, puis taper l'entrée : \verb|python index.py|.
+\item En ligne de commande\renvoi{terminal} se rendre dans le  répertoire, puis frapper l'entrée : \verb|python index.py|.
 \end{itemize}
 
 
