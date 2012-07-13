@@ -65,7 +65,7 @@ alors que le règles françaises voudraient que l'on ait :
     La virgule entre les deux points et \emph{Concilia Africae} s'explique parce qu'une unité a été créée, unité qui doit contenir normalement la valeur du champ \champ{Bookauthor}.
     
     Pour éviter ce problème, il  faut ne pas mettre directement dans la définition de la commande \cs{newunitpunct} les signes de ponctuation mais utiliser à la place les commandes de ponctuation\footcite[Listées dans][]{biblatex_ponctuation}. Ces commandes affichent en effet la ponctuation uniquement si l'unité qui précède a bien un contenu\footnote{Par ailleurs, elles suppriment les espaces multiples qui précèdent.}.\label{commandeponctuation}
-    Ainsi dans notre cas :
+    Ainsi il faut mettre dans notre cas :
     
     \begin{latexcode}
 \renewcommand{\newunitpunct}[0]{\addcomma\addspace}

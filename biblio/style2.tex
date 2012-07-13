@@ -16,7 +16,7 @@ Pour comprendre comment personnaliser l'affichage bibliographique, il est néces
 
 Lorsqu'on appelle une commande de citation, du type \cs{\meta{prefix}cite}, celle-ci va appeler :
     \begin{itemize}
-        \item des macros bibliographiques, chargées d'afficher l'argument \arg{prenote} ou \arg{postnote}, ou encore de gérer les citations répétées. Les macros bibliographiques sont des types particuliers de commande, propres au package \package{biblatex};\label{macrobiblio} 
+        \item des macros bibliographiques, chargées d'afficher l'argument \arg{prenote} ou \arg{postnote}, ou encore de gérer les citations répétées. Les macros bibliographiques sont des types particuliers de commandes, propres au package \package{biblatex};\label{macrobiblio} 
         \item un driver\footnote{Bien que le terme \enquote{driver} ne soit pas français, nous l'utilisons car on le trouve dans les commandes internes de BibLaTeX} bibliographique. Un driver correspond à un type d'entrée (\type{article}, \type{book}, etc.), et se charge d'afficher les champs de l'entrée dans le bon ordre. Pour cela, il appelle :
         \begin{itemize}
             \item des commandes de séparation d'unités bibliographiques\renvoi{unitebiblio}
@@ -61,9 +61,7 @@ On pourrait souhaiter avoir l'éditeur avant l'adresse, comme ceci :
 
 \renewbibmacro*{publisher+location+date}{%
   \printlist{publisher}%
-  \iflistundef{publisher}
-    {\setunit*{\addcomma\space}}
-    {\setunit*{\addcolon\space}}%
+    \setunit*{\addcomma\space}%
   \printlist{location}%
   \setunit*{\addcomma\space}%
   \usebibmacro{date}%
@@ -85,7 +83,7 @@ La première chose à faire va donc être de repérer quelle macro bibliographiq
 
 Certains fichiers s'appellent mutuellement : ainsi les fichiers \ext{bbx} contiennent les drivers bibliographiques. Ils sont donc appelés par les fichiers \ext{cbx}. Ces appels mutuels entre fichiers permettent de garantir une uniformité entre les styles bibliographiques lors de l'utilisation de \cs{\meta{prefix}cite} et lors de l'utilisation de \cs{printbibliography}.
 
-Nous supposons que  vous utilisez les styles de la famille \forme{verbose}. En consultant les journaux de compilation et en ouvrant les fichiers standards, vous pouvez aisément remonter au fichier \fichier{standard.bbx}, qui contient les drivers bibliographiques de cette famille.
+Nous supposons que  vous utilisez les styles de la famille \forme{verbose}. En consultant les journaux de compilation et en ouvrant les fichiers standards\renvoi{trouverfichier}, vous pouvez aisément remonter au fichier \fichier{standard.bbx}, qui contient les drivers bibliographiques de cette famille.
 Vous pouvez  repérer dedans les lignes suivantes\footnote{L.~58 au 9 octobre 2011.} :
 
 \inputminted{exemples/biblio/styles2/driverbook.tex}
