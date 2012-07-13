@@ -467,7 +467,7 @@ Ainsi, la numérotation du texte se fait en continue entre la première partie e
 \begin{plusloins}
 Il est bien sûr possible de mettre en parallèle un texte en vers et sa traduction en prose. 
 
-Par ailleurs, si vous utilisez la commande \cs{numberpstarttrue}\renvoi{numberpstarttrue} pour numéroter les \cs{pstart}s, sachez que la numérotation gauche et la numérotation droite fonctionnent avec deux compteurs différents : \compteur{pstartL} et \compteur{pstartR}\renvoi{apparencecompteur}\renvoi{manipcompteurs}.
+Par ailleurs, si vous utilisez la commande \cs{numberpstarttrue}\renvoi{numberpstarttrue} pour numéroter les \cs{pstart}s, sachez que la numérotation gauche et la numérotation droite fonctionnent avec deux compteurs différents : \compteur{pstartL} et \compteur{pstartR}\renvoi{apparencecompteur}[manipcompteurs].
 \end{plusloins}
 
 
@@ -488,7 +488,7 @@ Il est possible de dire à \package{ledpar} de ne pas introduire ce blanc, mais 
  
  \subsubsection{Tailles et séparateurs des colonnes}
 
-Par défaut, les colonnes font 45\% d'une largeur normale de texte. Nous pouvons modifier ce réglage en redéfinissant les longueurs \csp{Lcolwidth} et \csp{Rcolwidth} respectivement pour la colonne gauche et droite. Nous utilisons pour cela la commande \cs{setlength}\renvoi{setlength}\renvoi{longueurrelative}. Par exemple pour avoir 47\% de la largeur normale d'un texte, il faut mettre:
+Par défaut, les colonnes font 45\% d'une largeur normale de texte. Nous pouvons modifier ce réglage en redéfinissant les longueurs \csp{Lcolwidth} et \csp{Rcolwidth} respectivement pour la colonne gauche et droite. Nous utilisons pour cela la commande \cs{setlength}\renvoi{setlength}[longueurrelative]. Par exemple pour avoir 47\% de la largeur normale d'un texte, il faut mettre:
 
 \begin{latexcode}
 \setlength{\Lcolwidth}{0.47\textwidth}

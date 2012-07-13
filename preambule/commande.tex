@@ -60,7 +60,10 @@
 	\ifthenelse{\equal{#1}{}}{\sindex[package]{#2}}{\sindex[package]{#1}}%		
 }
 
-\newcommand{\renvoi}[1]{ (☞\,p.~\pageref{#1}, \textbf{\ref{#1}})}
+\newcommandx{\renvoi}[2][2]{ (☞\,p.~\pageref{#1}, \textbf{\ref{#1}}%Eventuellement deuxième arg opt
+	\ifthenelse{\equal{#2}{}}{}{; ☞\,p.~\pageref{#2}, \textbf{\ref{#2}}}%
+	)%
+}
 
 \newcommand{\rev}[1]{\marginpar{#1}}
 
