@@ -61,7 +61,7 @@ erat  elit consectetuer erat, id egestas pede nibh eget odio.
 \endnumbering
 \end{latexcode}
 
-La numérotation recommence à zéro à chaque \cs{beginnumbering}. Il est toutefois possible d'indiquer de recommencer automatiquement la numérotation  à chaque page \emph{via} la commande \csp{lineation}\verb={page}=.\label{lineation}
+La numérotation recommence à zéro à chaque \cs{beginnumbering}. Il est toutefois possible d'indiquer de recommencer automatiquement la numérotation  à chaque page via la commande \csp{lineation}\verb={page}=.\label{lineation}
 
 \begin{attention}
 Si vos sections numérotées sont très longues, il peut arriver l'erreur de compilation \forme{TeX capacity exceeded}. Il faut alors fractionner vos sections en utilisant de temps en temps la commande \csp{pausenumbering} suivie de \csp{resumenumbering} au sein de  la section numérotée\footnote{On peut aussi régler la configuration de \TeX pour lui allouer plus de mémoire.}. 
@@ -157,13 +157,12 @@ La numérotation se fait à l'aide d'un compteur \compteur{pstart}. Nous expliqu
 \end{plusloins}
 
 \begin{plusloins}
-Il est possible de recommencer la numérotation des lignes à chaque \cs{pstart}  \emph{via} \cs{lineation}\verb={pstart}=.
+Il est possible de recommencer la numérotation des lignes à chaque \cs{pstart}  via \cs{lineation}\verb={pstart}=.
 \end{plusloins}
 
 \subsubsection{Fréquence de numérotation des lignes}
 
-Comme on peut le voir dans les exemples précédents, par défaut \package{ledmac} numérote  une ligne sur cinq. Nous pouvons changer cela très simplement avec les commandes suivantes:
-
+Comme on peut le voir dans les exemples précédents, par défaut \package{ledmac} numérote  une ligne sur cinq. Nous pouvons changer cela très simplement avec les commandes 
 \csp{firstlinenum}\marg{nbre} et \csp{linenumincrement}\marg{nbre}.
 
 L'argument \arg{nbre} de la commande \cs{firstlinenum} indique quelle est  la première ligne qui sera numérotée 
@@ -227,9 +226,11 @@ Elle est  modifiable par la commande:
 
 \cs{setlength}\verb|{|\cs{linenumsep}\verb|}|\marg{distance}\renvoi{setlength}. 
 
-De la même façon nous pouvons modifier, via \cs{renewcommand}, \cs{numlabfont}, qui indique la taille du numéro et qui est ainsi définie:
+De la même façon nous pouvons modifier, via \cs{renewcommand}, \cs{numlabfont}, qui indique la taille du numéro et qui est ainsi définie par \package{ledmac}:
 
- \cs{newcommand}\verb|{|\csp{numlabfont}\verb|}{|\cs{normalfont}\cs{scriptsize}\verb|}|. 
+\begin{latexcode}
+\newcommand{\numlabfont}{\normalfont\scriptsize}
+\end{latexcode}
  
 
 \subsection{L'apparat critique}
@@ -301,7 +302,7 @@ Mais il est aussi conseillé de créer des commandes personnelles pour simplifie
 
 Cette commande est un peu plus complexe parce qu'elle fait appel aux packages \package{xargs} et \package{ifthen}. 
 
-La commande \csp{newcommandx}, fournie par \package{xargs}, permet de créer une commande avec des arguments optionnels. Ici, la commande crée appelle trois arguments: le premier argument est le lemme ; le deuxième argument, optionnel --- ce qu'indique,  dans notre code, l'argument \verb=[2]= --- contient le lemme raccourci ; enfin le dernier argument contient l'annotation.
+La commande \csp{newcommandx}, fournie par \package{xargs}, permet de créer une commande avec des arguments optionnels. Ici, la commande créée appelle trois arguments: le premier argument est le lemme ; le deuxième argument, optionnel --- ce qu'indique,  dans notre code, l'argument \verb=[2]= --- contient le lemme raccourci ; enfin le dernier argument contient l'annotation.
 
 Ligne 4, la commande \csp{ifthenelse}\arg{test}\arg{sioui}\arg{sinon} du package \package{ifthen} permet d'effectuer un test : ici nous regardons si le deuxième argument est vide (\csp{equal}\verb={#2}{}=) : si ce n'est pas le cas, alors nous l'utilisons  comme argument d'une commande \cs{lemma}.
 
@@ -341,7 +342,9 @@ Le package \package{ledmac} permet d'obtenir très facilement deux textes en vis
 
 Son principe de base est simple:  des textes numérotés  --- inscrits entre \cs{beginnumbering} et \cs{endnumbering}  --- sont placés dans les environnements \enviro{Leftside} pour le texte de gauche,  \enviro{Rightside} pour le texte de droite.
 
-Le package \package{ledpar} fait correspondre en vis-à-vis chaque \enquote{boîte} d'un texte à la boîte correspondante de l'autre texte (il faut donc qu'il y ait le même nombre de boites des deux côtés). Pour la poésie,  chaque vers  (terminé par \ampersand ), est une boîte;  en prose, les boîtes sont délimitées par  \cs{pstart} et  \cs{pend}.  Il est recommandé, en prose, de mettre chaque paragraphe dans une boîte, pour obtenir une synchronisation la plus fine possible --- donc de débuter chaque paragraphe par \cs{pstart} et de le finir par \cs{pend}, ou d'utiliser la commande \cs{autopar}\renvoi{autopar}. 
+Le package \package{ledpar} fait correspondre en vis-à-vis chaque \enquote{boîte} d'un texte à la boîte correspondante de l'autre texte : il faut donc qu'il y ait le même nombre de boîtes des deux côtés. Pour la poésie,  chaque vers  (terminé par \ampersand ), est une boîte;  en prose, les boîtes sont délimitées par  \cs{pstart} et  \cs{pend}.  
+
+Il est recommandé, en prose, de mettre chaque paragraphe dans une boîte --- pour obtenir une synchronisation la plus fine possible --- donc de débuter chaque paragraphe par \cs{pstart} et de le finir par \cs{pend}, ou d'utiliser la commande \cs{autopar}\renvoi{autopar}. 
 
 
 Le package \package{ledpar} peut mettre les textes en vis-à-vis sur deux colonnes ou sur deux pages  : bien sûr dans ce dernier  cas le texte de gauche est toujours imprimé sur une page paire.
@@ -394,7 +397,7 @@ Si l'un des textes n'est pas dans la langue principale du document, il faut pré
 \end{attention}
 
 \begin{attention}
-Comme avec \package{ledmac}, la numérotation\renvoi{lineation} recommence à chaque \cs{beginnumbering}. On peut toutefois faire recommencer la numérotation  à chaque page \emph{via} les commandes \cs{lineation} et \csp{lineationR}, qui ont la même syntaxe, vue plus haut.
+Comme avec \package{ledmac}, la numérotation\renvoi{lineation} recommence à chaque \cs{beginnumbering}. On peut toutefois faire recommencer la numérotation  à chaque page via les commandes \cs{lineation} et \csp{lineationR}, qui ont la même syntaxe, vue plus haut.
 \end{attention}
 
 Nous obtenons parfois le message d'erreur \enquote{Too many \cs{pstart} without printing}. Pas de panique ! Cela signifie qu'il y a trop de boîtes en mémoire: \LaTeX  doit en imprimer quelques-unes avant de pouvoir continuer.  Il y a deux solutions possibles à ce problème.
