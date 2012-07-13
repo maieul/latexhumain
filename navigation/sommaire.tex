@@ -44,7 +44,7 @@ Le niveau \cs{subsubsection} a comme numéro 3. Pour afficher dans la table des 
 
 Selon l'usage français, une table des matières se situe en fin d'ouvrage, un sommaire  en début d'ouvrage. Par défaut la commande \cs{tableofcontents} indique que nous avons affaire à une  \enquote{table des matières} et non  à un \enquote{sommaire}. Comment avoir le terme  \enquote{sommaire} ? Il suffit de redéfinir la chaîne de langue. 
 
-Nous avons déjà vu la notion de chaîne de langue\renvoi{i18nchaines} pour la bibliographie. Il s'agit ici  d'une idée similaire, mais pour le package \package{polyglossia}. La syntaxe est toutefois différente. Comme pour les  chaînes de langue de la bibliographie, il faut commencer par découvrir quel est l'élément à modifier, en cherchant cette fois dans le fichier \fichier{french.ldf}. Vous pouvez repérer une ligne contenant \cs{def}\csp{captionsfrench}\verb|{%|. 
+Nous avons déjà vu la notion de chaîne de langue\renvoi{i18nchaines} pour la bibliographie. Il s'agit ici  d'une idée similaire, mais pour le package \package{polyglossia}. La syntaxe est toutefois différente. Comme pour les  chaînes de langue de la bibliographie, il faut commencer par découvrir quel est l'élément à modifier, en cherchant cette fois dans le fichier \fichier{french.ldf}\renvoi{trouverfichier}. Vous pouvez repérer une ligne contenant \cs{def}\csp{captionsfrench}\verb|{%|. 
 Cette ligne est suivie d'autres lignes sous la forme : \cs{def}\cs{\meta{chaine}}\marg{Valeur}, qui s'enchaînent jusqu'à une accolade fermante.
 
 Pour notre cas, on repère la ligne contenant :
