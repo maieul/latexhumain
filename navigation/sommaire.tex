@@ -10,7 +10,7 @@ La manière la plus simple de faire une table des matières est d'utiliser la co
 Pour que \XeLaTeX{} puisse afficher cette table des matières, il est nécessaire de compiler deux fois : lors de la première compilation, \XeLaTeX{} stocke le contenu de la table des matières dans un fichier \ext{toc} ; lors de la seconde compilation, il se sert de ce fichier pour afficher la table des matières. En règle générale, cette double compilation n'est guère gênante, puisqu'elle est déjà nécessaire lors de l'utilisation d'une bibliographie\renvoi{3compil}.
 
 \begin{attention}
-La table des matières prend elle même un certain volume dans le corps du texte. Par conséquent si votre table des matières se trouve en début d'ouvrage --- il serait alors plus juste de l'appeler \forme{sommaire} --- elle décale la pagination lors de son affichage. C'est pourquoi il faut parfois compiler trois fois :
+La table des matières prend elle-même un certain volume dans le corps du texte. Par conséquent si votre table des matières se trouve en début d'ouvrage --- il serait alors plus juste de l'appeler \forme{sommaire} --- elle décale la pagination lors de son affichage. C'est pourquoi il faut parfois compiler trois fois :
 
 \begin{enumerate}
 \item La première fois, \XeLaTeX{} stocke les informations dans le fichier \ext{toc}.
@@ -70,7 +70,7 @@ Dans le cas présent, cela donne :
 \begin{plusloins}
 La commande \csp{def} permet de créer de nouvelles commandes. Toutefois à la différence de la commande \cs{newcommand}, les commandes ainsi créées appartiennent à \TeX{} et non pas à \LaTeX{}\renvoi{TeXLaTeX}.
 
-Définir des commandes en \TeX{} par rapport à les définir en \LaTeX{} permet plus de souplesse. Mais cela demande plus de maîtrise technique pour éviter divers problèmes, comme par exemple des erreurs de compilation. C'est pourquoi nous n'en parlons pas dans ce livre, sauf ponctuellement.
+Définir des commandes en \TeX{} et non en \LaTeX{} permet plus de souplesse. Mais cela demande plus de maîtrise technique pour éviter divers problèmes, comme par exemple des erreurs de compilation. C'est pourquoi nous n'en parlons pas dans ce livre, sauf ponctuellement.
 
 Les commandes \TeX{} peuvent contenir des \enquote{sous-commandes}. Ici par exemple, la commande \cs{captionsfrench} contient la sous-commande \cs{contentsname}. Nous utilisons la commande  \csp{gappto} pour injecter une sous-commande dans une commande déjà définie.
 
@@ -185,7 +185,7 @@ urlcolor=black}
 
 \verb|colorlinks=true| indique que nous colorons les liens au lieu de les entourer. Pour \package{hyperref} il existe plusieurs types de liens dont la couleur est configurable. Ici nous indiquons qu'il faut mettre en noir les types de liens suivants  :\begin{itemize}
 \item les liens de renvois d'une référence bibliographique abrégée à la référence complète ;
-\item les liens appelant des fichiers externe au PDF ;
+\item les liens appelant des fichiers externes au PDF ;
 \item les liens internes (notes de bas de pages, renvois) ;
 \item les liens externes.
 \end{itemize}
