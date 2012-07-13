@@ -65,7 +65,7 @@ Pour les afficher dans une diapositive, en revanche, il faut utiliser les comman
 
 \section{Affichage différé : les couches Beamer}
 
-Afficher tous les éléments d'une diapositive en une seule fois présente peu d'intérêt : il vaut mieux les afficher petit à petit afin de les commenter au fur et à mesure. Beamer utilise pour cela la notion de \forme{\textenglish{slides}}, que nous traduisons par celle de \emph{couches}. Il s'agit de dire à une commande de ne s'exécuter que sur une ou plusieurs couches spécifiques.
+Afficher tous les éléments d'une diapositive en une seule fois présente peu d'intérêt : il vaut mieux les afficher petit à petit afin de les commenter au fur et à mesure. Beamer utilise pour cela la notion de \forme{\textenglish{slides}}, que nous traduisons par celle de \forme{couches}. Il s'agit de dire à une commande de ne s'exécuter que sur une ou plusieurs couches spécifiques.
 
 La syntaxe de l'affichage couche par couche (en anglais \textenglish{\emph{overlay specification}}) est  : \verb|<a-b>| où \verb|a| désigne la couche de départ et \verb|b| désigne la couche d'arrivée. On peut également séparer les numéros de couches spécifiques par des virgules. Voici des exemples pour mieux comprendre :
 
@@ -83,11 +83,15 @@ La syntaxe de l'affichage couche par couche (en anglais \textenglish{\emph{overl
 
 Toutes les commandes \LaTeX{} ne réagissent pas nécessairement aux spécifications de couche : par exemple la commande \cs{emph} ne réagit pas : si vous utilisez une spécification de couche avec cette commande, la spécification apparaît sur la diapositive.
 
-On peut vouloir obtenir un PDF où toutes les couches d'une diapositive apparaissent d'un seul coup, afin par exemple d'avoir une version papier\footcite[À noter qu'il est possible de fabriquer un PDF destiné à l'impression sur transparents --- en cas de défaillance du vidéo-projecteur --- en précisant quelles couches doivent être séparées sur les transparents. Voir :][]{beamer_trans} : il suffit d'utiliser l'option de package \option{handout}.
+On peut vouloir obtenir un PDF où toutes les couches d'une diapositive apparaissent d'un seul coup, afin par exemple d'avoir une version papier : il suffit d'utiliser l'option de package \option{handout}.
 
 \begin{latexcode}
 \documentclass[handout]{beamer}
 \end{latexcode}
+
+\begin{plusloins}
+Il est possible de fabriquer un PDF destiné à l'impression sur transparents --- en cas de défaillance du vidéo-projecteur --- en précisant quelles couches doivent être séparées sur les transparents : nous renvoyons au manuel\footcite{beamer_trans}.
+\end{plusloins}
 
 Beamer propose des commandes et des environnements pour des usages avancés des spécifications de couche, notamment pour remplacer des éléments par d'autres éléments, tout en accordant à chacun la même place sur la diapositive, pour éviter d'avoir des \enquote{effets de déplacement} d'un élément d'une couche à l'autre. 
 Ceci dépassant cette introduction, nous renvoyons au manuel\footcite{beamer_overlays}.
@@ -95,7 +99,7 @@ Ceci dépassant cette introduction, nous renvoyons au manuel\footcite{beamer_ove
 
 \subsection{Blocs}
 
-Il existe plusieurs manières de mettre en valeur certains éléments d'une diapositive. La première  consiste à les placer dans des blocs pour les encadrer. \classe[beamer]{Beamer} propose plusieurs blocs standards, qui prennent à la fois un titre et un contenu. Ces blocs\footcites[Il est possible de créer ses propres blocs : voir  ][]{beamer_box}[il existe aussi des éléments proches des blocs que sont les encadrés, pour mettre en valeur des définitions, des théorèmes : voir][]{beamer_theorems} sont  : bloc standard, bloc d'exemple et bloc d'alerte.
+Il existe plusieurs manières de mettre en valeur certains éléments d'une diapositive. La première  consiste à les placer dans des blocs pour les encadrer. \classe[beamer]{Beamer} propose plusieurs blocs standards, qui prennent à la fois un titre et un contenu. Ces blocs sont  : bloc standard, bloc d'exemple et bloc d'alerte.
 
 \begin{latexcode}
 \begin{block}{Un bloc normal} 
@@ -108,6 +112,10 @@ Il existe plusieurs manières de mettre en valeur certains éléments d'une diap
     Un exemple des propos tenus
 \end{exampleblock}
 \end{latexcode}
+
+\begin{plusloins}
+Il est possible de créer ses propres blocs, le manuel explique comment\footcite{beamer_box}. Il existe aussi des éléments proches des blocs que sont les encadrés, pour mettre en valeur des définitions ou des théorèmes\footcite{beamer_theorems}.
+\end{plusloins}
 
 Évidemment, il est possible de spécifier un niveau de couche; la spécification doit alors se trouver après le titre du bloc :
 
@@ -180,11 +188,13 @@ signifie que nous produisons un PDF contenant uniquement les diapositives. \emph
 
 indique que nous désirons un fichier ne contenant que les notes.
 
+\begin{plusloins}
 Il est également possible de produire un fichier contenant les diapositives et les notes, mais capable, avec le bon logiciel, de les envoyer sur deux écrans différents. Nous renvoyons au manuel pour plus de détails\footcite{beamer_2ecrans}.
+\end{plusloins}
 
 \section{Écrire son article dans le même fichier que la présentation}
 
-Il peut être judicieux d'écrire l'article correspondant à la présentation dans le même fichier que celui-ci. Il suffit pour cela d'écrire le contenu de l'article entre les environnements (ou les commandes) \enviro{frame}\footcites[À noter qu'on peut aussi introduire des miniatures des diapositives  dans l'article, voir :][]{beamer_diapo_article} ---  mettre les titres des sections hors des diapositives révèle ici son avantage: ces titres sont aussi ceux de l'article.
+Il peut être judicieux d'écrire l'article correspondant à la présentation dans le même fichier que celui-ci. Il suffit pour cela d'écrire le contenu de l'article entre les environnements (ou les commandes) \enviro{frame} ---  mettre les titres des sections hors des diapositives révèle ici son avantage: ces titres sont aussi ceux de l'article.
 
 \begin{latexcode}
 \section{Introduction}
@@ -203,6 +213,10 @@ Texte de la première partie
 
 etc.
 \end{latexcode}
+
+\begin{plusloins}
+On peut aussi introduire des miniatures des diapositives  dans l'article : consultez le manuel\footcite{beamer_diapo_article}. 
+\end{plusloins}
 
 \subsection{Diapositives ou article ?}
 
