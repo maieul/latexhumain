@@ -61,7 +61,7 @@ erat  elit consectetuer erat, id egestas pede nibh eget odio.
 \endnumbering
 \end{latexcode}
 
-La numérotation recommence à zéro à chaque \cs{beginnumbering}. Il est toutefois possible d'indiquer de recommencer automatiquement la numérotation  à chaque page \emph{via} la commande \csp{lineation}\verb={page}=. \label{lineation}
+La numérotation recommence à zéro à chaque \cs{beginnumbering}. Il est toutefois possible d'indiquer de recommencer automatiquement la numérotation  à chaque page \emph{via} la commande \csp{lineation}\verb={page}=.\label{lineation}
 
 \begin{attention}
 Si vos sections numérotées sont très longues, il peut arriver l'erreur de compilation \forme{TeX capacity exceeded}. Il faut alors fractionner vos sections en utilisant de temps en temps la commande \csp{pausenumbering} suivie de \csp{resumenumbering} au sein de  la section numérotée\footnote{On peut aussi régler la configuration de \TeX pour lui allouer plus de mémoire.}. 
@@ -154,6 +154,10 @@ Pour arrêter la numérotation des \cs{pstart}s,  utilisez  \csp{numberpstartfal
 
 \begin{plusloins}
 La numérotation se fait à l'aide d'un compteur \compteur{pstart}. Nous expliquons plus loin ce qu'est un compteur, comment en modifier l'apparence\renvoi{apparencecompteur} et la valeur\renvoi{manipcompteurs}. Avec ces informations vous pourrez aisément changer la numérotation des \cs{pstart}s.
+\end{plusloins}
+
+\begin{plusloins}
+Il est possible de recommencer la numérotation des lignes à chaque \cs{pstart}  \emph{via} \cs{lineation}\verb={pstart}=.
 \end{plusloins}
 
 \subsubsection{Fréquence de numérotation des lignes}
