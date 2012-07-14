@@ -1,0 +1,48 @@
+\chapter{Faciliter les compilations avec Latexmk}\label{latemk}
+
+\begin{intro}
+Il est fréquent avec \LaTeX de devoir faire plusieurs compilations, avec différents programmes, dans un ordre précis. Le programme Latexmk permet de gérer automatiquement ces différentes compilations.
+\end{intro}
+
+\section{Principe}
+
+Latexmk est un script installé avec toutes les distributions \LaTeX. Il s'utilise via la ligne de commande\renvoi{Terminal}.
+Latexmk consulte les fichiers de compilation (\ext{log}) pour savoir quels sont les scripts à exécuter, et dans quel ordre. 
+Très simple d'utilisation, il nécessite toutefois quelques adaptations pour être compatible avec \XeLaTeX et Biber\renvoi{biber}. Nous les présentons ici, mais le programme propose beaucoup plus de réglages : nous renvoyons au manuel\footcite{latexmk}.
+
+\section[Adaptation pour XeLaTeX]{Adaptation pour \XeLaTeX}
+
+Pour configurer le script, il vous faut créer un fichier \fichier{latexmrc} à coté du fichier à compiler. Dans ce fichier, écrivez les lignes suivantes, en prêtant attention aux points-virgules de fins de ligne  :
+
+\begin{bashcode}
+$pdf_mode = "1";
+$pdflatex = "xelatex";
+\end{bashcode}
+
+La première ligne signifie que vous demandez à Latexmk de vous produire des fichiers \ext{pdf} et non pas \ext{dvi}, qui est le format \enquote{historique} produit par \LaTeX.
+
+La seconde ligne signifie que vous demandez à Latexmk d'utiliser \XeLaTeX et non pas \LaTeX pour produire ces \ext{pdf}.
+
+Rendez vous avec le terminal\renvoi{terminal} dans le dossier du fichier à compiler. Frappez ensuite la commande suivante :
+\begin{bashcode}
+latexmk fichier
+\end{bashcode}
+
+où \verb|fichier| est le nom de votre fichier principal. Vous voyez alors défiler les différentes compilation. Latexmk se charge de faire autant de compilations que nécessaires, en tenant compte des éventuels déplacements d'étiquettes. À la fin de ces différentes compilations, vous trouverez le fichier \ext{pdf} désiré.
+
+Toutefois, si vous appelez une entrée bibliographique non définie\renvoi{bddbiblio} ou une étiquette de renvoi interne\renvoi{label} non définie, latexmk ne procède qu'à trois séries de compilations. Il vous indique cependant les entrées ou étiquettes problématiques, par des lignes ayant cette forme :
+\begin{bashcode}
+Latexmk: Citation 'XXX' on page YYY undefined 
+Latexmk: Reference 'XXX' on page YYY undefined 
+\end{bashcode}
+
+Il vous est donc aisé de retrouver les entrées bibliographiques (=\enquote{Citation}) et les étiquettes (=\enquote{Reference}) non définies.
+
+\section{Adaptation pour l'index des sources primaires}
+
+Si vous utilisez notre script de gestion de l'index des sources primaires\renvoi{python}, il vous faudra également ajouter la ligne suivante :
+\begin{bashcode}
+$makeindex="python index.py;makeindex %S";
+\end{bashcode}
+
+Cette ligne indique à latexmk d'exécuter le script python avant la commande makeindex, le code \verb|%S| désignant le fichier pour lequel makeindex doit être exécuté.
