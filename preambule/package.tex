@@ -11,7 +11,6 @@
 
 \usepackage{placeins}				%Pour que les flottants ne flottent pas trop
 \usepackage{verse}					%Pour les vers
-\usepackage{multicol}				%Pour une gestion avancées de plusieurs colonnes, pour l'index. nécéssaire d'appeler cela avant le package bidi, sinon certaines options de imakeidx ne fonctionnent pas
 \usepackage{ifthen}				% Pour des test conditionnels
 \usepackage{xargs}				% Pour des arguments optionnels
 \usepackage{xspace}				% Pour la gestion des espaces
@@ -32,9 +31,9 @@
 \usepackage{enumitem}				% Pour les styles de listes
 
 \usepackage{ledmac, ledpar}			% Pour l'édition critiques
-
+\usepackage{multicol}				%Pour une gestion avancées de plusieurs colonnes, pour l'index. nécéssaire d'appeler  avant le package bidi, sinon certaines options de imakeidx ne fonctionnent pas
 \usepackage{totpages}				% Pour le nb total de pages
 \usepackage[splitindex,noautomatic]{imakeidx}		%Pour plusieurs index. Il est nécéssaire de passer par splitindex, car trop de donnée à indexer.
+\input{preambule/index}
 \usepackage{hyperref}				% Pour les liens hypertextes
 \hypersetup{colorlinks=true, citecolor=black, filecolor=black, linkcolor=black, urlcolor=black, bookmarks=true,pdftitle={(Xe)LaTeX appliqué aux sciences humaines}, pdfauthor={Maïeul ROUQUETTE avec la participation de Brendan CHABANNES et Enimie ROUQUETTE}, pdfcreator={XeLaTeX}}
-\usepackage{bidi}					% Pour les commandes \XeTeX et \XeLaTeX
