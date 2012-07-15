@@ -75,7 +75,7 @@ Et pour les claviers de Suisse romande, en utilisant la barre supérieure de chi
 
 \section{Installer TeX Live sous GNU/Linux}
 
-La plupart du temps, les paquets TeX Live sont disponibles dans les dépôts de votre distribution. Néanmoins, la majeure partie des distributions GNU/Linux ne gèrent pas certains packages récents tels que \forme{biber}\footnote{Les choses sont toutefois en train d'évoluer : les prochaines versions de systèmes tels que Debian ou Ubuntu (respectivement nommées Wheezy et \emph{Quantal Quetzal} disposeront de TeX Live 2012 et de \{biber}.}. C'est pourquoi nous privilégierons l'installation à partir du programme que vous pouvez trouver sur le site de TeX Live.
+La plupart du temps, les paquets TeX Live sont disponibles dans les dépôts de votre distribution. Néanmoins, la majeure partie des distributions GNU/Linux ne gèrent pas certains packages récents tels que \forme{biber}\footnote{Les choses sont toutefois en train d'évoluer : les prochaines versions de systèmes tels que Debian ou Ubuntu (respectivement nommées \emph{Wheezy} et \emph{Quantal Quetzal}) disposeront de TeX Live 2012 et de \forme{biber}.}. C'est pourquoi nous privilégierons l'installation à partir du programme que vous pouvez trouver sur le site de TeX Live.
 
 Une installation complète une fois effectué pèse environs trois giga-octets. Le temps passant et les mises à jour s'accumulant, il est recommandé d'avoir quatre giga-octets d'espace libre sur le disque dur.
 
@@ -96,7 +96,7 @@ Après avoir donné votre mot de passe, il vous suffira de suivre les étapes su
 
 \begin{enumerate}
 \item Cliquez simplement sur \forme{Suivant}.
-\item Attendez que le téléchargement soit fini. Il vous faut choisir un dossier d'installation : choisissez de préférence un répertoire hors du système de base, comme \verb|/$HOME/texlive2012|\footnote{\forme{\$HOME} est une \emph{variable d'environnement}. Vous pourriez tout aussibien taper \verb|/home/justin/| si votre nom d'utilisateur est \enquote{justin}.}.
+\item Attendez que le téléchargement soit fini. Il vous faut choisir un dossier d'installation : choisissez de préférence un répertoire hors du système de base, comme \verb|/$HOME/texlive2012|\footnote{\forme{\$HOME} est une \emph{variable d'environnement}. Vous pourriez tout aussi bien taper \forme{/home/justin/} si votre nom d'utilisateur est \enquote{justin}.}.
 \item Conservez A4 pour la taille de papier.
 \item Cliquez sur Installer.
 \item À la fin de l'installation, un message vous informera qu'il vous faut ajuster votre \forme{\$PATH}. Ouvrez le fichier \verb|~/.bashrc| (créez-le s'il n'existe pas), et ajoutez-y les lignes suivantes:\footnote{\forme{\$PATH} est une variable d'environnement qui permet au système de savoir où chercher les exécutables. TeX Live n'étant pas installé dans les dossiers par défaut, puisqu'il est étranger au système de base, c'est à vous de l'intégrer. Ajustez le champ entre guillemets selon le message qui s'affiche à l'écran, en prenant soin de finir par  \forme{:\$PATH}.}\\
