@@ -12,16 +12,12 @@
 \usepackage{placeins}				%Pour que les flottants ne flottent pas trop
 \usepackage{verse}					%Pour les vers
 \usepackage{multicol}				%Pour une gestion avancées de plusieurs colonnes, pour l'index. nécéssaire d'appeler cela avant le package bidi, sinon certaines options de imakeidx ne fonctionnent pas
-\usepackage{ltxdockit} 				% Pour documenter les commandes et les arguments. En fait je modifie une partie du code.
-
 \usepackage{ifthen}				% Pour des test conditionnels
 \usepackage{xargs}				% Pour des arguments optionnels
 \usepackage{xspace}				% Pour la gestion des espaces
 \usepackage{xcolor}				% Pour les couleurs
 \usepackage{csquotes}				% Pour les guillemets
 \usepackage{longtable}				% Pour les tableaux longs
-\usepackage{hyperref}				% Pour les liens hypertextes
-\hypersetup{colorlinks=true, citecolor=black, filecolor=black, linkcolor=black, urlcolor=black, bookmarks=true,pdftitle={(Xe)LaTeX appliqué aux sciences humaines}, pdfauthor={Maïeul ROUQUETTE avec la participation de Brendan CHABANNES et Enimie ROUQUETTE}, pdfcreator={XeLaTeX}}
 \usepackage{tikz}					% Pour les dessins
 \usetikzlibrary{shapes}
 \usepackage{array}					% Pour les types de colonne sup.
@@ -29,8 +25,6 @@
 \usepackage[nobreak=true,backgroundcolor=shadecolor,linecolor=white,innertopmargin=0.5\baselineskip,innerbottommargin=0.5\baselineskip]{mdframed}		% Pour les fonds grisés
 \usepackage{framed}
 \usepackage{fancyhdr}				% Pour les entetes et pied
-\usepackage{bidi}					% Pour les commandes \XeTeX et \XeLaTeX
-\usepackage{csvtools}				% Pour intérpreter des fichiers cvs
 \usepackage{graphicx}				% Pour insérer des images
 \usepackage{subscript}				% Pour insérer des textes en index
 
@@ -41,3 +35,6 @@
 
 \usepackage{totpages}				% Pour le nb total de pages
 \usepackage[splitindex,noautomatic]{imakeidx}		%Pour plusieurs index. Il est nécéssaire de passer par splitindex, car trop de donnée à indexer.
+\usepackage{hyperref}				% Pour les liens hypertextes
+\hypersetup{colorlinks=true, citecolor=black, filecolor=black, linkcolor=black, urlcolor=black, bookmarks=true,pdftitle={(Xe)LaTeX appliqué aux sciences humaines}, pdfauthor={Maïeul ROUQUETTE avec la participation de Brendan CHABANNES et Enimie ROUQUETTE}, pdfcreator={XeLaTeX}}
+\usepackage{bidi}					% Pour les commandes \XeTeX et \XeLaTeX

@@ -1,11 +1,16 @@
-% Commande utile pour documenter :
+% Reprise de doc.sty et ltxdockit.sty 
+% Commandes utiles pour documenter :
 % \cs 	-> indique une commande, et l'index
 % \csp	-> même chose que précédente, mais marque la page en gras dans l'index.
 % \marg	-> pour un argument obligatoire {<arg>}
 % \oarg	-> pour un argument optionnel [<arg>]
 % \arg	-> pour un argument cité dans le court du texte : <arg>
 % \contenuarg -> pour un exemple d'argument. titi
-
+\newlength{\marglistwidth}
+\deflength{\marglistwidth}{(\oddsidemargin+1in)*85/100}%
+\newcommand*{\marglistfont}{\bfseries}
+\newlength{\marglistsep}
+\deflength{\marglistsep}{10pt}
 % Repris de doc.sty, ligne 636 ss.
 \makeatletter
 \DeclareRobustCommand\meta[1]{%
@@ -23,8 +28,9 @@
 }
 \def\meta@font@select{\itshape}
 % Fin de la reprise
-
-
+\newcommand*{\verbatimfont}{\ttfamily}
+\newrobustcmd*{\cmd}[1]{\mbox{\verbatimfont\textbackslash#1}}
+\newrobustcmd*{\cs}[1]{\mbox{\verbatimfont\textbackslash#1}}
 \let\oldcs\cs
 
 \pretocmd{\cs}{\noindent}{}{}
