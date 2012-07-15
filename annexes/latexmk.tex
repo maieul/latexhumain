@@ -30,7 +30,7 @@ latexmk fichier
 
 où \verb|fichier| est le nom de votre fichier principal. Vous voyez alors défiler les différentes compilations. Latexmk se charge de faire autant de compilations que nécessaires, en tenant compte des éventuels déplacements d'étiquettes. À la fin de ces différentes compilations, vous trouverez le fichier \ext{pdf} désiré.
 
-Toutefois, si vous appelez une entrée bibliographique non définie\renvoi{bddbiblio} ou une étiquette de renvoi interne\renvoi{label} non définie, latexmk ne procède qu'à trois séries de compilations. Il vous indique cependant les entrées ou étiquettes problématiques, par des lignes ayant cette forme :
+Toutefois, si vous appelez une entrée bibliographique non définie\renvoi{bddbiblio} ou une étiquette de renvoi interne\renvoi{label} non définie, latexmk ne procède qu'à cinq séries de compilations\footnote{Si au bout de cinq compilation le logiciel ne parvient pas à un résultat stable, il s'arrêtera avec une erreur.}. Il vous indique cependant les entrées ou étiquettes problématiques, par des lignes ayant cette forme :
 \begin{bashcode}
 Latexmk: Citation 'XXX' on page YYY undefined 
 Latexmk: Reference 'XXX' on page YYY undefined 
