@@ -8,9 +8,9 @@
 
 En général, on n'installe pas \LaTeX{} tout seul, on installe une distribution \LaTeX{}. Une distribution est un ensemble de fichiers comprenant :
 \begin{itemize}
-\item Les logiciels \TeX, \LaTeX, et généralement \XeLaTeX, mais aussi d'autres logiciels qui appartiennent à la  \forme{famille \TeX\footnote{Pour prendre une analogie avec les logiciels connus, quand vous installez Microsoft Office, vous installez non seulement Word, Excel et Powerpoint, mais aussi des logiciels utiles à ces derniers, par exemple pour tracer des organigrammes.}}, que nous verrons en temps voulu.
-\item Des fichiers permettant d'étendre les possibilités de \LaTeX, appelés packages et classes.
-\item De la documentation sur ces fichiers.
+\item les logiciels \TeX, \LaTeX, et généralement \XeLaTeX, mais aussi d'autres logiciels qui appartiennent à la  \forme{famille \TeX\footnote{Pour prendre une analogie avec les logiciels connus, quand vous installez Microsoft Office, vous installez non seulement Word, Excel et Powerpoint, mais aussi des logiciels utiles à ces derniers, par exemple pour tracer des organigrammes.}}, que nous verrons en temps voulu;
+\item des fichiers permettant d'étendre les possibilités de \LaTeX, appelés packages et classes;
+\item de la documentation sur ces fichiers.
 \end{itemize}
 
 Il existe deux distributions courantes : TeXLive, qui se veut portable et est très adaptée pour MacOS X et Linux, et MikTeX pour Windows uniquement. L'objet de ce chapitre est donc d'expliquer comment installer ces distributions.
@@ -19,7 +19,7 @@ Il existe deux distributions courantes : TeXLive, qui se veut portable et est tr
 
 La méthode la plus simple consiste à installer MacTeX\footnote{\url{http://www.tug.org/mactex/}}. Celle-ci comprend non seulement une version de TeXLive pour Mac, mais aussi des logiciels pour faciliter la rédaction avec \LaTeX{}.
 
-Pour l'installer, il suffit de télécharger le fichier d'installation sur le site, en page d'accueil. Il s'agit d'un fichier \ext{zip}, qu'il faut le cas échéant décompresser. Dedans se situe un fichier \ext{mpkg} : un double clic dessus suffit à lancer le logiciel d'installation. Il vaut mieux conserver les réglages standards d'installation.
+Pour l'installer, il suffit de télécharger le fichier d'installation sur le site, en page d'accueil. Il s'agit d'un fichier \ext{zip}, qu'il faut le cas échéant décompresser. Dedans se trouve un fichier \ext{mpkg} : un double clic dessus suffit à lancer le logiciel d'installation. Il vaut mieux conserver les réglages standards d'installation.
 
 Une fois l'installation effectuée, vous pouvez vous rendre dans le dossier \forme{TeX} du dossier \forme{Applications} de votre Mac.
 
@@ -29,7 +29,7 @@ Ce dossier comprend plusieurs applications :
 \item[Excalibur] qui est un logiciel de correction orthographique prévu pour reconnaître les commandes \LaTeX{}. Nous ignorons sa qualité, ne l'ayant pas essayé.
 \item[LaTeXit] qui est un logiciel pour rédiger encore plus facilement des équations en \LaTeX{} et les exporter vers divers logiciels. Comme ce livre est l'un des rares sur \LaTeX{} à ne pas expliquer comment faire des équations avec, nous ne nous étendrons pas.
 \item[TeXLive Utility] qui sert à mettre à jour les différents modules de \LaTeX{} : classes, packages, etc. Nous en parlons plus loin\renvoi{majosX}. 
-\item[TeXworks et TeXShop] qui sont deux éditeurs de textes prévus pour \LaTeX. Choissisez l'un d'entre eux pour commencer avec \LaTeX{}\renvoi{commencer}.
+\item[TeXworks et TeXShop] \quad qui sont deux éditeurs de textes prévus pour \LaTeX. Choissisez l'un d'entre eux pour commencer avec \LaTeX{}\renvoi{commencer}.
 \end{description}
 
 \subsection{Les caractères \LaTeX sous Mac Os X}\label{claviermac}
@@ -75,9 +75,9 @@ Et pour les claviers de Suisse romande, en utilisant la barre supérieure de chi
 
 \section{Installer TeX Live sous GNU/Linux}
 
-La plupart du temps, les paquets TeX Live sont disponibles dans les dépôts de votre distribution. Néanmoins, la majeure partie des distributions GNU/Linux ne gèrent pas certains packages récents tels que \forme{biber}. C'est pourquoi nous privilégierons l'installation à partir du programme que vous pouvez trouver sur le site de TeX Live.
+La plupart du temps, les paquets TeX Live sont disponibles dans les dépôts de votre distribution. Néanmoins, la majeure partie des distributions GNU/Linux ne gèrent pas certains packages récents tels que \forme{biber}\footnote{Les choses sont toutefois en train d'évoluer : les prochaines versions de systèmes tels que Debian ou Ubuntu (respectivement nommées Wheezy et \emph{Quantal Quetzal} disposeront de TeX Live 2012 et de \{biber}.}. C'est pourquoi nous privilégierons l'installation à partir du programme que vous pouvez trouver sur le site de TeX Live.
 
-Une installation complète une fois effectué pèse environs trois giga-octets. Le temps et les mises à jour s'accumulant, il est recommandé d'avoir quatre giga-octets d'espace libre.
+Une installation complète une fois effectué pèse environs trois giga-octets. Le temps passant et les mises à jour s'accumulant, il est recommandé d'avoir quatre giga-octets d'espace libre sur le disque dur.
 
 \subsection{Au préalable}
 
@@ -88,7 +88,7 @@ Assurez-vous avant toute chose d'avoir le paquet \verb|perltk| installé sur vot
 Sous Ubuntu par exemple, il existe un moyen très simple d'installer ce paquet : tapez \url{apt://perl-tk} dans la barre d'adresse de votre navigateur web Firefox.
 
 Rendez-vous alors à l'adresse \url{http://tug.org/texlive/acquire-netinstall.html}. Choisissez  le fichier \emph{install-tl-unx.tar.gz}. Une fois téléchargé, décompressez-le puis rendez-vous dans le dossier nouvellement créé à l'aide d'un terminal, par exemple en tapant \verb|cd ~/Téléchargements/install-tl-*/|. Vous pouvez alors lancer l'installation en mode administrateur, par exemple ainsi :\\
-\verb|sudo perl install-tl -gui wizard|. Cette commande lancera le programme d'installation de la distribution complète en qui reconnaîtra automatiquement l'architecture de votre plate-forme.
+\verb|sudo perl install-tl -gui wizard|. Cette commande lancera le programme d'installation de la distribution complète qui reconnaîtra automatiquement l'architecture de votre plate-forme.
 
 \subsection{Installation et configuration}
 
@@ -96,19 +96,15 @@ Après avoir donné votre mot de passe, il vous suffira de suivre les étapes su
 
 \begin{enumerate}
 \item Cliquez simplement sur \forme{Suivant}.
-\item Attendez que le téléchargement soit fini. Il vous faut choisir un dossier d'installation : choisissez de préférence un répertoire hors du système de base, comme \verb|/opt/texlive2011|.
+\item Attendez que le téléchargement soit fini. Il vous faut choisir un dossier d'installation : choisissez de préférence un répertoire hors du système de base, comme \verb|/$HOME/texlive2012|\footnote{\forme{\$HOME} est une \emph{variable d'environnement}. Vous pourriez tout aussibien taper \verb|/home/justin/| si votre nom d'utilisateur est \enquote{justin}.}.
 \item Conservez A4 pour la taille de papier.
 \item Cliquez sur Installer.
-\item À la fin de l'installation, un message vous informera qu'il vous faut ajuster votre \forme{\$PATH}. Ouvrez le fichier \verb|~/.bashrc| (créez-le s'il n'existe pas), et ajoutez-y les lignes suivantes:\footnote{\forme{\$PATH} est une variable d'environnement qui permet au système de savoir où chercher les exécutables. TeX Live n'étant pas installé dans les dossiers par défaut, puisqu'il est   étranger au système de base, c'est à vous de l'intégrer. Ajustez le champ entre guillemets selon le message qui s'affiche à l'écran, en prenant soin de finir par  \forme{:\$PATH}.}\\
-\verb| PATH="/opt/texlive2011/bin/x86_64-linux:$PATH"|
+\item À la fin de l'installation, un message vous informera qu'il vous faut ajuster votre \forme{\$PATH}. Ouvrez le fichier \verb|~/.bashrc| (créez-le s'il n'existe pas), et ajoutez-y les lignes suivantes:\footnote{\forme{\$PATH} est une variable d'environnement qui permet au système de savoir où chercher les exécutables. TeX Live n'étant pas installé dans les dossiers par défaut, puisqu'il est étranger au système de base, c'est à vous de l'intégrer. Ajustez le champ entre guillemets selon le message qui s'affiche à l'écran, en prenant soin de finir par  \forme{:\$PATH}.}\\
+\verb| PATH="/$HOME/texlive2012/bin/x86_64-linux:$PATH"|
 \end{enumerate}
 
 L'installation est terminée. Vous pouvez fermer votre terminal pour que les modifications appliquées à votre \forme{\$PATH} soient prises en compte. 
 
-Enfin, certains systèmes GNU/Linux comme Ubuntu utilisent une version de la commande \verb|sudo| très sûre par défaut, qui refusera de prendre en compte la modification du \forme{:\$PATH} en mode administrateur. Pour utiliser la commande \verb|tlmgr| qui permet de mettre à jour les packages, il nous faut donc créer un lien symbolique vers cet utilitaire:\\
-\verb|sudo ln -s /opt/texlive2011/bin/x86_64-linux/tlmgr /bin/tlmgr|
-
-% $
 
 \section{MiKTeX sous Windows}
 
@@ -127,7 +123,7 @@ Vous remarquerez que des installateurs sont fournis pour les versions dites resp
 
 Une fois l'installateur téléchargé sur votre ordinateur, un double clic lance la procédure. Il faut d'abord accepter la licence du logiciel. Puis choisissez \enquote{Download MiKTeX}, et, à l'écran suivant, \enquote{Basic MiKTeX}.
 
-Il vous est demandé de choisir une source de téléchargement. Préférez une source proche de votre domicile, donc pour un utilisateur habitant dans le nord de la France, les serveurs français, anglais ou allemands font amplement l'affaire.
+Il vous est demandé de choisir une source de téléchargement. Préférez une source proche de votre domicile, donc pour un utilisateur habitant dans le Nord de la France, les serveurs français, anglais ou allemands font amplement l'affaire.
 
 À l'étape suivante il faut choisir un répertoire de téléchargement. Choisissez de préférence un dossier qui se trouve dans \enquote{Mes Documents}, comme par exemple \begin{english}\verb|C:\Documents and Settings\Votre utilisateur\Mes documents\miktex|\end{english}. Lorsque vous avez achevé cette étape, l'installateur télécharge tous les composants dont il a besoin, vous avertit qu'il a terminé son travail, puis s'arrête.
 
@@ -145,6 +141,19 @@ Conservez les choix par défaut sur les deux écrans suivants: ils sont corrects
 
 La plupart des packages sont listés sur le site \url{http://www.ctan.org/tex-archive/} qui sert de dépôt pour tous les projets tournant autour de \TeX et \LaTeX. C'est  en général sur les serveurs du CTAN (\textenglish{\emph{Comprehensive TeX Archive Network}}) que les logiciels de mise à jour des packages vont chercher  ceux-ci.
 
+\begin{attention}
+    Les mises à jour de la distribution TeX Live ne sont fournies que pour une période d'un an environ après sa sortie. Passé ce délai, lorsque vous tenterez de mettre à jour votre distribution TeX Live, vous trouverez un message de ce type :
+
+    \begin{quotation}
+/home/justin/texlive2012/bin/x86\_64-linux/tlmgr: The TeX Live versions supported by the repository
+  (2012--2012)
+do not include the version of the local installation
+  (2011).  Goodbye.
+    \end{quotation}
+
+Il y dans ce cas une seule alternative. Soit il faut installer une nouvelle version de la distribution TeX Live, en recommençant la procédure d'installation, soit il faut continuer à utiliser l'ancienne qui ne reçoit plus de mises à jour. TeX Live est d'une grande stabilité; aussi, si vous n'éprouvez pas le besoin de faire la mise à jour, vous pouvez parfaitement vous contenter de l'ancienne version.
+\end{attention}
+
 \subsection{Sous Mac OS X}\label{majosX}
 
 Pour mettre à jour les packages, le plus simple est d'utiliser le logiciel \forme{TeX Live Utility}, livré avec MacTeX. Une fois le logiciel ouvert, il suffit  de choisir l'onglet \forme{Manage Updates}, puis de sélectionner le package à mettre à jour --- s'il ne s'affiche pas, c'est qu'il est à jour --- avant de cliquer sur \forme{Update}. À noter qu'on peut aussi utiliser l'onglet \forme{Manage Packages} pour gérer l'installation de nouveaux packages.
@@ -155,7 +164,7 @@ Il y a deux moyens de mettre à jour votre installation \LaTeX sous GNU/Linux.
 
 \begin{enumerate}
 \item Le premier moyen de mettre à jour simplement est d'utiliser \verb|tlmgr| dans un terminal. La commande permettant de tout mettre à jour est la suivante:
-\verb|tlmgr update --self --all|.\footnote{Vous devez bien entendu être en mode administrateur pour lancer ces commandes. Utilisez \enquote{su} ou \enquote{sudo} selon votre distribution.} S'il s'avère nécessaire d'installer un nouveau paquet, il faut utiliser la commande \verb|tlmgr install paquet|.
+\verb|tlmgr update --self --all|. S'il s'avère nécessaire d'installer un nouveau paquet, il faut utiliser la commande \verb|tlmgr install paquet|.
 \item Vous pouvez lancer l'interface graphique de gestion des paquets en tapant la commande \verb|tlmgr gui|.
 \end{enumerate}
 
