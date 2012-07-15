@@ -26,13 +26,13 @@
 
 
 \let\oldcs\cs
-\newindex[Commandes]{cs}
+
 \pretocmd{\cs}{\noindent}{}{}
-\apptocmd{\cs}{\sindex[cs]{#1@\oldcs{#1}}}{}{}
+\apptocmd{\cs}{\index[cs]{#1@\oldcs{#1}}}{}{}
 
 \newcommand*{\hyperpagetextbf}[1]{\textbf{\hyperpage{#1}}}
 
-\newcommand*{\csp}[1]{\noindent\oldcs{#1}\sindex[cs]{#1@\oldcs{#1}|hyperpagetextbf}}
+\newcommand*{\csp}[1]{\noindent\oldcs{#1}\index[cs]{#1@\oldcs{#1}|hyperpagetextbf}}
 \providecommand\marg[1]{%
   {\ttfamily\char`\{}\meta{#1}{\ttfamily\char`\}}}
 \providecommand\oarg[1]{%

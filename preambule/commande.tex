@@ -1,8 +1,5 @@
 \input{preambule/documentation}
-\newindex[Classes]{classe}
-\newindex[Champs bibliographiques]{champ}
-\newindex[Environnements]{enviro}
-\newindex[Packages]{pkg}
+
 \newcommand*{\cf}[0]{\emph{cf}.}
 
 
@@ -14,10 +11,10 @@
 \newcommandx{\classe}[2][1]{%
 	% Premier argument optionel = la manière dont doit être indexé
 	\classenoidx{#2}%	
-	\ifthenelse{\equal{#1}{}}{\sindex[classe]{#2}}{\sindex[classe]{#1}}%
+	\ifthenelse{\equal{#1}{}}{\index[classe]{#2}}{\index[classe]{#1}}%
 }
 \newcommand{\champ}[1]{%
-	\sindex[champ]{#1}%
+	\index[champ]{#1}%
 	\textbf{#1}%
 }
 
@@ -29,7 +26,7 @@
 }
 \newcommand{\enviro}[1]{%
 	\environoidx{#1}%
-	\sindex[enviro]{#1}%
+	\index[enviro]{#1}%
 }
 
 
@@ -57,7 +54,7 @@
 \newcommandx{\package}[2][1]{%
 	% Premier argument optionel = la manière dont doit être indexé
 	\packagenoidx{#2}%
-	\ifthenelse{\equal{#1}{}}{\sindex[package]{#2}}{\sindex[package]{#1}}%		
+	\ifthenelse{\equal{#1}{}}{\index[pkg]{#2}}{\index[pkg]{#1}}%		
 }
 
 \newcommandx{\renvoi}[2][2]{ (☞\,p.~\pageref{#1}, \textbf{\ref{#1}}%Eventuellement deuxième arg opt

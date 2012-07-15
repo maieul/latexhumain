@@ -7,7 +7,7 @@ Dans ce chapitre nous verrons comment faire un ou plusieurs index\footnote{Je re
 \end{intro}
 
 
-\section{Faire un index simple avec \packagenoidx{imakeidx}}\sindex[pkg]{imakeidx}
+\section{Faire un index simple avec \packagenoidx{imakeidx}}\index[pkg]{imakeidx}
 
 
 \subsection{Principe de base}
@@ -187,7 +187,7 @@ Si vous utilisez le package \package{hyperref}, vous constaterez que celui-ci in
 \end{plusloins}
 
 
-\subsection{Quelques options du package \packagenoidx{imakeidx}}\sindex[pkg]{imakeidx}
+\subsection{Quelques options du package \packagenoidx{imakeidx}}\index[pkg]{imakeidx}
 
 
 
@@ -345,7 +345,7 @@ Pour créer un index spécifique aux sources, rien de particulier : il suffit d'
 \makeindex[name=sources,title=Index des sources]
 \end{latexcode}
 
-\subsection{Modifications des macros de \packagenoidx{biblatex}}\sindex[pkg]{biblatex}
+\subsection{Modifications des macros de \packagenoidx{biblatex}}\index[pkg]{biblatex}
 
 Nous avons donc notre index spécifique. Mais encore faut-il que nous disions  à \package{biblatex} d'y écrire son index. Pour ce faire nous allons d'abord redéfinir la macro \bibmacro{citeindex} qui est appelée à chaque commande \cs{\meta{prefix}cite}.
 
@@ -380,7 +380,7 @@ makeindex sources.idx
 
 Après cela, la compilation avec XeLaTeX affiche correctement l'index.
 
-\subsection{Fomat d'indexation \packagenoidx{biblatex}}\sindex[pkg]{biblatex}
+\subsection{Fomat d'indexation \packagenoidx{biblatex}}\index[pkg]{biblatex}
 
 Nous avons dit que nous utilisions le format d'indexation \verb|sources|. Un format d'indexation \package{biblatex}  est simplement la description de l'opération que \package{biblatex} effectue lorsqu'il doit indexer un champ. 
 

@@ -11,8 +11,7 @@
 
 \usepackage{placeins}				%Pour que les flottants ne flottent pas trop
 \usepackage{verse}					%Pour les vers
-\usepackage{multicol}				%Pour une gestion avancées de plusieurs colonnes, pour l'index
-\usepackage[makeindex]{splitidx}		%Pour plusieurs index
+\usepackage{multicol}				%Pour une gestion avancées de plusieurs colonnes, pour l'index. nécéssaire d'appeler cela avant le package bidi, sinon certaines options de imakeidx ne fonctionnent pas
 \usepackage{ltxdockit} 				% Pour documenter les commandes et les arguments. En fait je modifie une partie du code.
 
 \usepackage{ifthen}				% Pour des test conditionnels
@@ -41,4 +40,4 @@
 \usepackage{ledmac, ledpar}			% Pour l'édition critiques
 
 \usepackage{totpages}				% Pour le nb total de pages
-
+\usepackage[splitindex,noautomatic]{imakeidx}		%Pour plusieurs index. Il est nécéssaire de passer par splitindex, car trop de donnée à indexer.
