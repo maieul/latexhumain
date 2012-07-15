@@ -121,7 +121,7 @@ En créant ces deux commandes \csp{oldquotation} et \csp{endoldquotation} nous a
 \begin{description}
 \item[ligne 3]nous redéfinissons l'environnement \enviro{quotation}.
 \item[ligne 4]au début de cet environnement\renvoi{redefinirlatin}, nous ouvrons l'environnement \enviro{oldquotation} puis nous exécutons la commande \csp{singlespace}.
-\item[ligne 5]à la fin de l'environnement \enviro{quotation}, nous fermons l'environnement \enviro{oldquotation}. La commande \csp{singlespace} exécutée en début d'environnement étant situé dans un environnement, elle ne s'applique qu'au contenu de cet environnement\renvoi{porteebascule}. C'est pourquoi il n'est pas nécessaire de l'annuler par une commande \csp{onehalfspace}. 
+\item[ligne 5]à la fin de l'environnement \enviro{quotation}, nous fermons l'environnement \enviro{oldquotation}. La commande \csp{singlespace}, étant située dans un environnement, elle ne s'applique qu'au contenu de cet environnement\renvoi{porteebascule}. C'est pourquoi il n'est pas nécessaire de l'annuler par une commande \csp{onehalfspace}. 
 \end{description}
 
 \begin{plusloins}
@@ -310,12 +310,12 @@ Analysons-là :
 \begin{description}
 \item[ligne 2]la commande  \cs{vspace} produit un espace vertical, ici de 50~pt, comme l'indique le 50\csp{p@}. La présence d'une astérique indique que notre espace vertical continue après un changement de page.
 \item[ligne 3]la commande \cs{parindent} précise l'indentation du paragraphe à ce point précis : ici une longueur nulle (\cs{z@}). La commande \csp{raggedright} signifie que le texte va être aligné à gauche --- à l'inverse \csp{raggedleft} signifierait que le texte serait aligné à droite. Quant à la commande \csp{normalfont}, inutile de dire qu'elle signifie que la police standard --- celle définie par la commande \cs{setmainfont} --- est utilisée.
-\item[les lignes 4, 5, 9 et 10] servent à conditionner l'affichage d'un numéro de chapitre à la présence dans la partie principale du document (celle qui suit \cs{mainmatter}\renvoi{sectionbook}) et à la valeur du compteur \compteur{secnumdepth}, que vous pouvez redéfinir pour empêcher la numérotation de certains niveaux de titre\renvoi{manipcompteurs}.
-\item[ligne 6] on affiche en taille \cs{huge}\renvoi{taille}, en gras (\cs{bfseries}\renvoi{bfseries}) la chaîne de langue de début de chapitre (\csp{@chapapp}) suivie d'une espace et du numéro de chapitre : le compteur \compteur{chapter}, affiché \emph{via} la commande \cs{thechapter}.
-\item[ligne 7] on insère un paragraphe (\csp{par}) et on empêche un changement de ligne (\csp{nobreak}).
-\item[ligne 8] on insère un espace vertical de 20~pt.
-\item[ligne 11] au niveau visé par ce livre la compréhension de cette ligne n'est pas indispensable. Pour les curieux toutefois, cette ligne sert à prévenir un titre s'étalant sur plusieurs lignes. Sommairement, on peut dire que pour prévenir les ruptures de lignes ou les changements de pages, \LaTeX utilise des paramètres appelés \forme{penalty}. Plus une \forme{penalty} est importante, plus la probabilité d'une rupture est faible. Ici la \forme{penalty} d'interlignage --- de rupture de ligne --- est définie à 1000 (\csp{@M}). 
-\item[ligne 12] on indique le titre du chapitre (\#1) en taille \cs{Huge}, en gras (\cs{bfseries}). On introduit ensuite un paragraphe (\csp{par}), en demandant d'éviter les changements de pages (\csp{nobreak}).
+\item[lignes 4, 5, 9, 10]on conditionne l'affichage d'un numéro de chapitre au fait d'être situé dans la partie principale du document (celle qui suit \cs{mainmatter}\renvoi{sectionbook}) et à la valeur du compteur \compteur{secnumdepth}, que vous pouvez redéfinir pour empêcher la numérotation de certains niveaux de titre\renvoi{manipcompteurs}.
+\item[ligne 6]on affiche en taille \cs{huge}\renvoi{taille}, en gras (\cs{bfseries}\renvoi{bfseries}) la chaîne de langue de début de chapitre (\csp{@chapapp}) suivie d'une espace et du numéro de chapitre : le compteur \compteur{chapter}, affiché \emph{via} la commande \cs{thechapter}.
+\item[ligne 7]on insère un paragraphe (\csp{par}) et on empêche un changement de ligne (\csp{nobreak}).
+\item[ligne 8]on insère un espace vertical de 20~pt.
+\item[ligne 11]au niveau visé par ce livre la compréhension de cette ligne n'est pas indispensable. Pour les curieux toutefois, cette ligne sert à prévenir un titre s'étalant sur plusieurs lignes. Sommairement, on peut dire que pour prévenir les ruptures de lignes ou les changements de pages, \LaTeX utilise des paramètres appelés \forme{penalty}. Plus une \forme{penalty} est importante, plus la probabilité d'une rupture est faible. Ici la \forme{penalty} d'interlignage --- de rupture de ligne --- est définie à 1000 (\csp{@M}). 
+\item[ligne 12]on indique le titre du chapitre (\#1) en taille \cs{Huge}, en gras (\cs{bfseries}). On introduit ensuite un paragraphe (\csp{par}), en demandant d'éviter les changements de pages (\csp{nobreak}).
 \item[ligne 13]on insère un espace vertical de 40~pt.
 \end{description}
 
