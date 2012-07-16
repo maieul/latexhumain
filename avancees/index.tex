@@ -11,7 +11,7 @@ Les commandes pour formater l'index sont à placer dans un fichier \fichier{mons
 Pensez à placer ce fichier à un endroit où \LaTeX peut le trouver, par exemple à côté du fichier principal.
 \end{attention}
 
-Sans le \package{imakedix}, il fallait compiler en ligne de commande\renvoi{terminal}, selon cette syntaxe :
+Sans le package \package{imakedix}, il fallait compiler en ligne de commande\renvoi{terminal}, selon cette syntaxe :
 
 \begin{bashcode}
 makeindex -s monstyle.ist monfichier.idx
@@ -35,7 +35,7 @@ En revanche, si vous ne passez pas l'option \option{noautomatic} à  \cs{makinde
 Nous allons donner ici quelques exemples de commandes que l'on peut mettre dans son fichier \fichier{monstyle.ist}. 
 
 \begin{attention}
-Dans le fichier de style\ext{ist}, on n'écrit pas en \LaTeX{} mais en \TeX . Les commandes sont ainsi encadrées par des guillemets anglais \verb|"|. La barre contre-oblique, quant à elle, n'est prise en compte que si elle est précédée d'une autre contre-oblique.
+Dans le fichier de styles \ext{ist}, on n'écrit pas en \LaTeX{} mais en \TeX . Les commandes sont ainsi encadrées par des guillemets anglais \verb|"|. La barre contre-oblique, quant à elle, n'est prise en compte que si elle est précédée d'une autre contre-oblique.
 \end{attention}
 
 Le manuel de la commande MakeIndex\footnote{Que l'on peut lire en frappant dans le terminal\renvoi{terminal} {\ttfamily man makeindex} et que l'on peut quitter en frappant la lettre  {\ttfamily q}, ou, si l'on utilise Windows, que l'on peut consulter à cette adresse \url{http://www.fiveanddime.net/man-pages/makeindex.1.html}.} nous indique que, pour modifier ce qui est inséré entre le premier niveau d'item (l'entrée) --- ou niveau 0 --- et le ou les numéros de page, on utilise l'option \verb|delim_0| ; de même, pour définir ce qui est inséré entre le deuxième niveau d'item (la sous-entrée) --- ou niveau 1, et les numéros, on utilise l'option \verb+delim_1+, et l'option \verb|delim_2| pour les sous-sous-entrées --- ou niveau 2 d'itemisation. Le choix par défaut est une virgule suivie d'un blanc : \verb|", "|
@@ -51,22 +51,21 @@ delim_2 "\\hfill "
 Nous obtenons donc: 
 
 \begin{quotation}
-\begin{tabbing}
-\hspace{0,5cm}  \=  \hspace{3cm} \= \kill
-Adrien\>\> 5 \\
+
+\noindent Adrien\hfill 5 \\
 \\
-Charlemagne \>\>5 \\
+Charlemagne \hfill 5 \\
 \\
 Ducs \\
-\> Tassilon\> 5\\
+\hspace*{1em} Tassilon \hfill 5\\
 \\
-Evêques \\
-\> Damase \> 5\\
-\> Formose\>  5\\
-\end{tabbing}
+Évêques \\
+\hspace*{1em} Damase \hfill 5\\
+\hspace*{1em} Formose \hfill  5\\
+
 \end{quotation}
 
-Si nous préférons une ligne de points, il faut logiquement remplacer \verb|"|\textbackslash\cs{hfill}\verb| "| par \verb|"|\textbackslash\cs{dotfill}\verb| "|
+Si nous préférons une ligne de points, il faut logiquement remplacer \verb|"|\textbackslash\cs{hfill}\verb| "| par \verb|"|\textbackslash\cs{dotfill}\verb| "|.
 
 \begin{attention}
 Les espaces situées entre les commandes et les deuxièmes guillemets fermants sont indispensables. En effet, en l'absence de ces espaces, MakeIndex accole, dans le fichier \ext{ind} généré, les commandes aux numéros de page, ce qui bloque alors  la   compilation, puisque \LaTeX{} se retrouve alors face à des commandes inconnues, du style \csp{hfill1}.
@@ -109,27 +108,24 @@ heading_suffix " \\hfill}\\nopagebreak\n "
 Les deux \textbackslash\csp{hfill} étirent, pour le premier, l'espace avant la lettre vers la droite, et pour le second l'espace suivant la lettre vers la gauche -- voilà nos lettres centrées.
 
 \begin{quotation}
-\begin{tabbing}
-\hspace{0,5cm}  \= \hspace{1cm} \= \hspace{1,5cm} \= \kill
-\>\> \large{\textbf{A}}\\
-\\
-Adrien\>\>\> 5 \\
-\\
-\>\> \large{\textbf{C}}\\
-\\
-Charlemagne \>\>\>5 \\
-\\
-\>\> \large{\textbf{D}}\\
-\\
+\parindent=0pt
+\addtolength{\parskip}{\baselineskip}
+Adrien \hfill 5 
+
+\noindent{\hfill\large{\textbf{C}}\hfill}
+
+Charlemagne \hfill 5 
+
+{\hfill\large{\textbf{D}}\hfill}
+
 Ducs \\
-\> Tassilon\>\> 5\\
-\\
-\>\> \large{\textbf{E}}\\
-\\
-Evêques \\
-\> Damase \>\> 5\\
-\> Formose\>\>  5\\
-\end{tabbing}
+\hspace*{1em} Tassilon \hfill 5
+
+{\hfill\large{\textbf{E}}\hfill}
+
+Évêques \\
+\hspace*{1em} Damase \hfill 5\\
+\hspace*{1em} Formose \hfill  5
 \end{quotation}
 
 
@@ -145,9 +141,9 @@ headings_flag 1
 suffix_3p "~sq."
 heading_prefix " {\\bfseries\\large\\hfill " 
 heading_suffix " \\hfill}\\nopagebreak\n " 
-delim_0 "\\dotfill "
-delim_1 "\\dotfill "
-delim_2 "\\dotfill "
+delim_0 "\\hfill "
+delim_1 "\\hfill "
+delim_2 "\\hfill "
 \end{latexcode}
 
 
