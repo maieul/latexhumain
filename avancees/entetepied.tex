@@ -144,7 +144,7 @@ Supposons désormais que vous ne souhaitez plus voir les titres des sections dan
 Notez bien que nous indiquons que la commande \cs{sectionmark} prend un argument, alors même que nous ne nous en servons pas. Mais lorsque la classe \classe{book} appelle cette commande, elle lui passe bien un argument, qui est le titre de la section.
 \end{attention}
 
-Comme vous n'affichez alors plus que le titre du chapitre, il est peut-être inutile de préciser qu'il s'agit d'un chapitre. Il  faut alors redéfinir la commande \cs{chaptermark}, sous la forme suivante par exemple :
+Comme vous n'affichez alors plus que le titre du chapitre, il est peut-être inutile de préciser qu'il s'agit d'un chapitre. Il  faut alors redéfinir la commande \cs{chaptermark}, par exemple sous la forme suivante :
 
 \begin{latexcode}
 \renewcommand{\chaptermark}[1]{\markboth {\MakeUppercase{%
