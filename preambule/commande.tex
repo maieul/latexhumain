@@ -100,15 +100,14 @@
 \def\reflect#1{{\setbox0=\hbox{#1}\rlap{\kern0.5\wd0
   \special{x:gsave}\special{x:scale -1 1}}\box0 \special{x:grestore}}}
 
-\let\oldtex\TeX
-\renewcommand{\TeX}[0]{%
-       \oldtex\xspace}
+\let\oldTeX\TeX
+\renewcommand{\TeX}[0]{\oldTeX\xspace}
 \def\logo{{\leavevmode$\smash{\hbox{(X\lower.5ex
-  \hbox{\kern-.125em\reflect{E})\,}\kern-.1667em \LaTeX}}$}}
-\def\XeTeX{{\leavevmode$\smash{\hbox{X\lower.5ex
-  \hbox{\kern-.125em\reflect{E}}\kern-.1667em \TeX}}$}}
-\def\XeLaTeX{{\leavevmode$\smash{\hbox{X\lower.5ex
-  \hbox{\kern-.125em\reflect{E}}\kern-.1667em \LaTeX}}$}}
+  \hbox{\kern-.125em\reflect{E})\,}\kern-.1667em \LaTeX}}$}\xspace}
+\newcommand{\XeTeX}{{\leavevmode$\smash{\hbox{X\lower.5ex
+  \hbox{\kern-.125em\reflect{E}}\kern-.1667em \oldTeX}}$}\xspace}
+\newcommand{\XeLaTeX}{{\leavevmode$\smash{\hbox{X\lower.5ex
+  \hbox{\kern-.125em\reflect{E}}\kern-.1667em \LaTeX}}$}\xspace}
 
 % Pour gérer les basculements dans les styles biblio
 \newcommand{\bibverbose}{
