@@ -25,13 +25,14 @@ Une fois l'installation effectuée, vous pouvez vous rendre dans le dossier \for
 
 Ce dossier comprend plusieurs applications :
 \begin{description}
-\item[BibDesk] qui est un logiciel pour gérer les fichiers bibliographiques au format BibTex\renvoi{bddbiblio}.
-\item[Excalibur] qui est un logiciel de correction orthographique prévu pour reconnaître les commandes \LaTeX{}. Nous ignorons sa qualité, ne l'ayant pas essayé.
-\item[LaTeXit] qui est un logiciel pour rédiger encore plus facilement des équations en \LaTeX{} et les exporter vers divers logiciels. Comme ce livre est l'un des rares sur \LaTeX{} à ne pas expliquer comment faire des équations avec, nous ne nous étendrons pas.
-\item[TeXLive Utility] qui sert à mettre à jour les différents modules de \LaTeX{} : classes, packages, etc. Nous en parlons plus loin\renvoi{majosX}. 
-\item[TeXworks et TeXShop] \quad qui sont deux éditeurs de textes prévus pour \LaTeX. Choissisez l'un d'entre eux pour commencer avec \LaTeX{}\renvoi{commencer}.
+\item[BibDesk]qui est un logiciel pour gérer les fichiers bibliographiques au format BibTex\renvoi{bddbiblio}.
+\item[Excalibur]qui est un logiciel de correction orthographique prévu pour reconnaître les commandes \LaTeX{}. Nous ignorons sa qualité, ne l'ayant pas essayé.
+\item[LaTeXit]qui est un logiciel pour rédiger encore plus facilement des équations en \LaTeX{} et les exporter vers divers logiciels. Comme ce livre est l'un des rares sur \LaTeX{} à ne pas expliquer comment faire des équations avec, nous ne nous étendrons pas.
+\item[TeXLive Utility]qui sert à mettre à jour les différents modules de \LaTeX{} : classes, packages, etc. Nous en parlons plus loin\renvoi{majosX}. 
+\item[TeXworks et TeXShop]~qui sont deux éditeurs de textes prévus pour \LaTeX. Choissisez l'un d'entre eux pour commencer avec \LaTeX{}\renvoi{commencer}.
 \end{description}
 
+En outre, un panneau de configuration, \enquote{Distribution TeX} est ajouté dans les Préférences Systèmes. Dans la plupart des cas, vous n'aurez pas à vous en servir. Il permet en effet de choisir entre plusieurs versions de la distribution (par exemple entre la version 2011 et la version 2012), ce qui est rarement nécéssaires.
 \subsection{Les caractères \LaTeX sous Mac Os X}\label{claviermac}
 
 Les claviers Apple n'indiquent pas directement les caractères spéciaux disponibles. Voici comment frapper la plupart des caractères nécessaires à l'utilisation de \LaTeX.
@@ -75,7 +76,7 @@ Et pour les claviers de Suisse romande, en utilisant la barre supérieure de chi
 
 \section{Installer TeX Live sous GNU/Linux}
 
-La plupart du temps, les paquets TeX Live sont disponibles dans les dépôts de votre distribution. Néanmoins, la majeure partie des distributions GNU/Linux ne gèrent pas certains packages récents tels que \forme{biber}\footnote{Les choses sont toutefois en train d'évoluer : les prochaines versions de systèmes tels que Debian ou Ubuntu (respectivement nommées \emph{Wheezy} et \emph{Quantal Quetzal}) disposeront de TeX Live 2012 et de \forme{biber}.}. C'est pourquoi nous privilégierons l'installation à partir du programme que vous pouvez trouver sur le site de TeX Live.
+La plupart du temps, les paquets TeX Live sont disponibles dans les dépôts de votre distribution. Néanmoins, la majeure partie des distributions GNU/Linux ne gèrent pas certains packages récents tels que Biber\footnote{Les choses sont toutefois en train d'évoluer : les prochaines versions de systèmes tels que Debian ou Ubuntu (respectivement nommées \emph{Wheezy} et \emph{Quantal Quetzal}) disposeront de TeX Live 2012 et de Biber.}. C'est pourquoi nous privilégierons l'installation à partir du programme que vous pouvez trouver sur le site de TeX Live.
 
 Une installation complète une fois effectuée pèse environs trois giga-octets. Le temps passant et les mises à jour s'accumulant, il est recommandé d'avoir quatre giga-octets d'espace libre sur le disque dur.
 
@@ -121,7 +122,7 @@ Il faut se rendre sur la page de téléchargement de la distribution : \url{http
 Vous remarquerez que des installateurs sont fournis pour les versions dites respectivement 32 bits et 64 bits de Windows. Si vous ne connaissez pas ces termes, veillez à choisir la version \emph{32 bits}. Cette dernière peut en effet s'exécuter sur les deux types de plate-formes, tandis que la réciproque n'est pas vraie. Si vous savez que vous disposez d'un système en 64 bits, vous pouvez choisir sans crainte l'installateur qui y correspond.
 \end{attention}
 
-Une fois l'installateur téléchargé sur votre ordinateur, un double clic lance la procédure. Il faut d'abord accepter la licence du logiciel. Puis choisissez \enquote{Download MiKTeX}, et, à l'écran suivant, \enquote{Basic MiKTeX}.
+Une fois l'installateur téléchargé sur votre ordinateur, un double-clic lance la procédure. Il faut d'abord accepter la licence du logiciel. Puis choisissez \enquote{Download MiKTeX}, et, à l'écran suivant, \enquote{Basic MiKTeX}.
 
 Il vous est demandé de choisir une source de téléchargement. Préférez une source proche de votre domicile, donc pour un utilisateur habitant dans le Nord de la France, les serveurs français, anglais ou allemands font amplement l'affaire.
 
@@ -162,7 +163,7 @@ do not include the version of the local installation\\
 longer be updated.
 	\end{quotation}
 
-Il y dans ce cas une seule alternative. Soit il faut installer une nouvelle version de la distribution TeX Live, en recommençant la procédure d'installation, soit il faut continuer à utiliser l'ancienne qui ne reçoit plus de mises à jour. TeX Live est d'une grande stabilité, mais ce n'est pas nécessairement le cas de tous les packages que l'on peut être amené à utiliser. Si l'un des packages que vous utilisez est affecté d'un bug qui vous gêne, vous n'aurez d'autre choix que de mettre à niveau la distribution TeX Live. Dans le cas contraire, vous pouvez parfaitement vous contenter de l'ancienne version.
+Dans un tel cas,  il vous faut soit installer une nouvelle version de la distribution TeX Live, en recommençant la procédure d'installation, soit continuer à utiliser l'ancienne qui ne reçoit plus de mises à jour. TeX Live est d'une grande stabilité, mais ce n'est pas nécessairement le cas de tous les packages que l'on peut être amené à utiliser. Si l'un des packages que vous utilisez est affecté d'un bug qui vous gêne, vous n'aurez d'autre choix que de mettre à niveau la distribution TeX Live. Dans le cas contraire, vous pouvez parfaitement vous contenter de l'ancienne version.
 \end{attention}
 
 \subsection{Sous Mac OS X}\label{majosX}
