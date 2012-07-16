@@ -8,7 +8,7 @@ Il est fréquent avec \LaTeX de devoir faire plusieurs compilations, avec diffé
 
 Latexmk est un script installé avec toutes les distributions \LaTeX. Il s'utilise via la ligne de commande\renvoi{terminal}.
 Latexmk consulte les fichiers de compilation (\ext{log}) pour savoir quels sont les scripts à exécuter, et dans quel ordre. 
-Très simple d'utilisation, il nécessite toutefois quelques adaptations pour être compatible avec \XeLaTeX et Biber\renvoi{biber}. Nous les présentons ici, mais le programme propose beaucoup plus de réglages : nous renvoyons au manuel\footcite{latexmk}.
+Très simple d'utilisation, il nécessite toutefois quelques adaptations pour être compatible avec \XeLaTeX. Nous les présentons ici, mais le programme propose beaucoup plus de réglages : nous renvoyons au manuel\footcite{latexmk}.
 
 \section[Adaptation pour XeLaTeX]{Adaptation pour \XeLaTeX}
 
@@ -23,6 +23,8 @@ La première ligne signifie que vous demandez à Latexmk de vous produire des fi
 
 La seconde ligne signifie que vous demandez à Latexmk d'utiliser \XeLaTeX et non pas \LaTeX pour produire ces \ext{pdf}.
 
+Il n'est en revanche pas utile de préciser que vous utilisez Biber\renvoi{Biber} plutôt que Bibtex : le logiciel le détecte automatiquement.
+
 Rendez vous avec le terminal\renvoi{terminal} dans le dossier du fichier à compiler. Frappez ensuite la commande suivante :
 \begin{bashcode}
 latexmk fichier
@@ -30,7 +32,7 @@ latexmk fichier
 
 où \verb|fichier| est le nom de votre fichier principal. Vous voyez alors défiler les différentes compilations. Latexmk se charge de faire autant de compilations que nécessaires, en tenant compte des éventuels déplacements d'étiquettes. À la fin de ces différentes compilations, vous trouverez le fichier \ext{pdf} désiré.
 
-Toutefois, si vous appelez une entrée bibliographique non définie\renvoi{bddbiblio} ou une étiquette de renvoi interne\renvoi{label} non définie, latexmk ne procède qu'à cinq séries de compilations\footnote{Si au bout de cinq compilation le logiciel ne parvient pas à un résultat stable, il s'arrêtera avec une erreur.}. Il vous indique cependant les entrées ou étiquettes problématiques, par des lignes ayant cette forme :
+Toutefois, si vous appelez une entrée bibliographique non définie\renvoi{bddbiblio} ou une étiquette de renvoi interne\renvoi{label} non définie, Latexmk ne procède qu'à cinq séries de compilations\footnote{Si au bout de cinq compilation le logiciel ne parvient pas à un résultat stable, il s'arrêtera avec une erreur.}. Il vous indique cependant les entrées ou étiquettes problématiques, par des lignes ayant cette forme :
 \begin{bashcode}
 Latexmk: Citation 'XXX' on page YYY undefined 
 Latexmk: Reference 'XXX' on page YYY undefined 
