@@ -1,0 +1,18 @@
+\makeatletter
+
+\ifpapierstandard
+%Pour avoir la 4ème sur une page de gauche
+	\ifodd\c@TotPages
+		\newpage\hbox{}\newpage
+	\else
+		\newpage\hbox{}
+	\fi
+	\input{couv/4couv}
+\else
+% Mettre une page r/v blanche. Si on finit à droite, il faut une page supplémentaire (correspondant au verso de la page de fin)
+	\newpage\pagestyle{empty}\hbox{}\newpage\hbox{}
+	\ifodd\c@TotPages
+	\else
+		\newpage\hbox{}
+	\fi
+\makeatother
