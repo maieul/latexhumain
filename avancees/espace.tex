@@ -81,7 +81,7 @@ Si vous utilisez \package{geometry} et les notes de marge produites via \cs{marg
 
 \section{Textes en retrait}
 
-On peut souhaiter avoir un environnement qui produit du texte en retrait, semblable à l'environnement \enviro{quotation}, par exemple un environnement \enviro{exemple} avec un retrait de 5~ex.
+On peut souhaiter avoir un environnement qui produit du texte en retrait, semblable à l'environnement \enviro{quotation}, par exemple un environnement \enviro{exemple} avec un retrait gauche de 3~em et un retrait droit de 1em.
 
 Si nous fouillons dans le fichier\renvoi{trouverfichier} \fichier{book.cls}, nous trouvons que l'environnement quotation est défini de la manière suivante\footnote{Ligne 486, au 19 septembre 2011.} :
 
@@ -128,8 +128,8 @@ Ce qui nous donne au final :
 \newenvironment{exemple}
                {\list{}{\listparindent 1.5em%
                         \itemindent    \listparindent
-                        \leftmargin 3ex
-            \rightmargin 1ex
+                        \leftmargin 3em
+            \rightmargin 1em
             \itshape
                         \parsep        \z@ \@plus\p@}%
                 \item\relax}
