@@ -44,7 +44,7 @@
 \newenvironment{choix}
   {\list{}{%
      \setlength{\labelwidth}{1.6\marglistwidth}%
-     \setlength{\labelsep}{\marglistsep}%
+     \setlength{\labelsep}{0pt}%
 	\itemindent\z@
      \setlength{\leftmargin}{1.6\marglistwidth}%
      \setlength{\rightmargin}{\marglistwidth}%
@@ -66,10 +66,10 @@
 
 \newenvironment{glossaire}
   {\list{}{%
-     \setlength{\labelwidth}{2.2\marglistwidth}%
+     \setlength{\labelwidth}{2.15\marglistwidth}%
      \setlength{\labelsep}{0pt}%
 	\itemindent\z@
-     \setlength{\leftmargin}{2.2\marglistwidth}%
+     \setlength{\leftmargin}{2.15\marglistwidth}%
      \setlength{\rightmargin}{0pt}%
      \renewcommand*{\makelabel}[1]{\marglistfont##1\hfill}}%
   }
