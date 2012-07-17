@@ -183,17 +183,11 @@ Pour contourner ce problème, on peut utiliser le champ \champ{sorttitle}. Celui
 
 Comme \forme{0} se situe avant \forme{2}, la lettre 64 est bien située avant la lettre 237. Dans la bibliographie, l'entrée aura cependant bien le titre  \enquote{Lettre 64}, et non pas \enquote{Lettre 064}.
 
+\begin{attention}
 Un problème semblable peut se poser pour les œuvres anonymes : en l'absence d'auteur, \emph{biblatex} se sert du titre comme premier critère de tri, ce qui a pour conséquence de disperser toutes les œuvres anonymes au sein de la bibliographie, plutôt que de les mettre à un seul endroit, par exemple tout au début.
 
-Pour résoudre ce problème, il suffit d'utiliser le champ \champ{sortname}, et lui attribuant la valeur \forme{0}.
-Par exemple :
-
-\begin{latexcode}
-@book{clef,
-    Sortname = {0},
-    Title = {Œuvre anonyme}
-\end{latexcode}
-
+Pour résoudre ce problème,  on peut certes utiliser le champs \champ{sortname}, mais le plus sain est de définir sa propre règle de tri : nous expliquons comment sur notre blog\footcite{trianonyme}.
+\end{attention}
 Notre entrée \forme{clef} apparaît dans la bibliographie en tout début.
 
 Il existe également un champ \champ{sortyear} pour préciser une autre année de tri. 
