@@ -14,8 +14,7 @@ Nous souhaitons créer une commande personnalisée servant à indiquer que nous 
 Notre commande se décompose en plusieurs parties : son nom, ici \contenuarg{auteur}, et ses arguments, ici un seul : \arg{nom}.
 
 Une commande LaTeX peut prendre jusqu'à neuf~arguments, ce qui est en général bien suffisant. Si nous notons \arg{N} le nombre d'arguments, la syntaxe de la déclaration d'une nouvelle commande est la suivante :
-
-\csp{newcommand}\verb|{\|\arg{nomcommande}\verb|}|\oarg{N}\marg{code}.
+\csp{newcommand}\verb|{\|\arg{nom de la commande}\verb|}|\oarg{N}\marg{code}.
 
 \begin{attention}
     Les noms de commandes ne doivent contenir que des caractères latins non accentués. 
@@ -331,8 +330,7 @@ On peut passer les options \option{dvipsnames}, \option{svgnames} ou \option{x11
 \subsubsection{Définir ses propres couleurs}
 
 Il est possible de définir ses propres couleurs. Il faut  utiliser \csp{definecolor}, selon la syntaxe suivante : 
-
-\cs{definecolor}\marg{nom}\marg{methode}\marg{definition}
+\cs{definecolor}\marg{nom}\marg{methode}\marg{definition}.
 
 
 Les couleurs peuvent être définies de plusieurs manières\footnote{On consultera n'importe quel livre scientifique sur les couleurs pour plus de détails. On peut également consulter la documentation du package \package{xcolor}.}. Les deux principales sont\footcite[Il existe aussi la méthode de définition par la longueur d'onde pour les couleurs de l'arc en ciel, par pourcentage de gris pour les différents niveaux de gris, ainsi que par teinte, saturation et luminosité, mais ceci nécessiterait un cours de physique lumineuse. Pour  les personnes intéressées par les détails, consulter][]{xcolor_methode} :
