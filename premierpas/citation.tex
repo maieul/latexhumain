@@ -91,8 +91,8 @@ L'environnement  \enviro{verse} permet de citer de façon rapide et simple des p
 Cet environnement est très limité: il ne permet pas de numéroter ni d'indenter les vers, ni encore de rajouter un titre. Si l'on est amené à citer fréquemment des vers, il vaut mieux appeler dans le préambule le package \package{verse}\footcite{verse}. La citation du poème se fait de la même manière.
 
 
-Avec ce package, pour numéroter les vers cités il faut indiquer \csp{poemlines}\marg{nbr} :  \arg{nbr} 
-définit la fréquence avec laquelle les vers sont numérotés. 
+Avec ce package il faut indiquer \csp{poemlines}\marg{n} pour numéroter les vers cités :  \arg{n} 
+définit la fréquence à laquelle les vers sont numérotés. 
 
 
 Citons pour  exemple un poème entier, dont les vers sont numérotés, de façon assez traditionnelle, une fois sur cinq. En frappant ceci\footcite{demain}:
@@ -107,7 +107,10 @@ on obtient cela :
 
 
 Si l'on ne cite pas un poème en entier, mais simplement un passage, il faut indiquer à quel vers commence le passage cité, afin que la numérotation des vers que l'on cite soit la bonne.
-On utilise pour cela la commande \csp{setverselinenums}\marg{premier vers}\marg{premier vers numéroté} : \arg{premier vers} indique le numéro du premier vers que l'on cite, \arg{premier vers numéroté} où doit commencer la numérotation. Ainsi, \cs{setverselinenums}\marg{12}\marg{15} indique que l'extrait que l'on cite commence par le douzième vers du poème, et que le premier vers numéroté sera le quinzième. 
+
+On utilise la commande \csp{setverselinenums}\marg{premier vers}\marg{premier vers numéroté} : \arg{premier vers} indique le numéro du premier vers que l'on cite, \arg{premier vers numéroté} où doit commencer la numérotation. 
+
+Ainsi, \cs{setverselinenums}\marg{12}\marg{15} indique que l'extrait que l'on cite commence par le douzième vers du poème, et que le premier vers numéroté sera le quinzième. 
 Avec \cs{setverselinenums}\marg{12}\marg{12}, le premier vers cité sera le premier numéroté.
 
 Ne citant que la troisième strophe, par exemple, il faut frapper :
@@ -130,7 +133,7 @@ Dans la typographie française, il est d'usage de mettre un crochet droit [ au d
 Puis insérer, une fois commencé l'environnement \enviro{verse}, la commande \csp{versehangrightsquare}.
 \end{plusloins}
 
-Le package \package{verse} permet aussi d'indenter de façon très souple une strophe. On indique avec la commande \csp{indentpattern}\marg{$n_1 n_2 n_x$} l'indentation de chaque vers contenu dans la strophe encadrée dans l'environnement \enviro{patverse}: \arg{$n_1$} correspond au premier vers, \arg{$n_2$} au deuxième et ainsi de suite. Le premier vers n'est jamais indenté, mais il suffit de le faire précéder de \csp{vin}. Avec le code suivant :
+Le package \package{verse} permet aussi d'indenter de façon très souple une strophe. On indique avec la commande \csp{indentpattern}\marg{$n_1 n_2 n_x$} l'indentation de chaque vers contenu dans la strophe encadrée à l'intérieur d'un environnement \enviro{patverse}: \arg{$n_1$} correspond au premier vers, \arg{$n_2$} au deuxième et ainsi de suite. Le premier vers n'est jamais indenté, mais il suffit de le faire précéder de \csp{vin}. Avec le code suivant :
 
 \inputminted{exemples/premierpas/citation/apple.tex}
 
@@ -141,7 +144,7 @@ on obtient donc\footcite{EdwardLear} :
 
 
  
- Si l'on a besoin de répéter une indentation tout le long d'un poème, on remplace \enviro{patverse} par \enviro{patverse*}. Donc pour citer un long extrait en hexamètres dactyliques, plutôt que d'indiquer l'indentation pour chaque vers, il suffit  d'indiquer \cs{indentpattern}\verb|{01}| et d'insérer tout le poème  dans l'environnement \enviro{patverse*} pour avoir un vers sur deux indenté.
+ Si l'on a besoin de répéter une indentation tout le long d'un poème, on remplace \enviro{patverse} par \enviro{patverse*}. Donc pour citer un long extrait en hexamètres dactyliques, plutôt que d'indiquer l'indentation pour chaque vers, il suffit  d'indiquer \cs{indentpattern}\verb|{01}| et d'insérer le poème, en entier,  dans l'environnement \enviro{patverse*} pour avoir un vers sur deux indenté.
  
  
  Le package \package{verse} offre bien d'autres possibilités qui dépassent la simple citation de poésie dans le cours d'un texte. À l'instar d'un autre package, \package{poemscol}, c'est un véritable outil pour éditer de la poésie\footcites(Nous vous renvoyons ici aux manuels de ces packages){verse}{poemscol}. Ni l'un ni l'autre ne permettent en revanche de faire des éditions bilingues: pour cela, il faut utiliser les packages \package{ledmac} et \package{ledpar}\renvoi{ledmac}. 
@@ -149,7 +152,7 @@ on obtient donc\footcite{EdwardLear} :
 
 \section{Citations tronquées et modifiées}
 
-Le package \package{csquotes} propose deux commandes spécifiques pour signaler qu'une citation a été tronquée ou modifiée.
+Le package \package{csquotes} propose deux commandes spécifiques pour signaler une citation tronquée ou modifiée.
 
 \subsection{Citation tronquée}
 
