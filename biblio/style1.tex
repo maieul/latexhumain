@@ -104,7 +104,7 @@ Lorsque nous utilisons une commande de citation multiple\renvoi{citemultiple}, l
 \end{quotation}
 \bibverbosetrad
 
-On peut là aussi modifier le séparateur en redéfinissant la commande \csp{multicitedelim}. Par exemple pour avoir une virgule :
+On peut là aussi modifier le séparateur en redéfinissant \csp{multicitedelim}. Par exemple pour avoir une virgule :
 
 \begin{latexcode}
 \renewcommand{\multicitedelim}[0]{\addcomma\addspace}
@@ -235,7 +235,6 @@ Vous savez  que les styles de la famille \forme{verbose-trad} utilisent des abr�
 Ces abréviations sont les abréviations universitaires courantes. Toutefois   \package{biblatex} utilise indistinctement \emph{op. cit.} pour toutes les sortes d'entrées, y compris pour les entrées de type \type{article}, alors qu'on pourrait s'attendre à une abréviation comme \emph{art. cit.}
 
 Pour résoudre ce problème il suffit de redéfinir la chaîne de langue qui définit \emph{op. cit.}, en lui attribuant une valeur différente selon le type d'entrée.  On va donc utiliser l'un des nombreux tests conditionnels disponibles dans \package{biblatex}. 
-
 Il s'agit de la commande : \csp{iffieldequalstr}\marg{champ}\marg{texte}\marg{sioui}\marg{sinon}.
 
 Cette commande ne peut s'utiliser que dans certaines parties d'un fichier \LaTeX : dans les commandes de définition de styles bibliographiques et  dans celles de définition d'un chaîne de langue. 
