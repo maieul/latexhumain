@@ -72,7 +72,7 @@ L'index  apparaît dans le document à l'emplacement que l'on a indiqué par la 
 
 Il est possible, avec \package{imakeidx},  de créer des subdivisions et des subsubdivisions  pour chaque entrée de l'index. La subdivision se crée de la manière suivante : \begin{english}\cs{index}\verb|{|\meta{entrée}\verb|!|\meta{sous-entrée}\verb|}|\end{english}. La sous-sous-entrée, logiquement, se crée ainsi: \begin{english}\cs{index}\verb|{|\meta{entrée}\verb|!|\meta{sous-entrée}\verb|!|\meta{sous-sous-entrée}\verb|}|\end{english}. On ne peut cependant avoir que ces trois niveaux d'indexation.
 
-On peut ainsi référencer autrement notre premier exemple, en créant les entrées \enquote{Eveques} et \enquote{Ducs} que l'on subdivise:
+On peut ainsi référencer autrement notre premier exemple, en créant les entrées \enquote{Évêques} et \enquote{Ducs} que l'on subdivise:
 
 \begin{latexcode}
 Tandis que Charle\index{Charlemagne} était à Rome, il convint 
@@ -80,8 +80,8 @@ avec le pape Adrien\index{Adrien} qu’ils enverraient de concert
 des ambassadeurs à Tassilon, duc de Bavière\index{Ducs!Tassilon}.
 \textelp{}
 Les hommes choisis et envoyés dans cette ambassade furent, de la 
-part du pape, les évêques Formose\index{Eveques!Formose}
-et Damase\index{Eveques!Damase}\textelp{}.
+part du pape, les évêques Formose\index{Évêques!Formose}
+et Damase\index{Évêques!Damase}\textelp{}.
 \end{latexcode}
 
 
@@ -96,7 +96,7 @@ Charlemagne, 5 \\
 Ducs \\
 \> Tassilon, 5\\
 \\
-Eveques \\
+Évêques \\
 \> Damase, 5\\
 \> Formose, 5\\
 \end{tabbing}
@@ -104,7 +104,7 @@ Eveques \\
 
 
 
-Bien entendu, on pourrait encore rajouter une subdivision, en distinguant par exemple \enquote{Clercs} et \enquote{Laïcs}, et dans la première catégorie en distinguant \enquote{Eveques} et \enquote{Papes}. 
+Bien entendu, on pourrait encore rajouter une subdivision, en distinguant par exemple \enquote{Clercs} et \enquote{Laïcs}, et dans la première catégorie en distinguant \enquote{Évêques} et \enquote{Papes}. 
 
 
  
@@ -157,10 +157,11 @@ Empereurs\\
 \end{tabbing}
 \end{quotation}
 
-Cette syntaxe est aussi utile pour mettre en évidence une entrée dans l'index en modifiant son aspect. En mettant \cs{index}\verb|{|\meta{entrée}\verb|@\textbf{|\meta{entrée formatée}\verb|}}|, l'entrée apparaît en gras dans l'index. Ceci est valable pour toutes les commandes agissant sur la fonte. Modifions ainsi comme suit la commande \cs{auteur} que l'on a créée précédemment\renvoi{indexauteur} :
+Cette syntaxe est aussi utile pour mettre en évidence une entrée dans l'index en modifiant son aspect : \cs{index}\verb|{|\meta{entrée}\verb|@\textbf{|\meta{entrée formatée}\verb|}}|, fait apparaître l'entrée en gras dans l'index. Ceci est valable pour toutes les commandes agissant sur la fonte. Modifions ainsi comme suit la commande \cs{auteur} que l'on a créée précédemment\renvoi{indexauteur} :
 
 \begin{latexcode}
-\newcommand\auteur[2]{#1~\textsc{#2}\index{#2 #1@\textsc{#2}, #1}\xspace}
+\newcommand{\auteur[2]}{%
+    #1~\textsc{#2}\index{#2 #1@\textsc{#2}, #1}\xspace}
 \end{latexcode}
 
 Désormais, frapper \cs{auteur}\verb|{Victor}{Hugo}| produit  dans l'index
@@ -227,7 +228,7 @@ Il existe une autre commande, la commande \cs{indexsetup}, qui peut, elle aussi,
 Pour terminer, voici la commande \cs{indexprologue}\oarg{espace}\marg{texte} qui permet de mettre un prologue avant l'index. La commande se place juste avant \cs{printindex}\footnote{Il peut y avoir autant de prologues que d'index.}. L'argument \oarg{espace} (par défaut \csp{bigskip}) indique l'espace   entre le prologue de l'index et la première entrée; il doit contenir  une commande d'espacement vertical\renvoi{espace}. L'argument \marg{texte} contient le prologue en lui même. Par exemple, pour un index des notions :
 
 \begin{latexcode}
-\indexprologue{Les numéros en gras renvoient aux pages où la notion est définie.}
+\indexprologue{Les numéros en gras renvoient aux définitions de notions.}
 \printindex
 \end{latexcode}
 
@@ -253,7 +254,6 @@ On remarque ici qu'aucun nom n'a été donné à l'index principal: dans ce cas,
 \subsection{Indexer son texte}
 Une fois  les index déclarés, il faut passer à l'indexation proprement dite. Le principe est le même que pour un seul index,
 mais au lieu de \cs{index}\marg{entrée}, on utilise : 
-
 \csp{index}\oarg{nom abrégé}\marg{entrée}. 
 
 \begin{plusloins}
@@ -291,7 +291,7 @@ Si l'on veut regrouper tous les index en un seul chapitre dont chaque index est 
 \indexsetup{level=\section*,toclevel=section,noclearpage} 
 ... 
 \chapter*{Indices}
-\indexprologue{Les numéros en gras renvoient aux définitions des notions.} 
+\indexprologue{Les numéros en gras renvoient aux définitions de notions.} 
 \printindex
 
 \indexprologue{Les auteurs anciens sont indiqués en italiques.}
@@ -342,7 +342,7 @@ En outre nous aimerions :
 Pour créer un index spécifique aux sources, rien de particulier : il suffit d'utiliser \package{imakeidx} et la commande \cs{makeindex} :
 
 \begin{latexcode}
-\makeindex[name=sources,title=Index des sources]
+\makeindex[name=sources,title=Sources]
 \end{latexcode}
 
 \subsection{Modifications des macros de \packagenoidx{biblatex}}\index[pkg]{biblatex}
@@ -369,7 +369,7 @@ Mais avant d'utiliser ce script, il faut  indexer une fausse valeur, la valeur \
 Toutefois, ce script python doit être exécuté avant que \LaTeX ne transforme le fichier \ext{idx} en fichier \ext{ind}. Cette transformation est faite automatiquement par le package \package{imakeidx}. Cependant, nous pouvons désactiver cet automatisme pour un index particulier, dans le cas présent pour l'index sources. Pour ce faire, il nous suffit de passer l'option \option{noautomatic} à la commande \cs{makeindex} :\label{noautomatic}
 
 \begin{latexcode}
-\makeindex[name=sources,title=Index des sources,noautomatic]
+\makeindex[name=sources,title=Sources,noautomatic]
 \end{latexcode}
 
 Il nous faudra alors, après l'exécution du script python, compiler le fichier \fichier{sources.idx} avec le script MakeIndex, afin de produire un fichier \fichier{sources.ind} :
@@ -383,7 +383,6 @@ Après cela, la compilation avec XeLaTeX affiche correctement l'index.
 \subsection{Fomat d'indexation \packagenoidx{biblatex}}\index[pkg]{biblatex}
 
 Nous avons dit que nous utilisions le format d'indexation \verb|sources|. Un format d'indexation \package{biblatex}  est simplement la description de l'opération que \package{biblatex} effectue lorsqu'il doit indexer un champ. 
-
 Il nous faut donc définir ce format grâce aux commandes \csp{DeclareIndexNameFormat} et \csp{DeclareIndexFieldFormat}.
 
 \subsubsection{Indexation des noms}
