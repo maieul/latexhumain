@@ -35,7 +35,7 @@ Le livre que les protestants appellent \forme{Ésaïe} est appelé \forme{Isaïe
 
 Les éditions de la Bible divergent parfois sur la manière d'afficher une référence biblique. En outre, les références peuvent s'afficher tantôt en version abrégée, tantôt en version complète. C'est pourquoi il existe  plusieurs styles de références bibliques. 
 
-On choisit son style par la commande \csp{biblerefstyle}\marg{style}, qu'il est conseillé de mettre en préambule, ou bien par une option de package :
+On choisit son style par la commande \csp{biblerefstyle}\marg{style}, de préférence dans le  préambule, ou bien par une option de package :
 
 \begin{latexcode}
 \usepackage[<style>]{bibleref}
@@ -186,7 +186,7 @@ Les livres proposés correspondent au canon catholique. On peut ajouter d'autres
 
 On peut remplacer la commande \csp{bibleverse} par la commande \csp{ibibleverse}. Celle-ci, en plus d'afficher une référence biblique, l'indexe aussi.
 
-Il existe en outre deux commandes, utilisant la même syntaxe que \csp{ibibleverse} : \csp{ibiblechvs}, qui n'affiche pas le nom du livre dans le texte, et \csp{ibiblevs} qui n'affiche dans le texte que le numéro de verset.
+Il existe en outre deux commandes, ayant la même syntaxe que \csp{ibibleverse} : \csp{ibiblechvs}, qui n'affiche pas le nom du livre dans le texte, et \csp{ibiblevs} qui n'affiche dans le texte que le numéro de verset.
 
 \subsection[Tri dans l'index]{Tri dans l'index\footnote{Ce passage reprend, pour l'essentiel, la documentation du package, dont nous sommes l'auteur.}}
 
@@ -198,10 +198,10 @@ Le package fournit des options pour un meilleur tri\footcite[Pour l'Ancien Testa
 \item[indexalphap] les livres sont triés par ordre alphabétique, suivant les noms protestants.
 \item[indexLXX]les livres sont triés dans l'ordre des bibles chrétiennes classiques, pour l'Ancien Testament  selon la Septante. Ancien et Nouveau Testaments ne sont pas séparés.
 \item[indextestamentsL] les livres sont triés dans l'ordre des bibles chrétiennes classiques, pour l'Ancien Testament  selon la Septante. Ancien et Nouveau Testaments forment deux sections.
-\item[indexTOB] les livres sont triés dans l'ordre de la \emph{Traduction Œcuméniques de la Bible}, pour l'Ancien Testament  selon la bible hébraïque, suivie des deutérocanoniques. Ancien et Nouveau Testaments ne sont pas séparés.
+\item[indexTOB] les livres sont triés dans l'ordre de la \emph{Traduction Œcuménique de la Bible}, pour l'Ancien Testament  selon la bible hébraïque, suivie des deutérocanoniques. Ancien et Nouveau Testaments ne sont pas séparés.
 \item[indextestamentsT] les livres sont triés dans l'ordre de la \emph{Traduction Œcuménique de la Bible}, pour l'Ancien Testament  selon la bible hébraïque, suivie des deutérocanoniques. Ancien et Nouveau Testaments forment deux sections.
-\item[indexBHS] les livres de la biblique hébraïque sont triés selon les bibles hébraïques classiques. La Torah, les Nebiim et les Ketouvim sont dans la même section. Les deutérocanoniques et les livres du Nouveau Testament ne sont pas triés.
-\item[indexTanak] les livres de la biblique hébraïque sont triés selon les bibles hébraïques classiques. La Torah, les Nebiim et les Ketouvim sont dans trois sections distinctes. Les deutérocanoniques et les livres du Nouveau Testament ne sont pas triés.
+\item[indexBHS] les livres de la biblique hébraïque sont triés selon les bibles hébraïques classiques. La Torah, les Nebiim et les Ketouvim sont dans la même section. Les deutérocanoniques ainsi que les livres du Nouveau Testament ne sont pas triés.
+\item[indexTanak] les livres de la biblique hébraïque sont triés selon les bibles hébraïques classiques. La Torah, les Nebiim et les Ketouvim sont dans trois sections distinctes. Les deutérocanoniques ainsi que les livres du Nouveau Testament ne sont pas triés.
 \end{choix}
 
 Pour les options \verb|indexTOB| et \verb|indextestamentsT|, le livre d'Esther est considéré dans sa version hébraïque, et est donc rangé parmis les  écrits.
@@ -246,5 +246,5 @@ Le package \package{bibleref-french} prévoit d'insérer des espaces insécables
 \end{enumerate}
 
 Si beaucoup de références sont indiquées, cela peut amener à des fins de lignes qui dépassent.
-Pour éviter cela, on peut autoriser temporairement la coupure des espaces entre un livre et un numéro de chapitre. La commande \csp{BRallowhypbch} marque le début de l'autorisation ; \csp{BRforbidhypbch} en marque la fin.
+Pour éviter cela, on peut autoriser temporairement la coupure des espaces entre un livre et un numéro de chapitre : \csp{BRallowhypbch} indique le début de l'autorisation ; \csp{BRforbidhypbch} en marque la fin.
 

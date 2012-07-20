@@ -27,7 +27,7 @@ La première fonctionnalité utile de \package{ledmac} est de numéroter les lig
 \subsubsection{Texte en prose}
 
 
-La numérotation des lignes commence, entre ces deux commandes, avec la commande \csp{pstart} et se termine avec la commande \csp{pend}, comme dans l'exemple suivant:
+La numérotation des lignes commence, entre ces deux commandes, avec la commande \csp{pstart} et se termine avec la commande \csp{pend} :
 
 \inputminted{exemples/shs/ledmac/prose.tex}
 
@@ -103,10 +103,9 @@ est équivalent à :
 
 La commande \csp{endstanzaextra} permet d'ajouter un contenu à la fin de chaque strophe.
 Dans l'exemple qui précède, l'espace vertical entre chaque  strophe est ainsi obtenu par la ligne 
-\cs{let}\cs{endstanzaextra}\cs{bigbreak}. 
-
-La commande\csp{bigbreak}  insère un espace vertical. 
- La commande \csp{let}\cs{cmd1}\cs{cmd2} est une commande \TeX qui  copie la commande \cs{cmd2} dans \cs{cmd1}.
+\cs{let}\cs{endstanzaextra}\cs{bigbreak}.
+ 
+La commande\csp{bigbreak}  insère un espace vertical ; \csp{let}\cs{cmd1}\cs{cmd2} est une commande \TeX qui  copie la commande \cs{cmd2} dans \cs{cmd1}.
 \begin{plusloins}
 Pour obtenir un crochet indiquant les rejets de vers, selon la typographie française traditionnelle, il faut redéfinir la commande \csp{hangingsymbol}.
 
@@ -179,13 +178,13 @@ Ainsi, si nous souhaitons numéroter toutes les lignes en commençant par la pre
 
 \subsubsection{Changer le numéro de certaines lignes}
 
-La commande \csp{setline}\marg{num} permet de changer le numéro d'une ligne. La numérotation des lignes suivantes  continue à partir de ce nombre ; \cs{advanceline}\marg{num} permet d'ajouter \arg{num} au numéro de la ligne.
+La commande \csp{setline}\marg{num} permet de changer le numéro d'une ligne. La numérotation des lignes suivantes  continue à partir de ce nombre ; la commande \cs{advanceline}\marg{num} permet d'ajouter \arg{num} au numéro de la ligne.
 
 La commande \csp{skipnumbering} permet de ne pas prendre en compte la ligne courante dans la numérotation.
 
 \subsubsection{Sous-numéro}
 
-Il est possible d'indiquer  des lignes comme \enquote{sous-lignes}, c'est-à-dire de stopper temporairement la numérotation et de commencer une sous-numérotation.
+Il est possible d'indiquer  des lignes comme \enquote{sous-lignes}, c'est-à-dire de stopper temporairement la numérotation et de démarrer une sous-numérotation.
 
 La sous-numérotation commence avec \csp{startsub} et  finit avec \csp{endsub}.
 Si la première commande se situe au milieu d'une ligne, la sous-numérotation commence à la ligne suivante.
@@ -211,7 +210,7 @@ Les numéros des lignes apparaissent  par défaut dans la marge de gauche. La co
 \end{description}
 
 Il existe   cinq styles pour numéroter les lignes, sélectionnés par la commande 
-\csp{linenumberstyle}\marg{style}, \csp{sublinenumberstyle}\marg{style} pour la sous-numérotation :
+\csp{linenumberstyle}\marg{style} et par \csp{sublinenumberstyle}\marg{style} pour la sous-numérotation :
 
 \begin{description} 
 \item[\contenuarg{arabic}] les numéros des lignes sont en chiffres arabes, c'est le style par défaut ; 
@@ -223,7 +222,6 @@ Il existe   cinq styles pour numéroter les lignes, sélectionnés par la comman
 
 La distance \csp{linenumsep} représente la distance\renvoi{unite} entre le texte et le numéro de la ligne, par défaut, 1~pica. 
 Elle est  modifiable par la commande:
-
 \cs{setlength}\verb|{|\cs{linenumsep}\verb|}|\marg{distance}\renvoi{setlength}. 
 
 De la même façon nous pouvons modifier, via \cs{renewcommand}, \cs{numlabfont}, qui indique la taille du numéro et qui est ainsi définie par \package{ledmac}:
@@ -240,16 +238,14 @@ Les notes de bas de page se présentent de cette façon:  \cs{Afootnote}\marg{te
 
 Ce type de notes appelle un \enquote{lemme}, c'est-à-dire une partie du texte annoté reprise dans la note de bas de page, précédée du numéro de la ou des lignes correspondantes. 
 
-La note de bas de page est appelée de la façon suivante:  
-
+La note de bas de page est appelée ainsi:  
 \csp{edtext}\marg{lemme}\marg{commande}. 
 
 L'argument \arg{commande} contient l'appel à la note: \csp{Afootnote}, \csp{Bfootnote}, etc.
 
 Il est aussi possible d'utiliser  des  notes de bas de page \enquote{normales}, appelées par un numéro dans le texte. Il  en existe là aussi cinq sortes: de \csp{footnoteA} à \csp{footnoteE}.
 
-Dans les notes de type \cs{Afootnote}\dots, lorsque le \enquote{lemme} est trop grand, nous pouvons choisir de l'abréger. La syntaxe est la suivante: 
-
+Dans les notes de type \cs{Afootnote}\dots, lorsque le \enquote{lemme} est trop grand, nous pouvons l'abréger, via  : 
 \cs{edtext}\marg{le lemme trop long}\verb|{|\csp{lemma}\marg{le lemme raccourci}\cs{Bfootnote}\marg{la note}\verb|}|. 
 
 \begin{plusloins}
@@ -307,11 +303,9 @@ La commande \csp{newcommandx}, fournie par \package{xargs}, permet de créer une
 Ligne 4, la commande \csp{ifthenelse}\arg{test}\arg{sioui}\arg{sinon} du package \package{ifthen} permet d'effectuer un test : ici nous regardons si le deuxième argument est vide (\csp{equal}\verb={#2}{}=) : si ce n'est pas le cas, alors nous l'utilisons  comme argument d'une commande \cs{lemma}.
 
  L'utilisation de la commande que nous venons de créer peut donc se résumer ainsi : 
- 
  \csp{variantes}\marg{lemme}\oarg{lemme plus court}\marg{annotation}. 
- 
-Ce qui est  plus simplement utilisable que :
 
+Ce qui est  plus simple que :
 \cs{edtext}\marg{le lemme trop long}\verb|{|\cs{lemma}\marg{le lemme raccourci}\cs{Bfootnote}\marg{la note}\verb|}|
 
 \begin{plusloins}
@@ -340,7 +334,7 @@ Le package \package{ledpar}, qui sert à mettre un texte et sa traduction en vis
 
 Le package \package{ledmac} permet d'obtenir très facilement deux textes en vis-à-vis; c'est donc un package particulièrement utile lorsque l'on veut faire de l'édition bilingue.
 
-Son principe de base est simple:  des textes numérotés  --- inscrits entre \cs{beginnumbering} et \cs{endnumbering}  --- sont placés dans les environnements \enviro{Leftside} pour le texte de gauche,  \enviro{Rightside} pour le texte de droite.
+Son principe est simple:  des textes numérotés  --- écrits entre \cs{beginnumbering} et \cs{endnumbering}  --- sont placés dans les environnements \enviro{Leftside} pour le texte de gauche,  \enviro{Rightside} pour le texte de droite.
 
 Le package \package{ledpar} fait correspondre en vis-à-vis chaque \enquote{boîte} d'un texte à la boîte correspondante de l'autre texte : il faut donc qu'il y ait le même nombre de boîtes des deux côtés. Pour la poésie,  chaque vers  (terminé par \ampersand ), est une boîte;  en prose, les boîtes sont délimitées par  \cs{pstart} et  \cs{pend}.  
 
@@ -402,7 +396,7 @@ Comme avec \package{ledmac}, la numérotation\renvoi{lineation} recommence à ch
 
 Nous obtenons parfois le message d'erreur \enquote{Too many \cs{pstart} without printing}. Pas de panique ! Cela signifie qu'il y a trop de boîtes en mémoire: \LaTeX  doit en imprimer quelques-unes avant de pouvoir continuer.  Il y a deux solutions possibles à ce problème.
 
-La première solution consiste à  augmenter le nombre de boîtes que \package{ledpar} peut garder en mémoire, en mettant dans le préambule la commande \csp{maxchunks}\marg{nbre}, où \arg{nbre} est le nombre de boîtes en mémoire. Par défaut, ce nombre est de dix. Il suffit donc de l'augmenter  pour qu'il soit égal ou supérieur au nombre de boîtes de son  texte. 
+La première solution consiste à  augmenter le nombre de boîtes que \package{ledpar} peut garder en mémoire, en utilisant dans le préambule \csp{maxchunks}\marg{nbre}, où \arg{nbre} est le nombre de boîtes en mémoire. Par défaut, ce nombre est de dix. Il suffit donc de l'augmenter  pour qu'il soit égal ou supérieur au nombre de boîtes de son  texte. 
 
 Toutefois \TeX ne dispose pas d'une place illimitée pour les boîtes, c'est pourquoi il est souvent préférable d'utiliser la seconde solution.
 
