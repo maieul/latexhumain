@@ -8,11 +8,11 @@ La première étape pour gérer une bibliographie avec \LaTeX est la constitutio
 \section{Structure de base d'un fichier \ext{bib}}
 
 Chaque élément d'une bibliographie est appelé \forme{entrée}. Une entrée bibliographique se caractérise par :
-\begin{description}
+\begin{glossaire}
 \item[Un type]s'agit-il d'un article, d'un livre, d'actes de colloque ?
 \item[Une clef unique]qui permet de distinguer une entrée bibliographique d'une autre. C'est elle qui est mentionnée dans vos fichiers \ext{tex} lorsque vous désirez insérer une référence bibliographique.
 \item[Des champs]contenant des indications sur l'ouvrage, tels que : auteur, titre, éditeur, etc. 
-\end{description}
+\end{glossaire}
 
 L'avantage de ce système se comprend  aisément. En effet, une correction dans la base de donnée bibliographique est automatiquement reportée dans le travail à chaque fois que l'entrée est mentionnée, moyennant une nouvelle compilation avec BibTeX.
 
@@ -58,7 +58,7 @@ Prendre le nom de l'auteur suivi de la date. Par exemple \verb|Urner1952|.
 
 \subsection{Pour les œuvres anciennes}
 
-Prendre le nom de l'œuvre  éventuellement abrégée : par exemple \verb|ContraFelix| pour parler du \citetitle{ContraFelix} d'Augustin\footcite{ContraFelix}. Si plusieurs œuvres d'auteurs différents portent le même nom, faire précéder du nom de l'auteur. On peut aussi pour les œuvres sans titre et sans auteur indiquer un numéro dans un catalogue de référence.
+Prendre le nom de l'œuvre  éventuellement abrégée, par exemple \verb|ContraFelix| pour parler du \citetitle{ContraFelix} d'Augustin\footcite{ContraFelix}. Si plusieurs œuvres d'auteurs différents portent le même nom, faire précéder du nom de l'auteur. On peut aussi pour les œuvres sans titre et sans auteur indiquer un numéro dans un catalogue de référence.
 
 
 
@@ -69,7 +69,7 @@ Voici les différents types d'entrées disponibles\footnote{À vrai dire il est 
 \begin{choix}
 
 	\item[\type{article}] 
-Article d'un périodique. Pour les communications de colloque, voir \type{inproceedings}.
+Article d'un périodique. Pour les contributions de colloque, voir \type{inproceedings}.
 	\item[\type{book}] 
 Livre. Pour les actes de colloque, voir  \type{proceedings}. 
 	\item[\type{booklet}]
@@ -120,7 +120,7 @@ Livre. Pour les actes de colloque, voir  \type{proceedings}.
 	Ouvrage non publié.
 \end{choix}
 
-Pour les éditions contemporaines d'œuvres anciennes, le choix du type \type{book} peut se justifier, en dépit du caractère non livresque de certaines d'entre elles, comme c'est le cas par exemple des lettres d'Augustin. En revanche, pour désigner  une œuvre non éditée, ou un manuscrit, nous conseillons le type \type{misc}.
+Pour les éditions contemporaines d'œuvres anciennes, le choix d'une entrée de type \type{book} peut se justifier, en dépit du caractère non livresque de certaines d'entre elles, comme c'est le cas par exemple des lettres d'Augustin. En revanche, pour désigner  une œuvre non éditée, ou un manuscrit, nous conseillons le type \type{misc}.
 
 \section{Les différents champs possibles}
 
@@ -145,7 +145,7 @@ Ces champs servent à désigner des personnes qui ont participé au processus de
    	\item[translator] Traducteur(s). 		
 \end{choix}
 
-Lorsque des champs possèdent des valeurs identiques, par exemples les champs \champ{editor} et \champ{translator}, \package{biblatex} fusionne ces champs lors de l'affichage. Prenons ainsi l'entrée suivante : 
+Lorsque des champs possèdent des valeurs identiques, par exemple les champs \champ{editor} et \champ{translator}, \package{biblatex} fusionne ces champs lors de l'affichage. Prenons ainsi l'entrée suivante : 
 
 \inputminted{exemples/biblio/fichier/augustin_editeur.bib}
 
