@@ -46,7 +46,14 @@ Le package \package{setspace}  \enquote{se contente} de définir des nouvelles c
 Si donc vous souhaitez définir une autre taille d'interligne, vous pouvez essayer de vous inspirer du code du package. Mais ceci nécessite de maîtriser assez bien \LaTeX. 
 \end{plusloins}
 
-Les trois commandes qui nous intéressent sont \csp{singlespacing}, \csp{onehalfspacing} et \csp{doublespacing}. Ces commandes s'utilisent de la manière suivante :
+Les trois commandes qui nous intéressent sont :
+\begin{itemize}
+\item\csp{singlespacing} ; 
+\item\csp{onehalfspacing} ; 
+\item\csp{doublespacing}.
+\end{itemize}
+
+ Elles s'utilisent de la manière suivante :
 
 \begin{latexcode}
 \doublespacing
@@ -112,8 +119,8 @@ Il s'agit ici non seulement de redéfinir l'environnement, mais aussi de réutil
 Commentaires : 
 
 \begin{description}
-\item[ligne 1] la commande \csp{let} est une commande \TeX qui copie une commande dans une autre commande. Ici nous copions la commande \csp{quotation} dans la commande \csp{oldquotation}\footnote{Bien que \enquote{old} soit un terme anglais, nous l'utilisons car il est de convention de préfixer ainsi les commandes copiées depuis une autre commande.}. La commande \csp{quotation} quant à elle correspond au début de l'environnement \enviro{quotation}, c'est-à-dire à ce qui est exécuté par \cs{begin}\verb|{quotation}|.
-\item[ligne 2] nous copions la commande \csp{endquotation}, correspondant à la fin de l'environnement  \enviro{quotation} --- c'est à dire à ce qui est exécuté lors du \cs{end}\verb|{quotation}|, dans une commande \csp{endoldquotation}.
+\item[ligne 1]la commande \csp{let} est une commande \TeX qui copie une commande dans une autre commande. Ici nous copions la commande \csp{quotation} dans la commande \csp{oldquotation}\footnote{Bien que \enquote{old} soit un terme anglais, nous l'utilisons car il est de convention de préfixer ainsi les commandes copiées depuis une autre commande.}. La commande \csp{quotation} quant à elle correspond au début de l'environnement \enviro{quotation}, c'est-à-dire à ce qui est exécuté par \cs{begin}\verb|{quotation}|.
+\item[ligne 2]nous copions la commande \csp{endquotation}, correspondant à la fin de l'environnement  \enviro{quotation} --- c'est à dire à ce qui est exécuté lors du \cs{end}\verb|{quotation}|, à l'intérieur d'une commande \csp{endoldquotation}.
 \end{description}
 
 En créant ces deux commandes \csp{oldquotation} et \csp{endoldquotation} nous avons créé un environnement \enviro{oldquotation}.
@@ -161,8 +168,8 @@ Puisque les compteurs s'affichent à l'aide de commandes, il est aisée de redé
 \end{latexcode}
 
 \begin{description}
-\item[Ligne 1]la commande \csp{thechapter} affiche la valeur  du compteur \compteur{chapter}, retournée par \csp{c@chapter}. Cette valeur ne peut pas être affichée directement, elle doit être au préalable formatée par la commande \csp{@arabic}, qui l'affiche sous forme de chiffres arabes.
-\item[Ligne 2]la commande \csp{thesection} retourne \cs{thechapter} suivi d'un point, suivi de la valeur du compteur \compteur{section} affichée sous forme de chiffres arabes.
+\item[Ligne 1]\csp{thechapter} affiche la valeur  du compteur \compteur{chapter}, retournée par \csp{c@chapter}. Cette valeur ne peut pas être affichée directement, elle doit être au préalable formatée par la commande \csp{@arabic}, qui l'affiche sous forme de chiffres arabes.
+\item[Ligne 2]\csp{thesection} retourne \cs{thechapter} suivi d'un point, suivi de la valeur du compteur \compteur{section} affichée sous forme de chiffres arabes.
 \end{description}
 
 Supposons maintenant que nous souhaitons  :
@@ -232,11 +239,11 @@ Pour personnaliser l'apparence des titres, le mieux est de regarder ce que nous 
 Commentons ces quelques lignes :
 
 \begin{description}
-\item[ligne 1]La commande \cs{section} fait appel à une commande \csp{@startsection}. Cette commande ajoute  un niveau de titre à la table des matières. Malgré son nom, elle peut servir pour n'importe quel niveau de titre (par exemple, pour les \cs{subsection}s). Elle prend plusieurs arguments. Le premier est le nom du niveau : ici \verb|section|. Le second est le niveau de profondeur : \verb|1|. Le troisième est l'indentation prélable : ici \csp{z@}, c'est-à-dire une longueur nulle.
+\item[ligne 1]La commande \cs{section} fait appel à \csp{@startsection}. Cette dernière commande ajoute  un niveau de titre à la table des matières. Malgré son nom, elle peut servir pour n'importe quel niveau de titre (par exemple, pour les \cs{subsection}s). Elle prend plusieurs arguments. Le premier est le niveau : ici \verb|section|. Le second est le niveau de profondeur : \verb|1|. Le troisième est l'indentation préalable : ici \csp{z@}, c'est-à-dire une longueur nulle.
 
 \item[ligne 2] quatrième argument de la commande \cs{@startsection}, qui indique l'espace vertical \emph{avant} le titre. Cet espace est idéalement de 3,5~ex\renvoi{unite}, mais peut être compris entre 1,5~ex ($3,5 - 2$) et 4,5~ex ($3,5 + 1$) :  cette marge de manœuvre est indiquée par les commandes  \cs{@minus} et \cs{@plus}\renvoi{elastique}.
 \item[ligne 3] cinquième argument de \cs{@startsection}, qui indique l'espace vertical après le titre. Notre longueur étant positive, le texte qui suit débute un nouveau paragraphe. Une longueur négative (comme c'est le cas pour la définition de la commande \cs{paragraph}) indique qu'il n'y a pas de changement de paragraphe. Ici donc, l'espace après le titre est de 2,3 ex, mais peut atteindre 2,5 ex (2,3 + 0,2).
-\item[ligne 4] sixième et dernier argument de \cs{@startsection}, qui indique l'apparence proprement dite de notre titre. Il s'agit d'un texte en police normale --- c'est-à-dire celle définie par la commande \cs{setmainfont} ---, en taille \cs{Large}, mise en gras (\cs{bfseries}). Ici toutes nos commandes sont considérées comme des commandes de bascule, la bascule finissant avec l'accolade fermante. La commande \csp{bfseries} est l'équivalent à bascule de la commande \cs{textbf}. Il est recommandé de n'utiliser dans les styles de titre que des commandes à bascule, pour éviter des espaces indésirables.\label{bfseries}
+\item[ligne 4] sixième et dernier argument de \cs{@startsection}, qui indique l'apparence proprement dite de notre titre. Il s'agit d'un texte en police normale --- c'est-à-dire celle définie par la commande \cs{setmainfont} ---, en taille \cs{Large}, mise en gras (\cs{bfseries}). Ici toutes nos commandes sont prises comme des commandes de bascule, la bascule finissant avec l'accolade fermante. La commande \csp{bfseries} est l'équivalent à bascule de la commande \cs{textbf}. Il est recommandé de n'utiliser dans les styles de titre que des commandes à bascule, pour éviter des espaces indésirables.\label{bfseries}
 \end{description}
 
 Supposons maintenant que nous souhaitons avoir notre titre en italique et en police sans empattements. Il nous suffit de redéfinir la commande \cs{section}, en entourant notre définition de \cs{makeatletter} et \cs{makeatother}\renvoi{makeatletter}.
@@ -264,7 +271,9 @@ Si l'on cherche dans le fichier \fichier{book.cls} la commande \cs{chapter}, on 
                     \secdef\@chapter\@schapter}
 \end{latexcode}
 
-Deux éléments nous intéressent ici. Le premier est la ligne 2 \cs{thispagestyle}\verb|{plain}|. On comprend ainsi la raison pour laquelle les  pages de début de chapitre ne sont pas numérotées au même endroit que les autres : le style de cette page est \forme{plain} et non pas \forme{heading}, comme pour les autres pages\renvoi{styleentetes}. Par conséquent, si l'on souhaite que les pages de titres aient les mêmes en-têtes et pieds de pages que les pages standards, il faut redéfinir la commande \cs{chapter} en supprimant \verb|\thispagestyle{plain}|.\label{entetechapter}\label{chapitrepagestyle}
+Deux éléments nous intéressent ici. 
+
+Le premier est la ligne~2 : \cs{thispagestyle}\verb|{plain}|. On comprend ainsi la raison pour laquelle les  pages de début de chapitre ne sont pas numérotées au même endroit que les autres : le style de cette page est \forme{plain} et non pas \forme{heading}, comme pour les autres pages\renvoi{styleentetes}. Par conséquent, si l'on souhaite que les pages de titres aient les mêmes en-têtes et pieds de pages que les pages standards, il faut redéfinir la commande \cs{chapter} en supprimant \verb|\thispagestyle{plain}|.\label{entetechapter}\label{chapitrepagestyle}
 
 \begin{latexcode}
 \makeatletter
@@ -278,10 +287,10 @@ Deux éléments nous intéressent ici. Le premier est la ligne 2 \cs{thispagesty
 
 Le second élément intéressant est la dernière ligne. La commande \csp{secdef} renvoie vers \csp{@chapter} si nous utilisons \cs{chapter} et vers \csp{@schapter} si nous utilisons \cs{chapter*}.
 
-En fouillant les codes des commandes \cs{@chapter} et \cs{@schapter} nous trouvons qu'elles appellent respectivement \csp{@makechapterhead} et \csp{@makeschapterhead}.
+En fouillant les codes des commandes \cs{@chapter} et \cs{@schapter} nous trouvons qu'elles appellent \csp{@makechapterhead} et \csp{@makeschapterhead}, respectivement.
 
 \begin{plusloins}
-Vous constaterez que les commandes \cs{@chapter}, \cs{@schapter}, \cs{@makechapterhead} et \cs{@makeschapterhead} sont définies \emph{via} la commande \cs{def} et non pas \cs{newcommand}. 
+\cs{@chapter}, \cs{@schapter}, \cs{@makechapterhead} et \cs{@makeschapterhead} sont définies \emph{via} la commande \cs{def} et non pas \cs{newcommand}. 
 
 En effet la définition est faite en \TeX et non pas en \LaTeX. Pour nos propos, cela n'a pas grande influence.
 \end{plusloins} 
@@ -310,12 +319,12 @@ Analysons-là :
 \begin{description}
 \item[ligne 2]la commande  \cs{vspace} produit un espace vertical, ici de 50~pt, comme l'indique le 50\csp{p@}. La présence d'une astérique indique que notre espace vertical continue après un changement de page.
 \item[ligne 3]la commande \cs{parindent} précise l'indentation du paragraphe à ce point précis : ici une longueur nulle (\cs{z@}). La commande \csp{raggedright} signifie que le texte va être aligné à gauche --- à l'inverse \csp{raggedleft} signifierait que le texte serait aligné à droite. Quant à la commande \csp{normalfont}, inutile de dire qu'elle signifie que la police standard --- celle définie par la commande \cs{setmainfont} --- est utilisée.
-\item[lignes 4, 5, 9, 10]on conditionne l'affichage d'un numéro de chapitre au fait d'être situé dans la partie principale du document (celle qui suit \cs{mainmatter}\renvoi{sectionbook}) et à la valeur du compteur \compteur{secnumdepth}, que vous pouvez redéfinir pour empêcher la numérotation de certains niveaux de titre\renvoi{manipcompteurs}.
-\item[ligne 6]on affiche en taille \cs{huge}\renvoi{taille}, en gras (\cs{bfseries}\renvoi{bfseries}) la chaîne de langue de début de chapitre (\csp{@chapapp}) suivie d'une espace et du numéro de chapitre : le compteur \compteur{chapter}, affiché \emph{via} la commande \cs{thechapter}.
+\item[lignes 4, 5, 9, 10]on conditionne l'affichage d'un numéro de chapitre au fait d'être situé dans la partie principale du document, qui suit \cs{mainmatter}\renvoi{sectionbook}, et à la valeur du compteur \compteur{secnumdepth}, que vous pouvez redéfinir pour empêcher la numérotation de certains niveaux de titre\renvoi{manipcompteurs}.
+\item[ligne 6]on affiche en taille \cs{huge}\renvoi{taille} et en gras (\cs{bfseries}) la chaîne de langue de début de chapitre (\csp{@chapapp}) suivie d'une espace et du numéro de chapitre : le compteur \compteur{chapter}, affiché \emph{via} la commande \cs{thechapter}.
 \item[ligne 7]on insère un paragraphe (\csp{par}) et on empêche un changement de ligne (\csp{nobreak}).
 \item[ligne 8]on insère un espace vertical de 20~pt.
 \item[ligne 11]au niveau visé par ce livre la compréhension de cette ligne n'est pas indispensable. Pour les curieux toutefois, cette ligne sert à prévenir un titre s'étalant sur plusieurs lignes. Sommairement, on peut dire que pour prévenir les ruptures de lignes ou les changements de pages, \LaTeX utilise des paramètres appelés \forme{penalty}. Plus une \forme{penalty} est importante, plus la probabilité d'une rupture est faible. Ici la \forme{penalty} d'interlignage --- de rupture de ligne --- est définie à 1000 (\csp{@M}). 
-\item[ligne 12]on indique le titre du chapitre (\#1) en taille \cs{Huge}, en gras (\cs{bfseries}). On introduit ensuite un paragraphe (\csp{par}), en demandant d'éviter les changements de pages (\csp{nobreak}).
+\item[ligne 12]on affiche en taille\cs{Huge} et en gras (\cs{bfseries}) titre du chapitre (\#1). On introduit ensuite un paragraphe (\csp{par}), en demandant d'éviter les changements de pages (\csp{nobreak}).
 \item[ligne 13]on insère un espace vertical de 40~pt.
 \end{description}
 
@@ -361,16 +370,14 @@ Cela nous donne au final :
 
 \section[Manipuler les compteurs]{Manipuler les compteurs : le cas des notes de bas de page}\label{manipcompteurs}
 
-Nous avons vu comment modifier l'affichage d'un compteur\renvoi{apparencecompteur}. Mais comment modifier la valeur d'un compteur ? Il y a pour cela deux commandes : \cs{setcounter}\marg{compteur}\marg{valeur} pour affecter la valeur \arg{valeur} au compteur \arg{compteur}, et \csp{addtocounter}\marg{compteur}\marg{valeur} pour additionner la valeur \arg{valeur} au compteur \arg{compteur}. La valeur ajoutée pouvant être négative, il est ainsi possible de faire reculer un compteur.
+Nous avons vu comment modifier l'aspect d'un compteur\renvoi{apparencecompteur}. Mais comment modifier la valeur d'un compteur ? Il y a pour cela deux commandes : \cs{setcounter}\marg{compteur}\marg{valeur} pour affecter la valeur \arg{valeur} au compteur \arg{compteur}, et \csp{addtocounter}\marg{compteur}\marg{valeur} pour additionner la valeur \arg{valeur} au compteur \arg{compteur}. La valeur ajoutée pouvant être négative, il est ainsi possible de faire reculer un compteur.
 
 En outre, il existe une commande \csp{refstepcounter} qui permet d'incrémenter d'une unité un compteur. C'est celle qui est utilisé par les commandes de niveau de titre\renvoi{niveautitre}.
 
 
 
-Il est possible de créer son propre compteur grâce à la commande :
-
- \csp{newcounter}\marg{compteur}\oarg{compteur2}. 
- 
+Il est possible de créer son propre compteur :
+ \csp{newcounter}\marg{compteur}\oarg{com\-pteur2}. 
 Si l'argument \arg{compteur2} est présent, alors il indique que la valeur du compteur \arg{compteur} doit être réinitialisée lorsque la commande \csp{refstepcounter} est appliquée au compteur \compteur{compteur2}.
 
 La commande  \csp{@addtoreset}\marg{compteur}\marg{compteur2}  permet d'appliquer cette règle sur un compteur déjà existant.
