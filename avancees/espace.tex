@@ -10,7 +10,7 @@ En ce qui concerne les unités de longueurs, nous renvoyons à l'annexe~\ref{uni
 
 \section{Espacements}\label{espace}
 
-On peut produire un espace horizontal par la commande \csp{hspace}\marg{longueur}. Si on utilise \csp{hspace*}, la fin de ligne n'arrête pas l'espace.
+On peut produire un espace horizontal via \csp{hspace}\marg{longueur}. Si on utilise \csp{hspace*}, la fin de ligne n'arrête pas l'espace.
 
 Un espace vertical se produit par \csp{vspace}\marg{longueur}. Si on utilise \csp{vspace*}, le changement de page n'affecte pas  l'espace, qui continue sur la page suivante. Toutefois, nous avons pu constater qu'une telle commande pose parfois des problèmes pour la mise en page du paragraphe qui la précède.
 
@@ -81,7 +81,7 @@ Si vous utilisez \package{geometry} et les notes de marge produites via \cs{marg
 
 \section{Textes en retrait}
 
-On peut souhaiter avoir un environnement qui produit du texte en retrait, semblable à l'environnement \enviro{quotation}, par exemple un environnement \enviro{exemple} avec un retrait gauche de 3~em et un retrait droit de 1em.
+On peut souhaiter avoir un environnement qui produit du texte en retrait, semblable à l'environnement \enviro{quotation}, comme un environnement \enviro{exemple} avec un retrait gauche de 3~em et un retrait droit de 1em.
 
 Si nous fouillons dans le fichier\renvoi{trouverfichier} \fichier{book.cls}, nous trouvons que l'environnement quotation est défini de la manière suivante\footnote{Ligne 486, au 19 septembre 2011.} :
 
@@ -102,7 +102,7 @@ Que nous pouvons analyser ainsi:
 \item[ligne 2] la commande \csp{list}\marg{itemdefaut}\marg{réglages typographiques} ouvre un environnement \enviro{list}. Le premier argument correspond à ce qu'affiche  la commande \cs{item} en l'absence d'argument optionnel. Comme dans \enviro{quotation} on n'utilise pas \cs{item}, ce premier argument est nul. Le second argument contient des commandes réglant la mise en forme. La première, \csp{listparindent}, indique l'indentation des paragraphes à l'intérieur de la liste : ici 1,5~em.
 \item[ligne 3] la seconde commande, \csp{itemindent}, indique l'indentation du premier élément de chaque \cs{item}: ici \csp{itemindent} se voit attribuer la valeur de \csp{listparindent}.
 \item[ligne 4] la marge de droite de notre liste (\csp{rightmargin}) se voit attribuer la même valeur que la marge de gauche (\csp{leftmargin}). Cette valeur a été définie auparavant dans le fichier \fichier{book.cls}.
-\item[ligne 5]la longueur séparant deux paragraphes au sein de la liste (\csp{parsep}) est fixée à 0~pt (\cs{z@}), mais peut s'étendre (\cs{@plus}) jusqu'à 1~pt (\cs{p@})\renvoi{elastique}. Le second argument de la commande \cs{list} finit ici.
+\item[ligne 5]la longueur séparant deux paragraphes à l'intérieur de la liste (\csp{parsep}) est fixée à 0~pt (\cs{z@}), mais peut s'étendre (\cs{@plus}) jusqu'à 1~pt (\cs{p@})\renvoi{elastique}. Le second argument de la commande \cs{list} finit ici.
 \item[ligne 7]une liste ne peut pas fonctionner sans commande \cs{item}. C'est pourquoi cette commande est appelée ici. Pour éviter des ennuis, on indique que le texte de cet \cs{item} est nul, grâce à la commande \csp{relax}, qui est une commande servant à ne rien faire alors même que \TeX attend un contenu.
 \end{description}
 
@@ -143,8 +143,7 @@ Pour des textes encadrés ou sur fond coloré, on pourra utiliser le package \pa
 
 \section{Trait horizontal}\label{filets}
 
-On peut tracer un trait horizontal avec  : \\
-\csp{rule}\oarg{profondeur}\marg{longueur}\marg{épaisseur}, où \arg{profondeur} correspond à l'écart entre le trait et le bas de la ligne de texte.
+Un trait horizontal se trace grâce à \csp{rule}\oarg{profondeur}\marg{longueur}\marg{épais\-seur}, où \arg{profondeur} correspond à l'écart entre le trait et le bas de la ligne de texte.
 
 On peut aussi utiliser les commandes \csp{hrulefill} et \csp{dotfill} qui permettent de tracer respectivement des lignes et des points, en \enquote{comprimant} le texte qui suit, c'est-à-dire en étirant au maximum la longueur de la ligne ou de la suite de points. On dispose également de la commande \csp{hfill}\label{hfill} qui permet de comprimer le texte qui suit en le faisant précéder d'espaces.
 
