@@ -1,4 +1,4 @@
-\chapter{Entrées hiérarchisées}\label{biber}
+x\chapter{Entrées hiérarchisées}\label{biber}
 
 \begin{intro}
 Jusqu'à maintenant, nous nous sommes servi de BibTeX pour interpréter les fichiers \ext{bib}. Dans ce chapitre nous allons vous proposer son successeur : Biber. Celui-ci  permet une utilisation avancée des fichiers \ext{bib} \emph{via} la possibilité de créer des sous-entrées bibliographique.
@@ -92,9 +92,7 @@ xelatex principal
 \subsection{Préciser les héritages de champs}
 
 Biber possède un certain nombre de réglages d'héritage de champs\footcite{biblatex_crossrefsetup}. On peut cependant modifier ces héritages, ou en ajouter d'autres. Les champs \champ{entrysubtype}, par exemple, ne sont par défaut pas hérités. 
-
-Il suffit d'utiliser dans le préambule la commande :
-
+Pour modifier les réglages standards, il suffit d'utiliser, dans le préambule  :
 \csp{DeclareDataInheritance}\marg{entrée mère}\marg{entrée fille}\marg{règles}.
 
 \begin{description}
@@ -108,9 +106,8 @@ Les types d'entrées à préciser dans les arguments \arg{entrée fille} et \arg
 La première commande d'héritage est la suivante \csp{noinherit}\marg{champ}.
 Elle empêche l'héritage d'un champ par une entrée fille.
 
-La seconde commande est 
+La seconde  est 
 \csp{inherit}\oarg{option}\marg{champ source}\marg{champ cible}.
-
 Il n'y qu'une seul option possible : \verb|override=true|. Si cette option est passée, alors la valeur du champ de l'entrée fille est écrasée par celles du champ de l'entrée mère. Sinon, la valeur  du champ de l'entrée fille a priorité.
 
 Ainsi, pour permettre l'héritage du  champ \champ{entrysubtype} il suffit d'écrire :
