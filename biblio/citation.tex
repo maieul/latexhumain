@@ -81,7 +81,7 @@ Par défaut les champs bibliographiques sont séparés par des points. Si vous �
 
 \subsection{Les arguments \arg{prenote} et \arg{postnote}}
 
-Supposons que nous souhaitons afficher, avant notre référence, un texte. Par exemple : \enquote{Voir également}. On utilise l'argument optionnel \arg{prenote}.
+Supposons que nous souhaitons afficher un texte avant notre référence. Par exemple : \enquote{Voir également}. On utilise l'argument optionnel \arg{prenote}.
 
 \begin{latexcode}
 Blabla \autocite[Voir également][]{Saxer1980} blablabla.
@@ -145,7 +145,7 @@ On pourra également utiliser les commandes \csp{nopp} pour ne pas afficher de p
 \subsubsection{Problème avec le champ \champ{pages}}
 
 
-Un problème se pose lorsqu'il y a déjà un champ \champ{pages} de rempli, par exemple dans le cas d'un article. On se retrouve en effet avec deux numérotations de pages : celle du champ \champ{pages} et celle du passage précis que l'on cite, indiquée par l'option \arg{postnote}. Prenons l'entrée suivante :
+Un problème se pose lorsqu'il y a déjà un champ \champ{pages} de rempli, pour un article par exemple. On se retrouve en effet avec deux numérotations de pages : celle du champ \champ{pages} et celle du passage précis que l'on cite, indiquée par l'option \arg{postnote}. Prenons l'entrée suivante :
 
 \inputminted{exemples/biblio/fichier/junod.bib}
 
@@ -179,11 +179,11 @@ affiche correctement :
 En revanche le problème demeure si l'on souhaite insérer du texte dans l'argument \arg{postnote} après le numéro de page.
 
 \begin{latexcode}
-\cite[\pno~24, passage au demeurant fort intéressant.]{Junod1992}
+\cite[\pno~24, passage fort intéressant.]{Junod1992}
 \end{latexcode}
 
 \begin{quotation}
-\cite[\pno~24, passage au demeurant fort intéressant.]{Junod1992}
+\cite[\pno~24, passage fort intéressant.]{Junod1992}
 \end{quotation}
 
 Comme vous pouvez le constater, le champ \champ{pages} continue à être affiché. Il s'agit d'une limite de \emph{biblatex}. Nous ne trouvons pas d'autre solution que de le contourner en indiquant le texte qui suit la référence en dehors de l'argument \arg{postnote}. 
@@ -191,7 +191,7 @@ Comme vous pouvez le constater, le champ \champ{pages} continue à être affich�
 Dans le cas d'une citation en note de bas de page, il faut donc écrire :
 
 \begin{latexcode}
-\footnote{\cite[24]{Junod1992}, passage au demeurant fort intéressant.}
+\footnote{\cite[24]{Junod1992}, passage fort intéressant.}
 \end{latexcode}
 
 \begin{attention}
@@ -202,10 +202,9 @@ On peut contourner ce problème en créant des sous-entrées bibliogra\-phiques\
 
 
 \begin{plusloins}
-Pour les œuvres en plusieurs volumes, il existe les commandes \csp{volvcite}, \csp{pvolcite}, \csp{fvolcite}, \csp{avolcite} correspondant aux commandes respectives \cs{cite}, \cs{parencite}, \cs{footcite}, \cs{autocite}.
+Pour les œuvres en plusieurs volumes, on peut utiliser les commandes \csp{volvcite}, \csp{pvolcite}, \csp{fvolcite}, \csp{avolcite} correspondant aux commandes respectives \cs{cite}, \cs{parencite}, \cs{footcite}, \cs{autocite}.
 
-La syntaxe est la suivante : 
-
+La syntaxe est  : 
 \csp{\meta{prefix}cite}\oarg{prenote}\marg{volume}\oarg{page}\marg{clef}.
 \end{plusloins}
 
