@@ -9,12 +9,12 @@
 Les images insérables avec \XeLaTeX sont au format JPEG (extension~\ext{jpg}), PNG (extension~\ext{png}) ou PDF (extension~\ext{pdf}). Il est nécessaire d'utiliser le package \package{graphicx}.
 
 
-L'insertion d'une image se fait de la manière suivante : \csp{includegraphics}\oarg{param. opti.}\marg{chemin de l'image}.
+L'insertion d'une image se fait ainsi : \csp{includegraphics}\oarg{options}\marg{chemin de l'image}.
 
 Le chemin de l'image s'indique de la même manière que le chemin des fichiers inclus\renvoi{chemin}.
-Les principaux paramètres optionnels sont les suivants\footcite[Pour les autres, on consultera][]{graphicx_options} :
+Les principales options, séparables par des virgules,  sont les suivantes\footcite[Pour les autres, on consultera][]{graphicx_options} :
 
-\begin{longtable}{|p{0.2\linewidth}|p{0.6\linewidth}|p{0.2\linewidth}|}
+\begin{longtable}{|p{0.2\textwidth}|p{0.45\textwidth}|p{0.2\textwidth}|}
     \hline
     \centering\textbf{Paramètres} & \centering\textbf{Signification} & \centering\textbf{Exemple}    \tabularnewline
     \hline
@@ -26,6 +26,7 @@ Les principaux paramètres optionnels sont les suivants\footcite[Pour les autres
     scale        & Redimension proportionnelle & \verb|scale=0.5|\\
     width        & Largeur     & \verb|width=10cm|     \\
 \end{longtable}
+
 
 \begin{plusloins}
 Le centimètre n'est pas la seule  unité de mesure disponible en \LaTeX. Nous en parlons en annexe de ce livre\renvoi{unite}.
@@ -194,7 +195,7 @@ On peut simuler certaines fonctionnalités d'un tableur à l'aide du package \pa
 
 On peut tracer des filets de séparation des cellules : pour un filet  horizontal, il suffit d'utiliser la commande \csp{hline}. Pour un filet  vertical, il faut mettre le caractère \verb+|+\footnote{Ce caractère, appelé \forme{pipe} ne doit pas être confondu avec un L minuscule.} entre les types de cellules.
 
-On trace des filets horizontaux plus petits en utilisant la commande \csp{cline}\verb|{<col1>-<col2>}|, où \arg{col1} et \arg{col2} doivent être remplacés par les numéros de colonnes.
+On trace des filets horizontaux plus petits en utilisant \csp{cline}\verb|{<col1>-<col2>}|, où \arg{col1} et \arg{col2} doivent être remplacés par les numéros de colonnes.
 
 \inputminted{exemples/premierpas/nontextuels/tableauseparateur.tex}
 \input{exemples/premierpas/nontextuels/tableauseparateur}
@@ -291,7 +292,8 @@ La syntaxe pour insérer le premier type est la suivante :
 
 \begin{latexcode}
 \begin{figure}[<paramètre de placement>]
-    Insertion de la figure ou de l'image suivant les codes montrés plus haut.
+    Insertion de la figure ou de l'image,
+    suivant les codes montrés plus haut.
     \caption{<Légende>}
 \end{figure} 
 \end{latexcode}
@@ -315,7 +317,6 @@ Nous avons un exemple de flottant   dans ce chapitre : la figure~\ref{figure:gen
 \end{attention}
 
 À noter que, comme les titres de partie, la commande \csp{caption} peut recevoir un argument optionnel qui compte pour titre dans la table des figures ou la table des tableaux\renvoi{tablefigure} : 
-
 \cs{caption}\oarg{Légende pour la table}\marg{Légende}. 
 
 
@@ -326,7 +327,8 @@ Il est parfois  utile de centrer le contenu du flottant. Il s'agit ici d'une exc
 \begin{latexcode}
 \begin{figure}[<paramètre de placement>]
     \centering
-    Insertion de la figure ou de l'image suivant les codes montrés plus haut.
+    Insertion de la figure ou de l'image,
+    suivant les codes montrés plus haut.
     \caption{<Légende>}
 \end{figure} 
 \end{latexcode}
