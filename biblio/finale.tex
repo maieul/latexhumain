@@ -8,7 +8,7 @@ Dans ce chapitre nous allons voir comment afficher et trier une bibliographie.
 
 \section{Affichage de la bibliographie}
 
-La commande de base  pour imprimer une bibliographie est \csp{printbibliography}. Si vous l'essayez dans votre projet, vous obtenez là où vous l'avez placée une bibliographie reprenant l'ensemble des œuvres  citées au cours de votre travail. Ainsi, vous êtes certain de ne rien oublier.
+La commande pour imprimer une bibliographie est \csp{printbibliography}. Si vous l'essayez dans votre projet, vous obtenez là où vous l'avez placée une bibliographie reprenant l'ensemble des œuvres  citées au cours de votre travail. Ainsi, vous êtes certain de ne rien oublier.
 
 Toutefois une telle bibliographie est peu utile pour les longs travaux : elle mélange allègrement sources primaires et études secondaires, ne fait pas de distinctions entre les chapitres, etc. Nous allons donc voir  comment sectionner une bibliographie. Mais auparavant il nous faut mentionner une spécificité propre aux sciences humaines, ainsi que la manière d'ajouter des références non citées.
 
@@ -57,7 +57,7 @@ Une telle méthode permet aisément de séparer une bibliographie en plusieurs p
 
 \subsubsection{Changer le niveau de titre d'une bibliographie}
 
-Par défaut, les titres de bibliographie sont de niveaux \cs{chapter*}\renvoi{niveautitre}. Mais il est possible de redéfinir ces titres, grâce à la commande \csp{defbibheading}.
+Par défaut, les titres de bibliographie sont de niveaux \cs{chapter*}\renvoi{niveautitre}. Mais il est possible de redéfinir ces titres, grâce à  \csp{defbibheading}.
 
 Si nous souhaitons par exemple que le titre de la bibliographie soit de niveau \cs{subsection}, il nous suffit d'ajouter les lignes suivantes au début de notre fichier \ext{tex}, si possible dans le préambule:
 
@@ -126,7 +126,7 @@ Il est enfin possible de combiner plusieurs mots clés. Dans ce cas, les entrée
 
 La méthode la plus simple est de passer une option \option{refsegment} lors de l'appel au package \package{biblatex}. La valeur de cet argument peut-être \forme{part}, \forme{chapter}, \forme{section}, \forme{subsection}, qui indique à quel niveau de titre commencer une nouvelle section bibliographique\footcite[Il est toutefois possible de créer des sections bibliographiques autrement que par niveaux de titre, voir :][]{biblatex_segment}.
 
-Chaque segment bibliographique possède un numéro compris entre 0 et N. On peut connaître celui du segment courant grâce à la commande \csp{therefsegment}.
+Chaque segment bibliographique possède un numéro compris entre 0 et N. On peut connaître celui du segment courant grâce à  \csp{therefsegment}.
 
 On peut ainsi afficher à la fin de chaque chapitre une bibliographie du chapitre :
 
