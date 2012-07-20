@@ -59,7 +59,7 @@ Il est possible d'utiliser dans le document Beamer les commandes \cs{section} et
 
 Ces informations servent toutefois uniquement à structurer le document, afin de pouvoir afficher le plan. C'est pourquoi il faut les entrer \emph{en-dehors} des diapositives.
 
-Pour les afficher dans une diapositive, en revanche, il faut utiliser les commandes \csp{sectionpage} et \csp{subsectionpage} pour les niveaux de titres et \csp{titlepage} pour les informations sur la date, l'auteur et le titre de la conférence.
+Pour les afficher dans une diapositive, en revanche, il faut utiliser les commandes \csp{sectionpage} et \csp{subsectionpage} pour les niveaux de titres ; \csp{titlepage} pour les informations sur la date, l'auteur et le titre de la conférence.
 
 \inputminted{exemples/shs/beamer/structure.tex}
 
@@ -174,7 +174,7 @@ Le contenu proprement dit de la diapositive.
 
 Les notes n'apparaissent pas sur la diapositive, mais sont reportées après, dans une page spéciale du fichier PDF. Cela n'est pas très pratique : on souhaiterait avoir d'une part les diapositives, d'autre part les notes. 
 
-On obtient ce résultat en plaçant dans le préambule la commande \csp{setbeameroption} avec le bon argument:
+On obtient ce résultat en plaçant dans le préambule \csp{setbeameroption}, avec le bon argument:
 
 \begin{latexcode}
 \setbeameroption{hide notes}
@@ -220,7 +220,7 @@ On peut aussi introduire des miniatures des diapositives  dans l'article : consu
 
 \subsection{Diapositives ou article ?}
 
-Par défaut, Beamer va afficher les textes situés entre les diapositives dans des diapositives spécifiques. Pour éviter cela, il faut passer l'option \option{ignorenonframetext} lors de l'appel de la classe.
+Par défaut, Beamer va afficher les textes situés entre les diapositives dans des diapositives spécifiques. Pour éviter cela, on passe l'option \option{ignorenonframetext} lors de l'appel de la classe.
 
 \begin{latexcode}
 \documentclass[ignorenonframetext]{beamer}
