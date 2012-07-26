@@ -25,9 +25,8 @@ Ainsi, lors de l'appel au package \package{biblatex}, il suffit d'écrire :
 
 \subsection{Ajout de références non citées}
 
-On peut vouloir ajouter dans une bibliographie des références qui n'ont pas été explicitement citées dans le texte. Il faut  utiliser la commande :
-
-\csp{nocite}\verb|{|\meta{clef1}\verb|,|\meta{clef2}\verb|,…}|
+On peut vouloir ajouter dans une bibliographie des références qui n'ont pas été explicitement citées dans le texte. Il faut  utiliser :
+\csp{nocite}\verb|{|\meta{clef1}\verb|,|\meta{clef2}\verb|,…}|.
 
 Pour ajouter l'ensemble des références d'un fichier \ext{bib} il suffit d'écrire : \csp{nocite}\verb|{*}|.
 
@@ -188,6 +187,6 @@ Un problème semblable peut se poser pour les œuvres anonymes : en l'absence d'
 
 On peut certes utiliser le champ \champ{sortname} pour résoudre ce problème, mais le plus sain est de définir sa propre règle de tri : nous expliquons comment sur notre blog\footcite{trianonymes}.
 \end{attention}
-Notre entrée \forme{clef} apparaît dans la bibliographie en tout début.
+
 
 Il existe également un champ \champ{sortyear} pour préciser une autre année de tri. 
