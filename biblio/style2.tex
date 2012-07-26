@@ -193,7 +193,6 @@ Si nous n'avons qu'une seule entrée dont Victor Saxer est l'auteur, cela est as
 % Rétablissons
 
 Nous allons pour cela modifier les styles de \emph{biblatex}, en utilisant la commande :
-
 \csp{ifsingletitle}\marg{sioui}\marg{sinon}. 
 
 Cette commande vérifie si une entrée est la seule attribuée à son auteur, et renvoie \arg{sioui} si c'est le cas, \arg{sinon} dans le cas contraire. 
@@ -204,7 +203,7 @@ Pour la faire fonctionner, il faut passer l'option \option{singletitle=true} au 
 \usepackage[singletitle=true,...]{biblatex}
 \end{latexcode}
 
-Une fois ceci fait, il est nécessaire de savoir où appliquer cette commande. Commençons par fouiller le fichier \ext{cbx}, puisqu'il s'agit d'un style pour une commande \cs{\meta{prefix}cite}. Recherchons l'expression \forme{opcit} qui correspond à la chaîne de langue\renvoi{opcit} qui renvoie \forme{op. cit.} (voir chapitre précédent).
+Une fois ceci fait, il est nécessaire de savoir où appliquer cette commande. Commençons par fouiller le fichier \ext{cbx}, puisqu'il s'agit d'un style pour une commande \cs{\meta{prefix}cite}. Recherchons l'expression \forme{opcit} qui correspond à la chaîne de langue\renvoi{opcit} qui renvoie \forme{op. cit.}.
 
 On la trouve rapidement dans une macro qui s'appelle  \bibmacro{cite:title}.
 
