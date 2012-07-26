@@ -22,13 +22,13 @@ Pour redéfinir des paramètres tels que l'espacement vertical entre deux paragr
 
 Nous avons vu que pour l'interligne, il valait mieux utiliser le package \package{setspace}\renvoi{interligne}. Il nous reste donc deux longueurs : l'indentation initiale du paragraphe et l'espace entre les paragraphes. Ces longueurs sont \cs{parindent} et \cs{parskip}.
 
-Pour les redéfinir, on utilise la commande \csp{setlength}\marg{longueur}\marg{valeur}. Par exemple, pour redéfinir la longueur de l'indentation à 3 cadratins :\label{setlength}
+Pour les redéfinir, on utilise \csp{setlength}\marg{longueur}\marg{valeur}. Par exemple, pour redéfinir la longueur de l'indentation à 3 cadratins :\label{setlength}
 
 \begin{latexcode}
 \setlength{\parindent}{3ex}
 \end{latexcode}
 
-On peut aussi utiliser \csp{addtolength}\marg{longueur}\marg{valeur}, qui additionne \arg{valeur} à la longueur déjà existante.
+Il existe aussi \csp{addtolength}\marg{longueur}\marg{valeur} qui ajoute \arg{valeur} à la longueur déjà existante.
 
 Ainsi pour ajouter 1 pt à l'espacement entre deux paragraphes :
 
@@ -72,7 +72,7 @@ Une page avec une marge nulle.
 Le package \package{geometry} possède de nombreuses autres fonctionnalités : nous renvoyons à sa documentation\footcite{geometry}.
 
 \begin{attention}
-Si vous utilisez \package{geometry} et les notes de marge produites via \cs{marginpar}, vous pouvez constater que les pages de gauches (paires) n'affichent pas les notes. Le problème vient du fait que \package{geometry} redéfinit un certain nombre de longueurs. Pour afficher correctement les notes, il vous faut modifier la longueur \csp{marginparwidth}, en lui attribuant la même valeur que \csp{leftmargin}.
+Si vous utilisez \package{geometry} et les notes de marge produites via \cs{marginpar}, vous pouvez constater que les pages de gauches (paires) n'affichent pas les notes. Le problème vient du fait que \package{geometry} redéfinit un certain nombre de longueurs. Pour afficher correctement les notes, il vous faut modifier la longueur \csp{marginparwidth}, en lui affectant la même valeur que \csp{leftmargin}.
 
 \begin{latexcode}
 \setlength{\marginparwidth}{\leftmargin}
@@ -106,7 +106,7 @@ Que nous pouvons analyser ainsi:
 \item[ligne 7]une liste ne peut pas fonctionner sans commande \cs{item}. C'est pourquoi cette commande est appelée ici. Pour éviter des ennuis, on indique que le texte de cet \cs{item} est nul, grâce à la commande \csp{relax}, qui est une commande servant à ne rien faire alors même que \TeX attend un contenu.
 \end{description}
 
-Voici pour l'analyse. Maintenant, nous voulons notre environnement \enviro{exemple}, avec :
+Maintenant, nous voulons notre environnement \enviro{exemple}, avec :
 \begin{itemize}
 \item Une marge gauche plus forte, de 3 cadratin (3~em).
 \item Une marge droite de 1 cadratin (1~em). 
