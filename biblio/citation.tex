@@ -25,7 +25,7 @@ Il existe un nombre important de styles de citation livrés en standard. Nous me
 \item[verbose]la description complète de l'entrée est donnée la première fois, une version abrégée est affichée ensuite.
 \item[verbose-ibid]la description complète de l'entrée est donnée, mais si un passage est cité plusieurs fois de suite, l'abréviation \emph{ibidem} est utilisée.
 \item[verbose-note]la description complète de l'entrée est donnée à sa première mention, puis une version abrégée est utilisée.
-\item[verbose-trad1; verbose-trad2; verbose-trad3]la description complète de l'entrée est utilisée, puis les abréviations universitaires de type \emph{op. cit.}, \emph{ibidem.} etc. sont utilisées ; \package{biblatex} calcule automatiquement l'opportunité d'utiliser une abréviation universitaire, selon l'endroit où l'ouvrage aura été cité précédemment. Voir le manuel pour la description complète des différences entre ces trois styles.
+\item[verbose-trad1; verbose-trad2; verbose-trad3]~la description complète de l'entrée est utilisée, puis les abréviations universitaires de type \emph{op. cit.}, \emph{ibidem.} etc. sont utilisées ; \package{biblatex} calcule automatiquement l'opportunité d'utiliser une abréviation universitaire, selon l'endroit où l'ouvrage aura été cité précédemment. Voir le manuel pour la description complète des différences entre ces trois styles.
 \end{choix}
 
 On comprend ici l'un des grands intérêts de \LaTeX : plus de perte de temps à se demander : \enquote{Faut-il que j'utilise ici une version abrégée de la référence ?}, \package{biblatex} le fait pour vous.
@@ -42,8 +42,7 @@ Pour les sciences humaines, nous recommandons les styles de la famille verbose.
 \section{Appel de la base de donnée bibliographique}
 
 
-Pour que \LaTeX{} sache où chercher les références bibliographiques, il faut lui signaler  quel est le fichier \ext{bib} à utiliser, pour cela il suffit d'utiliser dans le préambule la commande suivante  :
-
+Pour que \LaTeX{} sache où chercher les références bibliographiques, il faut lui signaler  quel est le fichier \ext{bib} à utiliser, pour cela il suffit d'utiliser dans le préambule la commande   :
 \csp{bibliography}\marg{chemin du fichier}.
 
 Le chemin du fichier s'indique de la même manière que n'importe quel chemin de fichier\renvoi{chemin}.
@@ -54,11 +53,9 @@ Il est possible d'appeler plusieurs fichiers bibliographiques. Nous le déconsei
 
 \section{Citation d'un élément bibliographique}
 
-L'ensemble des commandes de citation a la syntaxe suivante : 
+L'ensemble des commandes de citation ont la syntaxe  : 
 
-\csp{\meta{prefix}cite}\oarg{prenote}\oarg{postnote}\marg{clef}.
-
-\meta{prefix} indique où et comment doit apparaître la référence : directement dans le texte, entre parenthèses, en note de bas de page, etc.
+\csp{\meta{prefix}cite}\oarg{prenote}\oarg{postnote}\marg{clef}, \meta{prefix} indique où et comment doit apparaître la référence : directement dans le texte, entre parenthèses, en note de bas de page, etc.
 
 Par exemple, nous souhaitons citer  un livre de Victor Saxer que nous avons entré de cette manière dans la base de données :
 
