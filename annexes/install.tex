@@ -86,10 +86,14 @@ Assurez-vous avant toute chose d'avoir le paquet \verb|perltk| installé sur vot
 
 À titre d'exemple, le paquet se nomme \forme{perl-tk} sous Debian et Ubuntu, \forme{perl-Tk-804} sous Fedora et ses dérivés.
 
-Sous Ubuntu par exemple, il existe un moyen très simple d'installer ce paquet : tapez \url{apt://perl-tk} dans la barre d'adresse de votre navigateur web Firefox.
+Sous Ubuntu, par exemple, il existe un moyen très simple d'installer ce paquet : tapez \url{apt://perl-tk} dans la barre d'adresse de votre navigateur web Firefox.
 
-Rendez-vous alors à l'adresse \url{http://tug.org/texlive/acquire-netinstall.html}. Choisissez  le fichier \emph{install-tl-unx.tar.gz}. Une fois téléchargé, décompressez-le puis rendez-vous dans le dossier nouvellement créé à l'aide d'un terminal, par exemple en tapant \verb|cd ~/Téléchargements/install-tl-*/|. Vous pouvez alors lancer l'installation en mode administrateur, par exemple ainsi :\\
-\verb|sudo perl install-tl -gui wizard|. Cette commande lancera le programme d'installation de la distribution complète qui reconnaîtra automatiquement l'architecture de votre plate-forme.
+Rendez-vous alors sur \url{http://tug.org/texlive/acquire-netinstall.html}. Choisissez  le fichier \emph{install-tl-unx.tar.gz}. Une fois téléchargé, décompressez-le puis rendez-vous dans le dossier nouvellement créé à l'aide d'un terminal, par exemple en tapant \verb|cd ~/Téléchargements/install-tl-*/|. Vous pouvez alors lancer l'installation en mode administrateur, par exemple ainsi :
+
+\begin{bashcode}
+sudo perl install-tl -gui wizard
+\end{bashcode}
+Cette commande lancera le programme d'installation de la distribution complète qui reconnaîtra automatiquement l'architecture de votre plate-forme.
 
 \subsection{Installation et configuration}
 
