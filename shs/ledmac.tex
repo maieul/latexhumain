@@ -240,7 +240,6 @@ Ce type de notes appelle un \enquote{lemme}, c'est-à-dire une partie du texte a
 
 La note de bas de page est appelée ainsi:  
 \csp{edtext}\marg{lemme}\marg{commande}. 
-
 L'argument \arg{commande} contient l'appel à la note: \csp{Afootnote}, \csp{Bfootnote}, etc.
 
 Il est aussi possible d'utiliser  des  notes de bas de page \enquote{normales}, appelées par un numéro dans le texte. Il  en existe là aussi cinq sortes: de \csp{footnoteA} à \csp{footnoteE}.
@@ -250,9 +249,12 @@ Dans les notes de type \cs{Afootnote}\dots, lorsque le \enquote{lemme} est trop 
 
 \begin{plusloins}
 Il est aussi possible de mettre des notes de fin. Là encore, il y en a cinq sortes :  de \csp{Aendnote} à \csp{Eendnote}.
+\end{plusloins}
 
+\begin{plusloins}
 La commande \cs{marginpar} ne fonctionne pas dans les textes numérotés. À la place, le package propose les commandes \csp{ledleftnote}\marg{note} et \csp{ledrightnote}\marg{note} pour des notes de marge gauche et droite.
-
+\end{plusloins}
+\begin{plusloins}
 Il existe aussi une commande \csp{ledsidenote}\marg{note} qui insère par défaut la note dans la marge de droite, mais \csp{sidenotemargin}\verb={left}= permet de dire de l'insérer à gauche.
 \end{plusloins} 
 
@@ -460,8 +462,9 @@ Ainsi, la numérotation du texte se fait en continue entre la première partie e
 
 \begin{plusloins}
 Il est bien sûr possible de mettre en parallèle un texte en vers et sa traduction en prose. 
-
-Par ailleurs, si vous utilisez la commande \cs{numberpstarttrue}\renvoi{numberpstarttrue} pour numéroter les \cs{pstart}s, sachez que la numérotation gauche et la numérotation droite fonctionnent avec deux compteurs différents : \compteur{pstartL} et \compteur{pstartR}\renvoi{apparencecompteur}[manipcompteurs].
+\end{plusloins}
+\begin{plusloins}
+Si vous utilisez la commande \cs{numberpstarttrue}\renvoi{numberpstarttrue} pour numéroter les \cs{pstart}s, sachez que la numérotation gauche et la numérotation droite fonctionnent avec deux compteurs différents : \compteur{pstartL} et \compteur{pstartR}\renvoi{apparencecompteur}[manipcompteurs].
 \end{plusloins}
 
 
