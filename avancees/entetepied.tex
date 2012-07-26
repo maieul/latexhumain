@@ -110,8 +110,8 @@ Les deux commandes de marquage sont :
 
 Les deux commandes d'appel des marqueurs sont : 
 \begin{itemize}
-\item \csp{leftmark} retourne l'argument \arg{marqueur gauche} de la dernière commande \cs{markboth}.
-\item \csp{rightmark} retourne l'argument \arg{marqueur droit} de la première commande \cs{markright} ou \cs{markboth}  située sur la page courante. En revanche, si la page en cours ne contient aucune de ces commandes, alors \csp{rightmark} retourne l'argument \arg{marqueur droit} de la dernière commande \cs{markright} ou \cs{markboth} utilisée.
+\item\csp{leftmark} qui retourne l'argument \arg{marqueur gauche} de la dernière commande \cs{markboth}.
+\item\csp{rightmark} qui retourne l'argument \arg{marqueur droit} de la première commande \cs{markright} ou \cs{markboth}  située sur la page courante. En revanche, si la page en cours ne contient aucune de ces commandes, alors \csp{rightmark} retourne l'argument \arg{marqueur droit} du dernier \cs{markright} ou \cs{markboth} utilisé.
 \end{itemize}
 
 Concrètement, les commandes  \cs{markboth} et \cs{markright} sont appelées automatiquement dans la classe \classe{book} par les commandes \cs{chapter} et \cs{section} \emph{via} les commandes \csp{chaptermark} et \csp{sectionmark}. 
@@ -144,7 +144,7 @@ Supposons désormais que vous ne souhaitez plus voir les titres des sections dan
 Notez bien que nous indiquons que la commande \cs{sectionmark} prend un argument, alors même que nous ne nous en servons pas. Mais lorsque la classe \classe{book} appelle cette commande, elle lui passe bien un argument, qui est le titre de la section.
 \end{attention}
 
-Comme vous n'affichez alors plus que le titre du chapitre, il est peut-être inutile de préciser qu'il s'agit d'un chapitre. Il  faut alors redéfinir la commande \cs{chaptermark}, par exemple sous la forme suivante :
+Comme alors on affiche  plus que le titre du chapitre, il est peut-être inutile de préciser qu'il s'agit d'un chapitre. Il  faut alors redéfinir la commande \cs{chaptermark}, par exemple sous la forme suivante :
 
 \begin{latexcode}
 \renewcommand{\chaptermark}[1]{\markboth {\MakeUppercase{%
