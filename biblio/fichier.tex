@@ -14,7 +14,7 @@ Chaque élément d'une bibliographie est appelé \forme{entrée}. Une entrée bi
 \item[Des champs]contenant des indications sur l'ouvrage, tels que : auteur, titre, éditeur, etc. 
 \end{glossaire}
 
-L'avantage de ce système se comprend  aisément. En effet, une correction dans la base de donnée bibliographique est automatiquement reportée dans le travail à chaque fois que l'entrée est mentionnée, moyennant une nouvelle compilation avec BibTeX.
+L'avantage de ce système se comprend  aisément. En effet, une correction dans la base de donnée bibliographique est automatiquement reportée dans le travail à chaque fois que l'entrée est mentionnée, moyennant une nouvelle compilation avec Biber.
 
 Un fichier \ext{bib} est un fichier texte contenant une suite d'instructions, de la forme suivante :
 
@@ -179,9 +179,9 @@ En ce qui concerne l'ordre des éléments, il  peut être :
 \end{itemize}
 
 Ainsi les entrées \verb|Victor Marie Hugo| et \verb|Hugo, Victor Marie| sont équivalentes.
-Dans le premier cas, BibTeX considère que le dernier mot commençant par une majuscule est le nom de famille. Dans le second cas, il considère l'ensemble situé avant la virgule comme le nom de famille, ce qui est utile pour les noms composés. Ainsi pour parler de Charles De Gaulle : \verb|De Gaulle, Charles|.
+Dans le premier cas, Biber considère que le dernier mot commençant par une majuscule est le nom de famille. Dans le second cas, il considère l'ensemble situé avant la virgule comme le nom de famille, ce qui est utile pour les noms composés. Ainsi pour parler de Charles De Gaulle : \verb|De Gaulle, Charles|.
 
-Si nous parlons de Simone de Beauvoir, le \forme{de} étant une particule nous pouvons utiliser la première syntaxe : dans ce cas BibTeX considère tout ce qui suit la particule comme constituant le nom : \verb|Simone de Beauvoir|.
+Si nous parlons de Simone de Beauvoir, le \forme{de} étant une particule nous pouvons utiliser la première syntaxe : dans ce cas Biber considère tout ce qui suit la particule comme constituant le nom : \verb|Simone de Beauvoir|.
 Mais la seconde syntaxe fonctionne également : \verb|de Beauvoir, Simone|.
 
 
@@ -189,7 +189,7 @@ Pour distinguer Alexandre Dumas père d'Alexandre Dumas fils, on peut utiliser l
 
 
 Le cas des auteurs anciens, où l'on écrit souvent le prénom suivi de la ville d'exercice ou de naissance, comme par exemple pour Grégoire de Tours, est problématique. Si j'écris : \verb|Grégoire de Tours|
-BibTeX va comprendre qu'il s'agit d'une personne prénommée \forme{Grégoire}, dont le nom est \forme{Tours} et la particule \forme{de}. Par conséquent il va l'afficher sous la forme \forme{Tours, Grégoire, de}. Pour éviter ce problème, il suffit d'utiliser des accolades : \verb|{Grégoire de Tours}|.
+Biber va comprendre qu'il s'agit d'une personne prénommée \forme{Grégoire}, dont le nom est \forme{Tours} et la particule \forme{de}. Par conséquent il va l'afficher sous la forme \forme{Tours, Grégoire, de}. Pour éviter ce problème, il suffit d'utiliser des accolades : \verb|{Grégoire de Tours}|.
 
 Cette méthode peut servir aussi pour les institutions auteures d'ouvrages.
 Par exemple :\verb|{Centre National de la Recherche Scientifique}|.

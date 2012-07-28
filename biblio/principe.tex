@@ -32,17 +32,20 @@ Enfin, à la fin du document, ou à tout autre endroit jugé utile, une (ou plus
 
 Jusqu'à maintenant, vous aviez compilé une seule fois votre fichier \ext{tex} avec \XeLaTeX. La gestion bibliographique étant quelque chose d'assez complexe, il va falloir procéder à une triple compilation :
 \begin{enumerate}
-\item le fichier \ext{tex} avec \XeLaTeX. Outre le fichier \ext{pdf}, cette compilation produit un fichier auxiliaire \ext{aux} ;
-\item ce fichier doit être lui même compilé avec le logiciel BibTeX ;
+\item le fichier \ext{tex} avec \XeLaTeX. Outre le fichier \ext{pdf}, cette compilation produit un fichier auxiliaire \ext{bbl} ;
+\item ce fichier doit être lui même compilé avec le logiciel Biber ;
 \item puis il faut re-compiler le fichier \ext{tex} avec \XeLaTeX.
 \end{enumerate}
 
-En général, les éditeurs de texte spécialisés en \LaTeX{} prévoient un bouton pour compiler le fichier \ext{aux} avec BibTex, voire même pour faire ces trois compilations à la suite. Consulter le manuel du logiciel le cas échéant.
 
 \begin{attention}
-Il ne faut pas confondre BibTeX et \package{biblatex}. Le premier est un logiciel, le second est un package de \LaTeX{}.
-On compile avec BibTeX mais on fait appel au package \package{biblatex}.
+Ce manuel a été rédigé en prenant pour référence la version~2.0 du package \package{biblatex}. Il vous faut donc vérifier que vous disposez de cette version, ou d'une version ultérieure. Le cas échéant, mettez à jour \package{biblatex} ainsi que Biber\renvoi{maj} --- en général, une version précise de \package{biblatex} ne fonctionne qu'avec une version précise de Biber.
 \end{attention}
+
+\begin{attention}
+La plupart des éditeurs spécialisés en \LaTeX ne permettent pas de compiler avec Biber, mais seulement avec BibTeX, qui est en quelque sort son ancêtre. Nous expliquons sur notre blog comment configurer certains de ces éditeurs pour utiliser Biber à la place de BibTeX\footcite{biber_logiciels}. Néanmoins, la méthode la plus simple reste encore d'utiliser le logiciel Latexmk\renvoi{latexmk}, qui se chargera de procéder aux compilations.
+\end{attention}
+
 
 
 
