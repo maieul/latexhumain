@@ -8,12 +8,12 @@ Dans ce chapitre, nous allons voir comment créer des entrées hiérarchisées, 
 
 Supposons que vous citiez plusieurs contributions d'un même colloque. Classiquement vous créez plusieurs entrées bibliographiques sous la forme\footnote{Toute ressemblance avec un colloque s'étant déjà tenu ne saurait être que pure coïncidence.}:
 
-\inputminted{exemples/biblio/biber/reproduction.bib}
+\inputminted{exemples/biblio/sousentrees/reproduction.bib}
 
 Vous dupliquez ainsi les données sur le colloque (titre, éditeur, etc.). Si par hasard vous vous êtes trompés dans une information, vous devrez la modifier partout. Pour éviter cela Biber prévoit la possibilité de créer des filiations d'entrées : des entrées secondaires \enquote{héritant} d'une entrée principale. L'héritage étant pris en charge lors de l'interprétation du fichier. Pour ce faire, il suffit d'indiquer dans le champ \champ{crossref} des entrées secondaires la clef de l'entrée principale.
 
 
-\inputminted{exemples/biblio/biber/crossref.bib}
+\inputminted{exemples/biblio/sousentrees/crossref.bib}
 
 Après compilation, nous voyons que nos sous-entrées ont correctement hérité des champs de l'entrée principale :  
 
@@ -108,7 +108,7 @@ Il est possible de vérifier automatiquement que les entrées soient du même ty
 
 Ainsi pour notre cas, il suffit de créer les deux entrées suivantes :
 
-\inputminted{exemples/biblio/biber/augustin.bib}
+\inputminted{exemples/biblio/sousentrees/augustin.bib}
 
 Pour citer notre passage précis, il faut écrire :
 
