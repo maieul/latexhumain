@@ -4,7 +4,7 @@
 # Ouverture du fichier
 import codecs,re
 try:
-    lecture = codecs.open('cs.ind',encoding='utf-8')
+    lecture = codecs.open('principal-cs.ind',encoding='utf-8')
     sortie =[]
 
 
@@ -22,7 +22,7 @@ try:
 
 # Ecriture du nouveau fichier
     lecture.close()
-    ecriture = codecs.open('cs.ind',encoding='utf-8',mode='w')
+    ecriture = codecs.open('principal-cs.ind',encoding='utf-8',mode='w')
     ecriture.writelines(sortie)
 except:
     print ('Erreur dans le script python')
