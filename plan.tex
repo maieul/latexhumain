@@ -1,4 +1,7 @@
-\input{couv/garde}
+\ifpapier\input{couv/garde}
+\else
+\input{couv/pdf}
+\fi
 
 \def\epi{Du \LaTeX sed \TeX}
 \def\episource{Proverbe Latin}
@@ -74,5 +77,6 @@
 
 \setcounter{tocdepth}{2}
 \tableofcontents
-
+\ifpapier
 \input{couv/gardefin}
+\fi
