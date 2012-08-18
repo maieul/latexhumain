@@ -1,12 +1,12 @@
 \makeatletter
 
 
-%Pour avoir la 4ème sur une page de gauche
-	\ifodd\c@TotPages
-		\newpage\hbox{}\newpage
-	\else
-		\newpage\hbox{}
-	\fi
+\newpage\pagestyle{empty}
+	\hbox{}\newpage\hbox{}
+      	\ifodd\c@TotPages
+      	\else
+               \newpage\hbox{}       
+          \fi
 
 % Mettre une page r/v blanche. Si on finit à droite, il faut une page supplémentaire (correspondant au verso de la page de fin)
 \makeatother
