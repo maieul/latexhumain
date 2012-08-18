@@ -20,7 +20,9 @@
 \fancyhead[LO]{\emph\rightmark}
 \fancyhead[RO]{§\,\thesection}
 \csappto{clearpage}{\thispagestyle{empty}}
-\csappto{tableofcontents}{\fancyhead[LE]{}}
+\pretocmd{\tableofcontents}{\fancyhead[LE]{}%
+\fancyhead[RO]{}%
+}{}{}
 
 % Réglage pour la bibliographie
 \defbibheading{bibliography}{}
