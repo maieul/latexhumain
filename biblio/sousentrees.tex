@@ -6,7 +6,7 @@ Dans ce chapitre, nous allons voir comment créer des entrées hiérarchisées, 
 
 \section{Principe des sous-entrées bibliographiques}
 
-Supposons que vous citiez plusieurs contributions d'un même colloque. Classiquement vous créez plusieurs entrées bibliographiques sous la forme\footnote{Toute ressemblance avec un colloque s'étant déjà tenu ne saurait être que pure coïncidence.}:
+Supposons que vous citiez diverses contributions d'un même colloque. Classiquement vous créez plusieurs entrées bibliographiques sous la forme\footnote{Toute ressemblance avec un colloque s'étant déjà tenu ne saurait être que pure coïncidence.}:
 
 \inputminted{exemples/biblio/sousentrees/reproduction.bib}
 
@@ -30,7 +30,7 @@ Vous constaterez que Biber procède à un héritage \enquote{intelligent} : le c
 Il est possible de créer autant de niveaux d'entrée bibliographique que souhaités. Attention cependant à ne pas produire des références circulaires (A héritant de B, héritant de C, héritant de A). Par ailleurs, certain logiciels de gestions bibliographiques vous interdisent de créer des sous-sous-entrées bibliographiques : il vous faut alors modifier vos entrées avec votre éditeur de texte.
 \end{plusloins}
 
-\section{Affichage des sous-entrées dans la bibliographie finale}
+\section{Sous-entrées dans la bibliographie finale}
 
 
 Lorsqu'une entrée fille est citée, Biber rajoute systématiquement l'entrée mère dans la bibliographie finale. On peut toutefois indiquer un nombre minimal de citations d'entrées filles pour que se fasse l'ajout de l'entrée mère dans la bibliographie. Si nous souhaitons qu'une entrée mère ne soit ajoutée à la bibliographie que si les entrées filles sont citées au moins 10 fois (toutes entrées confondues) :

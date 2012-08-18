@@ -58,7 +58,7 @@ Prendre le nom de l'auteur suivi de la date. Par exemple \verb|Urner1952|.
 
 \subsection{Pour les œuvres anciennes}
 
-Prendre le nom de l'œuvre  éventuellement abrégée, par exemple \verb|ContraFelix| pour parler du \citetitle{ContraFelix} d'Augustin\footcite{ContraFelix}. Si plusieurs œuvres d'auteurs différents portent le même nom, faire précéder du nom de l'auteur. On peut aussi pour les œuvres sans titre et sans auteur indiquer un numéro dans un catalogue de référence.
+Prendre le nom de l'œuvre,  éventuellement abrégée. Ainsi \verb|ContraFelix| pour parler du \citetitle{ContraFelix} d'Augustin\footcite{ContraFelix}. Si plusieurs œuvres d'auteurs différents portent le même nom, faire précéder du nom de l'auteur. On peut aussi pour les œuvres sans titre et sans auteur indiquer un numéro dans un catalogue de référence.
 
 
 
@@ -85,7 +85,7 @@ Livre. Pour les actes de colloque, voir  \type{proceedings}.
 	\item[\type{inproceedings}]
 	 Contribution à un colloque.
 	 \item[\type{inreference}]
-	 Article de dictionnaire, d'encyclopédie ou apparenté.
+	 Article de dictionnaire, d'encyclopédie, etc.
 	\item[\type{manual}]
 	 Manuel, pas nécessairement sous forme imprimée.
 	 \item[\type{mvbook}]
@@ -95,7 +95,7 @@ Livre. Pour les actes de colloque, voir  \type{proceedings}.
 	 \item[\type{mvproceedings}]
 	 Actes de colloque en plusieurs volumes.
 	 \item[\type{mvreference}]
-	 Dictionnaire, encyclopédie ou apparenté en plusieurs volumes.
+	 Dictionnaire, encyclopédie, etc. en plusieurs volumes.
 	\item[\type{misc}]
 	 Entrée générique, pour tout type d'entrée non catégorisable. Par exemple : tableau, manuscrit, \emph{ostracon}. 
 	\item[\type{online}]
@@ -113,7 +113,7 @@ Livre. Pour les actes de colloque, voir  \type{proceedings}.
 	\item[\type{supperiodical}]
 	Supplément à un numéro de périodique.
 	\item[\type{reference}]
-	Dictionnaire, encyclopédie ou apparenté.
+	Dictionnaire, encyclopédie, etc.
 	\item[\type{thesis}]
 	Thèse de doctorat, mémoire de maîtrise ou tout travail rédigé en vue de l'obtention d'un titre scolaire ou universitaire.
 	\item[\type{unpublished}]
@@ -145,7 +145,7 @@ Ces champs servent à désigner des personnes qui ont participé au processus de
    	\item[translator] Traducteur(s). 		
 \end{choix}
 
-Lorsque des champs possèdent des valeurs identiques, par exemple les champs \champ{editor} et \champ{translator}, \package{biblatex} fusionne ces champs lors de l'affichage. Prenons ainsi l'entrée suivante : 
+Lorsque des champs possèdent des valeurs égales, par exemple les champs \champ{editor} et \champ{translator}, \package{biblatex} fusionne ces champs lors de l'affichage. Prenons ainsi l'entrée suivante : 
 
 \inputminted{exemples/biblio/fichier/augustin_editeur.bib}
 
@@ -165,9 +165,9 @@ author = {Maïeul Rouquette and Enimie Rouquette and Brendan Chabannes}
 
 Un nom contient les éléments suivant :
 \begin{choix}
-	\item[Prénom(s)]L'initiale doit être en majuscule, le reste en minuscules. Exemple : \forme{Albert}. Il vaut mieux mettre le prénom complet : on peut confier le travail de limitation à une minuscule  à \package{biblatex}\footnote{Il faut pour cela passer l'option \option{firstinits=true} lors du chargement du package.}.
-	\item[Nom]L'initiale doit être en majuscule, le reste en minuscules. Exemple : \forme{Londres}. \package[biblatex]{Biblatex} se charge le cas échéant de mettre en petites capitales.
-	\item[Particule (option)]Elle doit être entièrement en minuscules. Exemple : \forme{de}, \forme{von}.
+	\item[Prénom(s)]L'initiale doit être en majuscule, le reste en minuscules. Ainsi : \forme{Albert}. Il vaut mieux mettre le prénom complet : on peut confier le travail de limitation à une minuscule  à \package{biblatex}\footnote{Il faut pour cela passer l'option \option{firstinits=true} lors du chargement du package.}.
+	\item[Nom]L'initiale doit être en majuscule, le reste en minuscules. Ainsi : \forme{Londres}. \package[biblatex]{Biblatex} se charge le cas échéant de mettre en petites capitales.
+	\item[Particule (option)]Elle doit être entièrement en minuscules. Ainsi : \forme{de}, \forme{von}.
 	\item[Suffixe (option)]L'initiale doit être en majuscule. Ce type de donnée est plutôt anglo-saxonne. Exemple : \forme{Junior}.
 \end{choix}
 
@@ -240,7 +240,7 @@ En ce qui concerne les œuvres anonymes, la solution est évidemment de ne rien 
    	\item[titleaddon] Ajout au titre de l'œuvre. Dans ce manuel, nous conseillons de l'utiliser pour les divisions de source\renvoi{divisionsource}.
 \end{choix}
 
-Voici quelques exemples afin de comprendre comment se servir de ces champs:
+Voici quelques exemples afin de comprendre comment utiliser ces champs:
 
 \subsubsection{Un livre avec un sous-titre}
 
@@ -306,13 +306,13 @@ Voici quelques exemples afin de comprendre comment se servir de ces champs:
 	
 	On peut y mettre une valeur personnelle, ou bien prendre l'une des valeurs prédéfinies. Dans ce cas la valeur est automatiquement traduite dans la langue du document.
 	
-	 Pour les entrées de type \type{thesis}, deux valeurs possibles :
+	 Pour les entrées de type \type{thesis}, deux possibilités :
 					\begin{description}
 						\item[mathesis]mémoire de master.
 						\item[phdthesis]thèse de doctorat.
 					\end{description}
 					
-					 Pour les entrées de type \type{patent}, plusieurs  valeurs possibles : 
+					 Pour les entrées de type \type{patent}, plusieurs  possibilités : 
 					 
 					 
 					 \begin{description}

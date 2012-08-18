@@ -32,7 +32,7 @@ En revanche, si vous ne passez pas l'option \option{noautomatic} à  \cs{makinde
 
 \section{Quelques commandes}
 
-Nous allons donner ici quelques exemples de commandes que l'on peut mettre dans son fichier \fichier{monstyle.ist}. 
+Nous allons donner ici quelques exemples de commandes qu'il est possible de mettre dans son fichier \fichier{monstyle.ist}. 
 
 \begin{attention}
 Dans le fichier de styles \ext{ist}, on n'écrit pas en \LaTeX{} mais en \TeX . Les commandes sont ainsi encadrées par des guillemets anglais \verb|"|. La barre contre-oblique, quant à elle, n'est prise en compte que si elle est précédée d'une autre contre-oblique.
@@ -61,11 +61,10 @@ Ducs \\
 \\
 Évêques \\
 \hspace*{1em} Damase \hfill 5\\
-\hspace*{1em} Formose \hfill  5\\
-
+\hspace*{1em} Formose \hfill  5
 \end{quotation}
 
-Si nous préférons une ligne de points, il faut logiquement remplacer \verb|"|\textbackslash\cs{hfill}\verb| "| par \verb|"|\textbackslash\cs{dotfill}\verb| "|.
+Si nous préférons une ligne de points, il faut remplacer \verb|"|\textbackslash\cs{hfill}\verb| "| par \verb|"|\textbackslash\cs{dotfill}\verb| "|.
 
 \begin{attention}
 Les espaces situées entre les commandes et les deuxièmes guillemets fermants sont indispensables. En effet, en l'absence de ces espaces, MakeIndex accole, dans le fichier \ext{ind} généré, les commandes aux numéros de page, ce qui bloque alors  la   compilation, puisque \LaTeX{} se retrouve alors face à des commandes inconnues, du style \csp{hfill1}.

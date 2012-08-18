@@ -48,7 +48,7 @@ Il vaut mieux accoler la commande \cs{index}\marg{entrée} directement au  mot �
 \end{attention}
 
 
-L'indexation d'un texte n'est pas automatique: il faut placer \cs{index}\marg{entrée} à chaque endroit  que l'on veut référencer. On  peut bien sûr créer une commande  spécifique pour combiner l'indexation avec d'autres actions.
+L'indexation d'un texte n'est pas automatique. Il faut placer \cs{index}\marg{entrée} à chaque endroit  que l'on veut référencer. On  peut bien sûr créer une commande  spécifique pour combiner l'indexation avec d'autres actions.
 
 Ainsi, pour indexer automatiquement tous les noms propres d'un texte, déclarons la commande suivante:\label{indexauteur}
 
@@ -56,7 +56,8 @@ Ainsi, pour indexer automatiquement tous les noms propres d'un texte, déclarons
 \newcommand\auteur[2]{#1~\textsc{#2}\index{#2, #1}\xspace}
 \end{latexcode}
 
-\renewcommand\auteur[2]{#1~\textsc{#2}\xspace}
+\ifdefmacro{\auteur}{
+\renewcommand\auteur[2]{#1~\textsc{#2}\xspace}}{\newcommand\auteur[2]{#1~\textsc{#2}\xspace}}
 
 Il suffit ensuite, au cours de la rédaction de son texte, de frapper, par exemple, \cs{auteur}\verb|{Victor}{Hugo}| pour obtenir \enquote{\auteur{Victor}{Hugo}} dans le corps de son texte, indexé sous l'entrée \enquote{Hugo, Victor}.
 
@@ -98,7 +99,7 @@ Ducs \\
 \\
 Évêques \\
 \> Damase, 5\\
-\> Formose, 5\\
+\> Formose, 5
 \end{tabbing}
 \end{quotation}
 
@@ -153,7 +154,7 @@ On obtient alors :
 Empereurs\\
 \> Auguste, x\\
 \> Tibère, y\\
-\> Claude, z \\
+\> Claude, z 
 \end{tabbing}
 \end{quotation}
 
@@ -164,7 +165,7 @@ Cette syntaxe est aussi utile pour mettre en évidence une entrée dans l'index 
     #1~\textsc{#2}\index{#2 #1@\textsc{#2}, #1}\xspace}
 \end{latexcode}
 
-Désormais, frapper \cs{auteur}\verb|{Victor}{Hugo}| produit  dans l'index
+Désormais, mettre \cs{auteur}\verb|{Victor}{Hugo}| produit  dans l'index
  \enquote{\textsc{Hugo},~Victor}.
  
  
@@ -217,7 +218,7 @@ Il existe une autre commande, la commande \cs{indexsetup}, qui peut, elle aussi,
 \marg{clef$=$valeur}. Voici ceux qui peuvent être utile lorsque l'on n'a qu'un index (nous en verrons quelques autres à la section suivante):
 \begin{choix}
 \item[level] Indique le niveau de division (section, chapitre, etc) auquel correspond l'index. Par défaut, il s'agit de \verb|\chapter*|.
-\item[toclevel] Indique le niveau de division (section, chapitre, etc) auquel correspond l'index dans la table des matières.  Contrairement à l'argument précédent, il ne faut pas mettre de barre oblique :
+\item[toclevel] Indique le niveau de division (section, chapitre, etc) auquel correspond l'index dans la table des matières.  À l'inverse de l'argument précédent, il n'y a pas de contre-oblique :
 
 \begin{latexcode}
 \indexsetup[level=\section*, toclevel=section]
@@ -257,7 +258,7 @@ mais au lieu de \cs{index}\marg{entrée}, on utilise :
 \csp{index}\oarg{nom abrégé}\marg{entrée}. 
 
 \begin{plusloins}
-Toutes les entrées indiquées  par \cs{index}\marg{entrée}, sans l'argument \arg{nom  abrégé}, sont automatiquement placées dans l'index général \forme{idx}.
+Toutes les entrées indiquées  par \cs{index}\marg{entrée} sans l'argument \arg{nom  abrégé}, sont automatiquement placées dans l'index général \forme{idx}.
 \end{plusloins}
 
 On peut ainsi indexer notre texte d'Éginhard de la façon suivante:
