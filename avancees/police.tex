@@ -198,6 +198,9 @@ Ce qui nous donne :
 \makeatother
 \end{latexcode}
 
+
+On obtient donc un affichage de la forme :
+
 % Ici on redéfinit temporairement 
 
 \makeatletter
@@ -206,16 +209,11 @@ Ce qui nous donne :
 \renewcommand \thechapter {\@Roman\c@chapter}
 \renewcommand \thesection {\thechapter.\@arabic\c@section)}
 \makeatother
-
-On obtient donc un affichage de la forme :
-
-
 \begin{quotation}
 \thechapter~Chapitre 
 
 \thesection~Section
 \end{quotation}
-
 % On rétablit
 \renewcommand{\thechapter}{\oldthechapter}
 \renewcommand{\thesection}{\oldthesection}
