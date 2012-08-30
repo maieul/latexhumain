@@ -15,16 +15,22 @@
     #1}{}}
 \makeatletter
 \fancyhead[LE]{\@chapapp~\thechapter}
-\let\imki@indexheaders\relax % Pour désactiver les entetes spéciaux de l'index
-\makeatother
+
+
 \fancyhead[RE]{\emph\leftmark}
 \fancyhead[LO]{\emph\rightmark}
 \fancyhead[RO]{§\,\thesection}
 \csappto{clearpage}{\thispagestyle{empty}}
+
+%Pour entete d'index
+\let\imki@indexheaders\relax 
+\newcommand{\vide}[1]{\relax}
+\patchcmd{\theindex}{\thispagestyle}{\vide}{}{}
+%Pour entete de sommaire
 \pretocmd{\tableofcontents}{\fancyhead[LE]{}%
 \fancyhead[RO]{}%
 }{}{}
-
+\makeatother
 % Réglage pour la bibliographie
 \defbibheading{bibliography}{}
 
