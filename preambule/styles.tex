@@ -8,18 +8,15 @@
 % Pour les entêtes
 \indexsetup{firstpagestyle=fancy}
 \pagestyle{fancy}
-\fancyfoot[C]{\thepage}
-\renewcommand{\chaptermark}[1]{\markboth {
-     #1}{}}
-\renewcommand{\sectionmark}[1]{\markright{
-    #1}{}}
 \makeatletter
-\fancyhead[LE]{\@chapapp~\thechapter}
+\fancyfoot[C]{\thepage}
+\renewcommand{\chaptermark}[1]{\markboth{%
+	\@chapapp~\thechapter\hfill#1}{%
+	\@chapapp~\thechapter\hfill#1}}
+\renewcommand{\sectionmark}[1]{\markright{\emph{#1}\hfill§\thechapter,\thesection}}
 
-
-\fancyhead[RE]{\emph\leftmark}
-\fancyhead[LO]{\emph\rightmark}
-\fancyhead[RO]{§\,\thesection}
+\fancyhead[CE]{\leftmark}
+\fancyhead[CO]{\rightmark}
 \csappto{clearpage}{\thispagestyle{empty}}
 
 %Pour entete d'index
