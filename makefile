@@ -8,7 +8,7 @@ LABEL_NON_DEFINI    = "(Reference .* undefined)"
 
 .PHONY: all  clean
 
-all:principal.pdf
+all:papier.pdf ecran.pdf
 
 %.pdf: %.tex plan.tex ./annexes/*  ./biblio/* ./biblio_fichiers/* ./exemples/*/*/* ./preambule/* ./navigation/* preliminaires/* premierpas/* schemas/* shs/*
 	@echo "Compilation XELATEX"
