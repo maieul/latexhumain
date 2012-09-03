@@ -1,0 +1,10 @@
+Ce livre est disponible en version papier sur http://www.atramenta.net/books/latex-sciences-humaines/79.
+
+Il est publié sous licence Creative Commons 3.0 Partage à l'Identique - Paternité
+
+Si vous avez des idées d'améliorations, merci de 
+1) soit créer un ticket en vous rendant sur https://github.com/maieul/latexhumain/issues
+2) soit carrément écrire l'amélioration et la proposer via une "Pull Request". 
+
+
+Pour les personnes ayant accès au dépôt Git, le principe général est : dans master on ne met que de éléments liés à des versions CTAN des packages, et si l'on veut commencer à rédiger avant la sortie officielle, on crée une branche qu'on fusionne ensuite.
