@@ -6,5 +6,12 @@ Si vous avez des idées d'améliorations, merci de
 1) soit créer un ticket en vous rendant sur https://github.com/maieul/latexhumain/issues
 2) soit carrément écrire l'amélioration et la proposer via une "Pull Request". 
 
-
 Pour les personnes ayant accès au dépôt Git, le principe général est : dans master on ne met que de éléments liés à des versions CTAN des packages, et si l'on veut commencer à rédiger avant la sortie officielle, on crée une branche qu'on fusionne ensuite.
+
+Pour compiler :
+- Vous devez avoir installé la police Linux Libertine http://www.linuxlibertine.org/
+- Vous devez disposer de Python sur votre ordinateur.
+- Vous devez disposer de Minted
+- Vous devez si besoin installer Pygmentize (pour la coloration syntaxique) :  sudo easy_install Pygments.
+
+Ensuite avec le Terminal, un simple Make suffit.
