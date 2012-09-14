@@ -12,6 +12,18 @@ Si vous avez des idées d'améliorations, merci de
 # Politique de commit
 Pour les personnes ayant accès au dépôt Git, le principe général est : dans master on ne met que de éléments liés à des versions CTAN des packages, et si l'on veut commencer à rédiger avant la sortie officielle, on crée une branche qu'on fusionne ensuite.
 
+# Régles de rédaction
+* les exemples de > pas plus de 64 caractères de longueurs
+* pour les sources primaires->mettre le champ usera a 1, pour permettre d'avoir "éd" et pas "dir"
+* dans les exemples entre latexcode, ne pas mettre de tabulation, mais 4 espace
+* pas de saut de ligne après les debuts d'environnement, ni avant les fins. *Par contre saut de ligne autour de l'environnement
+* Ne pas mettre de note de bas de page dans les quotations, les mettres avant
+* Ne pas commencer de ligne par `\cs`, sauf si précédés de deux points (lorsqu'on veut citer une commande à la syntaxe longue). lorsque code trop long dans un texte, mettre un saut de ligne (changement de paragraphe), pas un //
+* les renvois marginaux : les mettre juste après le mot le plus pertinent
+* Les indexs : sont construits automatiquement lors des appels à `\cs`, `\package`, `\classe` etc. Attention toutefois :
+ * ne pas utiliser ces commandes à l'intérieur d'une commande de titre (bug avec hyperref). Utiliser à la place la commande `\<type>noidx` et indexer ensuite avec `\index[<type>]{<element>}`.
+ * Si l'élement commence en début de phrase, pour avoir la majuscule dans le corps du texte mais la miniscule dans l'index, utiliser le premier argument optionnel : `\class[beamer]{Beamer}`.
+
 # Pour compiler :
 - Vous devez avoir installé la police Linux Libertine http://www.linuxlibertine.org/ ainsi que DejaVu http://dejavu-fonts.org/wiki/Main_Page
 - Vous devez disposer de Python sur votre ordinateur.
