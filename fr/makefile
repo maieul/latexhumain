@@ -17,8 +17,8 @@ all:papier.pdf ecran.pdf
 	@$(BIBER) $*
 	sed -i -e 's/@/"@/g' *.idx 
 	sed -i -e 's/"@\\oldcs/@\\oldcs/' *.idx 
-	splitindex -m "makeindex -s latex-humain.ist" $*.idx 
-	python post-index.py 
+	splitindex -m "makeindex -s ../latex-humain.ist" $*.idx 
+	python ../post-index.py 
 	@echo "Compilation XELATEX 2"
 
 
@@ -29,8 +29,8 @@ all:papier.pdf ecran.pdf
 		then \
 			sed -i -e 's/@/"@/g' *.idx ; \
 			sed -i -e 's/"@\\oldcs/@\\oldcs/' *.idx ; \
-			splitindex -m "makeindex -s latex-humain.ist" $*.idx ; \
-			python post-index.py ; \
+			splitindex -m "makeindex -s ../latex-humain.ist" $*.idx ; \
+			python ../post-index.py ; \
 			echo "Compilation XELATEX" $$i; \
 			$(XELATEX) $< ; \
 		fi \
