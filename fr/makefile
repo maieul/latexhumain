@@ -1,11 +1,4 @@
 
-XELATEX 	= xelatex -shell-escape
-BIBER		= biber -quiet
-RERUN		= 'rerun latex( afterwards){0}'
-UNDEFINED	= "Citation .* undefined"
-LABEL_MULTIPLE		= "(multiply defined)"
-LABEL_NON_DEFINI    = "(Reference .* undefined)"
-
 .PHONY: all  clean
 
 all:papier.pdf ecran.pdf
