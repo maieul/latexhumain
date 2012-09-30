@@ -25,6 +25,11 @@ Pour les personnes ayant accès au dépôt Git, le principe général est : dans
  * Si l'élement commence en début de phrase, pour avoir la majuscule dans le corps du texte mais la miniscule dans l'index, utiliser le premier argument optionnel : `\class[beamer]{Beamer}`.
 
 # Pour compiler :
+
+N'oubliez pas que la version stable de septembre 2012 est aussi disponible en PDF sur le site de l'éditeur.
+
+Néanmoins si vous souhaitez faire votre propre compilation :  
+
 - Vous devez avoir installé la police Linux Libertine http://www.linuxlibertine.org/ ainsi que DejaVu http://dejavu-fonts.org/wiki/Main_Page
 - Vous devez disposer de Python sur votre ordinateur.
 - Vous devez disposer de Minted
