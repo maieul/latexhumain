@@ -1,4 +1,4 @@
-﻿# Licence
+# Licence
 
 Ce livre est disponible en version papier sur http://www.atramenta.net/books/latex-sciences-humaines/79.
 
@@ -37,6 +37,6 @@ Néanmoins si vous souhaitez faire votre propre compilation :
 
 Ensuite avec le Terminal, un simple Make suffit.
 
-########
-1er octobre : le début d'une nouvelle ère
-On part !
+# Traduction
+- Un dossier par langue
+- Contacter l'auteur auparavant pour qu'il explique le fonctionnement du code, de git etc., et vous donne des accès
