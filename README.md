@@ -1,4 +1,4 @@
-# Licence
+﻿# Licence
 
 Ce livre est disponible en version papier sur http://www.atramenta.net/books/latex-sciences-humaines/79.
 
@@ -36,3 +36,7 @@ Néanmoins si vous souhaitez faire votre propre compilation :
 - Vous devez si besoin installer Pygmentize (pour la coloration syntaxique) :  sudo easy_install Pygments.
 
 Ensuite avec le Terminal, un simple Make suffit.
+
+########
+1er octobre : le début d'une nouvelle ère
+On part !
