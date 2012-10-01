@@ -1,0 +1,372 @@
+\chapter{Mettre en sens (3) : créer ses propres commandes}\label{creercommandes}
+
+\begin{intro}
+Nous avons parlé longuement de l'intérêt de séparer mise en sens et mise en forme\renvoi{sensforme}.
+Nous avons indiqué que la meilleure manière pour ce faire était de créer des commandes de mise en sens, qui elles-même appelleraient des commandes de mise en forme.
+
+Voyons maintenant comment créer ces commandes personnalisées.
+\end{intro}
+
+\section{Création d'une commande personnalisée}
+
+Nous souhaitons créer une commande personnalisée servant à indiquer que nous parlons d'un auteur : \csp{auteur}\marg{nom}.
+
+Notre commande se décompose en plusieurs parties : son nom, ici \contenuarg{auteur}, et ses arguments, ici un seul : \arg{nom}.
+
+Une commande LaTeX peut prendre jusqu'à neuf~arguments, ce qui est en général bien suffisant. Si nous notons \arg{N} le nombre d'arguments, la syntaxe de la déclaration d'une nouvelle commande est la suivante :
+\csp{newcommand}\verb|{\|\arg{nom de la commande}\verb|}|\oarg{N}\marg{code}.
+
+\begin{attention}
+    Les noms de commandes ne doivent contenir que des caractères latins non accentués. 
+    
+    Les noms sont sensibles à la casse : \verb|\a| est différent de \verb|\A|.
+\end{attention}
+À l'intérieur de la partie \arg{code}, on peut  :
+\begin{itemize}
+    \item mettre du texte;
+    \item utiliser des commandes de mise en forme ou de mise en sens;
+    \item appeler les arguments passés en utilisant la syntaxe \verb|#x|, où \verb|x| représente le rang de l'argument.
+\end{itemize}
+
+Prenons toujours notre cas d'une commande pour indiquer les noms. Pour le début, nous souhaitons simplement que les noms d'auteur soient suivis d'un astérique (*).
+
+\begin{latexcode}
+\newcommand{\auteur}[1]{#1*}
+Il est bien connu que \auteur{Tertullien} n'était pas montaniste
+mais tertullianiste.
+\end{latexcode}
+
+\newcommand{\auteur}[1]{#1*}
+
+Ce qui nous donne :
+
+\begin{quotation}
+Il est bien connu que \auteur{Tertullien} n'était pas montaniste mais tertullianiste.
+\end{quotation}
+
+
+\contenuarg{Tertullien} a été passé en premier argument. Il apparaît donc à la place du \#1 de la déclaration de commande.
+
+On pourrait souhaiter passer en second argument des informations complémentaires, comme les dates de vie.
+
+\begin{latexcode}
+\newcommand{\auteur}[2]{#1* (#2)}
+Il est bien connu que \auteur{Tertullien}{150 ? - 220 ?}
+n'était pas montaniste mais tertullianiste.
+\end{latexcode}
+
+\renewcommand{\auteur}[2]{#1* (#2)}
+
+\begin{quotation}
+Il est bien connu que \auteur{Tertullien}{150 ? - 220 ?}
+n'était pas montaniste mais tertullianiste.
+\end{quotation}
+
+\begin{plusloins}
+Le lecteur attentif se rappellera qu'il existe des commandes avec des arguments optionnels\renvoi{syntaxecommande}. Il souhaitera sans doute en créer lui même.
+
+Si \LaTeX prévoit bien en standard un mécanisme pour permettre cela, celui-ci est  peu souple. 
+
+Nous conseillons donc de se tourner vers les packages \package{xargs} et \package{ifthenelse}\footcites{xargs}{ifthen}.
+
+Mais tout ceci dépasserait le cadre de cet ouvrage.
+\end{plusloins}
+
+Fort bien, mais comment faire pour mettre en forme ? Il faut  utiliser une commande de mise en forme à l'intérieur de la déclaration de commande de mise en sens. Par exemple, pour mettre en petites capitales la commande est \cs{textsc}.
+
+\begin{latexcode}
+\newcommand{\auteur}[2]{\textsc{#1}* (#2)}
+\end{latexcode}
+
+\renewcommand{\auteur}[2]{\textsc{#1}* (#2)}
+
+\begin{quotation}
+Il est bien connu que \auteur{Tertullien}{150 ? - 220 ?}
+n'était pas montaniste mais tertullianiste.
+\end{quotation}
+
+Nous décrirons plus loin un ensemble de commandes de mise en forme\renvoi{mef}.
+
+\begin{attention}
+    Si la possibilité de créer ses propres commandes est une grande force de \LaTeX, cela ne fait pas toujours la joie des éditeurs. 
+    
+    Il est donc recommandé de discuter au préalable avec son éditeur, et surtout de lui indiquer qu'un balisage sous forme de commandes doit, normalement, lui faciliter la tâche.
+    
+    
+    Nous recommandons par ailleurs de regrouper toutes ses déclarations de commandes dans un fichier unique, appelé via une commande \cs{input}\renvoi{input}.
+    
+    Il est également possible de créer son propre package, pour des commandes utilisées fréquemment dans plusieurs projets\footcite[Ceci dépasserait le cadre de cet ouvrage : je renvoie à d'autres documents. Par exemples][]{creer_sty}.
+\end{attention}
+
+
+\begin{plusloins}\label{commentaireredac}
+On peut ainsi très facilement créer une commande \csp{commentaire} servant pour indiquer des commentaires personnels au cours de la rédaction, afin de les avoir sous les yeux lors d'une relecture papier.
+Par exemple :
+
+\begin{latexcode}
+\newcommand{\commentaire}[1]{\marginpar{#1}}
+\end{latexcode}
+
+Lors de l'impression finale, il suffit de changer cette commande par :
+
+\begin{latexcode}
+\newcommand{\commentaire}[1]{}
+\end{latexcode}
+\end{plusloins}
+
+\subsection{Code d'une commande sur plusieurs lignes}\label{commandepourcent}
+
+Jusqu'ici nos commandes étaient relativement simples. Mais il peut arriver que leur code se complexifie. On souhaiterait alors l'avoir sur plusieurs lignes.
+
+C'est tout à fait possible, mais il faut simplement mettre  un signe pourcentage (\%) à la fin de chaque ligne, sous peine d'avoir  des espaces intempestives. Exemple sans  \% :
+
+\begin{latexcode}
+\newcommand{\auteur}[2]{
+    \textsc{#1}* (#2)
+    }
+\end{latexcode}
+
+\renewcommand{\auteur}[2]{\underline{ }%
+    \textsc{#1}* (#2)\underline{ }%
+}
+
+\begin{quotation}
+Il est bien connu que \auteur{Tertullien}{150 ? - 220 ?}
+n'était pas montaniste mais tertullianiste.
+\end{quotation}
+
+On constate une espace en trop avant et une après la mention de l'auteur, que nous avons soulignées pour les besoins de l'explication.
+En revanche, si on met des \% :
+
+\begin{latexcode}
+\newcommand{\auteur}[2]{%
+    \textsc{#1}* (#2)%
+    }
+\end{latexcode}
+
+\renewcommand{\auteur}[2]{%
+    \textsc{#1}* (#2)%
+}
+
+\begin{quotation}
+Il est bien connu que \auteur{Tertullien}{150 ? - 220 ?}
+n'était pas montaniste mais tertullianiste.
+\end{quotation}
+
+Il n'y a plus d'espaces intempestives.
+
+
+\subsection{Étoiler \oldcs{newcommand}}
+
+La création des commandes sous \LaTeX est une fonctionnalité très puissante, mais potentiellement dangereuse. Prenons la commande suivante :
+
+\begin{latexcode}
+\newcommand{\auteur}[1]{\textsc{#1}*}
+\end{latexcode}
+
+Imaginons que nous l'appelions en oubliant de fermer notre accolade :
+
+\begin{latexcode}
+Il est bien connu que \auteur{Tertullien n'était pas montaniste
+ mais tertullianiste.
+\end{latexcode}
+
+Que va-t-il se passer ? \LaTeX comprend que l'ensemble de la fin du texte est un argument de la commande, ce qui empêche le compilateur de bien fonctionner  et nous n'obtiendrons rien, ou alors un résultat incorrect.
+
+Pour limiter ces soucis, \LaTeX propose de définir des commandes courtes, dont les arguments ne dépassent pas la longueur d'un paragraphe. En cas d'oubli de fermeture de parenthèses, \LaTeX arrête automatiquement l'argument à la fin du paragraphe.
+
+Pour définir ces commandes courtes, il suffit d'utiliser \csp{newcommand*}.
+
+\begin{latexcode}
+\newcommand*{\auteur}[1]{\textsc{#1}*}
+\end{latexcode}
+
+\subsection{Espace après les commandes sans argument}
+
+
+Il est possible de définir des commandes sans aucun argument. Prenons une commande personalisée \csp{cf}, qui permet d'obtenir rapidement la forme \forme{\cf}
+
+\begin{latexcode}
+\newcommand{\cf}[0]{\emph{cf.}}
+\end{latexcode}
+
+Comme notre commande ne prend pas d'argument, il est nécessaire, lorsque nous l'appelons, de la séparer du texte qui suit par une espace, afin que \LaTeX sache où s'arrête la commande : 
+
+\begin{latexcode}
+Ceci est très intéressant \cf cela.
+\end{latexcode}
+
+Mais  l'espace disparaît lors de la compilation :
+
+\begin{quotation}
+Ceci est très intéressant \cf cela.
+\end{quotation}
+
+La solution consiste à utiliser dans la définition de commande la commande \csp{xspace} du package éponyme\index[pkg]{xspace}. Elle permet de gérer automatiquement les espaces qui suivent l'appel à une commande, en tenant compte de la typographie.
+
+\begin{latexcode}
+\newcommand{\cf}[0]{\emph{cf.}\xspace}
+\end{latexcode}
+
+\renewcommand{\cf}[0]{\emph{cf.}\xspace}
+
+\begin{quotation}
+Ceci est très intéressant \cf cela.
+\end{quotation}
+
+\begin{plusloins}
+Le package \package{foreign}\footcite{foreign} propose toute une série de commandes similaires pour indiquer des abréviations ou des expressions étrangères courantes.
+\end{plusloins}
+
+
+\section{Commandes de mise en forme\label{mef}}
+
+Nous listons ici les principales commandes de mise en forme. Pour des besoins avancés, on trouvera aisément de la documentation sur internet. En ce qui concerne les questions d'espacement, un chapitre spécifique leur est dédié\renvoi{espacement}.
+
+\subsection{Taille des caractères}\label{taille}
+
+Il est possible de définir de manière absolue la taille des caractères en indiquant le nombre de points. Toutefois la meilleur méthode est de le définir d'après la taille de base, et d'utiliser les commandes ci-dessous. La taille obtenue dépend de la taille de base définie lors de l'appel au préambule\renvoi{preambule}.
+
+\begin{longtable}{|l|l|}
+      \hline
+     \headlongtable{Commande}                 &    \headlongtable{Effet}                                 \\
+      \hline
+     \endhead
+    \hline
+    \endfoot
+     \csp{tiny}             &     \tiny abcdefghijklmnopqrst              \\
+     \csp{scriptsize}         &     \scriptsize abcdefghijklmnopqrst          \\
+     \csp{footnotesize}     &     \footnotesize abcdefghijklmnopqrst         \\
+     \csp{small}            &    \small abcdefghijklmnopqrst             \\
+     \csp{normalsize}        &     \normalsize abcdefghijklmnopqrst         \\
+     \csp{large}            &    \large abcdefghijklmnopqrst             \\
+     \csp{Large}            &     \Large abcdefghijklmnopqrst             \\
+     \csp{LARGE}        &     \LARGE abcdefghijklmnopqrst             \\
+     \csp{huge}            &     \huge abcdefghijklmnopqrst             \\
+     \csp{Huge}            &    \Huge abcdefghijklmnopqrst             \\
+\end{longtable}
+
+\label{commandesdetaille}Ces commandes ont toutefois un comportement particulier : ce sont des commandes dites \enquote{à bascule}\renvoi{bascule}. À la différence de la plupart des commandes, elles ne prennent pas d'argument. Elles doivent être utilisées entre accolades, le texte dont la taille change étant inséré après la commande, dans les accolades.
+
+Ainsi :
+\begin{latexcode}
+{\large Texte plus gros}
+\end{latexcode}
+
+Et non pas :
+
+\begin{latexcode}
+\large{Texte plus gros}
+\end{latexcode}
+
+\subsection{Style de caractères}
+
+Voici une liste non exhaustive de commandes utiles pour personnaliser les styles de caractère.
+
+
+\begin{longtable}{|l|l|}
+    \hline
+    \headlongtable{Commande}                & \headlongtable{Effet} \\                                
+    \hline
+    \endhead
+    \hline
+    \endfoot
+    \csp{textit}            & \textit{Italique}                            \\
+    \csp{emph}            & \emph{Texte en emphase}                    \\
+    \csp{textbf}            &  \textbf{Gras}                            \\
+    \csp{textsc}            & \textsc{Petites capitales}                    \\
+    \csp{underline}        & \underline{Souligné}     (à éviter)                \\
+    \csp{textsuperscript}    &  \textsuperscript{Exposant}                    \\
+    \csp{textsubscript}        & \textsubscript{Indice} (nécessite le package \package{subscript}) \\
+\end{longtable}
+
+\subsection{Couleurs}
+
+Les couleurs ne sont pas gérées nativement dans \LaTeX. Il faut passer par le package \package{color} ou le package \package{xcolor} qui proposent tous les deux une commande \csp{textcolor}\marg{nom de la couleur}\marg{texte en couleur}.
+
+
+
+La différence tient principalement au nombre de couleurs disponibles par défaut et à la facilité  d'en définir des nouvelles, mais aussi à la possibilité d'appliquer des couleurs à d'autres éléments que le texte. Nous ne présentons ici que le package \package{xcolor}, de manière succincte. Nous renvoyons à la documentation pour des usages avancés\footcite{xcolor}.
+
+\subsubsection{Couleurs standards}
+Le package \package{xcolor} propose les couleurs de bases suivantes : 
+
+% Définition de la fonction de modélisation des couleurs
+\newcommand{\exemplecouleur}[1]{#1 & \fcolorbox{black}{#1}{~} \\[1pt]}
+% Fin de la définition
+
+\begin{longtable}{|l|l|}
+    \hline
+    \headlongtable{Nom de la couleur}         & \headlongtable{Couleur}                                 \\
+    \hline
+    \endhead
+    \hline
+    \endfoot
+    \exemplecouleur{black}
+    \exemplecouleur{blue}
+    \exemplecouleur{brown}
+    \exemplecouleur{cyan}
+    \exemplecouleur{darkgray}
+    \exemplecouleur{gray}
+    \exemplecouleur{green}
+    \exemplecouleur{lightgray}
+    \exemplecouleur{lime}
+    \exemplecouleur{magenta}
+    \exemplecouleur{olive}
+    \exemplecouleur{orange}
+    \exemplecouleur{pink}
+    \exemplecouleur{purple}
+    \exemplecouleur{red}
+    \exemplecouleur{teal}
+    \exemplecouleur{violet}
+    \exemplecouleur{white}
+    \exemplecouleur{yellow}
+    
+\end{longtable}
+
+\subsubsection{Couleurs supplémentaires}
+
+On peut passer les options \option{dvipsnames}, \option{svgnames} ou \option{x11names} lors de l'appel au package \package{xcolor}, chacune fournissant un jeu de couleurs. Ne pouvant lister toutes ces couleurs dans cet ouvrage, nous renvoyons à la documentation de \package{xcolor}\footcite{xcolor_jeu}.
+
+\subsubsection{Définir ses propres couleurs}
+
+Il est possible de définir ses propres couleurs. Il faut  utiliser \csp{definecolor}, selon la syntaxe suivante : 
+\cs{definecolor}\marg{nom}\marg{methode}\marg{definition}.
+
+
+Les couleurs peuvent être définies de plusieurs manières\footnote{On consultera n'importe quel livre scientifique sur les couleurs pour plus de détails. On peut également consulter la documentation du package \package{xcolor}.}. Les deux principales sont\footcite[Il existe aussi la méthode de définition par la longueur d'onde pour les couleurs de l'arc en ciel, par pourcentage de gris pour les différents niveaux de gris, ainsi que par teinte, saturation et luminosité, mais ceci nécessiterait un cours de physique lumineuse. Pour  les personnes intéressées par les détails, consulter][]{xcolor_methode} :
+\begin{itemize}
+\item La méthode additive en additionnant du rouge, du vert et du bleu (comme sur un écran d'ordinateur).
+\item La méthode soustractive en superposant du cyan, du magenta, du jaune et du noir (comme sur une imprimante couleur).
+\end{itemize}
+
+
+Dans les deux cas, il faut  donner une valeur comprise entre 0 (inclus) et 1 (inclus) à chacun des composants\footcite[On pourra trouver une série de code couleur sur le site][]{codecouleur}.
+
+\definecolor{rougebourgogne}{HTML}{6B0D0D}
+
+
+Prenons par exemple la définition de la couleur \textcolor{rougebourgogne}{rouge bourgogne}\footnote{Avec Anne Sylvestre les auteurs proclament fièrement \enquote{Que Bordeaux me pardonne, j’appartiens au Bourgogne} \parencite{romaneconti}.}.
+On peut la définir de la manière suivante en méthode additive :
+
+\begin{latexcode}
+\definecolor{rougebourgogne}{rgb}{0.41,0.05,0.05}
+\end{latexcode}
+
+Ou bien en méthode soustractive\footnote{Idéalement le choix de  la méthode devrait relever du support de destination. Mais le package \package{xcolors} propose des systèmes de conversion d'une méthode à l'autre.}de la manière suivante :
+
+\begin{latexcode}
+\definecolor{rougebourgogne}{cmyk}{0,0.88,0.88,0.58}
+\end{latexcode}
+
+Enfin signalons la méthode HTML qui offre l'avantage d'avoir de nombreux sites internet indiquant les codes couleur HTML\footnote{En réalité la méthode HTML est une méthode additive avec des valeurs comprises entre 0 et 255, notées en hexadécimal.}.
+
+La même couleur se définit ainsi :
+
+\begin{latexcode}
+\definecolor{rougebourgogne}{HTML}{6B0D0D}
+\end{latexcode}
+
+
+
+

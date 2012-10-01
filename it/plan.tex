@@ -1,0 +1,82 @@
+\ifpapier\input{couv/garde}
+\else
+\input{couv/pdf}
+\fi
+
+\def\epi{Du \LaTeX sed \TeX}
+\def\episource{Proverbe Latin}
+
+\phantomsection\part*{Avant-propos\addcontentsline{toc}{part}{Avant-propos}}
+\pdfbookmark[0]{Remerciements et détails techniques}{}
+\input{preliminaires/merci}
+\newpage
+\input{preliminaires/apropos}
+\input{preliminaires/latex}
+
+
+\def\epi{Les Sabins \textelp{} commencerent la bataille, qui fut aspre \& dura longuement}
+\def\episource{\cite{Sabins}}
+
+\part{Premiers pas avec \LaTeX}
+\input{premierpas/notions_de_bases}
+\input{premierpas/structure}
+\input{premierpas/langues}
+\input{premierpas/sens}
+\input{premierpas/citation}
+\input{premierpas/commande}
+\input{premierpas/nontextuels}
+
+\def\epi{Empoisonnée de dogmes et de mythes, notre opinion, même la moins ennemie des lumières, a perdu jusqu’au goût du contrôle. Le jour où, ayant pris soin d’abord de ne pas la rebuter par un oiseux pédantisme, nous aurons réussi à la persuader de mesurer la valeur d’une connaissance sur son empressement à tendre le cou d’avance à la réfutation, les forces de la raison remporteront une de leurs plus éclatantes victoires. C’est à la préparer que travaillent nos humbles notes, nos petites références tatillonnes que moquent aujourd’hui, sans les comprendre, tant de beaux esprits.}
+\def\episource{\cite{bloch}}
+\part{Gérer sa bibliographie avec \LaTeX}\label{bibliographie}
+\input{biblio/principe}
+\input{biblio/fichier}
+\input{biblio/citation}
+\input{biblio/finale}
+\input{biblio/sousentrees}
+\input{biblio/style1}
+\input{biblio/style2}
+
+\def\epi{Quand on ne sait pas où on va, il faut y aller\ldots~ et le plus vite possible !}
+\def\episource{Devise shadok}
+\part{Faciliter la navigation}
+\input{navigation/renvoi}
+\input{navigation/sommaire}
+\input{navigation/index}
+
+\def\epi{Le golf ? Un sport où l’on doit tenter de contrôler une balle avec des outils tout à fait inadaptés à cet effet.}
+\def\episource{Thomas Woodrow \textsc{Wilson}, Président des États-Unis d'Amérique}
+\part{Autres outils pour les sciences humaines}
+\input{shs/bibleref.tex}
+\input{shs/eledmac}
+\input{shs/beamer}
+
+\def\epi{La typographie est simple, aussi simple que de jouer du violon!}
+\def\episource{Maximilien \textsc{Vox}, typographe}
+\part{Quelques éléments de mise en forme}
+\input{avancees/entetepied}
+\input{avancees/police}
+\input{avancees/espace}
+\input{avancees/index}
+
+\def\epi{Avec un escalier prévu pour la montée, on réussit souvent à monter plus bas qu'on serait descendu avec un escalier prévu pour la descente.}
+\def\episource{Dicton shadok}
+
+\part{Annexes}
+\appendix
+\input{annexes/install}
+\input{annexes/logiciels}
+\input{annexes/terminal}
+\input{annexes/latexmk}
+\input{annexes/unites}
+\input{annexes/svn}
+\input{annexes/aide}
+\input{annexes/glossaire}
+\input{annexes/bibliographie}
+\input{annexes/index}
+
+\setcounter{tocdepth}{2}
+\tableofcontents
+\ifpapier
+\input{couv/gardefin}
+\fi

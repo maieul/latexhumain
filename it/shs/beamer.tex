@@ -1,0 +1,259 @@
+\chapter{Présentations avec \LaTeX{} : \classenoidx{Beamer}}\label{beamer}\index[classe]{beamer}
+
+\begin{intro}
+Si \LaTeX{} permet d'écrire du texte, il offre également la possibilité de créer facilement des diapositives de présentation pour un exposé ou une conférence\footnote{Pour remplacer Microsoft Powerpoint ou LibreOffice Impress.}. Ceci se fait à l'aide d'une classe spécifique : \classe{beamer}.
+
+Nous présenterons ici les bases de Beamer afin de bien préparer des supports de présentation. Nous renvoyons à d'autres ouvrages pour plus de détails\footcites[On consultera pour une introduction plus approfondie][]{intro_beamer}[pour les usages avancées on se servira du manuel : ][]{beamer}.
+
+Le PDF résultant de la compilation d'un fichier Beamer peut être affiché sous forme de diaporama contrôlable à l'aide des logiciels classiques de lecture de PDF.
+\end{intro}
+
+\section{Préambule et premières diapositives}
+
+\classe[beamer]{Beamer} étant une classe \LaTeX{}, le document doit commencer par :
+
+\begin{latexcode}
+\documentclass{beamer}
+\end{latexcode}
+
+Le reste du préambule contient le même contenu qu'un fichier \ext{tex} classique : appels aux packages, définitions d'éventuelles commandes, etc.
+
+On peut définir la manière dont les diapositives vont s'afficher, en utilisant dans le préambule la commande \csp{usetheme}. Par exemple, pour utiliser le thème \forme{Darmstadt} :
+
+\begin{latexcode}
+\usetheme{Darmstadt}
+\end{latexcode}
+
+Un certain nombre de thèmes sont décrits dans le manuel de Beamer\footcite{beamer_theme}.
+
+Avec Beamer, l'unité de base  est la diapositive, appelée \textenglish{\emph{frame}}. Une diapositive se crée avec l'environnement \emph{frame} et peut contenir n'importe quel contenu \LaTeX{}.
+Par exemple :
+
+\begin{latexcode}
+\begin{frame}
+    \begin{itemize}
+        \item Élément 1
+        \item Élément 2
+        \item Élément 3
+        \item Etc.
+    \end{itemize}
+\end{frame}
+\end{latexcode}
+
+À noter que l'environnement  \enviro{frame} peut être remplacé par la commande homonyme\index[cs]{frame@\oldcs{frame}|hyperpagetextbf} :
+
+\begin{latexcode}
+\frame{
+    \begin{itemize}
+        \item Élément 1
+        \item Élément 2
+        \item Élément 3
+        \item Etc.
+    \end{itemize}
+}
+\end{latexcode}
+
+\section{Diapositives de titre}
+
+Il est possible d'utiliser dans le document Beamer les commandes \cs{section} et \cs{subsection}\renvoi{niveautitre}\footcite[Le manuel de \classe{beamer} déconseille d'utiliser  \cs{subsubsection} parce que \enquote{c'est le diable}. \emph{Cf}. :][]{beamer_diable} et d'utiliser dans le préambule les commandes de description : \cs{title}, \cs{author} et \cs{date}\renvoi{notioncommande}.
+
+Ces informations servent toutefois uniquement à structurer le document, afin de pouvoir afficher le plan. C'est pourquoi il faut les entrer \emph{en-dehors} des diapositives.
+
+Pour les afficher dans une diapositive, en revanche, il faut utiliser les commandes \csp{sectionpage} et \csp{subsectionpage} pour les niveaux de titres ; \csp{titlepage} pour les informations sur la date, l'auteur et le titre de la conférence.
+
+\inputminted{exemples/shs/beamer/structure.tex}
+
+\section{Affichage différé : les couches Beamer}
+
+Afficher tous les éléments d'une diapositive en une seule fois présente peu d'intérêt : il vaut mieux les afficher petit à petit afin de les commenter au fur et à mesure. Beamer utilise pour cela la notion de \forme{\textenglish{slides}}, que nous traduisons par celle de \forme{couches}. Il s'agit de dire à une commande de ne s'exécuter que sur une ou plusieurs couches spécifiques.
+
+La syntaxe de l'affichage couche par couche (en anglais \textenglish{\emph{overlay specification}}) est  : \verb|<a-b>| où \verb|a| désigne la couche de départ et \verb|b| désigne la couche d'arrivée. On peut également séparer les numéros de couches spécifiques par des virgules. Voici des exemples pour mieux comprendre :
+
+\begin{latexcode}
+\begin{frame}
+\begin{itemize}
+    \item<1>Élément affiché uniquement sur la première couche.
+    \item<2->Élément affiché à partir de la deuxième couche.
+    \item<2-4>Élément affiché sur les couches 2 à 4.
+    \item<-4>Élément affiché jusqu'à la couche 4, incluse.
+    \item<1,3-5>Élément affiché sur les couches 1 et 3 à 5.
+\end{itemize}
+\end{frame}
+\end{latexcode}
+
+Toutes les commandes \LaTeX{} ne réagissent pas nécessairement aux spécifications de couche : par exemple la commande \cs{emph} ne réagit pas : si vous utilisez une spécification de couche avec cette commande, la spécification apparaît sur la diapositive.
+
+On peut vouloir obtenir un PDF où toutes les couches d'une diapositive apparaissent d'un seul coup, afin par exemple d'avoir une version papier : il suffit d'utiliser l'option de package \option{handout}.
+
+\begin{latexcode}
+\documentclass[handout]{beamer}
+\end{latexcode}
+
+\begin{plusloins}
+Il est possible de fabriquer un PDF destiné à l'impression sur transparents --- en cas de défaillance du vidéo-projecteur --- en précisant quelles couches doivent être séparées sur les transparents : nous renvoyons au manuel\footcite{beamer_trans}.
+\end{plusloins}
+
+Beamer propose des commandes et des environnements pour des usages avancés des spécifications de couche, notamment pour remplacer des éléments par d'autres éléments, tout en accordant à chacun la même place sur la diapositive, pour éviter d'avoir des \enquote{effets de déplacement} d'un élément d'une couche à l'autre. 
+Ceci dépassant cette introduction, nous renvoyons au manuel\footcite{beamer_overlays}.
+\section{Mise en valeur}
+
+\subsection{Blocs}
+
+Il existe plusieurs manières de mettre en valeur certains éléments d'une diapositive. La première  consiste à les placer dans des blocs pour les encadrer. \classe[beamer]{Beamer} propose plusieurs blocs standards, qui prennent à la fois un titre et un contenu. Ces blocs sont  : bloc standard, bloc d'exemple et bloc d'alerte.
+
+\begin{latexcode}
+\begin{block}{Un bloc normal} 
+    Un texte à encadrer
+\end{block}
+\begin{alertblock}{Attention} 
+    Ce texte est important
+\end{alertblock}
+\begin{exampleblock}{Exemple} 
+    Un exemple des propos tenus
+\end{exampleblock}
+\end{latexcode}
+
+\begin{plusloins}
+Il est possible de créer ses propres blocs, le manuel explique comment\footcite{beamer_box}. Il existe aussi des éléments proches des blocs que sont les encadrés, pour mettre en valeur des définitions ou des théorèmes\footcite{beamer_theorems}.
+\end{plusloins}
+
+Évidemment, il est possible de spécifier un niveau de couche; la spécification doit alors se trouver après le titre du bloc :
+
+\begin{latexcode}
+\begin{alertblock}{Attention}<2>
+    Un message d'alerte sur la couche 2.
+\end{alertblock}
+\end{latexcode}
+
+L'apparence des blocs dépend du thème choisi.
+
+\subsection{La commande alert}
+
+La commande \csp{alert} sert à mettre en valeur une partie d'un texte. Elle peut recevoir une spécification de couche. Cela est très utile pour indiquer à l'auditoire le sujet dont on parle. 
+
+\begin{latexcode}
+\begin{frame}
+\begin{description}
+    \item\alert<1>{Nous parlons d'abord d'une chose}
+    \item\alert<2>{Nous parlons ensuite d'une autre}
+    \item\alert<3>{Et enfin d'une troisième}
+\end{description}
+\end{frame}
+\end{latexcode}
+
+\begin{plusloins}
+
+Le package \package{spot} permet des mises en valeur sous forme de taches lumineuses.
+
+\end{plusloins}
+\section{Notes de conférence}
+
+Il peut être utile pour le conférencier d'avoir, en plus des diapositives, des notes  lui servant d'aide-mémoire au cours de son exposé.
+
+On  crée une note avec la commande \csp{note} dans une diapositive.
+
+\begin{latexcode}
+\begin{frame}
+\note{Un élément à se rappeler pour le signaler au public}.
+    
+Le contenu proprement dit de la diapositive.
+\end{frame}
+\end{latexcode}
+
+On peut afficher plusieurs notes sous forme de liste en passant  à la commande \csp{note} un argument optionnel ayant pour valeur \contenuarg{item}.
+
+\begin{latexcode}
+\begin{frame}
+\note[item]{Un élément à se rappeler pour le signaler au public}.
+\note[item]{Un autre  élément}
+    
+Le contenu proprement dit de la diapositive.
+\end{frame}
+\end{latexcode}
+
+
+Les notes n'apparaissent pas sur la diapositive, mais sont reportées après, dans une page spéciale du fichier PDF. Cela n'est pas très pratique : on souhaiterait avoir d'une part les diapositives, d'autre part les notes. 
+
+On obtient ce résultat en plaçant \csp{setbeameroption} dans le préambule, avec le bon argument:
+
+\begin{latexcode}
+\setbeameroption{hide notes}
+\end{latexcode}
+
+signifie que nous produisons un PDF contenant uniquement les diapositives. \emph{A contrario} :
+
+\begin{latexcode}
+\setbeameroption{show only notes}
+\end{latexcode}
+
+indique que nous désirons un fichier ne contenant que les notes.
+
+\begin{plusloins}
+Il est également possible de produire un fichier contenant les diapositives et les notes, mais capable, avec le bon logiciel, de les envoyer sur deux écrans différents. Nous renvoyons au manuel pour plus de détails\footcite{beamer_2ecrans}.
+\end{plusloins}
+
+\section{Écrire son article dans le même fichier que la présentation}
+
+Il peut être judicieux d'écrire l'article correspondant à la présentation dans le même fichier que celui-ci. Il suffit pour cela d'écrire le contenu de l'article entre les environnements (ou les commandes) \enviro{frame} ---  mettre les titres des sections hors des diapositives révèle ici son avantage: ces titres sont aussi ceux de l'article.
+
+\begin{latexcode}
+\section{Introduction}
+
+Introduction de notre article
+\begin{frame}
+    Diapositive pour l'introduction de la présentation
+\end{frame}
+
+\section{Première partie}
+
+Texte de la première partie
+\begin{frame}
+    Diapositive pour la première partie
+\end{frame}
+
+etc.
+\end{latexcode}
+
+\begin{plusloins}
+On peut aussi introduire des miniatures des diapositives  dans l'article : consultez le manuel\footcite{beamer_diapo_article}. 
+\end{plusloins}
+
+\subsection{Diapositives ou article ?}
+
+Par défaut, Beamer va afficher les textes situés entre les diapositives dans des diapositives spécifiques. Pour éviter cela, on passe l'option \option{ignorenonframetext} lors de l'appel de la classe.
+
+\begin{latexcode}
+\documentclass[ignorenonframetext]{beamer}
+\end{latexcode}
+
+Pour obtenir uniquement la version article, il suffit de changer la classe du document et de charger le package \package{beamerarticle}.
+
+\begin{latexcode}
+\documentclass{article}
+\usepackage{beamerarticle}
+\end{latexcode}
+
+\subsection{Automatiser les réglages}
+
+Plutôt que de changer systématiquement les premières lignes du document, autant utiliser les possibilités d'inclusion\renvoi{inclusion} de fichiers offertes par \LaTeX{}. 
+
+Pour cela, créer trois fichiers :  \fichier{article.tex}, \fichier{presentation.tex} et \fichier{contenu.tex}.
+Dans \fichier{article.tex} mettre :
+
+\begin{latexcode}
+\documentclass{article}
+\usepackage{beamerarticle}
+\input{contenu}
+\end{latexcode}
+
+Dans \fichier{presentation.tex} mettre :
+
+\begin{latexcode}
+\documentclass[ignorenonframetext]{beamer}
+\input{contenu}
+\end{latexcode}
+
+Dans \fichier{contenu.tex} mettre les appels aux packages communs aux deux versions ainsi que le contenu de la présentation / de l'article.
+
+
+

@@ -1,0 +1,377 @@
+\chapter{Remplir sa base de données bibliographique}\label{bddbiblio}
+
+\begin{intro}
+La première étape pour gérer une bibliographie avec \LaTeX est la constitution d'une base de données bibliographiqe contenant l'ensemble des références. Celle-ci est un simple fichier texte qui porte une extension \ext{bib} et possède une structure particulière.
+\end{intro}
+
+
+\section{Structure de base d'un fichier \ext{bib}}
+
+Chaque élément d'une bibliographie est appelé \forme{entrée}. Une entrée bibliographique se caractérise par :
+\begin{glossaire}
+\item[Un type]s'agit-il d'un article, d'un livre, d'actes de colloque ?
+\item[Une clef unique]qui permet de distinguer une entrée bibliographique d'une autre. C'est elle qui est mentionnée dans vos fichiers \ext{tex} lorsque vous désirez insérer une référence bibliographique.
+\item[Des champs]contenant des indications sur l'ouvrage, tels que : auteur, titre, éditeur, etc. 
+\end{glossaire}
+
+L'avantage de ce système se comprend  aisément. En effet, une correction dans la base de donnée bibliographique est automatiquement reportée dans le travail à chaque fois que l'entrée est mentionnée, moyennant une nouvelle compilation avec Biber.
+
+Un fichier \ext{bib} est un fichier texte contenant une suite d'instructions, de la forme suivante :
+
+
+\begin{latexcode}
+@type{clef,
+    Champ1 = {Valeur 1},
+    Champ… = {Valeur …},
+    Champn = {Valeur n}
+}
+\end{latexcode}
+
+
+
+Par exemple :
+
+
+\inputminted{exemples/biblio/fichier/urner.bib}
+
+Par ces lignes nous déclarons un livre (\type{book}) auquel nous attribuons la clef \verb|Urner1952|. Ce livre est une œuvre de Urner, Hans de son prénom ; il s'intitule \emph{Die ausserbiblische Lesung in Christlichen Gottesdienst} et a été publié en 1952 à Gottigen.
+
+
+Il peut être affiché dans le fichier \ext{pdf} sous la forme :
+
+\begin{quotation}
+\cite{Urner1952}
+\end{quotation}
+
+
+
+Un fichier \ext{bib} n'est rien d'autre qu'une série d'entrées de ce type. Cependant, comme il est assez aisé de \enquote{s'emmêler les pinceaux}, notamment dans les ouvertures et fermetures des accolades, il vaut la peine d'utiliser un logiciel de gestion de bibliographies\renvoi{logicielbiblio}, permettant de créer facilement des fichiers au format \ext{bib}. En outre ces logiciels permettent en général des recherches croisées dans la base de données. Nous en  présentons deux en annexe.
+
+La documentation de \package{biblatex} contient l'ensemble des champs et des types possibles. Pour éviter de répéter ce manuel, nous vous présenterons les champs en les classant par catégorie. Mais auparavant nous allons donner quelques conseils sur le choix de la clef.
+
+\section{Le choix de la clef}
+
+Une entrée bibliographique doit avoir une clef unique. Cette clef doit comporter uniquement des caractères alphanumériques non accentués, éventuellement avec des tirets. 
+Quelques conseils pour le choix de la clef :
+\subsection{Pour les œuvres contemporaines}
+Prendre le nom de l'auteur suivi de la date. Par exemple \verb|Urner1952|.
+
+\subsection{Pour les œuvres anciennes}
+
+Prendre le nom de l'œuvre,  éventuellement abrégée. Ainsi \verb|ContraFelix| pour parler du \citetitle{ContraFelix} d'Augustin\footcite{ContraFelix}. Si plusieurs œuvres d'auteurs différents portent le même nom, faire précéder du nom de l'auteur. On peut aussi pour les œuvres sans titre et sans auteur indiquer un numéro dans un catalogue de référence.
+
+
+
+\section{Les différentes types d'entrées}
+Voici les différents types d'entrées disponibles\footnote{À vrai dire il est possible de rajouter les siennes, mais nous vous le déconseillons.}.
+
+
+\begin{choix}
+
+	\item[\type{article}] 
+Article d'un périodique. Pour les contributions de colloque, voir \type{inproceedings}.
+	\item[\type{book}] 
+Livre. Pour les actes de colloque, voir  \type{proceedings}. 
+	\item[\type{booklet}]
+	Livret. Texte sous la forme d'un livre mais sans éditeur commercial officiel.
+	\item[\type{bookinbook}]
+	Livre dans un livre. Par exemple lorsque un auteur  voit ses écrits rassemblés en un seul volume physique. 	
+	\item[\type{collection}]
+	Ouvrage collectif mais avec des parties distinctes par auteur.
+	\item[\type{inbook}]
+	Partie d'un livre.
+	\item[\type{incollection}]
+	Partie individuelle (avec un auteur propre) dans un ouvrage collectif.
+	\item[\type{inproceedings}]
+	 Contribution à un colloque.
+	 \item[\type{inreference}]
+	 Article de dictionnaire, d'encyclopédie, etc.
+	\item[\type{manual}]
+	 Manuel, pas nécessairement sous forme imprimée.
+	 \item[\type{mvbook}]
+	 Livre en plusieurs volumes.
+	 \item[\type{mvcollection}]
+	 Ouvrages collectifs en plusieurs volumes, avec des parties distinctes par auteurs.
+	 \item[\type{mvproceedings}]
+	 Actes de colloque en plusieurs volumes.
+	 \item[\type{mvreference}]
+	 Dictionnaire, encyclopédie, etc. en plusieurs volumes.
+	\item[\type{misc}]
+	 Entrée générique, pour tout type d'entrée non catégorisable. Par exemple : tableau, manuscrit, \emph{ostracon}. 
+	\item[\type{online}]
+	Ressource internet. Si une une œuvre existe aussi sous une autre forme, choisir le type d'entrée qui y correspond et utiliser le champ \champ{url}.
+	\item[\type{patent}]
+	Brevet industriel.
+	\item[\type{periodical}]
+	Numéro précis d'un périodique.	
+	\item[\type{report}]	
+	Rapport technique ou de recherche.
+	\item[\type{proceedings}]
+	Acte de colloque.
+	\item[\type{suppbook}]
+	Partie annexe d'un livre, comme par exemple la préface ou les appendices.
+	\item[\type{supperiodical}]
+	Supplément à un numéro de périodique.
+	\item[\type{reference}]
+	Dictionnaire, encyclopédie, etc.
+	\item[\type{thesis}]
+	Thèse de doctorat, mémoire de maîtrise ou tout travail rédigé en vue de l'obtention d'un titre scolaire ou universitaire.
+	\item[\type{unpublished}]
+	Ouvrage non publié.
+\end{choix}
+
+Pour les éditions contemporaines d'œuvres anciennes, le choix d'une entrée de type \type{book} peut se justifier, en dépit du caractère non livresque de certaines d'entre elles, comme c'est le cas par exemple des lettres d'Augustin. En revanche, pour désigner  une œuvre non éditée, ou un manuscrit, nous conseillons le type \type{misc}.
+
+\section{Les différents champs possibles}
+
+Nous ne listons pas ici tous les champs, mais seulement ceux qui peuvent rentrer dans les catégories les plus utiles.
+\subsection{Les champs de personnes}
+
+Ces champs servent à désigner des personnes qui ont participé au processus de production de l'œuvre : auteur, annotateur, éditeur (scientifique), etc. Il n'est évidemment pas nécessaire de remplir tous ces champs.
+
+\begin{choix}
+	\item[afterword] Auteur(s) de la postface. 
+   	\item[annotator] Auteur(s) des annotations. 
+   	\item[author] Auteur(s) de l'œuvre.    
+   	\item[bookauthor] Auteur(s) du livre dans lequel l'œuvre est insérée. 
+   	\item[commentator] Auteur(s) des commentaires. 
+   	\item[editor] Éditeur(s) scientifique(s). On peut en préciser le rôle grâce au champ \champ{editortype}.	
+   	\item[editora] Éditeur(s) scientifique(s) ayant un autre rôle. On peut en préciser le rôle grâce au champ \champ{editoratype}.  
+   	\item[editorb] Éditeur(s) scientifique(s) ayant un autre rôle. On peut en préciser le rôle  grâce au champ \champ{editorbtype}.  
+   	\item[editorc] Éditeur(s) scientifique(s) ayant un autre rôle. On peut en préciser le rôle  grâce au champ \champ{editorctype}\footcite[Pour ces quatres champs, se reporter à][]{biblatex_editortype}.
+	\item[foreword] Auteur(s) de la préface.
+   	\item[holder] Titulaire d'un brevet industriel. 
+   	\item[introduction] Auteur(s) de l'introduction. 
+   	\item[translator] Traducteur(s). 		
+\end{choix}
+
+Lorsque des champs possèdent des valeurs égales, par exemple les champs \champ{editor} et \champ{translator}, \package{biblatex} fusionne ces champs lors de l'affichage. Prenons ainsi l'entrée suivante : 
+
+\inputminted{exemples/biblio/fichier/augustin_editeur.bib}
+
+Elle est affichée ainsi : 
+
+\begin{quotation}
+\cite{DoctrineChretienne}
+\end{quotation}
+
+\subsubsection{Comment entrer un nom de personne}
+
+Ces différents champs prennent comme valeur un ou plusieurs noms de personne. S'il y a plusieurs noms, il suffit de les séparer par le mot-clef \forme{and}. Par exemple pour les auteurs de l'ouvrage que vous avez entre les mains : 
+
+\begin{latexcode}
+author = {Maïeul Rouquette and Enimie Rouquette and Brendan Chabannes}
+\end{latexcode}
+
+Un nom contient les éléments suivant :
+\begin{choix}
+	\item[Prénom(s)]L'initiale doit être en majuscule, le reste en minuscules. Ainsi : \forme{Albert}. Il vaut mieux mettre le prénom complet : on peut confier le travail de limitation à une minuscule  à \package{biblatex}\footnote{Il faut pour cela passer l'option \option{firstinits=true} lors du chargement du package.}.
+	\item[Nom]L'initiale doit être en majuscule, le reste en minuscules. Ainsi : \forme{Londres}. \package[biblatex]{Biblatex} se charge le cas échéant de mettre en petites capitales.
+	\item[Particule (option)]Elle doit être entièrement en minuscules. Ainsi : \forme{de}.
+	\item[Suffixe (option)]L'initiale doit être en majuscule. Ce type de donnée est plutôt anglo-saxonne. Exemple : \forme{Junior}.
+\end{choix}
+
+
+En ce qui concerne l'ordre des éléments, il  peut être :
+\begin{itemize}
+\item\enquote{Prénoms  (particule)  Nom} ;
+\item\enquote{particule Nom, (suffixe) Prénoms}.
+\end{itemize}
+
+Ainsi les entrées \verb|Victor Marie Hugo| et \verb|Hugo, Victor Marie| sont équivalentes.
+Dans le premier cas, Biber considère que le dernier mot commençant par une majuscule est le nom de famille. Dans le second cas, il considère l'ensemble situé avant la virgule comme le nom de famille, ce qui est utile pour les noms composés. Ainsi pour parler de Charles De Gaulle : \verb|De Gaulle, Charles|.
+
+Si nous parlons de Simone de Beauvoir, le \forme{de} étant une particule nous pouvons utiliser la première syntaxe : dans ce cas Biber considère tout ce qui suit la particule comme constituant le nom : \verb|Simone de Beauvoir|.
+Mais la seconde syntaxe fonctionne également : \verb|de Beauvoir, Simone|.
+
+
+Pour distinguer Alexandre Dumas père d'Alexandre Dumas fils, on peut utiliser le suffixe : \verb|Dumas, Fils, Alexandre|.
+
+
+Le cas des auteurs anciens, où l'on écrit souvent le prénom suivi de la ville d'exercice ou de naissance, comme par exemple pour Grégoire de Tours, est problématique. Si j'écris : \verb|Grégoire de Tours|
+Biber va comprendre qu'il s'agit d'une personne prénommée \forme{Grégoire}, dont le nom est \forme{Tours} et la particule \forme{de}. Par conséquent il va l'afficher sous la forme \forme{Tours, Grégoire, de}. Pour éviter ce problème, il suffit d'utiliser des accolades : \verb|{Grégoire de Tours}|.
+
+Cette méthode peut servir aussi pour les institutions auteures d'ouvrages.
+Par exemple :\verb|{Centre National de la Recherche Scientifique}|.
+
+Pour résumer, voici un exemple de quelques entrées correctes\footnote{Le lecteur exigeant pardonnera aux auteurs de ne mettre ici que les noms d'auteurs et titres d'œuvres.}.
+
+\inputminted{exemples/biblio/fichier/noms.bib}
+
+\begin{quotation}
+   \cite{HugoMiserable} 	
+   
+   \cite{HugoLegende}		
+   
+   \cite{DeGaulle}			
+   
+   \cite{BeauvoirSexe}		
+   
+   \cite{BeauvoirMemoires}	
+   
+   \cite{Dumas}			
+   
+   \cite{Gregoire}			
+\end{quotation}
+
+\begin{plusloins}
+En ce qui concerne les œuvres anonymes, la solution est évidemment de ne rien mettre dans le champ \champ{author}. Cependant l'affichage par  défaut de ces œuvres anonymes n'est pas nécessairement satisfaisant. Il est possible de le modifier : nous expliquons comment faire sur notre blog\footcite{oeuvresanonymes}, mais pour comprendre notre article il vous faut lire les prochains chapitres de cette partie.
+\end{plusloins}
+
+\subsection{Champs de titre}
+
+
+\begin{choix}
+	\item[booksubtitle]Sous-titre du livre dans lequel l'entrée se situe. 
+   	\item[booktitle] Titre du livre dans lequel l'entrée se situe. 		
+   	\item[booktitleaddon] Ajout au titre du livre dans lequel l'entrée se situe. 
+   	\item[chapter] Chapitre d'un livre. Pour les entrées de type \type{inbook}.	
+   	\item[eventitle] Titre du colloque, pour les entrées de type \type{proceedings} et \type{inproceedings}.
+   	\item[issuesubtitle] Sous-titre d'un numéro spécifique d'un périodique. 	Pour les entrées de type \type{periodical}, le sous-titre du périodique doit aller dans le champ \champ{subtitle}, celui du numéro dans le champ \champ{issuesubtitle}		
+   	\item[issuetitle] Titre d'un numéro spécifique d'un périodique. Pour les entrées de type \type{periodical}, le titre du périodique doit aller dans le champ \champ{title}, celui titre du numéro dans le champ \champ{issuetitle}.		
+   	\item[journalsubtitle] Sous-titre d'un périodique.							
+   	\item[journaltitle] Titre d'un périodique. Le champ \champ{journal} est un alias de ce champ\footnote{Ce qui signifie que remplir le champ \champ{journal} revient à remplir ce champ.}.				
+   	\item[mainsubtitle] Sous-titre d'une œuvre en plusieurs volumes.			
+   	\item[maintitle] Titre d'une œuvre en plusieurs volumes. Le titre du volume spécifique à une entrée correspond au champ \champ{title}.						
+   	\item[maintitleaddon]  Ajout au titre d'une œuvre en plusieurs volumes.		
+   	\item[origtitle] Titre original de l'œuvre, si traduction. N'est pas affiché en standard. 	
+   	\item[subtitle] Sous-titre de l'œuvre.									
+   	\item[title] Titre de l'œuvre.									
+   	\item[titleaddon] Ajout au titre de l'œuvre. Dans ce manuel, nous conseillons de l'utiliser pour les divisions de source\renvoi{divisionsource}.
+\end{choix}
+
+Voici quelques exemples afin de comprendre comment utiliser ces champs:
+
+\subsubsection{Un livre avec un sous-titre}
+
+\inputminted{exemples/biblio/fichier/saxer.bib}
+
+\begin{quotation}
+\cite{Saxer1980}
+\end{quotation}
+
+\subsubsection{Un livre situé dans un recueil}
+
+\inputminted{exemples/biblio/fichier/felix.bib}
+
+\begin{quotation}
+\cite{ContraFelix}
+\end{quotation}
+
+\subsubsection{Un article dans une revue}
+
+\inputminted{exemples/biblio/fichier/junod.bib}
+
+\begin{quotation}
+\cite{Junod1992}
+\end{quotation}
+
+\subsection{Champs d'informations sur la publication}
+
+\begin{choix}
+	\item[address]
+	Lieu de publication. Alias du champ \champ{location}.	
+	\item[date] 
+	Date de publication, sous la forme \verb|AAAA-MM-JJ/AAAA-MM-JJ|.
+	La première date indiquée correspond à la date de début, la seconde à celle de fin. Pour n'indiquer qu'une date de début, mettre \verb|AAAA-MM-JJ/|. 
+	On peut ne pas indiquer le mois ou le jour. On peut également utiliser les champs \champ{year} et \champ{month} à la place. 
+   	\item[edition]
+	Numéro d'édition si plusieurs éditions existent. Doit être un entier ou bien une chaîne de caractères.
+   	\item[eventdate] Date du colloque pour les entrées de type \type{proceedings} et \type{inproceedings}. 
+	\item[howpublished] Pour les entrées de type \type{misc}, précise le mode de publication.
+   	\item[institution] Institution dans laquelle l'œuvre a été produite. Typiquement pour les entrées de type \type{thesis}. 
+   	\item[issue] Détail d'un numéro spécifique d'un périodique (par exemple \enquote{numéro d'été}). On préférera les champs \champ{year}, \champ{month}.	
+   	\item[language] Langue de l'œuvre. Le nom de la langue doit, idéalement, être mis comme indiqué dans la documentation de \package{polyglossia}\footcite{polyglossia}.					
+   	\item[location] Lieu d'impression.  					
+   	\item[month] Mois de publication. Doit être un entier compris entre 1 et 12. 
+   	\item[number] Numéro d'un périodique ou numéro au sein d'une collection. 	
+   	\item[organization] Organisation à l'origine d'un manuel ou d'une page internet.	
+   	\item[origdate] Date de l'édition originale.						
+   	\item[origlanguage] Langue originelle. Le nom de la langue doit, idéalement, être mis comme indiqué dans la documentation de \package{polyglossia}\footcite{polyglossia}. 
+   	\item[origlocation] Lieu d'impression de l'édition originelle.		
+   	\item[origpublisher] Éditeur (commercial) de l'édition originelle.		
+	\item[pages] Pages de l'article ou de la partie du livre étudiée. 
+	\item[pagetotal] Nombre total de pages.
+   	\item[part] Pour les livres en plusieurs volumes \emph{physiques}, indique le numéro du volume physique.  Le numéro du volume \emph{logique} est à indiquer dans le champ \champ{volume}.
+   	\item[publisher] Éditeur commercial.					
+   	\item[pubstate] Pour les œuvres qui ne sont pas encore imprimées, indique le statut :
+					\begin{description}
+						\item[inpress]œuvre sous presse.
+						\item[inpreparation]œuvre en préparation.
+						\item[submitted]œuvre soumise à évaluation.
+					\end{description}
+					
+					
+   	\item[type] Pour les entrées de type  \type{thesis}, \type{patent} et \type{report}, précise le type de travail.
+	
+	On peut y mettre une valeur personnelle, ou bien prendre l'une des valeurs prédéfinies. Dans ce cas la valeur est automatiquement traduite dans la langue du document.
+	
+	 Pour les entrées de type \type{thesis}, deux possibilités :
+					\begin{description}
+						\item[mathesis]mémoire de master.
+						\item[phdthesis]thèse de doctorat.
+					\end{description}
+					
+					 Pour les entrées de type \type{patent}, plusieurs  possibilités : 
+					 
+					 
+					 \begin{description}
+						\item[patentde] Brevet allemand.
+						\item[patenteu] Brevet européen.
+						\item[patentfr] Brevet français.
+						\item[patentuk] Brevet britannique.
+						\item[patentus] Brevet états-unien.
+						\item[etc.]
+					 \end{description}
+					
+					Pour les entrées de type \type{report} : \nopagebreak
+					\begin{description}
+						\item[techreport]rapport technique.
+						\item[resreport]rapport de recherche.
+					\end{description}
+					
+	\item[url] Url (adresse électronique) d'une publication en ligne. 
+   	\item[urldate] Date à laquelle une publication électronique a été consultée. 
+   	\item[venue] Lieu du colloque pour les entrées du type \type{proceedings} et \type{inproceedings}. 
+   	\item[version] Numéro de révision d'un manuel, d'un logiciel. 
+   	\item[volume] Volume dans une œuvre en plusieurs volumes. 
+   	\item[volumes] Nombre de volumes dans une œuvres en plusieurs volumes. 
+   	\item[year] Année de publication. 				
+\end{choix}
+
+
+Évidemment il n'est pas nécessaire de remplir  systématiquement tous ces champs: le lecteur sait mieux que nous lesquels remplir en fonction de ses besoins. Certains champs peuvent contenir plusieurs valeurs, qu'il suffit de séparer par le mot-clef \forme{and}. Prenons un livre copublié par les éditions \forme{Labor et Fides} et \forme{Cerf} : pour indiquer les deux éditeurs, il faut mettre : \verb|publisher ={Labor et Fides and Cerf}|.
+
+
+
+
+\subsection{Les champs d'identification légale}
+
+Il peut être utile d'indiquer des informations comme l'ISBN, etc. Voici les champs possibles\footcite[Par défaut, \package{biblatex} imprime ces champs s'ils sont remplis. Il est toutefois possible de ne pas les afficher en passant l'option \option{isbn=false} au chargement du package, voir:][]{biblatex_isbn}.  Le lecteur curieux trouvera aisément des informations sur leurs significations.
+
+\begin{choix}
+	\item[eid] Identifiant électronique d'une entrée de type \type{article}. 
+   	\item[isan] \emph{\textenglish{International Standard Audiovisual Number}}, pour les entrées de type audiovisuel.
+   	\item[isbn] \emph{\textenglish{International Standard Book Number}}, pour les livres. 
+   	\item[ismn] \emph{\textenglish{International Standard Music Number}}, pour les musiques imprimées, comme par exemple les partitions. 
+   	\item[isrn] \emph{\textenglish{International Standard Technical Report Number}}, pour les rapports techniques. 
+   	\item[issn] \emph{\textenglish{International Standard Serial Number}}, pour les numéros de revues. 
+   	\item[iswc] \emph{\textenglish{International Standard Work Code}} pour les œuvres musicales.
+\end{choix}
+
+\subsection{Champs d'annotations}
+
+Par défaut ces champs ne sont pas imprimés. 
+
+\begin{choix}
+	\item[abstract] Résumé de l'œuvre. 
+   	\item[annotation] Annotation sur l'œuvre.
+   	\item[file] Adresse d'une version informatique locale du travail. 
+   	\item[library] Annotation sur la disponibilité en bibliothèque, par exemple  le nom de la bibliothèque et la cotation.
+\end{choix}
+
+\begin{plusloins}
+Il peut être intéressant de produire ainsi une bibliographie commentée. L'auteur de ces lignes a publié sur son site une méthode pour cela\footcite{biblio_commentee}. Nous conseillons toutefois, avant de mettre en œuvre cette méthode, de lire les quelques chapitres qui vont suivre.
+\end{plusloins}
+
+Il existe d'autres champs : si le cœur vous en dit, vous pouvez toujours consulter le manuel de \package{biblatex}\footcite{biblatex_champs}.

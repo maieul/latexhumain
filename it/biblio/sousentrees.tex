@@ -1,0 +1,125 @@
+\chapter{Entrées hiérarchisées}\label{sousentrees}
+
+\begin{intro}
+Dans ce chapitre, nous allons voir comment créer des entrées hiérarchisées, pour organiser mieux organiser sa base de données  et pour gérer les divisions de source.
+\end{intro}
+
+\section{Principe des sous-entrées bibliographiques}
+
+Supposons que vous citiez diverses contributions d'un même colloque. Classiquement vous créez plusieurs entrées bibliographiques sous la forme\footnote{Toute ressemblance avec un colloque s'étant déjà tenu ne saurait être que pure coïncidence.}:
+
+\inputminted{exemples/biblio/sousentrees/reproduction.bib}
+
+Vous dupliquez ainsi les données sur le colloque (titre, éditeur, etc.). Si par hasard vous vous êtes trompés dans une information, vous devrez la modifier partout. Pour éviter cela Biber prévoit la possibilité de créer des filiations d'entrées : des entrées secondaires \enquote{héritant} d'une entrée principale. L'héritage étant pris en charge lors de l'interprétation du fichier. Pour ce faire, il suffit d'indiquer dans le champ \champ{crossref} des entrées secondaires la clef de l'entrée principale.
+
+
+\inputminted{exemples/biblio/sousentrees/crossref.bib}
+
+Après compilation, nous voyons que nos sous-entrées ont correctement hérité des champs de l'entrée principale :  
+
+
+\begin{quotation}
+\cite{clef1}
+
+\cite{clef2}
+\end{quotation}
+
+Vous constaterez que Biber procède à un héritage \enquote{intelligent} : le champ \champ{date} de l'entrée mère est repris comme comme champ \champ{date} de l'entrée fille, cependant que le champ \champ{title} devient le champ \champ{booktitle}.
+
+\begin{plusloins}
+Il est possible de créer autant de niveaux d'entrée bibliographique que souhaités. Attention cependant à ne pas produire des références circulaires (A héritant de B, héritant de C, héritant de A). Par ailleurs, certain logiciels de gestions bibliographiques vous interdisent de créer des sous-sous-entrées bibliographiques : il vous faut alors modifier vos entrées avec votre éditeur de texte.
+\end{plusloins}
+
+\section{Sous-entrées dans la bibliographie finale}
+
+
+Lorsqu'une entrée fille est citée, Biber rajoute systématiquement l'entrée mère dans la bibliographie finale. On peut toutefois indiquer un nombre minimal de citations d'entrées filles pour que se fasse l'ajout de l'entrée mère dans la bibliographie. Si nous souhaitons qu'une entrée mère ne soit ajoutée à la bibliographie que si les entrées filles sont citées au moins 10 fois (toutes entrées confondues) :
+
+
+\begin{latexcode}
+\usepackage[mincrossrefs=10,…]{biblatex}
+\end{latexcode}
+
+
+
+
+
+\section{Préciser les héritages de champs}
+
+Biber possède un certain nombre de réglages d'héritage de champs\footcite{biblatex_crossrefsetup}. On peut cependant modifier ces héritages, ou en ajouter d'autres. Les champs \champ{entrysubtype}, par exemple, ne sont par défaut pas hérités. 
+Pour modifier les réglages standards, il suffit d'utiliser, dans le préambule  :
+\csp{DeclareDataInheritance}\marg{entrée mère}\marg{entrée fille}\marg{règles}.
+
+\begin{description}
+\item[\arg{entrée mère}] désigne le type d'entrée mère : \type{book}, \type{proceedings}, etc. Le symbole * désigne n'importe quel type d'entrée.
+\item[\arg{entrée fille}] désigne le type d'entrée fille. Là aussi le symbole * désigne n'importe quel type d'entrée.
+\item[\arg{règles}] désigne un certain nombre de règles d'héritages, sous forme de commandes.
+\end{description}
+
+Les types d'entrées à préciser dans les arguments \arg{entrée fille} et \arg{entrée mère} ne doivent pas être précédés du signe \verb|@|.
+
+La première commande d'héritage est la suivante \csp{noinherit}\marg{champ}.
+Elle empêche l'héritage d'un champ par une entrée fille.
+
+La seconde  est 
+\csp{inherit}\oarg{option}\marg{champ source}\marg{champ cible}.
+Il n'y qu'une seul option possible : \verb|override=true|. Si cette option est passée, alors la valeur du champ de l'entrée fille est écrasée par celles du champ de l'entrée mère. Sinon, la valeur  du champ de l'entrée fille a priorité.
+
+Ainsi, pour permettre l'héritage du  champ \champ{entrysubtype} il suffit d'écrire :
+
+\begin{latexcode}
+\DeclareDataInheritance{*}{*}{
+    \inherit{entrysubtype}{entrysubtype}
+}
+\end{latexcode}
+
+\section{Divisions de source}\label{divisionsource}
+
+Les sous-entrées peuvent être utilisées pour contourner une des limites de la gestion bibliographique de \LaTeX{} : l'impossibilité de gérer à la fois  la division d'une source et la pagination. Les textes anciens disposent en général d'une division propre qui permet --- en théorie ---  de repérer un passage dans n'importe quelle édition. Par exemple :
+
+\begin{quotation}
+\cite{DoctrineChretienneDivision}
+\end{quotation}
+
+signifie que nous renvoyons au \emph{De Doctrina Christiana} d'Augustin, livre II, chapitre \textsc{viii}, paragraphes 12-13. En théorie on peut retrouver le passage concerné dans n'importe quelle édition du traité. Ceci est appelé généralement \enquote{division de source}.
+En revanche, supposons que nous renvoyions à une édition particulière, par exemple celle de la Bibliothèque Augustinienne : on aimerait indiquer les pages précises.
+
+\begin{quotation}
+\cite{DeDoctChrIIviii18-20}
+\end{quotation}
+
+S'il est aisé lorsqu'on utilise une commande de citation d'indiquer une page précise\renvoi{pagespostnote}, il n'est pas possible en revanche d'indiquer une division de source précise. La solution est  simple : il suffit de créer une entrée principale correspondante à l'ensemble de l'œuvre, et des entrées secondaires correspondantes à des parties de l'œuvre. Ces entrées secondaires héritent des valeurs de l'entrée principale, sauf pour le champ \champ{pages} et le champ \champ{titleaddon} dans lequel on précise la division de source.
+
+\begin{plusloins}
+Il n'existe pas de champ spécifiquement prévu pour indiquer la division de source. Pourquoi choisir ce champ \champ{titleaddon} ? Deux raisons poussent l'auteur de ces lignes à adopter cette solution :
+\begin{enumerate}
+\item D'un point de vue sémantique, la division de source peut être considérée comme un ajout au titre. 
+\item D'un point de vue pratique, ce champ a pour avantage d'être, par défaut, situé par \package{biblatex} entre le titre et les informations d'édition, sans pour autant être en italique.
+\end{enumerate}
+\end{plusloins}
+
+\begin{plusloins}
+Le choix d'une entrée de type \type{book} pour la clef \verb|DeDoctChrIIviii18-20| à la place d'une entrée \type{inbook} se justifie par des questions d'héritage. On ne donne pas en effet  à cette entrée de titre propre. Dès lors, si elle était de type \type{inbook}, Biber récupérerait le champ \champ{title} de l'entrée mère et en ferait un \champ{booktitle}, ce qui n'est pas ce que nous souhaitons. En revanche, en faisant de notre division de source une entrée de type \type{book}, on  lui permet d'hériter dans son champ \champ{title} du champ \champ{title} de l'entrée mère.
+
+Évidemment le choix de ce champ devrait, idéalement, être discuté en accord avec l'éditeur. De toute façon, il est  facile, si le choix ne convient pas, de changer en série les entrées.
+
+Il est possible de vérifier automatiquement que les entrées soient du même type : nous en parlons sur notre blog\footcite{biblio_verif1}.
+\end{plusloins}
+
+Ainsi pour notre cas, il suffit de créer les deux entrées suivantes :
+
+\inputminted{exemples/biblio/sousentrees/augustin.bib}
+
+Pour citer notre passage précis, il faut écrire :
+
+\begin{latexcode}
+\autocite{DeDoctChrIIviii18-20}
+\end{latexcode}
+
+\begin{plusloins}
+L'inconvénient d'une telle méthode est qu'elle multiplie les entrées dans la bibliographie finale, puisque celle-ci contiendra  à la fois l'œuvre entière et chacune des divisions que nous ajoutons dans notre fichier \ext{bib}.  Nous expliquons  sur  notre blog comment empêcher cela\footcite{biblio_sanssousentrees}.   
+
+De même cette méthode pose quelques problèmes pour la gestion des \emph{op. cit.} Nous expliquons sur notre blog comment les résoudre\footcite{biblio_divisionopcit}.
+
+Pour comprendre ces deux explications il est nécessaire d'avoir lu les chapitres qui vont suivre.  
+\end{plusloins}

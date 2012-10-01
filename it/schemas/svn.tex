@@ -1,0 +1,18 @@
+\begin{tikzpicture}
+	% Les styles
+	\tikzstyle{personne}=[rectangle,draw]
+	\tikzstyle{ordinateur}=[ellipse,draw]
+	\tikzstyle{etiquette}=[circle,pos=0.5,fill=white]
+	%\tikzstyle{pos=0.5}=[pos=0.5]
+	% Les boîtes
+	\node[personne] (B) at (0, 0) {Bob};
+	\node[personne] (A) at (4, 0) {Alice};
+	\node[ordinateur] (S) at (2, 3) {Serveur};
+	
+	% Les relations
+	\draw[double distance = 0pt,->] (B.north east) to [bend right] node[etiquette]{1} (S.-120) ;
+	\draw[double distance = 0pt,->] (S.-70) to [bend right] node[etiquette]{2} (A.north west) ;
+	\draw[double distance = 0pt,->] (A.north east) to [bend right] node[etiquette]{3} (S.0) ;
+	\draw[double distance = 0pt,->] (S.-180) to [bend right] node[etiquette]{4} (B.north west) ;
+\end{tikzpicture}
+

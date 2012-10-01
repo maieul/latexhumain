@@ -1,0 +1,53 @@
+\chapter[Introduction]{Introduction à la gestion bibliographique avec \LaTeX{}}
+\begin{intro}
+Nous abordons maintenant un des atouts majeurs de \LaTeX{} pour les sciences humaines : la possibilité de gérer très simplement une bibliographie complexe, tout en conservant une certaine souplesse dans son affichage.
+
+\end{intro}
+\section{Principe général}
+
+
+
+Il existe un module de gestion de la bibliographie dans la plupart des logiciels WYSIWYG, mais ceux-ci manquent en général de souplesse.
+
+Conséquence, la grande partie des utilisateurs de ces logiciels gèrent leur bibliographie \enquote{à la main} --- les références bibliographique sont écrites textuellement, directement dans le fichier, ce qui implique beaucoup de contraintes  :
+\begin{itemize}
+\item si on veut changer l'ordre des informations, ou en supprimer, il faut reprendre soi-même l'ensemble des références;
+\item la gestion des versions abrégées des références est  compliquée :  il faut s'assurer soi-même que la référence a déjà été citée, mais pas trop loin, etc. 
+\item Il faut copier-coller soi-même à la fin l'ensemble des références bibliographiques. 
+\end{itemize}
+
+La logique de la gestion bibliographique en \LaTeX{} est  simple. Un fichier  \ext{bib} --- éventuellement plusieurs --- contient l'ensemble des références bibliographiques. Pour chaque référence, appelée \forme{entrée}, sont indiqués les éléments utiles :  type de référence (livre, article, actes de colloque, etc.), titre, auteur, pagination, sous-titre, éditeur, etc.\footnote{Par ailleurs ce fichier pourra contenir des commentaires utiles pour la préparation du travail : résumé, notes de lecture, cotation dans une bibliothèque.} Chaque référence possède une clef unique permettant de la distinguer d'une autre.
+
+Dans le document \LaTeX{}, on précise dans le préambule le chemin du fichier \ext{bib}. À chaque fois que l'on souhaite citer une référence, οn utilise une commande en lui passant la clef en argument. Le package \package{biblatex} se charge alors d'afficher la référence selon un style de citation --- c’est-à-dire une présentation --- déterminé. Ainsi, si on veut changer l'ordre de présentation, par exemple intervertir l'éditeur et la ville de publication, il suffit de modifier le style, ce qui se fait aisément, puisque les styles sont une série de commandes \LaTeX{}. Par ailleurs \package{biblatex} gère automatiquement les références déjà citées et introduit tout seul, en fonction du style choisi, les abréviations universitaires. 
+
+\begin{plusloins}
+On pourrait se passer de \package{biblatex}  pour gérer une bibliographie avec \LaTeX{}. Cependant, les fonctionnalités standards de \LaTeX{} pour la gestion bibliographique sont limitées et inadaptées aux sciences humaines. 
+
+Vous trouverez peut-être sur internet des fichiers \ext{bst}. Ces fichiers sont des styles bibliographiques mais pour les fonctionnalités standards de \LaTeX{}. Ils ne peuvent servir pour \package{biblatex}. De plus, il aisé d'avoir ses propres styles \package{biblatex}, tandis que la syntaxe des fichiers \ext{bst} est complexe\footnote{Elle est écrite en notation polonaise inversée.}.
+\end{plusloins}
+
+Enfin, à la fin du document, ou à tout autre endroit jugé utile, une (ou plusieurs) commande permet d'afficher la bibliographie, qui reprend les références citées\footnote{Il est aussi possible, si on le souhaite, d'ajouter une ou plusieurs références non citées.} dans le document, en les classant et en les affichant selon un style de bibliographie, lui aussi personnalisable.
+
+\section{Une triple compilation}\label{3compil}
+
+Jusqu'à maintenant, vous aviez compilé une seule fois votre fichier \ext{tex} avec \XeLaTeX. La gestion bibliographique étant quelque chose d'assez complexe, il va falloir procéder à une triple compilation :
+\begin{enumerate}
+\item le fichier \ext{tex} avec \XeLaTeX. Outre le fichier \ext{pdf}, cette compilation produit un fichier auxiliaire \ext{bbl} ;
+\item ce fichier doit être lui même compilé avec le logiciel Biber ;
+\item puis il faut re-compiler le fichier \ext{tex} avec \XeLaTeX.
+\end{enumerate}
+
+
+\begin{attention}
+Ce manuel a été rédigé en prenant pour référence la version~2.0 du package \package{biblatex}. Il vous faut donc vérifier que vous disposez de cette version, ou d'une version ultérieure. Le cas échéant, mettez à jour \package{biblatex} ainsi que Biber\renvoi{maj} --- en général, une version précise de \package{biblatex} ne fonctionne qu'avec une version précise de Biber.
+\end{attention}
+
+\begin{attention}
+La plupart des éditeurs spécialisés en \LaTeX ne permettent pas de compiler avec Biber, mais seulement avec BibTeX, qui est en quelque sort son ancêtre. Nous expliquons sur notre blog comment configurer certains de ces éditeurs pour utiliser Biber à la place de BibTeX\footcite{biber_logiciels}. Néanmoins, la méthode la plus simple reste encore d'utiliser le logiciel Latexmk\renvoi{latexmk}, qui se chargera de procéder aux compilations.
+\end{attention}
+
+
+
+
+
+

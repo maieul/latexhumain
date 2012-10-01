@@ -1,0 +1,43 @@
+\chapter{Quelques logiciels pour travailler avec \LaTeX}\label{logiciels}
+
+\begin{intro}
+Ce chapitre  présente quelques logiciels pour travailler avec \LaTeX. Cette liste est non exhaustive. Ne sont proposés que des logiciels gratuits et sous licence libre.
+\end{intro}
+
+\section{Éditeurs de texte spécialisés en \LaTeX}\label{editeurs}
+
+\logiciel{TeXMaker}{Multi-plateformes}{
+	Des logiciels \enquote{grand public} il est sans doute le mieux adapté aux longs travaux de rédaction : possibilités d'afficher le plan, d'ouvrir automatiquement des fichiers inclus, disposition en onglets, réglages avancés des raccourcis de frappe, etc. On peut lui reprocher un temps de démarrage relativement long.
+	
+	Pour demander l'enregistrement en UTF-8, il faut se rendre dans les préférences, onglet \forme{Editeur}.
+	
+	Malheureusement ce logiciel ne propose pas en standard de bouton pour compiler avec \XeLaTeX. Il vous faudra donc avant toutes choses vous rendre dans les préférences, onglet \forme{Commandes} et remplacer tous les \enquote{latex} ou \enquote{pdflatex} par \enquote{xelatex}, puis valider. 
+	
+
+	Pour compiler avec \XeLaTeX, il faudra utiliser l'outil de compilation avec \LaTeX.
+}
+
+
+
+
+\logiciel{TeXWorks}{Multi-plateformes}{
+	Sans doute le premier logiciel à utiliser pour commencer avec \LaTeX. Les options sont relativement limitées, ce qui favorise une prise en main rapide. En outre le système de visualisation des PDFs est extrêmement pratique, permettant de voir en parallèle la version PDF et la version \LaTeX.
+	Toutefois on trouvera vite ce logiciel limité en terme de fonctionnalités.
+	
+	Pour demander l'enregistrement en UTF-8, il faut se rendre dans les préférences, onglet \forme{Editeur}.
+}
+\logiciel{TeXShop}{Mac}{
+	
+	Ce logiciel est livré avec MacTeX. Il propose des boutons de composition au dessus de chaque fenêtre. Relativement léger à utiliser, il y manque cependant les fonctionnalités d'affichage du plan et d'ouverture automatique des fichiers inclus. Il possède peu de réglages avancés de rédaction. Sa force reste, à nos yeux, sa rapidité de lancement et sa fluidité.
+	
+	Pour demander l'enregistrement en UTF-8, il faut se rendre dans les préférences, onglet \forme{Document}.
+
+}
+
+\section{Logiciels de gestion bibliographique au format \ext{bib}}\label{logicielbiblio}
+
+Il existe deux principaux logiciels  de gestion de fichier \ext{bib} : JabRef\footnote{\url{http://jabref.sourceforge.net/}, multi-plateformes.} et BibDesk\footnote{\url{http://bibdesk.sourceforge.net/}, livré avec MacTeX, disponible uniquement sous Mac.}. Tous les deux proposent de nombreuses fonctionnalités : recherches des doublons,  tri selon plusieurs critères, import / export dans d'autres formats que \ext{bib}. Le choix entre les deux est donc délicat.  Les utilisateurs Mac préféreront sans doute BibDesk, en raison de la proximité de son organisation avec certains logiciels Apple. 
+
+Pour BibDesk, le réglage en UTF-8 se fait dans les préférences, bouton \forme{fichier}. Pour  Jabref, il se fait dans les préférences, onglet \forme{general}.
+
+

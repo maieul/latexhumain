@@ -1,0 +1,41 @@
+\chapter{Travail collaboratif : les logiciels de suivi des révisions}\label{principesvn}    % Voir s'il ne faut pas mettre à un autre niveau
+
+\begin{intro}
+    La plupart des traitements de texte proposent des systèmes pour travailler à plusieurs sur un même fichier et garder un historique des révisions, indiquant les modifications, leurs dates et leurs auteurs respectifs. 
+    
+    Comment faire en \LaTeX{} ? La solution la plus simple est d'utiliser un logiciel de suivi des révisions, utilisé par les programmateurs qui travaillent à plusieurs sur un projet.
+\end{intro}
+
+\section{Principe}
+Imaginons que Bob et Alice travaillent ensemble sur un projet\footnote{Le nombre de collaborateurs avec de tels systèmes est illimité : ici nous n'en prenons que deux pour simplifier.}. Ils souhaitent pouvoir échanger facilement leurs modifications.
+
+Ils déposent  pour cela  les fichiers initiaux sur un serveur (un ordinateur distant). Puis chacun récupère ces fichiers sur son propre ordinateur, à l'aide de commandes spécifiques au logiciel utilisé.
+
+Bob fait des modifications (1) : il envoie ces modifications sur le serveur, en les accompagnant d'un petit message les résumant. Alice peut alors récupérer ces modifications en local (2). Si Bob n'a modifié qu'un seul fichier, seul ce fichier sera récupéré par Alice : cela permet à Alice de modifier d'autres fichiers pendant ce temps. Une fois ses modifications faites, Alice les envoie sur le serveur, en les accompagnant d'un petit message les résumant (3), et Bob peut ainsi les récupérer. Ces étapes sont représentées dans le schéma~\ref{svn} (p.~\pageref{svn}). 
+
+Il est aussi possible de faire d'autres opérations : renommer, déplacer, dupliquer les fichiers sur le serveur distant. En outre, ces logiciels permettent, si deux personnes ont fait des modifications en même temps sur le même fichier, de proposer de ne garder que certaines de ces modifications.\footnote{Le jargon nomme cette étape une \emph{résolution de conflit}.}
+
+\begin{figure}[ht]
+\centering
+\include{schemas/svn}
+\caption{Fonctionnement des logiciels de suivi des révision}\label{svn}
+\end{figure}
+
+Un tel système présente de nombreux intérêts :
+\begin{itemize}
+\item il est aisé de s'assurer que l'on possède bien la dernière version du projet, contrairement aux échanges classiques par courriels qui peuvent rapidement semer la confusion;
+\item on dispose d'un historique des versions permettant de revenir en arrière, le cas échéant\footnote{C'est pourquoi une personne seule peut aussi trouver un intérêt à utiliser un tel système, pour se garantir un suivi du travail.};
+\item contrairement aux systèmes des logiciels de traitement de texte, l'historique des versions ne se situe pas à l'intérieur du fichier de travail, ce qui évite une prise de poids et un certain nombre de problèmes (notamment ralentissement et corruption du fichier).
+\end{itemize}
+
+
+\section{Mise en pratique}
+Il existe de nombreux logiciels de suivi des révisions  : citons SVN, Git et Mercurial. Le premier est sans doute plus simple en première approche, mais les deux autres possèdent des fonctionnalités plus souples, notamment parce qu'il n'y a pas un serveur unique, comme sur notre schéma, mais plusieurs serveurs qui peuvent être synchronisés.
+
+Un certain nombre d'hébergeurs proposent des services SVN, Git ou Mercurial\footnote{Toutefois par souci de confidentialité il est conseillé d'utiliser un hébergement SVN~/ Git~/ Mercurial interne à l'institution dans laquelle ce projet commun s'inscrit, en demandant, le cas échéant, au service informatique de le fournir.}. 
+
+Git et Mercurial ne fonctionnent pas nécessairement avec un serveur distant. C'est pourquoi on peut facilement s'en servir pour gérer un historique de modification sur un projet mono-rédacteur.
+
+La manipulation de ces outils peut se faire en ligne de commande, mais il existe également des logiciels graphiques.
+
+Nous invitons le lecteur curieux à se renseigner sur internet pour plus d'informations : il y trouvera aisément documentations et tutoriels\footcites[Nous recommandons, pour Git, cet excellent livre :][]{progit}[pour notre part, nous avons écrit un petit tutoriel sur l'Utilisation de Git avec une seule personne :][]{git}.

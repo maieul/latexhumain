@@ -1,0 +1,45 @@
+\chapter{Bibliographie succincte}
+
+\nocite{*}
+\section{Manuels des packages \label{manuels}}
+
+
+Nous ne listons pas ici l'ensemble des manuels des divers package abordés. Toutefois une question peut se poser : où trouver ces manuels ?
+
+La solution la plus simple est d'ouvrir le terminal :
+\begin{itemize}
+\item Sous Mac, ouvrir l'application \forme{Terminal} dans le dossier \forme{Utilitaires}.
+\item Sous Windows, ouvrir \forme{l'invite des commandes} dans \forme{Démarrer} : \forme{Tous les programmes} : \forme{Accessoires}.
+\item Sous GNU/Linux, appuyer sur la touche \forme{Windows} et  taper \verb|terminal|.
+\end{itemize}
+
+Puis de frapper dans la fenêtre qui apparaît :
+
+\begin{bashcode}
+texdoc nomdupackage
+\end{bashcode}
+
+Par exemple pour le package \package{biblatex}:
+
+\begin{bashcode}
+texdoc biblatex
+\end{bashcode}
+
+Frapper un retour à la ligne : le manuel du package devrait s'ouvrir avec le logiciel adéquat (généralement le manuel est au format PDF).
+
+\section{Livres généralistes}
+
+Les livres sur \LaTeX sont pléthores. Cependant rares sont ceux qui abordent \XeLaTeX,  \package{polyglossia} et  \package{biblatex}. C'est pourquoi nous conseillons de les utiliser essentiellement pour les besoins les plus avancés de mise en page.
+
+\printbibliography[keyword=generaliste]
+
+\section{Livres et textes sur des points spécifiques}
+
+\printbibliography[keyword=specifique]
+
+
+\section{Sites internet}
+
+Comme pour les livres généralistes,  l'intérêt en terme de contenu, par rapport à la problématique de ce livre, peut être très variable. 
+
+\printbibliography[keyword=site]

@@ -1,0 +1,191 @@
+\chapter{Sommaire et table des matières}\label{toc}
+
+\begin{intro}
+Dans ce chapitre nous verrons comment générer un sommaire ou une table des matières. Nous en profiterons pour étudier la manière de modifier les chaînes de langue de \package{polyglossia}, ainsi que pour aborder la notion de compteur en \LaTeX{}. Nous indiquerons également les bases de la configuration du package \package{hyperref}, qui permet, entre autres, de proposer des signets dans le PDF généré.
+\end{intro}
+
+\section{Une table simple}
+
+La manière la plus simple de faire une table des matières est d'utiliser la commande \csp{tableofcontents}.
+Pour que \XeLaTeX{} puisse afficher cette table des matières, il est nécessaire de compiler deux fois : lors de la première compilation, \XeLaTeX{} stocke le contenu de la table des matières dans un fichier \ext{toc} ; lors de la seconde compilation, il se sert de ce fichier pour afficher la table des matières. En règle générale, cette double compilation n'est guère gênante, puisqu'elle est déjà nécessaire lors de l'utilisation d'une bibliographie\renvoi{3compil}.
+
+\begin{attention}
+La table des matières prend elle-même un certain volume dans le corps du texte. Par conséquent si votre table des matières se trouve en début d'ouvrage --- il serait alors plus juste de l'appeler \forme{sommaire} --- elle décale la pagination lors de son affichage. C'est pourquoi il faut parfois compiler trois fois :
+
+\begin{enumerate}
+\item La première fois, \XeLaTeX{} stocke les informations dans le fichier \ext{toc}.
+\item La seconde fois, la table des matières  s'affiche, décalant la numérotation des pages. \XeLaTeX{}  stocke les nouveaux numéros de pages  dans le fichier \ext{toc}.
+\item La troisième fois, la table des matières avec les bons numéros de page   s'affiche. Comme sa longueur n'est pas différente de la précédente, il n'y a cette fois pas de décalage des numéros.
+\end{enumerate}
+
+\end{attention}
+
+\begin{plusloins}
+
+Pour personnaliser l'apparence de la table des matières, on peut utiliser le package \package{titletoc}. 
+\end{plusloins}
+
+\section[Choix de la profondeur]{Choisir la profondeur de la table des matières : la notion de compteur}\label{tocdepth}
+
+Par défaut la commande \cs{tableofcontents} affiche tous les niveaux de titre, depuis \cs{part} jusqu'au \cs{subparagraph}\renvoi{niveautitre}. Il est possible de restreindre la profondeur, ou au contraire de l'étendre ; il suffit de redéfinir un compteur \LaTeX{} : \compteur{tocdepth}.
+
+Un compteur \LaTeX{} est un nombre entier stocké dans la mémoire vive de l'ordinateur. Un compteur peut être appelé à certains endroits et peut également être modifié. Typiquement, un compteur est associé à un élément numéroté. Il existe par exemple un compteur \compteur{page} correspondant au numéro de la page, incrémenté  à chaque changement de page et utilisé pour afficher le numéro de page.\label{compteur}
+
+Dans notre cas, le compteur \compteur{tocdepth} n'est pas automatiquement modifié. En revanche il sert lors de l'affichage de la table des matières. Chaque niveau de titre possède un numéro\renvoi{numeroniveau}. La commande \cs{tableofcontents} affiche les niveaux de titre dont le numéro est inférieur ou égal à la valeur du compteur \compteur{tocdepth}.
+
+Le niveau \cs{subsubsection} a comme numéro 3. Pour afficher dans la table des matières tous les niveaux de titres jusqu'au niveau \cs{subsubsection} inclus, il faut donc affecter la valeur 3 à  \compteur{tocdepth}. On le fait en utilisant la commande \csp{setcounter} :
+
+\begin{latexcode}
+\setcounter{tocdepth}{3}
+\tableofcontents
+\end{latexcode}
+
+\section[Table des matières ou sommaire ?]{Table des matières ou sommaire ? Les chaînes de langues de polyglossia}\label{i18npoly}
+
+Selon l'usage français, une table des matières se situe en fin d'ouvrage, un sommaire  en début d'ouvrage. Par défaut la commande \cs{tableofcontents} indique que nous avons affaire à une  \enquote{table des matières} et non  à un \enquote{sommaire}. Comment avoir le terme  \enquote{sommaire} ? Il suffit de redéfinir la chaîne de langue. 
+
+Nous avons déjà vu la notion de chaîne de langue\renvoi{i18nchaines} pour la bibliographie. Il s'agit ici  d'une idée similaire, mais pour le package \package{polyglossia}. La syntaxe est toutefois différente. Comme pour les  chaînes de langue de la bibliographie, il faut commencer par découvrir quel est l'élément à modifier, en cherchant cette fois dans le fichier \fichier{french.ldf}\renvoi{trouverfichier}. Vous pouvez repérer une ligne contenant \cs{def}\csp{captionsfrench}\verb|{%|. 
+Cette ligne est suivie d'autres lignes sous la forme : \cs{def}\cs{\meta{chaine}}\marg{Valeur}, qui s'enchaînent jusqu'à une accolade fermante.
+
+Pour notre cas, on repère la ligne contenant :
+
+ \cs{def}\csp{contentsname}\verb|{Table des matières}%|
+
+Notre chaîne de langue est donc \cs{contentsname}.
+
+Pour  redéfinir une chaîne de langue, il suffit d'écrire, de préférence dans le préambule :
+
+\begin{latexcode}
+\gappto\captionsfrench{\renewcommand{<\chaine>}{Valeur}}
+\end{latexcode}
+
+Dans le cas présent, cela donne :
+
+\begin{latexcode}
+\gappto\captionsfrench{\renewcommand{\contentsname}{Sommaire}}
+\end{latexcode}
+
+
+
+\begin{plusloins}
+La commande \csp{def} permet de créer de nouvelles commandes. Toutefois à la différence de la commande \cs{newcommand}, les commandes ainsi créées appartiennent à \TeX{} et non pas à \LaTeX{}\renvoi{TeXLaTeX}.
+
+Définir des commandes en \TeX{} et non en \LaTeX{} permet plus de souplesse. Mais cela demande plus de maîtrise technique pour éviter divers problèmes, comme par exemple des erreurs de compilation. C'est pourquoi nous n'en parlons pas dans ce livre, sauf ponctuellement.
+
+Les commandes \TeX{} peuvent contenir des \enquote{sous-commandes}. Ici par exemple, la commande \cs{captionsfrench} contient la sous-commande \cs{contentsname}. Nous utilisons la commande  \csp{gappto} pour injecter une sous-commande dans une commande déjà définie.
+
+La commande \cs{gappto} n'est une commande standard ni de \TeX ni de \LaTeX. Elle est définie par le package \package{etoolbox}, qui est lui même appelé par \package{polyglossia}.
+\end{plusloins}
+
+\section{Table des figures et table des tableaux}\label{tablefigure}
+
+En plus de la table des matières, \LaTeX{} permet d'afficher une table des tableaux et une table des figures. Il est nécessaire, pour que ces tables soient constituées, que les tableaux et figures aient une légende\renvoi{legende}.
+
+Pour la table des tableaux, il faut utiliser la commande \csp{listoftables} et pour celle des figures  \csp{listoffigures}.
+
+
+
+\section{Plusieurs tables des matières}
+
+La commande \cs{tableofcontents} ne fonctionne qu'une seule fois dans un document \LaTeX{}. Comment faire si on souhaite avoir un sommaire et une table des matières, ou bien une table des matières à la fin de chaque  partie ?
+
+\subsection{Un sommaire en plus d'une table des matières}
+
+Bien que cette pratique soit un peu désuète et rarement utile, on peut souhaiter  avoir une table des matières en fin de travail et un sommaire en début.
+On utilise alors le package \package{shorttoc}. Celui-ci définit une commande \csp{shorttoc}
+\marg{titre}\marg{niveau}.
+
+Pour un sommaire qui ne reprendrait que les niveaux de section et de chapitre, il suffit donc d'écrire :
+
+\begin{latexcode}
+\shorttoc{Sommaire}{0}
+\end{latexcode}
+
+
+
+
+\subsection{Sommaires partiels}
+
+Si l'on désire mettre un sommaire au début de chaque chapitre, il faut utiliser le package \package{minitoc}\footcite{minitoc} en lui passant l'option \option{french}. On doit alors activer les mini-sommaires grâce à la commande \csp{dominitoc} :
+
+\begin{latexcode}
+\usepackage[french]{minitoc}
+\dominitoc
+\end{latexcode}
+
+Pour afficher les mini-sommaires il faut placer la commande \csp{minitoc} aux endroits voulus, par exemple après chaque titre de chapitre.
+
+\begin{latexcode}
+\chapter{A}
+\minitoc
+…
+\chapter{B}
+\minitoc
+\end{latexcode}
+
+\begin{attention}
+Le package ne peut calculer correctement les sommaires que si la commande \cs{tableofcontents} est utilisée. Si vous souhaitez n'afficher que des mini-sommaires mais pas de table générale des matières --- ce qui est une idée assez étrange --- vous pouvez utiliser \csp{faketableofcontents} à la place de \cs{tableofcontents}.
+\end{attention}
+
+Pour afficher des mini-sommaires par parties, il faut utiliser la commande \csp{parttoc}. Par exemple :
+
+\begin{latexcode}
+\part{A}
+\parttoc
+\chapter{1}
+\chapter{2}
+…
+\part{B}
+\parttoc
+…
+\end{latexcode}
+
+
+Le package \package{minitoc} est très complexe et contient de nombreuses subtilités ; il permet  par exemple de choisir facilement les styles du sommaire. Nous renvoyons au manuel pour plus de détails\footcite[Notamment][]{minitoc_typesetting}.
+
+\section{Des signets dans le PDF : le package \packagenoidx{hyperref}}\index[pkg]{hyperref}\label{hyperref}
+
+
+Certains PDFs proposent des signets qui permettent d'accéder rapidement à un endroit précis du document\footnote{L'utilisation concrète de ces signets dépend du lecteur PDF.}. Il est possible avec \LaTeX{} d'obtenir un PDF contenant des signets correspondant aux différents niveaux de titre. Pour ce faire il faut utiliser le package \package{hyperref}.
+
+Ce package propose de nombreuses fonctionnalités :  nous avons vu  qu'il permettait notamment de créer des renvois vers les titres de sections\renvoi{renvoititre}.
+Mais il introduit aussi des liens cliquables en interne, par exemple entre un appel de note de bas de page et la note correspondante. Il permet aussi de configurer un certain nombre de méta-données du document PDF.
+
+\subsection{Signet de navigation}
+
+Pour générer des signets correspondant au plan du travail, il suffit simplement d'appeler le package et de compiler deux fois --- ce qui est de toute façon nécessaire pour obtenir la table des matières.
+
+Un problème se pose toutefois lorsque l'on utilise un titre non numéroté\renvoi{titresansnumero}. En dépit de  la commande \cs{addcontentsline}, ce titre n'est pas ajouté dans la liste des signets. Il faut en fait faire précéder cette commande de \csp{phantomsection}.
+
+\begin{latexcode}
+\phantomsection
+\addcontentsline{toc}{chapter}{Introduction}
+\chapter*{Introduction}
+\end{latexcode}
+
+\subsection{Réglage des liens}
+Par défaut, \package{hyperref} encadre en rouge les liens hypertextes. Ces cadres n'apparaissent pas à l'impression.
+
+On peut vouloir les faire disparaître aussi du document PDF. Il faut alors indiquer :
+\begin{enumerate}
+\item Que nous voulons que les liens soient colorés et non encadrés.
+\item Que nous voulons que la couleur soit le noir. En effet la couleur des liens est conservée à l'impression, contrairement à la couleur des cadres.
+\end{enumerate}
+
+Nous allons pour cela utiliser la commande \csp{hypersetup} dans le préambule. La commande prend comme argument des paramètres du package, séparés par des virgules.
+Pour notre cas, les arguments nécessaires sont :
+
+\begin{latexcode}
+\hypersetup{colorlinks=true,
+citecolor=black,
+filecolor=black,
+linkcolor=black,
+urlcolor=black}
+\end{latexcode}
+
+\verb|colorlinks=true| indique que nous colorons les liens au lieu de les entourer. Pour \package{hyperref} il existe plusieurs types de liens dont la couleur est configurable. Ici nous indiquons qu'il faut mettre en noir les types de liens suivants  :\begin{itemize}
+\item les liens de renvois d'une référence bibliographique abrégée à la référence complète ;
+\item les liens appelant des fichiers externes au PDF ;
+\item les liens internes (notes de bas de pages, renvois) ;
+\item les liens externes.
+\end{itemize}
