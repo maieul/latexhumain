@@ -24,6 +24,10 @@ Pour les personnes ayant accès au dépôt Git, le principe général est : dans
  * ne pas utiliser ces commandes à l'intérieur d'une commande de titre (bug avec hyperref). Utiliser à la place la commande `\<type>noidx` et indexer ensuite avec `\index[<type>]{<element>}`.
  * Si l'élement commence en début de phrase, pour avoir la majuscule dans le corps du texte mais la miniscule dans l'index, utiliser le premier argument optionnel : `\class[beamer]{Beamer}`.
 
+# Traduction
+- Un dossier par langue, les fichiers gardent le même nom d'une version à l'autre histoire de faciliter les reports.
+- Contacter l'auteur auparavant pour qu'il explique le fonctionnement du code, de git etc., et vous donne des accès
+
 # Pour compiler :
 
 N'oubliez pas que la version stable de septembre 2012 est aussi disponible en PDF sur le site de l'éditeur.
@@ -36,7 +40,3 @@ Néanmoins si vous souhaitez faire votre propre compilation :
 - Vous devez si besoin installer Pygmentize (pour la coloration syntaxique) :  sudo easy_install Pygments.
 
 Ensuite avec le Terminal, un simple Make suffit.
-
-# Traduction
-- Un dossier par langue
-- Contacter l'auteur auparavant pour qu'il explique le fonctionnement du code, de git etc., et vous donne des accès
