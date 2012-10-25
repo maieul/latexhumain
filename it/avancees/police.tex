@@ -32,10 +32,50 @@ L'option \option{Mapping=tex-text} des deux premières commandes permet de gére
 
 Il existe d'autres paramètres, par exemple pour gérer finement les ligatures, précisés dans le manuel de \package{fontspec}\footcite{fontspec_optionspolices}.
 
-\begin{plusloins}
-Le package \package{fontspec} permet de définir d'autres familles de caractères. Toutefois  il n'est en général pas recommandé de varier les polices dans un texte : c'est pourquoi nous ne détaillons pas ici, mais nous  nous contentons de renvoyer à la documentation du package\footcite{fontspec_nouvellefamille}.
-\end{plusloins}
+\subsection{Police spécifique à certaines langues}\label{policenonlatine}
 
+Unicode permet de stocker tous les caractères existant sur terre\renvoi{utf8}. Cependant les polices ne gèrent pas nécessairement l'ensemble des caractères de la norme unicode, ou bien n'affiche pas correctement certaines familles de caractères. 
+
+Prenons par exemple le mot suivant, en hébreu biblique\footnote{\bibleverse{Gn}(1:1).} :
+
+\begin{quotation}
+\texthebrew{בְּרֵאשִׁ֖ית}
+\end{quotation}
+
+Si on conserve un affichage avec la police \emph{Linux Libertine}, nous obtenons une jolie erreur de composition :
+
+\begin{quotation}
+\texthebrew{\normalfont{בְּרֵאשִׁ֖ית}}
+\end{quotation}
+
+La solution est de dire à \LaTeX d'utiliser une police spécifique à l'intérieur de la commande \csp{texthebrew} ou de  l'environnement \enviro{hebrew}\renvoi{i18n}. Dans le cas présent, cela peut être la police \emph{Ezra SIL}.
+
+Pour ce faire, nous allons demander à \package{fontspec} de définir une nouvelle famille de police, \csp{\hebrewfont}, via la commande \csp{newfontfamily}. La définition de cette nouvelle famille permettra à \LaTeX de basculer automatiquement la police lorsqu'on lui signale un passage à la langue hébraïque.
+
+\begin{latexcode}
+\newfontfamily\<lang>font[<paramètres>]{<police>}
+\end{latexcode}
+
+\begin{description}
+\item[\meta{lang}]doit être remplacé par le nom de la langue dans \package{polyglossia}.
+\item[\meta{paramètres}]contient une liste de paramètres typographiques pour l'utilisation de cette police.
+\item[\meta{police}]est le nom de la police.
+\end{description}
+
+Ce qui donne dans notre cas :
+\begin{latexcode}
+\newfontfamily\hebrewfont[Scale=0.8,Script=Hebrew]{Ezra SIL}
+\end{latexcode}
+
+\begin{itemize}
+\item Le paramètre \contenuarg{Scale=0.8} permet d'afficher la police à 80~\% de sa taille normale. En effet, pour un nombre de points donné, toutes les polices n'ont pas nécessairement la même hauteur de lettre. En  laissant une taille standard nous aurions abouti à un affichage inesthétique.
+\item Le paramètre \contenuarg{Script=Hebrew} permet que l'affichage des glyphes se fasse selon les spécificités de la langue hébraïque. Concrètement, cela autorise un affichage correct des points-voyelles\footnote{L'alphabet hébraïque est un alphabet qui ne note que les consonnes. Néanmoins, pour permettre une interprétation plus aisée --- ou plus orientée, selon le point de vue, certains textes voient leurs voyelles noter à l'aide de petits signes autour des lettres. C'est notamment le cas des textes de la bible hébraïque\parencite[Voir][]{massorete}.}. 
+\end{itemize}
+
+On obtient ainsi un affichage correct :
+\begin{quotation}
+\texthebrew{בְּרֵאשִׁ֖ית}
+\end{quotation}
 \section{Interlignes}\label{interligne}
 
 Le package \package{setspace} --- qui ne possède pas de documentation officielle --- permet de changer facilement l'interligne du document en proposant trois interlignages : simple, c'est le réglage standard, double et \enquote{un et demi}. En général une interligne de 1,5 est recommandée pour les travaux universitaires, sauf pour les notes de bas de pages, où un interlignage simple est de mise. Cela tombe bien : le package n'applique le changement d'interlignes qu'au corps du texte. Les notes de bas de page sont donc préservées.
