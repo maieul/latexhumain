@@ -218,7 +218,6 @@ etc.
 On peut aussi introduire des miniatures des diapositives  dans l'article : consultez le manuel\footcite{beamer_diapo_article}. 
 \end{plusloins}
 
-\subsection{Diapositives ou article ?}
 
 Par défaut, Beamer va afficher les textes situés entre les diapositives dans des diapositives spécifiques. Pour éviter cela, on passe l'option \option{ignorenonframetext} lors de l'appel de la classe.
 
@@ -237,3 +236,13 @@ Pour obtenir uniquement la version article, il suffit de changer la classe du do
 \begin{attention}
 Il n'est pas possible d'avoir de fichier inclus via \cs{input} ou \cs{include} lorsqu'on utilise \option{ignorenonframetext}.
 \end{attention}
+
+Cependant, le contenu des diapositives apparaît également dans la version article. Pour indique qu'une diapositive ne doit pas apparaître dans la version article, il faut utiliser une spécification de couche.
+
+\begin{latexcode}
+\begin{frame}<presentation>
+Le contenu de cette diapositive
+n'apparaîtra pas dans l'article.
+\end{frame}
+\frame<presentation>{Le contenu de celle-ci non plus.}
+\end{latexcode}
