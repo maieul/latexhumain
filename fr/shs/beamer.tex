@@ -233,27 +233,5 @@ Pour obtenir uniquement la version article, il suffit de changer la classe du do
 \usepackage{beamerarticle}
 \end{latexcode}
 
-\subsection{Automatiser les réglages}
-
-Plutôt que de changer systématiquement les premières lignes du document, autant utiliser les possibilités d'inclusion\renvoi{inclusion} de fichiers offertes par \LaTeX{}. 
-
-Pour cela, créer trois fichiers :  \fichier{article.tex}, \fichier{presentation.tex} et \fichier{contenu.tex}.
-Dans \fichier{article.tex} mettre :
-
-\begin{latexcode}
-\documentclass{article}
-\usepackage{beamerarticle}
-\input{contenu}
-\end{latexcode}
-
-Dans \fichier{presentation.tex} mettre :
-
-\begin{latexcode}
-\documentclass[ignorenonframetext]{beamer}
-\input{contenu}
-\end{latexcode}
-
-Dans \fichier{contenu.tex} mettre les appels aux packages communs aux deux versions ainsi que le contenu de la présentation / de l'article.
-
 
 
