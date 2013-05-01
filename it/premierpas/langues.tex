@@ -130,10 +130,10 @@ En un mot : Unicode dans sa variante UTF-8 est aujourd'hui la meilleure méthode
 Le système Unicode est plus complexe que nous ne l'avons expliqué. Ainsi, certains caractères composés peuvent être encodés de plusieurs manières. Prenons par exemple le caractère grec \enquote{alpha avec iota souscrit} (ᾳ). Il peut être encodé :
 \begin{itemize}
 	\item Par le caractère \enquote{\textenglish{greek small letter alpha with ypogegrammeni}} (\verb|U+1FB3|).
-	\item Par le caractère \enquote{\textenglish{greek small letter alpha}} (\verb|U+03B1|) suivi du caractère \enquote{\textenglish{combining greek ypogegrammeni}} (\verb|U+0345|). 
+	\item Par le caractère \enquote{\textenglish{greek small letter alpha}} (\verb|U+03B1|) suivi du caractère \enquote{\textenglish{combining greek ypogegrammeni}} (\verb|U+0345|)\footnote{On note les numéros des caractères unicodes sous la forme U+nombre hexadécimal.}. 
 \end{itemize}
 
-En théorie, les deux polices de caractères doivent afficher le même résultat avec ces deux encodages. En pratique, il n'en va pas toujours ainsi. C'est pourquoi il est recommandé de mettre le code suivant dans le préambule :
+En théorie, les deux polices de caractères doivent afficher le même résultat avec ces deux encodages. En pratique, il n'en va pas toujours ainsi\footcite[Pour des exemples et plus d'explication, voir :][]{normalisation_unicode}. C'est pourquoi il est recommandé de mettre le code suivant dans le préambule :
 \begin{latexcode}
 \XeTeXinputnormalization 1
 \end{latexcode}
