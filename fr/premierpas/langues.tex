@@ -126,11 +126,27 @@ C'est celle que vous utilisez depuis que vous lisez ce livre, si du moins vous a
 
 En un mot : Unicode dans sa variante UTF-8 est aujourd'hui la meilleure méthode pour écrire des fichiers mêlant plusieurs familles de caractères\footnote{L'auteur pense même que, étant donné la baisse des coûts de stockages et de transferts, on ne devrait plus utiliser que ce jeu de caractères, ce qui aurait pour mérite de permettre bien plus facilement à tous les peuples de s'exprimer dans leur langue. Malheureusement son expérience personnelle lui prouve que cela n'est pas encore toujours le cas.}.
 
-\begin{plusloins}Le lecteur narquois fera remarquer que le même problème  se pose qu'avec la méthode de la police: à savoir que chaque ordinateur de travail devrait implanter Unicode et UTF-8 chez lui. 
+\begin{attention}
+Le système Unicode est plus complexe que nous ne l'avons expliqué. Ainsi, certains caractères composés peuvent être encodés de plusieurs manières. Prenons par exemple le caractère grec \enquote{alpha avec iota souscrit} (ᾳ). Il peut être encodé :
+\begin{itemize}
+	\item Par le caractère \enquote{\textenglish{greek small letter alpha with ypogegrammeni}} (\verb|U+1FB3|).
+	\item Par le caractère \enquote{\textenglish{greek small letter alpha}} (\verb|U+03B1|) suivi du caractère \enquote{\textenglish{combining greek ypogegrammeni}} (\verb|U+0345|). 
+\end{itemize}
+
+En théorie, les deux polices de caractères doivent afficher le même résultat avec ces deux encodages. En pratique, il n'en va pas toujours ainsi. C'est pourquoi il est recommandé de mettre le code suivant dans le préambule :
+\begin{latexcode}
+\XeTeXinputnormalization 1
+\end{latexcode}
+
+Ce qui a pour conséquence de faire comme si les caractères étaient encodés selon la première méthode, de manière unitaire.
+\end{attention}
+
+\begin{plusloins}
+Le lecteur narquois fera remarquer que le même problème  se pose qu'avec la méthode de la police: à savoir que chaque ordinateur de travail devrait implanter Unicode et UTF-8 chez lui. 
 
 L'auteur fera remarquer qu'aujourd'hui tous les ordinateurs possèdent en natif ces possibilités, et qu'il est possible très facilement de l'installer sur des ordinateurs un peu anciens. En outre, avec Unicode on stocke du sens, et non pas de la forme, ce qui permet une plus grande souplesse. 
-
 \end{plusloins}
+
 
 \subsection{Concrètement}
 
