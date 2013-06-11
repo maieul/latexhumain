@@ -121,7 +121,13 @@ Tassilon, voir Ducs
 La traduction de \emph{see} change selon la langue indiquée comme \cs{setmainlanguage}\renvoi{french}. 
 
 
-
+\begin{attention}
+L'utilisation d'un renvoi n'entraîne pas automatiquement l'indexation du terme auquel on renvoit.
+Ainsi, il faudrait mettre :
+\begin{latexcode}
+\index{Tassilon|see{Ducs}}\index{Ducs!Tassilon}
+\end{latexcode}
+\end{attention}
   
 
 \subsubsection{Créer des entrées sur plusieurs pages}
