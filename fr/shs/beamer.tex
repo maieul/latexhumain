@@ -64,7 +64,7 @@ Pour les afficher dans une diapositive, en revanche, il faut utiliser les comman
 \inputminted{exemples/shs/beamer/structure.tex}
 
 \section{Affichage différé : les couches Beamer}
-
+\subsection{Principe}
 Afficher tous les éléments d'une diapositive en une seule fois présente peu d'intérêt : il vaut mieux les afficher petit à petit afin de les commenter au fur et à mesure. Beamer utilise pour cela la notion de \forme{\textenglish{slides}}, que nous traduisons par celle de \forme{couches}. Il s'agit de dire à une commande de ne s'exécuter que sur une ou plusieurs couches spécifiques.
 
 La syntaxe de l'affichage couche par couche (en anglais \textenglish{\emph{overlay specification}}) est  : \verb|<a-b>| où \verb|a| désigne la couche de départ et \verb|b| désigne la couche d'arrivée. On peut également séparer les numéros de couches spécifiques par des virgules. Voici des exemples pour mieux comprendre :
@@ -83,6 +83,20 @@ La syntaxe de l'affichage couche par couche (en anglais \textenglish{\emph{overl
 
 Toutes les commandes \LaTeX{} ne réagissent pas nécessairement aux spécifications de couche : par exemple la commande \cs{emph} ne réagit pas : si vous utilisez une spécification de couche avec cette commande, la spécification apparaît sur la diapositive.
 
+\subsection{Simplification}
+Bien souvent, l'ordre des couches suit l'ordre d'écriture de manière linéaire. On peut alors utiliser \verb|+| pour incrémenter le numéros des couches :
+\begin{latexcode}
+\begin{frame}
+\begin{itemize}
+    \item<+->Élément affiché à partir de la première couche.
+    \item<+->Élément affiché à partir de la deuxième couche.
+    \item<+->Élément affiché à partir de la troisième couche.
+\end{itemize}
+\end{frame}
+
+Ceci permet notamment d'intercaler facilement de nouvelles couches, sans devoir refaire toute la numérotation.
+
+\subsection{Affichage de l'ensemble des couches}
 On peut vouloir obtenir un PDF où toutes les couches d'une diapositive apparaissent d'un seul coup, afin par exemple d'avoir une version papier : il suffit d'utiliser l'option de package \option{handout}.
 
 \begin{latexcode}
