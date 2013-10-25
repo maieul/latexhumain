@@ -334,7 +334,7 @@ Voici quelques exemples afin de comprendre comment utiliser ces champs:
    	\item[urldate] Date à laquelle une publication électronique a été consultée. 
    	\item[venue] Lieu du colloque pour les entrées du type \type{proceedings} et \type{inproceedings}. 
    	\item[version] Numéro de révision d'un manuel, d'un logiciel. 
-   	\item[volume] Volume dans une œuvre en plusieurs volumes. 
+   	\item[volume] Volume dans une œuvre en plusieurs volumes. Volume d'une revue. 
    	\item[volumes] Nombre de volumes dans une œuvres en plusieurs volumes. 
    	\item[year] Année de publication. 				
 \end{choix}
@@ -343,7 +343,23 @@ Voici quelques exemples afin de comprendre comment utiliser ces champs:
 Évidemment il n'est pas nécessaire de remplir  systématiquement tous ces champs: le lecteur sait mieux que nous lesquels remplir en fonction de ses besoins. Certains champs peuvent contenir plusieurs valeurs, qu'il suffit de séparer par le mot-clef \forme{and}. Prenons un livre copublié par les éditions \forme{Labor et Fides} et \forme{Cerf} : pour indiquer les deux éditeurs, il faut mettre : \verb|publisher ={Labor et Fides and Cerf}|.
 
 
+\begin{attention}
+Pour les revues qui publient un même volume en plusieurs étape, il faut utiliser
+\begin{description}
+	\item[\champ{Volume}] pour la numérotation principale. Au sein d'un volume, la pagination commence normalement à~1.
+	\item[\champ{Number}] pour la numérotation secondaire. Au sein d'un numéro, la pagination commence là où elle s'était arrêtée au précédent numéro. Normalement, chaque nouveau volume réinitialise la valeur du champ \champ{number}.
+\end{description}
 
+Alors qu'un numéro n'a généralement pas de table des matières, un volume en a un, qui comprend tous les numéros du volume.
+
+Ainsi :
+
+\inputminted{exemples/biblio/fichier/Gounelle2006.bib}
+
+\begin{quotation}
+\cite{Gounelle2006}
+\end{quotation}
+\end{attention}
 
 \subsection{Les champs d'identification légale}
 
