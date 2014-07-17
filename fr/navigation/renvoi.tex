@@ -5,7 +5,7 @@ Dans ce court chapitre nous allons nous intéresser à la manière de faire des 
 Il s'agit de permettre d'afficher des textes du type : \enquote{Nous renvoyons au chapitre~N. page~P.}
 \end{intro}
 
-\section{Étiqueter des  emplacements : \cs{label}}
+\section{Étiqueter des  emplacements : \texorpdfstring{\cs{label}}{\textbackslash label}}
 
 Pour pouvoir faire des renvois internes, il est nécessaire de placer des \enquote{étiquettes} aux endroits vers lesquels on souhaite renvoyer.
 Cet étiquetage  se fait avec la commande \csp{label}\marg{etiquette}.
@@ -67,7 +67,7 @@ Nous renvoyons à la section  \enquote{\nameref{etiquette}}.
 Toutefois cette commande n'est pas disponible en standard : elle est proposée par le package \package{hyperref}. Il faut donc charger ce package dans le préambule. Nous documentons plus loin quelques fonctionnalités de ce package\renvoi{hyperref}.
 
 
-\section[Où placer la commande \oldcs{label} ?]{Où placer la commande \cs{label} ?}
+\section[Où placer la commande \texorpdfstring{\oldcs{label}}{\textbackslash label} ?]{Où placer la commande \cs{label} ?}
 
 Pour le moment, nous n'avons vu que des renvois vers des sections, mais le système de renvois est beaucoup plus souple.
 
