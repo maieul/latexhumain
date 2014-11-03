@@ -4,7 +4,7 @@
 \begin{intro}
 Nous allons aborder ici deux packages particulièrement utiles en sciences humaines : \package{eledmac} pour faire des éditions critiques et \package{eledpar} (qui ne peut être utilisé séparément de \package{eledmac}) pour éditer un texte et sa traduction en parallèle\footcite[Il existe un livre d'introduction aux éditions critiques avec \XeLaTeX :][]{leal2012}.
 
-Ces packages contiennent moult fonctionnalités : nous n'en présentons ici que quelque unes et renvoyons aux manuels pour les autres\footcites{eledmac}{eledpar}. 
+Ces packages contiennent de nombreuses fonctionnalités : nous n'en présentons ici que quelques unes et renvoyons aux manuels pour les autres\footcites{eledmac}{eledpar}. 
 \end{intro}
 
 \begin{attention}
@@ -351,7 +351,7 @@ Il est recommandé, en prose, de mettre chaque paragraphe dans une boîte --- po
 Le package \package{eledpar} peut mettre les textes en vis-à-vis sur deux colonnes ou sur deux pages  : bien sûr dans ce dernier  cas le texte de gauche est toujours imprimé sur une page paire.
 Nous utilisons dans le premier cas l'environnement \enviro{pairs} ; l'environnement \enviro{pages} dans le second.
 
-Les commandes \cs{Columns} ou \cs{Pages}, selon qu'il s'agisse de l'environnement \enviro{pairs} ou \enviro{pages}, indiquent à \LaTeX  d'imprimer les boîtes jusqu'ici gardées en mémoire. 
+Les commandes \cs{Columns} ou \cs{Pages}, selon qu'il s'agit de l'environnement \enviro{pairs} ou \enviro{pages}, indiquent à \LaTeX  d'imprimer les boîtes jusqu'ici gardées en mémoire. 
 
 
 
@@ -432,7 +432,7 @@ Si vous utilisez la commande \cs{numberpstarttrue}\renvoi{numberpstarttrue} pour
 
 \subsubsection{Vers de longueurs inégales}
 
-Si des vers sur des pages parallèles prennent un nombre de lignes inégales, par exemple si le vers de gauche contient un rejet et non  celui de droite, alors \package{eledpar} introduit un blanc après le vers le droite, pour que le vers suivant soit exactement au même niveau dans la page de droite et dans la page de gauche.
+Si des vers sur des pages parallèles prennent un nombre de lignes inégales, par exemple si le vers de gauche contient un rejet et non  celui de droite, alors \package{eledpar} introduit un blanc après le vers de droite, pour que le vers suivant soit exactement au même niveau dans la page de droite et dans la page de gauche.
 
 Il est possible de dire à \package{eledpar} de ne pas introduire ce blanc, mais de produire un léger décalage des vers, décalage rattrapé à chaque changement de pages. Pour ce faire, il faut passer l'option \option{shiftedverses} au chargement du package.
 

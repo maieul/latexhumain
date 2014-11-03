@@ -10,7 +10,7 @@ On utilise pour cela le terminal du système d'exploitation, qui permet d'exécu
 
 \section{La notion de répertoire courant}\label{repcourant}
 
-Ce qu'on appelle \forme{répertoire courant} correspond à l'emplacement où l'on se situe dans l'arborescence des fichiers de l'ordinateur. Quand on veut utiliser les lignes de commande pour se servir de \XeLaTeX, la première chose à faire est de changer le répertoire courant pour se rendre dans le dossier dans lequel se situe les fichiers à compiler.
+Ce qu'on appelle \forme{répertoire courant} correspond à l'emplacement où l'on se situe dans l'arborescence des fichiers de l'ordinateur. Quand on veut utiliser les lignes de commande pour se servir de \XeLaTeX, la première chose à faire est de changer le répertoire courant pour se rendre dans le dossier dans lequel se situent les fichiers à compiler.
 
 \section{Mac OS X et Linux}
 
@@ -73,13 +73,13 @@ commande, vous pouvez la lancer de la même manière :
 xelatex nomdufichieràcompiler.tex
 \end{bashcode}
 
-La commande \verb|dir| affiche enfin le contenu du répertoire dans lequel vous êtes acutellement.
+La commande \verb|dir| affiche enfin le contenu du répertoire dans lequel vous êtes actuellement.
 
 \section{Trouver les fichiers standards}\label{trouverfichier}
 
 Pour pouvoir personaliser le comportement standard de \LaTeX ou d'un package, par exemple les styles de \package{biblatex}, il est en général nécessaire de regarder les fichiers standards pour redéfinir telle ou telle commande ou macro bibliographique. 
 
-Il faut donc trouver leurs emplacements. Dans le fichier \ext{log} produit lors de la compilation est listé l'ensemble des fichiers chargés par le compilateur. Il est général aisé de connaître le nom du fichier : il s'agit souvent de celui du package ou de la classe. Une recherche dans le fichier permet donc de trouver le chemin, par exemple : 
+Il faut donc trouver leurs emplacements. Dans le fichier \ext{log} produit lors de la compilation est listé l'ensemble des fichiers chargés par le compilateur. Il est en général aisé de connaître le nom du fichier : il s'agit souvent de celui du package ou de la classe. Une recherche dans le fichier permet donc de trouver le chemin, par exemple : 
 
 \noindent\verb|/usr/local/texlive/2012/texmf-dist/tex/latex/biblatex/cbx/verbose-trad2.cbx|.
 

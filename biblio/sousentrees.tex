@@ -1,7 +1,7 @@
 \chapter{Entrées hiérarchisées}\label{sousentrees}
 
 \begin{intro}
-Dans ce chapitre, nous allons voir comment créer des entrées hiérarchisées, pour organiser mieux organiser sa base de données  et pour gérer les divisions de source.
+Dans ce chapitre, nous allons voir comment créer des entrées hiérarchisées, pour mieux organiser sa base de données  et pour gérer les divisions de source.
 \end{intro}
 
 \section{Principe des sous-entrées bibliographiques}
@@ -24,10 +24,10 @@ Après compilation, nous voyons que nos sous-entrées ont correctement hérité 
 \cite{clef2}
 \end{quotation}
 
-Vous constaterez que Biber procède à un héritage \enquote{intelligent} : le champ \champ{date} de l'entrée mère est repris comme comme champ \champ{date} de l'entrée fille, cependant que le champ \champ{title} devient le champ \champ{booktitle}.
+Vous constaterez que Biber procède à un héritage \enquote{intelligent} : le champ \champ{date} de l'entrée mère est repris  comme champ \champ{date} de l'entrée fille, cependant que le champ \champ{title} devient le champ \champ{booktitle}.
 
 \begin{plusloins}
-Il est possible de créer autant de niveaux d'entrée bibliographique que souhaités. Attention cependant à ne pas produire des références circulaires (A héritant de B, héritant de C, héritant de A). Par ailleurs, certain logiciels de gestions bibliographiques vous interdisent de créer des sous-sous-entrées bibliographiques : il vous faut alors modifier vos entrées avec votre éditeur de texte.
+Il est possible de créer autant de niveaux d'entrée bibliographique que souhaités. Attention cependant à ne pas produire des références circulaires (A héritant de B, héritant de C, héritant de A). Par ailleurs, certains logiciels de gestion bibliographique vous interdisent de créer des sous-sous-entrées bibliographiques : il vous faut alors modifier vos entrées avec votre éditeur de texte.
 \end{plusloins}
 
 \section{Sous-entrées dans la bibliographie finale}
@@ -63,7 +63,7 @@ Elle empêche l'héritage d'un champ par une entrée fille.
 
 La seconde  est 
 \csp{inherit}\oarg{option}\marg{champ source}\marg{champ cible}.
-Il n'y qu'une seul option possible : \verb|override=true|. Si cette option est passée, alors la valeur du champ de l'entrée fille est écrasée par celles du champ de l'entrée mère. Sinon, la valeur  du champ de l'entrée fille a priorité.
+Il n'y qu'une seul option possible : \verb|override=true|. Si cette option est passée, alors la valeur du champ de l'entrée fille est écrasée par celle du champ de l'entrée mère. Sinon, la valeur  du champ de l'entrée fille a priorité.
 
 Ainsi, pour permettre l'héritage du  champ \champ{entrysubtype} il suffit d'écrire :
 
@@ -88,7 +88,7 @@ En revanche, supposons que nous renvoyions à une édition particulière, par ex
 \cite{DeDoctChrIIviii18-20}
 \end{quotation}
 
-S'il est aisé lorsqu'on utilise une commande de citation d'indiquer une page précise\renvoi{pagespostnote}, il n'est pas possible en revanche d'indiquer une division de source précise. La solution est  simple : il suffit de créer une entrée principale correspondante à l'ensemble de l'œuvre, et des entrées secondaires correspondantes à des parties de l'œuvre. Ces entrées secondaires héritent des valeurs de l'entrée principale, sauf pour le champ \champ{pages} et le champ \champ{titleaddon} dans lequel on précise la division de source.
+S'il est aisé lorsqu'on utilise une commande de citation d'indiquer une page précise\renvoi{pagespostnote}, il n'est pas possible en revanche d'indiquer une division de source précise. La solution est  simple : il suffit de créer une entrée principale correspondant à l'ensemble de l'œuvre, et des entrées secondaires correspondant à des parties de l'œuvre. Ces entrées secondaires héritent des valeurs de l'entrée principale, sauf pour le champ \champ{pages} et le champ \champ{titleaddon} dans lequel on précise la division de source.
 
 \begin{plusloins}
 Il n'existe pas de champ spécifiquement prévu pour indiquer la division de source. Pourquoi choisir ce champ \champ{titleaddon} ? Deux raisons poussent l'auteur de ces lignes à adopter cette solution :
