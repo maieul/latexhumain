@@ -408,68 +408,13 @@ Si l'un des textes n'est pas dans la langue principale du document, il faut pré
 Comme avec \package{eledmac}, la numérotation\renvoi{lineation} recommence à chaque \cs{beginnumbering}. On peut toutefois faire recommencer la numérotation  à chaque page via les commandes \cs{lineation} et \csp{lineationR}, qui ont la même syntaxe, vue plus haut.
 \end{attention}
 
-Nous obtenons parfois le message d'erreur \enquote{Too many \cs{pstart} without printing}. Pas de panique ! Cela signifie qu'il y a trop de boîtes en mémoire: \LaTeX  doit en imprimer quelques-unes avant de pouvoir continuer.  Il y a deux solutions possibles à ce problème.
+Nous obtenons parfois le message d'erreur \enquote{Too many \cs{pstart} without printing}. Pas de panique ! Cela signifie qu'il y a trop de boîtes en mémoire: \LaTeX  doit en imprimer quelques-unes avant de pouvoir continuer. 
 
-La première solution consiste à  augmenter le nombre de boîtes que \package{eledpar} peut garder en mémoire, en utilisant dans le préambule \csp{maxchunks}\marg{nbre}, où \arg{nbre} est le nombre de boîtes en mémoire. Par défaut, ce nombre est de 5120. Il suffit donc de l'augmenter  pour qu'il soit égal ou supérieur au nombre de boîtes de son  texte. 
+La  solution consiste à  augmenter le nombre de boîtes que \package{eledpar} peut garder en mémoire, en utilisant dans le préambule \csp{maxchunks}\marg{nbre}, où \arg{nbre} est le nombre de boîtes en mémoire. Par défaut, ce nombre est de 5120. Il suffit donc de l'augmenter  pour qu'il soit égal ou supérieur au nombre de boîtes de son  texte. 
 
-Toutefois \TeX ne dispose pas d'une place illimitée pour les boîtes, c'est pourquoi il est souvent préférable d'utiliser la seconde solution.
-
-
-Celle-ci, que nous pouvons d'ailleurs combiner avec la première, consiste à  couper le texte en plusieurs grands ensembles de boîtes --- c'est-à-dire en plusieurs environnements \enviro{Leftside} et \enviro{Rightside}, se terminant chacun par \csp{Columns} ou \csp{Pages}.  Cette solution est préférable pour les longs textes. Les divisions internes du texte se reflètent alors dans les environnements \enviro{Leftside} et \enviro{Rightside}. Cependant,  en mettant simplement :
-
-\begin{latexcode}
-\begin{pages}  
-\begin{Leftside}  \beginnumbering 
-La première partie du texte en langue originale
-\endnumbering  \end{Leftside} 
- 
-\begin{Rightside} \beginnumbering
-La traduction de la première partie
-\endnumbering \end{Rightside} 
- \Pages
- 
-\begin{Leftside} \beginnumbering  
-La deuxième partie du texte 
-\endnumbering  \end{Leftside} 
- 
-\begin{Rightside}  \beginnumbering
-La traduction de la deuxième partie
-\endnumbering \end{Rightside} 
- \Pages
-
-  \end{pages}
-\end{latexcode}
-
-nous nous retrouvons avec une numérotation qui recommence à zéro pour la deuxième partie du texte. 
-
-La commande \csp{memorydump} permet de résoudre ce problème. Elle équivaut en fait à un \cs{pausenumbering} immédiatement suivit d'un \cs{resumenumbering}. Il faut donc mettre: 
-
-\begin{latexcode}
-\begin{pages}  
-\begin{Leftside}  \beginnumbering 
-La première partie du texte en langue originale
-\end{Leftside} % pas de \endnumbering ici!...
- 
-\begin{Rightside} \beginnumbering
-La traduction de la première partie
-\end{Rightside} % et là non plus...
-\Pages
- 
-\begin{Leftside} \memorydump % et, ici, pas de \beginnumbering..  
-La deuxième partie du texte 
-\endnumbering  \end{Leftside}
-    
-\begin{Rightside}  \memorydump %...car la numérotation continue!
-La traduction de la deuxième partie
-\endnumbering \end{Rightside}   % Ne pas oublier de mettre 
-% tout de même \endnumbering quand on arrive à la fin ..
- 
- \Pages
-
-\end{pages}
-\end{latexcode}
-
-Ainsi, la numérotation du texte se fait en continue entre la première partie et la deuxième partie.
+\begin{plusloin}
+La première édition de ce livre, qui parlait du package \package{ledpar} donnait une autre solution, plus complexe. Cette solution est généralement obsolète, le nombre de boîtes maximales ayant été augmenté avec l'usage d'une version améliorée de \TeX. On consultera le manuel de \package{eledpar} ou la première édition du livre pour en savoir plus\footcites{eledpar}[176-178]{Rouquette2012}.
+\end{plusloin}
 
 
 \begin{plusloins}
