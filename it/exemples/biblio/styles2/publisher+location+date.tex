@@ -1,9 +1,0 @@
-\newbibmacro*{publisher+location+date}{%
-  \printlist{location}%
-  \iflistundef{publisher}
-    {\setunit*{\addcomma\space}}
-    {\setunit*{\addcolon\space}}%
-  \printlist{publisher}%
-  \setunit*{\addcomma\space}%
-  \usebibmacro{date}%
-  \newunit}

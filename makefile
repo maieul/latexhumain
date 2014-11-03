@@ -1,16 +1,47 @@
 
-export XELATEX 	= xelatex -shell-escape
-export BIBER		= biber -quiet
-export RERUN		= 'rerun latex( afterwards){0}'
-export UNDEFINED	= "Citation .* undefined"
-export LABEL_MULTIPLE		= "(multiply defined)"
-export LABEL_NON_DEFINI    = "(Reference .* undefined)"
-LANGUAGE	= "fr"
+XELATEX 	= xelatex -shell-escape
+BIBER		= biber -quiet
+RERUN		= 'rerun latex( afterwards){0}'
+UNDEFINED	= "Citation .* undefined"
+LABEL_MULTIPLE		= "(multiply defined)"
+LABEL_NON_DEFINI    = "(Reference .* undefined)"
 
-all:
-	$(MAKE) -C $(LANGUAGE) $@
+.PHONY: all  clean
 
+all:papier.pdf ecran.pdf
+
+%.pdf: %.tex plan.tex ./annexes/*  ./biblio/* ./biblio_fichiers/* ./exemples/*/*/* ./preambule/* ./navigation/* preliminaires/* premierpas/* schemas/* shs/*
+	@echo "Compilation XELATEX"
+	@$(XELATEX) $<
+	@echo "Compilation Biber"
+	@$(BIBER) $*
+	sed -i -e 's/@/"@/g' *.idx 
+	sed -i -e 's/"@\\oldcs/@\\oldcs/' *.idx 
+	splitindex -m "makeindex -s latex-humain.ist" $*.idx 
+	python post-index.py 
+	@echo "Compilation XELATEX 2"
+
+
+	@$(XELATEX) $<
+	for ((i = 3 ; i < 6 ; i++)) ; \
+	do \
+	if egrep -i -q  $(RERUN) *.log ; \
+		then \
+			sed -i -e 's/@/"@/g' *.idx ; \
+			sed -i -e 's/"@\\oldcs/@\\oldcs/' *.idx ; \
+			splitindex -m "makeindex -s latex-humain.ist" $*.idx ; \
+			python post-index.py ; \
+			echo "Compilation XELATEX" $$i; \
+			$(XELATEX) $< ; \
+		fi \
+	done \
+
+
+	@echo "Citations indéfinies:"
+	@egrep -i $(UNDEFINED) *.log || echo "Aucune"
+	@echo "Erreurs de label"
+	@egrep -i $(LABEL_MULTIPLE) *.log || echo "Pas de label multiple"
+	@egrep -i $(LABEL_NON_DEFINI) *.log || echo "Pas de label indéfini"
 clean:
-	$(MAKE) -C $(LANGUAGE) clean
-
-
+	@rm -f *.log *.out *.toc *-e  principal.pdf *idx *ind *run.xml *blg *bbl *bcf *ilg *.1 *.2 *.3 *.4 *.end *.pyg
+	@find -name '*\.aux' -exec rm -f {} \;
