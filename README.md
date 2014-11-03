@@ -27,7 +27,7 @@ Pour les personnes ayant accès au dépôt Git, le principe général est : dans
  * Si l'élément commence en début de phrase, pour avoir la majuscule dans le corps du texte mais la miniscule dans l'index, utiliser le premier argument optionnel : `\class[beamer]{Beamer}`.
 
 # Traduction
-- Un dossier par langue, les fichiers gardent le même nom d'une version à l'autre histoire de faciliter les reports.
+- Une branche par langue, les fichiers gardent le même nom d'une version à l'autre histoire de faciliter les reports.
 - Contacter l'auteur auparavant pour qu'il explique le fonctionnement du code, de git etc., et vous donne des accès
 
 # Pour compiler :
