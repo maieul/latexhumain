@@ -381,10 +381,17 @@ Le texte dans une autre langue
 \pend
 \endnumbering
 \end{Rightside} 
-\Pages
+
 
 \end{pages} % Fin la composition en parallèle.
+\Pages % Affichage des pages
 \end{latexcode}
+
+\begin{attention}
+La commande \cs{Pages} doit s'écrire \emph{à l'extérieur} de l'environnement \enviro{pages}. Si dans la majorité des cas l'écrire à l'intérieur ne pose pas de souci,  il existe des exceptions.
+
+De même, la commande \cs{Columns} doit s'écrire \emph{à l'extérieur} de l'environnement \enviro{pairs}.
+\end{attention}
 
 \begin{attention}
 Si l'un des textes n'est pas dans la langue principale du document, il faut préciser le changement de langue\renvoi{i18n} \emph{à l'intérieur} de l'environnement \enviro{Leftside} ou \enviro{Rightside}.
