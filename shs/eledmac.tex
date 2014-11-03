@@ -403,7 +403,7 @@ Comme avec \package{eledmac}, la numérotation\renvoi{lineation} recommence à c
 
 Nous obtenons parfois le message d'erreur \enquote{Too many \cs{pstart} without printing}. Pas de panique ! Cela signifie qu'il y a trop de boîtes en mémoire: \LaTeX  doit en imprimer quelques-unes avant de pouvoir continuer.  Il y a deux solutions possibles à ce problème.
 
-La première solution consiste à  augmenter le nombre de boîtes que \package{eledpar} peut garder en mémoire, en utilisant dans le préambule \csp{maxchunks}\marg{nbre}, où \arg{nbre} est le nombre de boîtes en mémoire. Par défaut, ce nombre est de dix. Il suffit donc de l'augmenter  pour qu'il soit égal ou supérieur au nombre de boîtes de son  texte. 
+La première solution consiste à  augmenter le nombre de boîtes que \package{eledpar} peut garder en mémoire, en utilisant dans le préambule \csp{maxchunks}\marg{nbre}, où \arg{nbre} est le nombre de boîtes en mémoire. Par défaut, ce nombre est de 5120. Il suffit donc de l'augmenter  pour qu'il soit égal ou supérieur au nombre de boîtes de son  texte. 
 
 Toutefois \TeX ne dispose pas d'une place illimitée pour les boîtes, c'est pourquoi il est souvent préférable d'utiliser la seconde solution.
 
