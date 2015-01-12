@@ -183,13 +183,9 @@ En revanche le problème demeure si l'on souhaite insérer du texte dans l'argum
 \cite[\pno~24, passage fort intéressant.]{Junod1992}
 \end{quotation}
 
-Comme vous pouvez le constater, le champ \champ{pages} continue à être affiché. Il s'agit d'une limite de \emph{biblatex}. Nous ne trouvons pas d'autre solution que de le contourner en indiquant le texte qui suit la référence en dehors de l'argument \arg{postnote}. 
+Comme vous pouvez le constater, le champ \champ{pages} continue à être affiché. Il s'agit d'une limite de \emph{biblatex}. Pour contourner ce problème, il est nécessaire de charger le package \package{biblatex-true-citepages-omit}\footcite{biblatex-true-citepages-omit}. 
 
-Dans le cas d'une citation en note de bas de page, il faut donc écrire :
 
-\begin{latexcode}
-\footnote{\cite[24]{Junod1992}, passage fort intéressant.}
-\end{latexcode}
 
 \begin{attention}
 Pour les sources anciennes, on aimerait pouvoir indiquer non seulement la pagination dans l'édition contemporaine mais aussi la division de source (livre, chapitre, paragraphe, etc.). Malheureusement on ne peut avec \package{biblatex} indiquer qu'un seul élément variable lors de l'utilisation d'une commande de citation.
