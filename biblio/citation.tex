@@ -43,13 +43,17 @@ Pour les sciences humaines, nous recommandons les styles de la famille verbose.
 
 
 Pour que \LaTeX{} sache où chercher les références bibliographiques, il faut lui signaler  quel est le fichier \ext{bib} à utiliser, pour cela il suffit d'utiliser dans le préambule la commande   :
-\csp{bibliography}\marg{chemin du fichier}.
+\csp{addbibresource}\marg{chemin du fichier}.
 
 Le chemin du fichier s'indique de la même manière que n'importe quel chemin de fichier\renvoi{chemin}.
 
 \begin{attention}
 Il est possible d'appeler plusieurs fichiers bibliographiques. Nous le déconseillons, dans la mesure où cela contraint à vérifier qu'il n'y ait pas plusieurs entrées avec la même clef.
 \end{attention}
+
+\begin{plusloins}
+Les précédentes versions de \package{biblatex} utilisaient la commande \csp{bibliography}. Cette commande est désormais obsolète. La commande \csp{addbibresource} présente notamment l'avantage de permettre d'utiliser des fichiers distants ou dans d'autres formats que \ext{bib}, comme par exemple des exportations Zotero\footcite{biblatex_resources}. 
+\end{plusloins}
 
 \section{Citation d'un élément bibliographique}
 
