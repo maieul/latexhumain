@@ -258,7 +258,16 @@ Il existe d'autres commandes similaires:
  \item[\csp{roman}]qui affiche un compteur sous forme de nombres romains minuscules.
 \end{description}
 
-Ces deux 
+\begin{plusloins}
+Le package \package{polyglossia} propose par ailleurs des commandes pour afficher des nombres sous forme de caractères grecs, arabes, hébreux, syriaque et farsi\footcite{polyglossia_alphabetic_numbering}. 
+
+Ces commandes, à la différence des précédentes, ne prennent pas pour argument un compteur, mais un nombre. Ainsi, si nous souhaitons formater le numéro de chapitre sous forme d'un nombre grec, il nous faut charger le grec comme langue et utiliser ainsi la commande \csp{greeknumeral}:
+
+\begin{latexcode}
+\setotherlanguage{greek}
+\renewcommand{\thechapter}{\greeknumeral{\arabic{chapter}}}
+\end{latexcode}
+\end{plusloins}
 
 \begin{plusloins}
 Nous parlons plus loin de la manière de manipuler les compteurs\renvoi{manipcompteurs}.
