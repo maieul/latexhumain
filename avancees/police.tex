@@ -221,22 +221,13 @@ Supposons maintenant que nous souhaitons  :
 Il nous suffit de redéfinir ainsi ces commandes :
 
 \begin{latexcode}
-\renewcommand \thechapter {\@Roman\c@chapter}
-\renewcommand \thesection {\thechapter.\@arabic\c@section)}
+\renewcommand \thechapter {\Roman{chapter}}
+\renewcommand \thesection {\arabic{section}}
 \end{latexcode} 
 
-\label{makeatletter}Si vous écrivez ces lignes dans votre préambule, vous n'arriverez pas à compiler. Cela tient à une raison simple : les commandes contenant le caractère @ ne peuvent pas être  utilisées dans un fichier \ext{tex}, mais uniquement dans les fichiers de définition de classe (\ext{cls}) ou de package (\ext{sty}).
 
-Pour pouvoir les utiliser dans un fichier \ext{tex}, il faut les entourer des commandes \csp{makeatletter} et \csp{makeatother}.
 
-Ce qui nous donne : 
 
-\begin{latexcode}
-\makeatletter
-\renewcommand \thechapter {\@Roman\c@chapter}
-\renewcommand \thesection {\thechapter.\@arabic\c@section)}
-\makeatother
-\end{latexcode}
 
 
 On obtient donc un affichage de la forme :
@@ -258,6 +249,16 @@ On obtient donc un affichage de la forme :
 \renewcommand{\thechapter}{\oldthechapter}
 \renewcommand{\thesection}{\oldthesection}
 
+On comprend aisément comment fonctionne les commandes \csp{Roman} et \csp{arabic}. Elles prennent comme argument le nom d'un compteur et affichent sa valeur, soit en nombres romains majuscules, soit en chiffres arabes. 
+
+Il existe d'autres commandes similaires:
+\begin{description}
+ \item[\csp{alph}]qui affiche un compteur dont la valeur est comprise entre 1 et 26 sous la forme d'une lettre minuscule de l'alphabet latin. 
+  \item[\csp{Alph}]qui affiche un compteur dont la valeur est comprise entre 1 et 26 sous la forme d'une lettre majuscule de l'alphabet latin. 
+ \item[\csp{roman}]qui affiche un compteur sous forme de nombres romains minuscules.
+\end{description}
+
+Ces deux 
 
 \begin{plusloins}
 Nous parlons plus loin de la manière de manipuler les compteurs\renvoi{manipcompteurs}.
@@ -284,7 +285,8 @@ Commentons ces quelques lignes :
 \item[ligne 4] sixième et dernier argument de \cs{@startsection}, qui indique l'apparence proprement dite de notre titre. Il s'agit d'un texte en police normale --- c'est-à-dire celle définie par la commande \cs{setmainfont} ---, en taille \cs{Large}, mise en gras (\cs{bfseries}). Ici toutes nos commandes sont prises comme des commandes de bascule, la bascule finissant avec l'accolade fermante. La commande \csp{bfseries} est l'équivalent à bascule de la commande \cs{textbf}. Il est recommandé de n'utiliser dans les styles de titre que des commandes à bascule, pour éviter des espaces indésirables.\label{bfseries}
 \end{description}
 
-Supposons maintenant que nous souhaitons avoir notre titre en italique et en police sans empattements. Il nous suffit de redéfinir la commande \cs{section}, en entourant notre définition de \cs{makeatletter} et \cs{makeatother}\renvoi{makeatletter}.
+Supposons maintenant que nous souhaitons avoir notre titre en italique et en police sans empattements.  Il nous suffit de redéfinir la commande \cs{section}.
+Dans notre (re)-définition, nous  ferons appel à des commandes contenant le caractère @. Or les commandes contenant le caractère @ ne peuvent pas être  utilisées dans un fichier \ext{tex}, mais uniquement dans les fichiers de définition de classe (\ext{cls}) ou de package (\ext{sty}). Toutefois, on peut faire une exception,  en  entourant ces commandes  de \csp{makeatletter} et \csp{makeatother}.
 
 \begin{latexcode}
 \makeatletter
