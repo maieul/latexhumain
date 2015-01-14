@@ -270,6 +270,36 @@ Il est possible de définir ses propres types de pagination en déclarant des no
 \end{plusloins}
 
 
+\subsubsection{Division de source}\label{divisionsource}
+
+Les textes anciens disposent en général d'une division propre qui permet --- en théorie ---  de repérer un passage dans n'importe quelle édition. Ainsi :
+
+\begin{quotation}
+\cite{DoctrineChretienneDivision}
+\end{quotation}
+
+signifie que nous renvoyons au \emph{De Doctrina Christiana} d'Augustin, livre II, chapitre \textsc{viii}, paragraphes 12-13. En théorie on peut retrouver le passage concerné dans n'importe quelle édition du traité. Ceci est appelé généralement \enquote{division de source}.
+
+En revanche, supposons que nous renvoyions à une édition particulière, par exemple celle de la Bibliothèque Augustinienne, on aimerait alors indiquer les pages précises.
+
+\begin{quotation}
+\cite[(II, \textsc{viii}, 12-13)150-155]{DeDoctChr}
+\end{quotation}
+
+Malheureusement \package{biblatex} ne permet que de modifier le numéro des pages et ne propose pas d'indiquer une division de source. Cependant, il est possible d'utiliser le package \package{biblatex-source-division}\footcite{biblatex-source-division} pour remédier à ce problème. Un texte mis entre parenthèse au début de l'argument \arg{prenote} sera considéré comme une division de source, et, par conséquent, indiqué juste après le titre.
+
+\begin{latexcode}
+\cite[(II, \textsc{viii}, 12-13)150-155]{DeDoctChr}
+\end{latexcode}
+
+
+\begin{plusloins}
+Formellement, la division de source est transférée dans un champ \champ{titleaddon}.
+
+La première édition du présent ouvrage proposait une autre solution, à base de sous-entrées bibliographiques\footcite[112-113]{Rouquette2012}. Cette solution était peu pratique. C'est pourquoi nous avons créé le package   \package{biblatex-source-division}.
+\end{plusloins}
+
+
 
 \section{Citation de plusieurs œuvres}\label{citemultiple}
 
