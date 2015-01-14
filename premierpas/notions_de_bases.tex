@@ -59,11 +59,10 @@ Nous en préciserons d'autres au fur et à mesure de l'ouvrage, lorsque les noti
 
 \subsection{L'appel aux packages}
 
-Voyons les trois lignes suivantes : 
+Voyons les deux lignes suivantes : 
 
 \begin{latexcode*}{linenos,firstnumber=2}
 \usepackage{fontspec}
-\usepackage{xunicode}
 \usepackage{polyglossia}
 \end{latexcode*}
 
@@ -71,7 +70,7 @@ Il s'agit, comme vous auriez pu le deviner, d'appel à des packages\footnote{Nou
 
 Le premier package est \package{fontspec}. Il est utile à \XeLaTeX  pour une typographie avancée, notamment pour disposer d'accents dans le document PDF produit. 
 
-Le second package est \package{xunicode}. Il permet de gérer l'unicode, autrement appelé UTF-8\footnote{En réalité UTF-8 n'est pas tout à fait Unicode, mais une implémentation de ce dernier. Toutefois, pour simplifier, nous assimilons les deux.}. Il nous permet d'utiliser des caractères non latins\renvoi{utf8} dans le document \ext{tex}.
+Le package \package{fontspec} charge automatiquement le  \package{xunicode}, sans que vous n'ayez besoin de l'indiquer. Ce dernier permet de gérer l'unicode, autrement appelé UTF-8\footnote{En réalité UTF-8 n'est pas tout à fait Unicode, mais une implémentation de ce dernier. Toutefois, pour simplifier, nous assimilons les deux.}. Ainsi, nous pouvons utiliser des caractères non latins\renvoi{utf8} dans le document \ext{tex}.
 
 \begin{plusloins}
 On trouve sur internet de la documentation   expliquant qu'il faut,  pour insérer un \enquote{é},  frapper \verb|\'{}|, et qui fournit une liste de commandes de caractères accentués. 
@@ -79,7 +78,7 @@ On trouve sur internet de la documentation   expliquant qu'il faut,  pour insér
 Ceci était vrai fut un temps. Il est depuis longtemps inutile d'apprendre ces commandes : vous pouvez tranquillement frapper vos lettres accentuées de manière \enquote{normale}. 
 \end{plusloins}
 
-Le troisième, \package{polyglossia}, permet de gérer facilement un document multilingue\renvoi{i18n} et les changements typographiques qu'un tel document implique.
+Le second package chargé manuellement est \package{polyglossia}, permet de gérer facilement un document multilingue\renvoi{i18n} et les changements typographiques qu'un tel document implique.
 
 Ces trois packages sont propres à \XeLaTeX  : ils ne fonctionnent pas\renvoi{TeXLaTeX} avec \LaTeX.
 
@@ -95,7 +94,7 @@ Dans la suite de ce livre, chaque fois que nous décrivons les fonctionnalités 
 Lorsque nous parlons d'un package, nous renvoyons souvent à son manuel. Il existe une façon très simple de trouver le manuel d'un package en passant par le terminal: nous expliquons en annexe comment faire\renvoi{manuels}.
 \end{plusloins}
 
-\subsection{Le fran\c cais, langue par défaut\label{french}}
+\subsection{Le français, langue par défaut\label{french}}
 
 Tout de suite après, la ligne \csp{setmainlanguage}\verb|{french}| indique que nous utilisons comme langue principale du document le français\renvoi{i18n}, et  que le compositeur de texte devra   donc prendre en compte la typographie fran\c caise. Cette ligne n'est compréhensible par le compilateur que parce que nous avons chargé \package{polyglossia} au préalable.
 
@@ -116,7 +115,7 @@ Enfin, rien de ce qui se trouve après \cs{end}\verb|{document}| n'est analysé 
 
 \subsection{Titre, auteur et date : la notion de commande}\label{notioncommande}
 
-\begin{latexcode*}{linenos,firstnumber=8}
+\begin{latexcode*}{linenos,firstnumber=7}
 \title{Un titre d'ouvrage}
 \author{Le nom de son auteur}
 \date{Une date}
@@ -159,7 +158,7 @@ La grande force de \LaTeX est justement l'utilisation de commandes afin d'évite
 Regardez maintenant les lignes suivantes et leur résultat à la compilation.
 
 
-\begin{latexcode*}{linenos,firstnumber=13}
+\begin{latexcode*}{linenos,firstnumber=12}
 Lorem ipsum dolor sit amet, consectetuer adipiscing elit ?
 Morbi commodo ; ipsum sed pharetra gravida !
 Nullam sit amet enim. Suspendisse id : velit vitae ligula.
@@ -223,7 +222,7 @@ Trois exceptions toutefois :
 \subsection{Un commentaire}
 
 La ligne suivante est : 
-\begin{latexcode*}{linenos,firstnumber=23}
+\begin{latexcode*}{linenos,firstnumber=22}
 %La fin du document
 \end{latexcode*}
 
