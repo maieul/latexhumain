@@ -92,8 +92,11 @@ Ce qui donne le résultat de la figure~\ref{figure:genealogie}. Analysons le cod
 Évidemment un tel code est relativement complexe. C'est pourquoi nous conseillons de le commenter attentivement\footnote{Pour des raisons de place nous ne l'avons pas fait ici.} et de prêter extrêmement attention  aux accolades. Par ailleurs nous recommandons de mettre chaque graphisme \package{TikZ} dans un fichier séparé.
 
 
-Notre \emph{stemma} est relativement simple : il n'y a pas de \enquote{consanguinité}. Si cela avait été le cas la construction aurait été plus complexe : on n'aurait pas pu utiliser les opérations de types \verb|child| et il aurait fallu positionner précisément les éléments en utilisant un système de coordonnées\footcite[Nous avons publié sur notre site Internet une série d'articles sur les \emph{stemma} avec TikZ :][]{stemma}.
+Notre \emph{stemma} est relativement simple : il n'y a pas de contamination. Si cela avait été le cas la construction aurait été plus complexe : on n'aurait pas pu utiliser les opérations de types \verb|child|, en tout cas pas uniquement,  et il aurait fallu positionner précisément les éléments en utilisant un système de coordonnées\footcites[Nous avons publié sur notre site Internet une série d'articles sur les \emph{stemma} avec TikZ :][]{stemma}[on consultera avec profit un article écrit dans la langue de Dante][]{Leal2012a}.
 
+\begin{plusloins}
+Le package \package{tikz-qtree}\footcite{tikz-qtree} simplifie la construction de \emph{stemmatta} en proposant une syntaxe simplifiée et des outils pour gérer les cas de contamination.  
+\end{plusloins}
 
 
 \section{Création de tableaux}
