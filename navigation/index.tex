@@ -7,16 +7,16 @@ Dans ce chapitre nous verrons comment faire un ou plusieurs index\footnote{Je re
 \end{intro}
 
 
-\section{Faire un index simple avec \packagenoidx{imakeidx}}\index[pkg]{imakeidx}
+\section{Faire un index simple avec \packagenoidx{indextools}}\index[pkg]{indextools}
 
 
 \subsection{Principe de base}
 
 
-Pour indexer un document, il faut utiliser le package \package{imakeidx} et placer  dans le préambule la commande \csp{makeindex}\footnote{Le \package {imakeidx} remplace à la fois le  \package{makeindex} et le  \package{splitindex}, dont il reprend les commandes. Il est plus simple à utiliser, notamment pour la mise en page de l'index \renvoi{styleindex}, et ne nécessite qu'une compilation, contrairement à ses prédécesseurs. Pour obtenir des informations sur les commandes d'indexation, il faut consulter les manuels de \package{makeindex} et de \package{SplitIndex}.}.
+Pour indexer un document, il faut utiliser le package \package{indextools} et placer  dans le préambule la commande \csp{makeindex}\footnote{Le \package {indextools} remplace à la fois le  \package{makeindex} et le  \package{splitindex}, dont il reprend les commandes. Il est plus simple à utiliser, notamment pour la mise en page de l'index \renvoi{styleindex}, et ne nécessite qu'une compilation, contrairement à ses prédécesseurs. Pour obtenir des informations sur les commandes d'indexation, il faut consulter les manuels de \package{makeindex} et de \package{SplitIndex}.}.
 
 \begin{latexcode}
-\usepackage{imakeidx}
+\usepackage{indextools}
 \makeindex
 \end{latexcode}
 
@@ -71,7 +71,7 @@ L'index  apparaît dans le document à l'emplacement que l'on a indiqué par la 
 \subsection{Allons plus loin}
 \subsubsection{Créer des subdivisions}
 
-Il est possible, avec \package{imakeidx},  de créer des subdivisions et des subsubdivisions  pour chaque entrée de l'index. La subdivision se crée de la manière suivante : \begin{english}\cs{index}\verb|{|\meta{entrée}\verb|!|\meta{sous-entrée}\verb|}|\end{english}. La sous-sous-entrée, logiquement, se crée ainsi: \begin{english}\cs{index}\verb|{|\meta{entrée}\verb|!|\meta{sous-entrée}\verb|!|\meta{sous-sous-entrée}\verb|}|\end{english}. On ne peut cependant avoir que ces trois niveaux d'indexation.
+Il est possible, avec \package{indextools},  de créer des subdivisions et des subsubdivisions  pour chaque entrée de l'index. La subdivision se crée de la manière suivante : \begin{english}\cs{index}\verb|{|\meta{entrée}\verb|!|\meta{sous-entrée}\verb|}|\end{english}. La sous-sous-entrée, logiquement, se crée ainsi: \begin{english}\cs{index}\verb|{|\meta{entrée}\verb|!|\meta{sous-entrée}\verb|!|\meta{sous-sous-entrée}\verb|}|\end{english}. On ne peut cependant avoir que ces trois niveaux d'indexation.
 
 On peut ainsi référencer autrement notre premier exemple, en créant les entrées \enquote{Évêques} et \enquote{Ducs} que l'on subdivise:
 
@@ -195,11 +195,11 @@ Si vous utilisez le package \package{hyperref}, vous constaterez que celui-ci in
 \end{plusloins}
 
 
-\subsection{Quelques options du package \packagenoidx{imakeidx}}\index[pkg]{imakeidx}
+\subsection{Quelques options du package \packagenoidx{indextools}}\index[pkg]{indextools}
 
 
 
-La commande \cs{makeindex} peut recevoir des arguments optionnels sous la forme \cs{makeindex}\oarg{clef$=$valeur} ; s'il y a plusieurs arguments, ils doivent être séparés par une virgule. En voici trois\footnote{Nous en verrons un quatrième pour les index multiples, et un autre lorsque nous évoquerons le formatage de l'index. Pour une liste exhaustive, voir \cite{imakeidx}.} :
+La commande \cs{makeindex} peut recevoir des arguments optionnels sous la forme \cs{makeindex}\oarg{clef$=$valeur} ; s'il y a plusieurs arguments, ils doivent être séparés par une virgule. En voici trois\footnote{Nous en verrons un quatrième pour les index multiples, et un autre lorsque nous évoquerons le formatage de l'index. Pour une liste exhaustive, voir \cite{indextools}.} :
 \begin{choix}
 \item[title] Permet de changer le nom de l'index, qui par défaut est \enquote{Index}. Par exemple, le code suivant permet d'avoir un index intitulé \enquote{Index rerum} 
 
@@ -245,7 +245,7 @@ Pour terminer, voici la commande \cs{indexprologue}\oarg{espace}\marg{texte} qui
 
 \subsection{Définir ses index}
 
-Le package \package{imakeidx} permet de faire plusieurs index pour un même document. La première étape consiste à définir ces index. On les déclare dans le préambule en utilisant pour chaque index la commande \csp{makeindex}, déjà étudiée. Chaque index reçoit un nom  abrégé --- à ne pas confondre avec son titre --- qui permettra ensuite d'indiquer  à quel index appartient telle entrée indexée dans votre document. Le nom abrégé de l'index est indiqué comme  option à la commande  \csp{makeindex}.
+Le package \package{indextools} permet de faire plusieurs index pour un même document. La première étape consiste à définir ces index. On les déclare dans le préambule en utilisant pour chaque index la commande \csp{makeindex}, déjà étudiée. Chaque index reçoit un nom  abrégé --- à ne pas confondre avec son titre --- qui permettra ensuite d'indiquer  à quel index appartient telle entrée indexée dans votre document. Le nom abrégé de l'index est indiqué comme  option à la commande  \csp{makeindex}.
 
 
 Ainsi, pour faire un index des noms propres et un index général, on peut déclarer:
@@ -308,7 +308,7 @@ Si l'on veut regrouper tous les index en un seul chapitre dont chaque index est 
 
 \section{Indexer ses sources}
 
-Nous allons maintenant voir comment utiliser les possibilités de \package{biblatex} et de \package{imakeidx} pour établir un index des sources primaires.
+Nous allons maintenant voir comment utiliser les possibilités de \package{biblatex} et de \package{indextools} pour établir un index des sources primaires.
 
 Pour comprendre cette section, vous devez vous être familiarisé avec les indications sur les macros bibliographiques\renvoi{macrobiblio}.
 
@@ -345,7 +345,7 @@ En outre nous aimerions :
 
 \subsection{Création d'un index spécifique}
 
-Pour créer un index spécifique aux sources, rien de particulier : il suffit d'utiliser \package{imakeidx} et la commande \cs{makeindex} :
+Pour créer un index spécifique aux sources, rien de particulier : il suffit d'utiliser \package{indextools} et la commande \cs{makeindex} :
 
 \begin{latexcode}
 \makeindex[name=sources,title=Sources]
@@ -372,7 +372,7 @@ Or nous voudrions obtenir une indexation correspondant à la commande:
 Mais avant d'utiliser ce script, il faut  indexer une fausse valeur, la valeur \verb|---|, qui empêchera le script d'indexer tous les champs d'une entrée: nous ne voulons pas obtenir une entrée de la forme : \\
  \verb|\index{author!title!titleaddon!author2!title2!}|
  
-Toutefois, ce script python doit être exécuté avant que \LaTeX ne transforme le fichier \ext{idx} en fichier \ext{ind}. Cette transformation est faite automatiquement par le package \package{imakeidx}. Cependant, nous pouvons désactiver cet automatisme pour un index particulier, dans le cas présent pour l'index sources. Pour ce faire, il nous suffit de passer l'option \option{noautomatic} à la commande \cs{makeindex} :\label{noautomatic}
+Toutefois, ce script python doit être exécuté avant que \LaTeX ne transforme le fichier \ext{idx} en fichier \ext{ind}. Cette transformation est faite automatiquement par le package \package{indextools}. Cependant, nous pouvons désactiver cet automatisme pour un index particulier, dans le cas présent pour l'index sources. Pour ce faire, il nous suffit de passer l'option \option{noautomatic} à la commande \cs{makeindex} :\label{noautomatic}
 
 \begin{latexcode}
 \makeindex[name=sources,title=Sources,noautomatic]
