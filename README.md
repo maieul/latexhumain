@@ -12,7 +12,7 @@ Si vous avez des idées d'améliorations, merci de
 # Politique de commit
 Pour les personnes ayant accès au dépôt Git, le principe général est : dans master on ne met que de éléments liés à des versions CTAN des packages, et si l'on veut commencer à rédiger avant la sortie officielle, on crée une branche qu'on fusionne ensuite.
 
-# Régles de rédaction
+# Règles de rédaction
 * les exemples -> pas plus de 64 caractères de longueurs
 * pour les sources primaires-> mettre le champ usera a 1, pour permettre d'avoir "éd" et pas "dir"
 * dans les exemples entre latexcode, ne pas mettre de tabulation, mais 4 espaces
@@ -41,4 +41,16 @@ Néanmoins si vous souhaitez faire votre propre compilation :
 - Vous devez disposer de Minted
 - Vous devez si besoin installer Pygmentize (pour la coloration syntaxique) :  sudo easy_install Pygments.
 
-Ensuite avec le Terminal, un simple Make suffit.
+Ensuite avec le Terminal, un simple `make` suffit.
+
+## Installer les dépendances sous Ubuntu/Debian
+
+Pour installer les dépendances nécessaires, il faut installer les paquets suivants, en plus d'une installation complète et récente de texlive :
+
++ fonts-sil-ezra → police pour l'hébreu
++ python-pygments → package pygmentize de python.
+
+Pour les installer facilement :
+
+`sudo apt-get install fonts-sil-ezra python-pygments`
+
