@@ -77,6 +77,16 @@ Analysons ce code :
 \item Le troisième argument contient le code qui est appelé pour créer l'en-tête d'une bibliographie. Ici on déclare qu'on passe le titre (le contenu de \verb|#1|) à une commande \cs{subsection}.
 \end{enumerate}
 
+Notons que \package{biblatex} fournit en standard plusieurs entête:
+\begin{glossaire}
+\item[bibliography]entête par défaut, de niveau \cs{chapter*} (ou \cs{section*} pour les classes sans \cs{chapter*}).
+\item[subibliography], de niveau \cs{section*} (ou \cs{subsection*} pour les classes sans \cs{chapter*}).
+\item[bibintoc]: comme \forme{bibliography}, mais ajoute le titre dans la table des matières.
+\item[subbibintoc]: comme \forme{subibliography}, mais ajoute le titre dans la table des matières.
+\item[bibnumered], de niveau \cs{chapter} (ou \cs{section} pour les classes sans \cs{chapter}).
+\item[subbibnumered], de niveau \cs{section} (ou \cs{subsection} pour les classes sans \cs{chapter}).
+\end{glossaire}
+ 
 
 Avec une telle méthode, il est aisé de trier une bibliographie en sources primaires et sources secondaires. Il suffit d'attribuer une valeur au champ \champ{entrysubtype} des entrées bibliographiques, en la faisant varier selon qu'il s'agisse d'une source primaire ou d'une source secondaire.
 Par exemple :
@@ -91,6 +101,7 @@ Par exemple :
 \printbibliography[subtype=outil,title=Outils]
 \printbibliography[subtype=etude,title=Études]
 \end{latexcode}
+
 
 
 \subsection{Par sujet}
