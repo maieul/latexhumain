@@ -67,7 +67,7 @@ Es handelt sich, wie Sie erahnen können, um den Aufruf von Packages.\footnote{W
 Das erste Package ist \package{fontspec}. 
 Il est utile à \XeLaTeX  pour une typographie avancée, notamment pour disposer d'accents dans le document PDF produit. 
 
-Das Paket \package{fontspec} lädt automatisch \package{xunicode}, ohne dass Sie dies zusätzlich angeben müssen. Letzteres erlaubt es, [[de gérer l'unicode]], das auch UTF-8 genannt wird.\footnote{UTF-8 ist eigentlich nicht identisch mit Unicode, sondern stellt eine Implementierung dessen dar. Aus Gründen der Einfachheit, werden wir beide Begriffe jedoch synonym verwenden.} Daher können wir nicht-lateinische Zeichen\renvoi{utf8} in unserem \ext{tex}-Dokument verwenden.
+Das Paket \package{fontspec} lädt automatisch \package{xunicode}, ohne dass Sie dies zusätzlich angeben müssen. Letzteres erlaubt es, unicode zu erzeugen, das auch UTF-8 genannt wird.\footnote{UTF-8 ist eigentlich nicht identisch mit Unicode, sondern stellt eine Implementierung dessen dar. Aus Gründen der Einfachheit, werden wir beide Begriffe jedoch synonym verwenden.} Daher können wir nicht-lateinische Zeichen\renvoi{utf8} in unserem \ext{tex}-Dokument verwenden.
 
 \begin{plusloins}
 Man findet im Internet häufig Hinweise, dass man zur Eingabe von \enquote{ö} den Code \verb|\"{o}| verwendet, wobei andere Sonderzeichen ähnlich eingegeben werden können. 
@@ -75,7 +75,7 @@ Man findet im Internet häufig Hinweise, dass man zur Eingabe von \enquote{ö} d
 Dies galt früher, doch es ist bereits seit einiger Zeit nicht mehr hilfreich, diese Befehle zu lernen. Man kann Sonderzeichen ohne Bedenken \enquote{normal} eingeben. 
 \end{plusloins}
 
-Le second package chargé manuellement est \package{polyglossia}, permet de gérer facilement un document multilingue\renvoi{i18n} et les changements typographiques qu'un tel document implique.
+Das zweite manuell geladene Package \package{polyglossia} ermöglicht, auf einfache Weise ein mehrsprachiges Dokument zu erzeugen, wobei die nötigen typographischen Anpassungen vorgenommen worden.
 
 Ces trois packages sont propres à \XeLaTeX  : ils ne fonctionnent pas\renvoi{TeXLaTeX} avec \LaTeX.
 
