@@ -82,18 +82,18 @@ Manche Packages können mit Optionen geladen werden, die ihr Verhalten anpassen.
 
 Im Lauf dieses Buchs werden wir verschiedene Packages [aborderons].
 
+
 \begin{attention}
-Dans la suite de ce livre, chaque fois que nous décrivons les fonctionnalités d'un package, nous suppose que  le package a été chargé au préalable dans le préambule par la commande \csp{usepackage}\marg{package}.
+Im weiteren Verlauf des Buches gehen wir, wenn wir die Funktionen eines Packages beschreiben, davon aus, dass das entsprechende Package zuvor in der Präambel mit dem Befehl \csp{usepackage}\marg{package} geladen wurde.
 \end{attention}
 
 \begin{plusloins}
-
 Wenn wir über ein Package sprechen, verweisen wir häufig auf sein Handbuch. Man kann das Handbuch eines Packages  leicht über das Terminal finden. Wie das genau funktioniert, erklären wir im Anhang \renvoi{manuels}.
 \end{plusloins}
 
-\subsection{Le français, langue par défaut\label{french}}
+\subsection{Deutsch als Hauptsprache des Dokuments\label{french}}
 
-Tout de suite après, la ligne \csp{setmainlanguage}\verb|{french}| indique que nous utilisons comme langue principale du document le français\renvoi{i18n}, et  que le compositeur de texte devra   donc prendre en compte la typographie fran\c caise. Cette ligne n'est compréhensible par le compilateur que parce que nous avons chargé \package{polyglossia} au préalable.
+Direkt danach bestimmt die Zeile \csp{setmainlanguage}\verb|{german}| Deutsch zur Hauptsprache des Dokuments und dass somit bei der Erstellung der Ausgabe die typographischen Gepflogenheiten der deutschen Sprache\renvoi{i18n} berücksichtigt werden sollen. Diese Zeile ist für den [[Compiler]] nur verständlich, wel wir bereits \package{polyglossia} geladen haben. 
 
 \begin{plusloins}
 Vous entendrez peut-être parler du package \package{babel}. Il est très souvent utilisé à la place de \package{polyglossia}, notamment parce qu'il est plus ancien. Toutefois, nous avons choisi pour notre part de nous limiter à \package{polyglossia}, puisque c'est lui que nous avons utilisé pour nos travaux et qu'il possède plus de fonctionalités, par exemple pour les langues notées dans un alphabet non latin.
