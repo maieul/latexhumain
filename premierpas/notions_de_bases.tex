@@ -53,57 +53,57 @@ Hier einige verfügbare und für Geisteswissenschaften nützliche Optionen:
 
 Wir werden weitere Optionen nach und nach darstellen, nachdem die notwendigen Begriffe angesprochen wurden.
 
-\subsection{L'appel aux packages}
+\subsection{Der Aufruf von Packages}
 
-Voyons les deux lignes suivantes : 
+Betrachten wir die beiden folgenden Zeilen: 
 
 \begin{latexcode*}{linenos,firstnumber=2}
 \usepackage{fontspec}
 \usepackage{polyglossia}
 \end{latexcode*}
 
-Il s'agit, comme vous auriez pu le deviner, d'appel à des packages\footnote{Nous avons fait volontairement le choix de ne pas traduire ce terme, pour éviter des confusions.}. Un package est un ensemble de fichiers qui ajoutent des fonctionnalités à \LaTeX, c'est l'équivalent d'un plugin sous Firefox. 
+Es handelt sich, wie Sie erahnen können, um den Aufruf von Packages.\footnote{Wir haben uns bewusst entschlossen, diesen Begriff nicht zu übersetzen, um Verwechslungen vorzubeugen.} Ein Package ist eine Sammlung von Dateien, die -- einem Plugin bei Firefox vergleichbar -- weitere Funktionen zu \LaTeX hinzufügen. 
 
-Le premier package est \package{fontspec}. Il est utile à \XeLaTeX  pour une typographie avancée, notamment pour disposer d'accents dans le document PDF produit. 
+Das erste Package ist \package{fontspec}. Es ist hilfreich für fortschrittliche typographische Anwendungen, besonders um im erzeugten PDF Akzente [disposer] zu können.
 
-Le package \package{fontspec} charge automatiquement le  \package{xunicode}, sans que vous n'ayez besoin de l'indiquer. Ce dernier permet de gérer l'unicode, autrement appelé UTF-8\footnote{En réalité UTF-8 n'est pas tout à fait Unicode, mais une implémentation de ce dernier. Toutefois, pour simplifier, nous assimilons les deux.}. Ainsi, nous pouvons utiliser des caractères non latins\renvoi{utf8} dans le document \ext{tex}.
+Das Paket \package{fontspec} lädt automatisch \package{xunicode}, ohne dass Sie dies zusätzlich angeben müssen. Letzteres erlaubt es, unicode zu erzeugen, das auch UTF-8 genannt wird.\footnote{UTF-8 ist eigentlich nicht identisch mit Unicode, sondern stellt eine Implementierung dessen dar. Aus Gründen der Einfachheit, werden wir beide Begriffe jedoch synonym verwenden.} Daher können wir nicht-lateinische Zeichen\renvoi{utf8} in unserem \ext{tex}-Dokument verwenden.
 
 \begin{plusloins}
-On trouve sur internet de la documentation   expliquant qu'il faut,  pour insérer un \enquote{é},  frapper \verb|\'{}|, et qui fournit une liste de commandes de caractères accentués. 
+Man findet im Internet häufig Hinweise, dass man zur Eingabe von \enquote{ö} den Code \verb|\"{o}| verwendet, wobei andere Sonderzeichen ähnlich eingegeben werden können. 
 
-Ceci était vrai fut un temps. Il est depuis longtemps inutile d'apprendre ces commandes : vous pouvez tranquillement frapper vos lettres accentuées de manière \enquote{normale}. 
+Dies galt früher, doch es ist bereits seit einiger Zeit nicht mehr hilfreich, diese Befehle zu lernen. Man kann Sonderzeichen ohne Bedenken \enquote{normal} eingeben. 
 \end{plusloins}
 
-Le second package chargé manuellement est \package{polyglossia}, permet de gérer facilement un document multilingue\renvoi{i18n} et les changements typographiques qu'un tel document implique.
+Das zweite manuell geladene Package \package{polyglossia} ermöglicht, auf einfache Weise ein mehrsprachiges Dokument\renvoi{i18n} zu erzeugen, wobei die nötigen typographischen Anpassungen vorgenommen worden.
 
-Ces trois packages sont propres à \XeLaTeX  : ils ne fonctionnent pas\renvoi{TeXLaTeX} avec \LaTeX.
+Diese drei Packages sind speziell für \XeLaTeX konzipiert: Sie funktionieren nicht mit \renvoi{TeXLaTeX} \LaTeX.
 
-Certains packages peuvent recevoir des options qui modifieront leur comportement standard. La syntaxe est alors \csp{usepackage}\oarg{options}\marg{package}.
+Manche Packages können mit Optionen geladen werden, die ihr Verhalten anpassen. Die Syntax lautet \csp{usepackage}\oarg{options}\marg{package}.
 
-Tout au long de cet ouvrage, nous aborderons divers packages.
+Im Lauf dieses Buchs werden wir verschiedene Packages [aborderons].
+
 
 \begin{attention}
-Dans la suite de ce livre, chaque fois que nous décrivons les fonctionnalités d'un package, nous suppose que  le package a été chargé au préalable dans le préambule par la commande \csp{usepackage}\marg{package}.
+Im weiteren Verlauf des Buches gehen wir, wenn wir die Funktionen eines Packages beschreiben, davon aus, dass das entsprechende Package zuvor in der Präambel mit dem Befehl \csp{usepackage}\marg{package} geladen wurde.
 \end{attention}
 
 \begin{plusloins}
-Lorsque nous parlons d'un package, nous renvoyons souvent à son manuel. Il existe une façon très simple de trouver le manuel d'un package en passant par le terminal: nous expliquons en annexe comment faire\renvoi{manuels}.
+Wenn wir über ein Package sprechen, verweisen wir häufig auf sein Handbuch. Man kann das Handbuch eines Packages  leicht über das Terminal finden. Wie das genau funktioniert, erklären wir im Anhang \renvoi{manuels}.
 \end{plusloins}
 
-\subsection{Le français, langue par défaut\label{french}}
+\subsection{Deutsch als Hauptsprache des Dokuments\label{french}}
 
-Tout de suite après, la ligne \csp{setmainlanguage}\verb|{french}| indique que nous utilisons comme langue principale du document le français\renvoi{i18n}, et  que le compositeur de texte devra   donc prendre en compte la typographie fran\c caise. Cette ligne n'est compréhensible par le compilateur que parce que nous avons chargé \package{polyglossia} au préalable.
+Direkt danach bestimmt die Zeile \csp{setmainlanguage}\verb|{german}| Deutsch zur Hauptsprache des Dokuments und dass somit bei der Erstellung der Ausgabe die typographischen Gepflogenheiten der deutschen Sprache\renvoi{i18n} berücksichtigt werden sollen. Diese Zeile ist für den [[Compiler]] nur verständlich, wel wir bereits \package{polyglossia} geladen haben. 
 
 \begin{plusloins}
-Vous entendrez peut-être parler du package \package{babel}. Il est très souvent utilisé à la place de \package{polyglossia}, notamment parce qu'il est plus ancien. Toutefois, nous avons choisi pour notre part de nous limiter à \package{polyglossia}, puisque c'est lui que nous avons utilisé pour nos travaux et qu'il possède plus de fonctionalités, par exemple pour les langues notées dans un alphabet non latin.
+Vielleicht werden Sie vom Paket \package{babel} hören. Es wird häufig anstelle von \package{polyglossia} verwendet, besonders da es älter ist. [[Toutefois]] haben wir uns entschlossen, uns auf \package{polyglossia} zu beschränken, da wir dieses für die Erstellungen unserer Arbeiten verwendet haben und weil es mehr Funktionen bietet, etwa für Sprachen, die nicht-lateinische Schriften verwenden.
 
-Vous trouverez aisément des informations à propos de \package{babel} sur Internet.
-
+Sie können Informationen über \package{babel} ohne Schwierigkeiten im Internet finden.
 \end{plusloins}
 
 \subsection{Le corps du document}
 
-Tout ce que nous avons vu jusqu'à présent, avant  \cs{begin}\verb|{document}|, fait partie de ce que l'on appelle le préambule du document.\label{preambule} Ce sont des informations qui n'apparaissent pas dans le document final, mais qui sont utiles à sa composition, autrement dit des méta-données. Tout les packages que vous souhaitez utiliser sont à appeler dans le préambule.
+Alles, was wir bislang betrachtet haben, der Teil vor \cs{begin}\verb|{document}|, gehört zur sogenannten Präambel des Dokuments.\label{preambule} Es handelt sich hierbei um Informationen, die nicht im erzeugten Dokument erscheinen werden, aber bei dessen Erstellung berücksichtigt werden, um Metadaten also. Alle Packages, die sie verwenden möchten, müssen in der Präambel geladen werden.
 
 Tout ce qui se trouve entre la ligne \cs{begin}\verb|{document}| et \cs{end}\verb|{document}| constitue le corps du document, le contenu proprement dit de votre travail.
 
@@ -250,7 +250,7 @@ Dans la classe \classe{article} il existe un environnement utile : \enviro{abstr
 
 \begin{latexcode}
 \begin{abstract}
-Écrivons ici un résumé de l'article. 
+Hier schreiben wir eine Zusammenfassung des Artikels. 
 \end{abstract}
 \end{latexcode}
 
@@ -281,8 +281,7 @@ blabl
 \end{2}
 \end{latexcode}
 
-\subsection{Conclusion}
+\subsection{Schluss}
 
-Vous avez appris ici les principales notions de \LaTeX. Pour l'instant, cela doit sans doute paraître très flou : mais au fur et à mesure de votre lecture, vous comprendrez mieux\footnote{Enfin, nous l'espérons !}\ldots
-
+Sie haben nun bereits die grundlegenden Begriffe und Konzepte von \LaTeX kennengelernt. Für den Moment erscheint das sicherlich etwas verwirrend, aber im weiteren Verlauf Ihrer Lektüre werden Sie besser verstehen\ldots\footnote{Zumindest hoffen wir das!}
 
