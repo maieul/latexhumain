@@ -64,9 +64,10 @@ Betrachten wir die beiden folgenden Zeilen:
 
 Es handelt sich, wie Sie erahnen können, um den Aufruf von Packages.\footnote{Wir haben uns bewusst entschlossen, diesen Begriff nicht zu übersetzen, um Verwechslungen vorzubeugen.} Ein Package ist eine Sammlung von Dateien, die -- einem Plugin bei Firefox vergleichbar -- weitere Funktionen zu \LaTeX hinzufügen. 
 
-Le premier package est \package{fontspec}. Il est utile à \XeLaTeX  pour une typographie avancée, notamment pour disposer d'accents dans le document PDF produit. 
+Das erste Package ist \package{fontspec}. 
+Il est utile à \XeLaTeX  pour une typographie avancée, notamment pour disposer d'accents dans le document PDF produit. 
 
-Le package \package{fontspec} charge automatiquement le  \package{xunicode}, sans que vous n'ayez besoin de l'indiquer. Ce dernier permet de gérer l'unicode, autrement appelé UTF-8\footnote{En réalité UTF-8 n'est pas tout à fait Unicode, mais une implémentation de ce dernier. Toutefois, pour simplifier, nous assimilons les deux.}. Ainsi, nous pouvons utiliser des caractères non latins\renvoi{utf8} dans le document \ext{tex}.
+Das Paket \package{fontspec} lädt automatisch \package{xunicode}, ohne dass Sie dies zusätzlich angeben müssen. Letzteres erlaubt es, [[de gérer l'unicode]], das auch UTF-8 genannt wird.\footnote{UTF-8 ist eigentlich nicht identisch mit Unicode, sondern stellt eine Implementierung dessen dar. Aus Gründen der Einfachheit, werden wir beide Begriffe jedoch synonym verwenden.} Daher können wir nicht-lateinische Zeichen\renvoi{utf8} in unserem \ext{tex}-Dokument verwenden.
 
 \begin{plusloins}
 On trouve sur internet de la documentation   expliquant qu'il faut,  pour insérer un \enquote{é},  frapper \verb|\'{}|, et qui fournit une liste de commandes de caractères accentués. 
