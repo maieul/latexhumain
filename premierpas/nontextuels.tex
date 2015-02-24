@@ -371,12 +371,20 @@ Le \arg{paramètre de placement} indique à \LaTeX comment placer idéalement le
     p     & Sur une page dédiée aux flottants        \\
 \end{longtable}
 
+Il est important de comprendre que ces paramètres sont indicatifs : ils signifient à \LaTeX la position idéale. Mais \LaTeX utilise d'autre paramètres, telle que la place laissé au texte sur une page, pour placer les flottants. Faire procéder un paramètre par \verb+!+ permet cependant d'insister auprès de \LaTeX en ce qui concerne le placement.
+
+Il est possible d'utiliser plusieurs paramètres. Dans ce cas, l'ordre d'appel des paramètres n'aura aucune influence : \LaTeX tentera de placer le flottant, en fonction des paramètres appelés, dans l'ordre suivant : à l'emplacement de l'appel, en haut de la page, en bas, sur une page à part, puis en haut d'une autre page, puis en bas d'une autre page\footcite[252]{Mittelbach2014}.
+
+Le paramètre \verb+h+ signifie qu'on l'on place le flottant là où il est appelé, si cela est possible. Il peut arriver que cela ne soit pas le cas. Dans ce cas, le flottant sera placé ailleurs. Le package \package{float} propose un paramètre \verb+H+, qui permet de forcer le placement à l'emplacement de l'appel, même si cela provoque des problèmes de pages pas assez remplies. Ce paramètre \verb+H+ ne peut pas être utilisé  en conjonction avec d'autres paramètres\footcite{float_H}.
 
 Si le système des flottants permet généralement de conserver une mise en page correcte tout en n'éloignant pas trop l'élément de son emplacement, il arrive parfois que l'éloignement soit trop important.
 
 La commande \csp{FloatBarrier} du package \package{placeins} permet de remédier à ce problème\footcite{placeins}. 
 Tous les flottants appelés avant la commande sont placés avant celle-ci.
 
+\begin{plusloins}
+Le lecteur curieux, ou dans le besoin de maîtriser pleinement ses flottants, pourra lire un article de Franck~Mittelbach, un des développeur de \LaTeX\footcite{Mittelbach2014}. 
+\end{plusloins}
 
 
 
