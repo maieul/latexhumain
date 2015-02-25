@@ -101,15 +101,15 @@ Vielleicht werden Sie vom Paket \package{babel} hören. Es wird häufig anstelle
 Sie können Informationen über \package{babel} ohne Schwierigkeiten im Internet finden.
 \end{plusloins}
 
-\subsection{Le corps du document}
+\subsection{Der Dokumentenkörper}
 
-Alles, was wir bislang betrachtet haben, der Teil vor \cs{begin}\verb|{document}|, gehört zur sogenannten Präambel des Dokuments.\label{preambule} Es handelt sich hierbei um Informationen, die nicht im erzeugten Dokument erscheinen werden, aber bei dessen Erstellung berücksichtigt werden, um Metadaten also. Alle Packages, die sie verwenden möchten, müssen in der Präambel geladen werden.
+Was wir bislang betrachtet haben, der Teil vor \cs{begin}\verb|{document}|, gehört zur sogenannten Präambel des Dokuments.\label{preambule} Diese Informationen erscheinen nicht im erzeugten Dokument. Es handelt sich um Metadaten, die bei dessen Erstellung berücksichtigt werden. Alle Packages, die sie verwenden möchten, müssen in der Präambel geladen werden.
 
-Tout ce qui se trouve entre la ligne \cs{begin}\verb|{document}| et \cs{end}\verb|{document}| constitue le corps du document, le contenu proprement dit de votre travail.
+Was sich zwischen den Linien  \cs{begin}\verb|{document}| und \cs{end}\verb|{document}| befindet, stellt den Körper des Dokuments dar, d.h. den eigentlichen Inhalt Ihrer Arbeit.
 
 Enfin, rien de ce qui se trouve après \cs{end}\verb|{document}| n'est analysé par le compilateur. Vous pouvez donc y mettre ce que vous voulez, cependant nous ne vous le conseillons pas.
 
-\subsection{Titre, auteur et date : la notion de commande}\label{notioncommande}
+\subsection{Titel, Autor und Datum: Der Begriff des Befehls}\label{notioncommande}
 
 \begin{latexcode*}{linenos,firstnumber=7}
 \title{Un titre d'ouvrage}
