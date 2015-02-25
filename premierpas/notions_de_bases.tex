@@ -130,11 +130,11 @@ Man kann diese Regel umgehen, indem man die Klasse mit einer speziellen Option a
 
 Wir können nun den Begriff des Befehls bestimmen. Ein Befehl ist ein Stück Code, der vom Compiler interpretiert wird, um verschiedene Operationen auszuführen. Es handelt sich um eine Kurzschreibweise. Hier gibt der Befehl \csp{maketitle} Informationen wie den Titel, das Datum und den Autoren der Arbeit aus, Informationen also, die der Compiler durch die zuvor verwendeten Befehle erfahren hat.
 
-Une commande peut prendre des arguments, certains facultatifs, d'autres obligatoires. Ces arguments  modifient son comportement.
-\label{syntaxecommande}Une commande s'appelle avec la syntaxe : 
+Ein Befehl kann mit (fakultativen und optionalen) Argumenten aufgerufen werden, die das Verhalten des Befehls beeinflussen.
+\label{syntaxecommande}Ein Befehl wird mit folgender Syntax aufgerufen: 
 \csp{nom}\oarg{opt1}\oarg{…}\oarg{optn}\marg{obl1}\marg{…}\marg{obln}.
 
-Entre crochets sont indiqués les arguments optionnels, entre accolades les arguments obligatoires. Ces arguments peuvent eux-mêmes contenir des commandes.
+In eckigen Klammern werden die optionalen Argumente angegeben, in geschweiften die notwendigen. Diese Argumente können selbst wiederum weitere Befehle enthalten.
 
 
 L'ordre des arguments dépend de chaque commande, et les arguments optionnels ne sont pas systématiquement avant les arguments obligatoires : ils peuvent être après ou s'intercaler entre. Notez que certaines commandes ne prennent pas d'argument : c'est le cas ici de \cs{maketitle}.
