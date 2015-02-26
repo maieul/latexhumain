@@ -192,6 +192,7 @@ Bezüglich des Themas Anführungszeichen ist zu sagen, dass sich ein späterer A
 
 % Prêtons attention à certaines lettres ligaturées comme  \verb|œ| et  \verb|æ|. À la différence de la plupart des traitements de texte, \LaTeX ne remplace pas automatiquement les suites \verb|oe| et \verb|ae| par \verb|œ| ou \verb|æ|. Il faut donc frapper soi-même ces caractères, ou configurer son éditeur pour qu'il effectue ce remplacement.
 
+Wir müssen auf drei verschiedene Arten von Bindestrich
 Signalons également trois types de tirets\label{tirets} :
 \begin{enumerate}
 \item \verb|-| qui produit un tiret simple (-), utilisé pour les mots composés ;
