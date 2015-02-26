@@ -198,16 +198,15 @@ Signalons également trois types de tirets\label{tirets} :
 \item \verb|--| qui produit un tiret demi-cadratin (--), en théorie à utiliser pour séparer une plage de nombres ;
 \item \verb|---| qui produit un tiret cadratin (---), pour des incises\footnote{Certains éditeurs préfèrent utiliser des tirets demi-cadratins.}.
 \end{enumerate}
- 
-Enfin, il est parfois utile d'insérer une espace insécable, pour éviter que deux mots se trouvent séparés par un retour à la ligne, par exemple entre un nom de souverain et son numéro de règne : \enquote{Jean~\textsc{xxiii}}.  L'espace insécable est produit par le caractère \verb|~|.
 
+Manchmal ist es nützlich ein geschütztes Leerzeichen einzufügen, um einem unerwünschten Zeilenumbruch zu verhindern, etwa zwischen dem Namen eines Herrscher und der darauf folgenden Zahl:  \enquote{Johannes~\textsc{xxiii}}. Ein geschütztes Leerzeichen wird mittels \verb|~| erzeugt.
 
-
+Außerdem 
 Par ailleurs, comme vous avez pu le constater, \LaTeX interprète de manière spécifique un certain nombre de caractères : \verb|\{}~|, à quoi nous ajoutons \verb|%_&$#^|\footnote{Nous ne verrons pas l'utilité \LaTeX  de tout ces caractères, certains servant essentiellement à rédiger des formules mathématiques.}.
 
-Comment faire si nous désirons afficher un de ces caractères ? Il faut les faire précéder du caractère~\verb|\|. Ainsi pour insérer le caractère \verb|%|, il faut écrire \verb|\%|. 
+Um diese Zeichen im erzeugten Dokument ausgeben zu lassen, muss man sie mit einem vorangestellten ~\verb|\| eingeben. Für das Zeichen \verb|%| schreibt man folglich \verb|\%|.
 
-Es gibt allerdings drei Ausnahmen:
+Es gibt allerdings drei Ausnahmen von dieser Regel:
 \begin{description}
 \item[\textbackslash] wird mit dem Befehl \csp{textbackslash} eingefügt;
 \item[\textasciitilde] wird mit dem Befehl \csp{textasciitilde} eingefügt; 
