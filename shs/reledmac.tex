@@ -1,15 +1,15 @@
-\chapter{Édition critique et textes parallèles} \index[pkg]{eledpar}\index[pkg]{eledmac} \label{eledmac}
+\chapter{Édition critique et textes parallèles} \index[pkg]{reledpar}\index[pkg]{reledmac} \label{reledmac}
 
 
 \begin{intro}
-Nous allons aborder ici deux packages particulièrement utiles en sciences humaines : \package{eledmac} pour faire des éditions critiques et \package{eledpar} (qui ne peut être utilisé séparément de \package{eledmac}) pour éditer un texte et sa traduction en parallèle\footcite[Il existe un livre d'introduction aux éditions critiques avec \XeLaTeX :][]{leal2012}.
+Nous allons aborder ici deux packages particulièrement utiles en sciences humaines : \package{reledmac} pour faire des éditions critiques et \package{reledpar} (qui ne peut être utilisé séparément de \package{reledmac}) pour éditer un texte et sa traduction en parallèle\footcite[Il existe un livre d'introduction aux éditions critiques avec \XeLaTeX :][]{leal2012}.
 
-Ces packages contiennent de nombreuses fonctionnalités : nous n'en présentons ici que quelques unes et renvoyons aux manuels pour les autres\footcites{eledmac}{eledpar}. 
+Ces packages contiennent de nombreuses fonctionnalités : nous n'en présentons ici que quelques unes et renvoyons aux manuels pour les autres\footcites{reledmac}{reledpar}. 
 \end{intro}
 
 \begin{attention}
 Ces packages ont été améliorés durant la rédaction de ce livre. Veillez à les mettre à jour\renvoi{maj}.
-Dans le gestionnaire de packages, vous ne trouverez une entrée que pour  \package{eledmac},  pas pour \package{eledpar}.  En mettant à jour \package{eledmac} vous mettez toutefois aussi à jour  \package{eledpar}.
+Dans le gestionnaire de packages, vous ne trouverez une entrée que pour  \package{reledmac},  pas pour \package{reledpar}.  En mettant à jour \package{reledmac} vous mettez toutefois aussi à jour  \package{reledpar}.
 \end{attention}
 
 \begin{attention}
@@ -18,18 +18,18 @@ Un certain nombre de fonctionnalités de ces packages nécessitent pour fonction
 
 \begin{plusloins}
 Vous trouverez des références à \package{ledmac} et à \package{ledpar} sur internet --- et dans le première édition de ce livre.
-\package[eledmac]{Eledmac} et \package{eledpar} sont leurs successeurs, sortis en septembre~2012.
+\package[reledmac]{Reledmac} et \package{reledpar} sont leurs successeurs, sortis en août~2015.
 
-La différence tient au fait que les versions prefixés proposent des outils de personnalisations de l'apparence des notes plus aisés à mettre en œuvre qu'avec les anciennes versions --- le \forme{e} dans le nom signifiant \enquote{\textenglish{extended}}. 
+La différence tient au fait que les versions préfixées proposent des outils de personnalisations de l'apparence des notes plus aisés à mettre en œuvre qu'avec les anciennes versions --- le \forme{e} dans le nom signifiant \enquote{\textenglish{extended}}, le \forme{r} signifiant \enquote{\textenglish{renewed}}. 
 
-C'est pourquoi la plupart des \enquote{trucs et astuces} proposés pour \package{ledmac} sont obsolètes et sont à remplacer par l'utilisation des commandes de personnalisations décrites dans le manuel de \package{eledmac}.
+C'est pourquoi la plupart des \enquote{trucs et astuces} proposés pour \package{ledmac} sont obsolètes et sont à remplacer par l'utilisation des commandes de personnalisations décrites dans le manuel de \package{reledmac}.
 \end{plusloins}
 
-\section{Faire une édition critique avec \packagenoidx{eledmac}}\index[pkg]{eledmac}
+\section{Faire une édition critique avec \packagenoidx{reledmac}}\index[pkg]{reledmac}
 
 \subsection{Numéroter les lignes d'un texte}
 
-La première fonctionnalité utile de \package{eledmac} est de numéroter les lignes d'un texte. On commence par  entourer celui-ci des commandes \csp{beginnumbering} et \csp{endnumbering}. Il faut ensuite procéder de deux façons différentes  selon que le texte est en prose ou en vers.
+La première fonctionnalité utile de \package{reledmac} est de numéroter les lignes d'un texte. On commence par  entourer celui-ci des commandes \csp{beginnumbering} et \csp{endnumbering}. Il faut ensuite procéder de deux façons différentes  selon que le texte est en prose ou en vers.
 
 \subsubsection{Texte en prose}
 
@@ -172,7 +172,7 @@ Il est possible de recommencer la numérotation des lignes à chaque \cs{pstart}
 
 \subsubsection{Fréquence de numérotation des lignes}
 
-Comme on peut le voir dans les exemples précédents, par défaut \package{eledmac} numérote  une ligne sur cinq. Nous pouvons changer cela très simplement avec les commandes 
+Comme on peut le voir dans les exemples précédents, par défaut \package{reledmac} numérote  une ligne sur cinq. Nous pouvons changer cela très simplement avec les commandes 
 \csp{firstlinenum}\marg{nbre} et \csp{linenumincrement}\marg{nbre}.
 
 L'argument \arg{nbre} de la commande \cs{firstlinenum} indique quelle est  la première ligne qui sera numérotée 
@@ -235,7 +235,7 @@ La distance \csp{linenumsep} représente la distance\renvoi{unite} entre le text
 Elle est  modifiable par la commande:
 \cs{setlength}\verb|{|\cs{linenumsep}\verb|}|\marg{distance}\renvoi{setlength}. 
 
-De la même façon nous pouvons modifier, via \cs{renewcommand}, \cs{numlabfont}, qui indique la taille du numéro et qui est ainsi définie par \package{eledmac}:
+De la même façon nous pouvons modifier, via \cs{renewcommand}, \cs{numlabfont}, qui indique la taille du numéro et qui est ainsi définie par \package{reledmac}:
 
 \begin{latexcode}
 \newcommand{\numlabfont}{\normalfont\scriptsize}
@@ -334,25 +334,25 @@ Les packages \package{ifthen} et \package{xargs} sont extrêmement utiles, mais 
 
 
 
-\section{Mettre deux textes en vis-à-vis: le package \packagenoidx{eledpar}}\index[pkg]{eledpar}
+\section{Mettre deux textes en vis-à-vis: le package \packagenoidx{reledpar}}\index[pkg]{reledpar}
 
 
-Le package \package{eledpar}, qui sert à mettre un texte et sa traduction en vis-à-vis, fonctionne avec \package{eledmac}. Tout ce qui concerne l'apparat critique et la numérotation dans \package{eledmac} est ainsi valable ici aussi. Nous considérons donc, pour éviter les redites, que vous avez lu ce qui précède.
+Le package \package{reledpar}, qui sert à mettre un texte et sa traduction en vis-à-vis, fonctionne avec \package{reledmac}. Tout ce qui concerne l'apparat critique et la numérotation dans \package{reledmac} est ainsi valable ici aussi. Nous considérons donc, pour éviter les redites, que vous avez lu ce qui précède.
 
 
 
 \subsection{Principes}
 
-Le package \package{eledmac} permet d'obtenir très facilement deux textes en vis-à-vis; c'est donc un package particulièrement utile lorsque l'on veut faire de l'édition bilingue.
+Le package \package{reledmac} permet d'obtenir très facilement deux textes en vis-à-vis; c'est donc un package particulièrement utile lorsque l'on veut faire de l'édition bilingue.
 
 Son principe est simple:  des textes numérotés  --- écrits entre \cs{beginnumbering} et \cs{endnumbering}  --- sont placés dans les environnements \enviro{Leftside} pour le texte de gauche,  \enviro{Rightside} pour le texte de droite.
 
-Le package \package{eledpar} fait correspondre en vis-à-vis chaque \enquote{boîte} d'un texte à la boîte correspondante de l'autre texte : il faut donc qu'il y ait le même nombre de boîtes des deux côtés. Pour la poésie,  chaque vers  (terminé par \ampersand ), est une boîte;  en prose, les boîtes sont délimitées par  \cs{pstart} et  \cs{pend}.  
+Le package \package{reledpar} fait correspondre en vis-à-vis chaque \enquote{boîte} d'un texte à la boîte correspondante de l'autre texte : il faut donc qu'il y ait le même nombre de boîtes des deux côtés. Pour la poésie,  chaque vers  (terminé par \ampersand ), est une boîte;  en prose, les boîtes sont délimitées par  \cs{pstart} et  \cs{pend}.  
 
 Il est recommandé, en prose, de mettre chaque paragraphe dans une boîte --- pour obtenir une synchronisation la plus fine possible --- donc de débuter chaque paragraphe par \cs{pstart} et de le finir par \cs{pend}, ou d'utiliser la commande \cs{autopar}\renvoi{autopar}. 
 
 
-Le package \package{eledpar} peut mettre les textes en vis-à-vis sur deux colonnes ou sur deux pages  : bien sûr dans ce dernier  cas le texte de gauche est toujours imprimé sur une page paire.
+Le package \package{reledpar} peut mettre les textes en vis-à-vis sur deux colonnes ou sur deux pages  : bien sûr dans ce dernier  cas le texte de gauche est toujours imprimé sur une page paire.
 Nous utilisons dans le premier cas l'environnement \enviro{pairs} ; l'environnement \enviro{pages} dans le second.
 
 Les commandes \cs{Columns} ou \cs{Pages}, selon qu'il s'agit de l'environnement \enviro{pairs} ou \enviro{pages}, indiquent à \LaTeX  d'imprimer les boîtes jusqu'ici gardées en mémoire. 
@@ -409,15 +409,15 @@ Si l'un des textes n'est pas dans la langue principale du document, il faut pré
 \end{attention}
 
 \begin{attention}
-Comme avec \package{eledmac}, la numérotation\renvoi{lineation} recommence à chaque \cs{beginnumbering}. On peut toutefois faire recommencer la numérotation  à chaque page via les commandes \cs{lineation} et \csp{lineationR}, qui ont la même syntaxe, vue plus haut.
+Comme avec \package{reledmac}, la numérotation\renvoi{lineation} recommence à chaque \cs{beginnumbering}. On peut toutefois faire recommencer la numérotation  à chaque page via les commandes \cs{lineation} et \csp{lineationR}, qui ont la même syntaxe, vue plus haut.
 \end{attention}
 
 Nous obtenons parfois le message d'erreur \enquote{Too many \cs{pstart} without printing}. Pas de panique ! Cela signifie qu'il y a trop de boîtes en mémoire: \LaTeX  doit en imprimer quelques-unes avant de pouvoir continuer. 
 
-La  solution consiste à  augmenter le nombre de boîtes que \package{eledpar} peut garder en mémoire, en utilisant dans le préambule \csp{maxchunks}\marg{nbre}, où \arg{nbre} est le nombre de boîtes en mémoire. Par défaut, ce nombre est de 5120. Il suffit donc de l'augmenter  pour qu'il soit égal ou supérieur au nombre de boîtes de son  texte. 
+La  solution consiste à  augmenter le nombre de boîtes que \package{reledpar} peut garder en mémoire, en utilisant dans le préambule \csp{maxchunks}\marg{nbre}, où \arg{nbre} est le nombre de boîtes en mémoire. Par défaut, ce nombre est de 5120. Il suffit donc de l'augmenter  pour qu'il soit égal ou supérieur au nombre de boîtes de son  texte. 
 
 \begin{plusloins}
-La première édition de ce livre, qui parlait du package \package{ledpar} donnait une autre solution, plus complexe. Cette solution est généralement obsolète, le nombre de boîtes maximales ayant été augmenté avec l'usage d'une version améliorée de \TeX. On consultera le manuel de \package{eledpar} ou la première édition du livre pour en savoir plus\footcites{eledpar}[176-178]{Rouquette2012}.
+La première édition de ce livre, qui parlait du package \package{ledpar} donnait une autre solution, plus complexe. Cette solution est généralement obsolète, le nombre de boîtes maximales ayant été augmenté avec l'usage d'une version améliorée de \TeX. On consultera le manuel de \package{reledpar} ou la première édition du livre pour en savoir plus\footcites{reledpar}[176-178]{Rouquette2012}.
 \end{plusloins}
 
 
@@ -436,12 +436,12 @@ Si vous utilisez la commande \cs{numberpstarttrue}\renvoi{numberpstarttrue} pour
 
 \subsubsection{Vers de longueurs inégales}
 
-Si des vers sur des pages parallèles prennent un nombre de lignes inégales, par exemple si le vers de gauche contient un rejet et non  celui de droite, alors \package{eledpar} introduit un blanc après le vers de droite, pour que le vers suivant soit exactement au même niveau dans la page de droite et dans la page de gauche.
+Si des vers sur des pages parallèles prennent un nombre de lignes inégales, par exemple si le vers de gauche contient un rejet et non  celui de droite, alors \package{reledpar} introduit un blanc après le vers de droite, pour que le vers suivant soit exactement au même niveau dans la page de droite et dans la page de gauche.
 
-Il est possible de dire à \package{eledpar} de ne pas introduire ce blanc, mais de produire un léger décalage des vers, décalage rattrapé à chaque changement de pages. Pour ce faire, il faut passer l'option \option{shiftedverses} au chargement du package.
+Il est possible de dire à \package{reledpar} de ne pas introduire ce blanc, mais de produire un léger décalage des vers, décalage rattrapé à chaque changement de pages. Pour ce faire, il faut passer l'option \option{shiftedverses} au chargement du package.
 
 \begin{latexcode}
-\usepackage[shiftedverses]{eledpar}
+\usepackage[shiftedverses]{reledpar}
 \end{latexcode}
  
  \subsubsection{Tailles et séparateurs des colonnes}
