@@ -35,9 +35,9 @@
 \usepackage{totpages}				% Pour le nb total de pages
 \usepackage[splitindex,noautomatic]{indextools}		%Pour plusieurs index. Il est nécéssaire de passer par splitindex, car trop de donnée à indexer.
 
-\usepackage{eledmac, eledpar}			% Pour l'édition critiques
-\noendnotes
-\noeledsec
+\usepackage[noeledsec,noend]{reledmac}
+\usepackage{reledpar}			% Pour l'édition critiques
+
 \input{preambule/index}
 \usepackage{hyperref}				% Pour les liens hypertextes
 \hypersetup{colorlinks=true, citecolor=black, filecolor=black, linkcolor=black, urlcolor=black, bookmarks=true,pdftitle={(Xe)LaTeX appliqué aux sciences humaines}, pdfauthor={Maïeul ROUQUETTE avec la participation de Brendan CHABANNES et Enimie ROUQUETTE}, pdfcreator={XeLaTeX}}
