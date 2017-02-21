@@ -1,4 +1,5 @@
 _minted-*
+*.texpadtmp
 *.aux
 *.xml
 *.pdf
