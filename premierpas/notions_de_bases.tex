@@ -1,161 +1,161 @@
-\chapter[Commencer avec XeLaTeX]{Commencer avec \XeLaTeX}\label{commencer}
+\chapter[Comenzar con XeLaTeX]{Comenzar con \XeLaTeX}\label{commencer}
 
 \begin{intro}
-Nous supposons que vous avez installé \LaTeX\renvoi{install} et un éditeur de texte\renvoi{logiciels} spécialisé en \LaTeX. Voyez en annexe. 
+Supongamos que tienes instalado \LaTeX\renvoi{install} y un editor de texto\renvoi{logiciels} especializado en \LaTeX. Consúltalo en el anexo. 
 
-La première chose à faire est de vérifier que ce logiciel de traitement de texte enregistre bien en UTF-8\footnote{Le réglage se trouve en général dans les préférences du logiciel, dans une rubrique \emph{enregistrement} ou \emph{encodage} : consultez le manuel de votre logiciel le cas échéant.}. Nous reviendrons plus loin\renvoi{utf8} sur l'intérêt d'un tel encodage, sachez simplement qu'il permet d'utiliser des signes non latins\footnote{Cyrilliques, grecs, sanskrits, hébraïques, etc. Et même extra-terrestres.}.
+Lo primero que hay que hacer es comprobar que este programa de tratamiento de texto permite escribir bien en UTF-8\footnote{La configuración se encuentra normalmente en las preferencias del programa, en un apartado \emph{registro} o \emph{codificación}: consulta el manual de tu editor en todo caso.}. Volveremos más adelante\renvoi{utf8} sobre el interés que tiene una codificación de este tipo, por de pronto, has de saber que permite emplear signos no latinos\footnote{Cirílicos, griegos, sánscritos, hebreos, etc. E incluso extraterrestres.}.
 
 \end{intro}
 
-\section{Un premier document}
+\section{Un primer documento}
 
-Dans votre éditeur de texte, frappez le code suivant\footnote{Comme nous l'avons expliqué en introduction (p.~\pageref{colorationsyntax}), la coloration que vous voyez ici, si vous lisez la version informatique de ce livre, a un sens syntaxique : ne vous préoccupez pas si elle est différente dans votre éditeur, et ne pensez pas que votre texte apparaîtra ainsi une fois compilé.} puis cliquez sur le bouton de compilation avec \XeLaTeX \footnote{Sa position dépend de votre éditeur de texte. Pour le moment vous pouvez vous contenter de ce bouton, mais un jour vous devrez apprendre à faire quelques lignes de commandes : ne vous inquiétez pas, tout sera expliqué.} :
+Teclea en tu editor de texto el código siguiente\footnote{Como hemos explicado en la introducción (p.~\pageref{colorationsyntax}), el resaltado que ves aquí, si lees la versión informática de este libro, tiene un sentido sintáctico: no te preocupes si es distinta en tu editor y no creas que tu texto aparecerá así una vez compilado.}, después pulsa el botón de compilación con \XeLaTeX \footnote{Su ubicación depende de tu editor de texto. De momento, puedes conformarte con ese botón, pero algún día tendrás que aprender a escribir algunas líneas de comandos: no te preocupes, lo explicaremos todo.}:
 
 \begin{attention}
-Si vous êtes sous Mac, les caractères nécessaires à l'utilisation de \LaTeX ne sont pas visibles directement sur votre clavier. Nous avons listé en annexe la manière de les frapper\renvoi{claviermac}.
+Si estás con Mac, los caracteres necesarios para el uso de  \LaTeX no se ven directamente en tu teclado. Hemos recogido una lista en un anexo sobre cómo introducirlos\renvoi{claviermac}.
 \end{attention}
 \inputminted{exemples/premierpas/notions/1.tex}
 
+Observa el PDF que obtenemos: para comprender los principios básicos de \LaTeX, vamos a leer el código que has compiado y a comentarlo línea a línea
 
-Regardez le PDF obtenu :  afin de comprendre les principes de base de \LaTeX nous allons lire le code que vous avez copié et le commenter ligne par ligne.
 
-\section{Structure d'un document \LaTeX}
+\section{Estructura de un documento \LaTeX}
 
-\subsection{La classe du document}
-La première ligne \csp{documentclass}\verb|[12pt,a4paper]{book}| déclare la classe du document, ici \classe{book}. Une classe correspond à un choix éditorial    --- mise en page et organisation générale du document. Le choix de la classe influence entre autres :
+\subsection{La clase de documento}
+La primera línea \csp{documentclass}\verb|[12pt,a4paper]{book}| declara la clase de cocumento, aquí \classe{book}. Una clase corresponde a una elección editorial ---formato y organización general del documento. La elección de la clase influye entre otros aspectos:
 \begin{itemize}
-\item Le nombre de niveaux de titre disponibles.
-\item Les marges appliquées.
-\item Les en-têtes et pieds de page.
+\item En el número de niveles de título disponibles.
+\item Los márgenes aplicados.
+\item Los encabezados y pies de página.
 \end{itemize}
 
-Il existe en standard plusieurs classes de documents : citons \classe{book}, pour rédiger un livre ; \classe{article} pour un article (si, si !) ; \classe{beamer} pour une présentation sous forme de diapositives à projeter. Dans cet ouvrage, nous aborderons essentiellement les deux premières, nous ferons également une brève présentation de \classe{beamer}\renvoi{beamer}.
+Hay varias clases de documentos estándar: citemos\classe{book}, para redactar un libro; \classe{article} para un artículo (¡sí, sí!); \classe{beamer} para elaborar una presentación con diapostivas que se proyectan. En esta obra, abordaremos principalmente las dos primeras, pero también haremos una breve presentación de  \classe{beamer}\renvoi{beamer}.
 
 
-
-Tout document \LaTeX doit commencer par une déclaration de classe, avant toute autre ligne.
-La syntaxe est  : 
-\cs{documentclass}\oarg{options}\marg{classe}.
+Todo documento \LaTeX  ha de comenzar con una declaración de clase, antes de cualquier otra línea.
+La sintaxis es: 
+\cs{documentclass}\oarg{opciones}\marg{clase}.
 
 \begin{attention}
-Dans la suite de ce livre, tout texte situé entre crochets (\arg{ainsi}), doit être remplacé dans votre fichier \ext{tex} par une valeur textuelle.
+De ahora en adelante en este libro, cualquier texto situado entre corchetes (\arg{así}), tienes que sustituirlo en tu fichero \ext{tex} con un valor textual.
 \end{attention}
 
-Les options viennent spécifier certaines propriétés de la classe. Dans notre exemple, nous précisons que la taille de la police du texte courant doit être de 12~pt et que le format du papier est A4. Vous pouvez indiquer plusieurs options, en les séparant par des virgules.\label{optionsclasse}
+Las opciones especifican algunas propiedades de la clase. En nuestro ejemplo, indicamos que el tamaño de la fuente del texto que escribimos debe ser de 12~pt y que el formato del papel es A4. Puedes indicar más opciones separándolas mediante comas.
 
-Voici quelques options disponibles et utiles en sciences humaines :
+\label{optionsclasse}
+
+Veamos algunas opciones disponibles y útiles en humanidades:
 
 \begin{description}
-\item[10pt] pour une police de base en 10~pt.
-\item[11pt] pour une police de base en 11~pt.
-\item[12pt] pour une police de base en 12~pt.
-\item[onecolumn] pour un texte sur une seule colonne. C'est le cas par défaut sur les classes citées.
-\item[twocolumn] pour un texte sur deux colonnes.
-\item[oneside] pour une impression en recto seulement. \label{nbsides}
-\item[twoside] pour une impression en recto-verso\footnote{Cette option et la précédente servent essentiellement pour les questions de reliure. En effet, l'option \option{twoside} produit des marges gauches et droites de tailles différentes, selon que la page est recto ou verso. En outre la numérotation des pages est inscrite à gauche et à droite  en alternance.}.\label{rectoverso}
+\item[10pt] para una fuente básica de 10~pt.
+\item[11pt] para una fuente básica de 11~pt.
+\item[12pt] para una fuente básica de 12~pt.
+\item[onecolumn] para un texto con una sola columna. Es la opción por defecto de las clases mencionadas.
+\item[twocolumn] para un texto con dos columnas.
+\item[oneside] para una impresión a una sola cara. \label{nbsides}
+\item[twoside] para una impresión a doble cara\footnote{Esta opción y la anterior se utilizan fundamentalmente para las cuestiones de encuadernación. Efectivamente, la opción \option{twoside} produce márgenes izquierdo y derecho de tamaños diferentes, en función de si la página es par o impar. Además, los números de las páginas se sitúan a la izquierda y a la derecha alternativamente.}.\label{rectoverso}
 \end{description}
 
-Nous en préciserons d'autres au fur et à mesure de l'ouvrage, lorsque les notions requises auront été abordées.
+Especificaremos otras opciones a medida que avance la obra, cuando hayamos abordado los conceptos fundamentales.
 
-\subsection{L'appel aux packages}
+\subsection{La llamada a los paquetes}
 
-Voyons les deux lignes suivantes : 
+Veamos las dos líneas siguientes: 
 
 \begin{latexcode*}{linenos,firstnumber=2}
 \usepackage{fontspec}
 \usepackage{polyglossia}
 \end{latexcode*}
 
-Il s'agit, comme vous auriez pu le deviner, d'appel à des packages\footnote{Nous avons fait volontairement le choix de ne pas traduire ce terme, pour éviter des confusions.}. Un package est un ensemble de fichiers qui ajoutent des fonctionnalités à \LaTeX, c'est l'équivalent d'un plugin sous Firefox. 
+Se trata, como habrás adivinado, de una llamada a paquetes\footnote{Hemos elegido voluntariamente no traducir este término para evitar confusiones. En la versión española, lo recogemos con la denominación habitual de ``paquete'' (N. del T.).}. Un paquete es un conjunto de ficheros que añaden funcionalidades a \LaTeX, y serían el equivalente de un  plugin en Firefox. 
 
-Le premier package est \package{fontspec}. Il est utile à \XeLaTeX  pour une typographie avancée, notamment pour disposer d'accents dans le document PDF produit. 
+El primer paquete es \package{fontspec}. Resulta útil en \XeLaTeX  para una tipografía avanzada, en particular, para disponer de acentos en el documento PDF resultante. 
 
-Le package \package{fontspec} charge automatiquement le  \package{xunicode}, sans que vous n'ayez besoin de l'indiquer. Ce dernier permet de gérer l'unicode, autrement appelé UTF-8\footnote{En réalité UTF-8 n'est pas tout à fait Unicode, mais une implémentation de ce dernier. Toutefois, pour simplifier, nous assimilons les deux.}. Ainsi, nous pouvons utiliser des caractères non latins\renvoi{utf8} dans le document \ext{tex}.
+El paquete \package{fontspec} carga automáticamente \package{xunicode}, sin que necesites indicarlo. Éste último permite gestionar el unicode, también llamado UTF-8\footnote{En realidad, UTF-8 no es Unicode del todo, sino una ampliación de éste último. No obstante, para simplificar, los identificamos.}. Así, podemos emplear caracteres no latinos\renvoi{utf8} en el documento \ext{tex}.
 
 \begin{plusloins}
-On trouve sur internet de la documentation   expliquant qu'il faut,  pour insérer un \enquote{é},  frapper \verb|\'{}|, et qui fournit une liste de commandes de caractères accentués. 
+En internet hay documentación que explica que, para escribir una \enquote{é}, hay que te escribir \verb|\'{}|, y aparecen listas de comandos con caracteres acentuados.
 
-Ceci était vrai fut un temps. Il est depuis longtemps inutile d'apprendre ces commandes : vous pouvez tranquillement frapper vos lettres accentuées de manière \enquote{normale}. 
+Eso tenía validez en otros tiempos. Desde hace bastante, no merece la pena aprender estos compandos: puedes escribir tranquilamente tus letras acentuadas de manera \enquote{normal}. 
 \end{plusloins}
 
-Le second package chargé manuellement est \package{polyglossia}, permet de gérer facilement un document multilingue\renvoi{i18n} et les changements typographiques qu'un tel document implique.
+El segundo paquete que cargamos a mano es \package{polyglossia}, que permite gestionar con facilidad un documento multilingüe\renvoi{i18n} y los cambios tipográficos que exige un documento de estas características.
 
-Ces trois packages sont propres à \XeLaTeX  : ils ne fonctionnent pas\renvoi{TeXLaTeX} avec \LaTeX.
+Estos tres paquetes son exclusivos de \XeLaTeX{}: no funcionan\renvoi{TeXLaTeX} con \LaTeX.
 
-Certains packages peuvent recevoir des options qui modifieront leur comportement standard. La syntaxe est alors \csp{usepackage}\oarg{options}\marg{package}.
+Algunos paquetes pueden recibir opciones para modificar su comportamiento estándar. La sintaxis es, en ese caso, \csp{usepackage}\oarg{opciones}\marg{paquete}.
 
-Tout au long de cet ouvrage, nous aborderons divers packages.
+A lo largo de esta obra estudiaremos distintos paquetes.
 
 \begin{attention}
-Dans la suite de ce livre, chaque fois que nous décrivons les fonctionnalités d'un package, nous suppose que  le package a été chargé au préalable dans le préambule par la commande \csp{usepackage}\marg{package}.
+De ahora en adelante, cada vez que describamos las funcionalidades de un paquete, se entiende que habremos cargado el paquete previamente en el preámbulo, mediante el comando \csp{usepackage}\marg{paquete}.
 \end{attention}
 
 \begin{plusloins}
-Lorsque nous parlons d'un package, nous renvoyons souvent à son manuel. Il existe une façon très simple de trouver le manuel d'un package en passant par le terminal: nous expliquons en annexe comment faire\renvoi{manuels}.
+Cuando hablamos de un paquete, solemos hacer referencia a su manual. Hay una forma muy sencilla de encontrar el manual de un paquete a través de la consola: explicamos cómo hacerlo en un anexo\renvoi{manuels}.
 \end{plusloins}
 
-\subsection{Le français, langue par défaut\label{french}}
+\subsection{El español, lengua por defecto\label{french}}
 
-Tout de suite après, la ligne \csp{setmainlanguage}\verb|{french}| indique que nous utilisons comme langue principale du document le français\renvoi{i18n}, et  que le compositeur de texte devra   donc prendre en compte la typographie fran\c caise. Cette ligne n'est compréhensible par le compilateur que parce que nous avons chargé \package{polyglossia} au préalable.
+Inmediatamente después, la línea \csp{setmainlanguage}\verb|{spanish}| indica que empleamos como lengua principal del documento el español\renvoi{i18n}, y que el programa que maqueta el texto deberá tener en cuenta la tipografía española. Esta línea no la entiende el compilados si no hemos cargado previamente\package{polyglossia}.
 
 \begin{plusloins}
-Vous entendrez peut-être parler du package \package{babel}. Il est très souvent utilisé à la place de \package{polyglossia}, notamment parce qu'il est plus ancien. Toutefois, nous avons choisi pour notre part de nous limiter à \package{polyglossia}, puisque c'est lui que nous avons utilisé pour nos travaux et qu'il possède plus de fonctionalités, par exemple pour les langues notées dans un alphabet non latin.
+Puede que hayas oído hablar del paquete \package{babel}. Se suele utilizar en lugar de \package{polyglossia}, principalmente, porque es más antiguo. No obstante, hemos preferido limitarnos a \package{polyglossia}, porque es el que hemos utilizado para nuestros trabajos y es el que tiene más utilidades, por ejemplo, para las lenguas que se escriben en un alfabeto no latino.
 
-Vous trouverez aisément des informations à propos de \package{babel} sur Internet.
+Puedes encontrar información abundante sobre \package{babel} en Internet.
 
 \end{plusloins}
 
-\subsection{Le corps du document}
+\subsection{El cuerpo del documento}
 
-Tout ce que nous avons vu jusqu'à présent, avant  \cs{begin}\verb|{document}|, fait partie de ce que l'on appelle le préambule du document.\label{preambule} Ce sont des informations qui n'apparaissent pas dans le document final, mais qui sont utiles à sa composition, autrement dit des méta-données. Tout les packages que vous souhaitez utiliser sont à appeler dans le préambule.
+Todo lo que hemos visto hasta ahora, antes de \cs{begin}\verb|{document}|, forma parte de lo que se llama el preámbulo del documento.\label{preambule} Se trata de informaciones que no figuran en el documento final, pero que resultan útiles para su composición y se las llama también metadatos. A cualquier paquete de desees emplear hay que llamarlo en el preámbulo.
 
-Tout ce qui se trouve entre la ligne \cs{begin}\verb|{document}| et \cs{end}\verb|{document}| constitue le corps du document, le contenu proprement dit de votre travail.
+Todo lo que se encuentra entre la línea \cs{begin}\verb|{document}| y \cs{end}\verb|{document}| constituye el cuerpo del documento, el contenido propiamente dicho de tu trabajo.
 
-Enfin, rien de ce qui se trouve après \cs{end}\verb|{document}| n'est analysé par le compilateur. Vous pouvez donc y mettre ce que vous voulez, cependant nous ne vous le conseillons pas.
+Por último, el compilador no analiza nada de lo que figure después de \cs{end}\verb|{document}|. Así que puedes poner ahí lo que quieras, aunque no te lo aconsejamos.
 
-\subsection{Titre, auteur et date : la notion de commande}\label{notioncommande}
+\subsection{Título, autor y fecha: la noción de comando}\label{notioncommande}
 
 \begin{latexcode*}{linenos,firstnumber=7}
-\title{Un titre d'ouvrage}
-\author{Le nom de son auteur}
-\date{Une date}
+\title{Título de una obra}
+\author{Nombre de su autor}
+\date{Fecha}
 \maketitle
 \end{latexcode*}
 
-Les trois premières de ces lignes définissent respectivement le titre (\csp{title}), l'auteur (\csp{author}) et la date (\csp{date}) du travail. En ce qui concerne cette dernière, ne pas l'indiquer revient à indiquer  celle du jour de la compilation, et il faut indiquer \cs{date}\verb|{}| pour qu'aucune date n'apparaisse.
+Estas tres primeras líneas definen, respectivamente, el título (\csp{title}), el autor (\csp{author}) y la fecha (\csp{date}) del trabajo. En lo que respecta a ésta última, no indicarla equivale a indicar la del día de la compilación, y hay que escribir \cs{date}\verb|{}| para que no aparezca fecha alguna.
 
-La dernière ligne affiche ces informations. Si votre document est de classe  \classe{book}, alors le compilateur les dispose sur une page à part. S'il est de classe  \classe{article}, il les affiche sans provoquer de saut de page.
+La última línea hace que aparezcan estas informaciones. Si tu documento es de la clase \classe{book}, en ese caso el compilador las dispone en una página aparte. Si es de la clase \classe{article}, las incluye sin provocar un salto de página.
 
-On peut déroger à cette règle en passant une option à l'appel de classe\renvoi{optionsclasse}.
+Se puede romper esta norma, mediante una opción cuando hacemos la llamada a la clase de documento\renvoi{optionsclasse}.
 \begin{description}
-\item[notitlepage] pour ne pas avoir de page de titre spécifique.
-\item[titlepage] pour avoir une page de titre spécifique.
+\item[notitlepage] para no tener una página de título específica;
+\item[titlepage] para tener una página de título específica.
 \end{description}
 
-Nous pouvons maintenant définir la notion de commande. Une commande  est un bout de code qui est interprété par le compilateur pour effectuer une suite d'opérations, c'est un raccourci d'écriture. 
-Ici la commande \csp{maketitle} affiche les informations tel que le titre, la date et l'auteur du travail, informations que le compilateur a apprises grâce aux commandes utilisées au préalable.
+Ahora podemos definir la noción de comando. Un comando es un fragmento de código que el compilador interpreta para realizar un conjunto de operaciones, es un atajo de escritura. 
+Aquí el comando \csp{maketitle} muestra informaciones tales como el título, la fecha y el autor del trabajo, informaciones que el compilador conoce gracias a los comandos empleados con anterioridad.
 
-Une commande peut prendre des arguments, certains facultatifs, d'autres obligatoires. Ces arguments  modifient son comportement.
-\label{syntaxecommande}Une commande s'appelle avec la syntaxe : 
-\csp{nom}\oarg{opt1}\oarg{…}\oarg{optn}\marg{obl1}\marg{…}\marg{obln}.
+Un comando puede recibir argumentos, algunos optativos y otros obligatorios. Estos argumentos modifican su comportamiento.
+\label{syntaxecommande}Llamamos a un comando con la sintaxis: 
+\csp{nombre}\oarg{opt1}\oarg{…}\oarg{optn}\marg{obl1}\marg{…}\marg{obln}.
 
-Entre crochets sont indiqués les arguments optionnels, entre accolades les arguments obligatoires. Ces arguments peuvent eux-mêmes contenir des commandes.
+Se indican entre corchetes los argumentos optativos, y entre llaves los argumentos obligatorios. Estos argumentos pueden contener, a su vez, comandos.
 
-
-L'ordre des arguments dépend de chaque commande, et les arguments optionnels ne sont pas systématiquement avant les arguments obligatoires : ils peuvent être après ou s'intercaler entre. Notez que certaines commandes ne prennent pas d'argument : c'est le cas ici de \cs{maketitle}.
+El orden de los argumentos depende de cada comando, y los argumentos optativos no van sistemáticamente delante de los argumentos obligatorios: pueden ir después o intercalarse. Fíjate en que algunos comandos no reciben argumento: es el caso de \cs{maketitle}.
 
 \begin{attention}
-À chaque crochet ou accolade ouvert doit correspondre un crochet ou accolade fermé, faute de quoi vous risquez de provoquer une erreur de compilation.
+A cada corchete o llave de apertura debe corresponderle un corchete o llave de cierre porque, de lo contrario, te expones a causar un error de compilación.
 \end{attention}
 
-La grande force de \LaTeX est justement l'utilisation de commandes afin d'éviter la répétition des tâches fréquentes. C'est pourquoi nous apprendrons à définir nos propres commandes\renvoi{creercommandes}.
+La gran potencia de \LaTeX reside precisamente en el uso de comandos para evitar la repetición de tareas frecuentes. Por eso aprenderemos a definir nuestros propios comandos\renvoi{creercommandes}.
 
 
 
-\subsection{Le corps du texte : la manière de rédiger}
+\subsection{El cuerpo del texto: la forma de escribir}
 
-\subsubsection{Analyse de notre exemple}
-Regardez maintenant les lignes suivantes et leur résultat à la compilation.
+\subsubsection{Análisis de nuestro ejemplo}
+Observa ahora las líneas siguientes y su resultado al compilarlas.
 
 
 \begin{latexcode*}{linenos,firstnumber=12}
@@ -172,94 +172,87 @@ erat      elit consectetuer erat, id egestas pede nibh eget odio.
 \end{latexcode*}
 
 
-Nous pouvons constater plusieurs choses.
+Podemos observar varias cosas.
 \begin{itemize}
-\item Une ligne vide produit un changement de paragraphe. Plusieurs lignes vides produisent un seul changement de paragraphe.
-\item Un retour à la ligne en revanche se comporte comme une espace\footnote{En matière de typographie, ce terme est féminin.}. C'est une grande différence avec les logiciels WYSIWYG, qui traduisent automatiquement un retour à la ligne  par un saut de paragraphe.
-\item Plusieurs espaces à la suite produisent une seule espace. 
+\item Una línea vacía produce un cambio de párrafo. Varias líneas vacías producen un solo cambio de párrafo.
+\item Un salto de línea, por el contrario, se comporta como un espacio\footnote{En materia de tipografía, este término es femenino. No así en español (N. del T.)}. Es una gran diferencia respecto a los programas WYSIWYG, que traducen automáticamente un salto de línea como un salto de párrafo.
+\item Varios espacios seguidos producen un solo espacio. 
 \end{itemize}
 
-Vous connaissez donc les règles de bases de la rédaction d'un texte en \LaTeX.
+Por tanto, ya conoces las normas fundamentales para redactar un texto con \LaTeX.
 
-\subsubsection{Allons plus loin}
+\subsubsection{Avancemos}
 
+Ya lo hemos dicho, \LaTeX produce un formato y una tipografía más correctas que un programa de tipo WYSIWYG. Pero hay que ofrecerle un código correcto, para que pueda determinar cómo componerlo tipográficamente.
 
-Nous l'avons dit, \LaTeX produit une mise en page et une typographie plus correctes qu'un logiciel de type WYSIWYG. Il est cependant nécessaire de lui fournir un code correct, afin qu'il puisse déterminer comment typographier.
-
-\LaTeX produit automatiquement  une espace fine devant les signes de ponctuation double,\verb|!:;?| principalement, comme il se doit en bonne typographie fran\c caise\footnote{Une espace fine est une espace plus petite qu'une espace normale.}. Toutefois, nous recommandons d'insérer des espaces dans le fichier \ext{tex} avant ces signes de ponctuation double, pour le confort de lecture.
+\LaTeX produce automáticamente un espacio fino ante los signos de puntuación dobles, \verb|!:;?| principalmente, como se ha de hacer en buena tipografía francesa\footnote{Un espacio fino es un espacio más pequeño que un espacio normal. Esto se aplica a la tipografía francesa, pero no a la española que desconoce este espacio (N. del T.)}. Sin embargo, recomendamos incluir espacios en el fichero \ext{tex} ante estos signos de puntuación dobles, para facilitar la lectura.
 
 \begin{attention}
-Les espaces avant les signes de ponctuation double sont une spécificité de la typographie française. Il ne sont généralement pas présent dans les autres langues. C'est pourquoi, si vous écrivez dans une autre langue que celle de Molière, il ne faut pas mettre ces espaces. À vous donc de choisir si vous les mettez ou non dans votre fichier source, sachant que \LaTeX les insérera pour vous le cas échéant, mais ne les supprimera pas dans les langues autres que le français.
+Los espacios delante de los signos de puntuación dobles son una característica propia de la tipografía francesa. Casi no se dan en las demás lenguas. Por esa razón, si escribes en una lengua distinta a la de Molière, no tienes que incluir esos espacios. Por tanto, queda en tus manos decidir si los incluyes o no en tu fichero fuente: piensa que \LaTeX los incluirá por ti llegado el caso, pero no los eliminará en las lenguas que no sean francés.
 \end{attention}
 
-En revanche \emph{il est obligatoire de mettre une espace après chaque signe de ponctuation}. Pour ce qui est des points de suspension, il est mieux de ne pas frapper trois points à la suite, mais d'utiliser la commande \csp{ldots} qui espacera correctement les points\footnote{Il est tout à fait possible de configurer l'éditeur de texte pour qu'il remplace automatiquement trois points à la suite par cette commande.}.
+Por el contrario,\emph{es obligatorio incluir un espacio detrás de cada signo de puntuación}. Por lo que atañe a los puntos suspensivos, es mejor no escribir tres puntos seguidos, sino utilizar el comando \csp{ldots} que podrá un espacio correcto entre los puntos\footnote{También se puede configurar el editor de texto para que sustituya automáticamente tres puntos seguidos por este comando.}.
 
-En ce qui concerne les guillemets, une partie sera consacrée plus tard à l'art et la manière de faire des citations\renvoi{guillemets} en \LaTeX. Nous n'en parlons donc pas maintenant.
+En lo que respecta a las comillas, dedicaremos un apartado más adelante a la manera de hacer las citas\renvoi{guillemets} en \LaTeX. Así que no hablamos de eso ahora.
 
-Prêtons attention à certaines lettres ligaturées comme  \verb|œ| et  \verb|æ|. À la différence de la plupart des traitements de texte, \LaTeX ne remplace pas automatiquement les suites \verb|oe| et \verb|ae| par \verb|œ| ou \verb|æ|. Il faut donc frapper soi-même ces caractères, ou configurer son éditeur pour qu'il effectue ce remplacement.
+Prestemos atención a algunas ligaduras como \verb|œ| y  \verb|æ|. A diferencia de la mayoría de los procesadores de texto, \LaTeX no sustituye automáticamente las secuencias \verb|oe| y \verb|ae| por \verb|œ| o \verb|æ|. Por tanto, hay que escribir por uno mismo estos caracteres o configurar el editor para que realice esta sustitución.
 
-Signalons également trois types de tirets\label{tirets} :
+Señalemos también tres tipos de guiones\label{tirets}:
 \begin{enumerate}
-\item \verb|-| qui produit un tiret simple (-), utilisé pour les mots composés ;
-\item \verb|--| qui produit un tiret demi-cadratin (--), en théorie à utiliser pour séparer une plage de nombres ;
-\item \verb|---| qui produit un tiret cadratin (---), pour des incises\footnote{Certains éditeurs préfèrent utiliser des tirets demi-cadratins.}.
+\item \verb|-| que produce un guión corto (-), que se emplea para las palabras compuestas;
+\item \verb|--| que produce un guión intermedio (--), en teoría se utiliza para separar un rango de números;
+\item \verb|---| que produce un guión largo (---), para incisos\footnote{Algunos editores prefiern emplear los guiones intermedios.}.
 \end{enumerate}
  
-Enfin, il est parfois utile d'insérer une espace insécable, pour éviter que deux mots se trouvent séparés par un retour à la ligne, par exemple entre un nom de souverain et son numéro de règne : \enquote{Jean~\textsc{xxiii}}.  L'espace insécable est produit par le caractère \verb|~|.
+ Por último, en ocasiones resulta útil incluir un espacio inseparable para evitar que dos palabras queden separadas por un salto de línea, por ejemplo, entre el nombre del rey y su número de reino: \enquote{Juan~\textsc{xxiii}}.  El espacio inseparable se indica con el carácter \verb|~|.
 
+Por otro lado, como has podido observar, \LaTeX interpreta de manera especial algunos caracteres: \verb|\{}~|, a los que tenemos que añadir\verb|%_&$#^| \footnote{No estudiaremos el uso que hace \LaTeX de todos estos signos, pues algunos sirven fundamentalmente para componer fórmulas matemáticas.}.
 
+¿Qué hay que hacer si queremos incluir uno de estos caracteres? Hay que ponerles delante el signo~\verb|\|. Así, para incluri el carácter \verb|%|, hay que escribir \verb|\%|. 
 
-Par ailleurs, comme vous avez pu le constater, \LaTeX interprète de manière spécifique un certain nombre de caractères : \verb|\{}~|, à quoi nous ajoutons \verb|%_&$#^|\footnote{Nous ne verrons pas l'utilité \LaTeX  de tout ces caractères, certains servant essentiellement à rédiger des formules mathématiques.}.
-
-Comment faire si nous désirons afficher un de ces caractères ? Il faut les faire précéder du caractère~\verb|\|. Ainsi pour insérer le caractère \verb|%|, il faut écrire \verb|\%|. 
-
-Trois exceptions toutefois :
+Sin embargo, hay tres excepciones:
 \begin{description}
-\item[\textbackslash] qui s'insère avec la commande \csp{textbackslash} ;
-\item[\textasciitilde] qui s'insère avec la commande \csp{textasciitilde} ; 
-\item[\textasciicircum] qui s'insère avec la commande \csp{textasciicircum}. 
+\item[\textbackslash] que se escribe con el comando \csp{textbackslash} ;
+\item[\textasciitilde] que se escribe con el comando \csp{textasciitilde} ; 
+\item[\textasciicircum] que se escribe con el comando \csp{textasciicircum}. 
 \end{description} 
-\subsection{Un commentaire}
+\subsection{Comentarios}
 
-La ligne suivante est : 
+La línea siguiente es: 
 \begin{latexcode*}{linenos,firstnumber=22}
-%La fin du document
+%Fin del documento
 \end{latexcode*}
 
-Il existe en \LaTeX une règle simple : tout ce qui se trouve à droite d'un signe \verb|%| est un commentaire.
-C'est-à-dire qu'il n'est pas interprété par le compilateur et n'apparaît donc pas dans le document final. 
+En \LaTeX hay una norma muy sencilla: todo lo que se encuentra a la derecha de un signo \verb|%| es un comentario.
+Es decir, el compilador no lo interpreta y, por tanto, no aparece en el documento final. 
 
-Nous conseillons de se servir des commentaires pour indiquer les grandes structures du document et pour commenter les commandes que vous créez vous-mêmes\renvoi{creercommandes}. 
+Recomendamos el uso de comentarios para indicar las estructuras más grandes del documento y para comentar los comandos que crees tú mismo\renvoi{creercommandes}. 
 
-Vous pouvez aussi vous en servir, par exemple, pour faire un commentaire à usage personnel ligne à ligne d'un texte que vous traduisez.
+También los puedes utilizar, por ejemplo, para hacer un comentario para tu uso particular línea por línea de un texto que traduzcas.
 
-En revanche, nous vous déconseillons de l'utiliser pour des notes personnelles lors de la rédaction. Nous vous indiquerons plus loin comment définir une commande  personnalisée afin de générer un fichier qui les affiche, pour une relecture, et une autre qui les masque, pour le document final\renvoi{commentaireredac}.
-
-
-
-\subsection{La notion d'environnement }
-
-Nous avons vu jusqu'à maintenant les notions de  package, préambule, commande. 
-Il nous reste à en définir une dernière  : celle d'environnement .
-
-Un environnement  est une portion de document ayant une signification spécifique et qui par conséquent subit un traitement spécifique. Par exemple, pour indiquer une citation, une liste, etc. Nous découvrirons au fur et à mesure  des environnements. 
-
-
-On marque le début d'un environnement  \arg{nom} par \csp{begin}\marg{nom} et on le termine \csp{end}\marg{nom}.
+Por el contrario, no te recomendamos utilizarlos para notas personales en el curso de la redacción. Te indicaremos más adelante cómo definir un comando personalizado para generar un fichero que las muestre, para una revisión, y otro que las oculte, para el documento final\renvoi{commentaireredac}.
 
 
 
+\subsection{El concepto de entorno}
 
-Dans la classe \classe{article} il existe un environnement utile : \enviro{abstract}. On place dans cet environnement un résumé de l'article :
+Hemos visto hasta ahora los conceptos de paquete, preámbulo y comando. Nos queda por definir un último concepto: el de entorno.
+
+Un entorno es un fragmento de documento que tiene un significado específico y, en consecuencia, se somete a un tratamiento específico. Por ejemplo, para indicar una cita, una lista, etc. Descubriremos entornos a medida que vayamos avanzando. 
+
+
+El comienzo de un entorno se señala  \arg{nombre} con \csp{begin}\marg{nombre} y se termina \csp{end}\marg{nombre}.
+
+En la clase \classe{article} hay un entorno útil: \enviro{abstract}. En este entorno se coloca un resumen del artículo:
 
 \begin{latexcode}
 \begin{abstract}
-Écrivons ici un résumé de l'article. 
+Aquí escribimos un resumen del artículo 
 \end{abstract}
 \end{latexcode}
 
 
-Il est possible d'imbriquer des environnements :
+Se pueden anidar varios entornos:
 
 \begin{latexcode}
 \begin{1}
@@ -271,8 +264,7 @@ blabl
 \end{1}
 \end{latexcode}
 
-
-En revanche il n'est pas possible de superposer des environnements : ainsi le code suivant ne fonctionne pas et produit une erreur lors de la compilation.
+Por el contrario, no se pueden superponer entornos: así, el código siguiente no funciona y provoca un error en la compilación.
 
 
 \begin{latexcode}
@@ -285,8 +277,9 @@ blabl
 \end{2}
 \end{latexcode}
 
-\subsection{Conclusion}
+\subsection{Conclusión}
 
-Vous avez appris ici les principales notions de \LaTeX. Pour l'instant, cela doit sans doute paraître très flou : mais au fur et à mesure de votre lecture, vous comprendrez mieux\footnote{Enfin, nous l'espérons !}\ldots
+Has aprendido aquí los principales conceptos de \LaTeX. 
+ Por ahora, quizá te parezca esto muy difuso: pero, a medida que progrese tu lectura, lo irás comprendiendo mejor\footnote{¡Al menos, eso es lo que esperamos!}\ldots
 
 
