@@ -58,7 +58,7 @@ Veamos algunas opciones disponibles y útiles en humanidades:
 
 Especificaremos otras opciones a medida que avance la obra, cuando hayamos abordado los conceptos fundamentales.
 
-\subsection{La llamada a los paquetes}
+\subsection{La llamada a los packages}
 
 Veamos las dos líneas siguientes: 
 
@@ -67,11 +67,11 @@ Veamos las dos líneas siguientes:
 \usepackage{polyglossia}
 \end{latexcode*}
 
-Se trata, como habrás adivinado, de una llamada a paquetes\footnote{Hemos elegido voluntariamente no traducir este término para evitar confusiones. En la versión española, lo recogemos con la denominación habitual de ``paquete'' (N. del T.).}. Un paquete es un conjunto de ficheros que añaden funcionalidades a \LaTeX, y serían el equivalente de un  plugin en Firefox. 
+Se trata, como habrás adivinado, de una llamada a packages\footnote{Hemos elegido voluntariamente no traducir este término para evitar confusiones.}. Un package es un conjunto de ficheros que añaden funcionalidades a \LaTeX, y serían el equivalente de un  plugin en Firefox. 
 
-El primer paquete es \package{fontspec}. Resulta útil en \XeLaTeX  para una tipografía avanzada, en particular, para disponer de acentos en el documento PDF resultante. 
+El primer package es \package{fontspec}. Resulta útil en \XeLaTeX  para una tipografía avanzada, en particular, para disponer de acentos en el documento PDF resultante. 
 
-El paquete \package{fontspec} carga automáticamente \package{xunicode}, sin que necesites indicarlo. Éste último permite gestionar el unicode, también llamado UTF-8\footnote{En realidad, UTF-8 no es Unicode del todo, sino una ampliación de éste último. No obstante, para simplificar, los identificamos.}. Así, podemos emplear caracteres no latinos\renvoi{utf8} en el documento \ext{tex}.
+El package \package{fontspec} carga automáticamente \package{xunicode}, sin que necesites indicarlo. Éste último permite gestionar el unicode, también llamado UTF-8\footnote{En realidad, UTF-8 no es Unicode del todo, sino una ampliación de éste último. No obstante, para simplificar, los identificamos.}. Así, podemos emplear caracteres no latinos\renvoi{utf8} en el documento \ext{tex}.
 
 \begin{plusloins}
 En internet hay documentación que explica que, para escribir una \enquote{é}, hay que te escribir \verb|\'{}|, y aparecen listas de comandos con caracteres acentuados.
@@ -79,20 +79,20 @@ En internet hay documentación que explica que, para escribir una \enquote{é}, 
 Eso tenía validez en otros tiempos. Desde hace bastante, no merece la pena aprender estos compandos: puedes escribir tranquilamente tus letras acentuadas de manera \enquote{normal}. 
 \end{plusloins}
 
-El segundo paquete que cargamos a mano es \package{polyglossia}, que permite gestionar con facilidad un documento multilingüe\renvoi{i18n} y los cambios tipográficos que exige un documento de estas características.
+El segundo package que cargamos a mano es \package{polyglossia}, que permite gestionar con facilidad un documento multilingüe\renvoi{i18n} y los cambios tipográficos que exige un documento de estas características.
 
-Estos tres paquetes son exclusivos de \XeLaTeX{}: no funcionan\renvoi{TeXLaTeX} con \LaTeX.
+Estos tres packages son exclusivos de \XeLaTeX{}: no funcionan\renvoi{TeXLaTeX} con \LaTeX.
 
-Algunos paquetes pueden recibir opciones para modificar su comportamiento estándar. La sintaxis es, en ese caso, \csp{usepackage}\oarg{opciones}\marg{paquete}.
+Algunos packages pueden recibir opciones para modificar su comportamiento estándar. La sintaxis es, en ese caso, \csp{usepackage}\oarg{opciones}\marg{package}.
 
-A lo largo de esta obra estudiaremos distintos paquetes.
+A lo largo de esta obra estudiaremos distintos packages.
 
 \begin{attention}
-De ahora en adelante, cada vez que describamos las funcionalidades de un paquete, se entiende que habremos cargado el paquete previamente en el preámbulo, mediante el comando \csp{usepackage}\marg{paquete}.
+De ahora en adelante, cada vez que describamos las funcionalidades de un package, se entiende que habremos cargado el package previamente en el preámbulo, mediante el comando \csp{usepackage}\marg{package}.
 \end{attention}
 
 \begin{plusloins}
-Cuando hablamos de un paquete, solemos hacer referencia a su manual. Hay una forma muy sencilla de encontrar el manual de un paquete a través de la consola: explicamos cómo hacerlo en un anexo\renvoi{manuels}.
+Cuando hablamos de un package, solemos hacer referencia a su manual. Hay una forma muy sencilla de encontrar el manual de un package a través de la consola: explicamos cómo hacerlo en un anexo\renvoi{manuels}.
 \end{plusloins}
 
 \subsection{El español, lengua por defecto\label{french}}
@@ -100,7 +100,7 @@ Cuando hablamos de un paquete, solemos hacer referencia a su manual. Hay una for
 Inmediatamente después, la línea \csp{setmainlanguage}\verb|{spanish}| indica que empleamos como lengua principal del documento el español\renvoi{i18n}, y que el programa que maqueta el texto deberá tener en cuenta la tipografía española. Esta línea no la entiende el compilados si no hemos cargado previamente\package{polyglossia}.
 
 \begin{plusloins}
-Puede que hayas oído hablar del paquete \package{babel}. Se suele utilizar en lugar de \package{polyglossia}, principalmente, porque es más antiguo. No obstante, hemos preferido limitarnos a \package{polyglossia}, porque es el que hemos utilizado para nuestros trabajos y es el que tiene más utilidades, por ejemplo, para las lenguas que se escriben en un alfabeto no latino.
+Puede que hayas oído hablar del package \package{babel}. Se suele utilizar en lugar de \package{polyglossia}, principalmente, porque es más antiguo. No obstante, hemos preferido limitarnos a \package{polyglossia}, porque es el que hemos utilizado para nuestros trabajos y es el que tiene más utilidades, por ejemplo, para las lenguas que se escriben en un alfabeto no latino.
 
 Puedes encontrar información abundante sobre \package{babel} en Internet.
 
@@ -108,7 +108,7 @@ Puedes encontrar información abundante sobre \package{babel} en Internet.
 
 \subsection{El cuerpo del documento}
 
-Todo lo que hemos visto hasta ahora, antes de \cs{begin}\verb|{document}|, forma parte de lo que se llama el preámbulo del documento.\label{preambule} Se trata de informaciones que no figuran en el documento final, pero que resultan útiles para su composición y se las llama también metadatos. A cualquier paquete de desees emplear hay que llamarlo en el preámbulo.
+Todo lo que hemos visto hasta ahora, antes de \cs{begin}\verb|{document}|, forma parte de lo que se llama el preámbulo del documento.\label{preambule} Se trata de informaciones que no figuran en el documento final, pero que resultan útiles para su composición y se las llama también metadatos. A cualquier package de desees emplear hay que llamarlo en el preámbulo.
 
 Todo lo que se encuentra entre la línea \cs{begin}\verb|{document}| y \cs{end}\verb|{document}| constituye el cuerpo del documento, el contenido propiamente dicho de tu trabajo.
 
@@ -185,7 +185,7 @@ Por tanto, ya conoces las normas fundamentales para redactar un texto con \LaTeX
 
 Ya lo hemos dicho, \LaTeX produce un formato y una tipografía más correctas que un programa de tipo WYSIWYG. Pero hay que ofrecerle un código correcto, para que pueda determinar cómo componerlo tipográficamente.
 
-\LaTeX produce automáticamente un espacio fino ante los signos de puntuación dobles, \verb|!:;?| principalmente, como se ha de hacer en buena tipografía francesa\footnote{Un espacio fino es un espacio más pequeño que un espacio normal. Esto se aplica a la tipografía francesa, pero no a la española que desconoce este espacio (N. del T.)}. Sin embargo, recomendamos incluir espacios en el fichero \ext{tex} ante estos signos de puntuación dobles, para facilitar la lectura.
+\LaTeX produce automáticamente un espacio fino ante los signos de puntuación dobles, \verb|!:;?| principalmente, como se ha de hacer en buena tipografía francesa\footnote{Un espacio fino es un espacio más pequeño que un espacio normal.}. Sin embargo, recomendamos incluir espacios en el fichero \ext{tex} ante estos signos de puntuación dobles, para facilitar la lectura.
 
 \begin{attention}
 Los espacios delante de los signos de puntuación dobles son una característica propia de la tipografía francesa. Casi no se dan en las demás lenguas. Por esa razón, si escribes en una lengua distinta a la de Molière, no tienes que incluir esos espacios. Por tanto, queda en tus manos decidir si los incluyes o no en tu fichero fuente: piensa que \LaTeX los incluirá por ti llegado el caso, pero no los eliminará en las lenguas que no sean francés.
@@ -236,7 +236,7 @@ Por el contrario, no te recomendamos utilizarlos para notas personales en el cur
 
 \subsection{El concepto de entorno}
 
-Hemos visto hasta ahora los conceptos de paquete, preámbulo y comando. Nos queda por definir un último concepto: el de entorno.
+Hemos visto hasta ahora los conceptos de package, preámbulo y comando. Nos queda por definir un último concepto: el de entorno.
 
 Un entorno es un fragmento de documento que tiene un significado específico y, en consecuencia, se somete a un tratamiento específico. Por ejemplo, para indicar una cita, una lista, etc. Descubriremos entornos a medida que vayamos avanzando. 
 
