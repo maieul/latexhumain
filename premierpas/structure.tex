@@ -1,136 +1,137 @@
- \chapter{Structurer son travail}
+ \chapter{Cómo estructurar tu trabajo}
 \begin{intro}
-Après avoir découvert les bases de \LaTeX{}, apprenons la manière de structurer son travail.
+Tras haber descubierto los fundamentos de \LaTeX{}, es hora de aprender la forma de estructurar tu trabajo.
 \end{intro}
 
-\section{Différents niveaux de titres}\label{niveautitre}
+\section{Distintos niveles de títulos}\label{niveautitre}
 
-\LaTeX{} propose par défaut six ou sept niveaux de titres, selon la classe choisie.
-Pour introduire un titre dans \LaTeX{} --- en dehors du titre du travail --- il suffit d'utiliser une commande de titre qui possède la syntaxe suivante: \csp{\meta{titre}}\oarg{titre court}\marg{titre long}.
+\LaTeX{} ofrece por defecto seis o siete niveles de títulos, según la clase seleccionada.
+Para introducir un título en \LaTeX{} ---aparte del título del trabajo--- basta con emplear un comando de título que tiene la sintaxis siguiente: \csp{\meta{título}}\oarg{título breve}\marg{título largo}.
 
-Le titre court est facultatif, comme l'indique le fait qu'il soit entre crochets\renvoi{syntaxecommande}. Il sert pour la table des matières\renvoi{toc} et, éventuellement, pour les en-têtes des pages\renvoi{entete}.
+El título breve es opcional, como lo indica el hecho de que vaya entre corchetes\renvoi{syntaxecommande}. Sirve para el índice de contenidos\renvoi{toc} y,eventualmente, para los encabezados de las páginas\renvoi{entete}.
 
-Évidemment \csp{\meta{titre}} doit être remplacé par le type de titre. Voici les niveaux de titre disponibles, du plus général au plus détaillé. Plus un titre se trouve haut dans la hiérarchie, plus son numéro de niveau est faible.
+Evidentemente \csp{\meta{título}} hay que sustituirlo por el tipo de título. Veamos los niveles de título disponibles, desde el más general al más detallado. Cuanto más alto aparece un título en la jerarquía, más bajo es su número de nivel.
 
 
 
      \begin{longtable}{|l||l|l|}
     \hline     
-     \headlongtable{Commande}                & \headlongtable{Sens}                         & \headlongtable{Numéro de niveau}     \\
+     \headlongtable{Comando}                & \headlongtable{Sentido}                         & \headlongtable{Número de nivel}     \\
      \hline
     \endhead
     \hline
     \endfoot
-     \csp{part}            & Titre de partie             & -1     \\
-     \csp{chapter}         & Titre de chapitre         & 0           \\
-    \csp{section}            & Titre de section          & 1            \\
-    \csp{subsection}        & Titre de sous-section     & 2            \\
-    \csp{subsubsection}    & Titre de sous-sous-section& 3            \\
-    \csp{paragraph}        & Titre de paragraphe         &4            \\
+     \csp{part}            & Título de parte             & -1     \\
+     \csp{chapter}         & Título de capítulo         & 0           \\
+    \csp{section}            & Título de apartado          & 1            \\
+    \csp{subsection}        & Título de subapartado     & 2            \\
+    \csp{subsubsection}    & Título de sub-subapartado& 3            \\
+    \csp{paragraph}        & Título de párrafo         &4            \\
 
-    \csp{subparagraph}        & Titre de sous-paragraphe     & 5            \\
+    \csp{subparagraph}        & Título de sub-párrafo & 5            \\
     \end{longtable}
 
 
 
-Quelques remarques importantes :
+Algunas observaciones importantes :
 \begin{itemize}
-\item Le niveau \cs{chapter} n'existe que dans la classe \classe{book} ;
-\item Chaque niveau de titre se voit attribuer un numéro. Ce numéro sert lors de l'affichage de la table des matières pour définir sa profondeur.\label{numeroniveau}\renvoi{tocdepth}
-\item Les niveaux dont les numéros sont inférieurs à 1 provoquent un changement de page.
-\item Les niveaux dont les numéros sont supérieurs à 3 ne provoquent pas de changement de paragraphe. Les titres sont positionnés en \enquote{lettrine}.
+\item el nivel \cs{chapter} sólo existe en la clase \classe{book};
+\item a cada nivel de título se le asigna un número. Este número se utiliza en la presentación del índice de contenidos para definir su profundidad;\label{numeroniveau}\renvoi{tocdepth}
+\item los niveles cuyos números son inferiores a 1 provocan un salto de página;
+\item los niveles cuyos números son superiores a 3 no provocan un salto de párrafo. Los títulos se ponen en  \enquote{capital}. %lettrine?
 \end{itemize}
 
-\subsection{Des titres non numérotés}\label{titresansnumero}
-Par défaut, tous les titres sont automatiquement numérotés\footnote{Nous verrons plus loin comment changer la numérotation\renvoi{apparencecompteur}.}. Il est possible d'obtenir un titre non numéroté, en faisant suivre le nom de la commande d'un astérisque : \csp{chapter*}\marg{Un chapitre non numéroté}.
+\subsection{Títulos sin numerar}\label{titresansnumero}
+
+Por defecto, todos los títulos se numeran automáticamente\footnote{Veremos más adelante cómo cambiar la numeración\renvoi{apparencecompteur}.}. Se puede obtener un título sin numerar escribiendo un asterisco tras el nombre dek comando: \csp{chapter*}\marg{Capítulo sin numerar}.
 
 
-Toutefois un titre non numéroté ne sera pas ajouté à la table des matières\renvoi{toc}. 
+Sin embargo, un título sin numerar no se añadirá al índice de contenidos\renvoi{toc}. 
 
-Pour contourner ce problème, il faut utiliser la commande :
+Para resolver este problema, hay que utilizar el comando:
 
-\csp{addcontentsline}\verb|{toc}|\marg{1}\marg{2}, où : \label{addcontentsline}
+\csp{addcontentsline}\verb|{toc}|\marg{1}\marg{2}, donde: \label{addcontentsline}
 
 \begin{description}
-    \item[\arg{1}] est le type de titre ;
-    \item[\arg{2}] est le texte du titre ;
+    \item[\arg{1}] es el tipo de título;
+    \item[\arg{2}] es el texto del título;
 \end{description}
 
-Un exemple sera plus parlant :
+Un ejemplo es más clarificador:
 
 
 \begin{latexcode}
-\chapter*{Introduction}
-\addcontentsline{toc}{chapter}{Introduction}
+\chapter*{Introducción}
+\addcontentsline{toc}{chapter}{Introducción}
 \end{latexcode}
 
-
+%%%%%
 \begin{attention}
-Il faut systématiquement appeler la commander \cs{addcontentsline} \emph{après} la commande de sectionnement, cette dernière pouvant provoquer une coupure de page.
+Es necesario llamar sistemáticamente al comando \cs{addcontentsline} \emph{después} del comando de apartado, ya que éste último puede provocar un salto de página.
 \end{attention}
 
 \begin{plusloins}
-Le lecteur alerte se demandera sans doute pourquoi il est nécessaire de mettre \verb|toc| comme premier argument. Cela correspond à l'extension du fichier qui contiendra la table des matières : nous renvoyons au chapitre dédié à ce sujet\renvoi{toc}.
+El lector atento sin duda se preguntará por qué es preciso escribir \verb|toc| como primer argumento. Éste se corresponde a la extensión del fichero que contendrá el índice de contenidos: remitimos al capítulo dedicado a este tema\renvoi{toc}.
 \end{plusloins}
 
-\section{Structurer ses fichiers}\label{inclusion}
+\section{Cómo estructurar los ficheros}\label{inclusion}
 
-Jusqu'à maintenant, vous aviez tout mis dans un seul fichier. Une fonctionnalité intéressante de \LaTeX{} est la possibilité d'appeler dans un fichier d'autres fichiers, pour ainsi séparer son travail en plusieurs fichiers, chacun contenant une partie seulement du document final.
+Hasta ahora, lo has puesto todo en un solo fichero. Una funcionalidad interesante de \LaTeX{} es la posibilidad de incorporar dentro de un fichero otros ficheros, para dividir así tu trabajo en varios ficheros, cada uno de los cuales contendrá solamente una parte del documento final.
 
-Par exemple, il est possible de faire un fichier par chapitre d'un mémoire, ou encore  par texte cité dans un exemplier. Seul un fichier \enquote{père} est compilé, ce document appelle des fichiers \enquote{fils}.
+Por ejemplo, se puede hacer un fichero por capítulo de una tesis, o incluso por texto citado en un ejemplar.. Sólo se compila un fichero \enquote{padre}, y este documento llama a los ficheros \enquote{hijos}.
 
-Pourquoi procéder ainsi ?
+¿Por qué hacerlo así?
 \begin{itemize}
-\item Pour pouvoir changer plus aisément l'ordre des parties. 
-\item Pour pouvoir \enquote{recycler} plus facilement certaines parties.
-\item Pour pouvoir compiler seulement certaines parties.
+\item Para poder cambiar con más facilidad el orden de las partes. 
+\item Para poder \enquote{reciclar} más fácilmente algunas partes.
+\item Para poder compilar solamente algunas partes.
 \end{itemize}
 
-Concrètement, comment fait-on ?
+Concretamente, ¿cómo se hace?
 \begin{enumerate}
-\item Le fichier \enquote{père} doit systématiquement commencer par un appel de classe, et contenir \cs{begin}\verb|{document}| et \cs{end}\verb|{document}|.
-\item Les fichiers \enquote{fils} ne doivent contenir aucun appel de classe, ni les commandes \cs{begin}\verb|{document}| et \cs{end}\verb|{document}|.
-\item Ils sont inclus dans le fichier \enquote{père} par l'une des commandes suivantes :
+\item El fichero \enquote{padre} tiene que empezar siempre por una llamada de clase y contener \cs{begin}\verb|{document}| y \cs{end}\verb|{document}|.
+\item Los ficheros \enquote{hijos} no tienen que contener ninguna llamada de clase ni los comandos \cs{begin}\verb|{document}| y \cs{end}\verb|{document}|.
+\item Se incluyen en el fichero \enquote{padre} mediante uno de los siguientes comandos:
 \begin{itemize}
-    \item \csp{include}\marg{chemin-du-fichier}, qui entraîne systématiquement un saut de page.
-    \item \csp{input}\marg{chemin-du-fichier}, qui n'entraîne pas de saut de page.\label{input}
+    \item \csp{include}\marg{ruta-al-fichero}, que implica siempre un salto de página.
+    \item \csp{input}\marg{ruta-al-fichero}, que no implica salto de página.\label{input}
 \end{itemize}
 \end{enumerate}
 
-La commande \cs{input}, contrairement à \cs{include}, peut aussi être  appelée dans un fichier \enquote{fils}, voire dans un fichier \enquote{petit-fils} etc.
+El comando \cs{input}, a diferencia de  \cs{include}, también se le puede llamar en un fichero \enquote{hijo}, e incluso en un fichero \enquote{nieto} etc.
 
-Nous conseillons de mettre l'ensemble des appels à des packages dans un fichier à part. Ainsi, vous pouvez disposer d'un jeu de packages pour tout vos documents : il suffit d'appeler à chaque fois ce fichier.
+Te recomendamos poner el conjunto de llamadas a los packages en un fichero aparte. Así puedes disponer de un juego de packages para todos tus documentos: basta con llamar cada vez a este fichero.
 
 
-\subsection{Comment indiquer le chemin du fichier}\label{chemin}
+\subsection{Cómo indicar la ruta del fichero}\label{chemin}
 
-La notion de chemin de fichier en informatique renvoie à l'arborescence des dossiers sur un ordinateur.
+El concepto de ruta de archivo en informática se refiere a la estructura de carpetas en un equipo.
 
-En \LaTeX{}, le chemin du fichier se compte à partir du fichier \enquote{père}, celui qui est compilé, y compris lorsqu'on procède à une inclusion dans un fichier \enquote{fils}.
+En \LaTeX{}, la ruta del fichero se cuenta a partir del fichero \enquote{padre}, el que se compila, incluido allí a la hora de hacer una inclusión en un fichero \enquote{hijo}.
 
-On indique le chemin du fichier en séparant chaque dossier par \verb|/|\footnote{Cette norme s'applique même sous Windows, qui sépare traditionnellement les répertoires par des \texttt{\textbackslash} dans les chemins.}. Ainsi, si nous souhaitons inclure le fichier nommé \verb|c.tex| situé dans le dossier \verb|b|, lui-même situé dans le dossier \verb|a|, qui se trouve à côté du fichier \enquote{père}, il faut que nous mettions dans notre fichier \enquote{père} : \cs{input}\verb|{a/b/c}|
-ou bien
+Se indica la ruta del fichero separando cada carpeta con \verb|/|\footnote{Esta regla se aplica también en Windows, que tradicionalmente separa las carpetas con \texttt{\textbackslash} en las rutas.}. Así, si queremos incluir el fichero llamado \verb|c.tex| situado en la carpeta \verb|b|, y ubicado él en la carpeta \verb|a|, que se encuentra al lado del fichero \enquote{padre}, tenemos que escribir en nuestro fichero \enquote{padre}: \cs{input}\verb|{a/b/c}|
+o bien
 \cs{include}\verb|{a/b/c}|.
 
 \begin{attention}
 
-Il est déconseillé d'avoir des caractères spéciaux dans le nom des dossiers et des fichiers.
+No es recomendable tener caracteres especiales en el nombre de las carpetas y de los ficheros.
 \end{attention}
 
-Nous conseillons de mettre les fichiers \enquote{fils} dans un ou plusieurs sous-dossiers.
+Te recomendamos poner los ficheros \enquote{hijos} en una o varias subcarpetas.
 
-\section{La classe \classenoidx{book} : structuration globale du document}\index[classe]{book}\label{sectionbook}
+\section{La clase \classenoidx{book}: estructura global del documento}\index[classe]{book}\label{sectionbook}
 
-La classe \classe{book} propose, en plus des niveaux de titres, une manière de structurer en quatre parties son travail : préambules (avant-propos, sommaire, introductions etc.) ; corps du travail ; appendices ; outils de navigation (index, glossaires, bibliographie, tables des matières,  etc.). 
+La clase \classe{book} ofrece, además de los niveles de títulos, una manera de estructurar tu trabajo en cuatro partes: preámbulos (prólogo, resumen, introducciones, etc.); cuerpo del trabajo; apéndices; herramientas de navegación (índice, glosarios, bibliografía, índice de contenidos, etc.). 
 
-Chacune de ces parties est indiquée par une commande initiale, respectivement : \cs{frontmatter} ; \cs{mainmatter} ; \cs{appendix}\footnote{Cette commande existe aussi dans la classe \classe{article}.}; \cs{backmatter}.
+Cada una de estas partes se indica por medio de un comando inicial, respectivamente: \cs{frontmatter}; \cs{mainmatter}; \cs{appendix}\footnote{Este comando existe también en la clase \classe{article}.}; \cs{backmatter}.
 
-Cette structuration en parties globales a un impact sur la présentation des numéros de page (romains ou arabes) et sur la numérotation des titres.
+Esta estructura en partes globales influye en la presentación de los números de página (romanos o arábigos) y en la numeración de los títulos.
 
-Ainsi, par défaut : \begin{description}
-\item[\csp{frontmatter}] donne des titres non numérotés mais présents dans la table des matières. En outre les numéros de pages sont en chiffres romains minuscules. 
-\item[\csp{mainmatter}] donne des titres numérotés. La numérotation des pages est réinitialisée et est en chiffre arabe.
-\item[\csp{appendix}] affiche les numéros de chapitres sous forme de lettres majuscules. Le texte \forme{chapitre} est remplacé par \forme{appendice}.
-\item[\csp{backmatter}] supprime les numéros de chapitres tout en présentant les chapitres dans la table des matières.
+Así, por defecto: \begin{description}
+\item[\csp{frontmatter}] presenta títulos sin numerar pero que aparecen en el índice de contenidos. Además, los números de página aparecen en números romanos con minúsculas. 
+\item[\csp{mainmatter}] presenta títulos numerados. La numeración de las páginas se reinicia y aparece con números arábigos.
+\item[\csp{appendix}] presenta los números de los capítulos en forma de letras mayúsculas. El texto \forme{capítulo} se sustituye por \forme{apéndice}.
+\item[\csp{backmatter}] elimina los números de los capítulos y presenta los capítulos en el índice de contenidos.
 \end{description}
 
