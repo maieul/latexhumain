@@ -15,13 +15,10 @@ Très simple d'utilisation, il nécessite toutefois quelques adaptations pour ê
 Pour configurer le script, il vous faut créer un fichier \fichier{latexmkrc} à coté du fichier à compiler. Dans ce fichier, écrivez les lignes suivantes, en prêtant attention aux points-virgules de fins de ligne  :
 
 \begin{bashcode}
-$pdf_mode = "1";
-$pdflatex = "xelatex";
+$pdf_mode = 5;
 \end{bashcode}
 
-La première ligne signifie que vous demandez à Latexmk de vous produire des fichiers \ext{pdf} et non pas \ext{dvi}, qui est le format \enquote{historique} produit par \LaTeX.
-
-La seconde ligne signifie que vous demandez à Latexmk d'utiliser \XeLaTeX et non pas \LaTeX pour produire ces \ext{pdf}.
+Cette ligne signifie que vous demandez à Latexmk d'utiliser \XeLaTeX et non pas \LaTeX pour produire ces \ext{pdf}.
 
 
 Rendez-vous avec le terminal\renvoi{terminal} dans le dossier du fichier à compiler. Frappez ensuite la commande suivante :
