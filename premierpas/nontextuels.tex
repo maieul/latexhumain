@@ -1,173 +1,168 @@
-\chapter{Insérer des éléments non textuels}
+\chapter{Incorporar elementos que no son texto}
 
 \begin{intro}
-    Dans ce chapitre nous allons examiner comment insérer des éléments qui ne font pas partie du flux du texte : images, graphismes, tableaux de données.
+En este capítulo abordaremos cómo incorporar elementos que no forman parte del flujo del texto: imágenes, gráficos y tablas de datos.
 \end{intro}
 
-\section{Insérer des images}
+\section{Incorporar imágenes}
 
-Les images insérables avec \XeLaTeX sont au format JPEG (extension~\ext{jpg}), PNG (extension~\ext{png}) ou PDF (extension~\ext{pdf}). Il est nécessaire d'utiliser le package \package{graphicx}.
+Las imágenes que se pueden incluir con \XeLaTeX son
+ de formato JPEG (extensión~\ext{jpg}), PNG (extensión~\ext{png}) o PDF (extensión~\ext{pdf}). Es preciso utilizar el package \package{graphicx}.
 
 
-L'insertion d'une image se fait ainsi : \csp{includegraphics}\oarg{options}\marg{chemin de l'image}.
+La incorporación de una imagen se hace así: \csp{includegraphics}\oarg{opciones}\marg{ruta a la imagen}.
 
-Le chemin de l'image s'indique de la même manière que le chemin des fichiers inclus\renvoi{chemin}.
-Les principales options, séparables par des virgules,  sont les suivantes\footcite[Pour les autres, on consultera][]{graphicx_options} :
+La ruta a la imagen se indica de la misma forma que la ruta a los ficheros incluidos\renvoi{chemin}. Las principales opciones, separadas por comas, son las siguientes\footcite[Para las otras, hay que consultar][]{graphicx_options} :
 
 \begin{longtable}{|p{0.2\textwidth}|p{0.45\textwidth}|p{0.2\textwidth}|}
     \hline
-    \centering\textbf{Paramètres} & \centering\textbf{Signification} & \centering\textbf{Exemple}    \tabularnewline
+    \centering\textbf{Parámetros} & \centering\textbf{Significado} & \centering\textbf{Ejemplo}    \tabularnewline
     \hline
     \endhead
     \hline
     \endfoot
-    angle        & Angle exprimé en degrés. Un nombre positif indique une rotation anti-horaire, un nombre négatif une rotation horaire.     & \verb|angle=90| \\
-    height        & Hauteur    & \verb|height=10cm|     \\
-    scale        & Redimension proportionnelle & \verb|scale=0.5|\\
-    width        & Largeur     & \verb|width=10cm|     \\
+    angle        & Ángulo expresado en grados. Un número positivo indica una rotación contraria a las agujas del reloj, y un número negativo una rotación horaria.     & \verb|angle=90| \\
+    height        & Altura    & \verb|height=10cm|     \\
+    scale        & Escalado proporcional & \verb|scale=0.5|\\
+    width        & Anchura     & \verb|width=10cm|     \\
 \end{longtable}
 
 
 \begin{plusloins}
-Le centimètre n'est pas la seule  unité de mesure disponible en \LaTeX. Nous en parlons en annexe de ce livre\renvoi{unite}.
+El centímetro no es la única unidad de medida disponible en \LaTeX. Hablamos de ello en un anexo de este libro\renvoi{unite}.
 \end{plusloins}
 
 \begin{plusloins}
-Le package \package{graphicx} propose de nombreux outils pour manipuler graphiquement du contenu, textuel ou non. Consultez le manuel\footcite{graphicx}.
+El package \package{graphicx} ofrece muchas herramientas para manipular gráficamente contenido textual o no. Consulta el manual\footcite{graphicx}.
 \end{plusloins}
 
 \begin{attention}
-    Évidemment, il est plus correct d'insérer une légende sous une image. Nous expliquons comment faire plus loin\renvoi{legende}.
+Por supuesto, es más correcto incluir una leyenda bajo la imagen. Explicamos cómo hacerlo más adelante\renvoi{legende}.
 \end{attention}
 
-\section{Insérer des graphismes et des schémas}
+\section{Incorporar gráficos y esquemas}
 
-On peut vouloir insérer divers types de graphismes ou de schémas : graphiques statistiques, arbres généalogiques, \emph{stemma codicum} etc.
-Deux solutions s'offrent à nous :
+Puede que queramos incorporar distintos tipos de gráficos o de esquemas: gráficos estadísticos, árboles genealógicos, \emph{stemma codicum} etc.
+Tenemos dos soluciones:
 \begin{enumerate}
-\item Utiliser un logiciel externe qui exporterait le graphisme dans une image, qu'on insérerait comme n'importe quelle image.
-\item Utiliser les possibilités de \LaTeX et du package\package{TikZ}.\label{TikZ}
+\item Emplear un programa externo que exporte el gráfico en una imagen que se incluirá como cualquier otra.
+\item Emplear las posibilidades \LaTeX y del package\package{TikZ}.\label{TikZ}
 \end{enumerate}
 
-La première solution paraît de prime abord plus simple, puisqu'elle ne nécessite pas d'apprendre de nouveaux éléments en \LaTeX. Toutefois il faut avec elle gérer plus de fichiers\footnote{Prenons un graphisme généré par un tableur : il faudra conserver la feuille du tableur plus l'image du graphisme généré par celui-ci.}. En outre, les images exportées par ces logiciels étant bien souvent de type bitmap et non pas vectoriel%
-\footnote{Il existe deux manières en informatique de coder une image : en codant point par point (image bitmap) ou bien en codant simplement les formes, par exemple des cercles ou des segments (image vectorielle). La première méthode est adaptée à des images complexes, comme les photographies,  la seconde méthode est conseillée pour les images \enquote{simples} telles que les graphismes. La méthode vectorielle possède l'avantage d'offrir une image plus facilement redimensionnable  sans perte de qualité et de permettre aisément la sélection de texte.},
-on perd la possibilité de sélectionner dans le PDF généré par \LaTeX les textes, et on risque d'avoir des problèmes de redimensionnement.
+La primera solución parece más sencilla a primera vista, ya que no exige el conocimiento de nuevos elementos de \LaTeX. No obstante, con ella tenemos que manejar más ficheros\footnote{Tomemos un gráfico generado mediante una hoja de cálculo: habrá que conservar la hoja de cálculo más la imagen del gráfico generada por ella.}. Además, las imágenes exportadas por estos programas, al ser muy a menudo de tipo bitmap y no vectoriales%
+\footnote{Hay dos maneras en informática de codificar una imagen: codificarla punto por punto (imagen en bitmap) o bien codificar sólo las formas, por ejemplo, círculos o segmentos (imagen vectorial). El primer método está pensado para imágenes complejas, como fotografías, mientras que el segundo se recomienda para las imágenes \enquote{simples}, como los gráficos. El sistema vectorial tiene la ventaja de ofrecernos una imagen que se puede escalar con más facilidad, sin pérdida de calidad y de permitir fácilmente la selección de texto.}, perdemos la posibilidad de seleccionar los textos en el PDF que genera \LaTeX, y nos arriesgamos a tener problemas con el escalado.
 
-Nous allons donc ici vous présenter une des possibilités du package \package{TikZ} : la représentation d'une famille de manuscrits. 
+Vamos a presentarte aquí una de las posibilidades del package \package{TikZ}: la representación de una familia de manuscritos. 
 
-Nous avons choisi cet exemple car il est assez simple, tout en étant fréquent en sciences humaines. Mais \package{TikZ} permet de faire bien plus, comme produire des diagrammes statistiques : nous renvoyons à d'autres ouvrages pour en savoir plus\footnote{Outre le manuel \cite{tikz}, on pourra lire \cites{tikzimpatient}[on pourra également consulter le site][]{tikzexample}.}.
-Ce package possède une syntaxe spécifique. 
+Hemos elegido este ejemplo porque es bastante sencillo, aunque bastante frecuente en humanidades. Pero\package{TikZ} permite hacer muchas más cosas, como producir diagramas estadísticos: remitimos a otras obras para saber más de él\footnote{Además del manual \cite{tikz}, se puede leer \cites{tikzimpatient}[también se puede consultar la página][]{tikzexample}.}.
+Este package tiene una sintaxis específica. 
 
 \begin{attention}
-    Bien que le package s'appelle \package{TikZ}, il faut dans le préambule l'appeler \emph{sans majuscules} : \cs{usepackage}\verb+{tikz}+.
+   Aunque el package se llama \package{TikZ}, hay que llamarlo en el preámbulo \emph{sin mayúsculas}: \cs{usepackage}\verb+{tikz}+.
  
 \end{attention}
 
+Tenemos seis familias de manuscritos de un mismo texto. La familia A ha generado las familias B, C y D. Las familias E y F, por su parte, proceden de la familia D. 
 
-Nous disposons de six familles de manuscrits d'un même texte. La  famille A a engendré les familles B, C, D. Les familles E et F pour leur part sont issues de la famille D. 
-
-Le code est le suivant: 
+El código es el siguiente: 
 \inputminted{exemples/premierpas/nontextuels/genealogie.tex}
 
-Ce qui donne le résultat de la figure~\ref{figure:genealogie}. Analysons le code :
+Esto da el resultado que aparece en la figura~\ref{figure:genealogie}. Analicemos el código:
 
 \begin{figure}[h]
 \centering
 \input{exemples/premierpas/nontextuels/genealogie}
-\caption{Exemple de \emph{stemma}}
+\caption{Ejemplo de \emph{stemma}}
 \label{figure:genealogie}
 \end{figure}
 
 
 
 \begin{description}
-\item[Ligne 1] L'environnement \enviro{tikzpicture} est l'environnement utilisé pour insérer une figure TikZ. Il peut recevoir de nombreux arguments pour modifier certains aspects, tels que l'épaisseur par défaut des lignes, la taille du texte, l'orientation du schéma. Nous renvoyons à la documentation.
-\item[Ligne 2] Un nœud TikZ, matérialisé  par le commande \csp{node}, est un bloc de texte. On pourrait passer des options à cette commande, afin de modifier certains aspects comme la taille du texte.
-\item[Lignes 3 et 4] \verb|child| désigne ici une opération : associer un fils au nœud précédent. Ce fils est lui même un nœud (\verb|node|).
-\item[Lignes 5 à 12]Même chose que précédemment, sauf que le nœud D se voit attribuer des fils (E et F). Notez le nombre d'accolades et leurs imbrications : c'est ce qui permet à \package{TikZ} de construire correctement le \emph{stemma}.
-\item[Ligne 13] Le point-virgule est obligatoire après chaque commande \package{TikZ} (ici \cs{node}).
-\item[Ligne 14] Fin du graphisme \package{TikZ}.
+\item[Línea 1] El entorno \enviro{tikzpicture} es el entorno que se emplea par insertar una figura TikZ. Puede recibir muchos argumentos para modificar algunos aspectos, como la anchura de las líneas por defecto, el tamaño del texto, la orientación del esquema. Remitimos a la documentación.
+\item[Línea 2] Un nodo TikZ, para el que se emplea el comando \csp{node}, es un bloque de texto. Se podrían dar opciones a este comando para modificar algunos aspectos como el tamaño del texto.
+\item[Líneas 3 y 4] \verb|child| designa aquí una operación: asociar un hijo al nodo anterior. Este hijo es, a su vez, un nodo (\verb|node|).
+\item[Líneas 5 a 12]  Lo mismo que antes, salvo que al nodo D se le asignan dos hijos (E y F). Fíjate en el número de llaves y en sus anidamientos: es lo que permite a \package{TikZ} construir correctamente el \emph{stemma}.
+\item[Línea 13] El punto y coma es obligatorio después de cada comando \package{TikZ} (aquí \cs{node}).
+\item[Línea 14] Fin del gráfico \package{TikZ}.
 \end{description}
 
-Évidemment un tel code est relativement complexe. C'est pourquoi nous conseillons de le commenter attentivement\footnote{Pour des raisons de place nous ne l'avons pas fait ici.} et de prêter extrêmement attention  aux accolades. Par ailleurs nous recommandons de mettre chaque graphisme \package{TikZ} dans un fichier séparé.
+Está claro que un código así es relativamente complicado. Por ese motivo te aconsejamos comentarlo con atención\footnote{Por motivos de espacio no lo hemos hecho aquí.} y prestar especial atención a las llaves. Por otro lado, recomendamos poner cada gráfico \package{TikZ} en un fichero aparte.
 
 
-Notre \emph{stemma} est relativement simple : il n'y a pas de contamination. Si cela avait été le cas la construction aurait été plus complexe : on n'aurait pas pu utiliser les opérations de types \verb|child|, en tout cas pas uniquement,  et il aurait fallu positionner précisément les éléments en utilisant un système de coordonnées\footcites[Nous avons publié sur notre site Internet une série d'articles sur les \emph{stemma} avec TikZ :][]{stemma}[on consultera avec profit un article écrit dans la langue de Dante][]{Leal2012a}.
+Nuesto \emph{stemma} es relativemente sencillo: no hay contaminación. Si la hubiera habido, la construcción habría sido más compleja: no habríamos podido emplear las operaciones de tipo \verb|child|, o no únicamente, y habríamos tenido que ubicar con precisión los elementos mediante un sistema de coordenadas\footcites[Hemos publicado en nuestra página de Internet una serie de artículos sobre los \emph{stemmata} con TikZ:][]{stemma}[resultará provechosa la lectura de un artículo escrito en la lengua de Dante][]{Leal2012a}.
 
 \begin{plusloins}
-Le package \package{tikz-qtree}\footcite{tikz-qtree} simplifie la construction de \emph{stemmatta} en proposant une syntaxe simplifiée et des outils pour gérer les cas de contamination.  
+El package \package{tikz-qtree}\footcite{tikz-qtree} simplifica la construcción de \emph{stemmata} ya que ofrece una sintaxis simplificada y herramientas para resolver los casos de contaminación.  
 \end{plusloins}
 
 
-\section{Création de tableaux}
+\section{Creación de tablas}
 
 \begin{attention}
-La création de tableaux en \LaTeX nécessite  une extrême rigueur. 
-C'est à nos yeux l'un des éléments les plus complexes de \LaTeX. C'est pourquoi nous ne proposerons ici qu'un bref aperçu : on trouvera aisément des exemples plus détaillés dans d'autres ouvrages ou sur Internet\footcite[On pourra consulter des fichiers assez didactiques :][]{bebert_tableaux}.
+La creación de tablas en \LaTeX exige un rigor escrupuloso. Es, a nuestro parecer, uno de los elementos más complicados de \LaTeX. Por eso, sólo presentamos aquí un breve esbozo: se pueden encontrar con facilidad ejemplos más detallados en otras obras o en Internet\footcite[Se pueden consultar ficheros bastante didácticos:][]{bebert_tableaux}.
 \end{attention}
 
-\subsection{Syntaxe de base}
+\subsection{Sintaxis elemental}
 
-La création d'un tableau simple se fait grâce à l'environnement \enviro{tabular}, d'après la syntaxe suivante :
+La creación de una tabla sencilla se hace por medio del entorno \enviro{tabular}, con la sintaxis siguiente:
 
 \begin{latexcode}
-\begin{tabular}{<type de colonnes>}
-    Cellule & Cellule & Cellule \\
-    Cellule & Cellule & Cellule \\
+\begin{tabular}{<tipo de columna>}
+    Celda & Celda & Celda \\
+    Celda & Celda & Celda \\
 \end{tabular}
 \end{latexcode}
 
-Le caractère \verb|&| marque un changement de cellule. Le \verb|\\| marque un changement de ligne.
+El carácter \verb|&| indica un cambio de celda. El carácter \verb|\\| indica un cambio de línea.
 
-L'argument \arg{type de colonnes} de l'environnement \enviro{tabular} sert à préciser :
+El argumento \arg{tipo de columna} del entorno \enviro{tabular} sirve para indicar:
 \begin{enumerate}
-    \item Le nombre de cellules.
-    \item Le formatage du texte à l'intérieur des cellules.
-    \item Éventuellement les séparateurs verticaux des cellules.
+    \item El número de celdas.
+    \item El formato del texto en el interior de las celdas.
+    \item Eventualmente, los separadores verticales de las celdas.
     
 \end{enumerate}
 
-Il existe trois types possibles de colonnes,  qui précisent l'alignement des textes : \label{typecolonnes}
+Hay tres tipos posibles de columnas que indican la alineación del texto: \label{typecolonnes}
 
 \begin{description}
-\item[l] Alignement à gauche.
-\item[c] Centré.
-\item[r] Alignement à droite.
+\item[l] Alineado a la izquierda.
+\item[c] Centrado.
+\item[r] Alineado a la derecha.
 \end{description}
 
-Supposons que nous ayons un tableau à trois colonnes. Nous souhaitons que les cellules de la première colonne soient alignées à gauche, celles de la seconde centrées et celles de la dernière alignées à droite\footnote{Il s'agit ici d'une dérogation au principe de séparation de fond et de forme. Toutefois le lecteur pourra aisément, lorsqu'il l'aura assimilée, contourner cette dérogation et revenir dans le droit chemin.}.  
-Il nous faut  écrire :
+Imaginemos que tenemos una tabla con tres columnas. Deseamos que las celdas de la primera columna estén alineadas a la izquierda, las de la segunda centradas y las de la tercera alineadas a la derecha\footnote{Aquí rompemos el principio de separación entre fondo y forma. Sin embargo, el lector podrá, cuando lo haya asimilado, soslayar fácilmente esta ruptura y volver al camino correcto.}.  
+Tenemos que escribir:
 
 \inputminted{exemples/premierpas/nontextuels/tableau3colonnes.tex}
 
 
 \input{exemples/premierpas/nontextuels/tableau3colonnes}
 
+Por defecto, la tabla tendrá la anchura mínima necesaria para poder verla. 
 
-Par défaut, le tableau va prendre la largeur minimale nécessaire à son affichage. 
-
-On peut utiliser l'environnement \enviro{tabular*} qui propose un argument supplémentaire, correspondant à la largeur totale du tableau :
+Se puede emplear el entorno \enviro{tabular*} que ofrece un argumento adicional correspondiente a la anchura total de la tabla:
 
 \begin{latexcode}
-\begin{tabular*}{<largeur du tableau>}{<type de colonnes>}
-    Cellule & Cellule & Cellule \\
-    Cellule & Cellule & Cellulle \\
+\begin{tabular*}{<anchura de la tabla>}{<tipo de columna>}
+    Celda & Celda & Celda \\
+    Celda & Celda & Celda \\
 \end{tabular}
 \end{latexcode}
 
+A veces puede resultar práctico indicar el tamaño de las columnas: especialmente, cuando nuestras celdas contienen párrafos.
 
-Toutefois il peut être pratique d'indiquer des tailles de colonnes : en particulier lorsque nos cellules contiennent des paragraphes.
+Para hacerlo, el package \package{array} nos ofrece tres tipos adicionales de columnas\footnote{En realidad, el primer tipo sólo requiere que se cargue el package.}. Esto tipos, a diferencia de los anteriores, establecen una anchura de columna. Para emplearlos, hay que conocer las unidades de medida\renvoi{unite} de \LaTeX. 
 
-Pour ce faire trois types supplémentaires de colonnes nous sont proposés par le package \package{array}\footnote{En réalité le premier type ne nécessite pas que l'on charge le package.}. Ces types, à la différences des précédents, déterminent une largeur de colonne. Il faut pour les utiliser connaître  les unités de mesure\renvoi{unite} de \LaTeX. 
-
-Ces trois types de colonnes sont :
+Estos tipos de columnas son:
 \begin{description}
-    \item[p\marg{largeur}] texte justifié. La plus haute ligne du texte se trouve sur la ligne de base.
-    \item[m\marg{largeur}] texte justifié. La ligne du milieu du texte se trouve sur la ligne de base.
-    \item[b\marg{largeur}] texte justifié. La plus basse ligne du texte se trouve sur la ligne de base.
+    \item[p\marg{anchura}] texto justificado. La línea más alta del texto se encuentra en la línea de la base.
+    \item[m\marg{anchura}] texto justificado. La línea intermedia del texto se encuentra en la línea de la base.
+    \item[b\marg{anchura}] texto justificado. La línea más baja del texto se encuentra en la línea de la base.
 \end{description}
 
-La ligne de base est une ligne spécifique, correspondant \emph{grosso-modo} au milieu d'une cellule. Exemple :
+La línea de la base es una línea concreta que se corresponde \emph{grosso-modo} al centro de una celda. Ejemplo:
 
 \inputminted{exemples/premierpas/nontextuels/tableau3colonnesarray.tex}
 \input{exemples/premierpas/nontextuels/tableau3colonnesarray}
@@ -175,215 +170,213 @@ La ligne de base est une ligne spécifique, correspondant \emph{grosso-modo} au 
 
 
 \begin{plusloins}
-Il est possible de créer ses propres types de colonnes, afin par exemple d'en avoir avec une typographie particulière. Consultez le manuel du package \package{array}\footcite{array_colonnes}.
+Puedes crear tus propios tipos de columnas para, por ejemplo, emplearlas con una tipografía determinada. Consulta el manual del package \package{array}\footcite{array_colonnes}.
 \end{plusloins}
 
 \begin{plusloins}
-On peut utiliser le package \package{diagbox} afin d'avoir une cellule divisée en deux dans un sens diagonal, pour les tableaux à doubles entrées.
+Puedes utilizar el package \package{diagbox} para tener una celda dividida en dos en sentido diagonal para las tabblas con entradas dobles.
 \end{plusloins}
 
 \begin{plusloins}
-Le package \package{tabularx} propose un environnement \package{tabularx} permettant de calculer automatiquement la taille des colonnes.
+El package \package{tabularx} ofrece un entorno \package{tabularx} que permite calcular automáticamente el tamaño de las columnas.
 \end{plusloins}
 
 \begin{plusloins}
-Il existe également un package \package{tabbing} permettant de gérer des alignements de texte sans utiliser un tableau\footcite{tabbing}.
+También existe un package \package{tabbing} que permite realizar alineaciones de texto sin emplear una tabla\footcite{tabbing}.
 \end{plusloins}
 
 \begin{plusloins}
-On peut simuler certaines fonctionnalités d'un tableur à l'aide du package \package{spreadtab}\footcite{spreadtab}.
+Se pueden simular algunas funciones de una hoja de cálculo por medio del package \package{spreadtab}\footcite{spreadtab}.
 \end{plusloins}
 
-\subsubsection{Séparation des cellules}
+\subsubsection{Separación de celdas}
 
-On peut tracer des filets de séparation des cellules : pour un filet  horizontal, il suffit d'utiliser la commande \csp{hline}. Pour un filet  vertical, il faut mettre le caractère \verb+|+\footnote{Ce caractère, appelé \forme{pipe} ne doit pas être confondu avec un L minuscule.} entre les types de cellules.
+Se pueden trazar líneas de separación de celdas: para una línea horizontal, basta con utilizar el comando \csp{hline}. Para una línea vertical, hay que incluir el carácter \verb+|+\footnote{Este carácter, llamado \forme{pleca} no debe confundirse con una L minúscula.} entre los tipos de celdas.
 
-On trace des filets horizontaux plus petits grâce à \csp{cline}\verb|{<col1>-<col2>}|, où \arg{col1} et \arg{col2} doivent être remplacés par les numéros de colonnes.
+Se pueden trazar líneas horizontales más cortas por medio de \csp{cline}\verb|{<col1>-<col2>}|, donde hay que sustituir \arg{col1} y \arg{col2} por los números de las columnas.
 
 \inputminted{exemples/premierpas/nontextuels/tableauseparateur.tex}
 \input{exemples/premierpas/nontextuels/tableauseparateur}
 
-\subsubsection{Fusion de cellules}
+\subsubsection{Combinación de celdas}
 
-Il est possible de fusionner des cellules. Pour une fusion de colonnes, il faut utiliser la commande suivante :
-\csp{multicolumn}\marg{nombcol}\marg{type}\marg{contenu}.
+Se pueden combinar celdas. Para una combinación de columnas hay que emplear el comando siguiente:
+\csp{multicolumn}\marg{numcol}\marg{tipo}\marg{contenido}.
 
 \begin{description}
 
-\item[\arg{nombcol}] est le nombre de colonnes à fusionner.
-\item[\arg{type}] est le type de colonne qui en résulte, selon la syntaxe vue plus haut.
-\item[\arg{contenu}] est le contenu de la ligne fusionnée.
+\item[\arg{numcol}] es el número de columnas que vamos a combinar.
+\item[\arg{tipo}] es el tipo de columna resultante, según la sintaxis que hemos visto antes.
+\item[\arg{contenido}] es el contenido de la línea combinada.
 \end{description}
 
-Pour une fusion de lignes, il faut charger le package \package{multirow}. Celui-ci propose une commande \cs{multirow} dont voici la syntaxe simplifiée\footcite[Simplifiée car nous ne présentons pas les arguments optionnels : nous renvoyons à la documentation :][]{multirow} :
+Para una combinación de líneas, hay que cargar el package \package{multirow}. Éste ofrece un comando \cs{multirow} cuya sintaxis esquemáticamente es la siguiente\footcite[Esquemáticamente, porque no presentamos los argumentos optativos: remitimos a la documentación:][]{multirow} :
 
-\csp{multirow}\marg{lignes}\marg{largeur}\marg{contenu}.
+\csp{multirow}\marg{líneas}\marg{anchura}\marg{contenido}.
 
 
 \begin{description}
-\item[\arg{lignes}] est le nombre de lignes concernées par la fusion.
-\item[\arg{largeur}] est la largeur du texte. On peut mettre \verb|*| pour laisser \LaTeX{} s'en charger.
-\item[\arg{contenu}] est le contenu de la cellule issue de la fusion.
+\item[\arg{líneas}] es el número de líneas afectadas por la combinación.
+\item[\arg{anchura}] es la anchura del texto. Se puede escribir \verb|*| para permitir que \LaTeX{} se encarge de eso.
+\item[\arg{contenido}] es el contenido de la celda resultante de la combinación.
 \end{description}
 
 \inputminted{exemples/premierpas/nontextuels/tableaufusion.tex}
 \input{exemples/premierpas/nontextuels/tableaufusion}
 
-On remarquera les cellules vides correspondant aux anciennes cellules A2 et A3. La commande \cs{multirow} ne modifie pas la structure du tableau : elle indique simplement que le texte se situe sur plusieurs colonnes.
+Se observará que las celdas vacías se corresponden a las primitivas celdas A2 y A3. El comando \cs{multirow} no modifica la estructura de la tabla: sólo indica que el texto se sitúa en varias columnas.
 
-\subsection{Long tableau}
+\subsection{Tablas largas}
 
-Si vous fabriquez ainsi un long tableau, vous constaterez que les cellules dépassent dans la marge inférieure, jusqu'à sortir de la page, au lieu, comme il semblerait logique, de continuer sur les pages suivantes.
+Si construyes por este procedimiento una tabla larga, te darás cuenta de que las celdas sobresalen por el margen inferior hasta desbordarse de la página, en vez de, cosa que parecería lógica, continuar en las páginas siguientes.
 
-Pour éviter cela, il faut  utiliser l'environnement \enviro{longtable} du package éponyme\index[pkg]{longtable}.
+Para evitar eso, hay que emplear el entorno \enviro{longtable} del package homónimo\index[pkg]{longtable}.
 
 \begin{latexcode}
 \usepackage{longtable}
 …
-\begin{longtable}{types colonnes}
+\begin{longtable}{tipos de columna}
 …
 \end{longtable}
 \end{latexcode}
 
-La syntaxe d'un environnement \enviro{longtable} est identique à celle d'un environnement \enviro{tabular}. Toutefois le package propose deux  commandes supplémentaires pour préciser les en-têtes et pieds de tableau, qui sont répétés sur chaque page. Ces commandes sont, respectivement, \csp{endhead} et \csp{endfoot}. Il existe aussi aussi une commande \csp{endfirsthead} pour préciser l'en-tête  spécifique à la première page du tableau et une commande \csp{endlastfoot} pour préciser le pied  spécifique à la dernière page du tableau.
+La sintaxis de un entorno \enviro{longtable} es idéntica a la de un entorno \enviro{tabular}. Sin embargo, el package ofrece dos comandos adicionales para indicar los encabezados y pies de la tabla y que se repiten en cada página. Estos comandos son, respectivamente, \csp{endhead} y \csp{endfoot}. También hay un comando \csp{endfirsthead} para indicar el encabezado específico de la primera página de la tabla y un comando \csp{endlastfoot} para indicar el pie específico de la última página de la tabla.
 
-Ces quatre commandes sont optionnelles, elles  doivent s'utiliser en début de tableau : il faut placer les éléments correspondants \emph{avant} chacune des commandes, de la manière suivante :
+Estos cuatro comandos son optativos y deben emplearse al comienzo de la tabla: hay que colocar los elementos correspondientes \emph{antes}  de cada uno de los comandos, de la forma siguiente:
 
 \begin{latexcode}
-\begin{longtable}{types colonnes}
-Cellules d'en-tête.
+\begin{longtable}{tipo de columna}
+Celdas de encabezado.
 \endhead
-Cellules d'en-tête pour la première page.
+Celdas de encabezado para la primera página.
 \endfirsthead
-Cellules de pied.
+Celdas de pie.
 \endfoot
-Cellules de pied pour la dernière page.
+Celdas de pie para la última página.
 \endlastfoot
-Cellules de corps de tableau.
+Celdas del cuerpo de la tabla.
 \end{longtable}
 \end{latexcode}
 
 \begin{attention}
-Avec \enviro{longtable}, il faut compiler deux fois le fichier \ext{tex}. 
-En effet, \XeLaTeX{} --- comme d'ailleurs \LaTeX{} --- n'arrive pas à déterminer la taille des colonnes à la première compilation : il procède à un calcul page par page. Cependant il stocke la taille maximale des colonnes dans un fichier temporaire, portant l'extension \ext{aux}. Lors de la seconde compilation, il se sert de ce fichier temporaire pour indiquer la taille des colonnes sur chacune des pages.
+Con \enviro{longtable}, hay que compilar dos veces el fichero \ext{tex}. 
+En efecto, \XeLaTeX{} ---igual que \LaTeX{}--- no puede determinar el tamaño de las columnas en la primera compilación: realiza un cálculo página a página. Sin embargo, almacena el tamaño máximo de las columnas en un fichero temporal que tiene la extensión \ext{aux}. Durante la segunda compilación, utiliza este fichero temporal para indicar el tamaño de las columnas en cada una de las páginas.
 \end{attention}
-
-
+ 
 \begin{plusloins}
-Pour afficher un graphique statistique, nous recommandons d'utiliser le package \package{TikZ}\renvoi{TikZ}. Toutefois la maîtrise de cet outil peut se révéler relativement complexe. C'est pourquoi nous listons ici quelques packages utiles : 
+Para presentar un gráfico estadístico, recomendamos el uso del package \package{TikZ}\renvoi{TikZ}. No obstante, el dominio de esta herramienta puede resultar bastante complicado. Por eso recogemos en esta lista algunos packages útiles : 
 \begin{itemize}
-\item Le package \package{csvpie} propose une fonction pour tracer un diagramme circulaire à partir d'un fichier \ext{csv}\footcite[Sa documentation se trouve dans celle du package \package{csvtools} :][]{csvtools_pie}. 
-\item Le package \package{datatool} propose un certain nombre de graphiques statistiques. Il faut enregistrer les données selon une forme liée au package. Nous renvoyons à sa documentation\footcite{datatool}.
+\item El package \package{csvpie} ofrece una función para trazar un diagrama circulas a partir de un fichero \ext{csv}\footcite[Su documentación se encuentra en la del package \package{csvtools}:][]{csvtools_pie}. 
+\item El package \package{datatool} ofrece algunos gráficos estadísticos. Hay que grabar los datos según un sistema vinculado al  package. Remitimos a su documentación\footcite{datatool}.
 \end{itemize}
 \end{plusloins}
 
 
-\section[La notion de flottants]{Où insérer les éléments non textuels ?  la notion de flottants}
+\section[El concepto de flotante]{¿Dónde incorporar los elementos no textuales?  Concepto de flotante}
 \label{legende}
-Nous avons vu comment insérer des éléments non textuels. Cependant vous constaterez rapidement que la mise en forme n'est pas toujours des meilleures, l'élément s'insérant dans le texte à l'endroit précis où il a été appelé, ce qui peut entraîner des espaces blancs disgracieux.
-En outre, ces éléments non textuels disposent habituellement d'une légende, que nous ne savons pas encore mettre.
+Hemos visto cómo incorporar elementos no textuales. Sin embargo, te darás cuenta enseguida de que el formato no es siempre de los mejores, ya que, al incluirse el elemento dentro del texto, en el lugar exacto en el que se le ha llamado, esto puede generar espacios en blanco indeseados. Además, estos elementos no textuales suelen llevar normalmente una leyenda que aún no sabemos como poner.
 
-Pour résoudre ces deux problèmes --- positionnement esthétique et légende --- \LaTeX utilise la notion de flottant. Un flottant est donc un élément non textuel que LaTeX essaie d'insérer au meilleur endroit du point de vue de l'esthétique et qui dispose (éventuellement) d'une légende.
+Para resolver ambos problemas ---ubicación estética y leyenda--- \LaTeX utiliza el concepto de flotante. Un flotante es, por tanto, un elemento no textual que \LaTeX trata de insertar en el mejor sitio, desde el punto de vista de la estética, y que tiene (o puede tener) una leyenda.
 
-Il existe deux types principaux de flottant :
+Hay dos tipos principales de flotantes:
 \begin{itemize}
-    \item Les figures, générées par l'environnement \enviro{figure}.
-    \item Les tableaux, générés par l'environnement \enviro{table}.
+    \item Las figuras, que se generan con el entorno \enviro{figure}.
+    \item Las tablas, que se generan con el entorno \enviro{table}.
 \end{itemize}
 
-La syntaxe pour insérer le premier type est la suivante :
+La sintaxis para incorporar el primer tipo es la siguiente:
 
 \begin{latexcode}
-\begin{figure}[<paramètre de placement>]
-    Insertion de la figure ou de l'image,
-    suivant les codes montrés plus haut.
-    \caption{<Légende>}
+\begin{figure}[<parámetro de ubicación>]
+    Inclusión de la figura o de la imagen,
+    de acuerdo con los códigos que hemos mostrado antes.
+    \caption{<Leyenda>}
 \end{figure} 
 \end{latexcode}
 
-Celle pour insérer le second est la suivante :
+La que permite incorporar el segundo tipo es la siguiente:
 
 \begin{latexcode}
-\begin{table}[<paramètre de placement>]
-    Insertion d'un tableau suivant les codes montrés plus haut.
-    \caption{<Légende>}
+\begin{table}[<parámetro de ubicación>]
+    Inclusión de una tabla, de acuerdo con los códigos que hemos mostrado antes.
+    \caption{<Leyenda>}
 \end{table} 
 \end{latexcode}
 
-Si la commande \cs{caption} est insérée au-dessus de la figure, de l'image ou du tableau, la légende sera située au-dessus de l'élément et non en-dessous. Il est possible, mais déconseillé, de ne pas mettre de légende.
+Si el comando \cs{caption} se pone encima de la figura, de la imagen o de la tabla, la leyenda aparecerá encima del elemento y no debajo. Se puede, aunque no es recomendable, no poner una leyenda.
 
-Nous avons un exemple de flottant   dans ce chapitre : la figure~\ref{figure:genealogie}.
+Hemos visto un ejemplo de flotante en este capítulo: la figura~\ref{figure:genealogie}.
 \begin{attention}
-    On pourrait vouloir changer les intitulés comme \emph{figure} et \emph{tableau}. Tout ceci est possible : nous en parlons plus loin, dans le passage consacré aux chaînes de langue de \package{polyglossia}\renvoi{i18npoly}.
+    Podríamos querer cambiar las rúbricas como \emph{figura} y \emph{tabla}. Todo esto es posible: hablaremos de ello más adelante en el apartado dedicado a las cadenas de lengua de  \package{polyglossia}\renvoi{i18npoly}.
     
-    De même on pourrait souhaiter renvoyer automatiquement au numéro et la page d'une figure : nous en parlons dans le chapitre consacré à la navigation à l'intérieur d'un document\renvoi{label}.
+    También podríamos querer remitir automáticamente al número y a la página de una figura: hablamos de eso en el capítulo dedicado a la navegación por el interior de un documento\renvoi{label}.
 \end{attention}
 
-À noter que, comme les titres de partie, la commande \csp{caption} peut recevoir un argument optionnel qui compte pour titre dans la table des figures ou la table des tableaux\renvoi{tablefigure} : 
-\cs{caption}\oarg{Légende pour la table}\marg{Légende}. 
+Ten en cuenta que, como los títulos de los apartados, el comando \csp{caption} puede recibir un argumento optativo que se utiliza como título en el índice de figuras o en el índice de tablas\renvoi{tablefigure}: 
+\cs{caption}\oarg{Leyenda para la tabla}\marg{Leyenda}. 
 
 
 \begin{plusloins}
 
-Il est parfois  utile de centrer le contenu du flottant. Il s'agit ici d'une exception au principe de séparation du fond de la forme. Pour procéder à ce centrage, il faut utiliser la commande \csp{centering}.
+A veces, resulta útil centrar el contenido del flotante. Se trata de una excepción al principio de separación del fondo y la forma. Para realizar este centrado hay que usar el comando \csp{centering}.
 
 \begin{latexcode}
-\begin{figure}[<paramètre de placement>]
+\begin{figure}[<parámetro de ubicación>]
     \centering
-    Insertion de la figure ou de l'image,
-    suivant les codes montrés plus haut.
-    \caption{<Légende>}
+    Inclusión de la figura o de la imagen,
+    de acuerdo con los códigos que hemos mostrado antes.
+    \caption{<Leyenda>}
 \end{figure} 
 \end{latexcode}
 
 
-Pour personnaliser les styles des légendes, la méthode la plus simple reste encore d'utiliser le package \package{caption}. Nous renvoyons à sa documentation\footcite{caption}.
+Para personalizar el estilo de la leyenda, el metodo más sencillo consiste en utilizar el package \package{caption}. Remitimos a su documentación\footcite{caption}.
 
-Pour utiliser une légende en dehors d'un flottant, on peut utiliser le package \package{ccaption}\footcite{ccaption}, qui permet d'autres choses encore.
+Para utilizar una leyenda fuera de un flotante, se puede usar el package \package{ccaption}\footcite{ccaption}, que permite más cosas todavía.
 
-Si l'on souhaite avoir deux éléments flottants en vis-à-vis, sur la page gauche et sur la page droite, on peut  se servir du package \package{dpfloat}\footcite{dpfloat}.
+Si se quieren tener dos elementos flotantes frente a frente, en la página izquierda y en la página derecha, se puede utilizar el \package{dpfloat}\footcite{dpfloat}.
 
-Le package \package{endfloat}\footcite{endfloat} permet, quant à lui, de placer systématiquement les flottants à la fin du travail.
+El package \package{endfloat}\footcite{endfloat} permite, por su parte, ubicar sistemáticamente los flotantes al final del trabajo.
 
-Pour avoir des flottants orientés dans un autre sens que celui de la page, on utilisera le package \package{rotfloat}\footcite{rotfloat}.
+Para tener flotantes orientados en sentido distinto al de la página, se empleará el package \package{rotfloat}\footcite{rotfloat}.
 
-Il est possible d'insérer au sein d'une figure des sous-figures, chacune d'entre elles disposant d'une légende, en plus de la légende principale; il faut utiliser le  \package{subcaption}\footcite{subcaption}.
+Se puede incluir, dentro de una figura, subfiguras, cada una de ellas con su propia leyenda, además de la leyenda principal; ha que utilizar el package\package{subcaption}\footcite{subcaption}.
 
-Enfin, on peut créer d'autres types de flottant via le package \package{float}\footcite{float}.
+Por último, se pueden crear otros tipos de flotantes por medio del package \package{float}\footcite{float}.
 \end{plusloins}
 
 
 
-\subsection{Choix de l'emplacement du flottant}
+\subsection{Elegir el emplazamiento del flotante}
 
-Le \arg{paramètre de placement} indique à \LaTeX comment placer idéalement les flottants. Il s'agit d'un paramètre indicatif que le compilateur essaie autant que possible de suivre, sans pour autant être contraint. Les valeurs sont les suivantes :
+El \arg{parámetro de ubicación} indica a \LaTeX cómo situar los elementos flotantes en una posición ideal. Se trata de un parámetro indicativo que el compilador trata de acatar en la medida de sus posibilidades, aunque no es forzoso que lo haga. Los valores son los siguientes:
 
 \begin{longtable}{|l|l|}
     \hline
-    \headlongtable{Valeur} & \headlongtable{Signification}    \\
+    \headlongtable{Valor} & \headlongtable{Significado}    \\
     \hline
     \endhead
     \hline
     \endfoot
-    h     & À l'emplacement de l'appel au flottant     \\
-    t     & En haut d'une page                \\
-    b     & En bas d'une page                \\
-    p     & Sur une page dédiée aux flottants        \\
+    h     & En el lugar en que se llama al flotante \\
+    t     & En la parte superior de una página                \\
+    b     & En la parte inferior de una página               \\
+    p     & En una página exclusiva para flotantes        \\
 \end{longtable}
 
-Il est important de comprendre que ces paramètres sont indicatifs : ils signifient à \LaTeX la position idéale. Mais \LaTeX utilise d'autre paramètres, telle que la place laissé au texte sur une page, pour placer les flottants. Faire procéder un paramètre par \verb+!+ permet cependant d'insister auprès de \LaTeX en ce qui concerne le placement.
+Es muy importante comprender que se trata de parámetros indicativos: quieren decir a \LaTeX la posición ideal. Pero \LaTeX utiliza otros parámetros, como el lugar reservado al texto en una página, para ubicar los flotantes. Poner delante de un parámetro \verb+!+ hace que presionemos a \LaTeX en lo que afecta a la colocación.
 
-Il est possible d'utiliser plusieurs paramètres. Dans ce cas, l'ordre d'appel des paramètres n'aura aucune influence : \LaTeX tentera de placer le flottant, en fonction des paramètres appelés, dans l'ordre suivant : à l'emplacement de l'appel, en haut de la page, en bas, sur une page à part, puis en haut d'une autre page, puis en bas d'une autre page\footcite[252]{Mittelbach2014}.
+Se pueden emplear más parámetros. En ese caso, el orden de llamada de los parámetros carecerá de influencia: \LaTeX tratará de ubicar el flotante en función de los parámetros invocados, según el siguiente orden: en el lugar de la llamada, en la parte superior de la página, en la inferior, en una página aparte, después en la parte superior de otra página, luego en la inferior de otra página\footcite[252]{Mittelbach2014}.
 
-Le paramètre \verb+h+ signifie qu'on l'on place le flottant là où il est appelé, si cela est possible. Il peut arriver que cela ne soit pas le cas. Dans ce cas, le flottant sera placé ailleurs. Le package \package{float} propose un paramètre \verb+H+, qui permet de forcer le placement à l'emplacement de l'appel, même si cela provoque des problèmes de pages pas assez remplies. Ce paramètre \verb+H+ ne peut pas être utilisé  en conjonction avec d'autres paramètres\footcite{float_H}.
+El parámetro \verb+h+ significa que se coloca el flotante donde se le llama, si es posible. Puede suceder que resulte imposible. En ese caso, el flotante se ubicará en otro sitio. El package \package{float} ofrece un parámetro \verb+H+, que permite forzar la ubicación en el lugar de la llamada, aunque eso provoque problemas de páginas que queden incompletas. Este parámetro \verb+H+ no puede utilizarse a la vez que otros parámetros\footcite{float_H}.
 
-Si le système des flottants permet généralement de conserver une mise en page correcte tout en n'éloignant pas trop l'élément de son emplacement, il arrive parfois que l'éloignement soit trop important.
+Aunque, por lo general, el sistema de flotantes permite mantener un diseño de página correcto, sin alejar demasiado el elemento de su ubicación, en ocasiones, la distancia puede resultar demasiado grande.
 
-La commande \csp{FloatBarrier} du package \package{placeins} permet de remédier à ce problème\footcite{placeins}. 
-Tous les flottants appelés avant la commande sont placés avant celle-ci.
+El comando \csp{FloatBarrier} del package \package{placeins} permite solventar este problema\footcite{placeins}. 
+Todos los flotantes invocados antes del comando se ubican antes de él.
 
 \begin{plusloins}
-Le lecteur curieux, ou dans le besoin de maîtriser pleinement ses flottants, pourra lire un article de Franck~Mittelbach, un des développeur de \LaTeX\footcite{Mittelbach2014}. 
+El lector curioso, o que necesite controlar totalmente sus elementos flotantes, puede leer un artículo de Franck~Mittelbach, uno de los desarrolladores de \LaTeX\footcite{Mittelbach2014}. 
 \end{plusloins}
 
 
