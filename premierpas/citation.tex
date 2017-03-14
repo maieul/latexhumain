@@ -1,75 +1,69 @@
-\chapter{Mettre en sens (2) : l'art de citer en LaTeX}\label{citertexte}
+\chapter{Dar sentido (2): el arte de citar en LaTeX}\label{citertexte}
 
 \begin{intro}
-Nous évoquerons dans ce chapitre les citations \emph{explicites et textuelles}, c'est-à-dire celles où l'auteur du travail ne se contente pas de renvoyer à une source ou à une étude, mais cite des extraits de cette source.
+Abordaremos en este capítulo las citas \emph{explícitas y textuales}, es decir, aquéllas en las que el autor del trabajo no se limita a remitir a una fuente o a un estudio, sino que cita pasajes de esa fuente.
 
-Une citation peut se faire de deux manières : dans le corps du propos, elle est alors normalement entourée de guillemets, ou bien dans un paragraphe spécifique. Elle est alors généralement présentée avec des marqueurs typographiques particuliers : changement de la taille de police, de la marge etc.
+Una cita puede hacerse de dos maneras: en el cuerpo del texto, donde normalmente se pone entre comillas, o bien en un párrafo específico. En ese caso, se suele presentar con marcas tipográficas particulares: cambio del tamaño de la fuente, del margen, etc.
 
-Nous avions vu plus haut qu'il fallait séparer sens et forme\renvoi{sensforme}. Nous allons donc présenter ici les commandes servant à marquer des citations.
+Hemos visto antes que había que distinguir entre sentido y forma\renvoi{sensforme}. Así que vamos a presentar aquí los comandos que sirven para marcar las citas.
 
 \end{intro}
 \begin{attention}
-Toute citation se doit d'être accompagnée d'une référence, généralement en note de bas de page. Toutefois toute référence n'accompagne pas nécessairement une citation textuelle. C'est pourquoi nous renvoyons pour la gestion des références bibliographiques à la partie qui lui est consacrée.
-
+Toda cita tiene que ir acompañada de una referencia, normalmente en una nota a pie de página. Sin embargo, no todas las referencias acompañan necesariamente a una cita textual. Por este motivo, para la gestión de las referencias bibliográficas remitimos al apartado dedicado a ellas.
 \end{attention}
 
-\section{Citation dans le corps du texte}\label{guillemets}
+\section{Citas en el cuerpo del texto}\label{guillemets}
 
-Les citations dans le corps d'un texte sont normalement entourées de guillemets français : \verb|«»|. Lorsque qu'on cite un texte qui cite un texte, la citation dans la citation s'entoure de guillemets courbes \verb|“”|. 
+Las citas en el cuerpo de un texto suelen ponerse entre comillas francesas: \verb|«»|. Cuando se cita un texto que cita otro texto, la cita dentro de la cita se pone entre comillas redondas \verb|“”|. 
 
 \begin{quotation}
-    Comme le dit très justement xxx : \enquote{Lorsque yyy déclare \enquote{zzz} il ne déclare rien du tout}.
+    Como dice con mucha razón xxx : \enquote{Cuando yyy declara \enquote{zzz} no declara nada en absoluto}.
 \end{quotation}
 
-Les claviers disponibles sur nos ordinateurs ne disposent généralement en accès direct que des guillemets anglais\footnote{Une exception notable est la disposition de clavier Bépo.}(\verb|"|). 
-La plupart des logiciels WYSIWYG convertissent automatiquement ces guillemets en guillemets français. Rares sont les éditeurs de texte qui le proposent\footnote{C'est d'ailleurs à nos yeux une des raisons qui fait qu'un site internet d'un quotidien national dit \enquote{de référence} n'utilise pas de guillemets français sur sa page d'accueil (à la date du 10 avril 2011), les rédacteurs ne prenant pas le temps de taper les combinaisons complexes de touches nécessaires à la frappe de guillemets français.}. 
+Los teclados que tenemos en nuestros ordenadores no suelen tener, por lo general, un acceso directo a las comillas inglesas\footnote{Una importante excepción es la disposición del teclado Bépo.}(\verb|"|). 
+La mayoría de los programas WYSIWYG convierten automáticamente estas comillas en comillas francesas. Son raros los editores de texto que lo permiten\footnote{Es, a nuestro juicio, uno de los motivos que hace que el sitio web de un diario nacional considerado \enquote{de referencia} no utilice comillas francesas en su página de bienvenida (con fecha de 10 de abril de 2011), ya que los redactores no dedican tiempo a teclear las complicadas combinaciones de teclas necesarias para la inclusión de comillas francesas.}. 
 
-En outre, en vertu du principe de séparation du sens et de la forme, évoqué plus haut\renvoi{sensforme}, il est plus pertinent d'utiliser une commande spécifique pour indiquer une citation dans le corps du texte.
+Además, en virtud del principio de separación del sentido y de la forma, aludido anteriormente\renvoi{sensforme}, resulta más pertinente emplear un comando específico para indicar que se trata de una cita en el cuerpo del texto.
 
-Nous allons donc utiliser le package \package{csquotes} qui propose des commandes  pour les citations.
+Así que vamos a utilizar el package \package{csquotes} que ofrece comandos para las citas.
 
-
-
-Le package contient une première commande utile : \csp{enquote}\marg{citation}, qui sert pour les citations dans le corps du texte.
+El package tiene un primer comando muy útil: \csp{enquote}\marg{cita}, que sirve para las citas en el cuerpo del texto.
 
 \begin{latexcode}
-Comme le dit très justement xxx : 
-\enquote{Lorsque yyy déclare \enquote{zzz} 
-il ne déclare rien du tout}.
+Como dice con mucha razón xxx: \enquote{Cuando yyy declara \enquote{zzz} no declara nada en absoluto}.
 \end{latexcode}
 
 
 \begin{quotation}
-Comme le dit très justement xxx : \enquote{Lorsque yyy déclare \enquote{zzz} il ne déclare rien du tout}.
+Como dice con mucha razón xxx: \enquote{Cuando yyy declara \enquote{zzz} no declara nada en absoluto}.
 \end{quotation}
 
-
-Nous constatons que \package{csquotes} s'occupe automatiquement de choisir les bons guillemets. Par défaut on ne peut imbriquer que deux niveaux de citation. Toutefois une option du package permet d'avoir plus de niveaux de citation. Par exemple pour en avoir trois : 
+Observamos que \package{csquotes} se encarga automáticamente de seleccionar las comillas correctas. Por defecto, no se pueden anidar más de dos niveles de citas. No obstante, una opción del package permite tener más niveles. Por ejemplo, para tener tres: 
 
 \begin{latexcode}
 \usepackage[maxlevel=3]{csquotes}
 \end{latexcode}
 
-Le package propose d'autres options et commandes : consultez le manuel\footcite{csquotes}.
+El package ofrece otras opciones y comandos: consulta el manual\footcite{csquotes}.
 
-\section{Citation dans un bloc séparé}
+\section{Citas en un bloque aparte}
 
 
-LaTeX propose en standard trois environnements pour citer dans un bloc séparé.
+LaTeX ofrece tres entornos básicos para citar en un bloque aparte.
 
-\subsection{L'environnement \environoidx{quote}}\index[enviro]{quote}
+\subsection{El entorno \environoidx{quote}}\index[enviro]{quote}
 
-Il est prévu pour des courtes citations d'un paragraphe\footcite[6]{AugustinSermo296}.
+Está pensado para citas breves de un párrafo\footcite[6]{AugustinSermo296}.
 
 \inputminted{exemples/premierpas/citation/rome.tex}
 
-Ce code produit le résultat suivant :
+Este código produce el resultado siguiente:
 
 \input{exemples/premierpas/citation/rome.tex}
 
-\subsection{L'environnement \environoidx{quotation}}\index[enviro]{quotation}
+\subsection{El entorno \environoidx{quotation}}\index[enviro]{quotation}
 
-Il est prévu pour des citations plus longues\footcite{BreveHippone}.
+Está pensado para citas más largas\footcite{BreveHippone}.
 
 
 
@@ -80,83 +74,78 @@ Il est prévu pour des citations plus longues\footcite{BreveHippone}.
 
 
 \begin{attention}
-Le fond gris que vous constatez ici est propre au livre que vous avez sous les yeux. L'environnement \enviro{quotation} standard n'a pas de fond.
+El fondo gris que ves aquí es una particularidad del libro que tienes a la vista. El entorno \enviro{quotation} estándar no tiene dicho fondo.
 \end{attention}
 
-\subsection{L'environnement \environoidx{verse} et le package \packagenoidx{verse}}\index[enviro]{verse}\index[pkg]{verse}
+\subsection{El entorno\environoidx{verse} y el package \packagenoidx{verse}}\index[enviro]{verse}\index[pkg]{verse}
 
 
-L'environnement  \enviro{verse} permet de citer de façon rapide et simple des poèmes, en gérant notamment le rejet en cas de vers trop long. Chaque vers, à l'exception du dernier, doit se terminer par \verb|\\|. Si le vers est composé de plusieurs strophes, il suffit de sauter une ligne entre chaque strophe. Il ne faut pas mettre \verb|\\| à la fin du dernier vers de chaque strophe.    
+El entorno \enviro{verse} permite citar de manera tápida y sencilla poemas, y gestiona bastante bien los casos de corte de versos demasiado largos. Todos los versos, salvo el último, tienen que terminar con \verb|\\|. Si el poema consta de varias estrofas, basta con dejar una línea en blanco entre cada una de ellas. No hay que poner \verb|\\| al final del último verso de cada estrofa.    
 
-Cet environnement est très limité: il ne permet pas de numéroter ni d'indenter les vers, ni encore de rajouter un titre. Si l'on est amené à citer fréquemment des vers, il vaut mieux appeler dans le préambule le package \package{verse}\footcite{verse}. La citation du poème se fait de la même manière.
+Este entorno es bastante limitado: no permite numerar ni sangrar los versos ni tampoco añadir un título
+Cet environnement est très limité: il ne permet pas de numéroter ni d'indenter les vers, ni encore de rajouter un titre. Si te ves en la obligación de citar versos con frecuencia, es mejor llamar en el preámbulo al package \package{verse}\footcite{verse}. La cita del poema se hace de la misma forma.
 
+Con este package hay que indicar \csp{poemlines}\marg{n} para numerar los versos citados:  \arg{n} 
+define la frecuencia con la que se numeran los versos. 
 
-Avec ce package il faut indiquer \csp{poemlines}\marg{n} pour numéroter les vers cités :  \arg{n} 
-définit la fréquence à laquelle les vers sont numérotés. 
-
-
-Citons pour  exemple un poème entier, dont les vers sont numérotés, de façon assez traditionnelle, une fois sur cinq. En frappant ceci\footcite{demain}:
+Citemos, por ejemplo, un poema completo, cuyos versos están numerados, como es una costumbre bastante tradicional, de cinco en cinco. Al escribir esto\footcite{demain}:
 
 \inputminted{exemples/premierpas/citation/demain.tex}
 
-on obtient cela :
+obtenemos esto:
 
 
 \input{exemples/premierpas/citation/demain.tex}
 
+Si no se cita un poema completo, sino sólo un pasaje, hay que indicar en qué verso empieza el pasaje citado, para que la numeración de los versos que se citan sea la correcta.
 
+Se utiliza el comando \csp{setverselinenums}\marg{primer verso}\marg{primer verso numerado}: \arg{primer verso} indica el número del primer verso que se cita y \arg{primer verso numerado} dónde tiene que empezar la numeración. 
 
-Si l'on ne cite pas un poème en entier, mais simplement un passage, il faut indiquer à quel vers commence le passage cité, afin que la numérotation des vers que l'on cite soit la bonne.
+Así, \cs{setverselinenums}\marg{12}\marg{15} indica que el extracto citado comienza en el verso doce del poema y que el primer verso numerado será el quince. 
+Con \cs{setverselinenums}\marg{12}\marg{12}, el primer verso citado será el primer verso numerado.
 
-On utilise la commande \csp{setverselinenums}\marg{premier vers}\marg{premier vers numéroté} : \arg{premier vers} indique le numéro du premier vers que l'on cite, \arg{premier vers numéroté} où doit commencer la numérotation. 
-
-Ainsi, \cs{setverselinenums}\marg{12}\marg{15} indique que l'extrait cité commence par le douzième vers du poème, et que le premier vers numéroté sera le quinzième. 
-Avec \cs{setverselinenums}\marg{12}\marg{12}, le premier vers cité sera le premier numéroté.
-
-Ne citant que la troisième strophe, par exemple, il faut frapper :
+Si sólo se cita la tercera estrofa, por ejemplo, hay que escribir:
 
 \inputminted{exemples/premierpas/citation/demainfin.tex}
 
-pour obtenir, correctement numéroté :
+para obtener, con la numeración correcta:
 
 
 \input{exemples/premierpas/citation/demainfin.tex}
 
 
 \begin{plusloins}
-Dans la typographie française, il est d'usage de mettre un crochet droit [ au début d'un rejet. Ni l'environnement ni le package \package{verse} ne suivent cette règle. Pour obtenir le crochet droit, il faut charger le package  \package{gmverse} en lui passant l'option \option{squarebr} :
+En la tipografía francesa se suele poner un corchete derecho [ al comienzo de un verso cortado. Ni el entorno ni el package \package{verse} siguen esta regla. Para obtener el corchete derecho, hay que cargar el package  \package{gmverse} poniéndole la opción \option{squarebr} :
 
 \begin{latexcode}
 \usepackage}[squarebr]{gmverse}
 \end{latexcode}
 
-Puis insérer, une fois commencé l'environnement \enviro{verse}, la commande \csp{versehangrightsquare}.
+Depués hay que insertar, una vez iniciado el entorno \enviro{verse}, el comando \csp{versehangrightsquare}.
 \end{plusloins}
 
-Le package \package{verse} permet aussi d'indenter de façon très souple une strophe. On indique avec la commande \csp{indentpattern}\marg{$n_1 n_2 n_x$} l'indentation de chaque vers contenu dans la strophe encadrée à l'intérieur d'un environnement \enviro{patverse}: \arg{$n_1$} correspond au premier vers, \arg{$n_2$} au deuxième et ainsi de suite. Le premier vers n'est jamais indenté, mais il suffit de le faire précéder de \csp{vin}. Avec le code suivant :
+El package \package{verse} permite también sangrar de manera muy flexible una estrofa. Se indica con el comando \csp{indentpattern}\marg{$n_1 n_2 n_x$} el sangrado de cada verso que hay en la estrofa incluida dentro de un entorno \enviro{patverse}: \arg{$n_1$} corresponde al primer verso, \arg{$n_2$} al segundo y así sucesivamente. El primer verso nunca se sangra, pero basta con poner delante \csp{vin}. Con el código siguiente:
 
 \inputminted{exemples/premierpas/citation/apple.tex}
 
-on obtient donc\footcite{EdwardLear} :
+se obtiene\footcite{EdwardLear}:
   
 
 \input{exemples/premierpas/citation/apple.tex}
 
 
+ Si se necesita repetir un sangrado a lo largo de un poema, se sustituye \enviro{patverse} por \enviro{patverse*}. Así, para citar un extracto largo en hexámetros dactílicos, en vez de indicar el sangrado de cada verso, basta con indicar \cs{indentpattern}\verb|{01}| e incluir el poema completo dentro del entorno \enviro{patverse*} para obtener un sangrado en cada segundo verso.
  
- Si l'on a besoin de répéter une indentation tout le long d'un poème, on remplace \enviro{patverse} par \enviro{patverse*}. Donc pour citer un long extrait en hexamètres dactyliques, plutôt que d'indiquer l'indentation pour chaque vers, il suffit  d'indiquer \cs{indentpattern}\verb|{01}| et d'insérer le poème, en entier,  dans l'environnement \enviro{patverse*} pour avoir un vers sur deux indenté.
- 
- 
- Le package \package{verse} offre bien d'autres possibilités qui dépassent la simple citation de poésie dans le cours d'un texte. À l'instar d'un autre package, \package{poemscol}, c'est un véritable outil pour éditer de la poésie\footcites(Nous vous renvoyons ici aux manuels de ces packages){verse}{poemscol}. Ni l'un ni l'autre ne permettent en revanche de faire des éditions bilingues: pour cela, il faut utiliser les packages \package{reledmac} et \package{reledpar}\renvoi{reledmac}. 
+El package \package{verse} ofrece además otras posibilidades que exceden la simple cita de poesía a lo largo de un texto. Al igual que otro package, \package{poemscol}, es una verdadera herramienta para editar poesía\footcites(Remitimos aquí a los manuales de estos packages){verse}{poemscol}. Por el contrario, ni uno ni otro permiten la elaboración de ediciones bilingües: para ello hay que utilizar los packages \package{reledmac} y \package{reledpar}\renvoi{reledmac}. 
 
 
-\section{Citations tronquées et modifiées}
+\section{Citas truncadas y modificadas}
 
-Le package \package{csquotes} propose deux commandes spécifiques pour signaler une citation tronquée ou modifiée.
+El package \package{csquotes} ofrece dos comandos específicos para indicar una cita truncada o modificada.
 
-\subsection{Citation tronquée}
+\subsection{Citas truncadas}
 
-La commande \csp{textelp}\arg{texte} signale un texte tronqué. L'argument \arg{texte} est inséré après la troncature, entre crochets (par défaut) ; pour ne rien insérer, le laisser vide.
+El comando \csp{textelp}\arg{texto} señala un texto truncado. El argumento \arg{texto} se incluye después de la interrupción, entre corchetes (por defecto); para no incluir nada, se deja vacío.
 
 
 \inputminted{exemples/premierpas/citation/conciletronque.tex}
@@ -165,15 +154,15 @@ La commande \csp{textelp}\arg{texte} signale un texte tronqué. L'argument \arg{
 \input{exemples/premierpas/citation/conciletronque.tex}
 
 \begin{plusloins}
-On peut décider de la manière dont la troncature et l'ajout sont signalés : consulter le manuel\footcite{csquotes_ellipses}.
+Se puede decidir la forma de señalar la interrupción y el añadido: consulta el manual\footcite{csquotes_ellipses}.
 \end{plusloins}
 
-\subsection{Citation modifiée}
+\subsection{Citas modificadas}
 
-Pour signaler une modification dans une citation, on utilise  \csp{textins}\marg{texte modifié}.
+Para señalar una modificación en una cita se utiliza \csp{textins}\marg{texto modificado}.
 
 \inputminted{exemples/premierpas/citation/modif.tex}
 
 \input{exemples/premierpas/citation/modif.tex}
 
-La commande \csp{textins*} est une variante, servant pour déclarer les changements mineurs nécessaires au nouveau contexte d'énonciation : mise en majuscules, changement de personne etc.
+El comando \csp{textins*} es una variante, que permite declarar los cambios menores necesarios para el nuevo contexto del enunciado: mayúsculas, cambio de persona, etc.
