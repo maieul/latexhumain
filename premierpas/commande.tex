@@ -1,206 +1,202 @@
-\chapter{Mettre en sens (3) : créer ses propres commandes}\label{creercommandes}
+\chapter{Dar sentido (3): crea tus propios comandos}\label{creercommandes}
 
 \begin{intro}
-Nous avons parlé longuement de l'intérêt de séparer mise en sens et mise en forme\renvoi{sensforme}.
-Nous avons indiqué que la meilleure manière pour ce faire était de créer des commandes de mise en sens, qui elles-même appelleraient des commandes de mise en forme.
+Hemos hablado largo y tendido del interés de separar el hecho de dar sentido del hecho de dar forma\renvoi{sensforme}.
+Hemos indicado que la mejor manera de hacerlo consistía en crear comandos para dar sentido que invocarían por sí mismos comandos para dar forma.
 
-Voyons maintenant comment créer ces commandes personnalisées.
+Veamos ahora cómo crear esos comandos personalizados.
 \end{intro}
 
-\section{Création d'une commande personnalisée}
+\section{Creación de un comando personalizado}
 
-Nous souhaitons créer une commande personnalisée servant à indiquer que nous parlons d'un auteur : \csp{auteur}\marg{nom}.
+Queremos crear un comando personalizado que sirva para indicar que hablamos de un autor: \csp{autor}\marg{nombre}.
 
-Notre commande se décompose en plusieurs parties : son nom, ici \contenuarg{auteur}, et ses arguments, ici un seul : \arg{nom}.
+Nuestro comando se descompone en varias partes: su nombre, aquí \contenuarg{autor}, y sus argumentos, aquí uno solo: \arg{nombre}.
 
-Une commande LaTeX peut prendre jusqu'à neuf~arguments, ce qui est en général bien suffisant. Si nous notons \arg{N} le nombre d'arguments, la syntaxe de la déclaration d'une nouvelle commande est la suivante :
-\csp{newcommand}\verb|{\|\arg{nom de la commande}\verb|}|\oarg{N}\marg{code}.
+Un comando LaTeX puede recibir hasta nueve~argumentos que, por lo general, son suficientes. Si notamos con \arg{N} el número de argumentos, la sintaxis de la declaración de un nuevo comando es la siguiente:
+\csp{newcommand}\verb|{\|\arg{nombre del comando}\verb|}|\oarg{N}\marg{código}.
 
 \begin{attention}
-    Les noms de commandes ne doivent contenir que des caractères latins non accentués. 
+   Los nombres de comandos sólo deben contener caracteres latinos no acentuados. 
     
-    Les noms sont sensibles à la casse : \verb|\a| est différent de \verb|\A|.
+    Los nombres son sensibles a mayúsculas y minúsculas: \verb|\a| es distinto de \verb|\A|.
 \end{attention}
-À l'intérieur de la partie \arg{code}, on peut  :
+En el interior de la parte\arg{código}, se puede:
 \begin{itemize}
-    \item mettre du texte;
-    \item utiliser des commandes de mise en forme ou de mise en sens;
-    \item appeler les arguments passés en utilisant la syntaxe \verb|#x|, où \verb|x| représente le rang de l'argument.
+    \item poner texto;
+    \item utilizar comandos para dar forma o para dar sentido;
+    \item llamar a los argumantos que se han pasado mediante la sintaxis \verb|#x|, donde \verb|x| representa el rango del argumento.
 \end{itemize}
 
-Prenons toujours notre cas d'une commande pour indiquer les noms. Pour le début, nous souhaitons simplement que les noms d'auteur soient suivis d'un astérique (*).
+Retomemos nuestro caso de un comando para indicar los nombres. De momento, sólo queremos que los nombres de autor vayan seguidos de un asterisco (*).
 
 \begin{latexcode}
-\newcommand{\auteur}[1]{#1*}
-Il est bien connu que \auteur{Tertullien} n'était pas montaniste
-mais tertullianiste.
+\newcommand{\autor}[1]{#1*}
+Es bien sabido que \autor{Tertuliano} no era montanista, sino tertulianista.
 \end{latexcode}
 
-\newcommand{\auteur}[1]{#1*}
+\newcommand{\autor}[1]{#1*}
 
-Ce qui nous donne :
+Lo que nos da:
 
 \begin{quotation}
-Il est bien connu que \auteur{Tertullien} n'était pas montaniste mais tertullianiste.
+Es bien sabido que \autor{Tertuliano} no era montanista, sino tertulianista.
 \end{quotation}
 
+\contenuarg{Tertuliano} se pasa como primer argumento. Así que aparece en lugar de \#1 de la declaración del comando.
 
-\contenuarg{Tertullien} a été passé en premier argument. Il apparaît donc à la place du \#1 de la déclaration de commande.
-
-On pourrait souhaiter passer en second argument des informations complémentaires, comme les dates de vie.
+Podríamos querer pasar como segundo argumento informaciones complementarias, como los datos de su vida.
 
 \begin{latexcode}
-\newcommand{\auteur}[2]{#1* (#2)}
-Il est bien connu que \auteur{Tertullien}{150 ? - 220 ?}
-n'était pas montaniste mais tertullianiste.
+\newcommand{\autor}[2]{#1* (#2)}
+Es bien sabido que \autor{Tertuliano}{150 ? - 220 ?}
+no era montanista, sino tertulianista.
 \end{latexcode}
 
-\renewcommand{\auteur}[2]{#1* (#2)}
+\renewcommand{\autor}[2]{#1* (#2)}
 
 \begin{quotation}
-Il est bien connu que \auteur{Tertullien}{150 ? - 220 ?}
-n'était pas montaniste mais tertullianiste.
+Es bien sabido que \autor{Tertuliano}{150 ? - 220 ?}
+no era montanista, sino tertulianista.
 \end{quotation}
 
 \begin{plusloins}
-Le lecteur attentif se rappellera qu'il existe des commandes avec des arguments optionnels\renvoi{syntaxecommande}. Il souhaitera sans doute en créer lui même.
+El lector atento recordará que hay comandos con argumentos optativos \renvoi{syntaxecommande}. Sin duda querrá crear algunos.
 
-Si \LaTeX prévoit bien en standard un mécanisme pour permettre cela, celui-ci est  peu souple, puisqu'il ne permet de rendre optionnel que le premier argument, et non les suivants.
+Aunque \LaTeX proporciona un mecanismo propio para permitirlo, éste es poco flexible, ya que sólo permite hacer opcional el primer argumento y no los siguientes.
 
-Nous conseillons donc de se tourner vers les packages \package{xargs} et \package{ifthenelse}\footcites{xargs}{ifthen}. Nous fournissons dans la suite du présent ouvrage un exemple de commande fonctionnement avec ces packages\renvoi{commandevariante}.
+Así que recomendamos consultar los packages \package{xargs} e \package{ifthenelse}\footcites{xargs}{ifthen}. Ofrecemos en esta obra un ejemplo de comando que funciona con estos packages\renvoi{commandevariante}.
 \end{plusloins}
 
-Fort bien, mais comment faire pour mettre en forme ? Il faut  utiliser une commande de mise en forme à l'intérieur de la déclaration de commande de mise en sens. Par exemple, pour mettre en petites capitales la commande est \cs{textsc}.
+Muy bien, pero, ¿cómo hay que hacer para dar forma? Hay que utilizar un comando para dar forma en el interior de una declaración de comando para dar sentido. Por ejemplo, para ponerlo en versalitas, el comando es \cs{textsc}.
 
 \begin{latexcode}
-\newcommand{\auteur}[2]{\textsc{#1}* (#2)}
+\newcommand{\autor}[2]{\textsc{#1}* (#2)}
 \end{latexcode}
 
-\renewcommand{\auteur}[2]{\textsc{#1}* (#2)}
+\renewcommand{\autor}[2]{\textsc{#1}* (#2)}
 
 \begin{quotation}
-Il est bien connu que \auteur{Tertullien}{150 ? - 220 ?}
-n'était pas montaniste mais tertullianiste.
+Es bien sabido que \auteur{Tertuliano}{150 ? - 220 ?}
+no era montanista, sino tertulianista.
 \end{quotation}
 
-Nous décrirons plus loin un ensemble de commandes de mise en forme\renvoi{mef}.
+Describimos más adelante un conjunto de comandos para dar forma\renvoi{mef}.
 
 \begin{attention}
-    Si la possibilité de créer ses propres commandes est une grande force de \LaTeX, cela ne fait pas toujours la joie des éditeurs. 
+Aunque la posibilidad de crear tus propios comandos es una gran potencia de \LaTeX, sin embargo, no siempre les gusta a los editores.
+   
+    Así que te aconsejamos hablarlo previamente con tu editor y, sobre todo, indicarle que un marcado en forma de comandos normalmente tiene que facilitar su tarea.
     
-    Il est donc recommandé de discuter au préalable avec son éditeur, et surtout de lui indiquer qu'un balisage sous forme de commandes doit, normalement, lui faciliter la tâche.
+    Además, te aconsejamos agrupar todas tus declaraciones de comandos en un ficher único, que se invoca por medio de un comando \cs{input}\renvoi{input}.
     
-    
-    Nous recommandons par ailleurs de regrouper toutes ses déclarations de commandes dans un fichier unique, appelé via une commande \cs{input}\renvoi{input}.
-    
-    Il est également possible de créer son propre package, pour des commandes utilisées fréquemment dans plusieurs projets\footcite[Ceci dépasserait le cadre de cet ouvrage : je renvoie à d'autres documents. Par exemples][]{creer_sty}.
+    También puedes crear tu propio package, para comandos que utilices a menudo en varios proyectos\footcite[Eso desbordaría el marco de esta obra: te remito a otros documentos. Por ejemplo][]{creer_sty}.
 \end{attention}
 
 
 \begin{plusloins}\label{commentaireredac}
-On peut ainsi très facilement créer une commande \csp{commentaire} servant pour indiquer des commentaires personnels au cours de la rédaction, afin de les avoir sous les yeux lors d'une relecture papier.
-Par exemple :
+Se puede crear de esta manera con gran facilidad un comando \csp{comentario} para recoger comentarios personales durante la redacción, con el fin de tenerlos a la vista en una revisión en papel.
+Por ejemplo:
 
 \begin{latexcode}
-\newcommand{\commentaire}[1]{\marginpar{#1}}
+\newcommand{\comentario}[1]{\marginpar{#1}}
 \end{latexcode}
 
-Lors de l'impression finale, il suffit de changer cette commande par :
+Para proceder a la impresión definitiva, basta con cambiar este comando por:
 
 \begin{latexcode}
-\newcommand{\commentaire}[1]{}
+\newcommand{\comentario}[1]{}
 \end{latexcode}
 \end{plusloins}
 
-\subsection{Code d'une commande sur plusieurs lignes}\label{commandepourcent}
+\subsection{Código de un comando en varias líneas}\label{commandepourcent}
 
-Jusqu'ici nos commandes étaient relativement simples. Mais il peut arriver que leur code se complexifie. On souhaiterait alors l'avoir sur plusieurs lignes.
+Hasta ahora, nuestos comandos eran relativamente sencillos. Pero puede ocurrir que su código se complique. En ese caso, desearíamos escribirlo en varias líneas.
 
-C'est tout à fait possible, mais il faut simplement mettre  un signe pourcentage (\%) à la fin de chaque ligne, sous peine d'avoir  des espaces intempestives. Exemple sans  \% :
+Se puede, pero hay que poner simplemente un signo de porcentaje (\%) al final de cada línea para que no se produzcan espacios indeseables. Ejemplo sin \%{}:
 
 \begin{latexcode}
-\newcommand{\auteur}[2]{
+\newcommand{\autor}[2]{
     \textsc{#1}* (#2)
     }
 \end{latexcode}
 
-\renewcommand{\auteur}[2]{\underline{ }%
+\renewcommand{\autor}[2]{\underline{ }%
     \textsc{#1}* (#2)\underline{ }%
 }
 
 \begin{quotation}
-Il est bien connu que \auteur{Tertullien}{150 ? - 220 ?}
-n'était pas montaniste mais tertullianiste.
+Es bien sabido que \autor{Tertuliano}{150 ? - 220 ?}
+no era montanista, sino tertulianista.
 \end{quotation}
 
-On constate une espace en trop avant et une après la mention de l'auteur, que nous avons soulignées pour les besoins de l'explication.
-En revanche, si on met des \% :
+Se observan espacios excesivos delante y detrás de la mención del autor, que hemos subrayado para clarificar la explicación. Por el contrario, si se ponen \%:
 
 \begin{latexcode}
-\newcommand{\auteur}[2]{%
+\newcommand{\autor}[2]{%
     \textsc{#1}* (#2)%
     }
 \end{latexcode}
 
-\renewcommand{\auteur}[2]{%
+\renewcommand{\autor}[2]{%
     \textsc{#1}* (#2)%
 }
 
 \begin{quotation}
-Il est bien connu que \auteur{Tertullien}{150 ? - 220 ?}
-n'était pas montaniste mais tertullianiste.
+Es bien sabido que \autor{Tertuliano}{150 ? - 220 ?}
+no era montanista, sino tertulianista.
 \end{quotation}
 
-Il n'y a plus d'espaces intempestives.
+Ya no hay espacios indeseables.
 
 
-\subsection{Étoiler \oldcs{newcommand}}
+\subsection{Versión con asterisco de \oldcs{newcommand}}
 
-La création des commandes sous \LaTeX est une fonctionnalité très puissante, mais potentiellement dangereuse. Prenons la commande suivante :
+La creación de comandos en \LaTeX es una funcionalidad muy poderosa, pero potencialmente peligrosa. Tomemos el comando siguiente:
+
 
 \begin{latexcode}
-\newcommand{\auteur}[1]{\textsc{#1}*}
+\newcommand{\autor}[1]{\textsc{#1}*}
 \end{latexcode}
 
-Imaginons que nous l'appelions en oubliant de fermer notre accolade :
+Imaginemos que lo invocamos pero nos olvidamos de cerrar la llave:
 
 \begin{latexcode}
-Il est bien connu que \auteur{Tertullien n'était pas montaniste
- mais tertullianiste.
+Es bien sabido que \autor{Tertuliano
+no era montanista, sino tertulianista.
 \end{latexcode}
 
-Que va-t-il se passer ? \LaTeX comprend que l'ensemble de la fin du texte est un argument de la commande, ce qui empêche le compilateur de bien fonctionner  et nous n'obtiendrons rien, ou alors un résultat incorrect.
+¿Qué ocurrirá? \LaTeX interpreta que el conjunto del final del texto es un argumento del comando, lo que impide que el compilador funcione bien y no obtendremos nada o, en todo caso, un resultado incorrecto.
 
-Pour limiter ces soucis, \LaTeX propose de définir des commandes courtes, dont les arguments ne dépassent pas la longueur d'un paragraphe. En cas d'oubli de fermeture de parenthèses, \LaTeX arrête automatiquement l'argument à la fin du paragraphe.
+Para limitar estos problemas, \LaTeX ofrece la posibilidad de definir comandos cortos, cuyos argumentos no sobrepasan la longitud de un párrafo. En caso de olvidar el cierre de paréntesis, \LaTeX detiene automáticamente el argumento hasta el final del párrafo.
 
-Pour définir ces commandes courtes, il suffit d'utiliser \csp{newcommand*}.
+Para definir estos comandos cortos basta con emplear \csp{newcommand*}.
 
 \begin{latexcode}
-\newcommand*{\auteur}[1]{\textsc{#1}*}
+\newcommand*{\autor}[1]{\textsc{#1}*}
 \end{latexcode}
 
-\subsection{Espace après les commandes sans argument}
+\subsection{Espacio tras los comandos sin argumento}
 
-
-Il est possible de définir des commandes sans aucun argument. Prenons une commande personalisée \csp{cf}, qui permet d'obtenir rapidement la forme \forme{\cf}
+Se pueden definir comandos sin argumento. Tomemos un comando personalizado \csp{cf}, que permite obtener rápidamente la forma \forme{\cf}
 
 \begin{latexcode}
 \newcommand{\cf}[0]{\emph{cf.}}
 \end{latexcode}
 
-Comme notre commande ne prend pas d'argument, il est nécessaire, lorsque nous l'appelons, de la séparer du texte qui suit par une espace, afin que \LaTeX sache où s'arrête la commande : 
+Como nuestro comando no recibe argumento, es necesario, cuando lo llamemos, separarlo del texto siguiente con un espacio, para que \LaTeX sepa dónde acaba el comando: 
 
 \begin{latexcode}
-Ceci est très intéressant \cf cela.
+Esto es muy interesante \cf eso.
 \end{latexcode}
 
-Mais  l'espace disparaît lors de la compilation :
+Pero el espacio desaparece durante la compilación:
 
 \begin{quotation}
-Ceci est très intéressant \cf cela.
+Esto es muy interesante \cf eso.
 \end{quotation}
 
-La solution consiste à utiliser dans la définition de commande la commande \csp{xspace} du package éponyme\index[pkg]{xspace}. Elle permet de gérer automatiquement les espaces qui suivent l'appel à une commande, en tenant compte de la typographie.
+La solución consiste en emplear en la definición del comando el comando \csp{xspace} del package homónimo\index[pkg]{xspace}. Éste permite gestionar automáticamente los espacios que van tras la llamada a un comando, teniendo en cuenta la tipografía.
 
 \begin{latexcode}
 \newcommand{\cf}[0]{\emph{cf.}\xspace}
@@ -209,25 +205,25 @@ La solution consiste à utiliser dans la définition de commande la commande \cs
 \renewcommand{\cf}[0]{\emph{cf.}\xspace}
 
 \begin{quotation}
-Ceci est très intéressant \cf cela.
+Esto es muy interesante \cf eso.
 \end{quotation}
 
 \begin{plusloins}
-Le package \package{foreign}\footcite{foreign} propose toute une série de commandes similaires pour indiquer des abréviations ou des expressions étrangères courantes.
+El package \package{foreign}\footcite{foreign} ofrece toda una serie de comandos similares para indicar abreviaturas o expresiones extranjeras frecuentes.
 \end{plusloins}
 
 
-\section{Commandes de mise en forme\label{mef}}
+\section{Comandos para dar forma\label{mef}}
 
-Nous listons ici les principales commandes de mise en forme. Pour des besoins avancés, on trouvera aisément de la documentation sur internet. En ce qui concerne les questions d'espacement, un chapitre spécifique leur est dédié\renvoi{espacement}.
+Recogemos aquí los principales comandos para dar forma. Para necesidades avanzadas, se encuentra fácilmente documentación en internet. En lo que respecta a las cuestiones de espaciado, se les dedica un capítulo aparte\renvoi{espacement}.
 
-\subsection{Taille des caractères}\label{taille}
+\subsection{Tamaño de la fuente}\label{taille}
 
-Il est possible de définir de manière absolue la taille des caractères en indiquant le nombre de points. Toutefois la meilleure méthode est de le définir d'après la taille de base, et d'utiliser les commandes ci-dessous. La taille obtenue dépend de la taille de base définie lors de l'appel au préambule\renvoi{preambule}.
+Se puede definir de forma absoluta el tamaño de la fuente indicando el número de puntos. Sin embargo, el método mejor consiste en definirlo a partir del tamaño de base por medio de los comandos siguientes. El tamaño obtenido depende del tamaño de base definido en el preámbulo\renvoi{preambule}.
 
 \begin{longtable}{|l|l|}
       \hline
-     \headlongtable{Commande}                 &    \headlongtable{Effet}                                 \\
+     \headlongtable{Comando}                 &    \headlongtable{Efecto}                                 \\
       \hline
      \endhead
     \hline
@@ -244,58 +240,57 @@ Il est possible de définir de manière absolue la taille des caractères en ind
      \csp{Huge}            &    \Huge abcdefghijklmnopqrst             \\
 \end{longtable}
 
-\label{commandesdetaille}Ces commandes ont toutefois un comportement particulier : ce sont des commandes dites \enquote{à bascule}\renvoi{bascule}. À la différence de la plupart des commandes, elles ne prennent pas d'argument. Elles doivent être utilisées entre accolades, le texte dont la taille change étant inséré après la commande, dans les accolades.
+\label{commandesdetaille}Estos comandos, sin embargo, tienen un comportamiento peculiar: se trata de comandos llamados \enquote{conmutadores}\renvoi{bascule}. A diferencia de la mayoría de los comandos, no reciben argumento. Se deben poner entre llaves y hay que incluir el texto cuyo tamaño queremos cambiar después del comando, dentro de las llaves.
 
 Ainsi :
 \begin{latexcode}
-{\large Texte plus gros}
+{\large Texto más grande}
 \end{latexcode}
 
-Et non pas :
+Y no:
 
 \begin{latexcode}
-\large{Texte plus gros}
+\large{Texto más grande}
 \end{latexcode}
 
-\subsection{Style de caractères}
+\subsection{Estilo de la fuente}
 
-Voici une liste non exhaustive de commandes utiles pour personnaliser les styles de caractère.
+Damos una lista, que no es exhaustiva, de comandos útiles para personalizar los estilos de fuente.
 
 
 \begin{longtable}{|l|l|}
     \hline
-    \headlongtable{Commande}                & \headlongtable{Effet} \\                                
+    \headlongtable{Comando}                & \headlongtable{Efecto} \\                                
     \hline
     \endhead
     \hline
     \endfoot
-    \csp{textit}            & \textit{Italique}                            \\
-    \csp{emph}            & \emph{Texte en emphase}                    \\
-    \csp{textbf}            &  \textbf{Gras}                            \\
-    \csp{textsc}            & \textsc{Petites capitales}                    \\
-    \csp{underline}        & \underline{Souligné}     (à éviter)                \\
-    \csp{textsuperscript}    &  \textsuperscript{Exposant}                    \\
-    \csp{textsubscript}        & \textsubscript{Indice} (nécessite le package \package{subscript}) \\
+    \csp{textit}            & \textit{Cursiva}                            \\
+    \csp{emph}            & \emph{Texto con énfasis}                    \\
+    \csp{textbf}            &  \textbf{Negrita}                            \\
+    \csp{textsc}            & \textsc{Versalitas}                    \\
+    \csp{underline}        & \underline{Subrayado}     (debe evitarse)                \\
+    \csp{textsuperscript}    &  \textsuperscript{Superíndice}                    \\
+    \csp{textsubscript}        & \textsubscript{Subíndice} (necesita el package \package{subscript}) \\
 \end{longtable}
 
-\subsection{Couleurs}
+\subsection{Colores}
 
-Les couleurs ne sont pas gérées nativement dans \LaTeX. Il faut passer par le package \package{color} ou le package \package{xcolor} qui proposent tous les deux une commande \csp{textcolor}\marg{nom de la couleur}\marg{texte en couleur}.
+Los colores no se admiten de forma nativa en \LaTeX. Hay que acudir al package \package{color} o al package \package{xcolor} que ofrecen, ambos, un comando \csp{textcolor}\marg{nombre del color}\marg{texto en color}.
 
 
+La diferencia radica sustancialmente en el número de colores disponibles por defecto y en la facilidad para definir otros nuevos, pero también en la posibilidad de aplicar color a otros elementos que no son texto. Sólo presentamos aquí el package \package{xcolor}, de forma sucinta. Remitimos a la documentación para usos avanzados\footcite{xcolor}.
 
-La différence tient principalement au nombre de couleurs disponibles par défaut et à la facilité  d'en définir des nouvelles, mais aussi à la possibilité d'appliquer des couleurs à d'autres éléments que le texte. Nous ne présentons ici que le package \package{xcolor}, de manière succincte. Nous renvoyons à la documentation pour des usages avancés\footcite{xcolor}.
+\subsubsection{Colores estándar}
+El package \package{xcolor} ofrece los siguientes colores básicos: 
 
-\subsubsection{Couleurs standards}
-Le package \package{xcolor} propose les couleurs de bases suivantes : 
-
-% Définition de la fonction de modélisation des couleurs
-\newcommand{\exemplecouleur}[1]{#1 & \fcolorbox{black}{#1}{~} \\[1pt]}
-% Fin de la définition
+% Definición de la función para manipular colores 
+\newcommand{\ejemplocolor}[1]{#1 & \fcolorbox{black}{#1}{~} \\[1pt]}
+% Fin de la definición
 
 \begin{longtable}{|l|l|}
     \hline
-    \headlongtable{Nom de la couleur}         & \headlongtable{Couleur}                                 \\
+    \headlongtable{Nombre del color}         & \headlongtable{Color}                                 \\
     \hline
     \endhead
     \hline
@@ -322,47 +317,44 @@ Le package \package{xcolor} propose les couleurs de bases suivantes :
     
 \end{longtable}
 
-\subsubsection{Couleurs supplémentaires}
+\subsubsection{Colores adicionales}
 
-On peut passer les options \option{dvipsnames}, \option{svgnames} ou \option{x11names} lors de l'appel au package \package{xcolor}, chacune fournissant un jeu de couleurs. Ne pouvant lister toutes ces couleurs dans cet ouvrage, nous renvoyons à la documentation de \package{xcolor}\footcite{xcolor_jeu}.
+Se pueden pasar las opciones \option{dvipsnames}, \option{svgnames} o \option{x11names} cuando se llama al package \package{xcolor}, cada una de las cuales ofrece un juego de colores. Como no podemos dar una lista de todos esos colores en esta obra, remitimos a la documentación de \package{xcolor}\footcite{xcolor_jeu}.
 
-\subsubsection{Définir ses propres couleurs}
+\subsubsection{Definir tus propios colores}
 
-Il est possible de définir ses propres couleurs. Il faut  utiliser \csp{definecolor}, selon la syntaxe suivante : 
-\cs{definecolor}\marg{nom}\marg{methode}\marg{definition}.
+Puedes definir tus propios colores. Hay que utilizar  \csp{definecolor}, de acuerdo con la sintaxis siguiente: 
+\cs{definecolor}\marg{nombre}\marg{método}\marg{definición}.
 
-
-Les couleurs peuvent être définies de plusieurs manières\footnote{On consultera n'importe quel livre scientifique sur les couleurs pour plus de détails. On peut également consulter la documentation du package \package{xcolor}.}. Les deux principales sont\footcite[Il existe aussi la méthode de définition par la longueur d'onde pour les couleurs de l'arc en ciel, par pourcentage de gris pour les différents niveaux de gris, ainsi que par teinte, saturation et luminosité, mais ceci nécessiterait un cours de physique lumineuse. Pour  les personnes intéressées par les détails, consulter][]{xcolor_methode} :
+Los colores se pueden definir de varias maneras\footnote{Se puede consultar cualquier libro científico sobre los colores para más detalles. También se puede consultar la documentación del package \package{xcolor}.}. Las dos más importantes son\footcite[Existe también el método de definición por la longitud de onda para los colores del arco iris, por porcentaje de gris para los distintos niveles de gris, así como por tinta, saturación y luminosidad, pero esto exigiría un curso de física de la luz. Para las personas interesadas en los detalles, consúltese][]{xcolor_methode} :
 \begin{itemize}
-\item La méthode additive en additionnant du rouge, du vert et du bleu (comme sur un écran d'ordinateur).
-\item La méthode soustractive en superposant du cyan, du magenta, du jaune et du noir (comme sur une imprimante couleur).
+\item El método aditivo, añadiendo rojo, verde y azul (como en una pantalla de ordenador).
+\item El método sustractivo, superponiendo cian, magenta, amarillo y negro (como en una impresora a color).
 \end{itemize}
 
+En ambos casos hay que dar un valor comprendido entre 0 (incluido) y 1 (incluido) a cada uno de los componentes\footcite[Se puede encontrar una serie de código de colores en la página][]{codecouleur}.
 
-Dans les deux cas, il faut  donner une valeur comprise entre 0 (inclus) et 1 (inclus) à chacun des composants\footcite[On pourra trouver une série de code couleur sur le site][]{codecouleur}.
+\definecolor{rojoborgoña}{HTML}{6B0D0D}
 
-\definecolor{rougebourgogne}{HTML}{6B0D0D}
-
-
-Prenons par exemple la définition de la couleur \textcolor{rougebourgogne}{rouge bourgogne}\footnote{Avec Anne Sylvestre les auteurs proclament fièrement \enquote{Que Bordeaux me pardonne, j’appartiens au Bourgogne} \parencite{romaneconti}.}.
-On peut la définir de la manière suivante en méthode additive :
+Tomemos, por ejemplo, la definición del color \textcolor{rojoborgoña}{rojo borgoña}\footnote{Con Anne Sylvestre los autores proclaman con orgullo \enquote{Que Burdeos me perdone, pertenezco a Borgoña} \parencite{romaneconti}.}.
+Se puede definir del modo siguiente con el método aditivo:
 
 \begin{latexcode}
-\definecolor{rougebourgogne}{rgb}{0.41,0.05,0.05}
+\definecolor{rojoborgoña}{rgb}{0.41,0.05,0.05}
 \end{latexcode}
 
-Ou bien en méthode soustractive\footnote{Idéalement le choix de  la méthode devrait relever du support de destination. Mais le package \package{xcolors} propose des systèmes de conversion d'une méthode à l'autre.}de la manière suivante :
+O bien con el método sustractivo\footnote{Lo ideal sería que la elección del método tuviera en cuenta el soporte de destino. Pwero el package \package{xcolors} ofrece sistemas de conversión de un método a otro.} de la forma siguiente:
 
 \begin{latexcode}
-\definecolor{rougebourgogne}{cmyk}{0,0.88,0.88,0.58}
+\definecolor{rojoborgoña}{cmyk}{0,0.88,0.88,0.58}
 \end{latexcode}
 
-Enfin signalons la méthode HTML qui offre l'avantage d'avoir de nombreux sites internet indiquant les codes couleur HTML\footnote{En réalité la méthode HTML est une méthode additive avec des valeurs comprises entre 0 et 255, notées en hexadécimal.}.
+Por último, mencionaremos el método HTML, que tiene la ventaja de que cuenta con muchas páginas en internet que indican los códigos de color HTML\footnote{En realidad, el método HTML es un método aditivo con valores comprendidos entre 0 y 225, notados en hexadecimal.}.
 
-La même couleur se définit ainsi :
+El mismo color se define así:
 
 \begin{latexcode}
-\definecolor{rougebourgogne}{HTML}{6B0D0D}
+\definecolor{rojoborgoña}{HTML}{6B0D0D}
 \end{latexcode}
 
 
