@@ -21,10 +21,12 @@ Cependant, le package dispose de nombreuses options\footcite{biblatex_options}. 
 Il existe un nombre important de styles de citation livrés en standard. Nous mentionnons ici les principaux\footcite[Se reporter pour plus de détails à][]{biblatex_style}:
 \begin{choix}
 \item[numeric]chaque entrée se voit attribuer un numéro, qui est appelé lorsque l'on renvoie à cette entrée. La bibliographie finale indique les correspondances.
-\item[authortitle]sont indiqués seulement l'auteur et le titre de l'œuvre.
+\item[alphabetic]chaque entrée reçoit un code correspondant au nom de l'auteur et à la date, code qui est appelée lorsque l'on renvoie à cette entrée. La bibliographie finale indique les correspondances.
+\item[authortitle]sont indiqués seulement l'auteur et le titre de l'œuvre. Il existe des variantes qui permettent d'utiliser des abréviations si l'auteur est cité plusieurs fois de suite.
+\item[authoryear]sont indiqués seulement l'auteur et la date de l'œuvre. Il existe des variantes qui permettent d'utiliser des abréviations si l'auteur est cité plusieurs fois de suite. 
 \item[verbose]la description complète de l'entrée est donnée la première fois, une version abrégée est affichée ensuite.
 \item[verbose-ibid]la description complète de l'entrée est donnée, mais si un passage est cité plusieurs fois de suite, l'abréviation \emph{ibidem} est utilisée.
-\item[verbose-note]la description complète de l'entrée est donnée à sa première mention, puis une version abrégée est utilisée.
+\item[verbose-note]la description complète de l'entrée est donnée à sa première mention, puis une version abrégée est utilisée, avec un renvoi vers la note de bas de page de la première référence.
 \item[verbose-trad1; verbose-trad2; verbose-trad3]~la description complète de l'entrée est utilisée, puis les abréviations universitaires de type \emph{op. cit.}, \emph{ibidem.} etc. sont utilisées ; \package{biblatex} calcule automatiquement l'opportunité d'utiliser une abréviation universitaire, selon l'endroit où l'ouvrage aura été cité précédemment. Voir le manuel pour la description complète des différences entre ces trois styles.
 \end{choix}
 
