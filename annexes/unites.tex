@@ -1,70 +1,69 @@
-\chapter{Unités de mesure en \LaTeX{}}\label{unite}
+\chapter{Unidades de medida en \LaTeX{}}\label{unite}
 
 \begin{intro}
-    Nous expliquons ici les principales unités de mesure en \LaTeX{}, mais aussi les manières d'indiquer des tailles relatives  : indiquer, par exemple,  que nous souhaitons avoir la moitié de la longueur de la ligne.
+    Explicamos aquí las principales unidades de medida en \LaTeX{}, pero también la manera de indicar tamaños relativos: para indicar, por ejemplo, que queremos tener la mitad de la longitud de la línea.
 \end{intro}
 
-\section{Unités de mesure}
+\section{Unidades de medida}
 
-\LaTeX{} étant d'origine anglophone, le séparateur des décimales doit être un point et non pas une virgule. Ainsi pour préciser une taille de 1,5 cm, il faut écrire : \verb|1.5cm| et non pas \verb|1,5cm|.
+Como \LaTeX{} es de origen anglófono, el separador de los decimales debe ser un punto y no una coma. Así, par indicar un tamaño de 1,5 cm, hay que escribir: \verb|1.5cm| y no \verb|1,5cm|.
 
-Les unités de mesure peuvent être divisées en deux catégories : unités absolues et unités relatives à la taille  de la police courante. Nous ne présentons ici que les unités les plus courantes.
+Las unidades de medida pueden dividirse en dos categorías: unidades absolutas y unidades relativas al tamaño de la fuente actual. Solo presentamos aquí las unidades más frecuentes.
 
 
 
 \begin{longtable}{|llp{15em}|}
     \hline
-    \headlongtable{Unité} & \headlongtable{Nom} &{\centering \textbf{Explication}}\\
+    \headlongtable{Unidad} & \headlongtable{Nombre} &{\centering \textbf{Explicación}}\\
     \hline
     \endhead
     \hline
     \endfoot
-    \multicolumn{3}{|c|}{\emph{Unités absolues}} \\
-    pt & Point typographique pica & Unité de base des mesures typographiques dans les systèmes anglo-saxons. C'est celle qui est utilisée dans quasiment tous les logiciels. Correspond approximativement à 0,35 mm. \\
-    mm & millimètre &  \\
-    cm  & centimètre & \\
-    in    & Pouce anglo-saxon & Correspond approximativement à 2,54 cm. \\
-    \multicolumn{3}{|c|}{\emph{Unités relatives}} \\
-    em & Cadratin & Correspond à la largeur d'un \verb|m| dans la police courante. \\
-    ex  & Œil & Correspond à la hauteur d'un \verb|x| dans la police courante. \\
+    \multicolumn{3}{|c|}{\emph{Unidades absolutas}} \\
+    pt & Punto tipográfico pica & Unidad básica de medida tipográfica en los sistemas anglosajones. Es la que se usa en casi todos los programas. Corresponde aproximadamente a 0,35 mm. \\
+    mm & milímetro &  \\
+    cm  & centímetro & \\
+    in    & Pulgada anglosajona & Corresponde aproximadamente a 2,54 cm. \\
+    \multicolumn{3}{|c|}{\emph{Unidades relativas}} \\
+    em & Cuadratín & Corresponde a la longitud de una \verb|m| en la fuente actual. \\
+    ex  & Ojo & Corresponde a la altura de una \verb|x| en la fuente actual. \\
 \end{longtable}
 
-\section{Longueurs relatives}\label{longueurrelative}
+\section{Longitudes relativas}\label{longueurrelative}
 
-Il est également possible d'indiquer des longueurs relatives à certains éléments. Il suffit d'indiquer un nombre décimal devant une commande de longueur.
-Ainsi pour un trait horizontal d'une moitié de  largeur de la ligne :
+También se pueden indicar longitures relativas a ciertos elementos. Basta con poner un número decimal delante de un comando de longitud. Así, para una raya horizontal de la mitad de la anchura de una línea:
 \inputminted{exemples/annexes/unites/demiligne.tex}
 
 \noindent\input{exemples/annexes/unites/demiligne.tex}
 
-Voici les principales commandes de longueur :
+Veamos los principales comandos de longitud:
 
 \begin{longtable}{|lp{15em}|}
     \hline
-    \headlongtable{Commande} & {\centering\textbf{Explication}} \\
+    \headlongtable{Comando} & {\centering\textbf{Explicación}} \\
     \hline
     \endhead
     \hline
     \endfoot
-    \csp{baselineskip} & Distance entre le bas d'une ligne et celui de la ligne suivante. \\
-    \csp{linewidth} & Largeur d'une ligne. Dans certains environnements (par exemple \enviro{quotation}) les lignes n'ont pas la même longueur que dans le texte principal. \\
-    \csp{textheight}& Hauteur maximale du texte dans une page. Correspond \emph{grosso-modo} à la longueur entre la marge haute et la marge basse. \\
-    \csp{textwidth} & Largeur maximale de texte dans une page. Correspond \emph{grosso-modo} à la longueur entre la marge gauche et la marge droite.  \\
-     \csp{parindent} & Longueur de l'indentation du paragraphe. \\
-     \csp{parskip}    & Distance verticale entre deux paragraphes. \\
+    \csp{baselineskip} & Distancia entre la base de una línea y la de la línea siguiente. \\
+    \csp{linewidth} & Ancho de línea. En algunos entornos (por ejemplo, \enviro{quotation}) las líneas no tienen el mismo ancho que en el texto principal. \\
+    \csp{textheight}& Altura máxima del texto en una página. Se corresponde \emph{grosso modo} con la distancia entre el margen superior y el margen inferior. \\
+    \csp{textwidth} & Ancho máximo del texto en una página. Se corresponde \emph{grosso modo} con la distancia entre el margen izquierdo y el margen derecho.  \\
+     \csp{parindent} & Longitud del sangrado del párrafo. \\
+     \csp{parskip}    & Distancia vertical entre dos párrafos. \\
      
 \end{longtable}
 
-\section{Élasticité}\label{elastique}
+\section{Elasticidad}\label{elastique}
 
-Il est possible de définir une certaine élasticité pour les longueurs, qui permet de s'adapter à l'espace disponible et aux contraintes de mise en page\footnote{Par exemple concernant les veuves et orphelines.}. On utilise pour cela les mot clefs \verb|minus| et \verb|plus|.
-Ainsi, si nous souhaitons afficher un espace blanc\renvoi{espace} vertical d'une longueur comprise entre 1~cm et 3~cm, mais tournant idéalement autour de 2,5~cm, nous écrivons :
+Se puede definir cierta elasticidad para las longitudes, lo que permite adaptarse al espacio disponible y a las limitaciones del diseño de página\footnote{Por ejemplo, en lo que se refiere a las líneas viudas y huérfanas.}. Para ello, se utilizan las palabras clave \verb|minus| y \verb|plus|.
+Así, si queremos que aparezca un espacio en blanco\renvoi{espace} vertical de una longitud comprendida entre 1~cm y 3~cm, pero que se acerque a los 2,5~cm, escribimos:
 
 \begin{latexcode}
 \vspace{2.5cm minus 1.5cm plus 0.5cm}
 \end{latexcode}
 
-Cette syntaxe est utilisée dans les commandes de définitions des en-têtes de section\renvoi{apparencetitre}, sous une forme légèrement différente : \cs{@plus} et \csp{@minus} ne sont que des alias \LaTeX des mot clefs \TeX \verb|plus| et \verb|minus|.
+Esta sintaxis se utiliza en los comandos de definiciones de los encabezados de apartado\renvoi{apparencetitre}, con una forma un tanto diferente: \cs{@plus} y \csp{@minus} son simplemente sinónimos de \LaTeX de las palabras clave \TeX \verb|plus| y \verb|minus|.
 
-Plus globalement, avec une syntaxe de longueur \verb|a minus b plus c| la longueur finale \verb|m| est telle que\footnote{Nous n'insérons pas ici une équation mais une inéquation. Le sous-titre de ce livre est donc pleinement justifié.} $ a - b \leq m \leq a + c $.  
+De manera más general, con una sintaxis de longitud \verb|a minus b plus c| la longueur finale \verb|m| es tal que\footnote{No incluimos aquí una ecuación, sino una inecuación. El título de este libro está, por tanto, plenamente justificado.} $ a - b \leq m \leq a + c $.  
 
