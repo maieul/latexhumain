@@ -34,15 +34,22 @@ detalles, véase][]{biblatex_style}:
 \begin{choix}
 \item[numeric]a cada entrada se le atribuye un número que se llama
   cuando se remite a esta entrada. La bibliografía final indica las correspondencias.
+<<<<<<< HEAD
 \item[alphabetic]chaque entrée reçoit un code correspondant au nom de l'auteur et à la date, code qui est appelée lorsque l'on renvoie à cette entrée. La bibliographie finale indique les correspondances.%Ajouté
 \item[authortitle]se indica solamente el autor y el título de la obra.
 \item[authortitle]sont indiqués seulement l'auteur et le titre de l'œuvre. Il existe des variantes qui permettent d'utiliser des abréviations si l'auteur est cité plusieurs fois de suite. Voir le manuel pour une description de ces variantes.%Modifié
 \item[authoryear]sont indiqués seulement l'auteur et la date de l'œuvre. Il existe des variantes qui permettent d'utiliser des abréviations si l'auteur est cité plusieurs fois de suite. Voir le manuel pour une description de ces variantes.%Ajouté
+=======
+\item[authortitle]se indica solamente el autor y el título de la obra.
+>>>>>>> 7415f8e (Update citation.tex)
 \item[verbose]la primera vez se da una descripción completa de la
   entrada y, luego, se presenta una versión abreviada.
 \item[verbose-ibid]se da la descripción completa de la entrada pero,
   si se cita varias veces seguidas un pasaje, se emplea la abreviatura \emph{ibidem}.
+<<<<<<< HEAD
   \item[verbose-note]la description complète de l'entrée est donnée à sa première mention, puis une version abrégée est utilisée, avec un renvoi vers la note de bas de page de la première référence.%Modifié
+=======
+>>>>>>> 7415f8e (Update citation.tex)
 \item[verbose-note]se da en la primera mención la descripción completa
   de la entrada y luego se utiliza una versión abreviada.
 \item[verbose-trad1; verbose-trad2; verbose-trad3]~se utiliza la
@@ -77,7 +84,7 @@ basta con indicarle cuál es el fichero \ext{bib} que ha de utilizar,
 para lo que basta con emplear en el preámbulo el comando:
 \csp{addbibresource}\marg{ruta al fichero.bib}.
 
-La ruta al ficher se indica de la misma manera que cualquier ruta a
+La ruta al fichero se indica de la misma manera que cualquier ruta a
 cualquier fichero\renvoi{chemin}.
 
 \begin{attention}
@@ -91,12 +98,12 @@ Las versiones anteriores de \package{biblatex} empleaban el comando
 \csp{bibliography}. Este comando ya resulta obsoleto. El comando
 \csp{addbibresource} tiene la ventaja de que permite usar ficheros
 remotos o en formatos distintos de \ext{bib}, como, por ejemplo,
-exportaciones de Zotero\footcite{biblatex_resources}. 
+exportaciones de Zotero\footcite{biblatex_resources}.
 \end{plusloins}
 
 \section{Citar un elemento bibliográfico}
 
-El conjunto de comandos de cita tienen la sintaxis: 
+El conjunto de comandos de cita tienen la sintaxis:
 
 \csp{\meta{prefijo}cite}\oarg{prenota}\oarg{postnota}\marg{clave},
 \meta{prefijo} indica dónde y cómo debe aparecer la referencia:
@@ -120,12 +127,12 @@ Lo común en humanidades es citar en nota a pie de página. Por eso vale
 más utilizar: \csp{footcite}\verb|{Saxer1980}|,\label{footcite} que
 pone la referencia en nota a pie de página, añadiendo automáticamente
 el punto final en la nota. También se puede emplear el comando
-\csp{parencite}, para citar entre paréntesis. 
+\csp{parencite}, para citar entre paréntesis.
 
 Pero también se puede elegir el comando \csp{autocite}. El modo de
 citar (nota a pie de página, cita directa, cita entre paréntesis,
 etc.) depente entonces del estilo de cita elegido: para los estilos de
-la familia verbose, la referencia se pone en nota a pie de página. 
+la familia verbose, la referencia se pone en nota a pie de página.
 
 \begin{plusloins}
 Por defecto, los campos bibliográficos se separan con puntos. Si te
@@ -174,7 +181,7 @@ exactas del pasaje citado\footcite[Para más detalles, consúltese:
 tipo numérico, en cifras árabes o romanas, o bien una secuencia de
 valores numéricos.
 
-Por ejemplo, para citar la página 25: 
+Por ejemplo, para citar la página 25:
 
 \begin{latexcode}
 \autocite[25]{Saxer1980}
@@ -276,7 +283,7 @@ necesario cargar el package
   que se corresponden con los comandos respectivos \cs{cite}, \cs{parencite},
   \cs{footcite}, \cs{autocite}.
 
-La sintaxis es: 
+La sintaxis es:
 \csp{\meta{prefijo}cita}\oarg{prenota}\marg{volumen}\oarg{página}\marg{clave}.
 \end{plusloins}
 
