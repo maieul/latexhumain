@@ -1,210 +1,268 @@
-\chapter{Remplir sa base de données bibliographique}\label{bddbiblio}
+\chapter{Rellenar la base de datos bibliográfica}\label{bddbiblio}
 
 \begin{intro}
-La première étape pour gérer une bibliographie avec \LaTeX est la constitution d'une base de données bibliographique contenant l'ensemble des références. Celle-ci est un simple fichier texte qui porte une extension \ext{bib} et possède une structure particulière.
+La primera etapa para gestionar una bibliografía con \LaTeX es la elaboración de una base de datos bibliográfica que contenga el conjunto de las referencias. Se trata simplemente de un fichero de texto que tiene una extensión \ext{bib} y posee una estructura particular.
 \end{intro}
 
 
-\section{Structure de base d'un fichier \ext{bib}}
+\section{Estructura básica de un fichero \ext{bib}}
 
-Chaque élément d'une bibliographie est appelé \forme{entrée}. Une entrée bibliographique se caractérise par :
+Cada elemento de una bibliografía se denomina \forme{entrada}. Una entrada bibliográfica se caracteriza por:
 \begin{glossaire}
-\item[Un type]s'agit-il d'un article, d'un livre, d'actes de colloque ?
-\item[Une clef unique]qui permet de distinguer une entrée bibliographique d'une autre. C'est elle qui est mentionnée dans vos fichiers \ext{tex} lorsque vous désirez insérer une référence bibliographique.
-\item[Des champs]contenant des indications sur l'ouvrage, tels que : auteur, titre, éditeur, etc. 
+\item[Un tipo]¿se trata de un artículo, de un libro, de las actas de un congreso?
+\item[Una clave única]que permite distinguir entre una entrada bibliográfica y otra. Es la que incorporas en tus ficheros \ext{tex} cuando quieres incluir una referencia bibliográfica.
+\item[Campos]que contienen indicaciones sobre la obra, como: autor, título, editor, etc. 
 \end{glossaire}
 
-L'avantage de ce système se comprend  aisément. En effet, une correction dans la base de donnée bibliographique est automatiquement reportée dans le travail à chaque fois que l'entrée est mentionnée, moyennant une nouvelle compilation avec Biber.
+Es fácil de comprender la ventaja de este sistema. En efecto, una corrección en la base de datos bibliográfica se transfiere automáticamente al trabajo cada vez que se cita la entrada, mediante una nueva compilación con Biber.
 
-Un fichier \ext{bib} est un fichier texte contenant une suite d'instructions, de la forme suivante :
+Un fichero \ext{bib} es un fichero de texto que contiene un conjunto de instrucciones, de la manera siguiente:
 
 
 \begin{latexcode}
-@type{clef,
-    Champ1 = {Valeur 1},
-    Champ… = {Valeur …},
-    Champn = {Valeur n}
+@type{clave,
+    Campo1 = {Valor 1},
+    Campo… = {Valor …},
+    Campon = {Valor n}
 }
 \end{latexcode}
 
 
 
-Par exemple :
+Por ejemplo:
 
 
 \inputminted{exemples/biblio/fichier/urner.bib}
 
-Par ces lignes nous déclarons un livre (\type{book}) auquel nous attribuons la clef \verb|Urner1952|. Ce livre est une œuvre de Urner, Hans de son prénom ; il s'intitule \emph{Die ausserbiblische Lesung in Christlichen Gottesdienst} et a été publié en 1952 à Gottigen.
+Con estas líneas declaramos un libro (\type{book}) al que atribuimos la clave \verb|Urner1952|. Este libro es una obra de Urner, de nombre Hans; se titula \emph{Die ausserbiblische Lesung in Christlichen Gottesdienst} y se publicó en  1952 en Gottigen (Gotinga).
 
 
-Il peut être affiché dans le fichier \ext{pdf} sous la forme :
+Se puede mostrar en el fichero \ext{pdf} bajo la forma:
 
 \begin{quotation}
 \cite{Urner1952}
 \end{quotation}
 
 
+Un fichero \ext{bib} no es más que una serie de entradas de este tipo. Sin embargo, como es bastante fácil \enquote{cruzar los cables}, especialmente en las aperturas y cierres de llaves, merece la pena usar un programa de gestión de bibliografías \renvoi{logicielbiblio}, que permite crear con facilidad ficheros de formato \ext{bib}. Además, estos programas suelen permitir búsquedas cruzadas en la base de datos. Presentamos dos de ellos en un anexo.
 
-Un fichier \ext{bib} n'est rien d'autre qu'une série d'entrées de ce type. Cependant, comme il est assez aisé de \enquote{s'emmêler les pinceaux}, notamment dans les ouvertures et fermetures des accolades, il vaut la peine d'utiliser un logiciel de gestion de bibliographies\renvoi{logicielbiblio}, permettant de créer facilement des fichiers au format \ext{bib}. En outre ces logiciels permettent en général des recherches croisées dans la base de données. Nous en  présentons deux en annexe.
+La documentación de \package{biblatex} contiene el conjunto de los campos y tipos posibles. Para evitar repetir ese manual, te presentaremos los camplos clasificados por categoría. Pero antes, tenemos que dar algunos consejos para elegir la clave.
 
-La documentation de \package{biblatex} contient l'ensemble des champs et des types possibles. Pour éviter de répéter ce manuel, nous vous présenterons les champs en les classant par catégorie. Mais auparavant nous allons donner quelques conseils sur le choix de la clef.
+\section{Elegir la clave}
 
-\section{Le choix de la clef}
+Una entrada bibliográfica debe tener una clave única. Esta clave sólo puede tener caracteres alfanuméricos no acentuados, eventualmente con guiones. 
+Algunos consejos para elegir la clave:
+\subsection{Para las obras contemporáneas}
+Tomar el nombre del autor seguido de la fecha. Por ejempo, \verb|Urner1952|.
 
-Une entrée bibliographique doit avoir une clef unique. Cette clef doit comporter uniquement des caractères alphanumériques non accentués, éventuellement avec des tirets. 
-Quelques conseils pour le choix de la clef :
-\subsection{Pour les œuvres contemporaines}
-Prendre le nom de l'auteur suivi de la date. Par exemple \verb|Urner1952|.
+\subsection{Para las obras antiguas}
 
-\subsection{Pour les œuvres anciennes}
-
-Prendre le nom de l'œuvre,  éventuellement abrégée. Ainsi \verb|ContraFelix| pour parler du \citetitle{ContraFelix} d'Augustin\footcite{ContraFelix}. Si plusieurs œuvres d'auteurs différents portent le même nom, faire précéder du nom de l'auteur. On peut aussi pour les œuvres sans titre et sans auteur indiquer un numéro dans un catalogue de référence.
-
+Tomar el nombre de la obra, eventualmente abreviado. Así \verb|ContraFelix| para hablar del \citetitle{ContraFelix} de Augustín\footcite{ContraFelix}. Si varias obras de autores diferentes tienen el mismo nombre, poner delante el nombre del autor. Para las obras sin título  y sin autor, se puede indicar también un número en un catálogo de referencia.
 
 
-\section{Les différents types d'entrées}
-Voici les différents types d'entrées disponibles\footnote{À vrai dire il est possible de rajouter les siennes, mais nous vous le déconseillons.}.
+
+\section{Los distintos tipos de entradas}
+Veamos los distintos tipos de entradas disponibles\footnote{A decir verdad, puedes añadir las tuyas propias, pero no te lo recomendamos.}.
 
 
 \begin{choix}
 
 	\item[\type{article}] 
-Article d'un périodique. Pour les contributions de colloque, voir \type{inproceedings}.
+Artículo de una revista. Para las contribuciones de un congreso, véase \type{inproceedings}.
 	\item[\type{book}] 
-Livre. Pour les actes de colloque, voir  \type{proceedings}. 
+Libro. Para las actas de un congreso, véase \type{proceedings}. 
 	\item[\type{booklet}]
-	Livret. Texte sous la forme d'un livre mais sans éditeur commercial officiel.
+	Folleto. Texto en forma de libro, pero sin editor comercial oficial.
 	\item[\type{bookinbook}]
-	Livre dans un livre. Par exemple lorsque un auteur  voit ses écrits rassemblés en un seul volume physique. 	
+	Libro dentro de un libro. Por ejemplo, cuando un autor reune
+        sus escritos en un solo volumen físico. 	
 	\item[\type{collection}]
-	Ouvrage collectif mais avec des parties distinctes par auteur.
+	Obra colectiva pero con partes distintas por autor.
 	\item[\type{inbook}]
-	Partie d'un livre.
+	Parte de un libro.
 	\item[\type{incollection}]
-	Partie individuelle (avec un auteur propre) dans un ouvrage collectif.
+	Parte individual (con un autor propio) en una obra colectiva.
 	\item[\type{inproceedings}]
-	 Contribution à un colloque.
+	Contribución a un congreso.
 	 \item[\type{inreference}]
-	 Article de dictionnaire, d'encyclopédie, etc.
+	Entrada de diccionario, de enciclopedia, etc.
 	\item[\type{manual}]
-	 Manuel, pas nécessairement sous forme imprimée.
+	Manual, no necesariamente en forma impresa.
 	 \item[\type{mvbook}]
-	 Livre en plusieurs volumes.
+	Libro en varios volúmenes.
 	 \item[\type{mvcollection}]
-	 Ouvrages collectifs en plusieurs volumes, avec des parties distinctes par auteurs.
+	Obras colectivas en varios volúmenes, con partes distintas por
+        autores.
 	 \item[\type{mvproceedings}]
-	 Actes de colloque en plusieurs volumes.
+	Actas de un congreso en varios volúmenes.
 	 \item[\type{mvreference}]
-	 Dictionnaire, encyclopédie, etc. en plusieurs volumes.
+	Diccionario, enciclopedia, etc. en varios volúmenes.
 	\item[\type{misc}]
-	 Entrée générique, pour tout type d'entrée non catégorisable. Par exemple : tableau, manuscrit, \emph{ostracon}. 
+	 Entrada genérica para todo tipo de entrada de difícil
+         clasificación. Por ejemplo: cuadro, manuscrito, \emph{ostracon}. 
 	\item[\type{online}]
-	Ressource internet. Si une une œuvre existe aussi sous une autre forme, choisir le type d'entrée qui y correspond et utiliser le champ \champ{url}.
+	Recurso de internet. Si una obra existe también con otra
+        forma, elegir el tipo de entrada que le corresponde y utilizar
+        el campo \champ{url}.
 	\item[\type{patent}]
-	Brevet industriel.
+	Patente industrial.
 	\item[\type{periodical}]
-	Numéro précis d'un périodique.	
+	Número exacto de una revista.	
 	\item[\type{report}]	
-	Rapport technique ou de recherche.
+	Inform técnico o de investigación.
 	\item[\type{proceedings}]
-	Acte de colloque.
+	Acta de un congreso.
 	\item[\type{suppbook}]
-	Partie annexe d'un livre, comme par exemple la préface ou les appendices.
+	Parte aneja de un libro, como, por ejemplo, el prefacio o los apéndices.
 	\item[\type{supperiodical}]
-	Supplément à un numéro de périodique.
+	Suplemento a un número de revista.
 	\item[\type{reference}]
-	Dictionnaire, encyclopédie, etc.
+	Diccionario, enciclopedia, etc.
 	\item[\type{thesis}]
-	Thèse de doctorat, mémoire de maîtrise ou tout travail rédigé en vue de l'obtention d'un titre scolaire ou universitaire.
+	Tesis doctoral, trabajo de fin de máster o cualquier trabajo
+        encaminado a la obtención de un título escolar o universitario.
 	\item[\type{unpublished}]
-	Ouvrage non publié.
+	Obra no publicada.
 \end{choix}
 
-Pour les éditions contemporaines d'œuvres anciennes, le choix d'une entrée de type \type{book} peut se justifier, en dépit du caractère non livresque de certaines d'entre elles, comme c'est le cas par exemple des lettres d'Augustin. En revanche  nous conseillons le type \type{misc} pour désigner  une œuvre non éditée. 
+Para las ediciones contemporáneas de obras antiguas, la elección de
+una entrada de tipo \type{book} puede justificarse, pese al carácter
+no libresco de algunas de ellas, como es el caso, por ejemplo, de las
+cartas de Agustín. Por el contrario, recomendamos el tipo
+\type{misc} para designar una obra no editada.
 
 \begin{plusloins}
-Pour ce qui est des manuscrits, notamment dans le cadre d'un travail philologique, on peut utiliser le type \type{manuscript}. Ce type n'est pas définie par \package{biblatex} mais par une extension à ce dernier : \package{biblatex-manuscripts-philology}\footcite{biblatex-manuscripts-philology}.
+  Por lo que respecta a manuscritos, especialmente en el marco de un
+  trabajo filológico, se puede utilizar el tipo
+  \type{manuscript}. Este tipo no lo define  \package{biblatex} sino
+  una extensión de éste último:
+  \package{biblatex-manuscripts-philology}\footcite{biblatex-manuscripts-philology}.
 
-Si un ouvrage ancien est édité par un chercheur dans un article, on peut utiliser le type \type{bookinarticle} en utilisant \package{biblatex-bookinarticle}\footcite{biblatex-bookinarticle}.
+  Si un investigador ha editado una obra antigua en un artículo, se
+  puede usar el tipo \type{bookinarticle} mediante
+  \package{biblatex-bookinarticle}\footcite{biblatex-bookinarticle}.
 \end{plusloins}
 
-\section{Les différents champs possibles}
+\section{Los diferentes campos posibles}
 
-Nous ne listons pas ici tous les champs, mais seulement ceux qui peuvent rentrer dans les catégories les plus utiles.
-\subsection{Les champs de personnes}
+No enumeramos aquí todos los campos, sino solamente los que pueden
+entrar en las categorías más útiles.
 
-Ces champs servent à désigner des personnes qui ont participé au processus de production de l'œuvre : auteur, annotateur, éditeur (scientifique), etc. Il n'est évidemment pas nécessaire de remplir tous ces champs.
+\subsection{Los campos de personas}
+
+Estos campos sirven para designar a personas que han participado en el
+proceso de producción de la obra: autor, comentarista, editor
+(científico), etc. Por supuesto, no es necesario rellenar todos estos campos.
 
 \begin{choix}
-  \item[afterword] Auteur·trice(s) de la postface. 
-  \item[annotator] Auteur·trice(s) des annotations. 
-  \item[author] Auteur(s) de l'œuvre.    
-  \item[bookauthor] Auteur·trice(s) du livre dans lequel l'œuvre est insérée. 
-  \item[commentator] Auteur·trice(s) des commentaires. 
-  \item[editor] Éditeur·trice(s) scientifique(s). On peut en préciser le rôle grâce au champ \champ{editortype}.	
-  \item[editora] Éditeur·trice(s) scientifique(s) ayant un autre rôle. On peut en préciser le rôle grâce au champ \champ{editoratype}.  
-  \item[editorb] Éditeur·trice(s) scientifique(s) ayant un autre rôle. On peut en préciser le rôle  grâce au champ \champ{editorbtype}.  
-  \item[editorc] Éditeur·trice(s) scientifique(s) ayant un autre rôle. On peut en préciser le rôle  grâce au champ \champ{editorctype}\footcite[Pour ces quatres champs, se reporter à][]{biblatex_editortype}.
- \item[foreword] Auteur·trice(s) de la préface.
-  \item[holder] Titulaire d'un brevet industriel. 
-  \item[introduction] Auteur·trice(s) de l'introduction. 
-  \item[translator] Traducteur·trice(s).		
+	\item[afterword] Autor(es) del epílogo. 
+   	\item[annotator] Autor(es) de anotaciones. 
+   	\item[author] Autor(es) de la obra.    
+   	\item[bookauthor] Autor(es) del libro en que se incluye la obra. 
+   	\item[commentator] Autor(es) de los comentarios. 
+   	\item[editor] Editor(es) científico(s). Se puede precisar su
+          papel gracias al campo \champ{editortype}.	
+   	\item[editora] Editor(es) científico(s) que tiene(n) otro
+          papel. Se puede precisar su papel gracias al campo \champ{editoratype}.  
+   	\item[editorb] Editor(es) científico(s) que tiene(n) otro
+          papel. Se puede precisar su papel gracias al campo \champ{editorbtype}.  
+   	\item[editorc] Editor(es) científico(s) que tiene(n) otro
+          papel. Se puede precisar su papel gracias al campo
+          \champ{editorctype}\footcite[Para estos cuatro campos, véase][]{biblatex_editortype}.
+	\item[foreword] Autor(es) del prefacio.
+   	\item[holder] Titular de una patente industrial. 
+   	\item[introduction] Autor(es) de la introducción. 
+   	\item[translator] Traductor(es). 		
 \end{choix}
 
-Lorsque des champs possèdent des valeurs égales, par exemple les champs \champ{editor} et \champ{translator}, \package{biblatex} fusionne ces champs lors de l'affichage. Prenons ainsi l'entrée suivante : 
+Cuando hay campos que tienen valores iguales, por ejemplo, los campos
+\champ{editor} y \champ{translator}, \package{biblatex} fusiona estos
+campos en la presentación. Tomemos así la entrada siguiente:
 
 \inputminted{exemples/biblio/fichier/augustin_editeur.bib}
 
-Elle est affichée ainsi : 
+Se presenta de la siguiente manera: 
 
 \begin{quotation}
 \cite{DoctrineChretienne}
 \end{quotation}
 
 \begin{plusloins}
-Lorsqu'on une œuvre est publiée de manière anonyme ou pseudépigraphique mais que l'on souhaite indiquer le nom de l'auteur que connaissent les savants, on peut utiliser le champ \champ{realauthor} en utilisant le package \package{biblatex-realauthor}\footcite{biblatex-realauthor}.
+  Cuando una obra se publica de forma anónima o seudónima, pero se
+  desea indicar el nombre del autor que conocen los estudiosos, se
+  puede utilizar el campo \champ{realauthor} empleando el  package
+  \package{biblatex-realauthor}\footcite{biblatex-realauthor}.
 \end{plusloins}
 
-\subsubsection{Comment entrer un nom de personne}
+\subsubsection{Cómo incluir un nombre de persona}
 
-Ces différents champs prennent comme valeur un ou plusieurs noms de personne. S'il y a plusieurs noms, il suffit de les séparer par le mot-clef \forme{and}. Par exemple pour les auteurs de l'ouvrage que vous avez entre les mains : 
+Estos campos diferentes toman como valor uno o varios nombres de
+persona. Si hay varios nombres, basta con separarlos con la
+palabra-clave \forme{and}. Por ejemplo, para los autores de la obra
+que tienes en tus manos:
 
 \begin{latexcode}
 author = {Maïeul Rouquette and Enimie Rouquette and Brendan Chabannes}
 \end{latexcode}
 
-Un nom contient les éléments suivant :
+Un nombre contiene los elementos siguientes:
 \begin{choix}
-	\item[Prénom(s)]L'initiale doit être en majuscule, le reste en minuscules. Ainsi : \forme{Albert}. Il vaut mieux mettre le prénom complet : on peut confier le travail de limitation à une minuscule  à \package{biblatex}\footnote{Il faut pour cela passer l'option \option{firstinits=true} lors du chargement du package.}.
-	\item[Nom]L'initiale doit être en majuscule, le reste en minuscules. Ainsi : \forme{Londres}. \package[biblatex]{Biblatex} se charge le cas échéant de mettre en petites capitales.
-	\item[Particule (option)]Elle doit être entièrement en minuscules. Ainsi : \forme{de}.
-	\item[Suffixe (option)]L'initiale doit être en majuscule. Ce type de donnée est plutôt anglo-saxonne. Exemple : \forme{Junior}.
+	\item[Nombre(s)]La inicial ha de ir en mayúscula, el resto, en
+          minúsculas. Así: \forme{Albert}. Es mejor poner el nombre
+          completo: se puede confiar la tarea de limitarlo a una
+          mayúscula a \package{biblatex}\footnote{Para hacerlo, se
+            debe pasar la opción \option{firstinits=true} cuando se
+            cargue el paquete.}.
+	\item[Apellido(s)]La inicial ha de ir en mayúscula, el resto,
+          en minúsculas. Así:
+          \forme{Londres}. \package[biblatex]{Biblatex} se encarga,
+          llegado el caso, de escribirlo en versalitas.
+	\item[Partícula (opción)]Ha de ir entera en minúsculas. Así: \forme{de}.
+	\item[Sufijo (opción)]La inicial ha de ir en mayúscula. Este
+          tipo de dato es más bien anglosajón. Ejemplo: \forme{Junior}.
 \end{choix}
 
 
-En ce qui concerne l'ordre des éléments, il  peut être :
+En lo que afecta al orden de los elementos, puede ser:
 \begin{itemize}
-\item\enquote{Prénoms  (particule)  Nom} ;
-\item\enquote{particule Nom, (suffixe) Prénoms}.
+\item\enquote{Nombres  (partícula)  Apellido};
+\item\enquote{partícula Apellido, (sufijo) Nombres}.
 \end{itemize}
 
-Ainsi les entrées \verb|Victor Marie Hugo| et \verb|Hugo, Victor Marie| sont équivalentes.
-Dans le premier cas, Biber considère que le dernier mot commençant par une majuscule est le nom de famille. Dans le second cas, il considère l'ensemble situé avant la virgule comme le nom de famille, ce qui est utile pour les noms composés. Ainsi pour parler de Charles De Gaulle : \verb|De Gaulle, Charles|.
+Así, las entradas \verb|José María Pereda| y
+\verb|Pereda, José María| son equivalentes.  En el primer caso,
+Biber considera que la última palabra que comienza con una mayúscula
+es el apellido familiar. En el segundo caso, considera el conjunto que
+hay delante de la coma como el apellido familiar, lo que es útil para
+los apellidos dobles. Así, para hablar de Federico García Lorca:
+\verb|García Lorca, Federico|.
 
-Si nous parlons de Simone de Beauvoir, le \forme{de} étant une particule nous pouvons utiliser la première syntaxe : dans ce cas Biber considère tout ce qui suit la particule comme constituant le nom : \verb|Simone de Beauvoir|.
-Mais la seconde syntaxe fonctionne également : \verb|de Beauvoir, Simone|.
+Si hablamos de Miguel de Cervantes, al ser  \forme{de} una partícula,
+podemos emplear la primera sintaxis: en ese caso Biber considera todo
+lo que sigue a la particula como el apellido: \verb|Miguel de
+Cervantes|.  Pero también funciona la segunda sintaxis: \verb|de Cervantes, Miguel|.
 
 
-Pour distinguer Alexandre Dumas père d'Alexandre Dumas fils, on peut utiliser le suffixe : \verb|Dumas, Fils, Alexandre|.
+Para distinguir a Alejandro Dumas padre de Alejandro Dumas hijo, se
+puede emplear el sufijo: \verb|Dumas, Hijo, Alejandro|.
 
 
-Le cas des auteurs anciens, où l'on écrit souvent le prénom suivi de la ville d'exercice ou de naissance, comme par exemple pour Grégoire de Tours, est problématique. Si j'écris : \verb|Grégoire de Tours|
-Biber va comprendre qu'il s'agit d'une personne prénommée \forme{Grégoire}, dont le nom est \forme{Tours} et la particule \forme{de}. Par conséquent il va l'afficher sous la forme \forme{Tours, Grégoire, de}. Pour éviter ce problème, il suffit d'utiliser des accolades : \verb|{Grégoire de Tours}|.
+El caso de los autores antiguos, en los que se escribe con frecuencia
+el nombre seguido de la ciudad en que nació o ejerció su labor, como,
+por ejemplo, Gregorio de Tours, es problemático. Si escribo: \verb|Gregorio de Tours|
+Biber interpretará que se trata de una persona llamada
+\forme{Gregorio}, cuyo apellido es \forme{Tours} y la partícula
+\forme{de}. En consecuencia, lo presentará con la forma
+\forme{Tours, Gregorio, de}. Para evitar este problema, basta con
+emplear llaves: \verb|{Gregorio de Tours}|.
 
-Cette méthode peut servir aussi pour les institutions auteures d'ouvrages.
-Par exemple :\verb|{Centre National de la Recherche Scientifique}|.
+Este método también se puede emplear para las instituciones que son
+autoras de obras.
+Por ejemplo:\verb|{Consejo Superior de Investigaciones Científicas}|.
 
-Pour résumer, voici un exemple de quelques entrées correctes\footnote{Le lecteur exigeant pardonnera aux auteurs de ne mettre ici que les noms d'auteurs et titres d'œuvres.}.
+Por resumir, veamos un ejemplo de algunas entradas
+correctas\footnote{El lector exigente disculpará que los autores no
+  pongan aquí más que los nombres de autores y títulos de obras.}.
 
 \inputminted{exemples/biblio/fichier/noms.bib}
 
@@ -225,34 +283,56 @@ Pour résumer, voici un exemple de quelques entrées correctes\footnote{Le lecte
 \end{quotation}
 
 \begin{plusloins}
-En ce qui concerne les œuvres anonymes, la solution est évidemment de ne rien mettre dans le champ \champ{author}. Cependant l'affichage par  défaut de ces œuvres anonymes n'est pas nécessairement satisfaisant. Il est possible de le modifier : nous expliquons comment faire sur notre blog\footcite{oeuvresanonymes}, mais pour comprendre notre article il vous faut lire les prochains chapitres de cette partie.
+  En lo que atañe a las obras anónimas, la solución más evidente
+  consiste en no poner nada en el campo \champ{author}. Sin embargo,
+  la presentación por defecto de esas obras anónimas no es del todo
+  satisfactoria. Se puede modificar: explicamos como hacerlo en
+  nuestro blog\footcite{oeuvresanonymes},
+  pero, para comprender nuestro artículo, tendrás que leer los
+  siguientes capítulos de esta parte.
 \end{plusloins}
 
-\subsection{Champs de titre}
+\subsection{Campos de título}
 
 
 \begin{choix}
-	\item[booksubtitle]Sous-titre du livre dans lequel l'entrée se situe. 
-   	\item[booktitle] Titre du livre dans lequel l'entrée se situe. 		
-   	\item[booktitleaddon] Ajout au titre du livre dans lequel l'entrée se situe. 
-   	\item[chapter] Chapitre d'un livre. Pour les entrées de type \type{inbook}.	
-   	\item[eventitle] Titre du colloque, pour les entrées de type \type{proceedings} et \type{inproceedings}.
-   	\item[issuesubtitle] Sous-titre d'un numéro spécifique d'un périodique. 	Pour les entrées de type \type{periodical}, le sous-titre du périodique doit aller dans le champ \champ{subtitle}, celui du numéro dans le champ \champ{issuesubtitle}		
-   	\item[issuetitle] Titre d'un numéro spécifique d'un périodique. Pour les entrées de type \type{periodical}, le titre du périodique doit aller dans le champ \champ{title}, celui titre du numéro dans le champ \champ{issuetitle}.		
-   	\item[journalsubtitle] Sous-titre d'un périodique.							
-   	\item[journaltitle] Titre d'un périodique. Le champ \champ{journal} est un alias de ce champ\footnote{Ce qui signifie que remplir le champ \champ{journal} revient à remplir ce champ.}.				
-   	\item[mainsubtitle] Sous-titre d'une œuvre en plusieurs volumes.			
-   	\item[maintitle] Titre d'une œuvre en plusieurs volumes. Le titre du volume spécifique à une entrée correspond au champ \champ{title}.						
-   	\item[maintitleaddon]  Ajout au titre d'une œuvre en plusieurs volumes.		
-   	\item[origtitle] Titre original de l'œuvre, si traduction. N'est pas affiché en standard. 	
-   	\item[subtitle] Sous-titre de l'œuvre.									
-   	\item[title] Titre de l'œuvre.									
-   	\item[titleaddon] Ajout au titre de l'œuvre. Dans ce manuel, nous conseillons de l'utiliser pour les divisions de source\renvoi{divisionsource}.
+	\item[booksubtitle]Subtítulo del libro en el que se sitúa la entrada. 
+   	\item[booktitle] Título del libro en el que se sitúa la entrada. 		
+   	\item[booktitleaddon] Añadido al título del libro en el que se
+          sitúa la entrada. 
+   	\item[chapter] Capítulo de un libro. Para las entradas de tipo \type{inbook}.	
+   	\item[eventitle] Título del congreso, para las entradas de
+          tipo \type{proceedings} e \type{inproceedings}.
+   	\item[issuesubtitle] Subtítulo de un número específico de una
+          revista.  Para las entradas de tipo \type{periodical}, el
+          subtítulo de la revista debe ir en el campo
+          \champ{subtitle}, y el del número, en el campo \champ{issuesubtitle}		
+   	\item[issuetitle] Título de un número específico de una
+          revista. Para las entradas de tipo \type{periodical}, el
+          título de la revista debe ir en el campo \champ{title}, y el
+          del título del número, en el campo \champ{issuetitle}.		
+   	\item[journalsubtitle] Subtítulo de una revista.							
+   	\item[journaltitle] Título de una revista. El campo
+          \champ{journal} es un alias de este campo\footnote{Esto
+            significa que completar el campo \champ{journal} equivale
+            a completar este campo.}.
+   	\item[mainsubtitle] Subtítulo de una obra en varios volúmenes.			
+   	\item[maintitle] Título de una obra en varios volúmenes. El
+          título del volumen específico de una entrada corresponde al campo \champ{title}.						
+   	\item[maintitleaddon]  Añadido al título de una obra en varios
+          volúmenes.		
+   	\item[origtitle] Título original de la obra, si es una
+          traducción. No aparece normalmente. 	
+   	\item[subtitle] Subtítulo de la obra.									
+   	\item[title] Título de la obra.									
+   	\item[titleaddon] Añadido al título de la obra. En este
+          manual, recomendamos usarlo para las divisiones de
+          fuentes\renvoi{divisionsource}.
 \end{choix}
 
-Voici quelques exemples afin de comprendre comment utiliser ces champs:
+Veamos algunos ejemplos para comprender cómo utilizar estos campos:
 
-\subsubsection{Un livre avec un sous-titre}
+\subsubsection{Libro con subtítulo}
 
 \inputminted{exemples/biblio/fichier/saxer.bib}
 
@@ -260,7 +340,7 @@ Voici quelques exemples afin de comprendre comment utiliser ces champs:
 \cite{Saxer1980}
 \end{quotation}
 
-\subsubsection{Un livre situé dans un recueil}
+\subsubsection{Libro ubicado en una colección}
 
 \inputminted{exemples/biblio/fichier/felix.bib}
 
@@ -268,7 +348,7 @@ Voici quelques exemples afin de comprendre comment utiliser ces champs:
 \cite{ContraFelix}
 \end{quotation}
 
-\subsubsection{Un article dans une revue}
+\subsubsection{Artículo en una revista}
 
 \inputminted{exemples/biblio/fichier/junod.bib}
 
@@ -276,93 +356,135 @@ Voici quelques exemples afin de comprendre comment utiliser ces champs:
 \cite{Junod1992}
 \end{quotation}
 
-\subsection{Champs d'informations sur la publication}
+\subsection{Campos de informaciones sobre la publicación}
 
 \begin{choix}
 	\item[address]
-	Lieu de publication. Alias du champ \champ{location}.	
+	Lugar de publicación. Alias del campo \champ{location}.	
 	\item[date] 
-	Date de publication, sous la forme \verb|AAAA-MM-JJ/AAAA-MM-JJ|.
-	La première date indiquée correspond à la date de début, la seconde à celle de fin. Pour n'indiquer qu'une date de début, mettre \verb|AAAA-MM-JJ/|. 
-	On peut ne pas indiquer le mois ou le jour. On peut également utiliser les champs \champ{year} et \champ{month} à la place. 
+	Fecha de publicación, con la forma \verb|AAAA-MM-DD/AAAA-MM-DD|.
+	La primera fecha indicada corresponde a la fecha de inicio, la
+        segunda, a la de fin. Para indicar sólo una fecha de inicio,
+        hay que poner \verb|AAAA-MM-DD/|. 
+	Podemos omitir el mes o el día. También podemos utilizar los
+        campos \champ{year} y \champ{month} en su lugar. 
    	\item[edition]
-	Numéro d'édition si plusieurs éditions existent. Doit être un entier ou bien une chaîne de caractères.
-   	\item[eventdate] Date du colloque pour les entrées de type \type{proceedings} et \type{inproceedings}. 
-	\item[howpublished] Pour les entrées de type \type{misc}, précise le mode de publication.
-   	\item[institution] Institution dans laquelle l'œuvre a été produite. Typiquement pour les entrées de type \type{thesis}. 
-   	\item[issue] Détail d'un numéro spécifique d'un périodique (par exemple \enquote{numéro d'été}). On préférera les champs \champ{year}, \champ{month}.	
-   	\item[language] Langue de l'œuvre. Le nom de la langue doit, idéalement, être mis comme indiqué dans la documentation de \package{polyglossia}\footcite{polyglossia}.					
-   	\item[location] Lieu de publication.  					
-   	\item[month] Mois de publication. Doit être un entier compris entre 1 et 12. 
-   	\item[number] Numéro d'un périodique ou numéro au sein d'une collection. 	
-   	\item[organization] Organisation à l'origine d'un manuel ou d'une page internet.	
-   	\item[origdate] Date de l'édition originale.						
-   	\item[origlanguage] Langue originelle. Le nom de la langue doit, idéalement, être mis comme indiqué dans la documentation de \package{polyglossia}\footcite{polyglossia}. 
-   	\item[origlocation] Lieu d'impression de l'édition originelle.		
-   	\item[origpublisher] Éditeur (commercial) de l'édition originelle.		
-	\item[pages] Pages de l'article ou de la partie du livre étudiée. 
-	\item[pagetotal] Nombre total de pages.
-   	\item[part] Pour les livres en plusieurs volumes \emph{physiques}, indique le numéro du volume physique.  Le numéro du volume \emph{logique} est à indiquer dans le champ \champ{volume}.
-   	\item[publisher] Éditeur commercial.					
-   	\item[pubstate] Pour les œuvres qui ne sont pas encore imprimées, indique le statut :
+	Número de edición si hay varias. Tiene que ser un entero o una
+        cadena de caracteres.
+      \item[eventdate] Fecha de un congreso para las entradas de tipo
+        \type{proceedings} e \type{inproceedings}.
+	\item[howpublished] Para las entradas de tipo \type{misc},
+          indica el modo de publicación.
+   	\item[institution] Institución en la que se ha producido la
+          obra. Normalmente, para las entradas de tipo \type{thesis}. 
+   	\item[issue] Detalle de un número específico de una revista
+          (por ejemplo, \enquote{número de verano}). Se han de
+          preferir los campos \champ{year}, \champ{month}.	
+   	\item[language] Lengua de la obra. Lo ideal es que el nombre
+          de la lengua se ponga tal como indica la documentación de
+          \package{polyglossia}\footcite{polyglossia}.
+   	\item[location] Lugar de publicación.  					
+   	\item[month] Mes de publicación. Debe ser un entero entre 1 y 12. 
+   	\item[number] Número de una revista o número dentro de una colección. 	
+   	\item[organization] Organización que promueve un manual o una
+          página de internet.	
+   	\item[origdate] Fecha de la edición original.						
+   	\item[origlanguage] Lengua original. Lo ideal que el nombre de
+          la lengua se ponga tal como se indica en la documentación de
+          \package{polyglossia}\footcite{polyglossia}.
+   	\item[origlocation] Lugar de impresión de la edición original.		
+   	\item[origpublisher] Editor (comercial) de la edición original.		
+	\item[pages] Páginas del artículo o de la parte del libro estudiada. 
+	\item[pagetotal] Número total de páginas.
+   	\item[part] Para los libros con varios volúmenes
+          \emph{físicos}, indica el número de volumen físico. El
+          número del volumen  \emph{lógico} hay que indicarlo en el campo \champ{volume}.
+   	\item[publisher] Editor comercial.					
+   	\item[pubstate] Para las obras que todavía no se han
+          imprimido, indica su estado:
 					\begin{description}
-						\item[inpress]œuvre sous presse.
-						\item[inpreparation]œuvre en préparation.
-						\item[submitted]œuvre soumise à évaluation.
+						\item[inpress]obra en imprenta.
+						\item[inpreparation]obra en preparación.
+						\item[submitted]obra sometida a evaluación.
 					\end{description}
 					
 					
-   	\item[type] Pour les entrées de type  \type{thesis}, \type{patent} et \type{report}, précise le type de travail.
+   	\item[type] Para las entradas de tipo  \type{thesis},
+          \type{patent} y \type{report}, precisa el tipo de trabajo.
 	
-	On peut y mettre une valeur personnelle, ou bien prendre l'une des valeurs prédéfinies. Dans ce cas la valeur est automatiquement traduite dans la langue du document.
+	Se puede poner un valor personal o bien tomar uno de los
+        valores predefinidos. En ese caso, el valor se traduce
+        automáticamente a la lengua del documento.
 	
-	 Pour les entrées de type \type{thesis}, deux possibilités :
+	 Para las entradas de tipo \type{thesis}, dos posibilidades:
 					\begin{description}
-						\item[mathesis]mémoire de master.
-						\item[phdthesis]thèse de doctorat.
+						\item[mathesis]memoria
+                                                  de fin de máster.
+						\item[phdthesis]tesis doctoral.
 					\end{description}
 					
-					 Pour les entrées de type \type{patent}, plusieurs  possibilités : 
+					Para las entradas de tipo
+                                        \type{patent}, varias posibilidades: 
 					 
 					 
 					 \begin{description}
-						\item[patentde] Brevet allemand.
-						\item[patenteu] Brevet européen.
-						\item[patentfr] Brevet français.
-						\item[patentuk] Brevet britannique.
-						\item[patentus] Brevet états-unien.
+						\item[patentde]
+                                                  Patente alemana.
+						\item[patenteu]
+                                                  Patente europea.
+						\item[patentfr]
+                                                  Patente francesa.
+						\item[patentuk]
+                                                  Patente británica.
+						\item[patentus]
+                                                  Patente estadounidense.
 						\item[etc.]
 					 \end{description}
 					
-					Pour les entrées de type \type{report} : \nopagebreak
+					Para las entradas de tipo \type{report}: \nopagebreak
 					\begin{description}
-						\item[techreport]rapport technique.
-						\item[resreport]rapport de recherche.
+						\item[techreport]informe
+                                                  téncnico.
+						\item[resreport]informe
+                                                  de investigación.
 					\end{description}
 					
-	\item[url] Url (adresse électronique) d'une publication en ligne. 
-   	\item[urldate] Date à laquelle une publication électronique a été consultée. 
-   	\item[venue] Lieu du colloque pour les entrées du type \type{proceedings} et \type{inproceedings}. 
-   	\item[version] Numéro de révision d'un manuel, d'un logiciel. 
-   	\item[volume] Volume dans une œuvre en plusieurs volumes. Volume d'une revue. 
-   	\item[volumes] Nombre de volumes dans une œuvres en plusieurs volumes. 
-   	\item[year] Année de publication. 				
+	\item[url] Url (dirección electrónica) de una publicación on line. 
+   	\item[urldate] Fecha de consulta de una publicación electrónica. 
+   	\item[venue] Lugar del congreso para las entradas de tipo \type{proceedings} e \type{inproceedings}. 
+   	\item[version] Número de revisión de un manual, de un programa. 
+   	\item[volume] Volumen en una obra en varios volúmenes. Volumen
+          de una revista. 
+   	\item[volumes] Número de volúmenes en una obra en varios volúmenes. 
+   	\item[year] Año de publicación. 				
 \end{choix}
 
 
-Évidemment il n'est pas nécessaire de remplir  systématiquement tous ces champs: le lecteur sait mieux que nous lesquels remplir en fonction de ses besoins. Certains champs peuvent contenir plusieurs valeurs, qu'il suffit de séparer par le mot-clef \forme{and}. Prenons un livre copublié par les éditions \forme{Labor et Fides} et \forme{Cerf} : pour indiquer les deux éditeurs, il faut mettre : \verb|publisher ={Labor et Fides and Cerf}|.
+Por supuesto, no hay que rellenar siempre de forma sistemática todos
+estos campos: el lector sabe mejor que nosotros cuáles rellenar en
+función de sus necesidades. Algunos campos pueden contener varios
+valores que basta separar con la palabra clave \forme{and}. Tomemos un
+libro copublicado por las ediciones \forme{Labor et Fides} y
+\forme{Cerf}: para indicar los dos editores, hay que escribir:
+\verb|publisher ={Labor et Fides and Cerf}|.
 
 
 \begin{attention}
-Pour les revues qui publient un même volume en plusieurs étape, il faut utiliser
+Para las revistas que publican un mismo volument en varias etapas, hay
+que utilizar:
 \begin{description}
-	\item[\champ{Volume}] pour la numérotation principale. Au sein d'un volume, la pagination commence normalement à~1.
-	\item[\champ{Number}] pour la numérotation secondaire. Au sein d'un numéro, la pagination commence là où elle s'était arrêtée au précédent numéro. Normalement, chaque nouveau volume réinitialise la valeur du champ \champ{number}.
+	\item[\champ{Volume}] para la numeración principal. Dentro de
+          un volumen, la paginación suele comenzar en~1.
+	\item[\champ{Number}] para la numeración secundaria. Dentro de
+          un número, la paginación comienza en el punto en que se ha
+          parado en el número anterior. Normalmente, cada nuevo
+          volumen reinicia el valor del campo \champ{number}.
 \end{description}
 
-Alors qu'un numéro n'a généralement pas de table des matières, un volume en a un, qui comprend tous les numéros du volume.
+Si un número no tiene generalmente índice de contenidos, un volumen
+tiene uno que comprende todos los números del volumen.
 
-Ainsi :
+Así:
 
 \inputminted{exemples/biblio/fichier/Gounelle2006.bib}
 
@@ -371,33 +493,51 @@ Ainsi :
 \end{quotation}
 \end{attention}
 
-\subsection{Les champs d'identification légale}
+\subsection{Los campos de identificación legal}
 
-Il peut être utile d'indiquer des informations comme l'ISBN, etc. Voici les champs possibles\footcite[Par défaut, \package{biblatex} imprime ces champs s'ils sont remplis. Il est toutefois possible de ne pas les afficher en passant l'option \option{isbn=false} au chargement du package, voir:][]{biblatex_isbn}.  Le lecteur curieux trouvera aisément des informations sur leurs significations.
+Puede resultar útil indicar informaciones como el ISBN, etc. Veamos
+los campos posibles\footcite[Por defecto, \package{biblatex} imprime
+estos campo si se rellenan. Pero siempre se puede impedir que que se
+vean, pasando la opción \option{isbn=false} cuando se carga el
+package, véase:][]{biblatex_isbn}.  El lector curioso puede encontrar
+fácilmente información sobre su significado.
 
 \begin{choix}
-	\item[eid] Identifiant électronique d'une entrée de type \type{article}. 
-   	\item[isan] \emph{\textenglish{International Standard Audiovisual Number}}, pour les entrées de type audiovisuel.
-   	\item[isbn] \emph{\textenglish{International Standard Book Number}}, pour les livres. 
-   	\item[ismn] \emph{\textenglish{International Standard Music Number}}, pour les musiques imprimées, comme par exemple les partitions. 
-   	\item[isrn] \emph{\textenglish{International Standard Technical Report Number}}, pour les rapports techniques. 
-   	\item[issn] \emph{\textenglish{International Standard Serial Number}}, pour les numéros de revues. 
-   	\item[iswc] \emph{\textenglish{International Standard Work Code}} pour les œuvres musicales.
+	\item[eid] Identificador electrónico de una entrada de tipo \type{article}. 
+   	\item[isan] \emph{\textenglish{International Standard
+              Audiovisual Number}}, para las entradas de tipo audiovisual.
+   	\item[isbn] \emph{\textenglish{International Standard Book
+              Number}}, para los libros. 
+   	\item[ismn] \emph{\textenglish{International Standard Music
+              Number}}, para la música impresa, como, por ejemplo, las
+          partituras. 
+   	\item[isrn] \emph{\textenglish{International Standard
+              Technical Report Number}}, para los informes técnicos. 
+   	\item[issn] \emph{\textenglish{International Standard Serial
+              Number}}, para los números de revistas. 
+   	\item[iswc] \emph{\textenglish{International Standard Work
+              Code}} para las obras musicales.
 \end{choix}
 
-\subsection{Champs d'annotations}
+\subsection{Campos de notas}
 
-Par défaut ces champs ne sont pas imprimés. 
+Por defecto estos campos no se imprimen. 
 
 \begin{choix}
-	\item[abstract] Résumé de l'œuvre. 
-   	\item[annotation] Annotation sur l'œuvre.
-   	\item[file] Adresse d'une version informatique locale du travail. 
-   	\item[library] Annotation sur la disponibilité en bibliothèque, par exemple  le nom de la bibliothèque et la cotation.
+	\item[abstract] Resumen de la obra. 
+   	\item[annotation] Nota sobre la obra.
+   	\item[file] Dirección de una versión informática local del trabajo. 
+   	\item[library] Nota sobre la disponibilidad en una biblioteca,
+          por ejemplo, el nombre de la biblioteca y la signatura.
 \end{choix}
 
 \begin{plusloins}
-Il peut être intéressant de produire ainsi une bibliographie commentée. L'auteur de ces lignes a publié sur son site une méthode pour cela\footcite{biblio_commentee}. Nous conseillons toutefois, avant de mettre en œuvre cette méthode, de lire les quelques chapitres qui vont suivre.
+Puede resultar interesante producir de esta forma una biliografía
+comentada. El autor de estas líneas ha publicado en su página web un
+método para hacerlo\footcite{biblio_commentee}. Sin embargo, antes de
+ponerse manos a la obra con este método, recomendamos leer los
+capítulos que vienen a continuación.
 \end{plusloins}
 
-Il existe d'autres champs : si le cœur vous en dit, vous pouvez toujours consulter le manuel de \package{biblatex}\footcite{biblatex_champs}.
+Hay otros campos: si el corazón te impulsa a ello, siempre puedes
+consultar el manual de \package{biblatex}\footcite{biblatex_champs}.
