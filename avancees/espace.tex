@@ -1,89 +1,89 @@
-\chapter{Éléments de mise en page}\label{espacement}
+\chapter{Elementos de diseño de página}\label{espacement}
 
 \begin{intro}
-Dans ce chapitre, nous allons voir quelques commandes permettant de modifier la mise en page.
-Rappelons qu'il ne faut normalement pas utiliser ces commandes telles quelles, mais les imbriquer dans des commandes de mise en sens\renvoi{sensforme}.
+En este capítulo, vamos a abordar algunos comandos que permiten modificar el diseño de página.
+Recordemos que, normalmente, no hay que utilizar estos comandos tal cual, sino imbricarlos en comandos para dar sentido\renvoi{sensforme}.
 
-Il ne s'agit ici que d'une très courte introduction : d'autres ouvrages en parlent mieux que nous\footcites(En particulier)(){frama}{latex_graphic_companion}.
-En ce qui concerne les unités de longueurs, nous renvoyons à l'annexe~\ref{unite}\renvoi{unite}.
+Aquí solo se trata de una introducción muy breve: otras obras hablan de ello mejor que nosotros\footcites(En particular)(){frama}{latex_graphic_companion}.
+En lo que respecta a las unidades de longitudes, remitimos al anexo~\ref{unite}\renvoi{unite}.
 \end{intro}
 
-\section{Espacements}\label{espace}
+\section{Espacios}\label{espace}
 
-On peut produire un espace horizontal via \csp{hspace}\marg{longueur}. Si on utilise \csp{hspace*}, la fin de ligne n'arrête pas l'espace.
+Se puede producir un espacio horizontal mediante \csp{hspace}\marg{longitud}. Si utilizamos \csp{hspace*}, el final de línea no detiene el espacio.
 
-Un espace vertical se produit par \csp{vspace}\marg{longueur}. Si on utilise \csp{vspace*}, le changement de page n'affecte pas  l'espace, qui continue sur la page suivante. Toutefois, nous avons pu constater qu'une telle commande pose parfois des problèmes pour la mise en page du paragraphe qui la précède.
+Un espacio vertical se produce con \csp{vspace}\marg{longitud}. Si utilizamos \csp{vspace*}, el cambio de página no afecta al espacio, que continúa en la página siguiente. Sin embargo, hemos podido constatar que un comando así plantea en ocasiones problemas para el diseño del párrafo que lo precede.
 
 
 
-\section{Longueurs de mise en page}
+\section{Longitudes de diseño de página}
 
-Pour redéfinir des paramètres tels que l'espacement vertical entre deux paragraphes ou l'indentation initiale d'un paragraphe, il ne faut pas utiliser les commandes d'espacement, mais tout simplement redéfinir les longueurs de \LaTeX.
+Para redefinir parámetros como el espacio vertical entre dos párrafos o el sangrado inicial de un párrafo, no hay que utilizar los comandos de espaciado, sino sencillamente redefinir las longitudes de \LaTeX.
 
-Nous avons vu que pour l'interligne, il valait mieux utiliser le package \package{setspace}\renvoi{interligne}. Il nous reste donc deux longueurs : l'indentation initiale du paragraphe et l'espace entre les paragraphes. Ces longueurs sont \cs{parindent} et \cs{parskip}.
+Hemos visto que para el interlineado era mejor utilizar el package \package{setspace}\renvoi{interligne}. Nos quedan, por tanto, dos longitudes: el sangrado inicial del párrafo y el espacio entre los párrafos. Estas longitudes son \cs{parindent} y \cs{parskip}.
 
-Pour les redéfinir, on utilise \csp{setlength}\marg{longueur}\marg{valeur}. Par exemple, pour redéfinir la longueur de l'indentation à 3 cadratins :\label{setlength}
+Para redefinirlas, se utiliza \csp{setlength}\marg{longitud}\marg{valor}. Por ejemplo, para redefinir la longitud del sangrado a 3 cuadratines:\label{setlength}
 
 \begin{latexcode}
 \setlength{\parindent}{3ex}
 \end{latexcode}
 
-Il existe aussi \csp{addtolength}\marg{longueur}\marg{valeur} qui ajoute \arg{valeur} à la longueur déjà existante.
+También tenemos \csp{addtolength}\marg{longitud}\marg{valor} que añade \arg{valor} a la longitud ya existente.
 
-Ainsi pour ajouter 1 pt à l'espacement entre deux paragraphes :
+Así, para añadir 1 pt al espacio entre dos párrafos:
 
 \begin{latexcode}
 \addtolength{\parskip}{1pt}
 \end{latexcode}
 
-Ces redéfinitions doivent se pratiquer \emph{après} le préambule, car elles ne s'appliquent qu'au groupe logique où elles surviennent, un groupe logique correspondant soit à un environnement, soit à un espace délimité par une paire d'accolades.
+Estas redefiniciones hay que practicarlas \emph{después} del preámbulo, pues solo se aplican al grupo lógico en que aparecen, un grupo lógico que se corresponde a un entorno o a un espacio delimitado por llaves.
 
 \begin{plusloins}
-On peut supprimer l'indentation d'un paragraphe précis en le commençant par la commande \csp{noindent}.
+Podemos suprimir el sangrado de un párrafo determinado si lo iniciamos con el comando \csp{noindent}.
 \end{plusloins}
 
-\section{Marges}
+\section{Márgenes}
 
-Bien qu'il ne soit pas conseillé de le faire, on peut redéfinir les marges avec le package \package{geometry}. Lors du chargement du package, on dispose des options suivantes :
+Aunque no es recomendable hacerlo, se pueden redefinir los márgenes con el package \package{geometry}. Al cargar el package, tenemos las opciones siguientes:
 \begin{description}
-\item[lmargin]pour la marge gauche sur une impression une face, pour la marge intérieure sur une impression deux faces.
-\item[rmargin]pour la marge droite sur une impression une face, pour la marge extérieure sur une impression deux faces.
-\item[tmargin]pour la marge du haut.
-\item[bmargin]pour la marge du bas.
+\item[lmargin]para el margen izquierdo en una impresión a una cara, para el margen interior en una impresión a doble cara.
+\item[rmargin]para el margen derecho en una impresión a una cara, para el margen exterior en una impresión a doble cara.
+\item[tmargin]para el margen superior.
+\item[bmargin]para el margen inferior.
 \end{description}
 
-Ainsi pour une impression avec seulement 1 cm de marge --- ce qui n'est pas à conseiller, si ce n'est pour un brouillon --- on peut charger ainsi le package :
+Así, par una impresión con solo un cm de márgen --- cosa que no es aconsejable, a no ser para un borrador --- podemos cargar de este modo el package :
 
 \begin{latexcode}
 \usepackage[lmargin=1cm,rmargin=1cm,tmargin=1cm,bmargin=1cm]{geometry}
 \end{latexcode}
 
-On peut aussi modifier temporairement les réglages, pour une ou plusieurs pages, \emph{via} la commande \csp{newgeometry}\marg{reglages}. On restaure ensuite les réglages initiaux  avec la commande \csp{restoregeometry}.
+También podemos modificar temporalmente las medidas para una o varias páginas, mediante el comando \csp{newgeometry}\marg{medidas}. Luego restauramos las medidas iniciales con el comando \csp{restoregeometry}.
 
-Par exemple pour avoir une page sans marge, on écrit :
+Por ejemplo, para tener una página sin marge, escribimos:
 
 \begin{latexcode}
 \newgeometry{lmargin=0cm,rmargin=0cm,tmargin=0cm,bmargin=0cm}
-Une page avec une marge nulle.
+Una página sin margen.
 \newpage
 \restoregeometry
 \end{latexcode}
 
-Le package \package{geometry} possède de nombreuses autres fonctionnalités : nous renvoyons à sa documentation\footcite{geometry}.
+El package \package{geometry} tiene muchas otras funcionalidades: remitimos a su documentación\footcite{geometry}.
 
 \begin{attention}
-Si vous utilisez \package{geometry} et les notes de marge produites via \cs{marginpar}, vous pouvez constater que les pages de gauches (paires) n'affichent pas les notes. Le problème vient du fait que \package{geometry} redéfinit un certain nombre de longueurs. Pour afficher correctement les notes, il vous faut modifier la longueur \csp{marginparwidth}, en lui affectant la même valeur que \csp{leftmargin}.
+Si utilizas \package{geometry} y las notas al margen producidas mediante \cs{marginpar}, puedes ver que las páginas de la izquierda (pares) no muestran las notas. El problema surge del hecho de que \package{geometry} redefine cierto número de longitudes. Para que aparezcan correctamente las notas, tienes que modificar la longitud \csp{marginparwidth}, asignándole el mismo valor que \csp{leftmargin}.
 
 \begin{latexcode}
 \setlength{\marginparwidth}{\leftmargin}
 \end{latexcode}
 \end{attention}
 
-\section{Textes en retrait}
+\section{Textos sangrados}
 
-On peut souhaiter avoir un environnement qui produit du texte en retrait, semblable à l'environnement \enviro{quotation}, comme un environnement \enviro{exemple} avec un retrait gauche de 3~em et un retrait droit de 1em.
+Puede que queramos tener un entorno que produzca un texto sangrado, semejante al entorno \enviro{quotation}, como un entorno \enviro{ejemplo} con un sangrado izquierdo de 3~em y un sangrado derecho de 1em.
 
-Si nous fouillons dans le fichier\renvoi{trouverfichier} \fichier{book.cls}, nous trouvons que l'environnement quotation est défini de la manière suivante\footnote{Ligne 486, au 19 septembre 2011.} :
+Si echamos un vistazo al fichero\renvoi{trouverfichier} \fichier{book.cls}, vemos que el entorno quitation se define de la siguiente manera\footnote{Línea 486, el 19 de septiembre de 2011.}:
 
 \begin{latexcode}
 \newenvironment{quotation}
@@ -95,25 +95,25 @@ Si nous fouillons dans le fichier\renvoi{trouverfichier} \fichier{book.cls}, nou
                {\endlist}
 \end{latexcode}
 
-Que nous pouvons analyser ainsi:
+Que podemos analizar así:
 \begin{description}
-\item[ligne 2 à 5] code exécuté en début d'environnement.
-\item[ligne 7] code exécuté en fin d'environnement. Nous fermons un environnement de type \enviro{list} --- bien qu'effectivement, il ne s'agisse pas d'une liste !
-\item[ligne 2] la commande \csp{list}\marg{itemdefaut}\marg{réglages typographiques} ouvre un environnement \enviro{list}. Le premier argument correspond à ce qu'affiche  la commande \cs{item} en l'absence d'argument optionnel. Comme dans \enviro{quotation} on n'utilise pas \cs{item}, ce premier argument est nul. Le second argument contient des commandes réglant la mise en forme. La première, \csp{listparindent}, indique l'indentation des paragraphes à l'intérieur de la liste : ici 1,5~em.
-\item[ligne 3] la seconde commande, \csp{itemindent}, indique l'indentation du premier élément de chaque \cs{item}: ici \csp{itemindent} se voit attribuer la valeur de \csp{listparindent}.
-\item[ligne 4] la marge de droite de notre liste (\csp{rightmargin}) se voit attribuer la même valeur que la marge de gauche (\csp{leftmargin}). Cette valeur a été définie auparavant dans le fichier \fichier{book.cls}.
-\item[ligne 5]la longueur séparant deux paragraphes à l'intérieur de la liste (\csp{parsep}) est fixée à 0~pt (\cs{z@}), mais peut s'étendre (\cs{@plus}) jusqu'à 1~pt (\cs{p@})\renvoi{elastique}. Le second argument de la commande \cs{list} finit ici.
-\item[ligne 7]une liste ne peut pas fonctionner sans commande \cs{item}. C'est pourquoi cette commande est appelée ici. Pour éviter des ennuis, on indique que le texte de cet \cs{item} est nul, grâce à la commande \csp{relax}, qui est une commande servant à ne rien faire alors même que \TeX attend un contenu.
+\item[líneas 2 a 5] código que se ejecuta el comienzo del entorno.
+\item[línea 7] código que se ejecuta al final del entorno. Cerramos un entorno de tipo \enviro{list} --- aunque, efectivamente, ¡no se trata de una lista!
+\item[línea 2] el comando \csp{list}\marg{itemdefaut}\marg{medidas tipográficas} abre un entorno \enviro{list}. El primer argumento corresponde a lo que muestra el comando \cs{item} en ausencia de argumento optativo. Como en \enviro{quotation} no se utiliza \cs{item}, este primer argumento es nulo. El segundo argumento contiene comandos que definen el diseño. El primero, \csp{listparindent}, indica el sangrado de los párrafos en el interior de la lista: aquí 1,5~em.
+\item[línea 3] el segundo comando, \csp{itemindent}, indica el sangrado del primer elemento de cada \cs{item}: aquí a \csp{itemindent} se le asigna el valor de \csp{listparindent}.
+\item[línea 4] al margen derecho de nuestra lista (\csp{rightmargin}) se le asigna el mismo valor que al margen izquierdo (\csp{leftmargin}). Este valor se ha definido antes en el fichero \fichier{book.cls}.
+\item[línea 5]la longitud que separa dos párrafos en el interior de la lista (\csp{parsep}) se fija a 0~pt (\cs{z@}), pero puede extenderse (\cs{@plus}) hasta 1~pt (\cs{p@})\renvoi{elastique}. El segundo argumento del comando \cs{list} acaba aquí.
+\item[línea 7]una lista no puede funcionar sin comando \cs{item}. Por eso se invoca aquí este comando. Para evitar problemas, se indica que el texto de este \cs{item} es nulo, gracias al comando \csp{relax}, que es un comando para no hacer nada mientras \TeX espera un contenido.
 \end{description}
 
-Maintenant, nous voulons notre environnement \enviro{exemple}, avec :
+Ahora, queremos nuestro entorno \enviro{ejemplo}, con:
 \begin{itemize}
-\item Une marge gauche plus forte, de 3 cadratin (3~em).
-\item Une marge droite de 1 cadratin (1~em).
-\item Un texte en italique.
+\item Un margen izquierdo mayor, de 3 cuadratines (3~em).
+\item Un margen derecho de un cuadratín (1~em).
+\item Un texto en itálica.
 \end{itemize}
 
-Nous allons pour cela insérer dans le deuxième argument de la commande \cs{list} les lignes suivantes :
+Para ello, incluiremos en el segundo argumento del comanto \cs{list} las líneas siguientes:
 
 \begin{latexcode}
 \leftmargin 3em
@@ -121,7 +121,7 @@ Nous allons pour cela insérer dans le deuxième argument de la commande \cs{lis
 \itshape
 \end{latexcode}
 
-Ce qui nous donne au final :
+Lo que nos da al final:
 
 \begin{latexcode}
 \makeatletter
@@ -138,34 +138,34 @@ Ce qui nous donne au final :
 \end{latexcode}
 
 \begin{plusloins}
-Pour des textes encadrés ou sur fond coloré, on pourra utiliser le package \package{mdframed} et~/~ou le package \package{fancybox}\footcite[On peut également consulter, si on aime les défis de codage en \TeX~/~\LaTeX,][]{frama_boites}.
+Para textos enmarcados o con fondo coloreado, podemos utilizar el package \package{mdframed} y~/~o el package \package{fancybox}\footcite[También podemos consultar, si nos gustan los rétos del código en \TeX~/~\LaTeX,][]{frama_boites}.
 \end{plusloins}
 
-\section{Trait horizontal}\label{filets}
+\section{Raya horizontal}\label{filets}
 
-Un trait horizontal se trace grâce à \csp{rule}\oarg{profondeur}\marg{longueur}\marg{épais\-seur}, où \arg{profondeur} correspond à l'écart entre le trait et le bas de la ligne de texte.
+Una raya horizontal se trada mediante \csp{rule}\oarg{profundidad}\marg{longitud}\marg{épais\-seur}, donde \arg{profundidad} corresponde a la distancia entre el trazo y la parte inferior de la línea de texto.
 
-On peut aussi utiliser les commandes \csp{hrulefill} et \csp{dotfill} qui permettent de tracer respectivement des lignes et des points, en \enquote{comprimant} le texte qui suit, c'est-à-dire en étirant au maximum la longueur de la ligne ou de la suite de points. On dispose également de la commande \csp{hfill}\label{hfill} qui permet de comprimer le texte qui suit en le faisant précéder d'espaces.
+También se pueden usar los comandos \csp{hrulefill} y \csp{dotfill} que permiten trazar, respectivamente, líneas y puntos, \enquote{comprimiendo} el texto que va detrás, es decir, estirando al máximo la longitud de la línea o de la secuencia de puntos. También disponemos del comando \csp{hfill}\label{hfill} que permite comprimir el texto que va detrás incluyendo espacios delante.
 
-Exemple :
+Ejemplo:
 
 \begin{latexcode}
-\hfill Du texte comprimé.
+\hfill Del texto comprimido.
 
-\hrulefill Du texte comprimé.
+\hrulefill Del texto comprimido.
 
-\dotfill Du texte comprimé.
+\dotfill Del texto comprimido.
 \end{latexcode}
 
 \begin{quotation}
-\hfill Du texte comprimé.
+\hfill Del texto comprimido.
 
-\hrulefill Du texte comprimé.
+\hrulefill Del texto comprimido.
 
-\dotfill Du texte comprimé.
+\dotfill Del texto comprimido.
 \end{quotation}
 
-Pour des traits plus complexes, par exemple en diagonale ou en pointillés, on se reportera au package \package{eepic}\footcite{eepic} ou, selon le cas, à \package{TikZ}\footcite{tikz}.
+Para trazos más complejos, por ejemplo, en diagonal o punteados, acudiremos al package \package{eepic}\footcite{eepic} o, según el caso, a \package{TikZ}\footcite{tikz}.
 
 
 
