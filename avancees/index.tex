@@ -1,46 +1,43 @@
-\chapter{Formater son index}\label{styleindex}
+\chapter{Formatear el índice}\label{styleindex}
 
 \begin{intro}
-La mise en forme par défaut de l'index n'est pas très satisfaisante. On peut heureusement la modifier pour rendre l'index plus lisible.
+El diseño por defecto del índice no es muy satisfactorio. Por suerte, podemos modificar el índice para hacerlo más legible.
 \end{intro}
 
 \section{Comment faire}
-Les commandes pour formater l'index sont à placer dans un fichier \fichier{monstyle.ist} que vous devez créer vous-même.
+Los comandos para formatear el índice hay que ponerlos en un fichero \fichier{miestilo.ist} que debes crear tú mismo.
 
 \begin{attention}
-Pensez à placer ce fichier à un endroit où \LaTeX peut le trouver, par exemple à côté du fichier principal.
+Tienes que colocar este fichero en un lugar en el que \LaTeX lo pueda encontrar, por ejemplo, al lado del fichero principal.
 \end{attention}
 
-Sans le package \package{imakedix}, il fallait compiler en ligne de commande\renvoi{terminal}, selon cette syntaxe :
+Sin el package \package{imakedix}, había que compilar en la línea de comandos\renvoi{terminal}, de acuerdo con esta sintaxis:
 
 \begin{bashcode}
-makeindex -s monstyle.ist monfichier.idx
+makeindex -s miestilo.ist mifichero.idx
 \end{bashcode}
 
-Il faut encore procéder ainsi lorsque vous passez l'option \option{noautomatic} à la commande \cs{makeindex} pour un index particulier, comme par exemple pour celui des sources primaires\renvoi{noautomatic}.
+Todavía hay que acerlo así cuando pasamos la opción \option{noautomatic} al comando \cs{makeindex} para un índice determinado, como, por ejemplo, para el de las fuentes primarias\renvoi{noautomatic}.
 
-L'option -s indiquait  à Makeindex  qu'il devait utiliser le fichier de style \fichier{monstyle.ist}.
+La opción -s indicaba a Makeindex  que debía utilizar el fichero de estilo \fichier{miestilo.ist}.
 
-En revanche, si vous ne passez pas l'option \option{noautomatic} à  \cs{makeindex}, il vous faut passer  l'option \option{options=-s  monstyle.ist}  à la commande \cs{makeindex} :
+Al contrario, si no pasas la opción \option{noautomatic} a  \cs{makeindex}, debes pasar la opción \option{options=-s  miestilo.ist}  al comando\cs{makeindex}:
 
 \begin{latexcode}
-\makeindex[options=-s  monstyle.ist]
+\makeindex[options=-s  miestilo.ist]
 \end{latexcode}
 
+\section{Algunos comandos}
 
-
-
-\section{Quelques commandes}
-
-Nous allons donner ici quelques exemples de commandes qu'il est possible de mettre dans son fichier \fichier{monstyle.ist}. 
+Vamos a dar aquí algunos ejemplos de comandos que podemos incluir en nuestro fichero \fichier{miestilo.ist}. 
 
 \begin{attention}
-Dans le fichier de styles \ext{ist}, on n'écrit pas en \LaTeX{} mais en \TeX . Les commandes sont ainsi encadrées par des guillemets anglais \verb|"|. La barre contre-oblique, quant à elle, n'est prise en compte que si elle est précédée d'une autre contre-oblique.
+En el fichero de estilos \ext{ist}, no se escribe en \LaTeX{} sino en \TeX . Los comandos se encierran así entre comillas inglesas \verb|"|. En lo que respecta a la barra invertida, solo se tiene en cuenta si va precedida de otra barra invertida.
 \end{attention}
 
-Le manuel de la commande MakeIndex\footnote{Que l'on peut lire en frappant dans le terminal\renvoi{terminal} {\ttfamily man makeindex} et que l'on peut quitter en frappant la lettre  {\ttfamily q}, ou, si l'on utilise Windows, que l'on peut consulter à cette adresse \url{http://www.fiveanddime.net/man-pages/makeindex.1.html}.} nous indique que, pour modifier ce qui est inséré entre le premier niveau d'item (l'entrée) --- ou niveau 0 --- et le ou les numéros de page, on utilise l'option \verb|delim_0| ; de même, pour définir ce qui est inséré entre le deuxième niveau d'item (la sous-entrée) --- ou niveau 1, et les numéros, on utilise l'option \verb+delim_1+, et l'option \verb|delim_2| pour les sous-sous-entrées --- ou niveau 2 d'itemisation. Le choix par défaut est une virgule suivie d'un blanc : \verb|", "|
+El manual de comandos de MakeIndex\footnote{Que se puede leer tecleando en la terminal\renvoi{terminal} {\ttfamily man makeindex} y que se puede abandonar pulsando la letra  {\ttfamily q}, o, si utilizamos Windows, se puede consultar en esta dirección \url{http://www.fiveanddime.net/man-pages/makeindex.1.html}.} nos indica que, para modificar lo que se incluye entre el primer nivel de item (la entrada) --- o nivel 0 --- y el o los números de página, se emplea la opción \verb|delim_0|; de la misma manera, para definir lo que se incluye entre el segundo nivel de item (la subentrada) --- o nivel 1, y los números, se emplea la opción \verb+delim_1+, y la opción \verb|delim_2| para las subsubentradas --- o nivel 2 de itemización. La elección por defecto es una coma seguida de un espacio en blanco: \verb|", "|
 
-Ainsi, si nous désirons que le numéro de la page soit justifié à droite, et non simplement séparé de l'entrée par une virgule et un blanc, nous devons utiliser la commande \csp{hfill}\renvoi{hfill} que nous indiquons dans notre fichier de style par les lignes suivantes:
+Así, si queremos que el número de la página esté justificado a la derecha y no simplemente saparado de la entrada por una coma y un espacio en blanco, tenemos que utilizar el comando \csp{hfill}\renvoi{hfill} cosa que indicamos en nuestro fichero de estilo con las líneas siguientes:
 
 \begin{latexcode}
 delim_0 "\\hfill "
@@ -48,55 +45,55 @@ delim_1 "\\hfill "
 delim_2 "\\hfill "
 \end{latexcode}
 
-Nous obtenons donc: 
+Con lo que obtenemos: 
 
 \begin{quotation}
 
-\noindent Adrien\hfill 5 \\
+\noindent Adriano\hfill 5 \\
 \\
-Charlemagne \hfill 5 \\
+Carlomagno \hfill 5 \\
 \\
-Ducs \\
-\hspace*{1em} Tassilon \hfill 5\\
+Duques \\
+\hspace*{1em} Tasilón \hfill 5\\
 \\
-Évêques \\
-\hspace*{1em} Damase \hfill 5\\
-\hspace*{1em} Formose \hfill  5
+Obispos \\
+\hspace*{1em} Dámaso \hfill 5\\
+\hspace*{1em} Formoso \hfill  5
 \end{quotation}
 
-Si nous préférons une ligne de points, il faut remplacer \verb|"|\textbackslash\cs{hfill}\verb| "| par \verb|"|\textbackslash\cs{dotfill}\verb| "|.
+Si preferimos una línea de puntos, tenemos que sustituir \verb|"|\textbackslash\cs{hfill}\verb| "| por \verb|"|\textbackslash\cs{dotfill}\verb| "|.
 
 \begin{attention}
-Les espaces situées entre les commandes et les deuxièmes guillemets fermants sont indispensables. En effet, en l'absence de ces espaces, MakeIndex accole, dans le fichier \ext{ind} généré, les commandes aux numéros de page, ce qui bloque alors  la   compilation, puisque \LaTeX{} se retrouve alors face à des commandes inconnues, du style \csp{hfill1}.
+Los espacios ubicados entre los comandos y las segundas comillas de cierre son indispensables. En efecto,si no incluimos estos espacios, MakeIndex une, en el fichero \ext{ind} generado, los comandos a los números de página, lo que bloquea entonces la complilación, ya que \LaTeX{} se encuentra en ese momento con comandos desconocidos del tipo \csp{hfill1}.
 \end{attention}
 
-Si l'on continue la lecture du manuel, on apprend aussi comment faire apparaître \enquote{sq.}, ou ce que l'on veut, quand une même entrée est indexée dans trois pages ou plus à la suite. Il suffit d'indiquer \verb+suffix_3p "~sq."+
+Si continuamos la lectura del manual, también sabremos cómo hacer que aparezca \enquote{ss.}, o lo que queramos, cuando una misma entrada se indexa en tres o más páginas sucesivas. Basta con indicar \verb+suffix_3p "~ss."+
 
-Voyons maintenant comment l'on peut insérer les lettres de l'alphabet entre les groupes d'entrées. Cette manipulation permet de rendre plus lisible un index un peu long. 
+Veamos ahora cómo se pueden incluir las letras del alfabeto entre los grupos de entradas. Esta modificación permite hacer más legible un índice un poco largo. 
 
-Le manuel indique que l'option par défaut \verb+headings_flag 0+ ne met pas de séparateurs entre les groupes, que l'option \verb+headings_flag 1+ permet d'obtenir des lettres majuscules comme séparateur, et l'option  \verb+headings_flag -1+ des lettres minuscules.
+El manual indica que la opción por defecto \verb+headings_flag 0+ no incluye separadores entre los grupos, que la opción \verb+headings_flag 1+ permite obtener letras mayúsculas como separador y la opción  \verb+headings_flag -1+ letras minúsculas.
 
-Définissons ensuite la manière dont vont apparaître ces lettres. On utilise la commande \verb|heading_prefix|. Supposons que nous voulions faire apparaître ces lettres séparatrices en gras. N'oublions pas que l'on code en \TeX … Nous écrivons donc :
+Definamos a continuación la forma en que aparecerán estas letras. Utilizamos el comando \verb|heading_prefix|. Imaginemos que queremos hacer que estas letras de separación aparezcan en negrita. No olvidemos que hay que escribir el código en \TeX … Así que escribimos:
 
 \begin{latexcode}
 heading_prefix "{\\bfseries "
 \end{latexcode} 
 
-Si nous voulons qu'elles apparaissent en italique, nous écrivons \verb|"|\textbackslash\cs{itshape}\verb|"| (on utilise \cs{bfseries} et \csp{itshape}, qui sont des commandes \TeX, et non \cs{textbf} \cs{textit}).
+Si queremos que aparezcan en itálica, escribimos \verb|"|\textbackslash\cs{itshape}\verb|"| (utilizamos \cs{bfseries} e \csp{itshape}, que son comandos \TeX, y no \cs{textbf} \cs{textit}).
 
-Nous  pouvons de même changer la taille des lettres séparatrices en ajoutant \textbackslash\cs{large} ou \textbackslash\cs{Large}, et ainsi de suite. \renvoi{taille}
+Incluso podemos cambiar el tamaño de las letras de separación añadiendo \textbackslash\cs{large} o \textbackslash\cs{Large}, y así sucesivamente. \renvoi{taille}
 
-Mais nous avons ouvert une accolade… il nous faut la refermer:
+Pero hemos abierto una llave… tenemos que cerrarla:
 
 \begin{latexcode}
 heading_suffix " }\\nopagebreak\n " 
 \end{latexcode}
 
-\textbackslash\csp{nopagebreak} évite qu'une lettre-séparatrice se retrouve seule en fin de page. Le \verb|\n| est une petite coquetterie pour permettre d'avoir, dans notre fichier \ext{ind}, un retour à la ligne après \csp{nopagebreak}.
+\textbackslash\csp{nopagebreak} evita que una letra de separación se encuentre sola al final de páginal La \verb|\n| es una pequeña coquetería para permitirnos tener, en nuestro fichero \ext{ind}, un cambio de línea tras \csp{nopagebreak}.
 
 
 
-Ce n'est pas fini. Nos lettres sont actuellement justifiées à gauche, comme les entrées de l'index. Nous voudrions qu'elles soient centrées: 
+No hemos acabado. Nuestras letras están ahora justificadas a la izquierda, como las entradas del índice. Pero queremos que estén centradas: 
 
 \begin{latexcode}
 headings_flag 1
@@ -104,40 +101,40 @@ heading_prefix " {\\bfseries\\large\\hfill "
 heading_suffix " \\hfill}\\nopagebreak\n " 
 \end{latexcode}
 
-Les deux \textbackslash\csp{hfill} étirent, pour le premier, l'espace avant la lettre vers la droite, et pour le second l'espace suivant la lettre vers la gauche -- voilà nos lettres centrées.
+Los dos \textbackslash\csp{hfill} estiran, en el primer caso, el espacio que hay antes de la letra a la derecha y, en el segundo, el espacio que sigue a la letra a la izquierda -- y ya están nuestras letras centradas.
 
 \begin{quotation}
 \parindent=0pt
 \addtolength{\parskip}{\baselineskip}
-Adrien \hfill 5 
+Adriano \hfill 5 
 
 \noindent{\hfill\large{\textbf{C}}\hfill}
 
-Charlemagne \hfill 5 
+Carlomagno \hfill 5 
 
 {\hfill\large{\textbf{D}}\hfill}
 
-Ducs \\
-\hspace*{1em} Tassilon \hfill 5
+Duques \\
+\hspace*{1em} Tasilón \hfill 5
 
-{\hfill\large{\textbf{E}}\hfill}
+{\hfill\large{\textbf{O}}\hfill}
 
-Évêques \\
-\hspace*{1em} Damase \hfill 5\\
-\hspace*{1em} Formose \hfill  5
+Obispos \\
+\hspace*{1em} Dámaso \hfill 5\\
+\hspace*{1em} Formoso \hfill  5
 \end{quotation}
 
 
-Si nous préférons qu'elles soient simplement légèrement décalées vers la droite, nous pouvons utiliser, à la place de \textbackslash\cs{hfill}, \textbackslash\cs{hspace*}\verb|{1em}| qui rajoute à gauche un espace d'un cadratin\renvoi{unite}[espace].
+Si preferimos que estén simplemente un poco escalonadas a la derecha, podemos utilizar, en vez de \textbackslash\cs{hfill}, \textbackslash\cs{hspace*}\verb|{1em}| que añade a la izquierda un espacio de un cuadratín\renvoi{unite}[espace].
 
 
-Quand on a compris ce système, il est alors assez simple de formater à sa guise l'index. C'est pourquoi, pour les autres options, nous renvoyons ici à la lecture du manuel\footcite[On pourra aussi consulter][]{frama_index}. 
+Una vez comprendido este sistema, es bastante sencillo dar formato al índice como queramo. Por tanto, para las demás opciones, remitimos aquí a la lectura del manual\footcite[También se puede consultar][]{frama_index}. 
 
-Voici tout de même, à titre indicatif, le fichier final :
+Ponemos todo junto, a modo de ejemplo, el fichero final:
 
 \begin{latexcode}
 headings_flag 1
-suffix_3p "~sq."
+suffix_3p "~ss."
 heading_prefix " {\\bfseries\\large\\hfill " 
 heading_suffix " \\hfill}\\nopagebreak\n " 
 delim_0 "\\hfill "
