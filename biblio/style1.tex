@@ -1,20 +1,20 @@
-\chapter{Modifier les styles bibliographiques (1)}\label{style1}
+\chapter{Modificar los estilos bibliográficos (1)}\label{style1}
 
     \begin{intro}
     
-    Vous savez désormais utiliser les commandes de citation. Vous pourriez maintenant souhaiter modifier la manière dont les références s'affichent :  changer l'ordre des champs, les séparateurs, les textes du type \forme{dans}.
+   Ya sabes emplear los comandos para citar. Ahora quizá desees modificar la forma en que aparecen las referencias: cambiar el orden de los campos, los separadores, los textos de tipo \forme{en}.
     
-    Ces deux chapitres vous indiqueront les principes généraux pour faire ces modifications. Ils n'ont pas pour vocation de tout présenter sur le sujet, mais simplement les principes de base. On se reportera au manuel de \package{biblatex} pour aller plus loin.
+   Estos dos capítulos te indicarán los capítulos generales para hacer esas modificaciones. No tienen como finalidad presentar todo sobre el asunto, sino simplemente los principios básicos. Se remitirá al manual de \package{biblatex} para profundizar.
     
-    Le premier de ces chapitres vous présentera les techniques les plus simples, celles qui ne nécessitent pas d'aller fouiller dans les styles bibliographiques standards. 
+   El primero de estos capítulos te presentará las técnicas más sencillas que no requieren profundizar en los estilos bibliográficos estándar. 
     
     
     \end{intro}
     
     
-\section{Séparateurs d'unité de sens}\label{unitebiblio}
+\section{Separadores de unidad de sentido}\label{unitebiblio}
     
-Prenons un problème courant. Vous avez constaté que, par défaut, les différents champs d'une référence bibliographique\footnote{À l'exception de la date et de quelques autres champs.} sont séparés par des points. On obtient par exemple :
+Partamos de un problema frecuente. Has observado que, por defecto, los distintos campos de una referencia bibliográfica\footnote{Con excepción de la fecha y de algunos otros campos.} se separan con puntos. Tenemos, por ejemplo:
     
     \bibverbose
 
@@ -25,7 +25,7 @@ Prenons un problème courant. Vous avez constaté que, par défaut, les différe
     \cite{Urner1952}
     \end{quotation}
     
-alors que le règles françaises voudraient que l'on ait :
+mientras que las reglas españolas exigirían tener:
     
 \renewcommand{\newunitpunct}[0]{\addcomma\addspace} % on revient
     
@@ -35,37 +35,37 @@ alors que le règles françaises voudraient que l'on ait :
     
     \bibverbosetrad
 
-À l'intérieur d'une référence bibliographique, \package{biblatex} distingue des unités de sens\footnote{À vrai dire il existe des unités plus vastes, appelés blocs. Mais ces unités servent pour des réglages avancés de l'affichage de la bibliographie finale.}. Ici : l'auteur, le titre, l'adresse, l'éditeur, l'année. 
+Dentro de una referencia bibliog´rafica, \package{biblatex} distingue unidades de sentido\footnote{En realidad, hay unidades más amplias, llamadas bloques. Pero estas unidades sirven para configuraciones avanzadas de la presentación de la bibliografía final.}. Aquí: el autor, el título, el lugar de publicación, el editor y el año. 
 
-    Ces unités sont séparées par des signes de ponctuation. Les séparateurs sont définis par la commande \csp{newunitpunct}.\label{newunitpunct}
+    Estas unidades se separan con signos de puntuación. Los separadores los define el comando \csp{newunitpunct}.\label{newunitpunct}
     
-    Il suffit donc de redéfinir la commande en mettant dans le préambule\footnote{Cela n'est pas strictement nécessaire, mais c'est une bonne méthode que de mettre l'ensemble des commandes de personnalisation de style dans le préambule. Nous conseillons de les regrouper en un seul fichier, appelé dans le préambule.} : 
+   Así que basta con redefinir el comando incluyendo en el preámbulo\footnote{Esto no es estrictamente necesario, pero es un buen sistema incluir el conjunto de los comandos de personalización de estilo en el preámbulo. Recomendamos agruparlos en un solo fichero al que hay que llamar en el preámbulo.}: 
         
     \begin{latexcode}
 \renewcommand{\newunitpunct}[0]{, }
     \end{latexcode}
 
 \begin{plusloins}
-        Nous n'avons pas parlé jusqu'à présent de la commande \csp{renewcommand}. Celle-ci est identique à la commande \cs{newcommand} à la différence qu'elle permet de redéfinir une commande déjà existante.
+        No hemos hablado hasta ahora del comando \csp{renewcommand}. Es idéntico al comando \cs{newcommand} con la diferencia de que permite redefinir un comando que ya existe.
         \end{plusloins}
     
-    Cette solution semble fonctionner. Mais elle pose un problème : les styles définissent des unités de sens sans se poser la question de savoir si ces unités sont vides ou pas.
-    Prenons l'entrée suivante :
+    Esta solución parece funcionar. Pero plantea un problema: los estilos definen unidades de sentido sin plantearse la cuestión de saber si esas unidades están vacías o no.
+    Tomemos la entrada siguiente:
     
         
     \inputminted{exemples/biblio/style1/afrique.bib}
     
-    On obtient le résultat suivant :
+    Se obtiene el siguiente resultado:
     \renewcommand{\newunitpunct}[0]{, }
     \begin{quotation}
         \cite{BrefHippone}
     \end{quotation}
     \renewcommand{\newunitpunct}[0]{\addcomma\addspace}
     
-    La virgule entre les deux points et \emph{Concilia Africae} s'explique parce qu'une unité a été créée, unité qui doit contenir normalement la valeur du champ \champ{bookauthor}.
+    La coma entre los dos puntos y \emph{Concilia Africae} se explica porque se ha creado una unidad que normalmente tiene que contener el valor del campo \champ{bookauthor}.
     
-    Pour éviter ce problème, il  faut ne pas mettre directement dans la définition de la commande \cs{newunitpunct} les signes de ponctuation mais utiliser à la place les commandes de ponctuation\footcite[Listées dans][]{biblatex_ponctuation}. Ces commandes affichent en effet la ponctuation uniquement si l'unité qui précède a bien un contenu\footnote{Par ailleurs, elles suppriment les espaces multiples qui précèdent.}.\label{commandeponctuation}
-    Ainsi il faut mettre dans notre cas :
+    Para evitar este problema, no hay que poner directamente en la definición del comando \cs{newunitpunct} los signos de puntuación, sino utilizar en su lugar los comandos de puntuación \footcite[Enumerados en][]{biblatex_ponctuation}. Estos comandos presentan de hecho la puntuación sólo si la unidad precedente tiene un contenido\footnote{Además, suprimen los múltiples espacios que la preceden.}.\label{commandeponctuation}
+    Así, en nuestro caso, hay que poner:
     
     \begin{latexcode}
 \renewcommand{\newunitpunct}[0]{\addcomma\addspace}
@@ -73,25 +73,25 @@ alors que le règles françaises voudraient que l'on ait :
     
 
     
-\subsection{Un séparateur spécifique à deux unités}
+\subsection{Un separador específico para dos unidades}
     
-    On peut vouloir qu'entre deux unités spécifiques, par exemple entre le titre et le sous-titre, le séparateur ne soit pas le même qu'entre les autres unités.    Vous avez sans doute constaté que c'est d'ailleurs le cas pour le style \forme{verbose} : l'adresse et l'éditeur sont séparées par un deux-points.
+   Puede que queramos que entre dos unidades determinadas, por ejemplo, entre el título y el subtítulo, el separador no sea el mismo que entre el resto de unidades. Sin duda has observado que es el caso que se da para el estilo \forme{verbose}: el lugar de publicación y el editor están separados por dos puntos.
     
-    Deux cas existent :
+    Se dan dos casos:
         \begin{enumerate}
-            \item Le package \package{biblatex} a prévu une commande spécifique pour notre type d'unité. C'est le cas pour le séparateur avant le sous-titre\footcite[Ces commandes sont peu nombreuses : on les trouvera dans][]{biblatex_hooks}. Il suffit dans ce cas de redéfinir la commande. Nous souhaitons par exemple avoir un deux-points entre le titre et le sous-titre. Il nous suffit d'indiquer :
+            \item El package \package{biblatex} proporciona un comando específico para nuestro tipo de unidad. Es el caso para el separador que va ante el subtítulo\footcite[Estos comandos no son muy numerosos: aparecen en][]{biblatex_hooks}. En este caso, basta con redefinir el comando. Por ejemplo, queremos que aparezcan dos puntos entre el título y el subtítulo. Nos basta con indicar:
             
             \begin{latexcode}
 \renewcommand{\subtitlepunct}[0]{\addspace\addcolon\addspace}
             \end{latexcode}
 
             
-            \item Le package n'a pas prévu de commande spécifique pour notre type d'unité. Dans ce cas, le problème est plus complexe et nécessite des notions que nous n'avons pas encore abordées. C'est pourquoi nous renvoyons au  chapitre suivant\renvoi{unitepersonalisee}.
+            \item El package no ofrece un comando específico para nuestro tipo de unidad. En ese caso, el problema es más complejo y exige nociones que aún no hemos estudiado. Por esto remitimos al capítulo siguiente\renvoi{unitepersonalisee}.
         \end{enumerate}
         
-\section{Séparateur de références multiples}\label{multicitedelim}
+\section{Separador de referencias múltiples}\label{multicitedelim}
 
-Lorsque nous utilisons une commande de citation multiple\renvoi{citemultiple}, les séparateurs par défaut sont des points-virgules :
+Cuando empleamos un comando de cita múltiple\renvoi{citemultiple}, los separadores por defecto son el punto y coma:
 
 
 \begin{latexcode}
@@ -104,17 +104,17 @@ Lorsque nous utilisons une commande de citation multiple\renvoi{citemultiple}, l
 \end{quotation}
 \bibverbosetrad
 
-On peut là aussi modifier le séparateur en redéfinissant \csp{multicitedelim}. Par exemple pour avoir une virgule :
+Aquí también se puede modificar el separador redefiniendo \csp{multicitedelim}. Por ejemplo, para tener una coma:
 
 \begin{latexcode}
 \renewcommand{\multicitedelim}[0]{\addcomma\addspace}
 \end{latexcode}
 
 
-\section{Styles de certains blocs}
+\section{Estilos de algunos bloques}
 
-La ponctuation n'est pas le seul cas pour lequel  \package{biblatex} propose des outils pour faire des modifications spécifiques. Certaines parties des références bibliographiques ont également  la possibilité d'être configurées grâce à des commandes particulières\footcite{biblatex_hooks}. Prenons par exemple la particule d'un auteur.
-    
+La puntuación no es el único caso para el que \package{biblatex} ofrece herramientas para hacer cambios específicos. Algunas partes de las referencias bibliográficas también tienen la posibilidad de configurarse mediante comandos particulares\footcite{biblatex_hooks}. Tomemos, por ejemplo, la preposición de un autor.
+    %%%%%%
     \bibverbose
     \begin{quotation}
     \cite{BeauvoirSexe}
@@ -123,22 +123,21 @@ La ponctuation n'est pas le seul cas pour lequel  \package{biblatex} propose des
     \renewcommand{\mkbibnameprefix}[1]{\parentext{#1}}
 
 
-    
-Il est parfois d'usage de mettre la particule entre parenthèses. Il faut pour cela redéfinir la commande \csp{mkbibnameprefix}. Cette commande prend un argument, qui est la particule. Pour la mettre automatiquement entre parenthèses, il suffit ainsi d'écrire.
+A veces, se suele poner la partícula entre paréntesis. Para ello hay que redefinir el comando \csp{mkbibnameprefix}. Este comando recibe un argumento, que es la partícula. Para ponerla automáticamente entre paréntesis, basta con escribir lo siguiente:
     
     \begin{latexcode}
 \renewcommand{\mkbibnameprefix}[1]{(#1)}
     \end{latexcode}
 
     
-Voire pour être encore plus correct :
+O, para ser aún más correcto:
     
     \begin{latexcode}
 \renewcommand{\mkbibnameprefix}[1]{\parentext{#1}}
     \end{latexcode}
 
 
-La commande \csp{parentext} met entre parenthèses un texte passé en argument. On obtient le résultat souhaité : 
+El comando \csp{parentext} pone entre paréntesis un texto que se le pasa como argumento. Y obtenemos el resultado deseado: 
 
     \begin{quotation}
     \cite{BeauvoirSexe}
@@ -146,9 +145,9 @@ La commande \csp{parentext} met entre parenthèses un texte passé en argument. 
     
 \bibverbose
 
-\section{Chaînes de langue}\label{i18nchaines}
+\section{Cadenas de lengua}\label{i18nchaines}
     
-    Les chaînes de langue sont ces morceaux de texte figés mais qui dépendent de la langue utilisée. Prenons une entrée de type \type{article}. Lorsque nous la citons, nous obtenons:
+    Las cadenas de lengua son esos fragmentos de texto fijos, pero que dependen de la lengua empleada. Tomemos una entrada de tipo \type{article}. Cuando la citamos, obtenemos:
     
      
      
@@ -156,71 +155,72 @@ La commande \csp{parentext} met entre parenthèses un texte passé en argument. 
         \cite{Junod1992}
     \end{quotation}
     
-    La chaîne \forme{dans} sépare le titre de l'article et le nom de la revue. Si nous rédigions en anglais, nous aurions \forme{in} à la place.  
+    La cadena \forme{en} separa el título del artículo y el nombre de la revista. Si escribiéramos en inglés, obtendríamos \forme{in} en su lugar.  
     
     
-    Il peut  nous arriver de vouloir changer ces chaînes de langues, par exemple justement pour avoir la forme \forme{in}, terme latin souvent utilisé dans les bibliographies.  Une chaîne de langue associe à une clef invariable une valeur qui change selon la langue.
+   Puede ocurrir que queramos cambiar estas cadenas de lenguas, por ejemplo, precisamente para que tengan la forma \forme{in}, término latino empleado a menudo en las bibliografías. Una cadena de lengua asocia a una clave invariable un valor que cambia según la lengua.
+
     
-    Les styles bibliographiques possèdent des chaînes de langue par défaut, qu'il est possible de modifier au cas par cas. Pour cela, il nous faut avant tout connaître les clefs, en ouvrant le fichier de langue \fichier{french.lbx}. Pour repérer ce fichier, voir notre explication en annexe\renvoi{trouverfichier}.
+    Los estilos bibliográficos tienen cadenas de lengua por defecto que se pueden modificar caso por caso. Para ello, ante todo tenemos que conocer las claves, abriendo el fichero de lengua \fichier{spanish.lbx}. Para encontrar ese fichero, véase nuestra explicación en el anexo\renvoi{trouverfichier}.
     
-    Une fois ce fichier ouvert, repérons la ligne qui commence par :
+    Una vez abierto este fichero, buscaremos la línea que comienza con:
     
 \csp{DeclareBibliographyStrings}
 
     
-    Cette ligne est suivie d'autres, qui ont la forme :
+    A esta línea la siguen otras que tienen la forma:
     
     \begin{latexcode}
-clef    = {{chaîne longue}{chaîne courte}}
+clave    = {{cadena larga}{cadena corta}}
     \end{latexcode}
 
     
     \begin{plusloins}
-    Chaque chaîne de langue est disponible en version longue ou courte. On peut passer une option lors de l'appel au package \package{biblatex} pour décider d'utiliser les versions longues.
+    Cada cadena de lengua está disponible en versión larga o corta. Se puede pasar una opción si llamamos al package \package{biblatex} para decidir el uso de versiones largas.
     
     \begin{latexcode}
 \usepackage[abbreviate=false]{biblatex}
     \end{latexcode}
 
     
-     Toutefois quand on redéfinit une chaîne de langue, on ne lui attribue qu'une seule version.
+    Sin embargo, cuando se redefine una cadena de lengua, solo se le asigna una versión.
+
     
     \end{plusloins}
     
-    Il nous faut donc repérer la clef correspondant à notre chaîne \enquote{dans}. Très rapidement nous découvrons qu'il s'agit de la chaine \verb|in|.
+    Tenemos, por tanto, que encontrar la clave correspondiente a nuestra cadena \enquote{en}. Enseguida descubriremos que se trata de la cadena \verb|in|.
     
-    Une fois  notre clef repérée, il est facile de lui attribuer une nouvelle valeur, grâce à la commande \csp{DefineBibliographyStrings}\marg{langue}\marg{chaîne}, qu'il faut placer dans le préambule du fichier.
+   Una vez encontrada nuestra clave, es fácil asignarle un nuevo valor, gracias al comando \csp{DefineBibliographyStrings}\marg{lengua}\marg{cadena}, que hay que ubicar en el preámbulo del fichero.
     
     \begin{attention}
-    Il ne faut surtout pas modifier les fichiers standards : on perdrait les modifications à chaque mise à jour.
+    Sobre todo, no hay que modificar los ficheros estándar: perderíamos las modificaciones con cada actualización
     \end{attention}
     
     \begin{latexcode}
-\DefineBibliographyStrings{french}{%
+\DefineBibliographyStrings{spanish}{%
     in = {\emph{in}}%
 }
     \end{latexcode}
 
+    Se pueden utilizar comandos \LaTeX{} en una cadena de lengua. Si nuestra cadena contiene signos de puntuación, hay que usar los comandos de puntuación mencionados más arriba. Los \% al final de cada línea están ahí para evitar espacios inconvenientes\renvoi{commandepourcent}.
     
-    On peut utiliser dans une chaîne de langue des commandes \LaTeX. Si notre chaîne contient des signes de ponctuation, il faut utiliser les commandes de ponctuation mentionnées plus haut. Les \% à la fin de chaque ligne sont là pour éviter les espaces intempestifs\renvoi{commandepourcent}.
-    
-    Si nous souhaitons redéfinir plusieurs chaînes de langue, il nous faut séparer chaque définition par une virgule :
+    Si queremos redefinir varias cadenas de lengua, basta con separar cada definición con una coma:
     
     \begin{latexcode}
 \DefineBibliographyStrings{french}{%
-clef1 = {valeur1},%
-clef2 = {valeur2},%
-clefN = {valeurN}%
+clave1 = {valor1},%
+clave2 = {valor2},%
+claveN = {valorN}%
 }
     \end{latexcode}
 
 
 \begin{plusloins}
-On pourrait redéfinir les chaînes de langue consacrées aux abréviations universitaires de type \emph{op. cit.} pour les avoir en italique. 
+Podríamos redefinir las cadenas de lengua consagradas en las abreviaturas académicas del tipo \emph{op. cit.} para tenerlas en cursiva. 
 
-Il existe une solution plus simple\label{mkibid}. En effet, \package{biblatex} passe ces chaînes de langue dans une commande \csp{mkibidem}\marg{chaine} avant de les afficher.
+Hay una solución más sencilla\label{mkibid}. En efecto, \package{biblatex} pasa estas cadenas de lengua a un comando \csp{mkibidem}\marg{cadena} antes de mostrarlas.
 
-Il nous suffit donc de redéfinir cette commande :
+Por tanto, nos basta con redefinir este comando:
 
 \begin{latexcode}
 \renewcommand{\mkibid}[1]{\emph{#1}}
@@ -228,31 +228,30 @@ Il nous suffit donc de redéfinir cette commande :
 
 \end{plusloins}
 
-\subsection{Introduction aux tests conditionnels}\label{opcit}
+\subsection{Introducción a las pruebas condicionales}\label{opcit}
 
-Nous allons maintenant prendre un peu d'anticipation sur le prochain chapitre.
-Vous savez  que les styles de la famille \forme{verbose-trad} utilisent des abréviations latines comme \emph{op. cit.}
-Ces abréviations sont les abréviations universitaires courantes. Toutefois   \package{biblatex} utilise indistinctement \emph{op. cit.} pour toutes les sortes d'entrées, y compris pour les entrées de type \type{article}, alors qu'on pourrait s'attendre à une abréviation comme \emph{art. cit.}
+Ahora vamos a anticiparnos un poco al capítulo siguiente.
+Sabes que los estilos de la familia \forme{verbose-trad} emplean abreviaturas latinas como \emph{op. cit.}
+Estas abreviaturas son las abreviaturas académicas habituales. No obstante,   \package{biblatex} emplea indistintamente \emph{op. cit.} para todos los tipos de entradas, incluidas las entradas de tipo \type{article}, mientras que se podría esperar una abreviatura como\emph{art. cit.}
 
-Pour résoudre ce problème il suffit de redéfinir la chaîne de langue qui définit \emph{op. cit.}, en lui attribuant une valeur différente selon le type d'entrée.  On va donc utiliser l'un des nombreux tests conditionnels disponibles dans \package{biblatex}. 
-Il s'agit de la commande : \csp{iffieldequalstr}\marg{champ}\marg{texte}\marg{sioui}\marg{sinon}.
+Para resolver este problema, basta con redefinir la cadena de lengua que define \emph{op. cit.}, asignándole un valor diferente según el tipo de entrada.  Vamos a usar, por tanto, una de las numerosas pruebas condicionales disponibles en \package{biblatex}. 
+Se trata del comando: \csp{iffieldequalstr}\marg{campo}\marg{texto}\marg{si-sí}\marg{si-no}.
 
-Cette commande ne peut s'utiliser que dans certaines parties d'un fichier \LaTeX : dans les commandes de définition de styles bibliographiques et  dans celles de définition d'un chaîne de langue. 
-Elle vérifie que le champ \arg{champ}    de l'entrée bibliographique citée correspond à l'argument \arg{texte}: si c'est le cas, elle retourne l'argument \arg{sioui}, et sinon elle retourne l'argument \arg{sinon}.
+Este comando solo se puede emplear en ciertas partes de un fichero \LaTeX: en los comandos de definición de estilos bibliográficos y en los de definición de una cadena de lengua. 
+Verficia que el campo \arg{campo}  de la entrada bibliográfica citáda se corresponde con el argumento  \arg{texto}: si es así, devuelve el argumento \arg{si-sí}, y, en caso contrario, devuelve el argumento  \arg{si-no}.
 
-Ici nous testons le pseudo-champ\footnote{\forme{Pseudo} car il ne se situe pas réellement comme un champ dans l'entrée bibliographique.}\champ{entrytype}, qui correspond au type d'entrée sans le @. Nous vérifions  s'il s'agit d'une entrée de type article : si c'est le cas nous donnons à la chaîne de langue la valeur  \forme{art. cit.},  dans le cas contraire nous donnons la valeur \forme{op. cit.}.
-Au final cela donne : 
+Aquí probamos el pseudo-campo\footnote{\forme{Pseudo} pues no se sitúa realmente como un campo en la entrada bibliográfica.}\champ{entrytype}, que se corresponde al tipo de entrada sin la @. Comprobamos si se trata de una entrada de tipo artículo: si lo es, damos a la cadena de lengua el valor \forme{art. cit.},  y de lo contrario, le damos el valor \forme{op. cit.}.
+Al final, esto da: 
 
 \begin{latexcode}
-\DefineBibliographyStrings{french}{%
+\DefineBibliographyStrings{spanish}{%
     opcit = \iffieldequalstr{entrytype}{article}%
     {art\adddotspace cit\adddot}%
     {op\adddotspace cit\adddot}%
 }
 \end{latexcode}
 
-
-On remarquera l'utilisation des commandes de ponctuation\renvoi{commandeponctuation}, comme signalé plus haut.
+Obsérvese el uso de los comandos de puntuación\renvoi{commandeponctuation}, como se ha señalado más arriba.
 
 
 
