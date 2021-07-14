@@ -11,7 +11,7 @@ Cada elemento de una bibliografía se denomina \forme{entrada}. Una entrada bibl
 \begin{glossaire}
 \item[Un tipo]¿se trata de un artículo, de un libro, de las actas de un congreso?
 \item[Una clave única]que permite distinguir entre una entrada bibliográfica y otra. Es la que incorporas en tus ficheros \ext{tex} cuando quieres incluir una referencia bibliográfica.
-\item[Campos]que contienen indicaciones sobre la obra, como: autor, título, editor, etc. 
+\item[Campos]que contienen indicaciones sobre la obra, como: autor, título, editor, etc.
 \end{glossaire}
 
 Es fácil de comprender la ventaja de este sistema. En efecto, una corrección en la base de datos bibliográfica se transfiere automáticamente al trabajo cada vez que se cita la entrada, mediante una nueva compilación con Biber.
@@ -50,7 +50,7 @@ La documentación de \package{biblatex} contiene el conjunto de los campos y tip
 
 \section{Elegir la clave}
 
-Una entrada bibliográfica debe tener una clave única. Esta clave sólo puede tener caracteres alfanuméricos no acentuados, eventualmente con guiones. 
+Una entrada bibliográfica debe tener una clave única. Esta clave sólo puede tener caracteres alfanuméricos no acentuados, eventualmente con guiones.
 Algunos consejos para elegir la clave:
 \subsection{Para las obras contemporáneas}
 Tomar el nombre del autor seguido de la fecha. Por ejempo, \verb|Urner1952|.
@@ -67,15 +67,15 @@ Veamos los distintos tipos de entradas disponibles\footnote{A decir verdad, pued
 
 \begin{choix}
 
-	\item[\type{article}] 
+	\item[\type{article}]
 Artículo de una revista. Para las contribuciones de un congreso, véase \type{inproceedings}.
-	\item[\type{book}] 
-Libro. Para las actas de un congreso, véase \type{proceedings}. 
+	\item[\type{book}]
+Libro. Para las actas de un congreso, véase \type{proceedings}.
 	\item[\type{booklet}]
 	Folleto. Texto en forma de libro, pero sin editor comercial oficial.
 	\item[\type{bookinbook}]
 	Libro dentro de un libro. Por ejemplo, cuando un autor reune
-        sus escritos en un solo volumen físico. 	
+        sus escritos en un solo volumen físico.
 	\item[\type{collection}]
 	Obra colectiva pero con partes distintas por autor.
 	\item[\type{inbook}]
@@ -99,7 +99,7 @@ Libro. Para las actas de un congreso, véase \type{proceedings}.
 	Diccionario, enciclopedia, etc. en varios volúmenes.
 	\item[\type{misc}]
 	 Entrada genérica para todo tipo de entrada de difícil
-         clasificación. Por ejemplo: cuadro, manuscrito, \emph{ostracon}. 
+         clasificación. Por ejemplo: cuadro, manuscrito, \emph{ostracon}.
 	\item[\type{online}]
 	Recurso de internet. Si una obra existe también con otra
         forma, elegir el tipo de entrada que le corresponde y utilizar
@@ -107,8 +107,8 @@ Libro. Para las actas de un congreso, véase \type{proceedings}.
 	\item[\type{patent}]
 	Patente industrial.
 	\item[\type{periodical}]
-	Número exacto de una revista.	
-	\item[\type{report}]	
+	Número exacto de una revista.
+	\item[\type{report}]
 	Inform técnico o de investigación.
 	\item[\type{proceedings}]
 	Acta de un congreso.
@@ -155,24 +155,24 @@ proceso de producción de la obra: autor, comentarista, editor
 (científico), etc. Por supuesto, no es necesario rellenar todos estos campos.
 
 \begin{choix}
-	\item[afterword] Autor(es) del epílogo. 
-   	\item[annotator] Autor(es) de anotaciones. 
-   	\item[author] Autor(es) de la obra.    
-   	\item[bookauthor] Autor(es) del libro en que se incluye la obra. 
-   	\item[commentator] Autor(es) de los comentarios. 
+	\item[afterword] Autor(es) del epílogo.
+   	\item[annotator] Autor(es) de anotaciones.
+   	\item[author] Autor(es) de la obra.
+   	\item[bookauthor] Autor(es) del libro en que se incluye la obra.
+   	\item[commentator] Autor(es) de los comentarios.
    	\item[editor] Editor(es) científico(s). Se puede precisar su
-          papel gracias al campo \champ{editortype}.	
+          papel gracias al campo \champ{editortype}.
    	\item[editora] Editor(es) científico(s) que tiene(n) otro
-          papel. Se puede precisar su papel gracias al campo \champ{editoratype}.  
+          papel. Se puede precisar su papel gracias al campo \champ{editoratype}.
    	\item[editorb] Editor(es) científico(s) que tiene(n) otro
-          papel. Se puede precisar su papel gracias al campo \champ{editorbtype}.  
+          papel. Se puede precisar su papel gracias al campo \champ{editorbtype}.
    	\item[editorc] Editor(es) científico(s) que tiene(n) otro
           papel. Se puede precisar su papel gracias al campo
           \champ{editorctype}\footcite[Para estos cuatro campos, véase][]{biblatex_editortype}.
 	\item[foreword] Autor(es) del prefacio.
-   	\item[holder] Titular de una patente industrial. 
-   	\item[introduction] Autor(es) de la introducción. 
-   	\item[translator] Traductor(es). 		
+   	\item[holder] Titular de una patente industrial.
+   	\item[introduction] Autor(es) de la introducción.
+   	\item[translator] Traductor(es).
 \end{choix}
 
 Cuando hay campos que tienen valores iguales, por ejemplo, los campos
@@ -181,7 +181,7 @@ campos en la presentación. Tomemos así la entrada siguiente:
 
 \inputminted{exemples/biblio/fichier/augustin_editeur.bib}
 
-Se presenta de la siguiente manera: 
+Se presenta de la siguiente manera:
 
 \begin{quotation}
 \cite{DoctrineChretienne}
@@ -267,19 +267,19 @@ correctas\footnote{El lector exigente disculpará que los autores no
 \inputminted{exemples/biblio/fichier/noms.bib}
 
 \begin{quotation}
-   \cite{HugoMiserable} 	
-   
-   \cite{HugoLegende}		
-   
-   \cite{DeGaulle}			
-   
-   \cite{BeauvoirSexe}		
-   
-   \cite{BeauvoirMemoires}	
-   
-   \cite{Dumas}			
-   
-   \cite{Gregoire}			
+   \cite{HugoMiserable}
+
+   \cite{HugoLegende}
+
+   \cite{DeGaulle}
+
+   \cite{BeauvoirSexe}
+
+   \cite{BeauvoirMemoires}
+
+   \cite{Dumas}
+
+   \cite{Gregoire}
 \end{quotation}
 
 \begin{plusloins}
@@ -296,35 +296,35 @@ correctas\footnote{El lector exigente disculpará que los autores no
 
 
 \begin{choix}
-	\item[booksubtitle]Subtítulo del libro en el que se sitúa la entrada. 
-   	\item[booktitle] Título del libro en el que se sitúa la entrada. 		
+	\item[booksubtitle]Subtítulo del libro en el que se sitúa la entrada.
+   	\item[booktitle] Título del libro en el que se sitúa la entrada.
    	\item[booktitleaddon] Añadido al título del libro en el que se
-          sitúa la entrada. 
-   	\item[chapter] Capítulo de un libro. Para las entradas de tipo \type{inbook}.	
+          sitúa la entrada.
+   	\item[chapter] Capítulo de un libro. Para las entradas de tipo \type{inbook}.
    	\item[eventitle] Título del congreso, para las entradas de
           tipo \type{proceedings} e \type{inproceedings}.
    	\item[issuesubtitle] Subtítulo de un número específico de una
           revista.  Para las entradas de tipo \type{periodical}, el
           subtítulo de la revista debe ir en el campo
-          \champ{subtitle}, y el del número, en el campo \champ{issuesubtitle}		
+          \champ{subtitle}, y el del número, en el campo \champ{issuesubtitle}
    	\item[issuetitle] Título de un número específico de una
           revista. Para las entradas de tipo \type{periodical}, el
           título de la revista debe ir en el campo \champ{title}, y el
-          del título del número, en el campo \champ{issuetitle}.		
-   	\item[journalsubtitle] Subtítulo de una revista.							
+          del título del número, en el campo \champ{issuetitle}.
+   	\item[journalsubtitle] Subtítulo de una revista.
    	\item[journaltitle] Título de una revista. El campo
           \champ{journal} es un alias de este campo\footnote{Esto
             significa que completar el campo \champ{journal} equivale
             a completar este campo.}.
-   	\item[mainsubtitle] Subtítulo de una obra en varios volúmenes.			
+   	\item[mainsubtitle] Subtítulo de una obra en varios volúmenes.
    	\item[maintitle] Título de una obra en varios volúmenes. El
-          título del volumen específico de una entrada corresponde al campo \champ{title}.						
+          título del volumen específico de una entrada corresponde al campo \champ{title}.
    	\item[maintitleaddon]  Añadido al título de una obra en varios
-          volúmenes.		
+          volúmenes.
    	\item[origtitle] Título original de la obra, si es una
-          traducción. No aparece normalmente. 	
-   	\item[subtitle] Subtítulo de la obra.									
-   	\item[title] Título de la obra.									
+          traducción. No aparece normalmente.
+   	\item[subtitle] Subtítulo de la obra.
+   	\item[title] Título de la obra.
    	\item[titleaddon] Añadido al título de la obra. En este
           manual, recomendamos usarlo para las divisiones de
           fuentes\renvoi{divisionsource}.
@@ -360,14 +360,14 @@ Veamos algunos ejemplos para comprender cómo utilizar estos campos:
 
 \begin{choix}
 	\item[address]
-	Lugar de publicación. Alias del campo \champ{location}.	
-	\item[date] 
+	Lugar de publicación. Alias del campo \champ{location}.
+	\item[date]
 	Fecha de publicación, con la forma \verb|AAAA-MM-DD/AAAA-MM-DD|.
 	La primera fecha indicada corresponde a la fecha de inicio, la
         segunda, a la de fin. Para indicar sólo una fecha de inicio,
-        hay que poner \verb|AAAA-MM-DD/|. 
+        hay que poner \verb|AAAA-MM-DD/|.
 	Podemos omitir el mes o el día. También podemos utilizar los
-        campos \champ{year} y \champ{month} en su lugar. 
+        campos \champ{year} y \champ{month} en su lugar.
    	\item[edition]
 	Número de edición si hay varias. Tiene que ser un entero o una
         cadena de caracteres.
@@ -376,30 +376,30 @@ Veamos algunos ejemplos para comprender cómo utilizar estos campos:
 	\item[howpublished] Para las entradas de tipo \type{misc},
           indica el modo de publicación.
    	\item[institution] Institución en la que se ha producido la
-          obra. Normalmente, para las entradas de tipo \type{thesis}. 
+          obra. Normalmente, para las entradas de tipo \type{thesis}.
    	\item[issue] Detalle de un número específico de una revista
           (por ejemplo, \enquote{número de verano}). Se han de
-          preferir los campos \champ{year}, \champ{month}.	
+          preferir los campos \champ{year}, \champ{month}.
    	\item[language] Lengua de la obra. Lo ideal es que el nombre
           de la lengua se ponga tal como indica la documentación de
           \package{polyglossia}\footcite{polyglossia}.
-   	\item[location] Lugar de publicación.  					
-   	\item[month] Mes de publicación. Debe ser un entero entre 1 y 12. 
-   	\item[number] Número de una revista o número dentro de una colección. 	
+   	\item[location] Lugar de publicación.
+   	\item[month] Mes de publicación. Debe ser un entero entre 1 y 12.
+   	\item[number] Número de una revista o número dentro de una colección.
    	\item[organization] Organización que promueve un manual o una
-          página de internet.	
-   	\item[origdate] Fecha de la edición original.						
+          página de internet.
+   	\item[origdate] Fecha de la edición original.
    	\item[origlanguage] Lengua original. Lo ideal que el nombre de
           la lengua se ponga tal como se indica en la documentación de
           \package{polyglossia}\footcite{polyglossia}.
-   	\item[origlocation] Lugar de impresión de la edición original.		
-   	\item[origpublisher] Editor (comercial) de la edición original.		
-	\item[pages] Páginas del artículo o de la parte del libro estudiada. 
+   	\item[origlocation] Lugar de impresión de la edición original.
+   	\item[origpublisher] Editor (comercial) de la edición original.
+	\item[pages] Páginas del artículo o de la parte del libro estudiada.
 	\item[pagetotal] Número total de páginas.
    	\item[part] Para los libros con varios volúmenes
           \emph{físicos}, indica el número de volumen físico. El
           número del volumen  \emph{lógico} hay que indicarlo en el campo \champ{volume}.
-   	\item[publisher] Editor comercial.					
+   	\item[publisher] Editor comercial.
    	\item[pubstate] Para las obras que todavía no se han
           imprimido, indica su estado:
 					\begin{description}
@@ -407,26 +407,26 @@ Veamos algunos ejemplos para comprender cómo utilizar estos campos:
 						\item[inpreparation]obra en preparación.
 						\item[submitted]obra sometida a evaluación.
 					\end{description}
-					
-					
+
+
    	\item[type] Para las entradas de tipo  \type{thesis},
           \type{patent} y \type{report}, precisa el tipo de trabajo.
-	
+
 	Se puede poner un valor personal o bien tomar uno de los
         valores predefinidos. En ese caso, el valor se traduce
         automáticamente a la lengua del documento.
-	
+
 	 Para las entradas de tipo \type{thesis}, dos posibilidades:
 					\begin{description}
 						\item[mathesis]memoria
                                                   de fin de máster.
 						\item[phdthesis]tesis doctoral.
 					\end{description}
-					
+
 					Para las entradas de tipo
-                                        \type{patent}, varias posibilidades: 
-					 
-					 
+                                        \type{patent}, varias posibilidades:
+
+
 					 \begin{description}
 						\item[patentde]
                                                   Patente alemana.
@@ -440,7 +440,7 @@ Veamos algunos ejemplos para comprender cómo utilizar estos campos:
                                                   Patente estadounidense.
 						\item[etc.]
 					 \end{description}
-					
+
 					Para las entradas de tipo \type{report}: \nopagebreak
 					\begin{description}
 						\item[techreport]informe
@@ -448,15 +448,15 @@ Veamos algunos ejemplos para comprender cómo utilizar estos campos:
 						\item[resreport]informe
                                                   de investigación.
 					\end{description}
-					
-	\item[url] Url (dirección electrónica) de una publicación on line. 
-   	\item[urldate] Fecha de consulta de una publicación electrónica. 
-   	\item[venue] Lugar del congreso para las entradas de tipo \type{proceedings} e \type{inproceedings}. 
-   	\item[version] Número de revisión de un manual, de un programa. 
+
+	\item[url] Url (dirección electrónica) de una publicación on line.
+   	\item[urldate] Fecha de consulta de una publicación electrónica.
+   	\item[venue] Lugar del congreso para las entradas de tipo \type{proceedings} e \type{inproceedings}.
+   	\item[version] Número de revisión de un manual, de un programa.
    	\item[volume] Volumen en una obra en varios volúmenes. Volumen
-          de una revista. 
-   	\item[volumes] Número de volúmenes en una obra en varios volúmenes. 
-   	\item[year] Año de publicación. 				
+          de una revista.
+   	\item[volumes] Número de volúmenes en una obra en varios volúmenes.
+   	\item[year] Año de publicación.
 \end{choix}
 
 
@@ -503,30 +503,30 @@ package, véase:][]{biblatex_isbn}.  El lector curioso puede encontrar
 fácilmente información sobre su significado.
 
 \begin{choix}
-	\item[eid] Identificador electrónico de una entrada de tipo \type{article}. 
+	\item[eid] Identificador electrónico de una entrada de tipo \type{article}.
    	\item[isan] \emph{\textenglish{International Standard
               Audiovisual Number}}, para las entradas de tipo audiovisual.
    	\item[isbn] \emph{\textenglish{International Standard Book
-              Number}}, para los libros. 
+              Number}}, para los libros.
    	\item[ismn] \emph{\textenglish{International Standard Music
               Number}}, para la música impresa, como, por ejemplo, las
-          partituras. 
+          partituras.
    	\item[isrn] \emph{\textenglish{International Standard
-              Technical Report Number}}, para los informes técnicos. 
+              Technical Report Number}}, para los informes técnicos.
    	\item[issn] \emph{\textenglish{International Standard Serial
-              Number}}, para los números de revistas. 
+              Number}}, para los números de revistas.
    	\item[iswc] \emph{\textenglish{International Standard Work
               Code}} para las obras musicales.
 \end{choix}
 
 \subsection{Campos de notas}
 
-Por defecto estos campos no se imprimen. 
+Por defecto estos campos no se imprimen.
 
 \begin{choix}
-	\item[abstract] Resumen de la obra. 
+	\item[abstract] Resumen de la obra.
    	\item[annotation] Nota sobre la obra.
-   	\item[file] Dirección de una versión informática local del trabajo. 
+   	\item[file] Dirección de una versión informática local del trabajo.
    	\item[library] Nota sobre la disponibilidad en una biblioteca,
           por ejemplo, el nombre de la biblioteca y la signatura.
 \end{choix}
