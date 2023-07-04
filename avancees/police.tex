@@ -1,22 +1,22 @@
-\chapter{Apariencia de los textos}
+\chapter{Apparence des textes}
 
 
 \begin{intro}
-En este capítulo veremos cómo cambiar la apariencia de nuestros textos:Dans ce chapitre nous verrons comment changer l'apparence de nos textes : fuentes, interlineado y estilos de los niveles de títulos.  
+Dans ce chapitre nous verrons comment changer l'apparence de nos textes : polices de caractères, interlignes, styles des niveaux de titres.
 \end{intro}
 
-\section{Fuentes}
+\section{Police de caractères}
 
-Hay tres grandes familias de fuentes: 
+Il existe trois grandes familles de polices de caractères :
 \begin{glossaire}
-\item[Con serifas]para el cuerpo del texto. Estas serifas mejoran el confort de lectura, al menos en la versión de papel. 
-\item[A palo seco]normalmente para los títulos en las cubiertas.
-\item[De espacio fijo]que se caracterizan por el hecho de que la anchura de los caracteres no varía en función de las letras, sino que permanece uniforme de una letra a otra. Estas fuentes las utilizan los informáticos para citar código informático. En nuestro dominio, pueden servir eventualmente para una transcripción diplomática de un texto antiguo. Para eso utilizaremos el entorno \enviro{verbatim}.
+\item[À empattements]pour le corps du texte. Ces empattements améliorent le confort de lecture, sur version papier du moins.
+\item[Sans empattement]normalement pour les titre sur les couvertures.
+\item[À pas fixe]qui se caractérisent par le fait que la largeur des caractères ne varie pas en fonction des lettres, mais reste uniforme d'une lettre à l'autre. Ces polices sont utilisées par les informaticiens pour citer du code informatique. Dans notre domaine, elles peuvent éventuellement servir pour une transcription diplomatique d'un texte ancien. On utilisera pour cela  l'environnement \enviro{verbatim}.
 \end{glossaire}
 
-El package \package{fontspec}\footcite{fontspec} permite definir una fuente para cada familia de caracteres. Así, para este libro hemos elegido las fuentes\enquote{Linux Libertine} para los caracteres con serifas, \enquote{Linux Biolinum} para los caracteres a palo seco\footnote{Solo utilizamos esta fuente para la versión informática. Para la versión en papel, hemos encomendado el diseño de la cubierta a Laura Pigeon, que ha elegido su propia fuente.} y \enquote{DejaVu  Sans Mono} para los caracteres con espacio fijo.
+Le package \package{fontspec}\footcite{fontspec} propose de définir une police pour chaque famille de caractères. Ainsi pour ce livre avons-nous choisi les polices \enquote{Linux Libertine} pour les caractères avec empattements, \enquote{Linux Biolinum} pour les caractères sans empattements\footnote{Nous n'utilisons cette police que pour la version informatique. Pour la version papier, nous avons confié la création de la couverture à Laura Pigeon, qui a fait son propre choix de police.} et \enquote{DejaVu  Sans Mono} pour les caractères à espacements fixes.
 
-Hemos indicado en nuestro preámbulo que deseamos utilizarlas:
+Nous avons indiqués dans notre préambule que nous souhaitons les utiliser :
 
 \begin{latexcode}
 \setmainfont[Mapping=tex-text]{Linux Libertine}
@@ -24,129 +24,129 @@ Hemos indicado en nuestro preámbulo que deseamos utilizarlas:
 \setmonofont[Scale=0.75]{DejaVu  Sans Mono}
 \end{latexcode}
 
-El comando \csp{setmainfont} sirve para definir la fuente con serifas (cuerpo del texto), \csp{setsansfont} la de a palo seco y \csp{setmonofont} la fuente con espacio fijo. El argumento optativo puede tomar cierto número de parámetros para la fuente. 
+La commande \csp{setmainfont} sert à définir la police avec empattements (corps du texte), \csp{setsansfont} celle sans empattements et \csp{setmonofont} la police à espacements fixes. L'argument optionnel peut prendre un certain nombre de paramètres pour la police.
 
-Aquí hemos indicado con el parámetro \option{Scale} que deseamos reducir un 25 \% el tamaño de la fuente \enquote{DejaVu Sans Mono}, pues se trata de una fuente bastante grande. 
+Ici nous avons indiqué avec le paramètre \option{Scale} que nous souhaitons réduire de 25 \% la taille de la police \enquote{DejaVu Sans Mono}, car il s'agit d'une police assez grande.
 
-La opción \option{Mapping=tex-text} de los dos primeros comandos permite gestionar de manera particular ciertas secuencias de caracteres, por ejemplo, reemplazar tres trazos cortos (\verb|---|) por un trazo largo (---)\renvoi{tirets}. 
+L'option \option{Mapping=tex-text} des deux premières commandes permet de gérer de manière particulière certaines suites de caractères, par exemple de remplacer trois tirets courts (\verb|---|) par un tiret long (---)\renvoi{tirets}.
 
-Hay otros parámetros, por ejemplo, para gestionar sutilmente las ligaduras, que se detallan en el manual de \package{fontspec}\footcite{fontspec_optionspolices}.
+Il existe d'autres paramètres, par exemple pour gérer finement les ligatures, précisés dans le manuel de \package{fontspec}\footcite{fontspec_optionspolices}.
 
-\subsection{Fuente específica de ciertas lenguas}\label{policenonlatine}
+\subsection{Police spécifique à certaines langues}\label{policenonlatine}
 
-Unicode permite almacenar todos los caracteres que hay en la tierra\renvoi{utf8}. Sin embargo, las fuentes no son necesariamente compatibles con todos los caracteres de la norma unicode o bien no muestran correctamente ciertas familias de caracteres. 
+Unicode permet de stocker tous les caractères existant sur terre\renvoi{utf8}. Cependant les polices ne gèrent pas nécessairement l'ensemble des caractères de la norme unicode, ou bien n'affiche pas correctement certaines familles de caractères.
 
-Tomemos, por ejemplo, la palabra siguiente, en hebreo bíblico\footnote{\bibleverse{Gn}(1:1).}:
+Prenons par exemple le mot suivant, en hébreu biblique\footnote{\bibleverse{Gn}(1:1).} :
 
 \begin{quotation}
 \texthebrew{בְּרֵאשִׁ֖ית}
 \end{quotation}
 
-Si mantenemos una muestra con la fuente \emph{Linux Libertine}, obtenemos un bonito error de composición:
+Si on conserve un affichage avec la police \emph{Linux Libertine}, nous obtenons une jolie erreur de composition :
 
 \begin{quotation}
 \texthebrew{\normalfont{בְּרֵאשִׁ֖ית}}
 \end{quotation}
 
-La solución es decir a \LaTeX que utilice una fuente específica en el interior del comando \csp{texthebrew} o del entorno \enviro{hebrew}\renvoi{i18n}. En nuestro caso, puede ser la fuente \emph{Ezra SIL}.
+La solution est de dire à \LaTeX d'utiliser une police spécifique à l'intérieur de la commande \csp{texthebrew} ou de  l'environnement \enviro{hebrew}\renvoi{i18n}. Dans le cas présent, cela peut être la police \emph{Ezra SIL}.
 
-Para hacer eso, pediremos a \package{fontspec} que defina una nueva familia de fuentes, \csp{\hebrewfont}, mediante el comando \csp{newfontfamily}. La definición de esta nueva familia permitirá a  \LaTeX cambiar automáticamente la fuente cuando se le señale un cambio a la lengua hebrea.
+Pour ce faire, nous allons demander à \package{fontspec} de définir une nouvelle famille de police, \csp{\hebrewfont}, via la commande \csp{newfontfamily}. La définition de cette nouvelle famille permettra à \LaTeX de basculer automatiquement la police lorsqu'on lui signale un passage à la langue hébraïque.
 
 \begin{latexcode}
-\newfontfamily\<leng>font[<parámetros>]{<fuente>}
+\newfontfamily\<lang>font[<paramètres>]{<police>}
 \end{latexcode}
 
 \begin{description}
-\item[\meta{leng}]debe cambiarse por el nombre de la lengua en \package{polyglossia}.
-\item[\meta{parámetros}]contienen una lista de parámetros tipográficos para el uso de esta fuente.
-\item[\meta{fuente}]es el nombre de la fuente.
+\item[\meta{lang}]doit être remplacé par le nom de la langue dans \package{polyglossia}.
+\item[\meta{paramètres}]contient une liste de paramètres typographiques pour l'utilisation de cette police.
+\item[\meta{police}]est le nom de la police.
 \end{description}
 
-Lo que da en nuestro caso:
+Ce qui donne dans notre cas :
 \begin{latexcode}
 \newfontfamily\hebrewfont[Scale=0.8,Script=Hebrew]{Ezra SIL}
 \end{latexcode}
 
 \begin{itemize}
-\item El parámetro \contenuarg{Scale=0.8} permite mostrar la fuente a un80~\% de su tamaño normal. En efecto, para un número de puntos determinado, no todas las fuentes tienen necesariamente la misma altura de letra. Si dejamos el tamaño estándar, tendríamos un resultado poco estético.
-\item El parámetro \contenuarg{Script=Hebrew} permite que la presentación de los glifos se haga según las características de la lengua hebrea. Concretamente, esto permite una presentación correcta de los signos de vocalización\footnote{El alfabeto herbreo es un alfabeto que solo nota las consonantes. Sin embargo, para permitir una interpretación más fácil --- o más orientada, según el punto de vista, algunos textos tienen las vocales anotadas con la ayuda de pequeños signos alrededor de las letras. Es particularmente el caso de los textos de la biblia hebraica \parencite[Voir][4-7]{Verheij2007}.}. 
+\item Le paramètre \contenuarg{Scale=0.8} permet d'afficher la police à 80~\% de sa taille normale. En effet, pour un nombre de points donné, toutes les polices n'ont pas nécessairement la même hauteur de lettre. En  laissant une taille standard nous aurions abouti à un affichage inesthétique.
+\item Le paramètre \contenuarg{Script=Hebrew} permet que l'affichage des glyphes se fasse selon les spécificités de la langue hébraïque. Concrètement, cela autorise un affichage correct des signes de vocalisation\footnote{L'alphabet hébraïque est un alphabet qui ne note que les consonnes. Néanmoins, pour permettre une interprétation plus aisée --- ou plus orientée, selon le point de vue, certains textes voient leurs voyelles notées à l'aide de petits signes autour des lettres. C'est notamment le cas des textes de la bible hébraïque \parencite[Voir][4-7]{Verheij2007}.}.
 \end{itemize}
 
-Así obtenemos una presentación correcta:
+On obtient ainsi un affichage correct :
 \begin{quotation}
 \texthebrew{בְּרֵאשִׁ֖ית}
 \end{quotation}
-\section{Interlineado}\label{interligne}
+\section{Interlignes}\label{interligne}
 
-El package \package{setspace} --- que carece de documentación oficial --- permite cambiar con facilidad el interlineado del documento ofreciendo tres interlineados: sencillo, es el ajuste estándar, doble y \enquote{uno y medio}. En general, un interlineado de 1,5 se recomienda para los trabajos académicos, salvo para las notas a pie de página, donde se requiere un interlineado sencillo. Esto queda bien: el package solo aplica el cambio de interlineado al cuerpo del texto. Las notas a pie de página se mantienen por tanto.
+Le package \package{setspace} --- qui ne possède pas de documentation officielle --- permet de changer facilement l'interligne du document en proposant trois interlignages : simple, c'est le réglage standard, double et \enquote{un et demi}. En général une interligne de 1,5 est recommandée pour les travaux universitaires, sauf pour les notes de bas de pages, où un interlignage simple est de mise. Cela tombe bien : le package n'applique le changement d'interlignes qu'au corps du texte. Les notes de bas de page sont donc préservées.
 
 \begin{plusloins}
-El package \package{setspace}  \enquote{se contenta} con definir nuevos comandos para ejecutar secuencias complejas de comandos \TeX y \LaTeX necesarios para la definición del interlineado teniendo en cuenta el tamaño de la fuente.
+Le package \package{setspace}  \enquote{se contente} de définir des nouvelles commandes pour exécuter des suites complexes de commandes \TeX et \LaTeX nécessaires à la définition de l'interligne en tenant compte de la taille de la police.
 
-Si quieres definir un tamaño distinto de interlineado, puedes tratar de inspirarte en el código del package. Pero eso requiere dominar bastante bien \LaTeX. 
+Si donc vous souhaitez définir une autre taille d'interligne, vous pouvez essayer de vous inspirer du code du package. Mais ceci nécessite de maîtriser assez bien \LaTeX.
 \end{plusloins}
 
-Los tres comandos que nos interesan son:
+Les trois commandes qui nous intéressent sont :
 \begin{itemize}
-\item\csp{singlespacing} ; 
-\item\csp{onehalfspacing} ; 
+\item\csp{singlespacing} ;
+\item\csp{onehalfspacing} ;
 \item\csp{doublespacing}.
 \end{itemize}
 
- Se utilizan de la manera siguiente:
+ Elles s'utilisent de la manière suivante :
 
 \begin{latexcode}
 \doublespacing
-Este texto tiene interlineado doble.
+Ce texte est en interligne double.
 \onehalfspacing
-Este texto tiene un interlineado de 1,5.
+Ce texte est en interligne 1,5.
 \singlespacing
-Este texto está en interlineado sencillo. 
+Ce texte est en interligne simple.
 \end{latexcode}
 
-Mientras no se utilice ningún comando de cambio de interlineado, el texto mantiene el interlineado actual. 
+Tant qu'aucune commande de changement d'interligne n'est utilisée, le texte reste dans l'interligne courante.
 
-\subsection{\forme{Comando con argumentos} y \forme{comando de alternancia}}\label{bascule}
+\subsection{\forme{Commande à arguments} et \forme{commande de bascule}}\label{bascule}
 
-Hasta ahora, salvo algunas excepciones, solo hemos visto comandos que reciben varios argumentos. Aquí nuestro comandos no reciben argumento alguno, sino que cambian parámetros hasta nuevo orden. A tales comandos se les llama \emph{comandos de alternancia}. Así, nuestros comandos de alternancia del package \package{setspace} cambian el interlineado de nuestro texto. El uso de los comandos de alternancia es imprescindible para la redefinición de algunos comandos de \LaTeX, incluyendo los comandos de los títulos\renvoi{apparencetitre}.
+Jusqu'à maintenant, à quelques exceptions près, nous n'avons vu que des commandes prenant un certain nombre d'arguments. Ici nos commandes ne prennent pas d'argument, mais changent des paramètres, jusqu'à nouvel ordre. On appelle de telles commandes \emph{commandes de bascule}. Ainsi, nos commandes de bascule du package \package{setspace} changent l'interligne de notre texte. L'utilisation des commandes de bascule est nécessaire pour la redéfinition de certaines commandes de \LaTeX, dont les commandes des titres\renvoi{apparencetitre}.
 
-Un comando de alternancia entre llaves solo tiene efecto dentro del par de llaves. Un comando de alternancia utilizado en un entorno solo tiene efecto en ese entorno. Si un comando de alternancia se utiliza en el preámbulo, en general produce un efecto en el conjunto del documento.\label{porteebascule} 
+Une commande de bascule entourée d'accolades n'a d'effet qu'au sein de la paire d'accolade. Une commande de bascule utilisée dans un environnement n'a d'effet que dans cet environnement. Si une commande de bascule est utilisée dans le préambule, elle a en général un effet dans l'ensemble du document.\label{porteebascule}
 
-Ya hemos presentado más arriba comandos de alternancia: los que modifican el tamaño de los caracteres\renvoi{commandesdetaille}.
+Nous avons déjà présenté plus haut des commandes à bascule : celles de modification de la taille des caractères\renvoi{commandesdetaille}.
 
-Se recomienda, por tanto, incluir el comandoI \cs{onehalfspacing} al principio del fichero, por ejemplo, en el preámbulo, para que actúe sobre todo el cuerpo del texto.
+Il est donc recommandé de mettre la commande \cs{onehalfspacing} en tout début de fichier, par exemple dans le préambule, pour agir sur tout le corps du texte.
 
-\subsection{Entornos de cambio de interlineado}
+\subsection{Environnements de changement d'interligne}
 
-El package \package{setspace} ofrece igualmente tres entornos que permiten limitar el alcance de un cambio de interlineado. 
+Le package \package{setspace} propose également trois environnements qui permettent de limiter la portée d'un changement d'interligne.
 
 \begin{latexcode}
 \begin{singlespace}
-Texto con interlineado sencillo
+Texte avec une interligne simple
 \end{singlespace}
 \begin{onehalfspace}
-Texto con un interlineado de 1,5.
+Texte avec une interligne 1,5.
 \end{onehalfspace}
 \begin{doublespace}
-Texto con interlineado doble.
+Texte avec une interligne double.
 \end{doublespace}
 \end{latexcode}
 
-\subsection[Redefinir un entorno: quotation]{(Re)definir un entorno: ejemplo con el entorno \enviro{quotation}}
+\subsection[Rédéfinir un environnement : quotation]{(Re)définir un environnement : exemple avec l'environnement \enviro{quotation}}
 
-En general, las citas tienen un interlineado más reducido que el cuerpo del texto. Entonces, para lograr este efecto en un documento con interlineado de 1,5, estaríamos tentados a teclear lo siguiente:
+En général, les citations ont un interlignage plus réduit que le corps du texte. Aussi la tentation serait-elle grande, pour obtenir cet effet dans un document en interligne 1,5, de frapper ceci :
 
 \begin{latexcode}
 \begin{singlespace}
 \begin{quotation}
-Una cita bastante larga.
+Une citation assez longue.
 \end{quotation}
 \end{singlespace}
 \end{latexcode}
 
-Un método así rompe el principio de separación de fondo y de forma. Además, multiplica las líneas de código. Sería más sensato redefinir el entorno \enviro{quotation}. Veamos cómo hacerlo de manera sencilla\footcite[Nos hemos basado en la clase \classe{bredele} :][]{bredele}. Ya hemos visto más arriba un ejemplo de redefinición de entorno, para el entorno \enviro{latin}\renvoi{redefinirlatin}. 
+Une telle méthode viole le principe de séparation de fond et de forme. Elle multiplie en outre les lignes de code. Il serait plus sage de redéfinir l'environnement \enviro{quotation}. Voici comment faire simplement\footcite[Nous nous somme basés sur la classe \classe{bredele} :][]{bredele}. Nous avons déjà vu plus haut un exemple de redéfinition d'environnement, pour l'environnement \enviro{latin}\renvoi{redefinirlatin}.
 
-Se trata aquí no solo de redefinir el entorno, sino también de reutilizar las propiedades del entorno antiguo. Procedemos a incluir este código al comienzo del documento, en el preámbulo:
+Il s'agit ici non seulement de redéfinir l'environnement, mais aussi de réutiliser les propriétés de l'ancien environnement. On procède en insérant ce code en début de document, dans le préambule :
 
 \begin{latexcode}
 \let\oldquotation\quotation
@@ -156,23 +156,23 @@ Se trata aquí no solo de redefinir el entorno, sino también de reutilizar las 
         {\end{oldquotation}}
 \end{latexcode}
 
-Comentarios: 
+Commentaires :
 
 \begin{description}
-\item[línea 1]el comando \csp{let} es un comando \TeX que copia un comando en otro comando. Aquí copiamos el comando \csp{quotation} en el comando \csp{oldquotation}\footnote{Aunque \enquote{old} sea un término inglés, lo utilizamos porque es una convención prefijar así los comandos copiados de otro comando.}. El comando \csp{quotation} corresponde al inicio del entorno \enviro{quotation}, es decir, a lo que se ejecuta mediante \cs{begin}\verb|{quotation}|.
-\item[línea 2]copiamos el comando \csp{endquotation}, que corresponde al final del entorno  \enviro{quotation} --- es decir, a lo que se ejecuta con \cs{end}\verb|{quotation}|, en el interior de un comando \csp{endoldquotation}.
+\item[ligne 1]la commande \csp{let} est une commande \TeX qui copie une commande dans une autre commande. Ici nous copions la commande \csp{quotation} dans la commande \csp{oldquotation}\footnote{Bien que \enquote{old} soit un terme anglais, nous l'utilisons car il est de convention de préfixer ainsi les commandes copiées depuis une autre commande.}. La commande \csp{quotation} quant à elle correspond au début de l'environnement \enviro{quotation}, c'est-à-dire à ce qui est exécuté par \cs{begin}\verb|{quotation}|.
+\item[ligne 2]nous copions la commande \csp{endquotation}, correspondant à la fin de l'environnement  \enviro{quotation} --- c'est-à-dire à ce qui est exécuté lors du \cs{end}\verb|{quotation}|, à l'intérieur d'une commande \csp{endoldquotation}.
 \end{description}
 
-Al crear estos dos comandos \csp{oldquotation} y \csp{endoldquotation} hemos creado un entorno \enviro{oldquotation}.
+En créant ces deux commandes \csp{oldquotation} et \csp{endoldquotation} nous avons créé un environnement \enviro{oldquotation}.
 
 \begin{description}
-\item[línea 3]redefinimos el entorno \enviro{quotation}.
-\item[línea 4]al comienzo de este entorno\renvoi{redefinirlatin}, abrimos el entorno \enviro{oldquotation} y después ejecutamos el comando \csp{singlespace}.
-\item[línea 5]al final del entorno \enviro{quotation}, cerramos el entorno \enviro{oldquotation}. El comando \csp{singlespace} solo se aplica al contenido del entorno en el que está situado\renvoi{porteebascule}. Por eso no es necesario anularlo mediante un comando \csp{onehalfspace}. 
+\item[ligne 3]nous redéfinissons l'environnement \enviro{quotation}.
+\item[ligne 4]au début de cet environnement\renvoi{redefinirlatin}, nous ouvrons l'environnement \enviro{oldquotation} puis nous exécutons la commande \csp{singlespace}.
+\item[ligne 5]à la fin de l'environnement \enviro{quotation}, nous fermons l'environnement \enviro{oldquotation}. La commande \csp{singlespace} ne s'applique qu'au contenu de l'environnement dans lequel elle est située\renvoi{porteebascule}. C'est pourquoi il n'est pas nécessaire de l'annuler par une commande \csp{onehalfspace}.
 \end{description}
 
 \begin{plusloins}
-Si has comprendido nuestras explicaciones sobre los comandos de inicio y de fin de entorno, comprenderás que habríamos podido obtener el mismo resultado con:
+Si vous avez compris nos propos sur les commandes de début et de fin d'environnement, vous pouvez vous rendre compte que nous aurions pu obtenir le même résultat avec :
 
 \begin{latexcode}
 \let\endoldquotation\endquotation
@@ -181,25 +181,26 @@ Si has comprendido nuestras explicaciones sobre los comandos de inicio y de fin 
 
 \end{plusloins}
 
-\section{Personalizar los títulos}
+\section{Personnaliser les titres}
 
-\subsection{Redefinir la numeración}\label{apparencecompteur}
-Hemos abordado más arriba la noción de contador. A cada nivel de título, \LaTeX asocia un contador \compteur{nivel}. Así el contador asociado al nivel de título \cs{chapter} es \compteur{chapter}\renvoi{tocdepth}.
+\subsection{Redéfinir la numérotation}\label{apparencecompteur}
+Nous avons abordé plus haut la notion de compteur. À chaque niveau de titre, \LaTeX associe un compteur \compteur{niveau}. Ainsi le compteur associé au niveau de titre \cs{chapter} est \compteur{chapter}\renvoi{tocdepth}.
 
-El valor de un contador se puede mostrar mediante el comandoL \csp{the\meta{contador}}. Así, si escribes:
- 
+La valeur d'un compteur peut s'afficher via la commande \csp{the\meta{compteur}}. Ainsi, si vous écrivez :
+
 \begin{latexcode}
 \thechapter : \thesection
 \end{latexcode}
 
-Verás que, tras la compilación, aparece el número del capítulo, tal como aparece en el encabezado, y el número de apartado, tal como aparece en el título. Aquí, por ejemplo, obtenemos:
+Vous constatez qu'à la compilation apparaît le numéro du chapitre, tel qu'il apparaît dans l'en-tête, et le numéro de section, tel qu'il apparaît dans le titre. Ici par exemple nous obtenons :
 
 
 \begin{quotation}
 \thechapter : \thesection
 \end{quotation}
 
-Como los contadores se presentan con la ayuda de comandos, es fácil redefinirlos. Si ojeas el fichero\renvoi{trouverfichier} \fichier{book.cls}, puedes constatar\footnote{Líneas 287-288, en el momento en que escribimos.}, las dos (re)definiciones de comando siguientes:
+
+Puisque les compteurs s'affichent à l'aide de commandes, il est aisée de redéfinir celles-ci. Si vous fouillez le fichier\renvoi{trouverfichier} \fichier{book.cls}, vous pouvez constater\footnote{Lignes 287-288, à la date où nous écrivons.}, les deux (re)définitions de commande suivantes :
 
 \begin{latexcode}
 \renewcommand \thechapter {\@arabic\c@chapter}
@@ -207,31 +208,31 @@ Como los contadores se presentan con la ayuda de comandos, es fácil redefinirlo
 \end{latexcode}
 
 \begin{description}
-\item[Línea 1]\csp{thechapter} muestra el valor del contador \compteur{chapter}, devuelto por \csp{c@chapter}. Este valor no se puede mostrar directamente, tiene que estar previamente formateado por el comando \csp{@arabic}, que lo muestra en forma de cifras árabes.
-\item[Línea 2]\csp{thesection} devuelve \cs{thechapter} seguido de punto, seguido del valor del contador \compteur{section} que se muestra en forma de cifras árabes.
+\item[Ligne 1]\csp{thechapter} affiche la valeur  du compteur \compteur{chapter}, retournée par \csp{c@chapter}. Cette valeur ne peut pas être affichée directement, elle doit être au préalable formatée par la commande \csp{@arabic}, qui l'affiche sous forme de chiffres arabes.
+\item[Ligne 2]\csp{thesection} retourne \cs{thechapter} suivi d'un point, suivi de la valeur du compteur \compteur{section} affichée sous forme de chiffres arabes.
 \end{description}
 
-Imaginemos ahora que deseamos:
+Supposons maintenant que nous souhaitons  :
 \begin{enumerate}
-\item Mostrar el número de capítulo en números romanos en mayúsculas.
-\item Mostrar un paréntesis de cierre tras el número de apartado.
+\item Afficher en chiffres romains majuscules le numéro de chapitre.
+\item Afficher une parenthèse fermante après le numéro de section.
 \end{enumerate}
 
-Nos basta con redefinir así estos comandos:
+Il nous suffit de redéfinir ainsi ces commandes :
 
 \begin{latexcode}
 \renewcommand\thechapter{\Roman{chapter}}
 \renewcommand\thesection{\arabic{section}}
-\end{latexcode} 
+\end{latexcode}
 
 
 
 
 
 
-Y obtenemos una presentación con la forma:
+On obtient donc un affichage de la forme :
 
-% Aquí se redefine temporalmente 
+% Ici on redéfinit temporairement
 
 \makeatletter
 \let\oldthechapter\thechapter
@@ -240,27 +241,27 @@ Y obtenemos una presentación con la forma:
 \renewcommand \thesection {\thechapter.\@arabic\c@section)}
 \makeatother
 \begin{quotation}
-\thechapter~Capítulo 
+\thechapter~Chapitre
 
-\thesection~Apartado
+\thesection~Section
 \end{quotation}
-% Se restablece
+% On rétablit
 \renewcommand{\thechapter}{\oldthechapter}
 \renewcommand{\thesection}{\oldthesection}
 
-Comprendemos fácilmente cómo funcionan los comandos \csp{Roman} et \csp{arabic}. Reciben como argumento el nombre de un contador y muestran su valor, ya sea en números romanos en mayúsculas, ya sea en cifras árabes. 
+On comprend aisément comment fonctionne les commandes \csp{Roman} et \csp{arabic}. Elles prennent comme argument le nom d'un compteur et affichent sa valeur, soit en nombres romains majuscules, soit en chiffres arabes.
 
-Hay otros comandos similares:
+Il existe d'autres commandes similaires:
 \begin{description}
- \item[\csp{alph}]que muestra un contador cuyo valor está comprendido entre 1 y 26 bajo la forma de una letra minúscula del alfabeto latino. 
-  \item[\csp{Alph}]que muestra un contador cuyo valor está comprendido entre 1 y 26 bajo la forma de una letra mayúscula del alfabeto latino. 
- \item[\csp{roman}]que muestra un contador bajo la forma de números romanos en minúsculas.
+ \item[\csp{alph}]qui affiche un compteur dont la valeur est comprise entre 1 et 26 sous la forme d'une lettre minuscule de l'alphabet latin.
+  \item[\csp{Alph}]qui affiche un compteur dont la valeur est comprise entre 1 et 26 sous la forme d'une lettre majuscule de l'alphabet latin.
+ \item[\csp{roman}]qui affiche un compteur sous forme de nombres romains minuscules.
 \end{description}
 
 \begin{plusloins}
-El package \package{polyglossia} ofrece además comandos para mostrar números en forma de caracteres griegos, árabes, hebreos, siríacos y farsi\footcite{polyglossia_alphabetic_numbering}. 
+Le package \package{polyglossia} propose par ailleurs des commandes pour afficher des nombres sous forme de caractères grecs, arabes, hébreux, syriaque et farsi\footcite{polyglossia_alphabetic_numbering}.
 
-Estos argumentos, a diferencia de los anteriores, no reciben como argumento un contador, sino un número. Así, si queremos formatear el número de capítulo bajo la forma de un número griego, tenemos que cargar el griego como lengua y usar el comando de esta manera \csp{greeknumeral}:
+Ces commandes, à la différence des précédentes, ne prennent pas pour argument un compteur, mais un nombre. Ainsi, si nous souhaitons formater le numéro de chapitre sous forme d'un nombre grec, il nous faut charger le grec comme langue et utiliser ainsi la commande \csp{greeknumeral}:
 
 \begin{latexcode}
 \setotherlanguage{greek}
@@ -269,12 +270,12 @@ Estos argumentos, a diferencia de los anteriores, no reciben como argumento un c
 \end{plusloins}
 
 \begin{plusloins}
-Hablamos más adelante de la forma de manipular los contadores\renvoi{manipcompteurs}.
+Nous parlons plus loin de la manière de manipuler les compteurs\renvoi{manipcompteurs}.
 \end{plusloins}
 
-\subsection{Definir el aspecto: apartados y niveles inferiores}\label{apparencetitre}
+\subsection{Définir l'apparence : sections et niveaux inférieurs}\label{apparencetitre}
 
-Para personalizar el aspecto de los títulos, lo mejor es observar lo que nos ofrecen las clases estándar. Tomemos el caso de la clase \classe{book}, definida en el fichero\renvoi{trouverfichier} \fichier{book.cls}. Si buscamos un poco, encontramos\footnote{Línea 414 con fecha 19 de septiembre de 2011.}:
+Pour personnaliser l'apparence des titres, le mieux est de regarder ce que nous proposent les classes standards. Prenons le cas de la classe \classe{book}, définie dans le fichier\renvoi{trouverfichier} \fichier{book.cls}. En cherchant un peu, nous trouvons\footnote{Ligne 414 à la date du 19 septembre 2011.} :
 
 \begin{latexcode}
 \newcommand\section{\@startsection {section}{1}{\z@}%
@@ -283,18 +284,18 @@ Para personalizar el aspecto de los títulos, lo mejor es observar lo que nos of
                              {\normalfont\Large\bfseries}}
 \end{latexcode}
 
-Comentemos estas pocas líneas:
+Commentons ces quelques lignes :
 
 \begin{description}
-\item[línea 1]El comando \cs{section} llama a \csp{@startsection}. Este último comando añade un nivel de título al índice de contenido. A pesar de su nombre, se puede utilizar para cualquier nivel de título (por ejemplo, para los \cs{subapartado}s). Recibe varios argumentos. El primero es el nivel: aquí \verb|section|. El segundo es el nivel de profundidad: \verb|1|. El tercero es el sangrado previo: aquí \csp{z@}, es decir, una longitud nula.
+\item[ligne 1]La commande \cs{section} fait appel à \csp{@startsection}. Cette dernière commande ajoute  un niveau de titre à la table des matières. Malgré son nom, elle peut servir pour n'importe quel niveau de titre (par exemple, pour les \cs{subsection}s). Elle prend plusieurs arguments. Le premier est le niveau : ici \verb|section|. Le second est le niveau de profondeur : \verb|1|. Le troisième est l'indentation préalable : ici \csp{z@}, c'est-à-dire une longueur nulle.
 
-\item[línea 2] cuarto argumento del comando \cs{@startsection}, que indica el espacio vertical \emph{antes} del título. Este espacio es idealmente de 3,5~ex\renvoi{unite}, pero puede estar entree 1,5~ex ($3,5 - 2$) y 4,5~ex ($3,5 + 1$):  este margen de maniobra se indica mediante los comandos \cs{@minus} et \cs{@plus}\renvoi{elastique}.
-\item[línea 3] quinto argumento de \cs{@startsection}, que indica el espacio vertical tras el título. Como nuestra longitud es positiva, el texto siguiente inicia un nuevo párrafo. Una longitud negativa (como es el caso para la definición del comando \cs{paragraph}) indica que no hay cambio de párrafo. Aquí, por tanto, el espacio tras el título es de 2,3 ex, pero puede extenderse a 2,5 ex (2,3 + 0,2).
-\item[ligne 4] sexto y último argumento de \cs{@startsection}, que indica el aspecto propiamente dicho de nuestro título. Se trata de un texto en fuente normal --- es decir, la que define el comando \cs{setmainfont} ---, en tamaño \cs{Large}, y en negrita (\cs{bfseries}). Aquí todos nuestros comandos se interpetan como comandos de alternancia, alternancia que acaba con la llave de cierre. El comando \csp{bfseries} es el equivalente alternante del comando \cs{textbf}.En los estilos de título se recomienda usar solamente comandos de alternancia para evitar espacios indeseados.\label{bfseries}
+\item[ligne 2] quatrième argument de la commande \cs{@startsection}, qui indique l'espace vertical \emph{avant} le titre. Cet espace est idéalement de 3,5~ex\renvoi{unite}, mais peut être compris entre 3,3~ex ($3,5 - 0,2$) et 4,5~ex ($3,5 + 1$) :  cette marge de manœuvre est indiquée par les commandes  \cs{@minus} et \cs{@plus}\renvoi{elastique}.
+\item[ligne 3] cinquième argument de \cs{@startsection}, qui indique l'espace vertical après le titre. Notre longueur étant positive, le texte qui suit débute un nouveau paragraphe. Une longueur négative (comme c'est le cas pour la définition de la commande \cs{paragraph}) indique qu'il n'y a pas de changement de paragraphe. Ici donc, l'espace après le titre est de 2,3 ex, mais peut atteindre 2,5 ex (2,3 + 0,2).
+\item[ligne 4] sixième et dernier argument de \cs{@startsection}, qui indique l'apparence proprement dite de notre titre. Il s'agit d'un texte en police normale --- c'est-à-dire celle définie par la commande \cs{setmainfont} ---, en taille \cs{Large}, mise en gras (\cs{bfseries}). Ici toutes nos commandes sont prises comme des commandes de bascule, la bascule finissant avec l'accolade fermante. La commande \csp{bfseries} est l'équivalent à bascule de la commande \cs{textbf}. Il est recommandé de n'utiliser dans les styles de titre que des commandes à bascule, pour éviter des espaces indésirables.\label{bfseries}
 \end{description}
 
-Imaginemos ahora que queremos tener nuestro título en itálica y en una fuente a palo seco. Nos basta con redefinir el comando \cs{section}.
-En nuestra (re)-definición, llamaremos a comandos que contienen el carácter @. Pero los comandos que contienen el carácter @ no se pueden utilizar en un fichero \ext{tex}, sino solamente en los ficheros de definición de clase (\ext{cls}) o de package (\ext{sty}). Sin embargo, se puede hacer una excepción si rodeamos estos comandos  de \csp{makeatletter} y \csp{makeatother}.
+Supposons maintenant que nous souhaitons avoir notre titre en italique et en police sans empattements.  Il nous suffit de redéfinir la commande \cs{section}.
+Dans notre (re)-définition, nous  ferons appel à des commandes contenant le caractère @. Or les commandes contenant le caractère @ ne peuvent pas être  utilisées dans un fichier \ext{tex}, mais uniquement dans les fichiers de définition de classe (\ext{cls}) ou de package (\ext{sty}). Toutefois, on peut faire une exception,  en  entourant ces commandes  de \csp{makeatletter} et \csp{makeatother}.
 
 \begin{latexcode}
 \makeatletter
@@ -305,11 +306,11 @@ En nuestra (re)-definición, llamaremos a comandos que contienen el carácter @.
 \makeatother
 \end{latexcode}
 
-El comando \csp{ssfamily} produce una alternancia a la fuente a palo seco definida por \cs{setsansfont}, mientras que \csp{itshape} produce una alternancia a un texto en itálica.
+La commande \csp{ssfamily} produit une bascule vers la police sans empattement définie par \cs{setsansfont}, tandis que \csp{itshape} produit une bascule vers un texte en italique.
 
-\section{Definir el aspecto: capítulos y niveles superiores}
+\section{Définir l'apparence : chapitres et niveaux supérieurs}
 
-Si buscamos en el fichero \fichier{book.cls} el comando \cs{chapter}, encontramos\footnote{Líneas 360 y siguientes con fecha 6 de agosto de 2011.}:
+Si l'on cherche dans le fichier \fichier{book.cls} la commande \cs{chapter}, on trouve\footnote{Lignes 360 et suivantes, à la date du 6 août 2011.} :
 
 \begin{latexcode}
 \newcommand\chapter{\if@openright\cleardoublepage\else\clearpage\fi
@@ -319,9 +320,9 @@ Si buscamos en el fichero \fichier{book.cls} el comando \cs{chapter}, encontramo
                     \secdef\@chapter\@schapter}
 \end{latexcode}
 
-Aquí nos interesan dos elementos. 
+Deux éléments nous intéressent ici.
 
-El primero es la línea~2 : \cs{thispagestyle}\verb|{plain}|. Se comprende así el motivo por el que las páginas de inicio de capítulo no se numeran en el mismo lugar que las otras: el estilo de esta página es \forme{plain} y no \forme{heading}, como para el resto de las páginas\renvoi{styleentetes}. En consecuencia, si queremos de las páginas de títulos tengan los mismos encabezados y pies de página que las páginas estándar, hay que redefinir el comando \cs{chapter} suprimiendo \verb|\thispagestyle{plain}|.\label{entetechapter}\label{chapitrepagestyle}
+Le premier est la ligne~2 : \cs{thispagestyle}\verb|{plain}|. On comprend ainsi la raison pour laquelle les  pages de début de chapitre ne sont pas numérotées au même endroit que les autres : le style de cette page est \forme{plain} et non pas \forme{heading}, comme pour les autres pages\renvoi{styleentetes}. Par conséquent, si l'on souhaite que les pages de titres aient les mêmes en-têtes et pieds de pages que les pages standards, il faut redéfinir la commande \cs{chapter} en supprimant \verb|\thispagestyle{plain}|.\label{entetechapter}\label{chapitrepagestyle}
 
 \begin{latexcode}
 \makeatletter
@@ -333,17 +334,17 @@ El primero es la línea~2 : \cs{thispagestyle}\verb|{plain}|. Se comprende así 
 \makeatother
 \end{latexcode}
 
-El segundo elemento interesante es la última línea. El comando \csp{secdef} remite a \csp{@chapter} si utilizamos \cs{chapter} y a \csp{@schapter} si utilizamos \cs{chapter*}.
+Le second élément intéressant est la dernière ligne. La commande \csp{secdef} renvoie vers \csp{@chapter} si nous utilisons \cs{chapter} et vers \csp{@schapter} si nous utilisons \cs{chapter*}.
 
-Ojeando los códigos de los comandos \cs{@chapter} y \cs{@schapter} encontramos que invocan a \csp{@makechapterhead} y a \csp{@makeschapterhead}, respectivamente.
+En fouillant les codes des commandes \cs{@chapter} et \cs{@schapter} nous trouvons qu'elles appellent \csp{@makechapterhead} et \csp{@makeschapterhead}, respectivement.
 
 \begin{plusloins}
-\cs{@chapter}, \cs{@schapter}, \cs{@makechapterhead} y \cs{@makeschapterhead} se definen mediante el comando \cs{def} y no \cs{newcommand}. 
+\cs{@chapter}, \cs{@schapter}, \cs{@makechapterhead} et \cs{@makeschapterhead} sont définies \emph{via} la commande \cs{def} et non pas \cs{newcommand}.
 
-En efecto, la definición se hace en \TeX y no en \LaTeX. Para nuestra intención, eso no tiene mayor importancia.
-\end{plusloins} 
+En effet la définition est faite en \TeX et non pas en \LaTeX. Pour nos propos, cela n'a pas grande influence.
+\end{plusloins}
 
-Fijémonos en el comando \cs{@makechapterhead}\footnote{Línea 386, con fecha 19 de septiembre de 2011.}.
+Intéressons-nous à la commande \cs{@makechapterhead}\footnote{Ligne 386, à la date du 19 septembre 2011.}.
 
 \begin{latexcode}
 \def\@makechapterhead#1{%
@@ -362,36 +363,37 @@ Fijémonos en el comando \cs{@makechapterhead}\footnote{Línea 386, con fecha 19
   }}
 \end{latexcode}
 
-Analicémoslo:
+Analysons-là :
 
 \begin{description}
-\item[línea 2]el comando  \cs{vspace} produce un espacio vertical, aquí de 50~pt, como indica el 50\csp{p@}. La presencia de un asterisco indica que nuestro espacio vertical continúa tras un cambio de página.
-\item[línea 3]el comando \cs{parindent} señala el sangrado del párrafo en este punto exacto: aquí, una longitud nula (\cs{z@}). El comando \csp{raggedright} significa que el texto se alineará a la izquierda --- a la inversa, \csp{raggedleft} significaría que el texto se alinearía a la derecha. En cuanto al comando \csp{normalfont}, ni que decir tiene que significa que la fuente estándar --- la que define \cs{setmainfont} --- es la utilizada.
-\item[líneas 4-5, 9, 10]se condiciona la presentación de un número de capítulo al posicionamiento en la parte principal del documento, la que sigue a \cs{mainmatter}\renvoi{sectionbook}, y al valor del contador \compteur{secnumdepth}, que podemos redefinir para impedir la numeración de algunos niveles de título\renvoi{manipcompteurs}.
-\item[línea 6]se muestra en tamaño \cs{huge}\renvoi{taille} y en negrita (\cs{bfseries}) la cadena de lengua del comienzo del capítulo (\csp{@chapapp}) seguida de un espacio y del número del capítulo: el contador \compteur{chapter}, aparece mediante el comando \cs{thechapter}.
-\item[línea 7]se incluye un párrafo (\csp{par}) y se impide un cambio de línea (\csp{nobreak}).
-\item[línea 8]se incluye un espacio vertical de 20~pt.
-\item[ligne 11]en el nivel a que apunta este libro la comprensión de esta línea no es esencial. No obstante, para los curiosos, esta línea sirve para impedir que un título se extienda en varias líneas. En resumen, podemos decir que para prevenir que haya rupturas de línea o cambios de página, \LaTeX utiliza parámetros llamados \forme{penalty}. Cuanto mayor sea \forme{penalty}, menor será la probabilidad de una ruptura. Aquí, el \forme{penalty} de interlineadoe --- de ruptura de línea --- se define a 1000 (\csp{@M}). 
-\item[línea 12]se muestra en tamaño \cs{Huge} y en negrita (\cs{bfseries}) el título del capítulo (\#1). Se introduce luego un párrafo (\csp{par}), procurando evitar los cambios de página (\csp{nobreak}).
-\item[línea 13]se incluye un espacio vertical de 40~pt.
+\item[ligne 2]la commande  \cs{vspace} produit un espace vertical, ici de 50~pt, comme l'indique le 50\csp{p@}. La présence d'une astérique indique que notre espace vertical continue après un changement de page.
+\item[ligne 3]la commande \cs{parindent} précise l'indentation du paragraphe à ce point précis : ici une longueur nulle (\cs{z@}). La commande \csp{raggedright} signifie que le texte va être aligné à gauche --- à l'inverse \csp{raggedleft} signifierait que le texte serait aligné à droite. Quant à la commande \csp{normalfont}, inutile de dire qu'elle signifie que la police standard --- celle définie par la commande \cs{setmainfont} --- est utilisée.
+\item[lignes 4-5, 9, 10]on conditionne l'affichage d'un numéro de chapitre au positionnement dans la partie principale du document, celle qui suit \cs{mainmatter}\renvoi{sectionbook}, et à la valeur du compteur \compteur{secnumdepth}, que vous pouvez redéfinir pour empêcher la numérotation de certains niveaux de titre\renvoi{manipcompteurs}.
+\item[ligne 6]on affiche en taille \cs{huge}\renvoi{taille} et en gras (\cs{bfseries}) la chaîne de langue de début de chapitre (\csp{@chapapp}) suivie d'une espace et du numéro de chapitre : le compteur \compteur{chapter}, affiché \emph{via} la commande \cs{thechapter}.
+\item[ligne 7]on insère un paragraphe (\csp{par}) et on empêche un changement de ligne (\csp{nobreak}).
+\item[ligne 8]on insère un espace vertical de 20~pt.
+\item[ligne 11]au niveau visé par ce livre la compréhension de cette ligne n'est pas indispensable. Toutefois, pour les curieux, cette ligne sert à prévenir un titre s'étalant sur plusieurs lignes. Sommairement, on peut dire que pour prévenir les ruptures de lignes ou les changements de pages, \LaTeX utilise des paramètres appelés \forme{penalty}. Plus une \forme{penalty} est importante, plus la probabilité d'une rupture est faible. Ici la \forme{penalty} d'interlignage --- de rupture de ligne --- est définie à 1000 (\csp{@M}).
+\item[ligne 12]on affiche en taille \cs{Huge} et en gras (\cs{bfseries}) le titre du chapitre (\#1). On introduit ensuite un paragraphe (\csp{par}), en demandant d'éviter les changements de pages (\csp{nobreak}).
+\item[ligne 13]on insère un espace vertical de 40~pt.
 \end{description}
 
-Vamos ahora a construir un nuevo estilo\footcite[Nos inspiramos aquí en el estilo de la clase \classe{bredele}][]{bredele}, en el que queremos tener:
+Nous allons maintenant fabriquer un nouveau style\footcite[Nous nous inspirons ici du style de la classe \classe{bredele}][]{bredele}, où
+nous souhaitons avoir :
 \begin{itemize}
-\item El texto \forme{capítulo} y el título alineados a la derecha.
-\item El texto \forme{capítulo} en versalitas, sin negrita y en tamaño normal.
-\item Una raya horizontal bajo el título.
+\item Le texte \forme{chapitre} et le titre alignés à droite.
+\item Le texte \forme{chapitre} en  petites capitales, sans gras, et en taille normale.
+\item Un trait horizontal au-dessous du titre.
 \end{itemize}
 
-Vamos, por tanto, a tomar el código existente para copiarlo y pegarlo en nuestro preámbulo entre \cs{makeatletter} y \cs{makeatother}. Luego haremos los cambios siguientes:
+Nous allons donc reprendre le code existant et le copier-coller dans notre préambule entre \cs{makeatletter} et \cs{makeatother}. Nous allons ensuite effectuer les modifications suivantes :
 
 \begin{itemize}
-\item Sustituir \csp{raggedright} por \csp{raggedleft} para tener nuestros textos a la derecha..
-\item Sustituir el primer \cs{huge}\cs{bfseries} por \csp{scshape}, para tener \forme{capítulo} en versalitas y en tamaño normal.
-\item Incluir el comando \cs{hrulefill}, que produce una raya horizontal entre las líneas 12 y 13\renvoi{filets}.
+\item Remplacer \csp{raggedright} par \csp{raggedleft} pour avoir nos textes à droite.
+\item Remplacer le premier \cs{huge}\cs{bfseries} par \csp{scshape}, pour avoir \forme{chapitre} en petites capitales et en taille normale.
+\item Insèrer la commande \cs{hrulefill}, qui produit un filet horizontal, entre les lignes 12 et 13\renvoi{filets}.
 \end{itemize}
 
-Esto nos da al final:
+Cela nous donne au final :
 
 \begin{latexcode}
 \makeatletter
@@ -413,31 +415,31 @@ Esto nos da al final:
 \makeatother
 \end{latexcode}
 
-Evidentemene, habrá que aplicar el mismo tipo de cambios en el comando \csp{makeschapterhead}. También podríamos entretenernos cambiando lo que produce \cs{part}. Para ello, del mismo modo hay que ojear el fichero \fichier{book.cls}.
+Évidemment, il faudrait appliquer le même type de modifications sur la commande \csp{makeschapterhead}. On pourrait aussi s'amuser à modifier ce qui est produit par \cs{part}. Pour cela  il faut, de la même façon, fouiller le fichier \fichier{book.cls}.
 
-\section[Manipular los contadores]{Manipular los contadores: el caso de las notas a pie de página}\label{manipcompteurs}
+\section[Manipuler les compteurs]{Manipuler les compteurs : le cas des notes de bas de page}\label{manipcompteurs}
 
-Hemos visto cómo modificar el aspecto de un contador\renvoi{apparencecompteur}. Pero, ¿cómo modificar el valor de un contador? Para eso hay dos comandos: \cs{setcounter}\marg{contador}\marg{valor} para asignar el valor \arg{valor} al contador \arg{contador}, y \csp{addtocounter}\marg{contador}\marg{valor} para sumar el valor \arg{valor} al contador \arg{contador}. Como el valor añadido puede ser negativo, se puede así revertir un contador.
+Nous avons vu comment modifier l'aspect d'un compteur\renvoi{apparencecompteur}. Mais comment modifier la valeur d'un compteur ? Il y a pour cela deux commandes : \cs{setcounter}\marg{compteur}\marg{valeur} pour affecter la valeur \arg{valeur} au compteur \arg{compteur}, et \csp{addtocounter}\marg{compteur}\marg{valeur} pour additionner la valeur \arg{valeur} au compteur \arg{compteur}. La valeur ajoutée pouvant être négative, il est ainsi possible de faire reculer un compteur.
 
-Además, existe un comando \csp{refstepcounter} que permite incrementar en una unidad un contador. Es el que utilizan los comandos de nivel de título\renvoi{niveautitre}.
+En outre, il existe une commande \csp{refstepcounter} qui permet d'incrémenter d'une unité un compteur. C'est celle qui est utilisé par les commandes de niveau de titre\renvoi{niveautitre}.
 
 
 
-Un nuevo contador se crea con
- \csp{newcounter}\marg{contador}\oarg{contador2}. 
-Si el argumento \arg{contador2} está presente, entonces indica que el valor del contador \arg{contador} se debe reiniciar cuando el comando \csp{refstepcounter} se aplica al contador \compteur{contador2}.
+Un nouveau compteur se crée  avec
+ \csp{newcounter}\marg{compteur}\oarg{com\-pteur2}.
+Si l'argument \arg{compteur2} est présent, alors il indique que la valeur du compteur \arg{compteur} doit être réinitialisée lorsque la commande \csp{refstepcounter} est appliquée au compteur \compteur{compteur2}.
 
-El comando  \csp{@addtoreset}\marg{contador}\marg{contador2}  permite aplicar esta norma a un contador ya existente.
+La commande  \csp{@addtoreset}\marg{compteur}\marg{compteur2}  permet d'appliquer cette règle sur un compteur déjà existant.
 
-Así, en el fichero \fichier{book.cls}, observaremos la línea siguiente\footnote{Línea 718, con fecha 24 de agosto de 2011} :
+Ainsi, dans le fichier \fichier{book.cls}, vous remarquerez la ligne suivante\footnote{Ligne 718, à la date du 24 août 2011}  :
 
 \begin{latexcode}
 \@addtoreset{footnote}{chapter}
-\end{latexcode} 
+\end{latexcode}
 
-Esto significa que el contador  \compteur{footnote}, que corresponde a la numeración de las notas a pie de página, se reinicia con cada nuevo capítulo numerado. 
+Ce qui signifie que le compteur  \compteur{footnote}, qui correspond à la numérotation des notes de bas de page, est réinitialisé à chaque nouveau chapitre numéroté.
 
-Si queremos anular este comando, para tener notas a pie de página con numeración continua, tenemos que utilizar el package \package{remreset} y su comando \csp{@removefromreset}, que anula una configuración de reinicio.
+Si nous souhaitons annuler cette commande, pour avoir des notes de bas de page en numérotation continue, il nous faut utiliser le package \package{remreset} et sa commande \csp{@removefromreset}, qui annule un réglage de réinitialisation.
 
 \begin{latexcode}
 \usepackage{remreset}

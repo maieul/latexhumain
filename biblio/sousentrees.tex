@@ -1,38 +1,39 @@
-\chapter{Entradas jerarquizadas}\label{sousentrees}
+\chapter{Entrées hiérarchisées}\label{sousentrees}
 
 \begin{intro}
-En este capítulo, vamos a ver cómo crear entradas jerarquizadas para organizar mejor tu base de datos y para gestionar las divisiones de las fuentes.
+Dans ce chapitre, nous allons voir comment créer des entrées hiérarchisées, pour mieux organiser sa base de données  et pour gérer les divisions de source.
 \end{intro}
 
-\section{Principio de subentradas bibliográficas}
+\section{Principe des sous-entrées bibliographiques}
 
-Supongamos que citas varias contribuciones de un mismo congreso. En principio, puedes crear varias entradas bibliográficas con la forma\footnote{Cualquier parecido con un congreso que haya tenido lugar es pura coincidencia.}:
+Supposons que vous citiez diverses contributions d'un même colloque. Classiquement vous créez plusieurs entrées bibliographiques sous la forme\footnote{Toute ressemblance avec un colloque s'étant déjà tenu ne saurait être que pure coïncidence.}:
 
 \inputminted{exemples/biblio/sousentrees/reproduction.bib}
 
-Así duplicas los datos sobre el congreso (título, editor, etc.). Si por casualidad te equivocas en una información, tendrás que modificarla en todas partes. Para evitar eso, Biber prevé la posibilidad de crear subentradas: entradas secundarias \enquote{herederas} de una entrada principal. La herencia se carga cuando se interpreta el fichero. Para hacerlo, basta con indicar en el campo \champ{crossref} de las entradas secundarias la clave de la entrada principal.
+Vous dupliquez ainsi les données sur le colloque (titre, éditeur, etc.). Si par hasard vous vous êtes trompés dans une information, vous devrez la modifier partout. Pour éviter cela Biber prévoit la possibilité de créer des filiations d'entrées : des entrées secondaires \enquote{héritant} d'une entrée principale. L'héritage étant pris en charge lors de l'interprétation du fichier. Pour ce faire, il suffit d'indiquer dans le champ \champ{crossref} des entrées secondaires la clef de l'entrée principale.
 
 
 \inputminted{exemples/biblio/sousentrees/crossref.bib}
 
-Tras la compilación, vemos que nuestras subentradas han heredado correctamente campos de la entrada principal:  
+Après compilation, nous voyons que nos sous-entrées ont correctement hérité des champs de l'entrée principale :  
 
 
 \begin{quotation}
-\cite{clave1}
+\cite{clef1}
 
-\cite{clave2}
+\cite{clef2}
 \end{quotation}
 
-Observarás que Biber procede a una herencia \enquote{inteligente}: el campo \champ{date} de la entrada madre se retoma como campo \champ{date} de la entrada hija, mientras que el campo \champ{title} se convierte en el campo \champ{booktitle}.
+Vous constaterez que Biber procède à un héritage \enquote{intelligent} : le champ \champ{date} de l'entrée mère est repris  comme champ \champ{date} de l'entrée fille, cependant que le champ \champ{title} devient le champ \champ{booktitle}.
 
 \begin{plusloins}
-Se pueden crear tantos niveles de entrada bibliográfica como se desee. Sin embargo, hay que tener cuidado de no producir referencias circulares (A hereda de B, que hereda de C, que hereda de A). Además, algunos programas de gestión bibliográfica te impiden crear subsubentradas bibliográficas: tienes que modificar tus entradas con tu editor de texto.
+Il est possible de créer autant de niveaux d'entrée bibliographique que souhaités. Attention cependant à ne pas produire des références circulaires (A héritant de B, héritant de C, héritant de A). Par ailleurs, certains logiciels de gestion bibliographique vous interdisent de créer des sous-sous-entrées bibliographiques : il vous faut alors modifier vos entrées avec votre éditeur de texte.
 \end{plusloins}
 
-\section{Subentradas en la bibliografía final}
+\section{Sous-entrées dans la bibliographie finale}
 
-Cuando se cita una entrada hija, Biber agrega sistemáticamente la entrada madre en la bibliografía final. Sin embargo, se puede indicar un número mínimo de citas de entradas hijas para que se haga el añadido de la entrada madre en la bibliografía. Si deseamos que una entrada madre  no se añada a la bibliografía más que si las entradas hijas se citan por lo menos 10 veces (todas las entradas confundidas):
+
+Lorsqu'une entrée fille est citée, Biber rajoute systématiquement l'entrée mère dans la bibliographie finale. On peut toutefois indiquer un nombre minimal de citations d'entrées filles pour que se fasse l'ajout de l'entrée mère dans la bibliographie. Si nous souhaitons qu'une entrée mère ne soit ajoutée à la bibliographie que si les entrées filles sont citées au moins 10 fois (toutes entrées confondues) :
 
 
 \begin{latexcode}
@@ -43,28 +44,28 @@ Cuando se cita una entrada hija, Biber agrega sistemáticamente la entrada madre
 
 
 
-\section{Especificar las herencias de los campos}
+\section{Préciser les héritages de champs}
 
-Biber tiene cierto número de reglas de herencia de campos\footcite{biblatex_crossrefsetup}. Pero se pueden modificar estas herencias o añadirles otras. Los campos \champ{entrysubtype}, por ejemplo, no se heredan por defecto. 
-Para modificar las reglas estándar, basta con utilizar en el preámbulo:
-\csp{DeclareDataInheritance}\marg{entrada madre}\marg{entrada hija}\marg{reglas}.
+Biber possède un certain nombre de réglages d'héritage de champs\footcite{biblatex_crossrefsetup}. On peut cependant modifier ces héritages, ou en ajouter d'autres. Les champs \champ{entrysubtype}, par exemple, ne sont par défaut pas hérités. 
+Pour modifier les réglages standards, il suffit d'utiliser, dans le préambule  :
+\csp{DeclareDataInheritance}\marg{entrée mère}\marg{entrée fille}\marg{règles}.
 
 \begin{description}
-\item[\arg{entrada madre}] designa el tipo de entrada madre: \type{book}, \type{proceedings}, etc. El símbolo * designa cualquier tipo de entrada.
-\item[\arg{entrada hija}] designa el tipo de entrada hija. También aquí el símbolo * designa cualquier tipo de entrada.
-\item[\arg{reglas}] designa cierto número de reglas de herencia en forma de comandos.
+\item[\arg{entrée mère}] désigne le type d'entrée mère : \type{book}, \type{proceedings}, etc. Le symbole * désigne n'importe quel type d'entrée.
+\item[\arg{entrée fille}] désigne le type d'entrée fille. Là aussi le symbole * désigne n'importe quel type d'entrée.
+\item[\arg{règles}] désigne un certain nombre de règles d'héritages, sous forme de commandes.
 \end{description}
 
-Los tipos de entradas que hay que indicar en los argumentos \arg{entrada hija} y \arg{entrada madre} no tienen que ir precedidos del signo \verb|@|.
+Les types d'entrées à préciser dans les arguments \arg{entrée fille} et \arg{entrée mère} ne doivent pas être précédés du signe \verb|@|.
 
-El primer comando de herencia es el siguiente \csp{noinherit}\marg{campo}.
-Impide que una entrada hija herede un campo.
+La première commande d'héritage est la suivante \csp{noinherit}\marg{champ}.
+Elle empêche l'héritage d'un champ par une entrée fille.
 
-El segundo es
-\csp{inherit}\oarg{opcion}\marg{campo fuente}\marg{campo de destino}.
-No hay más que una opción posible: \verb|override=true|. Si se pasa esta opción, el valor del campo de la entrada hija lo aplasta el del campo de la entrada madre. En caso contrario, prevalece el valor del campo de la entrada hija.
+La seconde  est 
+\csp{inherit}\oarg{option}\marg{champ source}\marg{champ cible}.
+Il n'y qu'une seul option possible : \verb|override=true|. Si cette option est passée, alors la valeur du champ de l'entrée fille est écrasée par celle du champ de l'entrée mère. Sinon, la valeur  du champ de l'entrée fille a priorité.
 
-Así, para permitir la herencia del campo \champ{entrysubtype} basta con escribir:
+Ainsi, pour permettre l'héritage du  champ \champ{entrysubtype} il suffit d'écrire :
 
 \begin{latexcode}
 \DeclareDataInheritance{*}{*}{

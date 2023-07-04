@@ -1,189 +1,144 @@
-\chapter{Presentar la bibliografía}
+\chapter{Afficher la bibliographie}
 
 \begin{intro}
 
-En este capítulo vamos a ver cómo presentar y ordenar una bibliografía.
+Dans ce chapitre nous allons voir comment afficher et trier une bibliographie.
 \end{intro}
 
 
-\section{Presentación de la bibliografía}
+\section{Affichage de la bibliographie}
 
-El comando para imprimir una bibliografía es
-\csp{printbibliography}. Si lo pruebas en tu proyecto, obtendrás donde
-lo hayas ubicado una bibliografía que recoge el conjunto de las obras
-citadas a lo largo de tu trabajo. Así, puedes estar seguro de que no
-olvidas nada.
+La commande pour imprimer une bibliographie est \csp{printbibliography}. Si vous l'essayez dans votre projet, vous obtenez là où vous l'avez placée une bibliographie reprenant l'ensemble des œuvres  citées au cours de votre travail. Ainsi, vous êtes certain de ne rien oublier.
 
-Sin embargo, una bibliografía así es poco útil para los trabajos
-largos: mezcla alegremente fuentes primarias y estudios secundarios,
-no hace distinciones entre los capítulos, etc. Así que vamos a ver
-cómo clasificar una bibliografía. Pero antes tenemos que mencionar una
-peculiaridad de las humanidades, así como la forma de añadir
-referencias no citadas.
+Toutefois une telle bibliographie est peu utile pour les longs travaux : elle mélange allègrement sources primaires et études secondaires, ne fait pas de distinctions entre les chapitres, etc. Nous allons donc voir  comment sectionner une bibliographie. Mais auparavant il nous faut mentionner une spécificité propre aux sciences humaines, ainsi que la manière d'ajouter des références non citées.
 
 
 
-\subsection{Elegir el estilo de bibliografía}
+\subsection{Choix du style de bibliographie}
 
-Igual que se pueden elegir, cuando llamamos a
-\package{biblatex}, los estilos de las referencias bibliográficas, se
-puede elegir un estilo bibliográfico gracias al argumento
-\arg{bibstyle}. Para las humanidades, es mejor utilizar
-\verb|verbose| que nos garantiza que tendremos referencias completas
-sin que se asigne un número a cada entrada como ocurre con
-\verb|numeric|, el estilo por defecto.  Así, al llamar al package
-\package{biblatex}, basta con escribir:
+De même qu'il est possible de choisir, lors de l'appel à \package{biblatex}, les styles des références bibliographiques, il est possible de choisir un style bibliographique grâce à l'argument \arg{bibstyle}. Pour les sciences humaines, il vaut mieux utiliser \verb|verbose| qui nous assure d'avoir des références complètes, sans pour autant qu'un numéro soit attribué à chaque entrée comme c'est le cas avec \verb|numeric|, le style par défaut.
+Ainsi, lors de l'appel au package \package{biblatex}, il suffit d'écrire :
 
 \begin{latexcode}
 \usepackage[bibstyle=verbose,...]{biblatex}
 \end{latexcode}
 
-\subsection{Añadir referencias no citadas}
+\subsection{Ajout de références non citées}
 
-Puede que queramos añadir a una bibliografía referencias que no hemos
-citado explícitamente en el texto. Hay que utilizar:
-\csp{nocite}\verb|{|\meta{clave1}\verb|,|\meta{clave2}\verb|,…}|.
+On peut vouloir ajouter dans une bibliographie des références qui n'ont pas été explicitement citées dans le texte. Il faut  utiliser :
+\csp{nocite}\verb|{|\meta{clef1}\verb|,|\meta{clef2}\verb|,…}|.
 
-Para añadir el total de referencias de un fichero \ext{bib} basta con escribir: \csp{nocite}\verb|{*}|.
+Pour ajouter l'ensemble des références d'un fichier \ext{bib} il suffit d'écrire : \csp{nocite}\verb|{*}|.
 
-\section{Dividir una bibliografía}
+\section{Diviser une bibliographie}
 
-\subsection{Por categoría de documento}
-Una primera forma de ordenar una bibliografía es hacerlo de acuerdo
-con el tipo de los documentos. Las entradas bibliográficas tienen un
-campo \champ{entrysubtype} que permite detallar el tipo de entrada:
-por ejemplo, indicar si una entrada es una carta, un tratado, una
-homilía, etc. La opción \option{subtype} que se pasa al comando
-\cs{printbibliography} permite imprimir sólo las entradas a las que se
-corresponde el campo \champ{entrysubtype}. Imaginemos que sólo
-queremos presentar las entradas cuyo campo tiene como valor
-\enquote{carta}. Basta con escribir:
+\subsection{Par catégorie de document}
+Une première manière de trier une bibliographie est de le faire selon le type des documents. Les entrées bibliographiques disposent d'un champ \champ{entrysubtype} qui permet de préciser le type d'entrée : par exemple indiquer si une entrée est une lettre, un traité, une prédication, etc. L'option \option{subtype} passée à la commande \cs{printbibliography} permet de n'imprimer que les entrées dont le champ \champ{entrysubtype} correspond. Supposons que nous ne souhaitons afficher que les entrées dont ce champ  a pour valeur \enquote{lettre}. Il suffit d'écrire :
 
 \begin{latexcode}
-\printbibliography[subtype=carta]
+\printbibliography[subtype=lettre]
 \end{latexcode}
 
-Se puede pasar una opción \option{title} para precisar el título de
-nuestra bibliografía:
+On peut passer une option \option{title} afin de préciser le titre de notre bibliographie :
 
 \begin{latexcode}
-\printbibliography[subtype=carta,title=Cartas]
+\printbibliography[subtype=lettre,title=Lettres]
 \end{latexcode}
 
-Un método así permite separar con facilidad una bibliografía en varias
-partes según las categorías de documentos.
+Une telle méthode permet aisément de séparer une bibliographie en plusieurs parties selon les catégories de documents.
 
 \begin{latexcode}
-\printbibliography[subtype=concilio,title=Actas de concilio]
-\printbibliography[subtype=tratado,title=Tratados]
-\printbibliography[subtype=carta,title=Cartas]
+\printbibliography[subtype=concile,title=Actes de concile]
+\printbibliography[subtype=traite,title=Traités]
+\printbibliography[subtype=lettre,title=Lettres]
 \end{latexcode}
 
 
-\subsubsection{Cambiar el nivel de título de una bibliografía}
+\subsubsection{Changer le niveau de titre d'une bibliographie}
 
-Por defecto, los títulos de bibliografía son de nivel
-\cs{chapter*}\renvoi{niveautitre}. Pero se pueden redefinir estos
-títulos gracias a \csp{defbibheading}.
+Par défaut, les titres de bibliographie sont de niveaux \cs{chapter*}\renvoi{niveautitre}. Mais il est possible de redéfinir ces titres, grâce à  \csp{defbibheading}.
 
-Si queremos, por ejemplo, que el título de la bibliografía sea de
-nivel \cs{subsection}, nos basta con añadir las líneas siguientes al
-comienzo de nuestro fichero \ext{tex}, a ser posible, en el preámbulo:
+Si nous souhaitons par exemple que le titre de la bibliographie soit de niveau \cs{subsection}, il nous suffit d'ajouter les lignes suivantes au début de notre fichier \ext{tex}, si possible dans le préambule:
 
 \begin{latexcode}
 \defbibheading{bibliography}[\bibname]{\subsection{#1}}
 \end{latexcode}
 
-Analicemos este código:
+Analysons ce code :
 \begin{enumerate}
-\item El primer argumento corresponde al nombre del encabezado de
-  bibliografía (el título de bibliografía). El encabezado llamado
-  \forme{bibliography} es el que se emplea por defecto. Pero podríamos
-  definir un encabezado \forme{toto}, bastaría con pasar una opción
-  \option{heading} al comando \cs{printbibliography}.
+\item Le premier argument correspond au nom de l'en-tête de bibliographie (du titre de bibliographie). L'en-tête nommé \forme{bibliography} est celui utilisé par défaut. Mais on pourrait très bien définir un en-tête \forme{toto}, il suffirait alors de passer une option \option{heading} à la commande \cs{printbibliography}.
 
 \begin{latexcode}
 \defbibheading{toto}[\bibname]{\subsection{#1}}
 \printbibliography[heading=toto]
 \end{latexcode}
 
-\item El segundo argumento, aquí \csp{bibname}, corresponde al título
-  por defecto. En nuestro caso, el comando \csp{bibname} remite
-  simplemente al valor \forme{Bibliografía}.
-\item El tercer argumento contiene el código que se llama para crear
-  el encabezado de una bibliografía. Aquí declaramos que pasamos el título
-  (el contenido de \verb|#1|) a un comando \cs{subsection}.
+\item Le second argument, ici \csp{bibname}, correspond au titre par défaut. Dans notre cas, la commande \csp{bibname} renvoie simplement à la valeur \forme{Bibliographie}.
+\item Le troisième argument contient le code qui est appelé pour créer l'en-tête d'une bibliographie. Ici on déclare qu'on passe le titre (le contenu de \verb|#1|) à une commande \cs{subsection}.
 \end{enumerate}
 
-Observemos que \package{biblatex} ofrece varios encabezados estándar:
+Notons que \package{biblatex} fournit en standard plusieurs entête:
 \begin{glossaire}
-\item[bibliography]encabezado por defecto, de nivel \cs{chapter*} (o
-  \cs{section*} para las clases sin \cs{chapter*}).
-\item[subibliography], de nivel \cs{section*} (o \cs{subsection*} para
-  las clases sin \cs{chapter*}).
-\item[bibintoc]: como \forme{bibliography}, pero añade el título al
-  índice de contenidos.
-\item[subbibintoc]: como \forme{subibliography}, pero añade el título
-  al índice de contenidos.
-\item[bibnumered], de nivel \cs{chapter} (o \cs{section} para las
-  clases sin \cs{chapter}).
-\item[subbibnumered], de nivel \cs{section} (o \cs{subsection} para
-  las clases sin \cs{chapter}).
+\item[bibliography]entête par défaut, de niveau \cs{chapter*} (ou \cs{section*} pour les classes sans \cs{chapter*}).
+\item[subibliography], de niveau \cs{section*} (ou \cs{subsection*} pour les classes sans \cs{chapter*}).
+\item[bibintoc]: comme \forme{bibliography}, mais ajoute le titre dans la table des matières.
+\item[subbibintoc]: comme \forme{subibliography}, mais ajoute le titre dans la table des matières.
+\item[bibnumered], de niveau \cs{chapter} (ou \cs{section} pour les classes sans \cs{chapter}).
+\item[subbibnumered], de niveau \cs{section} (ou \cs{subsection} pour les classes sans \cs{chapter}).
 \end{glossaire}
  
 
-Con un método así, es fácil ordenar una bibliografía en fuentes
-primarias  y fuentes secundarias. Basta con asignar un valor al campo
-\champ{entrysubtype} de las entradas bibliográficas, cambiándolo según
-se trate de una fuente primaria o de una fuente secundaria. Por ejemplo:
+Avec une telle méthode, il est aisé de trier une bibliographie en sources primaires et sources secondaires. Il suffit d'attribuer une valeur au champ \champ{entrysubtype} des entrées bibliographiques, en la faisant varier selon qu'il s'agisse d'une source primaire ou d'une source secondaire.
+Par exemple :
 
 \begin{latexcode}
 \defbibheading{bibliography}[\bibname]{\subsection{#1}}
-\chapter{Bibliografía}
-\section{Fuentes}
-\printbibliography[subtype=tratado,title=Tratados]
-\printbibliography[subtype=carta,title=Cartas]
-\section{Literatura secundaria}
-\printbibliography[subtype=herramienta,title=Herramientas]
-\printbibliography[subtype=estudio,title=Estudios]
+\chapter{Bibliographie}
+\section{Sources}
+\printbibliography[subtype=traite,title=Traités]
+\printbibliography[subtype=lettre,title=Lettres]
+\section{Littérature secondaire}
+\printbibliography[subtype=outil,title=Outils]
+\printbibliography[subtype=etude,title=Études]
 \end{latexcode}
 
 
-\subsection{Por tema}
 
-Otra forma de dividir una bibliografía consiste en hacer partes temáticas. Para ello, se pueden indicar en el campo \champ{keywords}  palabras clave. Las palabras clave tienen que separarse mediante comas.
+\subsection{Par sujet}
 
-Entonces se puede pasar la opción \option{keyword} al comando \cs{printbibliography}, y seleccionar de esta forma todas las entradas que tengan el valor  \forme{xxx} en su campo \champ{keywords}:
+Une autre manière de  sectionner une bibliographie est de faire des parties thématiques. On peut pour cela indiquer dans le champ \champ{keywords}  des mots clés. Les mots clés doivent être séparés par des virgules.
+
+On peut alors passer l'option \option{keyword} à la commande \cs{printbibliography}, et ainsi sélectionner toutes les entrées ayant la valeur \forme{xxx} dans leur champ \champ{keywords} :
 
 \begin{latexcode}
 \printbibliography[keyword=xxx]
 \end{latexcode}
 
-A la inversa, se pueden mostrar todas las entradas que no tengan el valor \forme{xxx} en su campo \champ{keywords}.
+\emph{A contrario}, on peut afficher toutes les entrées n'ayant pas la valeur \forme{xxx} dans leur champ \champ{keywords}.
 
 \begin{latexcode}
 \printbibliography[notkeyword=xxx]
 \end{latexcode}
 
-Por último, se pueden combinar varias palabras clave. En ese caso, aparecen las entradas que tengan al menos una de esas palabras:
+Il est enfin possible de combiner plusieurs mots clés. Dans ce cas, les entrées possédant au moins un de ces mots apparaissent:
 
 \begin{latexcode}
-\printbibliography[keyword=positivistas, keyword=naturalistas]
+\printbibliography[keyword=positivistes, keyword=naturalistes]
 \end{latexcode}
 
 \begin{plusloins}
-    Algunas personas recomiendan utilizar el campo \champ{keyword} para separar fuentes primarias y fuentes secundarias. El autor de estas líneas considera que se trata de una deformación del sentido de este campo, que no debería centrarse en el estatus epistemológico de una referencia, sino en su tema. 
+    Un certain nombre de personnes conseillent d'utiliser le champ \champ{keyword} pour séparer sources primaires et sources secondaires. L'auteur de ces lignes considère qu'il s'agit là d'une déformation du sens de ce champ, qui ne devrait pas porter sur le statut épistémologique d'une référence mais sur son sujet. 
 \end{plusloins}
 
-\subsection{Por apartados del documento}
+\subsection{Par section du document}
 
-\package[biblatex]{Biblatex} también permite presentar una bibliografía correspondiente a una parte del documento, por ejemplo, un capítulo, gracias a la definición de segmentos bibliográficos ---un segmento bibliográfico es una parte del documento que tiene su bibliografía propia\footcites[En realidad, \package{biblatex} ofrece dos cosas distintas: \enquote{segment} y \enquote{section} bibliográficos. Sólo las secciones bibliográficas son realmente una bibliografía propiamente, en la medida en que, si se emplea un estilo numerado de bibliografía, la numeración se reinicia con cada cambio de apartado, pero no con cada cambio de segmento. No obstante, es raro utilizar en humanidades un estilo bibliográfico numerado. Por eso sólo hablamos aquí de segmentos bibliográficos y no de secciones bibliográficas. Véase:][así como:]{biblatex_section}[][]{biblatex_segment}.
+\package[biblatex]{Biblatex} permet aussi d'afficher une bibliographie correspondant à une partie du document, par exemple un chapitre,  grâce à la définition de segments bibliographiques --- un segment bibliographique étant une partie de document qui a sa bibliographie propre\footcites[En réalité \package{biblatex} propose deux choses différentes : \enquote{segment} et \enquote{section} bibliographiques. Seules les sections bibliographiques ont réellement une bibliographie propre, dans la mesure où, si on utilise un style numéroté de bibliographie, la numérotation recommence à chaque changement de section, mais pas à chaque changement de segment. Toutefois il est rare en sciences humaines d'utiliser un style bibliographique numéroté. C'est pourquoi nous ne parlons ici que des segments bibliographiques et non pas des sections bibliographiques. Voir :][ainsi que :]{biblatex_section}[][]{biblatex_segment}.
 
-El método más sencillo consiste en pasar una opción \option{refsegment} al llamar al  package \package{biblatex}. El valor de este argumento puede ser \forme{part}, \forme{chapter}, \forme{section}, \forme{subsection}, que indica en qué nivel de título comenzar un nuevo apartado bibliográfico\footcite[También se pueden crear apartados bibliográficos de un modo distinto al de nivel de título, véase:][]{biblatex_segment}.
+La méthode la plus simple est de passer une option \option{refsegment} lors de l'appel au package \package{biblatex}. La valeur de cet argument peut-être \forme{part}, \forme{chapter}, \forme{section}, \forme{subsection}, qui indique à quel niveau de titre commencer une nouvelle section bibliographique\footcite[Il est toutefois possible de créer des sections bibliographiques autrement que par niveaux de titre, voir :][]{biblatex_segment}.
 
-Cada segmento bibliográfico tiene un número comprendido entre 0 y N. Podemos conocer el del segmento actual por medio de \csp{therefsegment}.
+Chaque segment bibliographique possède un numéro compris entre 0 et N. On peut connaître celui du segment courant grâce à  \csp{therefsegment}.
 
-Así podemos presentar al final de cada capítulo una bibliografía de dicho capítulo:
+On peut ainsi afficher à la fin de chaque chapitre une bibliographie du chapitre :
 
 \begin{latexcode}
 \documentclass{…}
@@ -201,48 +156,48 @@ Así podemos presentar al final de cada capítulo una bibliografía de dicho cap
 \end{document}
 \end{latexcode}
 
-\subsection{Otras formas}
+\subsection{Autres manières}
 
-\package[biblatex]{Biblatex} ofrece muchas otras formas de dividir una bibliografía: así podemos definir filtros personalizados para seleccionar solamente las entradas que respondan a ciertos criterios, asignar \enquote{categorías} a ciertas entradas, etc. Sólo hemos presentado aquí un esbozo de las más frecuentes: remitimos a la documentación de \package{biblatex} para más detalles\footcite{biblatex_bibliographycommands}.
+\package[biblatex]{Biblatex} propose de nombreuses autres manières de diviser une bibliographie : ainsi il est possible de définir des filtres personnalisés pour ne sélectionner que les entrées répondant à certains critères, d'assigner des \enquote{catégories} à certaines entrées, etc. Nous n'avons présenté ici qu'un aperçu des usages les plus courants : nous renvoyons à la documentation de \package{biblatex} pour plus de détails\footcite{biblatex_bibliographycommands}.
 
 
 
-\section{Ordenación en el interior de una bibliografía}
+\section{Tri à l'intérieur d'une bibliographie}
 
-Se constata que la bibliografía se ordena por nombre de autor, después, por título, después, por año. Se puede pasar una opción \option{sorting} al llamar al  package \package{biblatex}. Esta opción toma como valor uno de los esquemas de ordenación ofrecidos por \package{biblatex} o definidos por tus medios\footcites[Para los esquemas de ordenación estándar, véase][]{biblatex_tri}[para los esquemas personalizados, véase][]{biblatex_triperso}.
+On constate que la bibliographie est triée par nom d'auteur, puis par titre, puis par année. Il est possible de passer une option \option{sorting} lors de l'appel au package \package{biblatex}. Cette option prend pour valeur l'un des schémas de tri proposés par \package{biblatex} ou bien définis par vos soins\footcites[Pour les schémas de tri standards voir][]{biblatex_tri}[pour les schémas personnalisés, voir][]{biblatex_triperso}.
 
-Por ejemplo, para ordenar por nombre de autor (indicado por la letra \verb|n|), año (\verb|y|), título (\verb|t|):
+Par exemple pour trier par nom d'auteur (indiqué par la lettre \verb|n|), année (\verb|y|), titre (\verb|t|):
 
 \begin{latexcode}
 \usepackage[sorting=nyt]{biblatex}
 \end{latexcode}
 
-A veces, el valor empleado para la ordenación no tiene que ser el valor que luego aparece en la bibliografía. Tomemos dos entradas cuyos título son \enquote{Carta 237} y \enquote{Carta 64}. En la bibliografía final, 
-\enquote{Carta 64} aparece \emph{después de} \enquote{Carta 237}. 
+Parfois   la valeur utilisée pour le tri ne doit pas être la valeur ensuite affichée dans la bibliographie. Prenons deux entrées dont les titres sont \enquote{Lettre 237} et \enquote{Lettre 64}. Dans la bibliographie finale,
+\enquote{Lettre 64} est affiché \emph{après} \enquote{Lettre 237}. 
 
-En efecto, no es el número \forme{237} el que se reconoce, sino sólo el carácter \forme{2}, después, el carácter \forme{3}, etc. Por eso, \enquote{Carta 237} se sitúa antes de \enquote{Carta 64}, porque 2 se sitúa antes que 6.
+En effet, ce n'est pas le nombre \forme{237} qui est reconnu, mais seulement le caractère \forme{2}, puis le caractère \forme{3}, etc. C'est pourquoi \enquote{Lettre 237} est situé avant \enquote{Lettre 64}, 2 se trouvant avant 6.
 
-Para solventar este prolema, se puede emplear el campo \champ{sorttitle}. Éste no aparece, pero tiene prioridad sobre el campo \champ{title} en lo que afecta a la ordenación en la bibliografía final. Veamos lo que dan nuestras dos entradas:
+Pour contourner ce problème, on peut utiliser le champ \champ{sorttitle}. Celui-ci n'est pas affiché mais a la priorité sur le  champ \champ{title} en ce qui concerne le tri dans la bibliographie finale.  Voici ce que donnent nos deux entrées :
 
 \begin{latexcode}
 @book{AugustinEpi64,
-    Author = {Augustín},
-    Sorttitle = {Carta 064},
-    Title = {Carta 64}}
+    Author = {Augustin},
+    Sorttitle = {Lettre 064},
+    Title = {Lettre 64}}
     
 @book{AugustinEpi237,
-    Author = {Augustín},
-    Sorttitle = {Carta 237},
-    Title = {Carta 237},
+    Author = {Augustin},
+    Sorttitle = {Lettre 237},
+    Title = {Lettre 237},
 \end{latexcode}
 
-Como \forme{0} se sitúa antes que \forme{2}, la carta 64 está bien colocada antes que la carta 237. En la bibliografía, la entrada tendrá, sin embargo, el título \enquote{Carta 64}, y no \enquote{Carta 064}.
+Comme \forme{0} se situe avant \forme{2}, la lettre 64 est bien située avant la lettre 237. Dans la bibliographie, l'entrée aura cependant bien le titre  \enquote{Lettre 64}, et non pas \enquote{Lettre 064}.
 
 \begin{attention}
-Un problema parecido se puede plantear para las obras anónimas: ante la ausencia de autor, \emph{biblatex} utiliza el título como primer criterio de ordenación, lo que tiene como consecuencia que todas las obras anónimas se dispersan a lo largo de la bibliografía, antes que aparecer en un solo lugar, por ejemplo, al comienzo.
+Un problème semblable peut se poser pour les œuvres anonymes : en l'absence d'auteur, \emph{biblatex} se sert du titre comme premier critère de tri, ce qui a pour conséquence de disperser toutes les œuvres anonymes au sein de la bibliographie, plutôt que de les mettre à un seul endroit, par exemple tout au début.
 
-Se puede emplear el campo \champ{sortname} para resolver este problema, pero lo mejor es definir tu propia regla de ordenación: explicamos cómo en nuestro blog\footcite{trianonymes}.
+On peut certes utiliser le champ \champ{sortname} pour résoudre ce problème, mais le plus sain est de définir sa propre règle de tri : nous expliquons comment sur notre blog\footcite{trianonymes}.
 \end{attention}
 
 
-También existe un campo \champ{sortyear} para indicar un años distinto de ordenación. 
+Il existe également un champ \champ{sortyear} pour préciser une autre année de tri. 

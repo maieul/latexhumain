@@ -1,45 +1,45 @@
-\chapter {Instalar \LaTeX{}}\label{install}
+\chapter {Installer \LaTeX{}}\label{install}
 
 \begin{intro}
-    Antes de poder utilizar \LaTeX{} (\XeLaTeX), hay que instalarlo en el ordenadoril faut l'installer sur son ordinateur. Veamos cómo hacerlo en los sistemas operativos usuales\footnote{Gracias a Brendan Chabannes por la redacción de la mayor parte de este capítulo.}.
+    Avant de pouvoir se servir de \LaTeX{} (\XeLaTeX), il faut l'installer sur son ordinateur. Voici comment faire pour les systèmes d'exploitation courants\footnote{Merci à Brendan Chabannes pour la rédaction de la majeure partie de ce chapitre.}.
 \end{intro}
 
-\section{La noción de distribución}
+\section{La notion de distribution}
 
-Eb general, no se instala \LaTeX{} solo, se instala una distribución \LaTeX{}. Una distribución es un conjunto de ficheros que comprende: 
+En général, on n'installe pas \LaTeX{} tout seul, on installe une distribution \LaTeX{}. Une distribution est un ensemble de fichiers comprenant :
 \begin{itemize}
-\item los programas \TeX, \LaTeX, y generalmente \XeLaTeX, pero también otros programas que peretenecen  a la  \forme{familia \TeX\footnote{Por hacer una analogía con los programas conocidos, cuando instalamos Microsoft Office, no solo instalamos Word, Excel y Powerpoint, sino también programas que usan estos últimos, por ejemplo, para trazar organigramas.}}, que veremos en su momento;
-\item ficheros que permiten ampliar las posibilidades de \LaTeX{}: los packages y las clases;
-\item la documentación sobre estos ficheros.
+\item les logiciels \TeX, \LaTeX, et généralement \XeLaTeX, mais aussi d'autres logiciels qui appartiennent à la  \forme{famille \TeX\footnote{Pour prendre une analogie avec les logiciels connus, quand vous installez Microsoft Office, vous installez non seulement Word, Excel et Powerpoint, mais aussi des logiciels utiles à ces derniers, par exemple pour tracer des organigrammes.}}, que nous verrons en temps voulu;
+\item des fichiers permettant d'étendre les possibilités de \LaTeX : les packages et les classes;
+\item de la documentation sur ces fichiers.
 \end{itemize}
 
-Hay dos distribuciones comunes: TeX Live, que se considera portátil y muy adaptada para MacOS X y Linux, y MikTeX solo para Windows. La finalidad de este capítulo consiste en explicar cómo se instalan estas distribuciones.
+Il existe deux distributions courantes : TeX Live, qui se veut portable et est très adaptée pour MacOS X et Linux, et MikTeX pour Windows uniquement. L'objet de ce chapitre est donc d'expliquer comment installer ces distributions.
 
-\section{Instalar TeX Live en Mac Os X}
+\section{Installer TeX Live sous Mac Os X}
 
-La forma más sencilla consiste en instalar MacTeX\footnote{\url{http://www.tug.org/mactex/}}. No solamente consta de una versión de TeX Live para Mac, sino también de los programas para facilitar la escritura con \LaTeX{}.
+La méthode la plus simple consiste à installer MacTeX\footnote{\url{http://www.tug.org/mactex/}}. Celle-ci comprend non seulement une version de TeX Live pour Mac, mais aussi des logiciels pour faciliter la rédaction avec \LaTeX{}.
 
-Para instalarla, basta con descargar el fichero de instalación del sitio web en su página de bienvenida. Se trata de un fichero \ext{zip}, que hay que descomprimir. Dentro se encuentra un fichero \ext{mpkg}: haciendo doble clic en él, se lanza el programa de instalación. Es mejor mantener la configuración estándar de la instalación.
+Pour l'installer, il suffit de télécharger le fichier d'installation sur le site, en page d'accueil. Il s'agit d'un fichier \ext{zip}, qu'il faut le cas échéant décompresser. Dedans se trouve un fichier \ext{mpkg} : un double clic dessus suffit à lancer le logiciel d'installation. Il vaut mieux conserver les réglages standards d'installation.
 
-Una vez completada la instalación, podemos dirigirnos a la carpeta \forme{TeX} dentro de la carpeta \forme{Aplicaciónes} de nuestro Mac.
+Une fois l'installation effectuée, vous pouvez vous rendre dans le dossier \forme{TeX} du dossier \forme{Applications} de votre Mac.
 
-Esta carpeta tiene varias aplicaciones:
+Ce dossier comprend plusieurs applications :
 \begin{glossaire}
-\item[BibDesk]que es un programa para gestionar los ficheros bibliográficos con formato \ext{bib}\renvoi{bddbiblio}.
-\item[Excalibur]que es un programa de corrección ortográfica pensado para reconocer los comandos \LaTeX{}. Desconocemos su calidad, porque no lo hemos probado.
-\item[LaTeXit]que es un programa para escribir aún con más facilidad ecuaciones en \LaTeX{} y para exportarlas a otros programas. Como este libro es uno de los pocos sobre \LaTeX{} que no explica cómo hacer ecuaciones con él, no nos detendremos en este punto.
-\item[TeXLive Utility]que sirve par actualizar los distintos módulos de \LaTeX{}: clases, packages, etc.\renvoi{majosX} 
-\item[TeXworks et TeXShop]que son dos editores de texto pensados para \LaTeX. Podemos elegir uno de ellos para comenzar en \LaTeX{}\renvoi{commencer}.
+\item[BibDesk]qui est un logiciel pour gérer les fichiers bibliographiques au format \ext{bib}\renvoi{bddbiblio}.
+\item[Excalibur]qui est un logiciel de correction orthographique prévu pour reconnaître les commandes \LaTeX{}. Nous ignorons sa qualité, ne l'ayant pas essayé.
+\item[LaTeXit]qui est un logiciel pour rédiger encore plus facilement des équations en \LaTeX{} et les exporter vers divers logiciels. Comme ce livre est l'un des rares sur \LaTeX{} à ne pas expliquer comment faire des équations avec, nous ne nous étendrons pas.
+\item[TeXLive Utility]qui sert à mettre à jour les différents modules de \LaTeX{} : classes, packages, etc.\renvoi{majosX} 
+\item[TeXworks et TeXShop]qui sont deux éditeurs de textes prévus pour \LaTeX. Choissisez l'un d'entre eux pour commencer en \LaTeX{}\renvoi{commencer}.
 \end{glossaire}
 
-Además, se añade un panel de configuración \enquote{Distribution TeX} en las Preferencias del Sistema. En la mayoría de los casos, no tendremos que modificarlo. En efecto, permite elegir entre varias versiones de la distribución (por ejemplo, entre la versión de 2011 y la de 2012), cosa que pocas veces es necesaria.
-\subsection{Los caracteres \LaTeX en Mac Os X}\label{claviermac}
+En outre, un panneau de configuration, \enquote{Distribution TeX} est ajouté dans les Préférences Systèmes. Dans la plupart des cas, vous n'aurez pas à vous en servir. Il permet en effet de choisir entre plusieurs versions de la distribution (par exemple entre la version 2011 et la version 2012), ce qui est rarement nécéssaire.
+\subsection{Les caractères \LaTeX sous Mac Os X}\label{claviermac}
 
-Los teclados Apple no indican directamente los caracteres especiales disponibles. Veamos cómo escribir la mayoría de los caracteres necesarios para el uso de \LaTeX.
+Les claviers Apple n'indiquent pas directement les caractères spéciaux disponibles. Voici comment frapper la plupart des caractères nécessaires à l'utilisation de \LaTeX.
 
 \begin{longtable}{|l|l|}
 \hline
-\headlongtable{Carácter} & \headlongtable{Escritura} \\
+\headlongtable{Caractère} & \headlongtable{Frappe} \\
 \hline
 \endhead
 \hline
@@ -53,12 +53,12 @@ Los teclados Apple no indican directamente los caracteres especiales disponibles
 \verb+~+ & \verb|⌥ + N|  \\
 \end{longtable}
 
-Y para los teclados de la Suiza francófona, utilizando la barra superior de números:
+Et pour les claviers de Suisse romande, en utilisant la barre supérieure de chiffres :
 
 
 \begin{longtable}{|l|l|}
 \hline
-\headlongtable{Carácter} & \headlongtable{Escritura} \\
+\headlongtable{Caractère} & \headlongtable{Frappe} \\
 \hline
 \endhead
 \hline
@@ -74,77 +74,84 @@ Y para los teclados de la Suiza francófona, utilizando la barra superior de nú
 
 
 
-\section{Instalar TeX Live en GNU/Linux}
+\section{Installer TeX Live sous GNU/Linux}
 
-La mayor parte de las veces, los paquetes TeX Live están disponibles en los repositorios de nuestra distribución. Sin embargo, la mayoría de las distribuciones GNU/Linux no son compatibles con algunos packages recientes como Biber\footnote{Aunque las cosas están cambiando: las próximas versiones de estos sistemas, como  Debian o Ubuntu (que se llaman, respectivamente \emph{Wheezy} y \emph{Quantal Quetzal}) dispondrán de TeX Live 2012 y de Biber.}. Por eso propiciaremos la instalación a partir del programa que podamos encontrar en el sitio web de TeX Live.
+La plupart du temps, les paquets TeX Live sont disponibles dans les dépôts de votre distribution. Néanmoins, la majeure partie des distributions GNU/Linux ne gèrent pas certains packages récents tels que Biber\footnote{Les choses sont toutefois en train d'évoluer : les prochaines versions de systèmes tels que Debian ou Ubuntu (respectivement nommées \emph{Wheezy} et \emph{Quantal Quetzal}) disposeront de TeX Live 2012 et de Biber.}. C'est pourquoi nous privilégierons l'installation à partir du programme que vous pouvez trouver sur le site de TeX Live.
 
-Una vez realizada una instalación completa, pesa aproximadamente tres gigabytes. A medida que pasa el tiempo y las actualizaciones se acumulan, se recomienda tener cuatro gigabytes de espacio libre en el disco duro.
+Une installation complète une fois effectuée pèse environs trois giga-octets. Le temps passant et les mises à jour s'accumulant, il est recommandé d'avoir quatre giga-octets d'espace libre sur le disque dur.
 
-\subsection{Previamente}
+\subsection{Au préalable}
 
-Asegúrate, ente todo, de tener el paquete \verb|perltk| instalado en tu sistema. Si no lo tienes, tendrás que lanzar la instalación solo a través de la línea de comandos.
+Assurez-vous avant toute chose d'avoir le paquet \verb|perltk| installé sur votre système. Si vous ne le possédez pas, vous devrez lancer l'installation en ligne de commande uniquement.
 
-A modo de ejemplo, el paquete se llama \forme{perl-tk} en Debian y Ubuntu, \forme{perl-Tk-804} en Fedora y sus derivados.
+À titre d'exemple, le paquet se nomme \forme{perl-tk} sous Debian et Ubuntu, \forme{perl-Tk-804} sous Fedora et ses dérivés.
 
-En Ubuntu, por ejemplo, hay una forma muy sencilla de instalar este paquete: teclea \url{apt://perl-tk} en la barra de dirección de tu navegador web Firefox.
+Sous Ubuntu, par exemple, il existe un moyen très simple d'installer ce paquet : tapez \url{apt://perl-tk} dans la barre d'adresse de votre navigateur web Firefox.
 
-Dirígete a \url{http://tug.org/texlive/acquire-netinstall.html}. Elige el fichero \emph{install-tl-unx.tar.gz}. Tras su descarga, descomprímelo y dirígete a la carpeta recientemente creada con la ayuda de un terminal, tecleadno, por ejemplo \verb|cd ~/Téléchargements/install-tl-*/|. Entonces puedes lanzar la instalación en modo administrador, por ejemplo, así:
+Rendez-vous alors sur \url{http://tug.org/texlive/acquire-netinstall.html}. Choisissez  le fichier \emph{install-tl-unx.tar.gz}. Après son téléchargement,  décompressez-le puis rendez-vous dans le dossier nouvellement créé à l'aide d'un terminal, par exemple en tapant \verb|cd ~/Téléchargements/install-tl-*/|. Vous pouvez alors lancer l'installation en mode administrateur, par exemple ainsi :
 
 \begin{bashcode}
 sudo perl install-tl -gui wizard
 \end{bashcode}
-Este comando lanzará el programa de instalación de la distribución completa que reconocerá automáticamente la arquitectura de tu plataforma.
+Cette commande lancera le programme d'installation de la distribution complète qui reconnaîtra automatiquement l'architecture de votre plate-forme.
 
-\subsection{Instalación y configuración}
+\subsection{Installation et configuration}
 
-Después de escribir tu contraseña, te bastará con seguir las etapas siguientes:
+Après avoir donné votre mot de passe, il vous suffira de suivre les étapes suivantes:
 
 \begin{enumerate}
-\item Pulsa simplemente \forme{Siguiente}.
-\item Espera a que haya acabado la descarga. Tendrás que elegir una carpeta de instalación: escoge preferentemente un repertorio fuera del sistema de base, como \verb|/$HOME/texlive2012|\footnote{\forme{\$HOME} es una \emph{variable de entorno}. También podrías teclear \forme{/home/justin/} si tu nombre de usuario es \enquote{justin}.}.
-\item Mantén A4 para el tamaño del papel.
-\item Pulsa sobre Instalar.
-\item Al final de la instalación, un mensaje te informará de que tienes que ajustar tu \forme{\$PATH}. Abre el fichero \verb|~/.bashrc| (créalo, si no existe), y añade en él las líneas siguientes:\footnote{\forme{\$PATH} es una variable de entorno que permite al sistema saber dónde buscar los ejecutables. Como TeX Live no se instala en las carpetas por defecto, ya que es extraño al sistema de base, tienes que integrarlo tú. Ajusta el campo entre comillas según el mensaje que se muestra en la pantalla, teniendo cuidado de acabar con \forme{:\$PATH}.}\\
+\item Cliquez simplement sur \forme{Suivant}.
+\item Attendez que le téléchargement soit fini. Il vous faut choisir un dossier d'installation : choisissez de préférence un répertoire hors du système de base, comme \verb|/$HOME/texlive2012|\footnote{\forme{\$HOME} est une \emph{variable d'environnement}. Vous pourriez tout aussi bien taper \forme{/home/justin/} si votre nom d'utilisateur est \enquote{justin}.}.
+\item Conservez A4 pour la taille de papier.
+\item Cliquez sur Installer.
+\item À la fin de l'installation, un message vous informera qu'il vous faut ajuster votre \forme{\$PATH}. Ouvrez le fichier \verb|~/.bashrc| (créez-le s'il n'existe pas), et ajoutez-y les lignes suivantes:\footnote{\forme{\$PATH} est une variable d'environnement qui permet au système de savoir où chercher les exécutables. TeX Live n'étant pas installé dans les dossiers par défaut, puisqu'il est étranger au système de base, c'est à vous de l'intégrer. Ajustez le champ entre guillemets selon le message qui s'affiche à l'écran, en prenant soin de finir par  \forme{:\$PATH}.}\\
   \begin{english}\verb|export PATH="/$HOME/texlive2012/bin/x86_64-linux:$PATH"|\end{english}
 \end{enumerate}
 
-La instalación ha concluido. Puedes cerrar tu terminal para que los cambios aplicados a tu \forme{\$PATH} queden guardados. 
+L'installation est terminée. Vous pouvez fermer votre terminal pour que les modifications appliquées à votre \forme{\$PATH} soient prises en compte. 
 
-\section{MiKTeX en Windows}
 
-Los distemas Windows son considerablemente distintos de los sistemas GNU/Linux y Mac OS X. Por tanto, aunque se puede hacer una instalación manual de la distribución TeX Live en Windows, el procedimiento es tedioso y complejo.
+\section{MiKTeX sous Windows}
 
-Por eso recurriremos a una distribución pensada únicamente para Windows, que automatiza las tareas de instalación de la distribución \LaTeX{} y que permite administrar la instalación cumpliendo con las prácticas que se aplican en este sistema. Esta distribución de llama MiKTeX. Su instalador es muy completo: además de una distribución \LaTeX{}, instala también un programa gráfico para actualizar los paquetes y un editor de texto.
 
-\subsection{Instalación}
+Les systèmes Windows diffèrent considérablement des systèmes GNU/Linux et Mac OS X. Par conséquent, s'il est possible de faire une installation manuelle de la distribution TeX Live sous Windows, la procédure est fastidieuse et complexe.
 
-Hay que dirigirse a la página de descargas de la distribución: \url{http://miktex.org/download}. Pulsa sobre el texto \emph{Other downloads}. Elige el fichero \emph{Net Installer}, y no \emph{Basic Installer}.
-%
+C'est pourquoi nous nous tournerons vers une distribution consacrée exclusivement à Windows, qui automatise les tâches d'installation de la distribution \LaTeX{} et permet de gérer son installation en se conformant aux pratiques qui ont cours sur ce système. Cette distribution a pour nom MiKTeX. Son installateur est très complet: en plus d'une distribution \LaTeX{}, il installe aussi un logiciel graphique de mise à jour des paquets et un éditeur de texte.
+
+\subsection{Installation}
+
+Il faut se rendre sur la page de téléchargement de la distribution : \url{http://miktex.org/download}. Cliquez sur le texte \emph{Other downloads}. Choisissez le fichier \emph{Net Installer}, et non le \emph{Basic Installer}.
+
 \begin{attention}
-Observarás que se ofrecen instaladores para las versiones llamadas, respectivamente, de 32 bits y de 64 bits de Windows. Si no conoces estos términos, elige la versión de \emph{32 bits}. Esta última, en efecto, puede ejecutarse en los dos tipos de plataformas, mientras que a la inversa no es posible. Si sabes que tienes un sistema de 64 bits, puedes elegir sin miedo el instalador que le corresponde.
+Vous remarquerez que des installateurs sont fournis pour les versions dites respectivement 32 bits et 64 bits de Windows. Si vous ne connaissez pas ces termes, veillez à choisir la version \emph{32 bits}. Cette dernière peut en effet s'exécuter sur les deux types de plate-formes, tandis que la réciproque n'est pas vraie. Si vous savez que vous disposez d'un système en 64 bits, vous pouvez choisir sans crainte l'installateur qui y correspond.
 \end{attention}
 
-Una vez descargado el instalador en tu ordenador, un doble clic lanza el procedimiento. Primero hay que aceptar la licencia del programa. Luego, elige \enquote{Download MiKTeX}, y, en la pantalla siguiente, \enquote{Complete MiKTeX}.
+Une fois l'installateur téléchargé sur votre ordinateur, un double-clic lance la procédure. Il faut d'abord accepter la licence du logiciel. Puis choisissez \enquote{Download MiKTeX}, et, à l'écran suivant, \enquote{Complete MiKTeX}.
 
-Se te pide que elijas una fuente de descarga. Elige una fuente cercana a tu domicilio, por lo que para un usuario que viva al norte de Francia, los servidores franceses, ingleses o alemanes sirven perfectamente.
+Il vous est demandé de choisir une source de téléchargement. Préférez une source proche de votre domicile, donc pour un utilisateur habitant dans le Nord de la France, les serveurs français, anglais ou allemands font amplement l'affaire.
 
-En la fase siguiente hay que elegir una carpeta de descarga. Elige, preferentemente, una carpeta que se encuentre en \enquote{Mis Documentos}, como, por ejemplo, \begin{english}\verb|C:\Documents and Settings\Usuario\Mis documentos\miktex|\end{english}. Cuando hayas concluido esta fase, el instalador descarga todos los componentes que necesita, te advierte de que ha acabado su trabajo y luego se detiene.
+À l'étape suivante il faut choisir un répertoire de téléchargement. Choisissez de préférence un dossier qui se trouve dans \enquote{Mes Documents}, comme par exemple \begin{english}\verb|C:\Documents and Settings\Votre utilisateur\Mes documents\miktex|\end{english}. Lorsque vous avez achevé cette étape, l'installateur télécharge tous les composants dont il a besoin, vous avertit qu'il a terminé son travail, puis s'arrête.
 
-Lánzalo ahora por segunda vez. Pero, en vez de elegir \enquote{Download MiKTeX}, selecciona ahora \enquote{Install MiKTeX}, y luego, de nuevo \enquote{Basic MiKTeX}. 
-Es preferible que hagas una instalación como administrador para todos los usuarios del ordenador. Después elige la carpeta que contiene los componentes; en nuestro ejemplo anterior, se trataba de \begin{english}\verb|C:\Documents and SettingsUsuario\Mis documentos\miktex|\end{english}.
+Lancez-le alors une seconde fois. Mais au lieu de choisir \enquote{Download MiKTeX}, choisissez à présent \enquote{Install MiKTeX}, puis de nouveau \enquote{Basic MiKTeX}. Préférez alors une installation en tant qu'administrateur, pour tous les utilisateurs de l'ordinateur. Puis sélectionnez le dossier qui contient les composants ; dans notre exemple précédent, il s'agissait de \begin{english}\verb|C:\Documents and Settings\Votreutilisateur\Mes documents\miktex|\end{english}.
 
-Mantén las opciones por defecto en las dos pantallas siguientes: son correctas. Puedes acabar el proceso.
+Conservez les choix par défaut sur les deux écrans suivants: ils sont corrects. Vous pouvez achever le processus.
 
-\section{Actualizar los packages}\label{maj}
 
-La mayoría de los packages aparecen en una lista en \url{http://www.ctan.org/tex-archive/} que sirve como depósito para todos los proyectos que tienen que ver con \TeX y \LaTeX. Por lo general, es en los servidores de CTAN (\textenglish{\emph{Comprehensive TeX Archive Network}}) donde los programas de actualización de los packages van a buscarlos.
+
+
+
+
+
+\section{Mettre à jour les packages}\label{maj}
+
+La plupart des packages sont listés sur  \url{http://www.ctan.org/tex-archive/} qui sert de dépôt pour tous les projets tournant autour de \TeX et \LaTeX. C'est  en général sur les serveurs du CTAN (\textenglish{\emph{Comprehensive TeX Archive Network}}) que les logiciels de mise à jour des packages vont chercher  ceux-ci.
 
 \begin{plusloins}
-	Para estar al corriente de los nuevos packages y de actualizaciones de los antiguos packages, puedes apuntarte a la lista \url{https://lists.dante.de/mailman/listinfo/ctan-ann}. 
+	Pour être tenu au courant des nouveaux packages et des mises à jours des anciens packages, vous pouvez vous abonner à la liste \url{https://lists.dante.de/mailman/listinfo/ctan-ann}. 
 \end{plusloins}
 
 \begin{attention}
-    Las actualizaciones de la distribución TeX Live solo se ofrecen por un período de un año aproximadamente tras su salida (por lo general, entre mayo y julio). Pasado ese plazo, cuando intentes actualizar tu distribución TeX Live, te encontrarás con un mensaje de este tipo:
+    Les mises à jour de la distribution TeX Live ne sont fournies que pour une période d'un an environ après sa sortie (généralement entre mai et juillet). Passé ce délai, lorsque vous tenterez de mettre à jour votre distribution TeX Live, vous trouverez un message de ce type :
 
     \begin{quotation}
 /home/justin/texlive2011/bin/x86\_64-linux/tlmgr: The TeX Live versions supported by the repository\\
@@ -160,25 +167,25 @@ do not include the version of the local installation\\
 longer be updated.
 	\end{quotation}
 
-En tal caso, tendrás que instalar una nueva versión de la distribución TeX Live, comenzando de nuevo su proceso de instalación, o podrás seguir usando la antigua que ya no tendrá más actualizaciones. TeX Live tiene gran estabilidad, pero no es necesariamente así para todos los packages que puede que tengamos que usar. Si uno de los packages que utilizas se ve afectado por un error que te molesta, no tendrás más remedio que poner al día la distribución TeX Live. En caso contrario, perfectamente te puedes mantener con la versión antigua.
+Dans un tel cas,  il vous faut soit installer une nouvelle version de la distribution TeX Live, en recommençant la procédure d'installation, soit continuer à utiliser l'ancienne qui ne reçoit plus de mises à jour. TeX Live est d'une grande stabilité, mais ce n'est pas nécessairement le cas de tous les packages que l'on peut être amené à utiliser. Si l'un des packages que vous utilisez est affecté d'un bug qui vous gêne, vous n'aurez d'autre choix que de mettre à niveau la distribution TeX Live. Dans le cas contraire, vous pouvez parfaitement vous contenter de l'ancienne version.
 \end{attention}
 
-\subsection{En Mac OS X}\label{majosX}
+\subsection{Sous Mac OS X}\label{majosX}
 
-Para actualizar los packages,Lo más sencillo es usar el programa \forme{TeXLive Utility}, que viene con MacTeX. Una vez abierto el programa, basta con elegir la pestaña \forme{Manage Updates}, después de seleccionar el package que quieres actualizar --- si no aparece, es que está actualizado --- antes de pulsar sobre \forme{Update}. Hay que notar que también se puede utilizar la pestaña \forme{Manage Packages} para gestionar la instalación de nuevos packages.
+Pour mettre à jour les packages, le plus simple est d'utiliser le logiciel \forme{TeXLive Utility}, livré avec MacTeX. Une fois le logiciel ouvert, il suffit  de choisir l'onglet \forme{Manage Updates}, puis de sélectionner le package à mettre à jour --- s'il ne s'affiche pas, c'est qu'il est à jour --- avant de cliquer sur \forme{Update}. À noter qu'on peut aussi utiliser l'onglet \forme{Manage Packages} pour gérer l'installation de nouveaux packages.
 
-\subsection{En Linux}
+\subsection{Sous Linux}
 
-Hay dos formas de actualizar tu instalación \LaTeX en GNU/Linux.
+Il y a deux moyens de mettre à jour votre installation \LaTeX sous GNU/Linux.
 
 \begin{enumerate}
-\item La primera forma de actualizarlo consiste simplemente en usar \verb|tlmgr| en un terminal. El comando que permite la actualización es el siguiente:
-\verb|tlmgr update --self --all|. Si se necesita instalar un nuevo paquete, hay que utilizar el comando \verb|tlmgr install paquete|.
-\item Puedes lanzar la interfaz gráfica de gestión de paquetes escribiendo el comando \verb|tlmgr gui|.
+\item Le premier moyen de mettre à jour simplement est d'utiliser \verb|tlmgr| dans un terminal. La commande permettant de tout mettre à jour est la suivante:
+\verb|tlmgr update --self --all|. S'il s'avère nécessaire d'installer un nouveau paquet, il faut utiliser la commande \verb|tlmgr install paquet|.
+\item Vous pouvez lancer l'interface graphique de gestion des paquets en tapant la commande \verb|tlmgr gui|.
 \end{enumerate}
 
-\subsection{En Windows}
+\subsection{Sous Windows}
 
-En el menú Inicio, encontrarás un apartado llamado precisamente MiKTeX, seguido de un número de versión. En este apartado, hay un subapartado dedicado al \enquote{Mantenimiento} --- que responde al nombre de de \forme{Maintenance (Admin)} ---, en el que tienes acceso a dos herramientas útiles: el gestor de actualizaciones de packages (\forme{Updates}), y el gestor de instalación de nuevos packages (\forme{Package Manager}).
+Dans le menu Démarrer, vous trouvez une section nommée fort justement MiKTeX, suivie d'un numéro de version. Dans cette section, il y a notamment une sous-section consacrée à la \enquote{Maintenance} --- répondant au doux nom de \forme{Maintenance (Admin)} ---, dans laquelle vous avez accès à deux outils utiles: le gestionnaire de mises à jour de packages (\forme{Updates}), et le gestionnaire d'installation de nouveaux packages (\forme{Package Manager}).
 
-Fíjate en que, la mayor parte de las veces, no necesitarás instalar explícitamente un nuevo package. En efecto, en el momento de la compilación, MiKTeX detecta que solicitas un componente que no está en tu sistema y te ofrece instalarlo.
+Remarquez que la plupart du temps, vous n'aurez pas besoin d'installer explicitement un nouveau package. En effet, au moment de la compilation, MiKTeX détecte que vous sollicitez un composant qui n'est pas présent sur votre système et vous propose de l'installer.
